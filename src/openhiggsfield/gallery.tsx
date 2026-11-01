@@ -278,7 +278,12 @@ const Tile = memo(function Tile({
           <span className="ohf-fail-ic">
             <WarningIcon />
           </span>
-          <span className="ohf-fail-title">{item.modelLabel} didn’t deliver</span>
+          {/* A cancelled run reuses this exact failed layout — same border, same
+              icon, same Retry button — but reads as a cancel, not an error: the
+              badge says who stopped it instead of blaming the model. */}
+          <span className="ohf-fail-title">
+            {item.cancelled ? "Cancelled by user" : `${item.modelLabel} didn’t deliver`}
+          </span>
           <span className="ohf-fail-why">{item.error}</span>
           <button
             type="button"

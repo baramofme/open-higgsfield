@@ -161,6 +161,10 @@ function terminalRows(
       kind: draft.surface,
       urls: url ? [url] : [],
       status: completed ? "completed" : "failed",
+      /* A run the platform canceled keeps the failed status (so the retry path
+         and the failed-card layout carry over unchanged) but is tagged so the
+         card can swap its wording to read as a cancel. */
+      cancelled: status.status === "canceled" ? true : undefined,
       error: failure,
       failedAt: completed ? undefined : finishedAt,
       art: artFor(draft.surface, hueOf(id), id),

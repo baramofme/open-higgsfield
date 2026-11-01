@@ -20,6 +20,11 @@ export interface RunRecord {
       refresh can resume the poll; completed rows keep it for the same id. */
   requestId?: string;
   error?: string;
+  /** True when the run reached its terminal `canceled` state rather than dying
+      on its own. The card reuses the failed layout and the retry path unchanged,
+      but swaps the badge wording to read as a cancel instead of an error.
+      Absent (not false) on runs that finished or genuinely failed. */
+  cancelled?: boolean;
   /** Layered-gradient fallback used while media loads or when a run failed. */
   art: string;
   createdAt: number;
@@ -154,6 +159,7 @@ function isRunRecord(value: unknown): value is RunRecord {
     typeof record.prompt === "string" &&
     typeof record.ratio === "string" &&
     Array.isArray(record.urls) &&
+    (record.cancelled === undefined || typeof record.cancelled === "boolean") &&
     (record.status === "completed" ||
       record.status === "failed" ||
       (record.status === "running" && typeof record.requestId === "string")) &&
