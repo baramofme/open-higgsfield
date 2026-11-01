@@ -752,10 +752,13 @@ function realAspect(item: RunRecord): number {
   const parts = item.meta?.match(PIXEL_SIZE);
   const w = Number(parts?.[1]);
   const h = Number(parts?.[2]);
+  /* A video with no recorded pixels still has the shape it asked for; the 4:3
+     card is only the right guess for surfaces that never name one. */
+  const videoFallback = item.surface === "video" || item.kind === "video";
   const value =
     w > 0 && h > 0
       ? w / h
-      : parseRatio(item.ratio, item.surface === "video" || item.kind === "video" ? 16 / 9 : CARD_RATIO);
+      : parseRatio(item.ratio, videoFallback ? 16 / 9 : CARD_RATIO);
   return clampAspect(value);
 }
 
