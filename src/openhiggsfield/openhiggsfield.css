@@ -11184,6 +11184,8 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
    aspect, so square cells stay 4:3 and packed cells take the run's ratio. */
 .ohf-cell {
   position: absolute;
+  max-width: 100%;
+  overflow: hidden;
 }
 .ohf-cell > .ohf-tile,
 .ohf-cell > .ohf-skeleton {

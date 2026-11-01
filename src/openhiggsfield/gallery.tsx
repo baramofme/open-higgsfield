@@ -820,28 +820,36 @@ function planFeed(
     let x = 0;
     let y = 0;
     let has = false;
+    let rowMaxH = 0;
     blocks.forEach((block) => {
       if (block.kind === "header") {
         if (has) {
-          y += rowH + gap;
+          y += rowMaxH + gap;
           x = 0;
         }
         cells.push({ block, x: 0, y, w: boxW, h: DAY_HEADER_H, ratio: 0 });
         y += DAY_HEADER_H + gap;
         has = false;
+        rowMaxH = 0;
         return;
       }
       const ratio = slotAspect(block.slot, layout);
-      const w = rowH * ratio;
+      /* Clamp width to the container so an extreme aspect never lets a single
+         cell overflow the viewport; recompute height from the clamped width so
+         the tile still shows the video's native ratio. */
+      const w = Math.min(rowH * ratio, boxW);
+      const h = w / ratio;
+      rowMaxH = Math.max(rowMaxH, h);
       if (x > 0 && x + w > boxW) {
-        y += rowH + gap;
+        y += rowMaxH + gap;
         x = 0;
+        rowMaxH = h;
       }
-      cells.push({ block, x, y, w, h: rowH, ratio });
+      cells.push({ block, x, y, w, h, ratio });
       x += w + gap;
       has = true;
     });
-    const total = y + (has ? rowH : 0);
+    const total = y + (has ? rowMaxH : 0);
     return { cells, total: Math.max(0, total) };
   }
 
@@ -1049,6 +1057,7 @@ function VirtualizedGrid({
                 left: cell.x,
                 top: cell.y,
                 width: cell.w,
+                height: (layout === "masonry" || fit) ? cell.h : undefined,
                 aspectRatio: String(cell.ratio),
               } as CSSProperties
             }
