@@ -13998,8 +13998,16 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 
 /* Topbar right-edge actions, mirroring Higgsfield's hfnav-actions: search ·
    assets · profile. The platform-key lamp still sits at the far edge. Both
-   popovers hang below the topbar (its overflow is visible) and close on a press
-   outside their own wrap. */
+   popovers hang below the topbar (its overflow is visible), only one is ever
+   open at a time, and either closes on a press outside its own wrap.
+
+   Token note (measured 2026-11-01): --muted and --text are NOT defined on the
+   .ohf scope — the palette ships --tx / --tx2 / --tx3. var(--text) made every
+   hover colour declaration here invalid at computed-value time, so hover read
+   as "nothing happened"; --glint is an inset-shadow token, never a border
+   colour. Use the real tokens. The source's resting icon is rgba(255,255,255,.3)
+   ≈ --tx3, its hover lifts to full ink ≈ --tx, and the account ring is a bright
+   hairline, so the avatar border mirrors a dimmed --tx. */
 .ohf-search-wrap,
 .ohf-profile-wrap {
   position: relative;
@@ -14014,14 +14022,42 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-radius: 9px;
   border: 1px solid transparent;
   background: none;
-  color: var(--muted);
+  color: var(--tx3);
   cursor: pointer;
   transition: color 0.14s, border-color 0.14s;
 }
 .ohf-act:hover,
 .ohf-act[aria-expanded="true"] {
-  color: var(--text);
-  border-color: var(--glint);
+  color: var(--tx);
+  border-color: var(--line-2);
+}
+
+/* The 에셋 action mirrors the source's labelled pill: icon + 12px/600 text on a
+   28px radius-10 button, ink-coloured at rest (the source keeps it bright).
+   Qualified after .ohf-act so the later same-specificity block wins. */
+.ohf-act--labeled {
+  width: auto;
+  height: 28px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 10px;
+  color: var(--tx);
+  font-size: 12px;
+  font-weight: 600;
+}
+.ohf-act--labeled svg {
+  flex: none;
+}
+
+/* The source stands a 1px×12 hairline between the action group and the
+   account ring — the same line the nav separator draws. */
+.ohf-act-sep {
+  width: 1px;
+  height: 12px;
+  flex: none;
+  background: var(--line-2);
 }
 
 .ohf-avatar {
@@ -14031,7 +14067,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   height: 30px;
   padding: 0;
   border-radius: 999px;
-  border: 1px solid var(--glint);
+  border: 1px solid color-mix(in srgb, var(--tx) 30%, transparent);
   background: color-mix(in srgb, var(--accent) 16%, transparent);
   color: var(--accent);
   font-size: 14px;
@@ -14062,20 +14098,20 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   gap: 8px;
   width: min(320px, calc(100vw - 40px));
   padding: 8px 10px;
-  color: var(--muted);
+  color: var(--tx3);
 }
 .ohf-search-input {
   flex: 1;
   min-width: 0;
   border: 0;
   background: none;
-  color: var(--text);
+  color: var(--tx);
   font: inherit;
   font-size: 13px;
   outline: none;
 }
 .ohf-search-input::placeholder {
-  color: var(--muted);
+  color: var(--tx3);
   opacity: 0.7;
 }
 .ohf-search-clear {
@@ -14084,11 +14120,11 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   padding: 0;
   border: 0;
   background: none;
-  color: var(--muted);
+  color: var(--tx3);
   cursor: pointer;
 }
 .ohf-search-clear:hover {
-  color: var(--text);
+  color: var(--tx);
 }
 
 .ohf-profile-pop {
@@ -14107,12 +14143,12 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   gap: 2px;
 }
 .ohf-profile-handle {
-  color: var(--text);
+  color: var(--tx);
   font-size: 14px;
   font-weight: 700;
 }
 .ohf-profile-role {
-  color: var(--muted);
+  color: var(--tx3);
   font-size: 12px;
 }
 .ohf-profile-key {
@@ -14123,13 +14159,13 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-radius: 10px;
   border: 1px solid var(--line);
   background: none;
-  color: var(--text);
+  color: var(--tx);
   font: inherit;
   font-size: 13px;
   cursor: pointer;
 }
 .ohf-profile-key:hover {
-  border-color: var(--glint);
+  border-color: var(--line-2);
   background: var(--s3);
 }
 
