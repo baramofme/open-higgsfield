@@ -116,6 +116,7 @@ export function Composer({
   const addProject = useProjects((state) => state.addProject);
   const [projectDialog, setProjectDialog] = useState(false);
   const [anchor, setAnchor] = useState({ x: 0, y: 0 });
+  const [popClear, setPopClear] = useState<number | null>(null);
   const [shortcut, setShortcut] = useState<string | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -243,6 +244,34 @@ export function Composer({
     observer.observe(dock);
     return () => observer.disconnect();
   }, []);
+
+  /* The assets browser rises above the composer wrap, so its ceiling is the top
+     bar's underside rather than the window's edge. The dock grows as the
+     composer grows — the attachment strip, a long prompt, the undo receipt — so
+     the room cannot be a constant: it is measured while the panel is open, on
+     the wrap's own resize and on any window resize, and handed to CSS as
+     --ohf-pop-clear. The 20px taken off the measurement is the panel's 12px
+     standoff plus a little breath, so its top edge lands clear of the nav; the
+     140px floor keeps the head and tabs whole before the scroll body folds. */
+  useEffect(() => {
+    if (overlay !== ASSETS) return;
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    const read = () => {
+      const bar = document.querySelector<HTMLElement>(".ohf-topbar");
+      const underside = bar ? bar.getBoundingClientRect().bottom : 0;
+      const room = wrap.getBoundingClientRect().top - underside - POPOVER_GAP - 12;
+      setPopClear(Math.max(140, Math.round(room)));
+    };
+    read();
+    const observer = new ResizeObserver(read);
+    observer.observe(wrap);
+    window.addEventListener("resize", read);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", read);
+    };
+  }, [overlay]);
 
   /* The streaming area scrolls sideways, and a container that scrolls one way
      cannot also let things escape above the other way — a tip that belongs to a
@@ -422,6 +451,7 @@ export function Composer({
           {
             "--ohf-pop-x": `${anchor.x}px`,
             "--ohf-pop-y": `${anchor.y}px`,
+            "--ohf-pop-clear": popClear === null ? undefined : `${popClear}px`,
           } as CSSProperties
         }
       >

@@ -13983,14 +13983,17 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 
 /* The browser opens upward from the composer's assets trigger down in the dock,
    so its ceiling must be the top bar's underside, not the very top of the
-   window. The trigger sits about a composer-plus-dock block above the bottom
-   edge, so the panel may only grow into the space that remains once the top bar
-   and that block are subtracted. Dropping the old 420px floor lets a short
-   window fold the scroll body instead of shoving the header behind the nav.
-   Appended last so the clamp beats the earlier !important ceiling. */
+   window. The panel's bottom edge rests 12px above the composer wrap's own top,
+   so the room it may occupy is exactly wrap-top minus the top bar's underside
+   minus that gap — a fixed subtraction is wrong because the dock grows: the
+   attachment strip, a long prompt, the undo receipt. The composer measures that
+   room live and hands it over as --ohf-pop-clear; the vh-based constant is only
+   a fallback for before the first measurement. Dropping the old 420px floor lets
+   a short window fold the scroll body instead of shoving the header behind the
+   nav. Appended last so the clamp beats the earlier !important ceiling. */
 .ohf-popover--assets {
   min-height: 0 !important;
-  max-height: calc(100vh - 268px) !important;
+  max-height: var(--ohf-pop-clear, calc(100vh - 268px)) !important;
 }
 
 /* Topbar right-edge actions, mirroring Higgsfield's hfnav-actions: search ·
