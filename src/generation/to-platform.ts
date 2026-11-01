@@ -428,16 +428,20 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
        alongside references joins the image list at the head — the pinned
        frame is then the first Picture. */
     if (refs.length || vids.length || auds.length) {
-      const images = start ? [start, ...refs].slice(0, 9) : refs;
+      /* Caps re-applied here so a hand-built plane cannot overrun the
+       * backend's fixed slot count; the composer already trims picks. */
+      const images = (start ? [start, ...refs] : refs).slice(0, 9);
+      const videoSlots = vids.slice(0, 3);
+      const audioSlots = auds.slice(0, 3);
       const slots: Record<string, unknown> = {};
       images.forEach((url, index) => { slots[`ref_image${index + 1}`] = url; });
-      vids.forEach((url, index) => { slots[`ref_video${index + 1}`] = url; });
-      auds.forEach((url, index) => { slots[`ref_audio${index + 1}`] = url; });
+      videoSlots.forEach((url, index) => { slots[`ref_video${index + 1}`] = url; });
+      audioSlots.forEach((url, index) => { slots[`ref_audio${index + 1}`] = url; });
       return {
         path: "VideoGen_H3_run",
         body: {
           task_type: "ref2va",
-          prompt: h3NamedTemplate(prompt, images, vids, auds),
+          prompt: h3NamedTemplate(prompt, images, videoSlots, audioSlots),
           width,
           height,
           duration,
