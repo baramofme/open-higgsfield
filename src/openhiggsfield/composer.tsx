@@ -18,7 +18,7 @@ import { ElementPopover } from "./element-popover";
 import { CameraPopover, CharacterPopover, CinemaTiles } from "./cinema-popover";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, ClapperIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
+import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, ClapperIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
 import { useCamera } from "@/generation/stores/camera";
 import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
@@ -685,14 +685,15 @@ export function Composer({
                 </div>
               )}
               <div className="ohf-form-col">
-                {/* Under the video seat the app lays its four instruments in a
-                    single row above the prompt: reference, film, camera and
-                    lighting. Reference rides the asset browser the attach button
-                    already opens; camera opens the same sheet the cinematic tile
-                    does; film and lighting are screen mirrors until those stores
-                    exist — honest chrome, the same treatment the cinema rail
-                    gives anything it cannot run yet. The image seat shows none
-                    of them, exactly as the app leaves the image form plain. */}
+                {/* Under the video seat the app lays its five instruments in a
+                    single row above the prompt, in the order the reference seats
+                    them: reference, film, camera, colour palette and lighting.
+                    Reference rides the asset browser the attach button already
+                    opens; camera opens the same sheet the cinematic tile does;
+                    film, palette and lighting are screen mirrors until those
+                    stores exist — honest chrome, the same treatment the cinema
+                    rail gives anything it cannot run yet. The image seat shows
+                    none of them, exactly as the app leaves the image form plain. */}
                 {mode === "cinema" && cinemaMode === "video" && (
                   <div className="ohf-video-top" role="group" aria-label="비디오 연출">
                     <button
@@ -750,6 +751,21 @@ export function Composer({
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">카메라</span>
                         <span className="ohf-vtc-val">{cameraChoice}</span>
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="ohf-vtc ohf-vtc--palette"
+                      data-off
+                      aria-disabled
+                      title="색상 팔레트는 화면 미러 — 실행 미연결"
+                    >
+                      <span className="ohf-vtc-ic" aria-hidden>
+                        <PaletteIcon size={16} />
+                      </span>
+                      <span className="ohf-vtc-col">
+                        <span className="ohf-vtc-label">색상 팔레트</span>
+                        <span className="ohf-vtc-val">자동</span>
                       </span>
                     </button>
                     <button

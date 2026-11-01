@@ -333,6 +333,20 @@ export function ClapperIcon({ size = 16 }: IconProps) {
   );
 }
 
+/* The colour-palette instrument HF seats fifth on the video top bar. A painter's
+   palette reads as "colour" at a glance; the thumb notch on the right edge and the
+   well circles are all stroke, so it joins the one drawing system, never a fill. */
+export function PaletteIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M8 2.5C4.4 2.5 2.5 5 2.5 8s2.1 5.5 5.5 5.5c.9 0 1.5-.7 1.5-1.6 0-.4.2-.8.5-1.1.3-.3.7-.5 1.2-.5h1a2.6 2.6 0 0 0 2.6-2.6C15 5.6 12.6 2.5 8 2.5Z" />
+      <circle cx="4.8" cy="8.2" r="1.05" />
+      <circle cx="5" cy="5.7" r=".7" />
+      <circle cx="9" cy="4.8" r=".7" />
+    </svg>
+  );
+}
+
 export function ApertureIcon({ size = 16 }: IconProps) {
   return (
     <svg {...base(size)}>
