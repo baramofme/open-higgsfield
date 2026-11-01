@@ -17,6 +17,10 @@ import { useVideoMedia } from "@/generation/stores/media";
 import { useSettings } from "@/generation/stores/settings";
 import { DEFAULT_PROJECT_ID, useProjects } from "@/generation/stores/projects";
 import { useElements, ELEMENT_DEFAULTS, nextElementName, type ElementItem } from "@/generation/stores/elements";
+/* Separate import, anchored away from the top-of-file import cluster so it
+   forms its own diff hunk. validateReferenceSubmission comes from the catalog
+   barrel; the generation gate below reads the model's derived policy through it. */
+import { validateReferenceSubmission } from "@/generation/catalog";
 
 import { GRAIN_URI, artFor } from "./artwork";
 import { Composer } from "./composer";
@@ -536,6 +540,16 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     if (!plane.prompt.text.trim()) return;
 
     const entry = getModel(plane.model);
+    /* Reference-only video runs are rejected before they reach the backend.
+       A video model that offers both a start and a reference slot cannot map a
+       reference without a start frame, so the plane aborts here and surfaces the
+       rule's message in the composer's error slot. The check reads the model's
+       derived policy — never re-derive it here, or the rule has two sources. */
+    const refCheck = validateReferenceSubmission(entry, plane.media);
+    if (!refCheck.ok) {
+      setError(refCheck.message);
+      return;
+    }
     const ratio = ratioToCss(
       plane.settings.aspectRatio,
       entry.surface === "image" ? "4 / 3" : "16 / 9",
