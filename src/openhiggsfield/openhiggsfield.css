@@ -15304,3 +15304,289 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     animation: none;
   }
 }
+
+/* ---- Project detail screen (trailing block, scoped to .ohf-project-screen) ----
+   The swap pattern mirrors .ohf-cinema-screen: the project surface replaces the
+   dashboard shell while open, so general layout never overlaps it. */
+.ohf-project-screen {
+  position: relative;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--bg);
+}
+.ohf-project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--line);
+}
+.ohf-project-top-left,
+.ohf-project-top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ohf-project-top-right {
+  gap: 12px;
+}
+.ohf-project-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.ohf-project-exit:hover {
+  color: var(--tx);
+  background: rgba(255, 255, 255, 0.04);
+}
+.ohf-project-exit:active {
+  transform: scale(0.97);
+}
+.ohf-project-exit svg {
+  color: var(--tx3);
+}
+.ohf-project-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--tx);
+}
+.ohf-project-brand svg {
+  color: var(--accent);
+}
+.ohf-project-body {
+  display: grid;
+  grid-template-columns: 20rem minmax(0, 1fr);
+  min-height: 0;
+}
+.ohf-project-tool {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px;
+}
+.ohf-project-tool-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.ohf-project-tool-title {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tx3);
+}
+/* Canvas tool slot — 미구현 */
+.ohf-project-tool--canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.ohf-project-canvas-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--tx4);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* Chat tool slot — screen only */
+.ohf-project-tool--chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.ohf-project-members {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ohf-project-member {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--tx2);
+}
+.ohf-project-member--self {
+  color: var(--tx);
+  font-weight: 550;
+}
+.ohf-project-member-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--s3);
+  border: 1px solid var(--line-2);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--tx3);
+}
+.ohf-project-member-name {
+  white-space: nowrap;
+}
+.ohf-project-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 0;
+}
+.ohf-project-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.ohf-project-msg-avatar {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--s3);
+  border: 1px solid var(--line-2);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tx3);
+}
+.ohf-project-msg-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ohf-project-msg-sender {
+  font-size: 11px;
+  font-weight: 550;
+  color: var(--tx4);
+}
+.ohf-project-msg-text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--tx2);
+}
+.ohf-project-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.ohf-project-input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--tx);
+  outline: none;
+}
+.ohf-project-input:focus {
+  border-color: var(--accent);
+}
+.ohf-project-input::placeholder {
+  color: var(--tx4);
+}
+.ohf-project-send {
+  flex: none;
+  height: 32px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 550;
+  color: #fff;
+  cursor: pointer;
+}
+.ohf-project-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+/* Project rail rows in the assets browser */
+.ohf-project-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+}
+.ohf-project-rail-row {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--tx);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+.ohf-project-rail-row:hover {
+  background: var(--s3);
+}
+.ohf-project-rail-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 560px) {
+  .ohf-project-body {
+    grid-template-columns: 1fr;
+  }
+  .ohf-project-tool--canvas {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ohf-project-screen {
+    animation: none;
+  }
+}

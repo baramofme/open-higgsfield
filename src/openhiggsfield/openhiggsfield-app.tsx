@@ -51,6 +51,13 @@ import { Viewer } from "./viewer";
 import { CinemaPanel } from "./cinema-panel";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
 
+/* Separate import block, anchored away from the top cluster so it forms its own
+   diff hunk: the project detail surface plus the view-state store that raises
+   it. The swap mirrors the cinematic screen's pattern — the shell is replaced
+   while the project is open, so the general layout never overlaps it. */
+import { useProjectView } from "@/generation/stores/project-view";
+import { ProjectScreen } from "./project-screen";
+
 /* Long enough to read the bar and reach it; the drain line states the window. */
 const UNDO_MS = 6000;
 
@@ -265,6 +272,14 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const projectsList = useProjects((state) => state.projects);
   const elementsList = useElements((state) => state.items);
   const setCinemaMode = useStudio((state) => state.setCinemaMode);
+
+  /* The project detail surface: while open, the dashboard shell is replaced by
+     the ProjectScreen — the same swap the cinematic surface uses for its own
+     full-screen state. */
+  const projectViewOpen = useProjectView((state) => state.open);
+  const projectViewId = useProjectView((state) => state.projectId);
+  const closeProject = useProjectView((state) => state.closeProject);
+  const openProjectView = useProjectView((state) => state.openProject);
 
   const galleryRef = useRef<HTMLDivElement>(null);
   const rangeAnchor = useRef<number | null>(null);
@@ -1255,6 +1270,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           keyConfigured={keyConfigured}
           onKeys={openKeys}
         />
+      ) : projectViewOpen ? (
+        <ProjectScreen
+          onExit={closeProject}
+          projectId={projectViewId}
+        />
       ) : (
         <div className="ohf-shell">
         <main className="ohf-main">
@@ -1384,6 +1404,27 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 scope={assetsAllScope}
                 onSelect={setAssetsAllScope}
               />
+              {assetsAllScope === "projects" && projectsList.length > 0 && (
+                /* Project rail: visible rows for each project, so the visitor
+                   can enter the detail surface. A row click raises the
+                   ProjectScreen and dismisses the asset browser. */
+                <div className="ohf-project-rail" aria-label="프로젝트 목록">
+                  {projectsList.map((project) => (
+                    <button
+                      key={project.id}
+                      type="button"
+                      className="ohf-project-rail-row"
+                      onClick={() => {
+                        openProjectView(project.id);
+                        closeAssetsAll();
+                      }}
+                      title={`열기: ${project.name}`}
+                    >
+                      <span className="ohf-project-rail-name">{project.name}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
               <Gallery
                 view="assets"
                 surface={surface}
