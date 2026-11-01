@@ -134,4 +134,11 @@ export function getModel(id: string): ModelEntry {
 }
 
 export type { GenerationPlane, MediaItem, MediaRole, ModelEntry, PlatformPaths, Surface } from "./types";
+export type { ReferenceKind, ReferencePolicy, ReferenceRoleOption, ReferenceRejectionCode } from "./reference-policy";
+export {
+  REFERENCE_ROLES,
+  referencePolicyFor,
+  referenceSlotsRemaining,
+  validateReferenceSubmission,
+} from "./reference-policy";
 export { parseSettings };
