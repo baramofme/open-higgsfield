@@ -128,7 +128,12 @@ export function Topbar({
             className="ohf-act"
             aria-label="Search"
             aria-expanded={searchOpen}
-            onClick={() => setSearchOpen((v) => !v)}
+            /* Opening one plate closes the other — the source never stacks two
+               right-cluster popovers, and the row would overlap if it did. */
+            onClick={() => {
+              setProfileOpen(false);
+              setSearchOpen((v) => !v);
+            }}
           >
             <SearchIcon />
           </button>
@@ -158,16 +163,28 @@ export function Topbar({
             </div>
           ) : null}
         </div>
-        <button type="button" className="ohf-act" aria-label="Assets" onClick={onAssets}>
+        <button
+          type="button"
+          className="ohf-act ohf-act--labeled"
+          onClick={onAssets}
+          title="Open the full asset browser"
+        >
           <AssetsIcon />
+          <span>에셋</span>
         </button>
+        {/* The source puts a hairline between the action group and the account
+           ring — same 1px×12 line as the nav divider, on --line-2. */}
+        <span className="ohf-act-sep" aria-hidden />
         <div className="ohf-profile-wrap" ref={profileRef}>
           <button
             type="button"
             className="ohf-avatar"
             aria-label="Profile"
             aria-expanded={profileOpen}
-            onClick={() => setProfileOpen((v) => !v)}
+            onClick={() => {
+              setSearchOpen(false);
+              setProfileOpen((v) => !v);
+            }}
           >
             {LOCAL_USER.initial}
           </button>
