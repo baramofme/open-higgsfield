@@ -12967,6 +12967,66 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* Waveform image surfaces — the tile's media, the desktop hero and the mobile
+   hero. One lime image generated from the audio and cached per asset, shown in
+   place of the bare player that used to read as a generic icon. The image is
+   absent until it resolves, so nothing shifts for a non-audio run, and a card
+   that cannot build a waveform keeps the player it already had — never a broken
+   image. All three share one fade-in so a late-arriving waveform eases in rather
+   than popping over the card that has already settled. */
+.ohf-tile-wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  animation: ohf-fade 0.4s ease;
+  /* Let the clicks meant for the open plate through, and keep the wave beneath
+     the player and the scrim so both stay usable above it. */
+  pointer-events: none;
+}
+/* The desktop showcase lays the waveform hero above the player in a single
+   centred column; the player keeps its own centring rules below it. */
+.ohf-viewer-audio-stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: min(92%, 760px);
+  padding: 8px 0;
+}
+.ohf-viewer-wave {
+  width: 100%;
+  height: auto;
+  max-height: 46%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.5));
+  animation: ohf-fade 0.3s ease;
+}
+/* The mobile hero fills the image block the way a poster frame would, with
+   vertical breathing room so the bars never kiss the sheet's rounded edge. */
+.ohf-mshow-wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 9% 0 7%;
+  animation: ohf-fade 0.3s ease;
+}
+/* Once a hero fills the sheet, move the player to its foot rather than leaving
+   it stranded across the middle of the waveform. */
+.ohf-mshow-image-inner:has(.ohf-mshow-wave) .ohf-mshow-audio {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+}
 .ohf-mshow-media {
   position: absolute;
   inset: 0;

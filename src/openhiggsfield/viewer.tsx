@@ -12,6 +12,7 @@ import { CheckIcon } from "./icons";
 import { LOCAL_USER } from "./local-user";
 import { EditShowcase, EditToolsCard } from "./edit-showcase";
 import { ExpandCropEditor } from "./expand-crop";
+import { SHOWCASE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 
 /* Backstop only: the exit normally ends on the panel's own animationend. */
 const EXIT_TIMEOUT_MS = 420;
@@ -351,6 +352,9 @@ export function Viewer({
   }
   const aspect = delivered ?? w / h;
   const url = item.urls[0];
+  /* The waveform the showcase draws as a hero for an audio run. Non-audio runs
+     resolve to null without a fetch, so nothing here changes for images or video. */
+  const wave = useAudioWaveform(item.id, url, item.kind === "audio", SHOWCASE_WAVEFORM);
 
   const measure = useCallback((media: HTMLImageElement | HTMLVideoElement | null) => {
     if (!media) return;
@@ -506,8 +510,23 @@ export function Viewer({
                         /* A finished clip has no frame to fill the block — it is
                            the sound itself, so the narrow sheet shows a plain
                            player over the art. The raw url plays here without a
-                           proxy because audio needs no CORS preflight. */
-                        <audio className="ohf-mshow-audio" src={url} controls preload="metadata" />
+                           proxy because audio needs no CORS preflight. When a
+                           waveform could be built it fills the block as the hero
+                           and the player rides at the bottom of it; when it could
+                           not, the sheet falls back to the plain player, never a
+                           broken image. */
+                        <>
+                          {wave && (
+                            /* eslint-disable-next-line @next/next/no-img-element */
+                            <img
+                              className="ohf-mshow-wave"
+                              src={wave}
+                              alt="파형"
+                              draggable={false}
+                            />
+                          )}
+                          <audio className="ohf-mshow-audio" src={url} controls preload="metadata" />
+                        </>
                       ) : item.kind === "video" ? (
                         <video className="ohf-mshow-media" src={url} controls autoPlay loop playsInline />
                       ) : (
@@ -635,8 +654,24 @@ export function Viewer({
                   item.kind === "audio" ? (
                     /* Same reasoning as the narrow sheet: the finished clip is the
                        media, shown over the run's art, and it streams straight from
-                       the raw gradio url the run stored. */
-                    <audio className="ohf-viewer-audio" src={url} controls preload="metadata" />
+                       the raw gradio url the run stored. When a waveform could be
+                       built it stands as the hero above the player; when it could
+                       not, the card falls back to the plain centered player it had,
+                       never a broken image. */
+                    wave ? (
+                      <div className="ohf-viewer-audio-stack">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          className="ohf-viewer-wave"
+                          src={wave}
+                          alt="파형"
+                          draggable={false}
+                        />
+                        <audio className="ohf-viewer-audio" src={url} controls preload="metadata" />
+                      </div>
+                    ) : (
+                      <audio className="ohf-viewer-audio" src={url} controls preload="metadata" />
+                    )
                   ) : item.kind === "video" ? (
                     <video
                       ref={measure}

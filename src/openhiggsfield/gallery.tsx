@@ -18,6 +18,7 @@ import {
 import { MoreMenu } from "./context-menu";
 import { buildAssetMenu } from "./asset-menu";
 import { timeAgo, type RunRecord } from "./history";
+import { TILE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 
 const EMPTY: Record<GalleryView, { title: string; hint: string }> = {
   image: {
@@ -246,6 +247,10 @@ const Tile = memo(function Tile({
   const poster = item.urls[0];
   const videoRef = useRef<HTMLVideoElement>(null);
   const named = shortPrompt(item.prompt);
+  /* The waveform the card shows in place of the bare player. Unconditional so
+     the hook sits ahead of the failed-card early return below; a run that is
+     not audio (or carries no url) resolves to null without ever fetching. */
+  const wave = useAudioWaveform(item.id, poster, item.kind === "audio", TILE_WAVEFORM);
 
   /* Top-left, where a selection mark is looked for, and the one control on the
      card that is not about this run alone. It carries the whole checkbox
@@ -356,17 +361,36 @@ const Tile = memo(function Tile({
       {poster &&
         (item.kind === "audio" ? (
           /* A finished audio run has no poster frame to show — it IS the sound.
-             The card carries its own player so the clip is audible right in the
-             grid, and the same raw url the lightbox plays loads here as a plain
-             (non-CORS, no-preflight) media, which is why it reaches readyState 4. */
-          <audio
-            className="ohf-tile-audio"
-            src={poster}
-            controls
-            preload="metadata"
-            data-asset-preview={item.id}
-            data-tour="asset-card"
-          />
+             The card used to carry nothing but its own player, a bare control
+             bar over the card's flat ground, which read as a generic icon. It
+             now carries a waveform: the cached image fills the card as the tile
+             media, and the same player the grid already had rides at the bottom
+             so the clip is still audible right here. When no waveform could be
+             built — the bytes refused to load, the format was unreadable — the
+             image is simply absent and the card falls back to the player it had,
+             so an audio tile never trades a working bar for a broken image. */
+          <>
+            {wave && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                className="ohf-tile-wave"
+                src={wave}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+                data-asset-preview={item.id}
+              />
+            )}
+            <audio
+              className="ohf-tile-audio"
+              src={poster}
+              controls
+              preload="metadata"
+              data-asset-preview={item.id}
+              data-tour="asset-card"
+            />
+          </>
         ) : item.kind === "video" ? (
           <video
             ref={videoRef}
