@@ -13754,6 +13754,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
    like every other hover action. */
 .ohf-tile-3d[disabled] {
   color: var(--muted);
+  opacity: 0;
 }
 
 /* The like badge lives in the tile's top corner and stays lit whenever the run
