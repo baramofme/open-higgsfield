@@ -721,20 +721,42 @@ function parseRatio(value: string | undefined, fallback: number): number {
   return fallback;
 }
 
+/* Delivered pixels are the only thing a meta chip can carry that means width
+   over height: "1280×720", the two numbers joined by a multiplication sign or
+   a plain x. The loose pair the old code grabbed read a video's two chips —
+   the tier and the clock, "720p · 5s" — as 720×5, and a ratio of 144 packs one
+   cell at the container's full width with its height collapsed to a sliver.
+   Match the pixel form, and nothing else. */
+const PIXEL_SIZE = /(\d{2,5})\s*[×x*]\s*(\d{2,5})\b/i;
+
+/* A packed row is only sane inside the band real media occupies — a 2:5
+   portrait to a 5:2 panorama. Every ratio this studio offers sits inside it (9:16
+   through 21:9), so the clamp never touches a true shape; it catches the misreads
+   that slip through anyway, which is what the full-width slivers were. */
+const MIN_ASPECT = 2 / 5;
+const MAX_ASPECT = 5 / 2;
+
+function clampAspect(value: number): number {
+  return Math.min(Math.max(value, MIN_ASPECT), MAX_ASPECT);
+}
+
 function slotTime(slot: Slot): number {
   return slot.kind === "run" ? slot.run.startedAt : slot.item.createdAt;
 }
 
 /* The REAL output aspect, read from the run's recorded pixel size (`meta`
    "W × H"), the way the live feed packs by the actual image — not the nominal
-   ratio the run asked for. Falls back to the ratio field, then to a 4:3 slot,
-   only when the size is genuinely unknown. */
+   ratio the run asked for. Falls back to the ratio field, then to the surface's
+   own shape, only when the size is genuinely unknown. */
 function realAspect(item: RunRecord): number {
-  const parts = item.meta?.match(/(\d+)\D+(\d+)/);
+  const parts = item.meta?.match(PIXEL_SIZE);
   const w = Number(parts?.[1]);
   const h = Number(parts?.[2]);
-  if (w > 0 && h > 0) return w / h;
-  return parseRatio(item.ratio, CARD_RATIO);
+  const value =
+    w > 0 && h > 0
+      ? w / h
+      : parseRatio(item.ratio, item.surface === "video" || item.kind === "video" ? 16 / 9 : CARD_RATIO);
+  return clampAspect(value);
 }
 
 /* Square cells are always 1:1 (the source's 정사각형); masonry uses the run's
@@ -742,7 +764,9 @@ function realAspect(item: RunRecord): number {
 function slotAspect(slot: Slot, layout: FeedLayout): number {
   if (layout === "square") return 1;
   if (slot.kind === "run")
-    return parseRatio(slot.run.ratio, slot.run.surface === "video" ? 16 / 9 : 1);
+    return clampAspect(
+      parseRatio(slot.run.ratio, slot.run.surface === "video" ? 16 / 9 : 1),
+    );
   return realAspect(slot.item);
 }
 
