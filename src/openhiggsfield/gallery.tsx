@@ -4,6 +4,7 @@ import { memo, useEffect, useMemo, useRef, useState, type CSSProperties, type Re
 import { useVirtualizer } from "@tanstack/react-virtual";
 
 import type { Surface } from "@/generation/catalog";
+import { dayKey, CARD_COLS, ZOOM_COLS, ZOOM_ROW_H, type FeedLayout } from "@/generation/stores/feed";
 
 import { swatchFor } from "./artwork";
 import { CROSS_VIEWS, SAMPLES, pickSamples, type GalleryView } from "./data";
@@ -11,15 +12,12 @@ import type { ActiveRun } from "./openhiggsfield-app";
 import {
   ArrowRightIcon,
   CheckIcon,
-  DownloadIcon,
-  HeartIcon,
-  PlayBadgeIcon,
   RetryIcon,
-  TrashIcon,
   WarningIcon,
 } from "./icons";
+import { MoreMenu } from "./context-menu";
+import { buildAssetMenu } from "./asset-menu";
 import { timeAgo, type RunRecord } from "./history";
-import { ModelIcon } from "./model-icon";
 
 const EMPTY: Record<GalleryView, { title: string; hint: string }> = {
   image: {
@@ -40,6 +38,76 @@ const EMPTY: Record<GalleryView, { title: string; hint: string }> = {
   },
 };
 
+/* Hover-reveal glyphs, matching the icons Higgsfield rises onto the photo:
+   a filled heart, a download tray, a copy pair, a picture, a film and a cube.
+   The dots for ⋯ come from MoreMenu itself, so they are not re-drawn here. */
+function HeartGlyph({ filled = false }: { filled?: boolean }) {
+  const d =
+    "M12 21s-6.7-4.3-9.3-8.1C1 10 2 6.7 5 5.6c2-.8 3.7.3 4.9 1.9L12 9l2.1-1.5c1.2-1.6 2.9-2.7 4.9-1.9 3 1.1 4 4.4 2.3 7.3C18.7 16.7 12 21 12 21z";
+  return filled ? (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
+      <path d={d} />
+    </svg>
+  ) : (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d={d} />
+    </svg>
+  );
+}
+function DownloadGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v12" />
+      <path d="M6 9l6 6 6-6" />
+      <path d="M4 21h16" />
+    </svg>
+  );
+}
+function CopyGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M5 5h9" />
+      <path d="M5 5v9" />
+    </svg>
+  );
+}
+function ImageGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="9" cy="9" r="1.6" />
+      <path d="M4 18l5-5 4 4 3-3 4 4" />
+    </svg>
+  );
+}
+function VideoGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="5" width="15" height="14" rx="2" />
+      <path d="M21 8l-3 2v4l3 2z" />
+    </svg>
+  );
+}
+function CubeGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" />
+      <path d="M12 11L4 6.5M12 11l8-4.5M12 11v9" />
+    </svg>
+  );
+}
+
 /* Action labels name the run they act on — tabbing a long grid otherwise
    reads as forty identical "Delete run"s. */
 function shortPrompt(prompt: string): string {
@@ -47,7 +115,6 @@ function shortPrompt(prompt: string): string {
 }
 
 const GRID_GAP = 14;
-const COLUMNS = 4;
 /** Every tile is the same 4:3 slot; media is contained so it keeps its own ratio. */
 const CARD_RATIO = 4 / 3;
 
@@ -95,18 +162,40 @@ function useInnerWidth(ref: RefObject<HTMLElement | null>): number {
   return width;
 }
 
+/* The asset actions the tile's ⋯ menu reaches for: the ones the card itself
+   already owns (open, reuse, keep, download, delete) stay on Tile's own props,
+   while everything the overflow menu adds — element work, effects, sharing and
+   filing under a project — arrives through this bag. */
+export type TileMenuActions = {
+  makeElement: (item: RunRecord, kind: "image" | "video") => void;
+  assignElement: (item: RunRecord) => void;
+  addEffect: (item: RunRecord, effect: string) => void;
+  share: (
+    item: RunRecord,
+    target: "link" | "x" | "whatsapp" | "pinterest" | "linkedin",
+  ) => void;
+  moveToProject: (item: RunRecord, projectId: string) => void;
+  newProject: (item: RunRecord) => void;
+  /** The projects a run can be filed into, listed for the 폴더에 추가 submenu. */
+  projects: () => { id: string; label: string }[];
+};
+
 const Tile = memo(function Tile({
   item,
   index,
   fresh,
   picked,
   selecting,
+  viewed,
+  commentCount,
   onOpen,
   onPick,
   onReuse,
   onFavorite,
   onDownload,
+  onToVideo,
   onDelete,
+  menuActions,
 }: {
   item: RunRecord;
   index: number;
@@ -115,56 +204,48 @@ const Tile = memo(function Tile({
   /* Once anything is picked the grid is in selection mode: every checkbox
      stands, and the card body toggles rather than opens. */
   selecting: boolean;
+  /* Marks the run the viewer last opened — HF shows the “마지막 조회” overlay on
+     exactly that asset, so the tile carries the flag rather than guessing. */
+  viewed: boolean;
+  /* The run's comment thread length, shown in the bottom-left speech bubble the
+     way Higgsfield counts them on the hovered photo. */
+  commentCount: number;
   onOpen: (id: string) => void;
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
-  onDownload: (item: RunRecord) => Promise<void>;
+  onDownload: (item: RunRecord) => void;
+  onToVideo: (item: RunRecord) => void;
   onDelete: (item: RunRecord) => void;
+  menuActions: TileMenuActions;
 }) {
-  const delay = `${Math.min(index * 0.035, 0.28).toFixed(3)}s`;
   const poster = item.urls[0];
   const videoRef = useRef<HTMLVideoElement>(null);
-  /* The keep beat is driven from the click, never from mount: a CSS animation
-     bound to the saved state alone would re-fire on every scope switch. */
-  const [beat, setBeat] = useState(false);
-  /* A video is megabytes read over the wire before the browser is handed
-     anything, so the press has to say it landed. */
-  const [saving, setSaving] = useState(false);
-  const saved = item.favorite === true;
   const named = shortPrompt(item.prompt);
-  const facts = item.meta ? item.meta.split(" · ") : [];
 
   /* Top-left, where a selection mark is looked for, and the one control on the
      card that is not about this run alone. It carries the whole checkbox
      semantics rather than a pressed button: a grid of these is a multi-select,
      and a screen reader should hear it as one. */
   const picker = (
-    <button
-      type="button"
+    <div
       className="ohf-pick"
-      role="checkbox"
-      aria-checked={picked}
-      aria-label={`Select run — ${named}`}
-      title={picked ? "Deselect" : "Select"}
-      onClick={(event) => onPick(item.id, index, event.shiftKey)}
+      data-feed-selection-checkbox="true"
+      data-ignore-marquee="true"
     >
-      <span className="ohf-pick-box">
-        <CheckIcon size={12} />
-      </span>
-    </button>
-  );
-
-  const remove = (
-    <button
-      type="button"
-      className="ohf-tile-act ohf-tile-act--danger"
-      aria-label={`Delete run — ${named}`}
-      title="Delete run"
-      onClick={() => onDelete(item)}
-    >
-      <TrashIcon size={15} />
-    </button>
+      <button
+        type="button"
+        role="checkbox"
+        aria-checked={picked}
+        aria-label={`Select run — ${named}`}
+        title={picked ? "Deselect" : "Select"}
+        onClick={(event) => onPick(item.id, index, event.shiftKey)}
+      >
+        <span className="ohf-pick-box">
+          <CheckIcon size={12} />
+        </span>
+      </button>
+    </div>
   );
 
   if (item.status === "failed") {
@@ -190,7 +271,6 @@ const Tile = memo(function Tile({
           </button>
         </div>
         {picker}
-        <div className="ohf-tile-acts">{remove}</div>
       </div>
     );
   }
@@ -202,8 +282,11 @@ const Tile = memo(function Tile({
       className="ohf-tile"
       data-fresh={fresh}
       data-picked={picked}
-      data-saving={saving || undefined}
-      style={{ "--d": delay } as CSSProperties}
+      data-asset-id={item.id}
+      data-asset-status={item.status}
+      data-job-status={item.status}
+      data-tour-asset-kind={item.kind === "video" ? "video" : "image"}
+      data-ignore-marquee="true"
       onMouseEnter={() => void videoRef.current?.play().catch(() => {})}
       onMouseLeave={() => {
         const video = videoRef.current;
@@ -227,8 +310,45 @@ const Tile = memo(function Tile({
           /* Platform-hosted result on an arbitrary CDN host; next/image would
              need every provider domain allow-listed up front. */
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img className="ohf-tile-media" src={poster} alt={item.prompt} loading="lazy" />
+          <img
+            className="ohf-tile-media"
+            src={poster}
+            alt="image generation"
+            loading="eager"
+            decoding="async"
+            draggable={false}
+            data-asset-preview={item.id}
+            data-feed-image-source={poster}
+            data-tour="asset-card"
+          />
         ))}
+
+      {/* HF leaves the picture bare at rest and answers only to the cursor: a
+          scrim lifts under it and a selection ring traces the edge. */}
+      <div aria-hidden className="ohf-tile-scrim" />
+      <div aria-hidden className="ohf-tile-ring" />
+      {/* HF marks who-liked in the top corner and keeps two empty bottom rows
+          as the source's furniture. */}
+      {/* HF marks who-liked in the top corner. We have no like counts or avatars,
+          so the corner carries just the pressed heart whenever the run is kept —
+          always on, never waiting for the cursor, the way the source's like badge
+          rides the photo at rest. */}
+      <div
+        className="ohf-tile-liked"
+        data-feed-liked-by-corner="true"
+        data-ignore-marquee="true"
+        aria-hidden
+      >
+        {item.favorite && <HeartGlyph filled />}
+      </div>
+      <div className="ohf-tile-footrow" data-ignore-marquee="true" />
+      {/* HF flags the asset the viewer last opened with this centred label. */}
+      {viewed && (
+        <div className="ohf-tile-viewed" aria-hidden>
+          <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.7688 11.5523C16.9278 2.48263 7.0722 2.48252 2.23116 11.5522C2.0831 11.8296 2.0831 12.1702 2.23116 12.4476C7.0722 21.5173 16.9278 21.5174 21.7688 12.4477C21.9169 12.1703 21.9169 11.8297 21.7688 11.5523Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M15.25 12C15.25 13.7949 13.7949 15.25 12 15.25C10.2051 15.25 8.75 13.7949 8.75 12C8.75 10.2051 10.2051 8.75 12 8.75C13.7949 8.75 15.25 10.2051 15.25 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+          <span className="ohf-tile-viewed-label">마지막 조회</span>
+        </div>
+      )}
 
       {/* While runs are picked the card is part of a selection, so its body
           extends the selection instead of leaving the grid for the viewer —
@@ -248,82 +368,122 @@ const Tile = memo(function Tile({
 
       {picker}
 
-      {item.kind === "video" && item.badge && (
-        <span className="ohf-tile-badge">
-          <PlayBadgeIcon />
-          {item.badge}
-        </span>
+      {/* HF tiles carry no play badge — the picture speaks for itself. */}
+      {/* Keep sits last, hard against the corner: HF's tile carries no caption,
+          so the run's words and facts are gone — only the delete survives. */}
+      {/* Hover furniture, mirroring the icons Higgsfield rises onto a photo: a
+          speech bubble bottom-left counting the run's comments, a vertical
+          action column (heart · download · copy · ⋯) down the right edge, and a
+          remix trio bottom-right (remake · to-video · 3D, the 3D left inert).
+          They rise only on hover, so a resting card shows just the bubble. */}
+      {!selecting && (
+        <>
+          {/* Higgsfield only raises the speech bubble when a thread exists; an
+              empty run shows no bubble. */}
+          {commentCount > 0 && (
+            <button
+              type="button"
+              className="ohf-tile-comment"
+              aria-label={`댓글 ${commentCount}개`}
+              title="댓글 열기"
+              onClick={(event) => {
+                event.stopPropagation();
+                onOpen(item.id);
+              }}
+            >
+              {commentCount}
+            </button>
+          )}
+          <div className="ohf-tile-side">
+            <button
+              type="button"
+              className={`ohf-tile-act${item.favorite ? " ohf-tile-act--fav" : ""}`}
+              aria-label="좋아요"
+              aria-pressed={item.favorite}
+              title={item.favorite ? "좋아요 취소" : "좋아요"}
+              onClick={(event) => {
+                event.stopPropagation();
+                onFavorite(item);
+              }}
+            >
+              <HeartGlyph filled={item.favorite} />
+            </button>
+            <button
+              type="button"
+              className="ohf-tile-act"
+              aria-label="다운로드"
+              title="다운로드"
+              onClick={(event) => {
+                event.stopPropagation();
+                onDownload(item);
+              }}
+            >
+              <DownloadGlyph />
+            </button>
+            <button
+              type="button"
+              className="ohf-tile-act"
+              aria-label="프롬프트 복사"
+              title="프롬프트 복사"
+              onClick={(event) => {
+                event.stopPropagation();
+                void navigator.clipboard?.writeText(item.prompt);
+              }}
+            >
+              <CopyGlyph />
+            </button>
+            <MoreMenu
+              className="ohf-tile-act ohf-tile-more"
+              label="추가 작업"
+              align="end"
+              floating
+              items={buildAssetMenu(item, menuActions, {
+                open: onOpen,
+                reuse: onReuse,
+                favorite: onFavorite,
+                download: onDownload,
+                del: onDelete,
+              })}
+            />
+          </div>
+          <div className="ohf-tile-remix">
+            <button
+              type="button"
+              className="ohf-tile-act"
+              aria-label="이미지로 다시"
+              title="이미지로 다시"
+              onClick={(event) => {
+                event.stopPropagation();
+                onReuse(item);
+              }}
+            >
+              <ImageGlyph />
+            </button>
+            <button
+              type="button"
+              className="ohf-tile-act"
+              aria-label="비디오로 전환"
+              title="비디오로 전환"
+              onClick={(event) => {
+                event.stopPropagation();
+                onToVideo(item);
+              }}
+            >
+              <VideoGlyph />
+            </button>
+            {/* The 3D scene tool is shown to match Higgsfield, but kept inert. */}
+            <button
+              type="button"
+              className="ohf-tile-act ohf-tile-3d"
+              aria-label="3D 장면 만들기"
+              title="3D 장면 만들기 (지원하지 않음)"
+              disabled
+            >
+              <CubeGlyph />
+            </button>
+          </div>
+        </>
       )}
-      {/* The run signs itself only while the card is under the cursor, the same
-          bargain the action rail makes — an un-hovered grid is nothing but the
-          work. What distinguishes two cards of the same model is the words that
-          made them, so the prompt leads; the model joins the stored one-liner's
-          facts below, on the plate the rest of the card's chrome uses. */}
-      <span className="ohf-tile-caption">
-        <span className="ohf-tile-prompt">{item.prompt}</span>
-        <span className="ohf-tile-facts">
-          <span className="ohf-tile-fact ohf-tile-fact--model">
-            <ModelIcon modelId={item.modelId} size={12} />
-            {item.modelLabel}
-          </span>
-          {facts.map((fact) => (
-            <span className="ohf-tile-fact" key={fact}>
-              {fact}
-            </span>
-          ))}
-        </span>
-      </span>
-
-      {/* Keep sits last, hard against the corner: it is the one action that
-          shows on an un-hovered card, and the transient three open to its left
-          rather than leaving it stranded mid-edge. Delete leads from the far
-          end, the slot furthest from the corner the cursor arrives at. */}
-      <div className="ohf-tile-acts">
-        {remove}
-        <button
-          type="button"
-          className="ohf-tile-act"
-          aria-label={`Reuse prompt and settings — ${named}`}
-          title="Reuse prompt and settings"
-          onClick={() => onReuse(item)}
-        >
-          <RetryIcon size={15} />
-        </button>
-        {/* Absent on a run the platform returned no file for — there would be
-            nothing to save. The press is guarded rather than disabled: a
-            disabled button drops the focus that is holding this rail open. */}
-        {poster && (
-          <button
-            type="button"
-            className="ohf-tile-act"
-            aria-label={saving ? `Saving — ${named}` : `Download run — ${named}`}
-            title={saving ? "Saving" : "Download"}
-            onClick={() => {
-              if (saving) return;
-              setSaving(true);
-              void onDownload(item).finally(() => setSaving(false));
-            }}
-          >
-            {saving ? <span className="ohf-spinner" aria-hidden /> : <DownloadIcon size={15} />}
-          </button>
-        )}
-        <button
-          type="button"
-          className="ohf-tile-act"
-          data-on={saved}
-          data-beat={beat || undefined}
-          aria-pressed={saved}
-          aria-label={`${saved ? "Remove from favorites" : "Save to favorites"} — ${named}`}
-          title={saved ? "Remove from favorites" : "Save to favorites"}
-          onClick={() => {
-            if (!saved) setBeat(true);
-            onFavorite(item);
-          }}
-          onAnimationEnd={() => setBeat(false)}
-        >
-          <HeartIcon size={16} filled={saved} />
-        </button>
-      </div>
     </div>
   );
 });
@@ -340,9 +500,17 @@ export const Gallery = memo(function Gallery({
   onReuse,
   onFavorite,
   onDownload,
+  onToVideo,
+  lastViewedId,
+  commentCounts,
   onDelete,
+  menuActions,
   onStarter,
   galleryRef,
+  layout,
+  splitByDate,
+  cardSize,
+  fit,
 }: {
   view: GalleryView;
   surface: Surface;
@@ -354,10 +522,19 @@ export const Gallery = memo(function Gallery({
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
-  onDownload: (item: RunRecord) => Promise<void>;
+  onDownload: (item: RunRecord) => void;
+  onToVideo: (item: RunRecord) => void;
+  lastViewedId: string;
+  /* Run id → comment-thread length, feeding each tile's bottom-left bubble. */
+  commentCounts: Record<string, number>;
   onDelete: (item: RunRecord) => void;
+  menuActions: TileMenuActions;
   onStarter: (prompt: string) => void;
   galleryRef: RefObject<HTMLDivElement | null>;
+  layout: FeedLayout;
+  splitByDate: boolean;
+  cardSize: number;
+  fit: boolean;
 }) {
   const selecting = picked.size > 0;
   const panel = {
@@ -390,11 +567,192 @@ export const Gallery = memo(function Gallery({
         onReuse={onReuse}
         onFavorite={onFavorite}
         onDownload={onDownload}
+        onToVideo={onToVideo}
+        lastViewedId={lastViewedId}
+        commentCounts={commentCounts}
         onDelete={onDelete}
+        menuActions={menuActions}
+        layout={layout}
+        splitByDate={splitByDate}
+        cardSize={cardSize}
+        fit={fit}
       />
     </div>
   );
 });
+
+/* The masonry and date-split layouts, computed in one place so the feed reads
+   the same whether it is even or packed. The square path keeps the existing
+   virtualizer; only the packed and grouped views use these plans. */
+
+function parseRatio(value: string | undefined, fallback: number): number {
+  const parts = value?.split(/[/:]/);
+  const a = Number(parts?.[0]);
+  const b = Number(parts?.[1]);
+  if (a > 0 && b > 0) return a / b;
+  return fallback;
+}
+
+function slotTime(slot: Slot): number {
+  return slot.kind === "run" ? slot.run.startedAt : slot.item.createdAt;
+}
+
+/* The REAL output aspect, read from the run's recorded pixel size (`meta`
+   "W × H"), the way the live feed packs by the actual image — not the nominal
+   ratio the run asked for. Falls back to the ratio field, then to a 4:3 slot,
+   only when the size is genuinely unknown. */
+function realAspect(item: RunRecord): number {
+  const parts = item.meta?.match(/(\d+)\D+(\d+)/);
+  const w = Number(parts?.[1]);
+  const h = Number(parts?.[2]);
+  if (w > 0 && h > 0) return w / h;
+  return parseRatio(item.ratio, CARD_RATIO);
+}
+
+/* Square cells are always 1:1 (the source's 정사각형); masonry uses the run's
+   real aspect so a packed row shows the image at its true shape. */
+function slotAspect(slot: Slot, layout: FeedLayout): number {
+  if (layout === "square") return 1;
+  if (slot.kind === "run")
+    return parseRatio(slot.run.ratio, slot.run.surface === "video" ? 16 / 9 : 1);
+  return realAspect(slot.item);
+}
+
+/* A run, or — when split by date — a header row that opens a day. */
+type FeedBlock =
+  | { kind: "header"; key: string; time: number }
+  | { kind: "tile"; key: string; slot: Slot };
+
+/* When the split dial is on, every change of day earns a full-width header above
+   its runs, the way the source groups the feed by date. */
+function blocksOf(slots: Slot[], splitByDate: boolean): FeedBlock[] {
+  const blocks: FeedBlock[] = [];
+  let lastDay: string | null = null;
+  slots.forEach((slot) => {
+    if (splitByDate) {
+      const day = dayKey(slotTime(slot));
+      if (day !== lastDay) {
+        blocks.push({ kind: "header", key: "day-" + day, time: slotTime(slot) });
+        lastDay = day;
+      }
+    }
+    blocks.push({ kind: "tile", key: slot.key, slot });
+  });
+  return blocks;
+}
+
+const DAY_HEADER_H = 30;
+
+type PlannedCell = {
+  block: FeedBlock;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  ratio: number;
+};
+
+/* Every tile and header gets an exact box, so the grid can be placed once rather
+   than measured row by row. Square keeps even rows of COLUMNS; masonry drops each
+   tile into whichever column is currently the shortest. */
+function planFeed(
+  blocks: FeedBlock[],
+  width: number,
+  layout: FeedLayout,
+  cols: number,
+  cardSize: number,
+  fit: boolean,
+): { cells: PlannedCell[]; total: number } {
+  const gap = GRID_GAP;
+  const boxW = width > 0 ? width : cols * 240;
+  const cells: PlannedCell[] = [];
+
+  /* 미리보기에 맞추기: every run reads at the full width of the panel, one per
+     row, so a single image fills the preview. */
+  if (fit) {
+    let y = 0;
+    blocks.forEach((block) => {
+      if (block.kind === "header") {
+        cells.push({ block, x: 0, y, w: boxW, h: DAY_HEADER_H, ratio: 0 });
+        y += DAY_HEADER_H + gap;
+        return;
+      }
+      const ratio = slotAspect(block.slot, layout);
+      const h = width > 0 ? boxW / ratio : 240;
+      cells.push({ block, x: 0, y, w: boxW, h, ratio });
+      y += h + gap;
+    });
+    return { cells, total: y > 0 ? y - gap : 0 };
+  }
+
+  /* Masonry is the live feed's justified run: a fixed row height and each
+     image's width read from its REAL aspect, packed left-to-right into a row. */
+  if (layout === "masonry") {
+    const rowH = ZOOM_ROW_H[cardSize] ?? 300;
+    let x = 0;
+    let y = 0;
+    let has = false;
+    blocks.forEach((block) => {
+      if (block.kind === "header") {
+        if (has) {
+          y += rowH + gap;
+          x = 0;
+        }
+        cells.push({ block, x: 0, y, w: boxW, h: DAY_HEADER_H, ratio: 0 });
+        y += DAY_HEADER_H + gap;
+        has = false;
+        return;
+      }
+      const ratio = slotAspect(block.slot, layout);
+      const w = rowH * ratio;
+      if (x > 0 && x + w > boxW) {
+        y += rowH + gap;
+        x = 0;
+      }
+      cells.push({ block, x, y, w, h: rowH, ratio });
+      x += w + gap;
+      has = true;
+    });
+    const total = y + (has ? rowH : 0);
+    return { cells, total: Math.max(0, total) };
+  }
+
+  /* Square: equal 1:1 cells, a header breaking the row that precedes it. */
+  const colW = width > 0 ? (boxW - gap * (cols - 1)) / cols : 240;
+  const colStep = colW + gap;
+  let y = 0;
+  let row: FeedBlock[] = [];
+  const flush = () => {
+    if (row.length === 0) return;
+    const top = y;
+    row.forEach((block, i) =>
+      cells.push({ block, x: i * colStep, y: top, w: colW, h: colW, ratio: 1 }),
+    );
+    y += colW + gap;
+    row = [];
+  };
+  blocks.forEach((block) => {
+    if (block.kind === "header") {
+      flush();
+      cells.push({ block, x: 0, y, w: boxW, h: DAY_HEADER_H, ratio: 0 });
+      y += DAY_HEADER_H + gap;
+      return;
+    }
+    row.push(block);
+    if (row.length === cols) flush();
+  });
+  flush();
+  const total = y > 0 ? y - gap : 0;
+  return { cells, total };
+}
+
+function dayLabel(time: number): string {
+  return new Intl.DateTimeFormat("ko-KR", {
+    month: "long",
+    day: "numeric",
+    weekday: "short",
+  }).format(new Date(time));
+}
 
 function VirtualizedGrid({
   scrollRef,
@@ -408,7 +766,15 @@ function VirtualizedGrid({
   onReuse,
   onFavorite,
   onDownload,
+  onToVideo,
+  lastViewedId,
+  commentCounts,
   onDelete,
+  menuActions,
+  layout,
+  splitByDate,
+  cardSize,
+  fit,
 }: {
   scrollRef: RefObject<HTMLDivElement | null>;
   selecting: boolean;
@@ -420,20 +786,29 @@ function VirtualizedGrid({
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
-  onDownload: (item: RunRecord) => Promise<void>;
+  onDownload: (item: RunRecord) => void;
+  onToVideo: (item: RunRecord) => void;
+  lastViewedId: string;
+  commentCounts: Record<string, number>;
   onDelete: (item: RunRecord) => void;
+  menuActions: TileMenuActions;
+  layout: FeedLayout;
+  splitByDate: boolean;
+  cardSize: number;
+  fit: boolean;
 }) {
   const width = useInnerWidth(scrollRef);
   const slots = useMemo(() => slotsOf(runs, items), [runs, items]);
-  const rows = Math.max(1, Math.ceil(slots.length / COLUMNS));
+  const cols = fit ? 1 : ZOOM_COLS[cardSize] ?? CARD_COLS;
+  const rows = Math.max(1, Math.ceil(slots.length / cols));
 
   const virtualizer = useVirtualizer({
     count: rows,
     getScrollElement: () => scrollRef.current,
     estimateSize: (row) => {
       if (width <= 0) return 240;
-      const col = (width - GRID_GAP * (COLUMNS - 1)) / COLUMNS;
-      return col / CARD_RATIO + (row === rows - 1 ? 0 : GRID_GAP);
+      const col = (width - GRID_GAP * (cols - 1)) / cols;
+      return col + (row === rows - 1 ? 0 : GRID_GAP);
     },
     overscan: 4,
   });
@@ -442,43 +817,92 @@ function VirtualizedGrid({
     virtualizer.measure();
   }, [width, slots, virtualizer]);
 
+  const slotNode = (slot: Slot, index: number) =>
+    slot.kind === "run" ? (
+      <RunningTile key={slot.key} run={slot.run} />
+    ) : (
+      <Tile
+        key={slot.key}
+        item={slot.item}
+        index={index}
+        fresh={freshIds.includes(slot.item.id)}
+        picked={picked.has(slot.item.id)}
+        selecting={selecting}
+        onOpen={onOpen}
+        onPick={onPick}
+        onReuse={onReuse}
+        onFavorite={onFavorite}
+        onDownload={onDownload}
+        onToVideo={onToVideo}
+        commentCount={commentCounts[slot.item.id] ?? 0}
+        viewed={slot.item.id === lastViewedId}
+        onDelete={onDelete}
+        menuActions={menuActions}
+      />
+    );
+
+  /* Square and unsplit is the original even grid: the virtualizer's own path,
+     left exactly as it was so the default feed never changes. The packed and
+     grouped views lay the whole plan out once and place it absolutely. */
+  if (layout === "square" && !splitByDate && !fit) {
+    return (
+      <div className="ohf-grid-window" style={{ height: virtualizer.getTotalSize() }}>
+        {virtualizer.getVirtualItems().map((row) => {
+          const from = row.index * cols;
+          const slice = slots.slice(from, from + cols);
+          return (
+            <div
+              key={row.key}
+              className="ohf-grid"
+              data-selecting={selecting}
+              style={
+                {
+                  "--ohf-cols": cols,
+                  transform: `translateY(${row.start}px)`,
+                } as CSSProperties
+              }
+            >
+              {slice.map((slot) =>
+                slotNode(slot, slot.kind === "item" ? slot.index : 0),
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  const blocks = blocksOf(slots, splitByDate);
+  const { cells, total } = planFeed(blocks, width, layout, cols, cardSize, fit);
   return (
-    <div className="ohf-grid-window" style={{ height: virtualizer.getTotalSize() }}>
-      {virtualizer.getVirtualItems().map((row) => {
-        const from = row.index * COLUMNS;
-        const slice = slots.slice(from, from + COLUMNS);
+    <div className="ohf-grid-window" data-selecting={selecting} style={{ height: total }}>
+      {cells.map((cell) => {
+        if (cell.block.kind === "header") {
+          return (
+            <div
+              key={cell.block.key}
+              className="ohf-feed-day"
+              style={{ left: cell.x, top: cell.y, width: cell.w } as CSSProperties}
+            >
+              <span className="ohf-feed-day-label">{dayLabel(cell.block.time)}</span>
+            </div>
+          );
+        }
+        const slot = cell.block.slot;
         return (
           <div
-            key={row.key}
-            className="ohf-grid"
-            data-selecting={selecting}
+            key={cell.block.key}
+            className={`ohf-cell ohf-cell--${layout}${fit ? " ohf-cell--fit" : ""}`}
             style={
               {
-                "--ohf-cols": COLUMNS,
-                transform: `translateY(${row.start}px)`,
+                left: cell.x,
+                top: cell.y,
+                width: cell.w,
+                aspectRatio: String(cell.ratio),
               } as CSSProperties
             }
           >
-            {slice.map((slot) =>
-              slot.kind === "run" ? (
-                <RunningTile key={slot.key} run={slot.run} />
-              ) : (
-                <Tile
-                  key={slot.key}
-                  item={slot.item}
-                  index={slot.index}
-                  fresh={freshIds.includes(slot.item.id)}
-                  picked={picked.has(slot.item.id)}
-                  selecting={selecting}
-                  onOpen={onOpen}
-                  onPick={onPick}
-                  onReuse={onReuse}
-                  onFavorite={onFavorite}
-                  onDownload={onDownload}
-                  onDelete={onDelete}
-                />
-              ),
-            )}
+            {slotNode(slot, slot.kind === "item" ? slot.index : 0)}
           </div>
         );
       })}

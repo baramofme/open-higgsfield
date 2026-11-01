@@ -85,6 +85,11 @@ const SETTING_LABELS: Record<string, string> = {
   numImages: "Images",
   sound: "Sound",
   cfgScale: "CFG",
+  steps: "Steps",
+  cfg: "CFG",
+  sampler: "Sampler",
+  scheduler: "Scheduler",
+  denoise: "Denoise",
   multiShots: "Multi-shot",
   keepOriginalSound: "Keep original sound",
   characterOrientation: "Orientation",
@@ -117,6 +122,22 @@ export function settingValueLabel(key: string, value: unknown): string {
   if (/^\d+k$/.test(text)) return text.toUpperCase();
   if (key === "outputFormat") return text.toUpperCase();
   return text;
+}
+
+/* Map the REAL delivered pixel dimensions to a resolution tier so the info tab
+   reports what actually came out of the run — not the tier that was requested
+   and may have been upscaled, or silently forced wider by the backend, since
+   the requested value is all that survives into the record. A 3x upscale of a
+   720p run lands on a 4096x2304 canvas (~4K), which the old label still called
+   720p. Keys off the long side so a vertical run reads like a horizontal one. */
+export function resolutionTierLabel(width: number, height: number): string {
+  const long = Math.max(width, height);
+  if (long >= 3840) return "4K";
+  if (long >= 2560) return "2K";
+  if (long >= 1920) return "1080p";
+  if (long >= 1280) return "720p";
+  if (long >= 854) return "480p";
+  return `${width}x${height}`;
 }
 
 export const ROLE_LABELS: Record<MediaRole, string> = {

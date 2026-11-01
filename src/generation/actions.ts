@@ -2,6 +2,8 @@
 
 import { cookies } from "next/headers";
 
+import { createCfwuiClient } from "./cfwui-platform";
+import { isCfwuiMode, isCfwuiTaskId, isLocalModel } from "./cfwui-mode";
 import { getModel, parseSettings } from "./catalog";
 import type { GenerationPlane } from "./catalog/types";
 import {
@@ -27,7 +29,10 @@ export async function clearPlatformCredentials() {
   jar.set(PLATFORM_KEY_COOKIE, "", { ...PLATFORM_KEY_COOKIE_OPTIONS, maxAge: 0 });
 }
 
+/** When CFWUI_BASE_URL is set the studio runs against the local comfy-webui
+    backend: unauthenticated LAN mode, so no cookie is required. */
 export async function hasPlatformCredentials() {
+  if (isCfwuiMode()) return true;
   return (await readStoredCredentials()) !== null;
 }
 
@@ -37,20 +42,59 @@ export async function submitGeneration(plane: GenerationPlane) {
     ...plane,
     settings: parseSettings(model, plane.settings),
   };
+  /* The cinematic screen is a screen, not a paywall: its image and video tabs
+     run whatever the composer holds, so routing follows the model alone —
+     local models keep their LAN backend even inside the screen, and the
+     camera/lens extras the screen adds simply do not reach the local body. */
   const { path, body } = toPlatform(parsed);
-  return createPlatformClient(await readCredentials()).submit(path, body);
+  const client = isLocalModel(model.id)
+    ? createCfwuiClient({ baseUrl: process.env.CFWUI_BASE_URL! })
+    : await createCloudClient();
+  return client.submit(path, body);
+}
+
+/** Extend a saved picture outward by per-side pixel padding (Higgsfield's
+ *  "확장 및 자르기" apply). This is the comfy-webui outpaint task, which paints
+ *  the new border from the prompt. It bypasses the plane system because a crop
+ *  or expand is not a catalogue generation: it re-sends one existing image with
+ *  padding, not a model run. LAN mode only — the cloud has no such task. */
+export async function submitOutpaint(input: {
+  image: string;
+  prompt: string;
+  pad_left: number;
+  pad_right: number;
+  pad_top: number;
+  pad_bottom: number;
+  feathering?: number;
+}) {
+  if (!isCfwuiMode()) throw new Error("아웃페인트는 comfy-webui 백엔드가 필요합니다");
+  const client = createCfwuiClient({ baseUrl: process.env.CFWUI_BASE_URL! });
+  return client.submit("ImageGen_run_imagegen", {
+    task_type: "outpaint",
+    model: "Krea-2-Turbo",
+    prompt: input.prompt,
+    image: input.image,
+    pad_left: input.pad_left,
+    pad_right: input.pad_right,
+    pad_top: input.pad_top,
+    pad_bottom: input.pad_bottom,
+    feathering: input.feathering ?? 10,
+    async_execution: true,
+  });
 }
 
 /** Every request in flight, answered in one round trip. Next dispatches server
-    actions one at a time per client, so a poll per run would queue ahead of the
-    next submit — the fan-out belongs on this side of the call, where it is
-    genuinely parallel. */
+ *  actions one at a time per client, so a poll per run would queue ahead of the
+ *  next submit — the fan-out belongs on this side of the call, where it is
+ *  genuinely parallel. */
 export async function getGenerationStatuses(data: unknown): Promise<StatusResult[]> {
   const requestIds = parseRequestIds(data);
-  const client = createPlatformClient(await readCredentials());
   return Promise.all(
     requestIds.map(async (requestId): Promise<StatusResult> => {
       try {
+        const client = isCfwuiTaskId(requestId)
+          ? createCfwuiClient({ baseUrl: process.env.CFWUI_BASE_URL! })
+          : await createCloudClient();
         return { requestId, status: await client.status(requestId) };
       } catch (caught) {
         return { requestId, error: caught instanceof Error ? caught.message : String(caught) };
@@ -64,12 +108,12 @@ async function readStoredCredentials() {
   return decodeCredentials(jar.get(PLATFORM_KEY_COOKIE)?.value);
 }
 
-async function readCredentials() {
+async function createCloudClient() {
   const stored = await readStoredCredentials();
   if (!stored) throw new MissingCredentialsError();
   const baseUrl = process.env.HF_API_BASE_URL;
   if (!baseUrl) throw new Error("Missing HF_API_BASE_URL");
-  return { ...stored, baseUrl };
+  return createPlatformClient({ ...stored, baseUrl });
 }
 
 function parseRequestIds(data: unknown): string[] {

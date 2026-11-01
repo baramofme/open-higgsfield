@@ -1,16 +1,24 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { VIEWS, VIEW_LABELS, type GalleryView } from "./data";
-import { AssetsIcon, HeartIcon, ImageIcon, KeyIcon, VideoIcon } from "./icons";
+import { type GalleryView } from "./data";
+import { AssetsIcon, CloseIcon, KeyIcon, SearchIcon } from "./icons";
+import type { StudioMode } from "./studio-mode";
+import { LOCAL_USER } from "./local-user";
 
-const VIEW_ICONS: Record<GalleryView, () => React.ReactNode> = {
-  image: () => <ImageIcon />,
-  video: () => <VideoIcon />,
-  assets: () => <AssetsIcon />,
-  favorites: () => <HeartIcon size={15} />,
-};
+/* The main navigation mirrors the source's `nav[aria-label="Main"]`: a flat row
+   of pills — Image · Video · Audio · a hairline divider · Supercomputer · Cinema
+   Studio. Image and Video move the gallery scope; Audio and Supercomputer have
+   no page in this studio, so they are inert by design (no click, no dropdown),
+   and Cinema Studio carries the general↔cinema switch the old mode button used
+   to own — that button is gone, absorbed here. */
+
+const MEDIA_ITEMS = [
+  { id: "image", label: "Image" },
+  { id: "video", label: "Video" },
+  { id: "audio", label: "Audio" },
+] as const;
 
 export function Topbar({
   view,
@@ -18,112 +26,174 @@ export function Topbar({
   busy,
   keyConfigured,
   onKeys,
+  mode,
+  onToggle,
+  query,
+  onQuery,
+  onAssets,
 }: {
   view: GalleryView;
   onView: (next: GalleryView) => void;
   busy: boolean;
   keyConfigured: boolean;
   onKeys: () => void;
+  mode: StudioMode;
+  onToggle: () => void;
+  query: string;
+  onQuery: (value: string) => void;
+  onAssets: () => void;
 }) {
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const [thumb, setThumb] = useState<{ x: number; w: number } | null>(null);
-
-  /* The indicator is measured rather than derived from equal columns, so it
-     morphs to each label's real width instead of padding the short ones. */
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
+  /* The two new popovers share one outside-press guard: a press that lands on
+     neither wrap closes both, so the actions row never stacks two plates. */
   useEffect(() => {
-    const tabs = tabsRef.current;
-    if (!tabs) return;
-    let live = true;
-    const measure = () => {
-      const active = tabs.querySelector<HTMLElement>('[aria-selected="true"]');
-      if (live && active) setThumb({ x: active.offsetLeft, w: active.offsetWidth });
+    if (!profileOpen && !searchOpen) return;
+    const close = (event: PointerEvent) => {
+      const node = event.target as Node | null;
+      if (profileRef.current?.contains(node) || searchRef.current?.contains(node)) return;
+      setProfileOpen(false);
+      setSearchOpen(false);
     };
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(tabs);
-    // Inter swaps in after first paint and the labels resize under it.
-    void document.fonts.ready.then(measure);
-    return () => {
-      live = false;
-      observer.disconnect();
-    };
-  }, [view]);
-
-  const onKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      const from = VIEWS.indexOf(view);
-      const to =
-        event.key === "ArrowRight"
-          ? (from + 1) % VIEWS.length
-          : event.key === "ArrowLeft"
-            ? (from - 1 + VIEWS.length) % VIEWS.length
-            : event.key === "Home"
-              ? 0
-              : event.key === "End"
-                ? VIEWS.length - 1
-                : -1;
-      if (to < 0) return;
-      event.preventDefault();
-      onView(VIEWS[to]!);
-      tabsRef.current?.querySelectorAll<HTMLElement>('[role="tab"]')[to]?.focus();
-    },
-    [onView, view],
-  );
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [profileOpen, searchOpen]);
 
   return (
-    <div className="ohf-topbar">
+    <header className="ohf-topbar">
       <h1 className="ohf-sr">OpenHiggsfield AI — Open source AI studio</h1>
 
-      <div className="ohf-bar ohf-enter-1">
-        <div
-          className="ohf-tabs"
-          role="tablist"
-          aria-label="Gallery scope"
-          ref={tabsRef}
-          onKeyDown={onKeyDown}
-        >
-          <span
-            className="ohf-thumb"
-            data-ready={thumb !== null}
-            aria-hidden
-            style={
-              {
-                "--thumb-x": `${thumb?.x ?? 0}px`,
-                "--thumb-w": `${thumb?.w ?? 0}px`,
-              } as React.CSSProperties
-            }
-          />
-          {VIEWS.map((id) => {
-            const selected = view === id;
-            return (
-              <button
-                key={id}
-                type="button"
-                role="tab"
-                id={`ohf-tab-${id}`}
-                aria-selected={selected}
-                aria-controls="ohf-panel"
-                tabIndex={selected ? 0 : -1}
-                className="ohf-tab"
-                data-view={id}
-                /* Favorites is the one scope that goes icon-only on a narrow
-                   pill, so its name is stated rather than left to the mark. */
-                aria-label={VIEW_LABELS[id]}
-                title={id === "favorites" ? VIEW_LABELS[id] : undefined}
-                onClick={() => onView(id)}
-              >
-                {VIEW_ICONS[id]()}
-                <span className="ohf-tab-label">{VIEW_LABELS[id]}</span>
+      <div className="ohf-nav-wrap">
+        <span className="ohf-brand">OpenHiggsfield</span>
+
+        {/* aria-label="Main" — the same landmark the source names its nav. */}
+        <nav className="ohf-nav" aria-label="Main">
+          <ul className="ohf-nav-list">
+            {MEDIA_ITEMS.map((item) => {
+              /* Only Image and Video are real scopes here; Audio is shown for
+                 parity with the source but does nothing. */
+              const live = item.id === "image" || item.id === "video";
+              const active = live && view === item.id;
+              return (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    className="ohf-nav-item"
+                    data-active={active}
+                    aria-current={active ? "page" : undefined}
+                    aria-disabled={live ? undefined : "true"}
+                    onClick={live ? () => onView(item.id as GalleryView) : undefined}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              );
+            })}
+            <li className="ohf-nav-sep" aria-hidden />
+            <li>
+              <button type="button" className="ohf-nav-item" aria-disabled="true">
+                Supercomputer
               </button>
-            );
-          })}
-        </div>
+            </li>
+            <li>
+              <button
+                type="button"
+                className="ohf-nav-item"
+                aria-pressed={mode === "cinema"}
+                onClick={onToggle}
+                aria-label={
+                  mode === "cinema"
+                    ? "Cinema Studio — return to general mode"
+                    : "Cinema Studio — enter the cinematic surface"
+                }
+                title={mode === "cinema" ? "Return to general mode" : "Enter the cinematic surface"}
+              >
+                Cinema Studio
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
 
-      {/* Generations run on the visitor's own platform key, so this both states
-          whether one is held and opens the modal that sets it — and its lamp is
-          the studio's liveness, the one place accent moves. */}
-      <div className="ohf-bar ohf-enter-1">
+      {/* The platform-key lamp stays the one place accent moves, now on the far
+          edge of the bar rather than floating centred over the runs. */}
+      <div className="ohf-nav-actions">
+        {/* Higgsfield's right-edge actions, mirrored: search · assets · profile.
+            The platform-key lamp stays at the far edge, after them. */}
+        <div className="ohf-search-wrap" ref={searchRef}>
+          <button
+            type="button"
+            className="ohf-act"
+            aria-label="Search"
+            aria-expanded={searchOpen}
+            onClick={() => setSearchOpen((v) => !v)}
+          >
+            <SearchIcon />
+          </button>
+          {searchOpen ? (
+            <div className="ohf-search-pop">
+              <SearchIcon />
+              <input
+                autoFocus
+                value={query}
+                onChange={(event) => onQuery(event.target.value)}
+                placeholder="Search prompts and models"
+                className="ohf-search-input"
+              />
+              {query ? (
+                <button
+                  type="button"
+                  className="ohf-search-clear"
+                  aria-label="Clear search"
+                  onClick={() => {
+                    onQuery("");
+                    setSearchOpen(false);
+                  }}
+                >
+                  <CloseIcon />
+                </button>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+        <button type="button" className="ohf-act" aria-label="Assets" onClick={onAssets}>
+          <AssetsIcon />
+        </button>
+        <div className="ohf-profile-wrap" ref={profileRef}>
+          <button
+            type="button"
+            className="ohf-avatar"
+            aria-label="Profile"
+            aria-expanded={profileOpen}
+            onClick={() => setProfileOpen((v) => !v)}
+          >
+            {LOCAL_USER.initial}
+          </button>
+          {profileOpen ? (
+            <div className="ohf-profile-pop">
+              <div className="ohf-profile-user">
+                <div className="ohf-avatar ohf-avatar--lg">{LOCAL_USER.initial}</div>
+                <div className="ohf-profile-meta">
+                  <span className="ohf-profile-handle">@{LOCAL_USER.handle}</span>
+                  <span className="ohf-profile-role">{LOCAL_USER.role}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="ohf-profile-key"
+                onClick={() => {
+                  setProfileOpen(false);
+                  onKeys();
+                }}
+              >
+                <KeyIcon />
+                <span>{keyConfigured ? "Your key" : "Add key"}</span>
+              </button>
+            </div>
+          ) : null}
+        </div>
         <button
           type="button"
           className="ohf-key"
@@ -138,6 +208,6 @@ export function Topbar({
           <span className="ohf-lamp" />
         </button>
       </div>
-    </div>
+    </header>
   );
 }

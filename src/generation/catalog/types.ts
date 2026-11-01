@@ -8,9 +8,19 @@ export type MediaItem = {
 };
 
 export type SettingField =
-  | { type: "enum"; values: readonly string[]; default: string }
-  | { type: "range"; min: number; max: number; default: number; step?: number }
-  | { type: "boolean"; default: boolean };
+  | {
+      type: "enum";
+      values: readonly string[];
+      default: string;
+      advanced?: boolean;
+      /* Choosing one of these values can sweep a bundle of other settings with
+         it — the preset map runs from chosen value to the patch it imposes.
+         Krea's quality tiers use this to carry steps/cfg, the pair the local
+         backend actually runs on. */
+      presets?: Record<string, Record<string, string | number>>;
+    }
+  | { type: "range"; min: number; max: number; default: number; step?: number; advanced?: boolean }
+  | { type: "boolean"; default: boolean; advanced?: boolean };
 
 export type PlatformPaths = {
   text?: string;
@@ -34,4 +44,9 @@ export type GenerationPlane = {
   prompt: { text: string };
   media: Partial<Record<MediaRole, MediaItem[]>>;
   settings: Record<string, unknown>;
+  /** Which topbar surface produced the plane; absent reads as "general". */
+  studio?: "general" | "cinema";
+  /** Carries the run down the backend's `inpaint` task: the start image already
+      holds a painted alpha mask, so the mapper must ask for localized repaint. */
+  inpaint?: boolean;
 };

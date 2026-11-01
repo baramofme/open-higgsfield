@@ -25,9 +25,19 @@ export interface RunRecord {
   createdAt: number;
   /** Kept deliberately: shows in the Favorites scope and outlives the cap. */
   favorite?: boolean;
+  /** Project the run was filed under. The cinematic surface stamps the project
+      it loaded; ordinary work lands on the default shelf. Absent on old records. */
+  projectId?: string;
   /** Resolved catalog settings this run was submitted with, so reuse can
       restore the dials and not just the words. Absent on pre-existing records. */
   settings?: Record<string, unknown>;
+  /** When the visitor saved this run to disk. The feed's 다운로드됨 filter reads
+      this stamp; absent means it was never saved. */
+  downloadedAt?: number;
+  /** Wall-clock seconds this run took, from submit to terminal. Recorded on
+      completed rows so future runtimes can be predicted from past ones. The
+      viewer's 세부 정보 tab renders it as "Generation Duration: N s". */
+  durationSeconds?: number;
 }
 
 export const HISTORY_KEY = "history.v1";
@@ -151,7 +161,8 @@ function isRunRecord(value: unknown): value is RunRecord {
     (record.requestId === undefined || typeof record.requestId === "string") &&
     (record.favorite === undefined || typeof record.favorite === "boolean") &&
     (record.settings === undefined ||
-      (typeof record.settings === "object" && record.settings !== null))
+      (typeof record.settings === "object" && record.settings !== null)) &&
+    (record.durationSeconds === undefined || typeof record.durationSeconds === "number")
   );
 }
 

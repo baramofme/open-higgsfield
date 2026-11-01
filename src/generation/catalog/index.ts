@@ -1,11 +1,28 @@
 import { dop } from "./dop";
+import {
+  aiCast,
+  cinematicPlace,
+  ideogramVector,
+  seedream45,
+  seedream5Flash,
+  seedream5Pro,
+} from "./cinema-misc";
 import { flux2 } from "./flux-2";
 import { flux3 } from "./flux-3";
+import { genjutsu, genjutsuLite } from "./genjutsu";
+import {
+  flux3Image,
+  gptImage15,
+  gptImage2,
+  gptImage25Flare,
+  gptImage25Sunburst,
+} from "./gpt-image";
 import { grokImagine2 } from "./grok-imagine-2";
 import { grokImagineVideo15 } from "./grok-imagine-video-1.5";
 import { happyHorse1 } from "./happy-horse-1";
 import { happyHorse11 } from "./happy-horse-1.1";
 import { ideogram4 } from "./ideogram-4";
+import { krea2Turbo } from "./krea-2-turbo";
 import { kling25 } from "./kling-2.5";
 import { kling26 } from "./kling-2.6";
 import {
@@ -22,13 +39,21 @@ import { ltx25Fast } from "./ltx-2.5-fast";
 import { ltx25Pro } from "./ltx-2.5-pro";
 import { minimaxH3 } from "./minimax-h3";
 import { minimaxHailuo23 } from "./minimax-hailuo-2.3";
+import { ltx25Local, minimaxH3Local } from "./local-video";
+import {
+  nanoBanana,
+  nanoBanana2,
+  nanoBanana21,
+  nanoBanana2Lite,
+  nanoBananaPro,
+} from "./nano-banana";
 import { parseSettings } from "./parse-settings";
 import { pixverse6 } from "./pixverse-6";
 import { qwenImage3 } from "./qwen-image-3";
 import { recraft41 } from "./recraft-4.1";
 import { seedance2, seedance2Fast, seedance2Mini } from "./seedance-2";
-import { seedance25, seedance25Edit, seedance25Extend } from "./seedance-2.5";
-import { soul2, soulCinema } from "./soul";
+import { seedance25, seedance25Draft, seedance25Edit, seedance25Extend } from "./seedance-2.5";
+import { soul, soul2, soulCinema } from "./soul";
 import type { ModelEntry } from "./types";
 import { wan26 } from "./wan-2.6";
 import { wan27 } from "./wan-2.7";
@@ -37,9 +62,24 @@ import { wan3Prime } from "./wan-3-prime";
 import { zImageTurbo } from "./z-image-turbo";
 
 export const MODELS: readonly ModelEntry[] = [
+  krea2Turbo,
+  ltx25Local,
+  minimaxH3Local,
+  soul,
   soul2,
   soulCinema,
+  gptImage2,
+  gptImage15,
+  gptImage25Sunburst,
+  gptImage25Flare,
+  nanoBanana,
+  nanoBanana2,
+  nanoBanana2Lite,
+  nanoBanana21,
+  nanoBananaPro,
+  flux3Image,
   seedance25,
+  seedance25Draft,
   seedance25Edit,
   seedance25Extend,
   seedance2,
@@ -59,6 +99,8 @@ export const MODELS: readonly ModelEntry[] = [
   zImageTurbo,
   wan3,
   wan3Prime,
+  genjutsu,
+  genjutsuLite,
   wan27,
   wan26,
   flux3,
@@ -75,6 +117,12 @@ export const MODELS: readonly ModelEntry[] = [
   grokImagineVideo15,
   pixverse6,
   dop,
+  seedream5Pro,
+  seedream5Flash,
+  seedream45,
+  ideogramVector,
+  aiCast,
+  cinematicPlace,
 ];
 
 export function getModel(id: string): ModelEntry {

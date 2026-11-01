@@ -9,7 +9,7 @@ import {
   settingPillLabel,
   settingValueLabel,
 } from "./data";
-import { AudioIcon, ClockIcon, FormatIcon, GemIcon } from "./icons";
+import { AudioIcon, ClockIcon, FormatIcon, GaugeIcon, GemIcon, SlidersIcon } from "./icons";
 import { Field, OptionList, Slider } from "./ui";
 
 /* One drawn mark per setting the catalog is known to declare. Anything new
@@ -30,12 +30,15 @@ function glyphFor(key: string, value: unknown) {
     );
   }
   if (key === "resolution") return <GemIcon size={13} />;
+  if (key === "quality") return <GaugeIcon size={13} />;
   if (key === "duration") return <ClockIcon size={13} />;
   if (key === "outputFormat") return <FormatIcon size={13} />;
   if (key === "generateAudio" || key === "sound" || key === "keepOriginalSound") {
     return <AudioIcon size={13} />;
   }
-  return null;
+  /* Below 560 the pill answers with its mark alone; every control must have a
+     mark to answer with, so the detail settings share a slider face. */
+  return <SlidersIcon size={13} />;
 }
 
 /** One catalog setting, standing on the composer's control rail. Booleans are
@@ -134,7 +137,12 @@ export function SettingPopover({
             }))}
             value={value}
             ratio={settingKey === "aspectRatio"}
-            onChange={(next) => settings.set(model.id, { [settingKey]: next })}
+            onChange={(next) =>
+              settings.set(model.id, {
+                [settingKey]: next,
+                ...(field.type === "enum" ? field.presets?.[next] : undefined),
+              })
+            }
           />
         </Field>
       </div>

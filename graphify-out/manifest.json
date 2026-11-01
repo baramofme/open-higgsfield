@@ -1,0 +1,712 @@
+{
+  "next-env.d.ts": {
+    "mtime": 1793424851.794355,
+    "ast_hash": "aa94238a90e7d04b7a47ecc3145ba6a0",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1793425056.8979015,
+    "ast_hash": "dcd4de8b2f8599092495ee4fa6532a1c",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1793467158.9305987,
+    "ast_hash": "e6b6685736ec26f3ea963ed75f368fb9",
+    "semantic_hash": ""
+  },
+  "scripts/build-brand-assets.mjs": {
+    "mtime": 1793424800.3470688,
+    "ast_hash": "3c388d5c218efa9b6facdd64b99dc73a",
+    "semantic_hash": ""
+  },
+  "src/app/api/blob/route.ts": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "1ec6037433b29bc7e0cf2c2be13ad7b0",
+    "semantic_hash": ""
+  },
+  "src/app/layout.tsx": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "bf3df2c2e13ce845a33b54fa08608bf9",
+    "semantic_hash": ""
+  },
+  "src/app/manifest.ts": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "988f2c330a6f01a1a670b31cd918311b",
+    "semantic_hash": ""
+  },
+  "src/app/page.tsx": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "1cff5735f0153d624d6bce224be5e37a",
+    "semantic_hash": ""
+  },
+  "src/app/robots.ts": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "5de092d4fca63b8ce0d79f7d8ac3e5a0",
+    "semantic_hash": ""
+  },
+  "src/app/sitemap.ts": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "65525cd898c3422a62bc1123b6cc637a",
+    "semantic_hash": ""
+  },
+  "src/generation/actions.ts": {
+    "mtime": 1793452316.0383584,
+    "ast_hash": "983154b715fd30813b6c7e8682a36400",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/cinema-misc.ts": {
+    "mtime": 1793436675.2811112,
+    "ast_hash": "ea7eecc5c0e649071aaba110be808988",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/defaults.ts": {
+    "mtime": 1793439675.6652417,
+    "ast_hash": "2f4b72f4becebea913d4479a95dd882f",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/dop.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "3c9d6c6616ab4fabda48114f1efca53c",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/flux-2.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "57efecca8fe1e6f1d9330df67625fe1e",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/flux-3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "e368a15c3315b85dcd5bee1983b3151e",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/genjutsu.ts": {
+    "mtime": 1793436167.6141472,
+    "ast_hash": "39ec7c5db41653e52fb332a3edc6bb18",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/gpt-image.ts": {
+    "mtime": 1793439707.4227514,
+    "ast_hash": "2139e6371feabd81a51d092252463b00",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/grok-imagine-2.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "fc73e44dda9b5619065faff24aae34b8",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/grok-imagine-video-1.5.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "cada9855a72b98f31e15560befeccff1",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/happy-horse-1.1.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "6ae01c5571eba9ed90a5781222ad3388",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/happy-horse-1.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "b640a7be3ca847e89971c37bffe82ae1",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/ideogram-4.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "4898a6d936c7c70cb2e786892b3e02ac",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/index.ts": {
+    "mtime": 1793502233.8255792,
+    "ast_hash": "81d9c3e39a156d5b8621beea987685be",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/kling-2.5.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "8dbe38166ca3a759660f4c7f3e18f0cb",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/kling-2.6.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "6b8de84133cace37a7fed18af3ac2a30",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/kling-3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "847abd2fd4b4649f62a3fc709fd79165",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/kling-o1.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "52b20a929795326d383fce707ff019a1",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/kling-o3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "555088247ea6dbc874a0b241a5ac297e",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/krea-2-turbo.ts": {
+    "mtime": 1793440567.045739,
+    "ast_hash": "c2a7cc029409c9e117bdbf577be62fbb",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/ltx-2.5-fast.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "e2d3ef56b0220f67052dc32a814f8da3",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/ltx-2.5-pro.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "898ff8cbb9c2a874eb3411928147e3ea",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/minimax-h3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "a2d63d0ac22588e1066b223e1258bf8c",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/minimax-hailuo-2.3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "4092a8c03cd25df02e2b1d2f1d334963",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/nano-banana.ts": {
+    "mtime": 1793436167.60962,
+    "ast_hash": "94992072920f0e9e4a33d73edce063b3",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/parse-settings.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "6e507beb985548b262618000bde79e4d",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/pixverse-6.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "0301e6069314404e56933df78fd1e381",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/qwen-image-3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "58fa37bc0779415361142bccf92d3b53",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/recraft-4.1.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "da43f1ae20e869d8f4deeb14b48e41e8",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/seedance-2.5.ts": {
+    "mtime": 1793436195.0169356,
+    "ast_hash": "9d6e90165dbdf4c382a89617f35b8ddd",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/seedance-2.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "17db192fe0c8fd7b6669cbb99e503d82",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/soul.ts": {
+    "mtime": 1793440567.0458128,
+    "ast_hash": "a79f301c64953fb51696dd47f43c45fe",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/types.ts": {
+    "mtime": 1793467384.2270865,
+    "ast_hash": "876617ff50b39c5e18b677319160d4c6",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/wan-2.6.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "d4eb9fcc4c7d12e2e56fb1e610200b34",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/wan-2.7.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "4bafe34657843135a6488dfe21d565ef",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/wan-3-prime.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "680c2ff7835250d72c0a3757a84078d7",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/wan-3.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "5d503045fdf1af484b19f4dfc9169e97",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/z-image-turbo.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "ca56cebcfff88a115cb8cc4354e86be6",
+    "semantic_hash": ""
+  },
+  "src/generation/cfwui-mode.ts": {
+    "mtime": 1793502233.9144354,
+    "ast_hash": "caabf2b90f5a580e4ea98a37d62d413d",
+    "semantic_hash": ""
+  },
+  "src/generation/cfwui-platform.ts": {
+    "mtime": 1793502281.747473,
+    "ast_hash": "a26ad4a9547ab0a28862c3a77d500f04",
+    "semantic_hash": ""
+  },
+  "src/generation/device.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "5ee2732cc28b6796077d85cc7ba1b52c",
+    "semantic_hash": ""
+  },
+  "src/generation/plane.ts": {
+    "mtime": 1793452311.188472,
+    "ast_hash": "650c4bc59cfbbda4fc916f1802b39e54",
+    "semantic_hash": ""
+  },
+  "src/generation/platform.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "ba1975e90107708c5a86e21812fe2c69",
+    "semantic_hash": ""
+  },
+  "src/generation/poll.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "dabd99d53f9c0fe6472123d0779c5842",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/active.ts": {
+    "mtime": 1793424800.348854,
+    "ast_hash": "29d5a4d933502d15815f15c4c5e2101d",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/browser-storage.ts": {
+    "mtime": 1793424800.3495789,
+    "ast_hash": "3fd933acbe0dcb336af047d07eba4d95",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/camera.ts": {
+    "mtime": 1793445735.3120863,
+    "ast_hash": "6740e6f9b72a479c44d43fcf4fc25544",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/elements.ts": {
+    "mtime": 1793456874.6455605,
+    "ast_hash": "a9d689aa0362df1ff572324a8a8bf3bf",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/media.ts": {
+    "mtime": 1793424800.3495789,
+    "ast_hash": "cdf315312f25a178615fc5b80cb57fa7",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/prompt.ts": {
+    "mtime": 1793424800.3495789,
+    "ast_hash": "91b180d2cf8d8c59b2c5c440f1605032",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/settings.ts": {
+    "mtime": 1793424800.3495789,
+    "ast_hash": "0f637806aaedbac69a19667a3730e6dd",
+    "semantic_hash": ""
+  },
+  "src/generation/to-platform.ts": {
+    "mtime": 1793502266.2860215,
+    "ast_hash": "1979ec4515cce626ee84016bd0c9e722",
+    "semantic_hash": ""
+  },
+  "src/generation/upload.ts": {
+    "mtime": 1793426431.87934,
+    "ast_hash": "786cc0bcc7dc62fcf4609e9445990ecc",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/artwork.ts": {
+    "mtime": 1793424800.3495789,
+    "ast_hash": "79b6e96d679b029c1c0f6e7e19c012f9",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/asset-picker.tsx": {
+    "mtime": 1793460339.5093417,
+    "ast_hash": "1e897d6ce40b8ad0ba8761835704044b",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-panel.tsx": {
+    "mtime": 1793436704.320036,
+    "ast_hash": "f09499b83ce58ef47ef6eacea08cdaad",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-popover.tsx": {
+    "mtime": 1793453667.2084079,
+    "ast_hash": "f97b4ef557c61fa76caa249956c23cf6",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/composer.tsx": {
+    "mtime": 1793485298.3319085,
+    "ast_hash": "738ebac6d4b67abcc317b18c4b864665",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/data.ts": {
+    "mtime": 1793428886.3488855,
+    "ast_hash": "0252d306d5e2249f31085626a40bba43",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/download.ts": {
+    "mtime": 1793424800.3498309,
+    "ast_hash": "8a3211681b0bb5f64076acf1be285849",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/element-popover.tsx": {
+    "mtime": 1793457137.4740012,
+    "ast_hash": "85149d325b94b66ea05d6dfbc9689241",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/gallery.tsx": {
+    "mtime": 1793483381.4722924,
+    "ast_hash": "bf007fa26909835ca0646e1c6305c83c",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/history.ts": {
+    "mtime": 1793461208.603913,
+    "ast_hash": "2202805c60b4f82b6870eb3b8bafb9cd",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/icons.tsx": {
+    "mtime": 1793462228.798262,
+    "ast_hash": "ed2de8c7094d1e89ba25e04c59e82faf",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/idb.ts": {
+    "mtime": 1793424800.3498309,
+    "ast_hash": "3a50f5bfbe7d37a2c4169dc5be98ffa7",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/key-modal.tsx": {
+    "mtime": 1793424800.3498309,
+    "ast_hash": "741ec6babeb2b6ca923fcb6de0807f19",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/media-tray.tsx": {
+    "mtime": 1793456692.215887,
+    "ast_hash": "99a1ccd16957ed0ce38865be84b55080",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/model-icon.tsx": {
+    "mtime": 1793468523.2927847,
+    "ast_hash": "0e8d0e03241d5c67554561974726c3b5",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/model-picker.tsx": {
+    "mtime": 1793424800.3498309,
+    "ast_hash": "c03cb239774ddeceefb889a1a93dff95",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/openhiggsfield-app.tsx": {
+    "mtime": 1793485298.0949779,
+    "ast_hash": "5182a7a4567b77e5cf2bd3e3dfc7b67d",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/selection-bar.tsx": {
+    "mtime": 1793485098.0118515,
+    "ast_hash": "40732193f20e7a2b3396372f53c35f9f",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/settings.tsx": {
+    "mtime": 1793454462.1795154,
+    "ast_hash": "7ea8b1c6f74ed17cbbbcac861f950eb5",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/studio-mode.ts": {
+    "mtime": 1793442846.012155,
+    "ast_hash": "b336922f6c3912fb5f991357b3494031",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/topbar.tsx": {
+    "mtime": 1793484624.393722,
+    "ast_hash": "19b850eded787be3eab662ae1c1b75ba",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/ui.tsx": {
+    "mtime": 1793424800.3498309,
+    "ast_hash": "4d2fbb2e60a81282873ed069a4fe9f7e",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/uploads.ts": {
+    "mtime": 1793424800.3500688,
+    "ast_hash": "fa3142e38261f76d6d3a38da09ff2369",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/viewer.tsx": {
+    "mtime": 1793483835.023487,
+    "ast_hash": "b2a3d7a6367b9cb9162c58e0b0d5e502",
+    "semantic_hash": ""
+  },
+  "src/proxy.ts": {
+    "mtime": 1793424800.3500688,
+    "ast_hash": "012bf59d4af7790c5e359cc435f5eacb",
+    "semantic_hash": ""
+  },
+  "src/site.ts": {
+    "mtime": 1793424800.3500688,
+    "ast_hash": "ba6a1b9787fea2d691428bda8eea49fe",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1793424800.3500688,
+    "ast_hash": "dbbd70f0b3bd4deaae6ad885e695c71e",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1793424851.8653567,
+    "ast_hash": "01e8142356e15c3404e0d84c48187cd0",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1793424851.8653567,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793424800.3454933,
+    "ast_hash": "30a9b6f7e5b78726320714a8c4b1e461",
+    "semantic_hash": ""
+  },
+  "pnpm-workspace.yaml": {
+    "mtime": 1793424800.3454933,
+    "ast_hash": "54f0e81ff69840adef21743a0c102ff5",
+    "semantic_hash": ""
+  },
+  "public/camera/35mm-film.webp": {
+    "mtime": 1793445713.5715723,
+    "ast_hash": "4a0d382f3a3e718cee27f062b1c83f95",
+    "semantic_hash": ""
+  },
+  "public/camera/8mm-film.webp": {
+    "mtime": 1793445714.2165842,
+    "ast_hash": "b134c378916c6705e61cf4a819eb7dcc",
+    "semantic_hash": ""
+  },
+  "public/camera/anamorphic.webp": {
+    "mtime": 1793445717.24264,
+    "ast_hash": "08dcf1ceae4cf1cff8b5e2aad194d046",
+    "semantic_hash": ""
+  },
+  "public/camera/camera-auto.svg": {
+    "mtime": 1793445714.8464625,
+    "ast_hash": "1a5dc133d343343a615f10e34827fe44",
+    "semantic_hash": ""
+  },
+  "public/camera/clean-sharp.webp": {
+    "mtime": 1793445716.8786333,
+    "ast_hash": "b4723b50ba0ee93ab7fb312aa20cdf3f",
+    "semantic_hash": ""
+  },
+  "public/camera/dv-camcorder.webp": {
+    "mtime": 1793445714.703593,
+    "ast_hash": "7729dcaf8a491522621b9f9c68cf1d1d",
+    "semantic_hash": ""
+  },
+  "public/camera/halation-vintage.webp": {
+    "mtime": 1793445716.3636236,
+    "ast_hash": "7e92dfe2c64474eb7bf457ffea589a3e",
+    "semantic_hash": ""
+  },
+  "public/camera/lens-auto.svg": {
+    "mtime": 1793445716.4618948,
+    "ast_hash": "bf195ff1e40cc9d0701fb03a477de4e1",
+    "semantic_hash": ""
+  },
+  "public/camera/modern.webp": {
+    "mtime": 1793445712.9545608,
+    "ast_hash": "03ba8639d19171401cd3288f657b6433",
+    "semantic_hash": ""
+  },
+  "public/camera/vintage-anamorphic.webp": {
+    "mtime": 1793445715.2166026,
+    "ast_hash": "ec7088cffaee0187ff05ce7ee0f0edc4",
+    "semantic_hash": ""
+  },
+  "public/camera/warm-vintage.webp": {
+    "mtime": 1793445715.8456142,
+    "ast_hash": "5a5d54f755da40df227dbdeb4a5ee4c4",
+    "semantic_hash": ""
+  },
+  "public/icon-192.png": {
+    "mtime": 1793424800.3454933,
+    "ast_hash": "a74d6289be71e774e0df613599ba117f",
+    "semantic_hash": ""
+  },
+  "public/icon-512.png": {
+    "mtime": 1793424800.3465254,
+    "ast_hash": "1c4659e5cfe98413df5158f21fae9394",
+    "semantic_hash": ""
+  },
+  "public/icon-maskable-512.png": {
+    "mtime": 1793424800.3465254,
+    "ast_hash": "0b7ef1654902d16d828ab7fdf0f77806",
+    "semantic_hash": ""
+  },
+  "public/model-icons/flux.svg": {
+    "mtime": 1793424800.3465254,
+    "ast_hash": "81055cfdeeee9959e7dc15a7f14f8060",
+    "semantic_hash": ""
+  },
+  "public/model-icons/grok.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "e0b752873baa22a3bc95a8d7c21411ca",
+    "semantic_hash": ""
+  },
+  "public/model-icons/happy-horse.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "5b14c0813931289cdb2c96511c123e11",
+    "semantic_hash": ""
+  },
+  "public/model-icons/higgsfield.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "8d85245d6d2a92f7ea457c4ea4f9fd8d",
+    "semantic_hash": ""
+  },
+  "public/model-icons/ideogram.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "cd66ad8ebb3dc9842b24fa4f8b30b057",
+    "semantic_hash": ""
+  },
+  "public/model-icons/kling.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "2e61158759155be417324572180226de",
+    "semantic_hash": ""
+  },
+  "public/model-icons/ltx.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "da540794ef0cab5f2ed513dacad71325",
+    "semantic_hash": ""
+  },
+  "public/model-icons/minimax.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "f1de79b48d9b6752791b78cc85329e1a",
+    "semantic_hash": ""
+  },
+  "public/model-icons/pixverse.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "1148facabd89bdcfe9cabd718a752662",
+    "semantic_hash": ""
+  },
+  "public/model-icons/qwen.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "12d03b444d97a7a0ab88f247c9f5fad3",
+    "semantic_hash": ""
+  },
+  "public/model-icons/recraft.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "8eb6d0c96292fdc93b9f6eb3ac87d95a",
+    "semantic_hash": ""
+  },
+  "public/model-icons/wan.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "eef27acae16b0bdc5be2485e728c2f93",
+    "semantic_hash": ""
+  },
+  "public/model-icons/z-image.svg": {
+    "mtime": 1793424800.346674,
+    "ast_hash": "88ad858e71ab29ec5dd925664fcbd479",
+    "semantic_hash": ""
+  },
+  "public/og.png": {
+    "mtime": 1793424800.3470688,
+    "ast_hash": "dc157364ec32a5751419c9ed3f17299b",
+    "semantic_hash": ""
+  },
+  "src/app/apple-icon.png": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "4640750ad21ef92b957f6978ea266780",
+    "semantic_hash": ""
+  },
+  "src/app/icon.svg": {
+    "mtime": 1793424800.3485458,
+    "ast_hash": "c739726439287c7668ad8a531012cd2b",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/projects.ts": {
+    "mtime": 1793456444.092409,
+    "ast_hash": "bfb0e2a7a8ab11f052bb55e7650955f9",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/crop-tool.tsx": {
+    "mtime": 1793457766.2628443,
+    "ast_hash": "95ff74136a0e2f07113e78c0e6e6dd0d",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/element-form.tsx": {
+    "mtime": 1793457134.8725164,
+    "ast_hash": "8874539ff5ebded1eae36b0c5a349a35",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/preview-lightbox.tsx": {
+    "mtime": 1793456729.218852,
+    "ast_hash": "cd6e5f84532abdea04d26a71f44ee772",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/project-dialog.tsx": {
+    "mtime": 1793456719.338279,
+    "ast_hash": "20e6eeb6185be183114c42900b0ae232",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/feed.ts": {
+    "mtime": 1793463992.3552496,
+    "ast_hash": "f5802198d7a11d71a556c54af629b8d4",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/feed-header.tsx": {
+    "mtime": 1793464169.6857052,
+    "ast_hash": "889b8a3d28faaa5dc0c82a550740cb81",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/comments.ts": {
+    "mtime": 1793466712.445506,
+    "ast_hash": "b64cc6e4295f007c5ad9225bb9e4f31e",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/context-menu.tsx": {
+    "mtime": 1793482623.3508093,
+    "ast_hash": "bf7654a7cecbdfdf2c691515c4ce6f47",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/image-workspace.tsx": {
+    "mtime": 1793473850.3315141,
+    "ast_hash": "7dd8d871869f9224ea8e820f4cc9bae3",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/inpaint-panel.tsx": {
+    "mtime": 1793470823.672878,
+    "ast_hash": "0427edcc49592f750401bc87d36313d4",
+    "semantic_hash": ""
+  },
+  "src/app/api/ohf-image/route.ts": {
+    "mtime": 1793471165.2322412,
+    "ast_hash": "ded30cb9cb36f4817e993147748ee50b",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/image-proxy.ts": {
+    "mtime": 1793471168.3395214,
+    "ast_hash": "a12ca0b82a6e29d944207c4c0a5c05cc",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/local-user.ts": {
+    "mtime": 1793472745.2288866,
+    "ast_hash": "ac968ee576630b87c6960494b16d6219",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/edit-showcase.tsx": {
+    "mtime": 1793477876.7311764,
+    "ast_hash": "6fe1c3774916564912e496f32029fb88",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/asset-icons.tsx": {
+    "mtime": 1793480081.3751543,
+    "ast_hash": "1211d5801cd49c170806feadc0c01e1b",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/asset-menu.tsx": {
+    "mtime": 1793485109.1261725,
+    "ast_hash": "0f8db6c7eb5b23352ac8fbdfcb6597f5",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/local-video.ts": {
+    "mtime": 1793502225.3095987,
+    "ast_hash": "db5809d8b3ed1dc6a9a1e1c41d782d2f",
+    "semantic_hash": ""
+  }
+}

@@ -2,16 +2,21 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { hasPlatformCredentials, submitGeneration } from "@/generation/actions";
+import { hasPlatformCredentials, submitGeneration, submitOutpaint } from "@/generation/actions";
 import { MissingCredentialsError } from "@/generation/credentials";
-import { MODELS, getModel } from "@/generation/catalog";
+import { MODELS, getModel, parseSettings } from "@/generation/catalog";
+import type { GenerationPlane } from "@/generation/catalog/types";
 import type { Surface } from "@/generation/catalog";
-import { assemblePlane } from "@/generation/plane";
+import { assemblePlane, withCamera } from "@/generation/plane";
 import type { GenerationStatus } from "@/generation/platform";
 import { POLL_DEADLINE_MS, stopWatching, watchRequest } from "@/generation/poll";
 import { useActive } from "@/generation/stores/active";
+import { applyFeedFilters, useFeed } from "@/generation/stores/feed";
 import { useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
+import { useVideoMedia } from "@/generation/stores/media";
 import { useSettings } from "@/generation/stores/settings";
+import { DEFAULT_PROJECT_ID, useProjects } from "@/generation/stores/projects";
+import { useElements, ELEMENT_DEFAULTS, nextElementName, type ElementItem } from "@/generation/stores/elements";
 
 import { GRAIN_URI, artFor } from "./artwork";
 import { Composer } from "./composer";
@@ -25,11 +30,14 @@ import {
   ratioToCss,
   type GalleryView,
 } from "./data";
-import { Gallery } from "./gallery";
+import { Gallery, type TileMenuActions } from "./gallery";
+import { FeedHeader } from "./feed-header";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
+import { loadComments } from "./comments";
 import { CloseIcon, UndoIcon } from "./icons";
 import { SelectionBar, type SaveProgress } from "./selection-bar";
 import { Topbar } from "./topbar";
+import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
 
 /* Long enough to read the bar and reach it; the drain line states the window. */
@@ -55,6 +63,7 @@ type RunDraft = {
   badge?: string;
   settings?: Record<string, unknown>;
   createdAt: number;
+  projectId: string;
 };
 
 function hueOf(seed: string): number {
@@ -78,6 +87,7 @@ function draftOf(record: RunRecord): RunDraft {
     badge: record.badge,
     settings: record.settings,
     createdAt: record.createdAt,
+    projectId: record.projectId ?? DEFAULT_PROJECT_ID,
   };
 }
 
@@ -100,17 +110,28 @@ function runningRows(requestId: string, count: number, draft: RunDraft): RunReco
       art: artFor(draft.surface, hueOf(id), id),
       createdAt: draft.createdAt,
       settings: draft.settings,
+      projectId: draft.projectId,
     };
   });
 }
 
-function terminalRows(requestId: string, draft: RunDraft, status: GenerationStatus): RunRecord[] {
+function terminalRows(
+  requestId: string,
+  draft: RunDraft,
+  status: GenerationStatus,
+  finishedAt: number = Date.now(),
+): RunRecord[] {
   const urls =
     status.images?.map((image) => image.url) ?? (status.video ? [status.video.url] : []);
   const completed = status.status === "completed" && urls.length > 0;
   const base = status.requestId || requestId;
   const failure = completed ? undefined : failureText(status);
   const delivered: Array<string | null> = completed ? urls : [null];
+  /* Wall-clock seconds from submit to terminal — only meaningful once the run
+     actually finished, so failed rows are left without it. */
+  const durationSeconds = completed
+    ? Math.max(0, Math.round((finishedAt - draft.createdAt) / 1000))
+    : undefined;
   return delivered.map((url, offset) => {
     const id = rowId(base, offset, delivered.length);
     return {
@@ -130,6 +151,8 @@ function terminalRows(requestId: string, draft: RunDraft, status: GenerationStat
       art: artFor(draft.surface, hueOf(id), id),
       createdAt: draft.createdAt,
       settings: draft.settings,
+      projectId: draft.projectId,
+      durationSeconds,
     };
   });
 }
@@ -169,8 +192,15 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const [error, setError] = useState<string | null>(null);
   const [freshIds, setFreshIds] = useState<string[]>([]);
   const [viewerId, setViewerId] = useState<string | null>(null);
+  const [inpaintBusy, setInpaintBusy] = useState(false);
+  const [outpaintBusy, setOutpaintBusy] = useState(false);
   const [view, setView] = useState<GalleryView>(surface);
   const [focusNonce, setFocusNonce] = useState(0);
+  /* The run the viewer last opened — HF flags exactly that asset on the tile. */
+  const [lastViewedId, setLastViewedId] = useState("");
+  /* Run id → comment-thread length, so each tile's bottom-left bubble counts the
+     run's comments the way Higgsfield counts them on the hovered photo. */
+  const [commentCounts, setCommentCounts] = useState<Record<string, number>>({});
   const [historyLoaded, setHistoryLoaded] = useState(false);
   /* Deleting drops the only copy of a run — the platform's result URLs are not
      re-derivable — so the records are held aside until the bar times out. */
@@ -181,6 +211,17 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const [saving, setSaving] = useState<SaveProgress | null>(null);
   const [keyConfigured, setKeyConfigured] = useState(false);
   const [keysOpen, setKeysOpen] = useState(false);
+  /* Topbar search term, matched against every run's prompt and model. */
+  const [query, setQuery] = useState("");
+  /* The topbar 에셋 button now raises a full-screen asset browser: every surface
+     shows at once, the way Higgsfield's /asset/all page does. */
+  const [assetsAllOpen, setAssetsAllOpen] = useState(false);
+  const assetsScrollRef = useRef<HTMLDivElement>(null);
+  const mode = useStudio((state) => state.mode);
+  const setMode = useStudio((state) => state.setMode);
+  const cinemaMode = useStudio((state) => state.cinemaMode);
+  const activeProjectId = useProjects((state) => state.activeProjectId);
+  const setCinemaMode = useStudio((state) => state.setCinemaMode);
 
   const galleryRef = useRef<HTMLDivElement>(null);
   const rangeAnchor = useRef<number | null>(null);
@@ -196,8 +237,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   /* The model picker can cross surfaces, so the scope follows it — unless the
      visitor parked on a scope that spans both. */
   useEffect(() => {
+    // 시네마틱 owns the gallery entirely: no surface tab can pull the view
+    // back to an image or video grid while the cinematic surface is up.
+    if (mode === "cinema") return;
     setView((current) => (CROSS_VIEWS.has(current) ? current : surface));
-  }, [surface]);
+  }, [surface, mode, cinemaMode]);
 
   /* Read once on mount. A load that finishes after unmount must not mark the
      next mount hydrated, or the empty initial list is written over the store. */
@@ -219,6 +263,24 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   useEffect(() => {
     if (historyLoaded) void saveHistory(history);
   }, [historyLoaded, history]);
+
+  /* The comment counts ride on each tile's bubble. They are read once per set of
+     run ids — a favorite toggle reshuffles the array but not its ids, so the
+     bubbles do not re-fetch when only the heart changes. */
+  const commentIdsKey = history.map((record) => record.id).join(",");
+  useEffect(() => {
+    if (!historyLoaded || !commentIdsKey) return;
+    let live = true;
+    const ids = commentIdsKey.split(",");
+    void (async () => {
+      const counts: Record<string, number> = {};
+      for (const id of ids) counts[id] = (await loadComments(id)).length;
+      if (live) setCommentCounts(counts);
+    })();
+    return () => {
+      live = false;
+    };
+  }, [historyLoaded, commentIdsKey]);
 
   useEffect(() => {
     void hasPlatformCredentials().then((ready) => {
@@ -303,21 +365,61 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     }
   }, [historyLoaded, resume]);
 
+  const feed = useFeed();
   const visible = useMemo(() => {
-    if (view === "assets") return history;
-    if (view === "favorites") return history.filter((record) => record.favorite === true);
-    return history.filter((record) => record.surface === view);
-  }, [history, view]);
+    const scoped =
+      view === "assets"
+        ? history
+        : view === "favorites"
+          ? history.filter((record) => record.favorite === true)
+          : history.filter((record) => record.surface === view);
+    /* The topbar search narrows the scoped rows before the feed filters run, so
+       a typed term narrows whatever view is already showing rather than escaping
+       it. Prompt and model are what Higgsfield's search reads. */
+    const needle = query.trim().toLowerCase();
+    const searched = needle
+      ? scoped.filter(
+          (record) =>
+            record.prompt.toLowerCase().includes(needle) ||
+            record.modelLabel.toLowerCase().includes(needle),
+        )
+      : scoped;
+    return applyFeedFilters(searched, feed);
+  }, [history, view, feed, query]);
+
+  /* The topbar 에셋 button raises the full-screen asset browser, not the
+     composer's picker — the two are different journeys now. */
+  const openAssets = useCallback(() => setAssetsAllOpen(true), []);
+  const closeAssetsAll = useCallback(() => setAssetsAllOpen(false), []);
+
+  /* The pult's tabs answer the composer's own question — 이미지 · 비디오 — and
+     the dock follows them: whichever surface the tab names takes the model
+     seat, so the form and the model agree. What the tabs do NOT touch is the
+     app's view: the topbar keeps whatever the visitor parked there. The
+     topbar answers the other way round (see switchView). */
+  const alignDockToMode = useCallback(
+    (next: Surface) => {
+      if (useActive.getState().surface === next) return;
+      const first = MODELS.find((entry) => entry.surface === next);
+      if (first) setModel(first.id);
+    },
+    [setModel],
+  );
 
   const switchView = useCallback(
     (next: GalleryView) => {
       setView(next);
       galleryRef.current?.scrollTo({ top: 0 });
+      // While the cinematic screen is up, its tabs steer the dock's own mode.
+      if (mode === "cinema" && (next === "image" || next === "video")) {
+        setCinemaMode(next);
+        alignDockToMode(next);
+      }
       if (CROSS_VIEWS.has(next) || next === surface) return;
       const first = MODELS.find((entry) => entry.surface === next);
       if (first) setModel(first.id);
     },
-    [setModel, surface],
+    [setModel, surface, mode, setCinemaMode, alignDockToMode],
   );
 
   /* Presses do not wait on each other. A press snapshots its own plane, opens
@@ -329,7 +431,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       setError("Add your platform key to generate.");
       return;
     }
-    const plane = assemblePlane();
+    const plane = withCamera(assemblePlane());
     if (!plane.prompt.text.trim()) return;
 
     const entry = getModel(plane.model);
@@ -370,6 +472,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       badge,
       settings: plane.settings,
       createdAt: startedAt,
+      /* The cinematic surface gathers its runs inside the project it loaded;
+         ordinary work files them on the default shelf. */
+      projectId: mode === "cinema" ? activeProjectId : DEFAULT_PROJECT_ID,
     };
 
     setError(null);
@@ -415,8 +520,12 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       setViewerId(null);
       setError(null);
       setFocusNonce((n) => n + 1);
+      /* A failed record's retry re-attempts the run, not just the composer
+         fill: the state restoration above is synchronous (zustand sets are
+         immediate), so generate reads the full plane from the stores below. */
+      if (record.status === "failed") void generate();
     },
-    [setModel, setSettings],
+    [setModel, setSettings, generate],
   );
 
   const toggleFavorite = useCallback((record: RunRecord) => {
@@ -547,9 +656,29 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     clearPicked();
   }, [deleteRuns, pickedRecords, clearPicked]);
 
+  /* 추가 위치 on the toolbar files the whole selection under a freshly made
+     folder, the way the source's "put these in a folder" reads. */
+  const addPickedToFolder = useCallback(() => {
+    if (pickedRecords.length === 0) return;
+    const stamp = new Date().toLocaleDateString("ko-KR");
+    const project = useProjects.getState().addProject(`폴더 ${stamp}`);
+    const ids = new Set(pickedRecords.map((record) => record.id));
+    setHistory((prev) =>
+      prev.map((entry) => (ids.has(entry.id) ? { ...entry, projectId: project.id } : entry)),
+    );
+  }, [pickedRecords]);
+
   /* One run, saved from its card. The refusal is reported through the strip the
      composer already reserves for it — a 32px button on a picture has no room
      to explain itself, and the viewer's own Download states what to do next. */
+  /* A run saved to disk gets a stamp so the feed's 다운로드됨 filter can find
+     it later, mirroring the toggleFavorite write that keeps its own truth. */
+  const markDownloaded = useCallback((id: string) => {
+    setHistory((prev) =>
+      prev.map((entry) => (entry.id === id ? { ...entry, downloadedAt: Date.now() } : entry)),
+    );
+  }, []);
+
   const downloadRun = useCallback(async (record: RunRecord) => {
     const url = record.urls[0];
     if (!url) return;
@@ -558,7 +687,10 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       setError(
         "The platform’s CDN refused the read, so this run could not be saved. Open it to save it from the browser instead.",
       );
+      return;
     }
+    /* A saved run stamps itself so the feed's 다운로드됨 filter can find it. */
+    markDownloaded(record.id);
   }, []);
 
   /* Saved one at a time on purpose: browsers throttle a burst of downloads into
@@ -595,7 +727,284 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     [surface],
   );
 
-  const openViewer = useCallback((id: string) => setViewerId(id), []);
+  const openViewer = useCallback((id: string) => {
+    setViewerId(id);
+    setLastViewedId(id);
+  }, []);
+  /* Re-send a finished run down the video surface: the grid switches to Video,
+     the picture is laid down as a reference and the words carry over. */
+  const toVideoFor = useCallback(
+    (record: RunRecord) => {
+      const first = record.urls[0];
+      if (first) {
+        useVideoMedia.getState().add({ id: `video-ref-${record.id}`, url: first, role: "reference" });
+      }
+      useVideoPrompt.getState().setText(record.prompt);
+      switchView("video");
+      setViewerId(null);
+    },
+    [switchView],
+  );
+  /* ---------- the tile ⋯ menu's reach beyond the card ----------
+
+     Everything here mirrors a row of Higgsfield's "추가 작업" menu. The element
+     work builds a real @-referenceable 요소 from the run's finished media and
+     threads it into the prompt; the effect row opens the viewer's edit canvas
+     for the one effect (인페인트) this build can actually run; sharing copies or
+     opens the platform's own intent; filing under a project moves the run's
+     shelf. The effects we have no local path for are shown but disabled in the
+     menu, so their handlers are never reached. */
+
+  const makeElementFromRun = useCallback(
+    (record: RunRecord, kind: "image" | "video") => {
+      const url = record.urls[0];
+      if (!url) return;
+      void kind; // both kinds attach the same finished media; the run's url is the source
+      const element: ElementItem = {
+        ...ELEMENT_DEFAULTS,
+        id: `el-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
+        name: nextElementName(useElements.getState().items),
+        url,
+        projectId: activeProjectId,
+      };
+      useElements.getState().add(element);
+      const store = record.surface === "video" ? useVideoPrompt : useImagePrompt;
+      store.getState().setText(`${store.getState().text} @${element.name}`.replace(/^\s+/, ""));
+      setFocusNonce((n) => n + 1);
+    },
+    [activeProjectId],
+  );
+
+  const assignElementFromRun = useCallback(
+    (record: RunRecord) => {
+      const url = record.urls[0];
+      if (!url) return;
+      const element: ElementItem = {
+        ...ELEMENT_DEFAULTS,
+        id: `el-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
+        name: nextElementName(useElements.getState().items),
+        url,
+        projectId: activeProjectId,
+      };
+      useElements.getState().add(element);
+      const store = record.surface === "video" ? useVideoPrompt : useImagePrompt;
+      store.getState().setText(`${store.getState().text} @${element.name}`.replace(/^\s+/, ""));
+      setFocusNonce((n) => n + 1);
+    },
+    [activeProjectId],
+  );
+
+  const addRunEffect = useCallback(
+    (record: RunRecord, effect: string) => {
+      // 인페인트 is the only effect with a local path: it opens the viewer's edit canvas.
+      if (effect === "인페인트") openViewer(record.id);
+    },
+    [openViewer],
+  );
+
+  const shareRun = useCallback(
+    (record: RunRecord, target: "link" | "x" | "whatsapp" | "pinterest" | "linkedin") => {
+      const url = record.urls[0];
+      if (!url) return;
+      if (target === "link") {
+        void navigator.clipboard?.writeText(url);
+        return;
+      }
+      const enc = encodeURIComponent(url);
+      const dest =
+        target === "x"
+          ? `https://twitter.com/intent/tweet?url=${enc}`
+          : target === "whatsapp"
+            ? `https://wa.me/?text=${enc}`
+            : target === "pinterest"
+              ? `https://www.pinterest.com/pin/create/button/?url=${enc}`
+              : `https://www.linkedin.com/sharing/share-offsite/?url=${enc}`;
+      window.open(dest, "_blank", "noopener,noreferrer");
+    },
+    [],
+  );
+
+  const moveRunToProject = useCallback((record: RunRecord, projectId: string) => {
+    setHistory((prev) =>
+      prev.map((entry) => (entry.id === record.id ? { ...entry, projectId } : entry)),
+    );
+  }, []);
+
+  const newProjectWithRun = useCallback(
+    (record: RunRecord) => {
+      const stamp = new Date().toLocaleDateString("ko-KR");
+      const project = useProjects.getState().addProject(`폴더 ${stamp}`);
+      moveRunToProject(record, project.id);
+    },
+    [moveRunToProject],
+  );
+
+  const tileMenuActions = useMemo<TileMenuActions>(
+    () => ({
+      makeElement: makeElementFromRun,
+      assignElement: assignElementFromRun,
+      addEffect: addRunEffect,
+      share: shareRun,
+      moveToProject: moveRunToProject,
+      newProject: newProjectWithRun,
+      projects: () =>
+        useProjects.getState().projects.map((project) => ({ id: project.id, label: project.name })),
+    }),
+    [
+      makeElementFromRun,
+      assignElementFromRun,
+      addRunEffect,
+      shareRun,
+      moveRunToProject,
+      newProjectWithRun,
+    ],
+  );
+
+  /* Localized repaint from the viewer's edit canvas. The composited image the
+     panel hands over already carries the painted alpha hole, so the plane is
+     built by hand (a model the visitor may not have seated would still repaint
+     it), marked `inpaint`, and run through the very pipeline Generate uses: a
+     pending skeleton, a running row, the shared watch. */
+  const runInpaint = useCallback(
+    async (record: RunRecord, image: string, prompt: string) => {
+      const entry = getModel("krea-2-turbo");
+      const settings = parseSettings(
+        entry,
+        useSettings.getState().byModel["krea-2-turbo"] ?? {},
+      );
+      const plane: GenerationPlane = {
+        model: "krea-2-turbo",
+        prompt: { text: prompt },
+        media: { start: [{ id: "inpaint-src", url: image, role: "start" }] },
+        settings,
+        studio: "general",
+        inpaint: true,
+      };
+      const startedAt = Date.now();
+      const pendingId = `pending-inpaint-${startedAt}`;
+      const draft: RunDraft = {
+        surface: "image",
+        modelId: entry.id,
+        modelLabel: entry.label,
+        prompt,
+        ratio: record.ratio,
+        meta: record.meta ?? metaOf(entry, settings),
+        settings,
+        createdAt: startedAt,
+        projectId: DEFAULT_PROJECT_ID,
+      };
+      setError(null);
+      setInpaintBusy(true);
+      setRuns((prev) => [
+        ...prev,
+        { id: pendingId, surface: "image", modelLabel: entry.label, ratio: draft.ratio, startedAt },
+      ]);
+      try {
+        const queued = await submitGeneration(plane);
+        setHistory((prev) => {
+          const next = [...runningRows(queued.requestId, 1, draft), ...prev];
+          void saveHistory(next);
+          return next;
+        });
+        setRuns((prev) => prev.filter((active) => active.id !== pendingId));
+        await resume(queued.requestId, draft, 1);
+      } catch (caught) {
+        const message = describeError(caught);
+        setError((prev) => prev ?? message);
+        setRuns((prev) => prev.filter((active) => active.id !== pendingId));
+      } finally {
+        setInpaintBusy(false);
+      }
+    },
+    [resume],
+  );
+  /* Expand a saved picture outward by padding (the "확장 및 자르기" apply):
+     re-sends one existing image to the comfy-webui outpaint task, then runs it
+     through the very watch Generate and repaint use, so the widened picture
+     lands on the grid as a fresh run. It is not a catalogue generation, so it
+     bypasses submitGeneration and calls the dedicated outpaint action. */
+  const runOutpaint = useCallback(
+    async (
+      record: RunRecord,
+      image: string,
+      pads: { pad_left: number; pad_right: number; pad_top: number; pad_bottom: number },
+      prompt: string,
+    ) => {
+      const entry = getModel("krea-2-turbo");
+      const settings = parseSettings(
+        entry,
+        useSettings.getState().byModel["krea-2-turbo"] ?? {},
+      );
+      const startedAt = Date.now();
+      const pendingId = `pending-outpaint-${startedAt}`;
+      const draft: RunDraft = {
+        surface: "image",
+        modelId: entry.id,
+        modelLabel: entry.label,
+        prompt,
+        ratio: record.ratio,
+        meta: record.meta ?? metaOf(entry, settings),
+        settings,
+        createdAt: startedAt,
+        projectId: DEFAULT_PROJECT_ID,
+      };
+      setError(null);
+      setOutpaintBusy(true);
+      setRuns((prev) => [
+        ...prev,
+        { id: pendingId, surface: "image", modelLabel: entry.label, ratio: draft.ratio, startedAt },
+      ]);
+      try {
+        const queued = await submitOutpaint({ image, prompt, ...pads });
+        setHistory((prev) => {
+          const next = [...runningRows(queued.requestId, 1, draft), ...prev];
+          void saveHistory(next);
+          return next;
+        });
+        setRuns((prev) => prev.filter((active) => active.id !== pendingId));
+        await resume(queued.requestId, draft, 1);
+      } catch (caught) {
+        const message = describeError(caught);
+        setError((prev) => prev ?? message);
+        setRuns((prev) => prev.filter((active) => active.id !== pendingId));
+      } finally {
+        setOutpaintBusy(false);
+      }
+    },
+    [resume],
+  );
+  /* A pure crop is cut in the browser, so it lands instantly as a finished run
+     carrying the cropped data URI as its media — no backend call is needed. */
+  const runCrop = useCallback(
+    (record: RunRecord, image: string) => {
+      const startedAt = Date.now();
+      const id = `crop-${startedAt}`;
+      const run: RunRecord = {
+        id,
+        requestId: id,
+        surface: "image",
+        modelId: "krea-2-turbo",
+        modelLabel: getModel("krea-2-turbo").label,
+        prompt: record.prompt,
+        ratio: record.ratio,
+        meta: record.meta,
+        kind: "image",
+        urls: [image],
+        status: "completed",
+        art: artFor("image", hueOf(id), id),
+        createdAt: startedAt,
+        projectId: DEFAULT_PROJECT_ID,
+        durationSeconds: 0,
+      };
+      setHistory((prev) => {
+        const next = [run, ...prev];
+        void saveHistory(next);
+        return next;
+      });
+      markFresh([id]);
+    },
+    [markFresh],
+  );
   const openKeys = useCallback(() => setKeysOpen(true), []);
   const runGenerate = useCallback(() => void generate(), [generate]);
   const downloadSelection = useCallback(() => void downloadPicked(), [downloadPicked]);
@@ -630,12 +1039,37 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             busy={busy}
             keyConfigured={keyConfigured}
             onKeys={openKeys}
+            query={query}
+            onQuery={setQuery}
+            onAssets={openAssets}
+            mode={mode}
+            /* One switch (user ruling): plain goes straight to the cinematic
+               screen, which opens on its image tab; any cinema state returns to
+               plain. The pult rail inside the screen is a separate question and
+               is deliberately not connected to this button. */
+            onToggle={() => {
+              if (mode === "general") {
+                setMode("cinema");
+                setCinemaMode("image");
+                alignDockToMode("image");
+              } else {
+                setMode("general");
+                setCinemaMode("image");
+              }
+            }}
           />
+
+
+          <FeedHeader />
 
           <Gallery
             view={view}
             surface={surface}
             items={visible}
+            layout={feed.layout}
+            splitByDate={feed.splitByDate}
+            cardSize={feed.cardSize}
+            fit={feed.fit}
             runs={runsHere}
             freshIds={freshIds}
             picked={pickedSet}
@@ -644,7 +1078,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             onReuse={retry}
             onFavorite={toggleFavorite}
             onDownload={downloadRun}
+            onToVideo={toVideoFor}
+            lastViewedId={lastViewedId}
+            commentCounts={commentCounts}
             onDelete={deleteRun}
+            menuActions={tileMenuActions}
             onStarter={applyStarter}
             galleryRef={galleryRef}
           />
@@ -652,6 +1090,14 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           <Composer
             surface={surface}
             model={model}
+            mode={mode}
+            cinemaMode={cinemaMode}
+            onCinemaMode={(next) => {
+              setCinemaMode(next);
+              // "cinematic" survives only in old saved state; every live rail
+              // answer is image or video, and only those move the dock.
+              if (next !== "cinematic") alignDockToMode(next);
+            }}
             generating={busy}
             error={error}
             focusNonce={focusNonce}
@@ -661,9 +1107,13 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               <SelectionBar
                 records={pickedRecords}
                 saving={saving}
+                menuActions={tileMenuActions}
+                onOpen={openViewer}
+                onReuse={retry}
                 onDownload={downloadSelection}
                 onFavorite={favoritePicked}
                 onDelete={deletePicked}
+                onAddToFolder={addPickedToFolder}
                 onClose={clearPicked}
               />
             }
@@ -688,7 +1138,17 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             onNext={nextRun ? () => setViewerId(nextRun.id) : undefined}
             onClose={() => setViewerId(null)}
             onReuse={() => retry(viewerItem)}
+            onToVideo={() => toVideoFor(viewerItem)}
+            onCommentCount={(count) =>
+              setCommentCounts((prev) => ({ ...prev, [viewerItem.id]: count }))
+            }
+            onInpaint={(image, prompt) => void runInpaint(viewerItem, image, prompt)}
+            onOutpaint={(image, pads, prompt) => void runOutpaint(viewerItem, image, pads, prompt)}
+            onApplyCrop={(image) => void runCrop(viewerItem, image)}
+            outpaintBusy={outpaintBusy}
+            busy={inpaintBusy}
             onFavorite={() => toggleFavorite(viewerItem)}
+            onDownload={() => void downloadRun(viewerItem)}
             /* The viewer is released along with the run, so undoing the
                delete restores it to the grid and not back over the studio. */
             onDelete={() => {
@@ -710,6 +1170,51 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               setKeyConfigured(false);
             }}
           />
+        )}
+        {assetsAllOpen && (
+          /* Higgsfield's /asset/all, mirrored: every surface's finished runs in
+             one full-screen browse, selectable, opening the viewer — the same
+             grid the studio renders, widened to the whole history. */
+          <div className="ohf-assets-all" role="dialog" aria-label="에셋 전체 보기">
+            <header className="ohf-assets-all-head">
+              <span className="ohf-assets-all-title">에셋</span>
+              <span className="ohf-assets-all-count">{history.length}개</span>
+              <button
+                type="button"
+                className="ohf-assets-all-close"
+                aria-label="에셋 닫기"
+                onClick={closeAssetsAll}
+              >
+                <CloseIcon size={14} />
+              </button>
+            </header>
+            <div className="ohf-assets-all-body">
+              <Gallery
+                view="assets"
+                surface={surface}
+                items={history}
+                layout={feed.layout}
+                splitByDate={feed.splitByDate}
+                cardSize={feed.cardSize}
+                fit={feed.fit}
+                runs={runsHere}
+                freshIds={freshIds}
+                picked={pickedSet}
+                onOpen={openViewer}
+                onPick={togglePick}
+                onReuse={retry}
+                onFavorite={toggleFavorite}
+                onDownload={downloadRun}
+                onToVideo={toVideoFor}
+                lastViewedId={lastViewedId}
+                commentCounts={commentCounts}
+                onDelete={deleteRun}
+                menuActions={tileMenuActions}
+                onStarter={applyStarter}
+                galleryRef={assetsScrollRef}
+              />
+            </div>
+          </div>
         )}
       </div>
     </div>

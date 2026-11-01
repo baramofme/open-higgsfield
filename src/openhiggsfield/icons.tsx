@@ -149,6 +149,22 @@ export function PlusIcon({ size = 14 }: IconProps) {
   );
 }
 
+export function ChevronRightIcon({ size = 13 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M6.2 4.5 9.7 8 6.2 11.5" />
+    </svg>
+  );
+}
+
+export function ChevronLeftIcon({ size = 13 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M9.8 4.5 6.3 8 9.8 11.5" />
+    </svg>
+  );
+}
+
 export function MinusIcon({ size = 14 }: IconProps) {
   return (
     <svg {...base(size)}>
@@ -307,3 +323,275 @@ export function WaveBadgeIcon({ size = 12 }: IconProps) {
     </svg>
   );
 }
+
+export function ClapperIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <rect x="1.75" y="6.75" width="12.5" height="7.5" rx="1.6" />
+      <path d="M2.4 4.9 5.6 2.9M7.3 4.4l3.2-2M12.2 3.9l2.4-1.5" />
+    </svg>
+  );
+}
+
+export function ApertureIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="8" cy="8" r="6.25" />
+      <path d="M8 1.75V8M14.25 8H8M13.2 13.2 8 8M2.75 8H8M4 4 8 8M12 4 8 8" />
+    </svg>
+  );
+}
+
+export function PersonAddIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="6" cy="5.4" r="2.9" />
+      <path d="M1.75 14.25c.6-2.9 2.2-4.4 4.25-4.4s3.65 1.5 4.25 4.4" />
+      <path d="M12.25 4h3M13.75 2.5v3" />
+    </svg>
+  );
+}
+
+export function FrameIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <rect x="1.75" y="1.75" width="12.5" height="12.5" rx="3" />
+      <path d="M4.5 4.5v3M4.5 4.5h3M11.5 11.5v-3M11.5 11.5h-3" opacity="0.9" />
+    </svg>
+  );
+}
+
+/* Cinema's two instruments, as the app draws them: a person for the character
+   tile, a lens barrel for the camera tile. 16-grid like every other glyph. */
+export function PersonIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="8" cy="5" r="2.6" />
+      <path d="M3.4 13.6c.9-2.6 2.6-4 4.6-4s3.7 1.4 4.6 4" />
+    </svg>
+  );
+}
+export function LensIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="8" cy="8" r="5.5" />
+      <circle cx="8" cy="8" r="2.2" />
+      <path d="M8 2.5v1.4M13.5 8h-1.4M8 13.5v-1.4M2.5 8h1.4" />
+    </svg>
+  );
+}
+
+/* The cinematic mode's own glyph, as the app labels it (시네마): a clapper on a
+   base, drawn once more so the mode segment reads apart from 일반's frame. */
+export function CinematicIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2.5 6.8h11v6.7h-11z" />
+      <path d="M2.8 6.6 13 3.4l1.6 2.6" />
+      <path d="M5.6 6.8 4.4 4.2M9.2 6.8 8 4.2" opacity="0.9" />
+    </svg>
+  );
+}
+
+/* The drum's hover arrows: the app shows a plain downward chevron at the
+   bottom and the same glyph rotated for the top. */
+export function ChevronIcon({ size = 14, flip = false }: IconProps & { flip?: boolean }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      style={flip ? { transform: "rotate(180deg)" } : undefined}
+      aria-hidden="true"
+    >
+      <path
+        d="M5.75 9.5L12 15.75L18.25 9.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function CameraIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M6 4.4V3.1h4v1.3" />
+      <rect x="1.75" y="4.4" width="12.5" height="7.9" rx="2.6" />
+      <circle cx="8" cy="8.35" r="2.3" />
+    </svg>
+  );
+}
+
+export function HammerIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <rect x="4.4" y="2.35" width="7.2" height="3.7" rx="1.2" />
+      <path d="M8 6v7.6" />
+      <path d="M6.6 13.6h2.8" />
+    </svg>
+  );
+}
+
+export function GaugeIcon({ size = 13 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2.6 10a5.4 5.4 0 1 1 10.8 0" />
+      <path d="M8 9.2 10.4 7" />
+      <circle cx="8" cy="9.6" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+/* The picker's chrome glyphs: what a hovered card offers. Eye opens the full
+   view, crop cuts a new frame from it, pencil reopens the element's record. */
+export function EyeIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2 8s2.4-3.8 6-3.8S14 8 14 8s-2.4 3.8-6 3.8S2 8 2 8Z" />
+      <circle cx="8" cy="8" r="1.7" />
+    </svg>
+  );
+}
+
+export function CropIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M4.6 1.8v8.6h8.6" />
+      <path d="M1.8 4.6h8.6v8.6" />
+    </svg>
+  );
+}
+
+export function PencilIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M11.3 3.2l2.3 2.3-7.6 7.6-3.1.8.8-3.1Z" />
+    </svg>
+  );
+}
+
+/* Category glyphs for the element library's sidebar: who the file is filed as. */
+export function GlobeIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="8" cy="8" r="5.6" />
+      <path d="M2.4 8h11.2" />
+      <path d="M8 2.4a7.2 7.2 0 0 1 2.6 5.6A7.2 7.2 0 0 1 8 13.6a7.2 7.2 0 0 1-2.6-5.6A7.2 7.2 0 0 1 8 2.4Z" />
+    </svg>
+  );
+}
+
+export function CubeIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M8 2.2l5.4 3v5.6L8 13.8l-5.4-3V5.2Z" />
+      <path d="M8 2.2v4.4" />
+      <path d="M8 6.6 2.6 3.6" />
+      <path d="M8 6.6l5.4-3" />
+    </svg>
+  );
+}
+
+export function FolderIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2 5.4h4.2l1.6 1.7H14v6H2Z" />
+    </svg>
+  );
+}
+
+/* The free badge's sparkle — the app's own three-spark path, kept as painted
+   fill because strokes would shred its points at this size. */
+export function SparkIcon({ size = 16 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+      style={{ display: "block" }}
+    >
+      <path d="M8 14c.18 0 .342.112.407.28l.484 1.255a1 1 0 0 0 .574.574l1.255.484a.436.436 0 0 1 0 .814l-1.255.484a1 1 0 0 0-.574.574l-.484 1.255a.436.436 0 0 1-.814 0l-.484-1.255a1 1 0 0 0-.574-.574l-1.255-.484a.436.436 0 0 1 0-.814l1.255-.484a1 1 0 0 0 .574-.574l.484-1.255A.44.44 0 0 1 8 14M16 6c.361 0 .686.222.815.56l1.125 2.925a1 1 0 0 0 .575.575l2.925 1.125a.874.874 0 0 1 0 1.63l-2.925 1.125a1 1 0 0 0-.575.575l-1.125 2.925a.874.874 0 0 1-1.63 0l-1.125-2.925a1 1 0 0 0-.575-.575l-2.925-1.125a.874.874 0 0 1 0-1.63l2.925-1.125a1 1 0 0 0 .575-.575l1.125-2.925A.87.87 0 0 1 16 6M6 4c.24 0 .457.148.544.373l.696 1.813a1 1 0 0 0 .574.574l1.813.696a.583.583 0 0 1 0 1.088l-1.813.696a1 1 0 0 0-.574.574l-.696 1.813a.583.583 0 0 1-1.088 0L4.76 9.814a1 1 0 0 0-.574-.574l-1.813-.696a.583.583 0 0 1 0-1.088l1.813-.696a1 1 0 0 0 .574-.574l.696-1.813A.58.58 0 0 1 6 4" />
+    </svg>
+  );
+}
+
+/* The feed header's own icons, lifted from the live filter/view buttons. They
+   keep the platform's 24-unit box and stroke weight so the header reads exactly
+   as the source does, rather than being redrawn into the app's 16-unit glyphs. */
+function base24(size: number) {
+  return {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+    style: { display: "block" },
+  } as const;
+}
+
+/* Three ruled lines at three lengths — the filter mark. */
+export function FeedFilterIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M2.75 4.75H21.25M8.75 19.25H15.25M5.75 12H18.25" />
+    </svg>
+  );
+}
+
+/* Four rounded-corner cells — the view/layout mark. */
+export function FeedViewIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M3.75 5.35C3.75 4.79 3.75 4.51 3.86 4.3A1.5 1.5 0 0 1 4.3 3.86C4.51 3.75 4.79 3.75 5.35 3.75H10.25V10.25H3.75V5.35Z" />
+      <path d="M13.75 3.75H18.65C19.21 3.75 19.49 3.75 19.7 3.86A1.5 1.5 0 0 1 20.14 4.3C20.25 4.51 20.25 4.79 20.25 5.35V10.25H13.75V3.75Z" />
+      <path d="M3.75 13.75H10.25V20.25H5.35C4.79 20.25 4.51 20.25 4.3 20.14A1.5 1.5 0 0 1 3.86 19.7C3.75 19.49 3.75 19.21 3.75 18.65V13.75Z" />
+      <path d="M13.75 13.75H20.25V18.65C20.25 19.21 20.25 19.49 20.14 19.7A1.5 1.5 0 0 1 19.7 20.14C19.49 20.25 19.21 20.25 18.65 20.25H13.75V13.75Z" />
+    </svg>
+  );
+}
+
+/* The four-point sparkle that opens the model submenu. */
+export function FeedModelIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M22.25 15C17.2153 15 15 17.2153 15 22.25C15 17.2153 12.7847 15 7.75 15C12.7847 15 15 12.7847 15 7.75C15 12.7847 17.2153 15 22.25 15Z"
+      />
+    </svg>
+  );
+}
+
+/* The calendar mark that opens the period submenu. */
+export function FeedCalendarIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <rect x="3.75" y="5.25" width="16.5" height="15" rx="2.5" />
+      <path d="M3.75 9.5H20.25M8 3.5V6M16 3.5V6" />
+    </svg>
+  );
+}
+
+/* The fit-to-preview mark: four expand corners around an open centre. */
+export function FeedFitIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M3.75 8.5V5.35C3.75 4.4 4.4 3.75 5.35 3.75H8.5" />
+      <path d="M15.5 3.75H18.65C19.6 3.75 20.25 4.4 20.25 5.35V8.5" />
+      <path d="M20.25 15.5V18.65C20.25 19.6 19.6 20.25 18.65 20.25H15.5" />
+      <path d="M8.5 20.25H5.35C4.4 20.25 3.75 19.6 3.75 18.65V15.5" />
+    </svg>
+  );
+}
+

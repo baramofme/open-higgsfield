@@ -37,6 +37,9 @@ export interface MediaTray {
   /** Make the role's inputs exactly these URLs — the picker hands back the set
       it edited, so one press both attaches and detaches. */
   apply: (role: MediaRole, urls: string[]) => void;
+  /** Take a file off the shelf. The URL itself stays public — what disappears
+      is the record, so the picker stops offering it. */
+  forget: (url: string) => void;
 }
 
 export function useMediaTray(
@@ -148,7 +151,11 @@ export function useMediaTray(
     }
   }
 
-  return { roles, items: media.items, uploads, staged, uploading, allFull, input, begin, apply };
+  function forget(url: string) {
+    setUploads((prev) => prev.filter((record) => record.url !== url));
+  }
+
+  return { roles, items: media.items, uploads, staged, uploading, allFull, input, begin, apply, forget };
 }
 
 /** Attached inputs, above the prompt — the frames read before the words do. */
