@@ -77,6 +77,13 @@ export function createPlatformClient(options: PlatformClientOptions) {
       if (!requestId) throw new PlatformError(400, { detail: "Missing request id" });
       return mapStatus(await send("GET", `/requests/${encodeURIComponent(requestId)}/status`));
     },
+    /* Cancelling an in-flight request. The submit response already carries a
+       `cancel_url`, so the platform owns a cancel endpoint; the natural sibling
+       of `GET /requests/:id/status` is `POST /requests/:id/cancel`. */
+    async cancel(requestId: string): Promise<unknown> {
+      if (!requestId) throw new PlatformError(400, { detail: "Missing request id" });
+      return send("POST", `/requests/${encodeURIComponent(requestId)}/cancel`);
+    },
   };
 }
 

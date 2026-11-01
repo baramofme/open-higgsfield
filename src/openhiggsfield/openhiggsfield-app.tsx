@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { hasPlatformCredentials, submitGeneration, submitOutpaint } from "@/generation/actions";
+import { hasPlatformCredentials, submitGeneration, submitOutpaint, cancelGeneration } from "@/generation/actions";
 import { MissingCredentialsError } from "@/generation/credentials";
 import { MODELS, getModel, parseSettings } from "@/generation/catalog";
 import type { GenerationPlane } from "@/generation/catalog/types";
@@ -48,6 +48,10 @@ export interface ActiveRun {
   /** Identifies the skeleton this run occupies, so a batch clears one tile at
       a time as its own request settles. */
   id: string;
+  /** The platform request id once the run is submitted. A skeleton that has not
+      been submitted yet (a pending press) carries none — its cancel stays hidden
+      until the backend actually knows about the run. */
+  requestId?: string;
   surface: Surface;
   modelLabel: string;
   ratio: string;
@@ -149,6 +153,7 @@ function terminalRows(
       urls: url ? [url] : [],
       status: completed ? "completed" : "failed",
       error: failure,
+      failedAt: completed ? undefined : finishedAt,
       art: artFor(draft.surface, hueOf(id), id),
       createdAt: draft.createdAt,
       settings: draft.settings,
@@ -159,10 +164,12 @@ function terminalRows(
 }
 
 function failedRows(requestId: string, count: number, draft: RunDraft, error: string): RunRecord[] {
+  const failedAt = Date.now();
   return runningRows(requestId, count, draft).map((row) => ({
     ...row,
     status: "failed" as const,
     error,
+    failedAt,
   }));
 }
 
@@ -584,6 +591,23 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         entry.id === record.id ? { ...entry, favorite: !entry.favorite } : entry,
       ),
     );
+  }, []);
+
+  /* A hover "Cancel Request" on a Rendering card reaches here. The request is
+     fired for real on the cloud; the LAN backend rejects the attempt and the
+     reason surfaces in the composer's error slot. The card's own overlay is
+     already locked by the tile's local state, so a second click never fires. */
+  const cancelRun = useCallback((requestId: string) => {
+    if (!requestId) return;
+    void (async () => {
+      try {
+        await cancelGeneration({ requestId });
+      } catch (caught) {
+        if (!alive.current) return;
+        const message = caught instanceof Error ? caught.message : String(caught);
+        setError((prev) => prev ?? `취소 요청이 실패했습니다 — ${message}`);
+      }
+    })();
   }, []);
 
   const deleteRuns = useCallback((records: RunRecord[]) => {
@@ -1134,6 +1158,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             onDelete={deleteRun}
             menuActions={tileMenuActions}
             onStarter={applyStarter}
+            onCancel={cancelRun}
             galleryRef={galleryRef}
           />
 
@@ -1268,6 +1293,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 onDelete={deleteRun}
                 menuActions={tileMenuActions}
                 onStarter={applyStarter}
+                onCancel={cancelRun}
                 galleryRef={assetsScrollRef}
               />
             </div>

@@ -14516,3 +14516,55 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     padding-top: 4px;
   }
 }
+
+/* ---------- cancel overlay on a Rendering card ----------
+
+   While a run renders the skeleton offers a way out. Hovering the card lifts a
+   red "Cancel Request" label one z-layer above its own content — the label and
+   clock sit at z-index 1, this rides z-index 2 so it always reads on top. It
+   answers only to the cursor until pressed. Once the request is fired the
+   overlay stops being a button and holds a locked "Canceling…" state, so a
+   second press can never re-trigger the cancel. */
+.ohf-skeleton-cancel {
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  margin: 0;
+  padding: 5px 11px;
+  border-radius: 8px;
+  border: 1px solid var(--danger-line);
+  background: var(--danger-bg);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s var(--ease);
+}
+/* A resting card hides it; the cursor reveals it and hands it back to the click. */
+.ohf-skeleton:hover .ohf-skeleton-cancel,
+.ohf-skeleton:focus-within .ohf-skeleton-cancel {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ohf-skeleton-cancel-label {
+  color: #ff5a5a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* After the click the card carries data-cancel-requested. This selector outranks
+   the hover rule (an attribute adds weight), so the locked state stays visible
+   and stays inert even while the cursor is still over the card. */
+.ohf-skeleton[data-cancel-requested] .ohf-skeleton-cancel {
+  opacity: 1;
+  pointer-events: none;
+  cursor: default;
+  background: transparent;
+  border-color: transparent;
+}
+.ohf-skeleton[data-cancel-requested] .ohf-skeleton-cancel--requested {
+  animation: ohf-fade 0.2s var(--ease) both;
+}

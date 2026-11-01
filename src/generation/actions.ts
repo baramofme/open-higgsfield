@@ -103,6 +103,20 @@ export async function getGenerationStatuses(data: unknown): Promise<StatusResult
   );
 }
 
+/** Cancel an in-flight run the moment the visitor asks for it. The Higgsfield
+ *  cloud owns a cancel endpoint (its submit response carries a `cancel_url`), so
+ *  a cloud request is cancelled for real. comfy-webui tasks carry a family
+ *  prefix and the LAN backend exposes no high-level cancel api_name, so there is
+ *  nothing to fire — we report that plainly instead of pretending a call. */
+export async function cancelGeneration(data: unknown): Promise<void> {
+  const requestId = parseRequestId(data);
+  if (isCfwuiTaskId(requestId)) {
+    throw new Error("로컬 comfy-webui 백엔드는 실행 중 취소를 지원하지 않습니다.");
+  }
+  const client = await createCloudClient();
+  await client.cancel(requestId);
+}
+
 async function readStoredCredentials() {
   const jar = await cookies();
   return decodeCredentials(jar.get(PLATFORM_KEY_COOKIE)?.value);
@@ -126,6 +140,14 @@ function parseRequestIds(data: unknown): string[] {
     if (typeof requestId !== "string" || !requestId) throw new Error("Invalid request id");
     return requestId;
   });
+}
+
+/* One id, for the cancel call — the same guard the fan-out uses. */
+function parseRequestId(data: unknown): string {
+  const payload = asObject(data, "Invalid cancel payload");
+  const requestId = payload.requestId;
+  if (typeof requestId !== "string" || !requestId) throw new Error("Invalid request id");
+  return requestId;
 }
 
 function asObject(data: unknown, message: string): Record<string, unknown> {

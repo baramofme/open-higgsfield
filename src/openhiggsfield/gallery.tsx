@@ -131,6 +131,7 @@ function slotsOf(runs: ActiveRun[], items: RunRecord[]): Slot[] {
         kind: "run",
         run: {
           id: item.id,
+          requestId: item.requestId,
           surface: item.surface,
           modelLabel: item.modelLabel,
           ratio: item.ratio,
@@ -189,6 +190,7 @@ const Tile = memo(function Tile({
   viewed,
   commentCount,
   onOpen,
+  onShowFailure,
   onPick,
   onReuse,
   onFavorite,
@@ -211,6 +213,10 @@ const Tile = memo(function Tile({
      way Higgsfield counts them on the hovered photo. */
   commentCount: number;
   onOpen: (id: string) => void;
+  /* Opens the failure-detail dialog for a run that ended failed. The media viewer
+     cannot show a run with no output, so failed cards reach their details through
+     this callback rather than onOpen. */
+  onShowFailure: (id: string) => void;
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
@@ -506,6 +512,7 @@ export const Gallery = memo(function Gallery({
   onDelete,
   menuActions,
   onStarter,
+  onCancel,
   galleryRef,
   layout,
   splitByDate,
@@ -519,6 +526,10 @@ export const Gallery = memo(function Gallery({
   freshIds: string[];
   picked: ReadonlySet<string>;
   onOpen: (id: string) => void;
+  /* Opens the failure-detail dialog for a run that ended failed. The media viewer
+     cannot show a run with no output, so failed cards reach their details through
+     this callback rather than onOpen. */
+  onShowFailure: (id: string) => void;
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
@@ -530,6 +541,9 @@ export const Gallery = memo(function Gallery({
   onDelete: (item: RunRecord) => void;
   menuActions: TileMenuActions;
   onStarter: (prompt: string) => void;
+  /* Fires a cancel request for a run that the backend already knows about, once
+     the visitor clicks the "Cancel Request" overlay on a Rendering card. */
+  onCancel?: (requestId: string) => void;
   galleryRef: RefObject<HTMLDivElement | null>;
   layout: FeedLayout;
   splitByDate: boolean;
@@ -576,6 +590,7 @@ export const Gallery = memo(function Gallery({
         splitByDate={splitByDate}
         cardSize={cardSize}
         fit={fit}
+        onCancel={onCancel}
       />
     </div>
   );
@@ -788,6 +803,7 @@ function VirtualizedGrid({
   splitByDate,
   cardSize,
   fit,
+  onCancel,
 }: {
   scrollRef: RefObject<HTMLDivElement | null>;
   selecting: boolean;
@@ -796,6 +812,10 @@ function VirtualizedGrid({
   freshIds: string[];
   picked: ReadonlySet<string>;
   onOpen: (id: string) => void;
+  /* Opens the failure-detail dialog for a run that ended failed. The media viewer
+     cannot show a run with no output, so failed cards reach their details through
+     this callback rather than onOpen. */
+  onShowFailure: (id: string) => void;
   onPick: (id: string, index: number, range: boolean) => void;
   onReuse: (item: RunRecord) => void;
   onFavorite: (item: RunRecord) => void;
@@ -809,6 +829,7 @@ function VirtualizedGrid({
   splitByDate: boolean;
   cardSize: number;
   fit: boolean;
+  onCancel?: (requestId: string) => void;
 }) {
   const width = useInnerWidth(scrollRef);
   const slots = useMemo(() => slotsOf(runs, items), [runs, items]);
@@ -832,7 +853,7 @@ function VirtualizedGrid({
 
   const slotNode = (slot: Slot, index: number) =>
     slot.kind === "run" ? (
-      <RunningTile key={slot.key} run={slot.run} />
+      <RunningTile key={slot.key} run={slot.run} onCancel={onCancel} />
     ) : (
       <Tile
         key={slot.key}
@@ -982,8 +1003,18 @@ function Empty({
   );
 }
 
-function RunningTile({ run }: { run: ActiveRun }) {
+function RunningTile({
+  run,
+  onCancel,
+}: {
+  run: ActiveRun;
+  onCancel?: (requestId: string) => void;
+}) {
   const [elapsed, setElapsed] = useState(0);
+  /* A cancel already fired for this run. Once set, the overlay stops being a
+     button and holds a locked "Canceling…" state, so a second click can never
+     re-trigger the request. */
+  const [requested, setRequested] = useState(false);
 
   useEffect(() => {
     const tick = () => setElapsed(Math.floor((Date.now() - run.startedAt) / 1000));
@@ -992,16 +1023,47 @@ function RunningTile({ run }: { run: ActiveRun }) {
     return () => clearInterval(timer);
   }, [run.startedAt]);
 
+  /* A cancel only reaches a run the backend already knows by request id. A press
+     still waiting on submit carries none, so there is nothing to offer yet. */
+  const requestId = run.requestId;
+  const cancellable = Boolean(requestId) && Boolean(onCancel);
+
+  const overlay = !cancellable
+    ? null
+    : requested
+      ? (
+        <div className="ohf-skeleton-cancel ohf-skeleton-cancel--requested" aria-live="polite">
+          <span className="ohf-skeleton-cancel-label">Canceling…</span>
+        </div>
+      )
+      : (
+        <button
+          type="button"
+          className="ohf-skeleton-cancel"
+          aria-label="Cancel Request"
+          title="Cancel Request"
+          onClick={(event) => {
+            event.stopPropagation();
+            setRequested(true);
+            onCancel!(requestId!);
+          }}
+        >
+          <span className="ohf-skeleton-cancel-label">Cancel Request</span>
+        </button>
+      );
+
   return (
     <div
       className="ohf-skeleton"
       role="status"
       aria-label={`${run.modelLabel} rendering`}
+      data-cancel-requested={requested || undefined}
     >
       <span className="ohf-skeleton-label">Rendering</span>
       <span className="ohf-skeleton-clock">
         {Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")}
       </span>
+      {overlay}
     </div>
   );
 }
