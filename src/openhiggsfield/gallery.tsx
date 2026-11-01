@@ -298,6 +298,23 @@ const Tile = memo(function Tile({
             {item.cancelled ? "Cancelled by user" : `${item.modelLabel} didn’t deliver`}
           </span>
           <span className="ohf-fail-why">{item.error}</span>
+          {/* The detail view is now an explicit control stacked above Retry, not
+              only the stretched overlay under the card. While the grid is picking
+              it toggles the selection like the card body does; otherwise it opens
+              the failure record the app stored when this run died. Both it and
+              Retry ride above that overlay on their own z-index (see the CSS
+              `.ohf-fail .ohf-btn-solid` lift), so a press on either never reaches
+              the overlay. */}
+          <button
+            type="button"
+            className="ohf-btn-solid ohf-fail-detail"
+            title="실패 상세 보기"
+            onClick={(event) =>
+              selecting ? onPick(item.id, index, event.shiftKey) : onShowFailure(item.id)
+            }
+          >
+            상세보기
+          </button>
           <button
             type="button"
             className="ohf-btn-solid"
