@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -22,10 +22,13 @@ import {
   REFERENCE_FILM_OVERLAY,
 } from "./reference-film-popover";
 import { CameraMovementPanel } from "./camera-movement-panel";
+import { CameraAnglePanel } from "./camera-angle-panel";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
+import { AngleIcon, CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
 import { useCamera } from "@/generation/stores/camera";
+import { CAMERA_ANGLE_FEATURE, angleLabel } from "@/generation/camera-angle";
+import { usePromptTokens } from "@/generation/prompt-registry";
 import { LightingPopover } from "./lighting-popover";
 import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
@@ -42,6 +45,7 @@ const SETTING = "setting:";
 const CHARACTER = "character";
 const CAMERA = "camera";
 const LIGHTING = "lighting";
+const ANGLE = "angle";
 
 /* What the studio itself can deliver for a model that carries no count of its
    own: one platform request per result. */
@@ -79,6 +83,12 @@ const CAMERA_FLOOR = 78;
     the ring — the part that must stay whole before the readout folds. */
 const LIGHTING_FLOOR = 84;
 
+/** The angle panel's minimum face: its padding and border plus the head row —
+    everything above the chip axes, which fold first. Same reasoning as the
+    character floor: the panel's head is a title and a reset, so it takes the
+    smaller number. */
+const ANGLE_FLOOR = 64;
+
 /** Declared widths keep an opening popover inside the composer's own column. */
 function popoverWidth(id: string, model: ModelEntry): number {
   if (id === PICKER || id === ASSETS) return 560;
@@ -87,6 +97,7 @@ function popoverWidth(id: string, model: ModelEntry): number {
   if (id === REFERENCE_FILM_OVERLAY) return 320;
   if (id === CAMERA) return 400;
   if (id === LIGHTING) return 340;
+  if (id === ANGLE) return 300;
   /* A list of an enum's values is the narrow panel; a slider needs its travel. */
   if (id.startsWith(SETTING) && model.settings[id.slice(SETTING.length)]?.type === "enum") {
     return 216;
@@ -151,6 +162,31 @@ export function Composer({
   const { camera: cameraChoice } = useCamera();
   const referenceCount = tray.items.filter((item) => item.role === "reference").length;
   const referenceMax = model.roles.reference;
+  /* The angle pill's face reads the token store the panel writes and the prompt
+     reads — the same single-source rule the movement tiles answer with. The pill
+     says what the chips say: the picked axes in their Korean labels, in the
+     order the prompt composes them (not the order they were clicked). Nothing
+     picked yet, the pill says 자동. The subscription takes the tokens array by
+     reference (the reference-film and lighting panels' pattern) — a selector
+     that filtered here would build a fresh array every snapshot and spin the
+     store into an update loop. */
+  const promptTokens = usePromptTokens((state) => state.tokens);
+  const angleTokens = useMemo(
+    () => promptTokens.filter((t) => t.featureId === CAMERA_ANGLE_FEATURE),
+    [promptTokens],
+  );
+  const angleAxisOrder: Record<string, number> = { view: 0, elevation: 1, distance: 2 };
+  const angleSummary =
+    angleTokens
+      .filter((t) => t.controlKey in angleAxisOrder && typeof t.value === "string")
+      .sort((a, b) => angleAxisOrder[a.controlKey]! - angleAxisOrder[b.controlKey]!)
+      .map((t) => angleLabel(t.value as string))
+      .join(" ") || "자동";
+  /* Something is live when a slot holds a word — the same presence test the
+     composition applies, so the lit pill and the written phrase never drift. */
+  const angleActive = angleTokens.some(
+    (t) => typeof t.value !== "string" || (t.value as string).trim().length > 0,
+  );
 
   const [overlay, setOverlay] = useState<string | null>(null);
   /* The shelf the asset panel should land on. The @ button asks for elements
@@ -327,7 +363,7 @@ export function Composer({
   useEffect(() => {
     const isSetting = (overlay ?? "").startsWith(SETTING);
     const ridesAnchor =
-      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING;
+      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING || overlay === ANGLE;
     if (overlay !== ASSETS && !ridesAnchor) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
@@ -348,7 +384,9 @@ export function Composer({
                 ? CAMERA_FLOOR
                 : overlay === LIGHTING
                   ? LIGHTING_FLOOR
-                  : PICKER_FLOOR;
+                  : overlay === ANGLE
+                    ? ANGLE_FLOOR
+                    : PICKER_FLOOR;
       setPopClear(Math.max(floor, Math.round(room)));
     };
     read();
@@ -520,6 +558,15 @@ export function Composer({
     if (selecting) setOverlay(null);
   }, [selecting]);
 
+  /* The angle is image-seat chrome: when the dock leaves the image seat — the
+     pult moves to video, or the clapper leaves for the general studio — the
+     pill unmounts, and an open panel with no trigger would float over the new
+     form. The fold rides the same one-way rule as the swap's. */
+  useEffect(() => {
+    setOverlay((current) =>
+      current === ANGLE && (mode !== "cinema" || cinemaMode !== "image") ? null : current);
+  }, [mode, cinemaMode]);
+
   // Rendered only after mount: the modifier is the visitor's, not the server's.
   useEffect(() => {
     setShortcut(/Mac|iP(hone|ad|od)/.test(navigator.userAgent) ? "⌘↵" : "Ctrl↵");
@@ -603,6 +650,7 @@ export function Composer({
         {overlay === CHARACTER && <CharacterPopover onClose={() => setOverlay(null)} />}
         {overlay === CAMERA && <CameraPopover onClose={() => setOverlay(null)} />}
         {overlay === LIGHTING && <LightingPopover onClose={() => setOverlay(null)} />}
+        {overlay === ANGLE && <CameraAnglePanel />}
         {overlay === REFERENCE_FILM_OVERLAY && (
           <ReferenceFilmPopover onClose={() => setOverlay(null)} />
         )}
@@ -901,6 +949,31 @@ export function Composer({
                     <CaretDownIcon />
                   </span>
                 </button>
+                {/* The camera-angle pill: the image seat's instrument, mirroring
+                    the video seat's camera instruments — a press opens the
+                    panel above the rail, the face carries the current pick, and
+                    the lit state reads the same store the prompt reads, never a
+                    copy of its own. It belongs to the cinematic image dock
+                    alone: the video seat speaks through movement, and the
+                    general studio carries no angle chrome. */}
+                {mode === "cinema" && cinemaMode === "image" && (
+                  <button
+                    type="button"
+                    className="ohf-ctl ohf-angle-ctl ohf-tip"
+                    data-tip="카메라 앵글"
+                    data-tour-anchor="tour-image-angle"
+                    aria-label="카메라 앵글"
+                    aria-expanded={overlay === ANGLE}
+                    aria-haspopup="dialog"
+                    data-active={angleActive || undefined}
+                    onClick={(event) => toggle(ANGLE, event.currentTarget)}
+                  >
+                    <span className="ohf-angle-ic" aria-hidden>
+                      <AngleIcon size={16} />
+                    </span>
+                    <span className="ohf-angle-name">{angleSummary}</span>
+                  </button>
+                )}
                 </div>
                 <div className="ohf-controls-flow" ref={controlsFlowRef}>
                 <button

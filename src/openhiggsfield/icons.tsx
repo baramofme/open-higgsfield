@@ -440,6 +440,19 @@ export function CameraIcon({ size = 16 }: IconProps) {
   );
 }
 
+/* The angle protractor: a baseline, its scale arc, and a needle reading off it —
+   the instrument the camera-angle pill opens with. One drawing system with the
+   rest: 16-grid, 1.5 stroke, round caps. */
+export function AngleIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2.4 11.8h11.2" />
+      <path d="M4.4 11.8a3.6 3.6 0 0 1 7.2 0" />
+      <path d="M8 11.8 4.6 7.6" />
+    </svg>
+  );
+}
+
 export function HammerIcon({ size = 16 }: IconProps) {
   return (
     <svg {...base(size)}>

@@ -15161,6 +15161,159 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   }
 }
 
+/* ── Camera-angle instrument (the image dock's angle picker) ──────────────
+   The mirror of the video's camera-movement instrument: the trigger is a pill
+   on the dock toolbar, the panel is a compact popover, and every lit state is
+   read from the same token store the prompt reads — never a private copy that
+   could drift. Chip words ride tooltips (the English qwenmultiangle tokens,
+   angle-prompt-spec §1d), Korean labels ride faces (§1e glossary). Appended
+   above the Cinematic Studio screen block so the cascade resolves here; every
+   variable it uses is one the dock already answers with. */
+.ohf-angle-ctl {
+  gap: 6px;
+  padding: 0 10px;
+}
+.ohf-angle-ctl[data-active] {
+  border-color: var(--accent-32);
+}
+.ohf-angle-ic {
+  display: inline-flex;
+  align-items: center;
+}
+.ohf-angle-name {
+  max-width: 13ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+/* The angle panel rides the composer's measured room on the axis every panel
+   was given (--ohf-pop-clear; no new variable), as a ceiling over its content —
+   a max-height can only lower, never raise. The head stays whole above the
+   fold; the axes scroll beneath it. */
+.ohf-popover--angle {
+  width: min(300px, 100%);
+  padding: 10px 12px 12px;
+  max-height: var(--ohf-pop-clear, calc(100vh - 268px)) !important;
+  overflow-y: auto;
+}
+.ohf-angle-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.ohf-angle-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tx3);
+}
+/* The reset: it appears only when the feature actually holds something, so it
+   never offers to wipe an already-empty feature — the movement panel's rule. */
+.ohf-angle-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--tx3);
+  font-size: 9.5px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-angle-clear:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--tx);
+}
+.ohf-angle-axis {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+.ohf-angle-axis-label {
+  font-size: 9.5px;
+  line-height: 11px;
+  font-weight: 600;
+  color: var(--tx3);
+}
+/* Chips: word pills wrapping two or three deep. On is the accent, off is the
+   rail's quiet grey — the same two states every other flag on the dock answers
+   with, and the tooltip names the English phrase the chip writes. */
+.ohf-angle-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.ohf-angle-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--tx3);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+.ohf-angle-chip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--tx2);
+}
+.ohf-angle-chip[data-active] {
+  background: var(--accent-14);
+  border-color: var(--accent-32);
+  color: var(--accent);
+}
+/* The free-text slot: one line. The words land after the axis vocabulary,
+   appended verbatim, the way krea2-anygles appends its `extra_prompt`. */
+.ohf-angle-input {
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  color: var(--tx);
+  font-family: inherit;
+  font-size: 11.5px;
+  outline: none;
+}
+.ohf-angle-input::placeholder {
+  color: var(--tx-off);
+}
+.ohf-angle-input:focus {
+  border-color: var(--accent-32);
+}
+/* Below 560 the dock is a thumb wide: the pill answers with the protractor
+   alone; the summary folds. */
+@media (max-width: 560px) {
+  .ohf-angle-name {
+    display: none;
+  }
+  .ohf-angle-ctl {
+    width: 34px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
 /* ── Cinematic Studio screen ───────────────────────────────────────────────
    The cinematic surface is a separate full-screen page, not a panel riding the
    dashboard: its own header carries the only way back, a left model rail sits
