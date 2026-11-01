@@ -3,6 +3,7 @@
 import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import type { MediaItem, MediaRole, ModelEntry } from "@/generation/catalog";
+import { referencePolicyFor, referenceSlotsRemaining } from "@/generation/catalog";
 import { useElements, nextElementName, type ElementItem } from "@/generation/stores/elements";
 import {
   DEFAULT_PROJECT_ID,
@@ -11,7 +12,7 @@ import {
   type Project,
 } from "@/generation/stores/projects";
 
-import { ROLE_KINDS, ROLE_LABELS, defaultRole, roleNoun, rolesOf, type AssetKind } from "./data";
+import { ROLE_KINDS, ROLE_LABELS, defaultRole, roleNoun, type AssetKind } from "./data";
 import type { RunRecord } from "./history";
 import {
   AssetsIcon,
@@ -130,8 +131,16 @@ export function AssetPicker({
   onForget: (url: string) => void;
   onClose: () => void;
 }) {
-  const roles = rolesOf(model);
-  const [role, setRole] = useState<MediaRole>(() => defaultRole(model));
+  /* The per-mode reference preset is the single source the selector reads its
+     enable/disable and count caps from. Derived once per render — pure and
+     render-safe. The picker never re-derives a rule: whatever the catalog says
+     about this model is exactly what these chips honour. */
+  const policy = referencePolicyFor(model);
+  /* Land on the first slot this model actually accepts; an audio model that
+     rejects every reference has none, so we fall back to the declared default
+     and the panel explains why nothing is selectable. */
+  const initialRole = policy.options.find((option) => option.enabled)?.role ?? defaultRole(model);
+  const [role, setRole] = useState<MediaRole>(() => initialRole);
   /* null until the visitor lands: the panel opens on the shelf that actually
      holds something, so someone who has generated all day and uploaded nothing
      does not land on an empty tab. */
@@ -139,7 +148,7 @@ export function AssetPicker({
   /* The role's inputs as this panel would leave them — seeded with what is
      already on the plane, so an attached tile opens marked and can be pressed
      off again. An array, not a Set: the order picked is the order attached. */
-  const [selected, setSelected] = useState<string[]>(() => urlsOf(items, defaultRole(model)));
+  const [selected, setSelected] = useState<string[]>(() => urlsOf(items, initialRole));
   const tabsRef = useRef<HTMLDivElement>(null);
   const tabButtons = useRef<Record<string, HTMLButtonElement | null>>({});
   /* The plate that slides under the chosen tab. Its place is measured, never
@@ -248,6 +257,9 @@ export function AssetPicker({
      switch to audio — so the selection is re-seeded. The tab is not: the shelf
      being looked at is the visitor's choice, not the role's. */
   function pickRole(next: MediaRole) {
+    /* A slot the preset disables is not a target — the chip guards the click,
+       and this guards every other caller (start→end advance) in one place. */
+    if (!policy.optionFor(next).enabled) return;
     setRole(next);
     setSelected(urlsOf(items, next));
   }
@@ -336,12 +348,20 @@ export function AssetPicker({
           ? `Remove ${dropped > 1 ? `${dropped} ` : ""}${roleNoun(role, dropped)}`
           : "Done";
 
-  const canUpload = room > 0 && !uploading;
+  /* The slot's own preset is the gate: a kind the model rejects is never
+     uploadable, and a full slot is, whatever the raw max says. Reading both off
+     `policy` (never re-deriving) keeps the button, the chip and the count in
+     agreement — one answer per slot. */
+  const slotEnabled = policy.optionFor(role).enabled;
+  const slotFull = slotEnabled && referenceSlotsRemaining(policy, role, selected.length) === 0;
+  const canUpload = slotEnabled && room > 0 && !uploading;
   const uploadTip = uploading
     ? "Uploading…"
-    : room > 0
-      ? `Upload a ${roleNoun(role, 1)} from this device`
-      : `Every ${roleNoun(role, 1)} slot is taken — press one off to free it`;
+    : !slotEnabled
+      ? `This model does not take a ${roleNoun(role, 1)} reference`
+      : slotFull
+        ? `Every ${roleNoun(role, 1)} slot is taken — press one off to free it`
+        : `Upload a ${roleNoun(role, 1)} from this device`;
 
   const showToolbar =
     opened === "uploads" || opened === "elements" || opened === "generations";
@@ -402,29 +422,52 @@ export function AssetPicker({
         </button>
       </header>
 
-      {/* Which slot this panel is editing. Models declaring one role need no
-          switch — the footer already names what is being changed. */}
-      {roles.length > 1 && (
-        <div className="ohf-assets-roles" role="group" aria-label="Input slot">
-          {roles.map((entry) => {
-            const used =
-              entry === role ? selected.length : items.filter((item) => item.role === entry).length;
-            return (
-              <button
-                key={entry}
-                type="button"
-                className="ohf-chip ohf-chip--role"
-                aria-pressed={entry === role}
-                onClick={() => pickRole(entry)}
-              >
-                {ROLE_LABELS[entry]}
-                <span className="ohf-chip-count">
-                  {used}/{model.roles[entry] ?? 0}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+      {/* Which slot this panel is editing. The selector always offers the full
+          five-slot domain; the per-mode preset decides which chips are live. A
+          slot the model does not take stays visible but greyed, so its absence
+          reads as a rule rather than a gap (shared vocabulary: render the domain,
+          grey out what the preset rejects). */}
+      <div className="ohf-assets-roles" role="group" aria-label="Input slot">
+        {policy.options.map((option) => {
+          const entry = option.role;
+          const used =
+            entry === role ? selected.length : items.filter((item) => item.role === entry).length;
+          const room = referenceSlotsRemaining(policy, entry, used);
+          const full = option.enabled && room === 0;
+          return (
+            <button
+              key={entry}
+              type="button"
+              className="ohf-chip ohf-chip--role"
+              aria-pressed={entry === role}
+              aria-disabled={!option.enabled}
+              disabled={!option.enabled}
+              title={
+                !option.enabled
+                  ? `${ROLE_LABELS[entry]} — this model does not take this reference`
+                  : full
+                    ? `Every ${ROLE_LABELS[entry]} slot is taken — press one off to free it`
+                    : ROLE_LABELS[entry]
+              }
+              onClick={() => {
+                if (!option.enabled) return;
+                pickRole(entry);
+              }}
+            >
+              {ROLE_LABELS[entry]}
+              <span className="ohf-chip-count" aria-label={`${used} of ${option.max}`}>
+                {used}/{option.max}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      {/* When the model takes no reference at all, say so out loud rather than
+          leave five grey chips for the visitor to decipher. */}
+      {!policy.acceptsReference && (
+        <p className="ohf-assets-roles-note" role="status">
+          This model does not accept references — generate from the prompt alone.
+        </p>
       )}
 
       <div className="ohf-v2-block">
