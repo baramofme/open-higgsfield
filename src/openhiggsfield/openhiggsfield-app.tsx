@@ -45,6 +45,11 @@ import { SelectionBar, type SaveProgress } from "./selection-bar";
 import { Topbar } from "./topbar";
 import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
+/* Separate import block, anchored away from the top cluster so it forms its own
+   diff hunk: the dedicated Cinematic Studio screen plus the app's own cinema
+   rail, which it adopts as its left column (the rail was defined but unused). */
+import { CinemaPanel } from "./cinema-panel";
+import { CinemaStudioScreen } from "./cinema-studio-screen";
 
 /* Long enough to read the bar and reach it; the drain line states the window. */
 const UNDO_MS = 6000;
@@ -1188,9 +1193,70 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   );
   const busy = runs.length > 0 || history.some((record) => record.status === "running");
 
+  /* One composer element, two surfaces: general docks it inside .ohf-main,
+     cinematic docks it inside the Cinematic Studio screen. Defined once so the
+     props live in a single place and both branches reuse the same element. */
+  const composerEl = (
+    <Composer
+      surface={surface}
+      model={model}
+      mode={mode}
+      cinemaMode={cinemaMode}
+      onCinemaMode={(next) => {
+        setCinemaMode(next);
+        // "cinematic" survives only in old saved state; every live rail
+        // answer is image or video, and only those move the dock.
+        if (next !== "cinematic") alignDockToMode(next);
+      }}
+      generating={busy}
+      error={error}
+      focusNonce={focusNonce}
+      history={history}
+      selecting={selected.length > 0}
+      selection={
+        <SelectionBar
+          records={pickedRecords}
+          saving={saving}
+          menuActions={tileMenuActions}
+          onOpen={openViewer}
+          onReuse={retry}
+          onDownload={downloadSelection}
+          onFavorite={favoritePicked}
+          onDelete={deletePicked}
+          onAddToFolder={addPickedToFolder}
+          onClose={clearPicked}
+        />
+      }
+      onError={setError}
+      onGenerate={runGenerate}
+      notice={
+        deleted && (
+          <UndoBar
+            records={deleted}
+            onUndo={restoreDeleted}
+            onDismiss={dismissDeleted}
+          />
+        )
+      }
+    />
+  );
+
   return (
     <div className={`ohf ${fontClassName}`} style={{ "--ohf-grain": GRAIN_URI } as React.CSSProperties}>
-      <div className="ohf-shell">
+      {mode === "cinema" ? (
+        <CinemaStudioScreen
+          onExit={() => {
+            setMode("general");
+            setCinemaMode("image");
+          }}
+          composer={composerEl}
+          rail={<CinemaPanel />}
+          busy={busy}
+          keyConfigured={keyConfigured}
+          onKeys={openKeys}
+        />
+      ) : (
+        <div className="ohf-shell">
         <main className="ohf-main">
           <Topbar
             view={view}
@@ -1249,48 +1315,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             galleryRef={galleryRef}
           />
 
-          <Composer
-            surface={surface}
-            model={model}
-            mode={mode}
-            cinemaMode={cinemaMode}
-            onCinemaMode={(next) => {
-              setCinemaMode(next);
-              // "cinematic" survives only in old saved state; every live rail
-              // answer is image or video, and only those move the dock.
-              if (next !== "cinematic") alignDockToMode(next);
-            }}
-            generating={busy}
-            error={error}
-            focusNonce={focusNonce}
-            history={history}
-            selecting={selected.length > 0}
-            selection={
-              <SelectionBar
-                records={pickedRecords}
-                saving={saving}
-                menuActions={tileMenuActions}
-                onOpen={openViewer}
-                onReuse={retry}
-                onDownload={downloadSelection}
-                onFavorite={favoritePicked}
-                onDelete={deletePicked}
-                onAddToFolder={addPickedToFolder}
-                onClose={clearPicked}
-              />
-            }
-            onError={setError}
-            onGenerate={runGenerate}
-            notice={
-              deleted && (
-                <UndoBar
-                  records={deleted}
-                  onUndo={restoreDeleted}
-                  onDismiss={dismissDeleted}
-                />
-              )
-            }
-          />
+          {composerEl}
         </main>
 
         {viewerItem && (
@@ -1391,7 +1416,8 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             </div>
           </div>
         )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
