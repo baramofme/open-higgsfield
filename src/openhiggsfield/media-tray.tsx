@@ -10,6 +10,7 @@ import { uploadMedia } from "@/generation/upload";
 import { ROLE_ACCEPT, ROLE_LABELS, ROLE_TAGS, rolesOf } from "./data";
 import { AudioIcon, CloseIcon, VideoIcon } from "./icons";
 import { kindOfFile, loadUploads, mergeUploads, rememberUpload, saveUploads, type UploadRecord } from "./uploads";
+import { cachedWaveformForAsset } from "@/lib/waveform";
 
 function useMedia(model: ModelEntry) {
   const imageMedia = useImageMedia();
@@ -158,6 +159,155 @@ export function useMediaTray(
   return { roles, items: media.items, uploads, staged, uploading, allFull, input, begin, apply, forget };
 }
 
+/* Pull the first decodable frame out of a video and hand it back as a JPEG data
+   url small enough to sit behind a 56px tile. We seek a hair past zero rather
+   than trusting a `#t` fragment: setting `currentTime` and waiting for `seeked`
+   is what actually decodes a frame across browsers, and a frame decoded this way
+   is same-origin-clean, so `toDataURL` won't taint on `blob:` uploads. Any
+   failure — missing metadata, a cross-origin taint, a codec the browser refuses —
+   collapses to null and the glyph stays. */
+function firstFrameOfVideo(url: string, maxSide = 96): Promise<string | null> {
+  if (typeof document === "undefined") return Promise.resolve(null);
+  return new Promise((resolve) => {
+    const video = document.createElement("video");
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    let settled = false;
+    const finish = (value: string | null) => {
+      if (settled) return;
+      settled = true;
+      video.removeAttribute("src");
+      video.load();
+      resolve(value);
+    };
+    const grab = () => {
+      const w = video.videoWidth;
+      const h = video.videoHeight;
+      if (!w || !h) return finish(null);
+      const scale = Math.min(1, maxSide / Math.max(w, h));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(w * scale));
+      canvas.height = Math.max(1, Math.round(h * scale));
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return finish(null);
+      try {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        finish(canvas.toDataURL("image/jpeg", 0.82));
+      } catch {
+        finish(null); // a tainted canvas throws here
+      }
+    };
+    video.addEventListener("loadeddata", () => {
+      const t = video.duration > 0 ? Math.min(0.05, video.duration / 4) : 0.05;
+      try {
+        video.currentTime = t;
+      } catch {
+        grab();
+      }
+    });
+    video.addEventListener("seeked", grab);
+    video.addEventListener("error", () => finish(null));
+    // A hung decode must never hang the strip open.
+    setTimeout(() => finish(null), 5000);
+    video.src = url;
+    video.load();
+  });
+}
+
+/** One tile in the contact sheet. A still image paints its own thumb; audio and
+    video have nothing still to show, so we synthesise a background for them —
+    the waveform for audio, the first frame for video. Both are async and both
+    cost real work (decode the whole clip, seek a frame), so nothing is computed
+    until the tile is on screen: the contact sheet must paint before a generation
+    can, and decoding every attachment up front would jank the composer open. */
+export function StripTile({ item }: { item: MediaItem }) {
+  const isMedia = item.role === "audio" || item.role === "video";
+  const [bg, setBg] = useState<string | null>(null);
+  const tileRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!isMedia) return;
+    const el = tileRef.current;
+    if (!el) return;
+    let cancelled = false;
+
+    async function generate() {
+      try {
+        const image =
+          item.role === "video"
+            ? await firstFrameOfVideo(item.url)
+            : await cachedWaveformForAsset({ id: item.id, url: item.url });
+        if (!cancelled && image) setBg(image);
+      } catch {
+        /* A clip the browser can't decode, or a waveform that throws, just keeps
+           the glyph. Nothing else about the tile changes. */
+      }
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      void generate();
+      return () => {
+        cancelled = true;
+      };
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          io.disconnect();
+          void generate();
+        }
+      },
+      { rootMargin: "160px" },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelled = true;
+    };
+  }, [isMedia, item.id, item.url]);
+
+  if (!isMedia) {
+    /* Blob-hosted user upload; next/image would proxy an arbitrary remote host
+       for a 56px thumb. */
+    return (
+      <span className="ohf-strip-tile">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="ohf-strip-thumb"
+          src={item.url}
+          alt=""
+          onError={(event) => {
+            event.currentTarget.style.visibility = "hidden";
+          }}
+        />
+        <span className="ohf-strip-tag">{ROLE_TAGS[item.role]}</span>
+      </span>
+    );
+  }
+
+  return (
+    <span
+      ref={tileRef}
+      className="ohf-strip-tile"
+      style={
+        bg
+          ? { backgroundImage: `url("${bg}")`, backgroundSize: "cover", backgroundPosition: "center" }
+          : undefined
+      }
+    >
+      {/* The glyph is the placeholder: it holds the tile until the image lands,
+          then the real frame or waveform takes over and the mark steps aside. */}
+      {!bg && (
+        <span className="ohf-strip-glyph">
+          {item.role === "audio" ? <AudioIcon size={20} /> : <VideoIcon size={20} />}
+        </span>
+      )}
+      <span className="ohf-strip-tag">{ROLE_TAGS[item.role]}</span>
+    </span>
+  );
+}
+
 /** Attached inputs, above the prompt — the frames read before the words do. */
 export function MediaStrip({ model }: { model: ModelEntry }) {
   const media = useMedia(model);
@@ -168,26 +318,7 @@ export function MediaStrip({ model }: { model: ModelEntry }) {
     <ul className="ohf-strip">
       {items.map((item) => (
         <li key={item.id} className="ohf-strip-item">
-          <span className="ohf-strip-tile">
-            {item.role === "audio" || item.role === "video" ? (
-              <span className="ohf-strip-glyph">
-                {item.role === "audio" ? <AudioIcon size={20} /> : <VideoIcon size={20} />}
-              </span>
-            ) : (
-              /* Blob-hosted user upload; next/image would proxy an arbitrary
-                 remote host for a 56px thumb. */
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                className="ohf-strip-thumb"
-                src={item.url}
-                alt=""
-                onError={(event) => {
-                  event.currentTarget.style.visibility = "hidden";
-                }}
-              />
-            )}
-            <span className="ohf-strip-tag">{ROLE_TAGS[item.role]}</span>
-          </span>
+          <StripTile item={item} />
           <button
             type="button"
             className="ohf-strip-remove"
