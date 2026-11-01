@@ -24,7 +24,13 @@ import { validateReferenceSubmission } from "@/generation/catalog";
 
 import { GRAIN_URI, artFor } from "./artwork";
 import { Composer } from "./composer";
-import { fileNameFor, saveFile } from "./download";
+/* Separate CSV imports, anchored beside the download helper the browser calls so
+   the codec forms its own diff hunk and never rides in the top-of-file cluster
+   where siblings are editing right now: the element record's CSV codec and the
+   in-memory-text download helper the export hands the file to. */
+import { decodeElementsCsv, encodeElementsCsv, elementsCsvFileName } from "./element-csv";
+import type { ChangeEvent } from "react";
+import { fileNameFor, saveCsvText, saveFile } from "./download";
 import { KeyModal } from "./key-modal";
 import { FailureModal } from "./failure-modal";
 import {
@@ -265,6 +271,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
      whole browser, and every other row (이미지 · 즐겨찾기 · 도구 …) narrows it. */
   const [assetsAllScope, setAssetsAllScope] = useState<AssetScope>("assets");
   const assetsScrollRef = useRef<HTMLDivElement>(null);
+  /* Hidden file input the 요소 scope's 가져오기 button opens; the picked CSV is read
+     straight off disk and fed to the decoder, no server round-trip. */
+  const csvInputRef = useRef<HTMLInputElement>(null);
   const mode = useStudio((state) => state.mode);
   const setMode = useStudio((state) => state.setMode);
   const cinemaMode = useStudio((state) => state.cinemaMode);
@@ -473,6 +482,29 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     setAssetsAllOpen(true);
   }, []);
   const closeAssetsAll = useCallback(() => setAssetsAllOpen(false), []);
+
+  /* 요소 scope's CSV round-trip. Export writes the whole list through the codec's
+     header; import rebuilds records under fresh ids (the file's own ids are thrown
+     away so a re-import never collides), appending each through the store's add. */
+  const csvExport = useCallback(() => {
+    if (elementsList.length === 0) return;
+    saveCsvText(encodeElementsCsv(elementsList), elementsCsvFileName());
+  }, [elementsList]);
+
+  const csvImportFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    /* Clear the value so picking the same file twice still fires change. */
+    event.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const text = String(reader.result ?? "").replace(/^\uFEFF/, "");
+      const { items } = decodeElementsCsv(text);
+      const store = useElements.getState();
+      for (const item of items) store.add(item);
+    };
+    reader.readAsText(file);
+  }, []);
 
   /* The rail's badges are counts of the store's own truth, read the way HF's
      asset page counts: 에셋 is every row, 이미지/비디오 split them by kind,
@@ -1389,6 +1421,38 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             <header className="ohf-assets-all-head">
               <span className="ohf-assets-all-title">에셋</span>
               <span className="ohf-assets-all-count">{assetsItems.length}개</span>
+              {assetsAllScope === "elements" && (
+                /* 요소 scope's CSV toolbar: 내보내기 writes every record the rail's
+                   count names; 가져오기 opens the hidden file input. The close button
+                   stays where it was — nothing about the existing header moves. */
+                <div className="ohf-assets-all-csv">
+                  <button
+                    type="button"
+                    className="ohf-csv-btn"
+                    onClick={csvExport}
+                    disabled={elementsList.length === 0}
+                    title="요소를 CSV로 내보내기"
+                  >
+                    내보내기
+                  </button>
+                  <button
+                    type="button"
+                    className="ohf-csv-btn"
+                    onClick={() => csvInputRef.current?.click()}
+                    title="CSV로 요소 가져오기"
+                  >
+                    가져오기
+                  </button>
+                  <input
+                    ref={csvInputRef}
+                    type="file"
+                    accept=".csv,text/csv"
+                    className="ohf-csv-input"
+                    onChange={csvImportFile}
+                    hidden
+                  />
+                </div>
+              )}
               <button
                 type="button"
                 className="ohf-assets-all-close"

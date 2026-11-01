@@ -15291,6 +15291,46 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   flex: none;
   padding: 0 20px 16px;
 }
+/* ── CSV toolbar for the 요소 scope of the asset browser. ────────────────────
+   New selectors only, scoped to the dialog header's own classes — no existing
+   rule is touched. The block is anchored beside the cinema screen's tail rather
+   than at the very end of the file, so it stays its own diff hunk clear of the
+   siblings' end-of-file appends. Buttons mirror the app's chip geometry: the
+   same height, radius, and hairline the rest of the surfaces already draw. */
+.ohf-assets-all-csv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.ohf-csv-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--s1);
+  border: 1px solid var(--line);
+  color: var(--tx2);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+.ohf-csv-btn:hover:not(:disabled) {
+  background: var(--s3);
+  color: var(--tx);
+}
+.ohf-csv-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ohf-csv-input {
+  display: none;
+}
 @media (max-width: 560px) {
   .ohf-cinema-body {
     grid-template-columns: 1fr;

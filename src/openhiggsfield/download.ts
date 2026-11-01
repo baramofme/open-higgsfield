@@ -23,6 +23,23 @@ export async function saveFile(url: string, name: string): Promise<boolean> {
   }
 }
 
+/* CSV text is built in memory, so it never needs the fetch that saveFile's CDN
+   bytes require — wrap the string in a blob and hand it to the same <a download>
+   path. The BOM keeps Excel from mangling a Korean name column on open. */
+export function saveCsvText(text: string, name: string): boolean {
+  try {
+    const href = URL.createObjectURL(new Blob(["\uFEFF", text], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = name;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(href), 60_000);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** A saved run has to be findable in a downloads folder six months later, so
     the name carries the prompt rather than the platform's request id. */
 export function fileNameFor(record: RunRecord, index: number): string {
