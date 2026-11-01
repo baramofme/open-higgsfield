@@ -641,7 +641,7 @@ function blocksOf(slots: Slot[], splitByDate: boolean): FeedBlock[] {
   return blocks;
 }
 
-const DAY_HEADER_H = 30;
+const DAY_HEADER_H = 40;
 
 type PlannedCell = {
   block: FeedBlock;
@@ -746,12 +746,25 @@ function planFeed(
   return { cells, total };
 }
 
-function dayLabel(time: number): string {
-  return new Intl.DateTimeFormat("ko-KR", {
-    month: "long",
-    day: "numeric",
-    weekday: "short",
-  }).format(new Date(time));
+/* HF's date headers read relative, not absolute: 오늘 for the calendar day the
+   clock sits on, 어제 for the one before, a bare 월 일 inside the same year, and a
+   년 월 once the year rolls. Weekdays never appear in the source's headers, so the
+   label stays short. */
+function dayLabel(time: number, now = Date.now()): string {
+  const day = (value: number) => {
+    const d = new Date(value);
+    d.setHours(0, 0, 0, 0);
+    return d.getTime();
+  };
+  const midnight = day(now);
+  const stamp = day(time);
+  if (stamp === midnight) return "오늘";
+  if (stamp === midnight - 86_400_000) return "어제";
+  const d = new Date(time);
+  if (d.getFullYear() === new Date(now).getFullYear()) {
+    return `${d.getMonth() + 1}월 ${d.getDate()}일`;
+  }
+  return `${d.getFullYear()}년 ${d.getMonth() + 1}월`;
 }
 
 function VirtualizedGrid({

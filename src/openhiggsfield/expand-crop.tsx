@@ -274,42 +274,45 @@ export function ExpandCropEditor({
       </header>
 
       <div className="ohf-ec-canvas" ref={canvasRef}>
-        {stage && img && (
+        {/* The picture itself. Rendered as soon as we have a url so measure() can
+            read imgRef and the picture can report its natural size. The overlay
+            (checkerboard, frame, handles) only appears once the canvas and the
+            picture have actually been measured — gating the <img> on that state
+            was a bootstrap deadlock: measure() needed imgRef, imgRef needed the
+            <img>, and the <img> needed measure(). */}
+        {url && (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            ref={imgRef}
+            className="ohf-ec-img"
+            src={url}
+            alt="원본 미디어 이미지"
+            draggable={false}
+            style={img ? { left: `${img.x}px`, top: `${img.y}px`, width: `${img.w}px`, height: `${img.h}px` } : undefined}
+            onLoad={(e) => setSrc({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })}
+          />
+        )}
+        {stage && img && frame && (
           <>
-            {/* The picture itself, drawn at its fit size. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              ref={imgRef}
-              className="ohf-ec-img"
-              src={url}
-              alt="원본 미디어 이미지"
-              draggable={false}
-              style={{ left: `${img.x}px`, top: `${img.y}px`, width: `${img.w}px`, height: `${img.h}px` }}
-              onLoad={(e) => setSrc({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })}
-            />
-            {frame && (
-              <>
-                {/* The checkerboard fills whatever the frame claims beyond the
-                    picture, standing in for the empty canvas the backend paints. */}
-                <div className="ohf-ec-checker" aria-hidden style={rectStyle(frame)} />
-                {/* The frame's dashed outline with the 寸法 readout beneath it. */}
-                <div className="ohf-ec-frame" style={rectStyle(frame)}>
-                  <span className="ohf-ec-dims">{dims}</span>
-                  {HANDLES.map((h) => (
-                    <button
-                      key={h.edge}
-                      type="button"
-                      aria-label={h.label}
-                      className={`ohf-ec-handle ohe-${h.edge}`}
-                      style={handleStyle(frame, h.edge)}
-                      onPointerDown={startDrag(h.edge)}
-                      onPointerMove={moveDrag}
-                      onPointerUp={endDrag}
-                    />
-                  ))}
-                </div>
-              </>
-            )}
+            {/* The checkerboard fills whatever the frame claims beyond the
+                picture, standing in for the empty canvas the backend paints. */}
+            <div className="ohf-ec-checker" aria-hidden style={rectStyle(frame)} />
+            {/* The frame's dashed outline with the 寸法 readout beneath it. */}
+            <div className="ohf-ec-frame" style={rectStyle(frame)}>
+              <span className="ohf-ec-dims">{dims}</span>
+              {HANDLES.map((h) => (
+                <button
+                  key={h.edge}
+                  type="button"
+                  aria-label={h.label}
+                  className={`ohf-ec-handle ohe-${h.edge}`}
+                  style={handleStyle(frame, h.edge)}
+                  onPointerDown={startDrag(h.edge)}
+                  onPointerMove={moveDrag}
+                  onPointerUp={endDrag}
+                />
+              ))}
+            </div>
           </>
         )}
         {/* Original + 생성하기, top-right of the canvas. */}

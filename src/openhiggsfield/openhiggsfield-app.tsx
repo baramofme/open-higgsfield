@@ -31,6 +31,7 @@ import {
   type GalleryView,
 } from "./data";
 import { Gallery, type TileMenuActions } from "./gallery";
+import { AssetSidebar, type AssetScope, type SidebarCounts } from "./asset-sidebar";
 import { FeedHeader } from "./feed-header";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
 import { loadComments } from "./comments";
@@ -216,11 +217,16 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   /* The topbar 에셋 button now raises a full-screen asset browser: every surface
      shows at once, the way Higgsfield's /asset/all page does. */
   const [assetsAllOpen, setAssetsAllOpen] = useState(false);
+  /* The sidebar's single active scope, mirroring HF's asset rail: 에셋 opens the
+     whole browser, and every other row (이미지 · 즐겨찾기 · 도구 …) narrows it. */
+  const [assetsAllScope, setAssetsAllScope] = useState<AssetScope>("assets");
   const assetsScrollRef = useRef<HTMLDivElement>(null);
   const mode = useStudio((state) => state.mode);
   const setMode = useStudio((state) => state.setMode);
   const cinemaMode = useStudio((state) => state.cinemaMode);
   const activeProjectId = useProjects((state) => state.activeProjectId);
+  const projectsList = useProjects((state) => state.projects);
+  const elementsList = useElements((state) => state.items);
   const setCinemaMode = useStudio((state) => state.setCinemaMode);
 
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -388,9 +394,53 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   }, [history, view, feed, query]);
 
   /* The topbar 에셋 button raises the full-screen asset browser, not the
-     composer's picker — the two are different journeys now. */
-  const openAssets = useCallback(() => setAssetsAllOpen(true), []);
+     composer's picker — the two are different journeys now. Opening clears the
+     rail back to 에셋, the way HF's page starts on the full asset list. */
+  const openAssets = useCallback(() => {
+    setAssetsAllScope("assets");
+    setAssetsAllOpen(true);
+  }, []);
   const closeAssetsAll = useCallback(() => setAssetsAllOpen(false), []);
+
+  /* The rail's badges are counts of the store's own truth, read the way HF's
+     asset page counts: 에셋 is every row, 이미지/비디오 split them by kind,
+     즐겨찾기 the deliberate keeps, 프로젝트 the shelves you made, 요소 the
+     attachments. 업스케일됨 has no local flag yet, so it reads 0 — the "0" pill
+     the source still draws. */
+  const assetsCounts = useMemo<SidebarCounts>(
+    () => ({
+      assets: history.length,
+      projects: projectsList.length,
+      favorites: history.filter((record) => record.favorite === true).length,
+      elements: elementsList.length,
+      image: history.filter((record) => record.kind === "image").length,
+      video: history.filter((record) => record.kind === "video").length,
+      upscaled: 0,
+    }),
+    [history, projectsList, elementsList],
+  );
+
+  /* The active scope narrows the grid before it renders, the way a rail row
+     picks which runs the browser shows. 요소/휴지통/오디오/업스케일됨 name sets the
+     run log holds none of, so they land on the empty invitation. */
+  const assetsItems = useMemo<RunRecord[]>(() => {
+    switch (assetsAllScope) {
+      case "assets":
+        return history;
+      case "favorites":
+        return history.filter((record) => record.favorite === true);
+      case "image":
+        return history.filter((record) => record.kind === "image");
+      case "video":
+        return history.filter((record) => record.kind === "video");
+      case "projects":
+        return history.filter(
+          (record) => record.projectId && record.projectId !== DEFAULT_PROJECT_ID,
+        );
+      default:
+        return [];
+    }
+  }, [history, assetsAllScope]);
 
   /* The pult's tabs answer the composer's own question — 이미지 · 비디오 — and
      the dock follows them: whichever surface the tab names takes the model
@@ -1178,7 +1228,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           <div className="ohf-assets-all" role="dialog" aria-label="에셋 전체 보기">
             <header className="ohf-assets-all-head">
               <span className="ohf-assets-all-title">에셋</span>
-              <span className="ohf-assets-all-count">{history.length}개</span>
+              <span className="ohf-assets-all-count">{assetsItems.length}개</span>
               <button
                 type="button"
                 className="ohf-assets-all-close"
@@ -1189,12 +1239,19 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               </button>
             </header>
             <div className="ohf-assets-all-body">
+              <AssetSidebar
+                counts={assetsCounts}
+                scope={assetsAllScope}
+                onSelect={setAssetsAllScope}
+              />
               <Gallery
                 view="assets"
                 surface={surface}
-                items={history}
+                items={assetsItems}
                 layout={feed.layout}
-                splitByDate={feed.splitByDate}
+                /* HF's /asset/all always breaks the grid into days; the rail's own
+                   grouping is separate, so the date split stays on here. */
+                splitByDate
                 cardSize={feed.cardSize}
                 fit={feed.fit}
                 runs={runsHere}
