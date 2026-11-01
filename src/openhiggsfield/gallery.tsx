@@ -273,10 +273,14 @@ const Tile = memo(function Tile({
   );
 
   if (item.status === "failed") {
+    const failedName = shortPrompt(item.prompt);
     return (
       <div
         className="ohf-tile ohf-tile--failed"
         data-picked={picked}
+        data-asset-id={item.id}
+        data-asset-status={item.status}
+        data-job-status={item.status}
       >
         <div className="ohf-fail">
           <span className="ohf-fail-ic">
@@ -299,7 +303,30 @@ const Tile = memo(function Tile({
             Retry this run
           </button>
         </div>
+        {/* A stretched click that opens the failure record the app stored when this
+            run died. Retry rides above the overlay on its own z-index, so a press
+            on Retry never reaches the overlay; while the grid is picking, the body
+            extends the selection instead — the same bargain a finished tile makes. */}
+        <button
+          type="button"
+          className="ohf-tile-open ohf-fail-open"
+          onClick={(event) =>
+            selecting ? onPick(item.id, index, event.shiftKey) : onShowFailure(item.id)
+          }
+          aria-label={
+            selecting
+              ? `${picked ? "Deselect" : "Select"} run — ${failedName}`
+              : `실패 상세 보기 — ${item.modelLabel}: ${item.prompt}`
+          }
+        />
         {picker}
+        {/* A resting hint that the card opens a detail view, rising only on hover
+            and never stealing clicks meant for the overlay beneath it. */}
+        {!selecting && (
+          <span className="ohf-fail-hint" aria-hidden>
+            상세 보기
+          </span>
+        )}
       </div>
     );
   }
@@ -540,6 +567,7 @@ export const Gallery = memo(function Gallery({
   freshIds,
   picked,
   onOpen,
+  onShowFailure,
   onPick,
   onReuse,
   onFavorite,
@@ -619,6 +647,7 @@ export const Gallery = memo(function Gallery({
         freshIds={freshIds}
         picked={picked}
         onOpen={onOpen}
+        onShowFailure={onShowFailure}
         onPick={onPick}
         onReuse={onReuse}
         onFavorite={onFavorite}
@@ -833,6 +862,7 @@ function VirtualizedGrid({
   freshIds,
   picked,
   onOpen,
+  onShowFailure,
   onPick,
   onReuse,
   onFavorite,
@@ -908,6 +938,7 @@ function VirtualizedGrid({
         picked={picked.has(slot.item.id)}
         selecting={selecting}
         onOpen={onOpen}
+        onShowFailure={onShowFailure}
         onPick={onPick}
         onReuse={onReuse}
         onFavorite={onFavorite}

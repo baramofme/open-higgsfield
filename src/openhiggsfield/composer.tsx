@@ -43,6 +43,31 @@ const STUDIO_COUNTS = Array.from({ length: MAX_BATCH }, (_, index) => index + 1)
 /** Breathing room between a popover and the control it opened from. */
 const POPOVER_GAP = 8;
 
+/** A setting list's minimum face: the header plus a value or two. Deliberately
+    below the assets browser's 140 — a taller floor would lift the title behind
+    the nav all over again on windows the dock has already eaten. */
+const SETTING_FLOOR = 120;
+
+/** The model picker's minimum face: the search head, the group label and the
+    start of a row — measured, not guessed (the head is 11px of padding over a
+    14px field plus a rule). Deliberately below the setting list's 120: the
+    picker's head is a single search row, so a taller floor would only push it
+    behind the nav sooner on windows the dock has already eaten. */
+const PICKER_FLOOR = 104;
+
+/** The character panel's minimum face: its own padding and border plus the
+    title row and the note beneath it. Deliberately below the picker's 104 —
+    the cinema head is a single title with a close button, so a taller floor
+    would only push that title behind the nav sooner on windows the dock has
+    already eaten. */
+const CHARACTER_FLOOR = 64;
+
+/** The camera sheet's minimum face: its padding and border, the sheet head and
+    the two wheel labels — everything above the drums, which fold first. Same
+    reasoning as the character floor: the sheet's head is a title and a reset,
+    not a search field, so it takes the smaller number. */
+const CAMERA_FLOOR = 78;
+
 /** Declared widths keep an opening popover inside the composer's own column. */
 function popoverWidth(id: string, model: ModelEntry): number {
   if (id === PICKER || id === ASSETS) return 560;
@@ -256,16 +281,61 @@ export function Composer({
      the wrap's own resize and on any window resize, and handed to CSS as
      --ohf-pop-clear. The 20px taken off the measurement is the panel's 12px
      standoff plus a little breath, so its top edge lands clear of the nav; the
-     140px floor keeps the head and tabs whole before the scroll body folds. */
+     140px floor keeps the head and tabs whole before the scroll body folds.
+
+     The setting panels ride the same axis on their own anchor. Their bottom
+     edge rests anchor.y below the wrap's bottom — that is the ceiling they rose
+     to — so their room is the wrap's bottom minus that anchor minus the nav's
+     underside minus one more POPOVER_GAP of breath. Top and bottom are derived
+     from the same pair, so the panel lands eight whole pixels below the nav —
+     the very landing the assets browser was given — whatever the anchor was
+     built from, and the clamp only ever bites where the old vh cap was about to
+     shove the title off-screen.
+
+     The model picker rides the same anchor for the same reason, and needs it
+     at every height: its panel is sized by a `height`, not capped by a
+     max-height, so the vh term can demand more room than the strip's top leaves
+     above the nav even on a window tall enough to fold nothing. The clamp
+     therefore joins that min() chain as an extra term — it can only lower the
+     height the old chain chose, never raise it. Its floor is the search head
+     plus the group label, so a window the dock has eaten still keeps the field
+     the catalog is searched through.
+
+     Cinema's two panels ride the same anchor for the same clip. The character
+     panel is content-sized and carried no ceiling at all, so its own rows set a
+     height the strip's top cannot answer; the camera sheet's height is settled
+     outright by its wheel grid, 380px plus head and padding, and that fixed
+     grid reaches past the nav whenever the dock grows. Both are folded from
+     their own bottoms the way the setting panels and the picker were: the
+     character takes the room as a max-height over its content, the sheet
+     subtracts the head from the room and hands the rest to the grid, which
+     masks its drum already. Neither term can raise a height the old layout
+     chose — only lower it where the clip was about to bite. Their floors are
+     the title rows, kept whole before the bodies fold. */
   useEffect(() => {
-    if (overlay !== ASSETS) return;
+    const isSetting = (overlay ?? "").startsWith(SETTING);
+    const ridesAnchor =
+      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA;
+    if (overlay !== ASSETS && !ridesAnchor) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
     const read = () => {
       const bar = document.querySelector<HTMLElement>(".ohf-topbar");
       const underside = bar ? bar.getBoundingClientRect().bottom : 0;
-      const room = wrap.getBoundingClientRect().top - underside - POPOVER_GAP - 12;
-      setPopClear(Math.max(140, Math.round(room)));
+      const room = ridesAnchor
+        ? wrap.getBoundingClientRect().bottom - anchor.y - underside - POPOVER_GAP
+        : wrap.getBoundingClientRect().top - underside - POPOVER_GAP - 12;
+      const floor =
+        overlay === ASSETS
+          ? 140
+          : isSetting
+            ? SETTING_FLOOR
+            : overlay === CHARACTER
+              ? CHARACTER_FLOOR
+              : overlay === CAMERA
+                ? CAMERA_FLOOR
+                : PICKER_FLOOR;
+      setPopClear(Math.max(floor, Math.round(room)));
     };
     read();
     const observer = new ResizeObserver(read);
@@ -275,7 +345,7 @@ export function Composer({
       observer.disconnect();
       window.removeEventListener("resize", read);
     };
-  }, [overlay]);
+  }, [overlay, anchor]);
 
   /* The streaming area scrolls sideways, and a container that scrolls one way
      cannot also let things escape above the other way — a tip that belongs to a

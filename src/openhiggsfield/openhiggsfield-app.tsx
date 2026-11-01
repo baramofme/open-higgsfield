@@ -22,6 +22,7 @@ import { GRAIN_URI, artFor } from "./artwork";
 import { Composer } from "./composer";
 import { fileNameFor, saveFile } from "./download";
 import { KeyModal } from "./key-modal";
+import { FailureModal } from "./failure-modal";
 import {
   CROSS_VIEWS,
   countSetting,
@@ -213,6 +214,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const [error, setError] = useState<string | null>(null);
   const [freshIds, setFreshIds] = useState<string[]>([]);
   const [viewerId, setViewerId] = useState<string | null>(null);
+  /* The failed run whose detail dialog is up, by its row id. A completed run
+     opens the media viewer instead, so this only ever names a failed row. */
+  const [failureId, setFailureId] = useState<string | null>(null);
   const [inpaintBusy, setInpaintBusy] = useState(false);
   const [outpaintBusy, setOutpaintBusy] = useState(false);
   const [view, setView] = useState<GalleryView>(surface);
@@ -859,6 +863,13 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     setViewerId(id);
     setLastViewedId(id);
   }, []);
+  /* A failed card's body opens its recorded failure here. A completed card goes
+     to the media viewer instead, so this handler is wired only to the failed
+     tile's overlay. */
+  const showFailure = useCallback((id: string) => {
+    if (!id) return;
+    setFailureId(id);
+  }, []);
   /* Re-send a finished run down the video surface: the grid switches to Video,
      the picture is laid down as a reference and the words carry over. */
   const toVideoFor = useCallback(
@@ -1140,6 +1151,12 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const viewerItem = viewerId
     ? (history.find((record) => record.id === viewerId && record.status !== "running") ?? null)
     : null;
+  /* The failed run the detail dialog shows. Resolved from the run log by row id;
+     a deleted or aged-out row resolves to null, which the dialog renders as a
+     plain "details unavailable" message rather than crashing. */
+  const failureRecord = failureId
+    ? (history.find((record) => record.id === failureId) ?? null)
+    : null;
 
   /* The walk follows the scope on screen, not the whole log: arrowing out of
      the viewer never lands on a run the grid behind it is not showing. At
@@ -1202,6 +1219,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             freshIds={freshIds}
             picked={pickedSet}
             onOpen={openViewer}
+            onShowFailure={showFailure}
             onPick={togglePick}
             onReuse={retry}
             onFavorite={toggleFavorite}
@@ -1301,6 +1319,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             }}
           />
         )}
+        {failureId && (
+          <FailureModal record={failureRecord} onClose={() => setFailureId(null)} />
+        )}
         {assetsAllOpen && (
           /* Higgsfield's /asset/all, mirrored: every surface's finished runs in
              one full-screen browse, selectable, opening the viewer — the same
@@ -1338,6 +1359,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 freshIds={freshIds}
                 picked={pickedSet}
                 onOpen={openViewer}
+                onShowFailure={showFailure}
                 onPick={togglePick}
                 onReuse={retry}
                 onFavorite={toggleFavorite}

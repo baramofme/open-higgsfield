@@ -43,6 +43,10 @@ export interface RunRecord {
       completed rows so future runtimes can be predicted from past ones. The
       viewer's 세부 정보 tab renders it as "Generation Duration: N s". */
   durationSeconds?: number;
+  /** When the run reached its terminal failed state — recorded so the failed
+      card's detail view can show a real failure timestamp instead of only the
+      submit time. Absent on rows that never failed. */
+  failedAt?: number;
 }
 
 export const HISTORY_KEY = "history.v1";
@@ -168,7 +172,8 @@ function isRunRecord(value: unknown): value is RunRecord {
     (record.favorite === undefined || typeof record.favorite === "boolean") &&
     (record.settings === undefined ||
       (typeof record.settings === "object" && record.settings !== null)) &&
-    (record.durationSeconds === undefined || typeof record.durationSeconds === "number")
+    (record.durationSeconds === undefined || typeof record.durationSeconds === "number") &&
+    (record.failedAt === undefined || typeof record.failedAt === "number")
   );
 }
 

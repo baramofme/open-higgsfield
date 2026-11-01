@@ -111,10 +111,14 @@ export function createCfwuiClient(options: CfwuiClientOptions) {
         typeof item === "string" ? [{ url: rewriteFileUrl(item, origin) }] : [],
       );
       /* The video modules hand back a single mp4 url instead of an image list,
-         so a finished task with no images still carries its output as a URL. */
+         so a finished task with no images still carries its output as a URL.
+         Prefer the explicit video_url field when present (avoids first-pick
+         of an input echo); fall back to regex-scan only if absent. */
       const media = images.length
         ? images
         : (() => {
+            const explicit = stringField(result, "video_url");
+            if (explicit && explicit.includes(".mp4")) return [{ url: rewriteFileUrl(explicit, origin) }];
             const url = findMediaUrl(ret);
             return url ? [{ url: rewriteFileUrl(url, origin) }] : [];
           })();

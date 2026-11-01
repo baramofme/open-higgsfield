@@ -14583,6 +14583,99 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   animation: ohf-fade 0.2s var(--ease) both;
 }
 
+/* ---- the setting & list panels clear the top bar on short windows ---- */
+
+/* An enum's list and a range's sheet rise from the dock's control rail, so on
+   a window where the dock has eaten most of the height — long prompt, attachment
+   strip — their tops used to land above the viewport: the old vh caps were
+   written against the window's edge, not the top bar's underside. The composer
+   measures the real room over the panel's own anchor while a setting panel
+   stands open (ResizeObserver + resize, the same axis the assets browser was
+   given) and hands it over as --ohf-pop-clear. Inside the fold it joins the old
+   min() chain as an extra ceiling, so the clamp can only LOWER the old cap
+   where that cap was about to clip — never raise it; above the fold the old
+   caps answer undisturbed, pixel for pixel. The panel lands eight whole pixels
+   below the nav. calc(100vh - 268px) is the pre-measurement fallback: short
+   enough that the very first frame cannot already be off-screen. Appended last
+   so the !important outranks every duplicate ceiling in the mirrored blocks. */
+@media (max-height: 599px) {
+  .ohf-popover--setting {
+    max-height: min(50vh, 420px, var(--ohf-pop-clear, calc(100vh - 268px))) !important;
+  }
+  .ohf-popover--list {
+    max-height: min(56vh, 452px, var(--ohf-pop-clear, calc(100vh - 268px))) !important;
+  }
+}
+
+/* ---- the model picker keeps its head below the top bar ---- */
+
+/* The picker is sized, not capped: the catalog's row count and 60vh choose its
+   height outright and no max-height ever argues with it. So when the dock has
+   grown — a long prompt, the attachment strip — the panel's bottom rests on the
+   strip's top while its own height reaches past the nav. Measured before this
+   fix, with the long prompt and five attachments seeded and a clean reload at
+   each height: the search head sat 40px above the viewport at 400, 24 above at
+   460, and still 54 and 38 above at 620 and 700 — the clip is the panel's, not
+   the dock's, so the fold alone cannot answer it and it bites at every height.
+   The composer measures the real room over the picker's own anchor on the axis
+   the assets browser and the setting panels were given (--ohf-pop-clear; no new
+   variable) and hands it over while the panel stands open. Joining that term to
+   the old min() chain can only LOWER the height the chain chose, where the chain
+   was about to clip; where it left room enough the min returns the old value and
+   not one pixel moves. The panel lands eight whole pixels below the nav, the
+   same landing every other panel on this axis takes. calc(100vh - 268px) is the
+   pre-measurement fallback — the same conservative constant the assets browser
+   uses. Appended after every copy of the old height so the !important outranks
+   both mirrored blocks. */
+.ohf-popover--picker {
+  height: min(
+    60vh,
+    520px,
+    calc(95px + var(--ohf-picker-rows, 99) * 56px),
+    var(--ohf-pop-clear, calc(100vh - 268px))
+  ) !important;
+}
+
+/* ---- cinema's two panels keep their heads below the top bar ---- */
+
+/* The character panel is content-sized and carried no ceiling at all — max-height
+   read "none" when the clip was measured — so its rows set a height the strip's
+   top cannot answer: at 400 the panel stood with its title 48px above the
+   viewport (the header itself 33 above), and at 460 the title landed 12px above
+   the top bar, inside the nav. The composer measures the real room over the
+   panel's own anchor on the same single axis every other panel was given
+   (--ohf-pop-clear; no new variable) and hands it over while the panel stands
+   open. Here the room arrives as a ceiling over the content: where it leaves
+   more room than the content needs the ceiling never touches a pixel, and
+   where it bites the content folds to it and the title lands eight whole
+   pixels below the nav, the same landing every panel on this axis takes.
+   Nothing above the fold is lowered — a max-height cannot raise either, so the
+   old content height answers undisturbed wherever the room allowed it. The
+   note and the rows scroll under the folded title rather than spilling past
+   the panel's own edge. calc(100vh - 268px) is the pre-measurement fallback —
+   the same conservative constant the assets browser uses, short enough that
+   the very first frame cannot already be off-screen. Appended after every
+   mirrored copy of the panel so the !important outranks them all. */
+.ohf-popover--cinema {
+  max-height: var(--ohf-pop-clear, calc(100vh - 268px)) !important;
+  overflow-y: auto;
+}
+
+/* The camera sheet is sized outright, not capped: its grid stands 380px whole
+   over a 32px head, 16 of padding and 2 of border — 430 measured — and that
+   fixed height reaches past the nav whenever the dock grows: the sheet's top
+   sat 185 above the viewport at 400, 125 above at 460, and still 18 above the
+   nav's underside at 620 before the clip cleared at 700. The sheet's height
+   follows its grid's, so the room is taken at the grid: the head, the padding
+   and the border (50px) stay whole and the grid takes the rest of the room,
+   never more than the 380 it used to stand — the clamp can only LOWER the
+   height the old layout chose, and wherever the room left 430 or more, not
+   one pixel moves. The drum masks its own window, so a shorter grid simply
+   shows fewer rows around the detent instead of clipping the sheet's edge. */
+.ohf-popover--sheet .ohf-cine-grid {
+  height: min(380px, calc(var(--ohf-pop-clear, calc(100vh - 268px)) - 50px)) !important;
+}
+
 /* Standalone-audio media, defined once and shared across the grid card, the
    desktop viewer and the mobile sheet. A finished clip has no poster frame, so
    the native player IS the media; it streams from the raw gradio url the run

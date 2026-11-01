@@ -22,7 +22,39 @@ const ALLOWED_ROOTS = [
   "/home/baramofme/comfy-webui/output",
 ];
 
-const SAFE_NAME = /^[A-Za-z0-9._-]+\.(png|jpe?g|webp)$/i;
+/* The proxy is not only for still images — the viewer, picker and editing
+   surfaces also request video/audio outputs through it. Accept the whole media
+   set the app can legitimately fetch from a whitelisted root; the extension is
+   still validated and the path is still confined to ALLOWED_ROOTS (no
+   traversal, no SSRF), so widening the type set adds no new capability. */
+const SAFE_NAME = /^[A-Za-z0-9._-]+\.(png|jpe?g|webp|gif|avif|mp4|webm|mov|mkv|m4v|avi|mp3|wav|flac|ogg|m4a)$/i;
+
+/* Best-effort MIME for the extensions SAFE_NAME accepts, used only when the
+   upstream returns no content-type of its own. */
+const MIME: Record<string, string> = {
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  webp: "image/webp",
+  gif: "image/gif",
+  avif: "image/avif",
+  mp4: "video/mp4",
+  webm: "video/webm",
+  mov: "video/quicktime",
+  mkv: "video/x-matroska",
+  m4v: "video/mp4",
+  avi: "video/x-msvideo",
+  mp3: "audio/mpeg",
+  wav: "audio/wav",
+  flac: "audio/flac",
+  ogg: "audio/ogg",
+  m4a: "audio/mp4",
+};
+
+function guessContentType(filename: string): string | undefined {
+  const ext = filename.slice(filename.lastIndexOf(".") + 1).toLowerCase();
+  return MIME[ext];
+}
 
 export async function GET(request: NextRequest): Promise<Response> {
   const raw = request.nextUrl.searchParams.get("file");
@@ -50,7 +82,11 @@ export async function GET(request: NextRequest): Promise<Response> {
   return new NextResponse(bytes, {
     status: 200,
     headers: {
-      "content-type": res.headers.get("content-type") ?? "image/png",
+      /* Honour the upstream's declared type; when it sends none, fall back to the
+         type the file's own extension implies (never label video/audio bytes as
+         image/png, which is what a flat "image/png" default would do). */
+      "content-type":
+        res.headers.get("content-type") ?? guessContentType(name) ?? "application/octet-stream",
       "cache-control": "public, max-age=86400",
     },
   });
