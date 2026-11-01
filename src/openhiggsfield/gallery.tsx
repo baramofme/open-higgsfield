@@ -28,6 +28,10 @@ const EMPTY: Record<GalleryView, { title: string; hint: string }> = {
     title: "Your video runs land here",
     hint: "Describe the shot below, pick a model, press Generate. Every finished run stays in this browser.",
   },
+  audio: {
+    title: "Your audio runs land here",
+    hint: "Describe the music below, pick a model, press Generate. Each finished clip plays right in this grid.",
+  },
   assets: {
     title: "Nothing generated yet",
     hint: "Image and video runs both land in this grid and stay in this browser.",
@@ -310,7 +314,9 @@ const Tile = memo(function Tile({
       data-asset-id={item.id}
       data-asset-status={item.status}
       data-job-status={item.status}
-      data-tour-asset-kind={item.kind === "video" ? "video" : "image"}
+      data-tour-asset-kind={
+        item.kind === "video" ? "video" : item.kind === "audio" ? "audio" : "image"
+      }
       data-ignore-marquee="true"
       onMouseEnter={() => void videoRef.current?.play().catch(() => {})}
       onMouseLeave={() => {
@@ -321,7 +327,20 @@ const Tile = memo(function Tile({
       }}
     >
       {poster &&
-        (item.kind === "video" ? (
+        (item.kind === "audio" ? (
+          /* A finished audio run has no poster frame to show — it IS the sound.
+             The card carries its own player so the clip is audible right in the
+             grid, and the same raw url the lightbox plays loads here as a plain
+             (non-CORS, no-preflight) media, which is why it reaches readyState 4. */
+          <audio
+            className="ohf-tile-audio"
+            src={poster}
+            controls
+            preload="metadata"
+            data-asset-preview={item.id}
+            data-tour="asset-card"
+          />
+        ) : item.kind === "video" ? (
           <video
             ref={videoRef}
             className="ohf-tile-media"

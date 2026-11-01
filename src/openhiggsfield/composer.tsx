@@ -8,7 +8,7 @@ import { parseSettings } from "@/generation/catalog";
 import type { ModelEntry, Surface } from "@/generation/catalog";
 import { MAX_BATCH, useActive } from "@/generation/stores/active";
 import { useElements } from "@/generation/stores/elements";
-import { useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
+import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
 import { useSettings } from "@/generation/stores/settings";
 import { projectLabel, useProjects } from "@/generation/stores/projects";
 
@@ -98,7 +98,11 @@ export function Composer({
   const setBatch = useActive((state) => state.setBatch);
   const imagePrompt = useImagePrompt();
   const videoPrompt = useVideoPrompt();
-  const prompt = surface === "image" ? imagePrompt : videoPrompt;
+  const audioPrompt = useAudioPrompt();
+  /* One caption store per surface. Audio keeps its own so switching to the audio
+     tab never inherits a half-written video caption (or the reverse). */
+  const prompt =
+    surface === "image" ? imagePrompt : surface === "audio" ? audioPrompt : videoPrompt;
   const settings = useSettings();
   const values = parseSettings(model, settings.byModel[model.id] ?? {});
   const tray = useMediaTray(model, onError);

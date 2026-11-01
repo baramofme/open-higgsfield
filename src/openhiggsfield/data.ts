@@ -1,10 +1,11 @@
 import type { MediaRole, ModelEntry, Surface } from "@/generation/catalog";
 
-export const SURFACES: readonly Surface[] = ["image", "video"];
+export const SURFACES: readonly Surface[] = ["image", "video", "audio"];
 
 export const SURFACE_LABELS: Record<Surface, string> = {
   image: "Image",
   video: "Video",
+  audio: "Audio",
 };
 
 /** What the gallery is scoped to. "assets" is every run, both surfaces;
@@ -25,6 +26,7 @@ export const VIEW_LABELS: Record<GalleryView, string> = {
 export const PROMPT_PLACEHOLDERS: Record<Surface, string> = {
   image: "Describe the image — subject, style, light, lens…",
   video: "Describe the shot — subject, camera move, light, pacing…",
+  audio: "Describe the music — genre, mood, instruments, tempo, vocals…",
 };
 
 /* The pool the empty state draws from. Each line is a whole prompt — subject,
@@ -58,6 +60,18 @@ export const SAMPLES: Record<Surface, string[]> = {
     "Underwater shot of a swimmer breaking the surface, bubbles, sunlight refracting",
     "Static wide of a train crossing a viaduct at dusk, lit windows, long lens compression",
     "Slow tilt down a glass tower facade to a busy crosswalk, overcast city light",
+  ],
+  audio: [
+    "Dreamy synthwave, female vocals, nostalgic, analog synths, gated reverb drums, 110 BPM",
+    "Lo-fi hip hop beat, mellow Rhodes piano, vinyl crackle, dusty drums, 80 BPM, instrumental",
+    "Uplifting cinematic orchestral trailer, soaring strings, deep brass, huge choir, epic",
+    "Smooth jazz trio, upright bass, brushed drums, smoky tenor sax, late-night lounge",
+    "Aggressive drill rap beat, dark 808 slides, rattling hi-hats, eerie piano, 140 BPM",
+    "Warm acoustic folk, fingerpicked guitar, soft male vocals, campfire, gentle and honest",
+    "Driving techno, pulsing bassline, four-on-the-floor kick, acid leads, hypnotic, 130 BPM",
+    "Cinematic piano ballad, emotional female vocals, sparse strings, building to a crescendo",
+    "Funk groove, slap bass, wah guitar, tight horns, danceable, 100 BPM",
+    "Ambient drone, evolving pads, deep sub, meditative, no drums, slow and vast",
   ],
 };
 
@@ -244,7 +258,8 @@ function joinPhrases(parts: string[]): string {
     what it makes, what it takes, where its allow-lists top out. The catalog
     stays the only place a model's truth is written down. */
 export function describeModel(model: ModelEntry): string {
-  const noun = model.surface === "image" ? "Images" : "Video";
+  const noun =
+    model.surface === "image" ? "Images" : model.surface === "audio" ? "Audio" : "Video";
   const inputs = [...new Set(rolesOf(model).map((role) => ROLE_PHRASES[role]))];
   const source = inputs.length
     ? `${noun} from a prompt, ${joinPhrases(inputs)}`
@@ -305,9 +320,11 @@ export function metaOf(model: ModelEntry, values: Record<string, unknown>): stri
   const label = (key: string) =>
     values[key] === undefined ? null : settingValueLabel(key, values[key]);
   const parts =
-    model.surface === "image"
-      ? [label("resolution"), label("outputFormat")]
-      : [label("resolution"), label("duration"), values.generateAudio === true ? "Audio" : null];
+    model.surface === "audio"
+      ? [label("duration"), label("steps")]
+      : model.surface === "image"
+        ? [label("resolution"), label("outputFormat")]
+        : [label("resolution"), label("duration"), values.generateAudio === true ? "Audio" : null];
   return parts.filter(Boolean).join(" · ");
 }
 

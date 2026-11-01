@@ -22,3 +22,7 @@ function createPromptStore(name: string) {
 
 export const useImagePrompt = createPromptStore("openhiggsfield.imagePrompt.v1");
 export const useVideoPrompt = createPromptStore("openhiggsfield.videoPrompt.v1");
+/* The audio surface keeps its own caption. Reusing the video prompt would bleed
+   a music style description into the video field (and back), so audio gets a
+   store of its own — the same factory, a distinct persistence key. */
+export const useAudioPrompt = createPromptStore("openhiggsfield.audioPrompt.v1");

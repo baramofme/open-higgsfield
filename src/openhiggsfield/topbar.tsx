@@ -72,9 +72,10 @@ export function Topbar({
         <nav className="ohf-nav" aria-label="Main">
           <ul className="ohf-nav-list">
             {MEDIA_ITEMS.map((item) => {
-              /* Only Image and Video are real scopes here; Audio is shown for
-                 parity with the source but does nothing. */
-              const live = item.id === "image" || item.id === "video";
+              /* All three media scopes are real pages now: Image and Video move
+                 the gallery scope, and Audio opens the standalone-audio surface —
+                 the tab that used to be inert parity-only gains its live page. */
+              const live = item.id === "image" || item.id === "video" || item.id === "audio";
               const active = live && view === item.id;
               return (
                 <li key={item.id}>

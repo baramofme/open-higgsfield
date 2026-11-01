@@ -58,8 +58,47 @@ export function createCfwuiClient(options: CfwuiClientOptions) {
       };
     },
 
+    /** Audio is a plain synchronous gradio api: `apiName` is e.g.
+     * "AudioGen_MiniMax_Music_3" and `args` are its positional arguments. The
+     * call returns the generated file's URL on the stream's `event: complete`;
+     * there is no task id to poll, so the transport opens the stream and reads it
+     * to completion right here. The submit is that stream's only reader, attached
+     * at t=0, so the complete is captured reliably — a reconnect after the job
+     * finishes replays only heartbeats, never its complete (measured against the
+     * live backend). The finished URL travels inside an `audio:done:` request id
+     * so the poll's first status resolves the run instantly. */
+    async submitAudio(apiName: string, args: unknown[]): Promise<QueuedGeneration> {
+      const startUrl = `${base}/gradio_api/call/${apiName}`;
+      console.info("[cfwui] audio call", { apiName });
+      const start = await fetchImpl(startUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: args }),
+      });
+      if (!start.ok) throw new PlatformError(start.status, await readBody(start));
+      const eventId = stringField(asRecord(await readJson(start)), "event_id");
+      if (!eventId) throw new PlatformError(502, { detail: "cfwui audio call returned no event_id" });
+      const stream = await fetchImpl(`${base}/gradio_api/call/${apiName}/${eventId}`);
+      if (!stream.ok) throw new PlatformError(stream.status, await readBody(stream));
+      const url = audioUrlFromComplete(await stream.text(), apiName);
+      return {
+        status: "completed",
+        requestId: `audio:done:${encodeURIComponent(rewriteFileUrl(url, origin))}`,
+        statusUrl: "",
+        cancelUrl: "",
+      };
+    },
+
     async status(requestId: string): Promise<GenerationStatus> {
       if (!requestId) throw new PlatformError(400, { detail: "Missing request id" });
+      /* A finished audio run already holds its result inside the request id the
+         submit minted — there is nothing left to ask the backend for. Decode the
+         stored URL and report the run completed so the poll resolves on its first
+         tick, handing the mp3 to the absorption path like any other output. */
+      if (requestId.startsWith("audio:done:")) {
+        const url = decodeURIComponent(requestId.slice("audio:done:".length));
+        return { status: "completed", requestId, images: [{ url }] };
+      }
       const ret = asRecord(await callTool(statusApiFor(requestId), [requestId]));
       const status = stringField(ret, "status");
       if (!status) {
@@ -117,6 +156,59 @@ function findMediaUrl(obj: unknown): string | undefined {
   } catch {
     return undefined;
   }
+}
+
+/** The audio stream's `event: complete` carries the generated file URL as a JSON
+ *  array (`[url]`); recover it. A failure that arrives as `event: error` with no
+ *  usable message — the opaque `{"error":null}` that used to leave the run card
+ *  silent — is surfaced as an actionable reason via `audioFailure`; a stream that
+ *  ends without ever completing is reported as a backend that produced nothing.
+ *  This is the silent-fail fix for the audio plane. */
+function audioUrlFromComplete(text: string, apiName: string): string {
+  let event = "";
+  for (const raw of text.split("\n")) {
+    const line = raw.trim();
+    if (line.startsWith("event:")) {
+      event = line.slice(6).trim();
+      continue;
+    }
+    if (!line.startsWith("data:")) continue;
+    const payload = line.slice(5).trim();
+    if (event === "complete") {
+      let url: unknown;
+      try {
+        const parsed = JSON.parse(payload) as unknown;
+        url = Array.isArray(parsed) ? parsed[0] : parsed;
+      } catch {
+        throw new PlatformError(502, { detail: audioFailure(apiName, "unparseable complete payload") });
+      }
+      if (typeof url === "string" && url) return url;
+      throw new PlatformError(502, { detail: audioFailure(apiName, "no audio URL in the complete payload") });
+    } else if (event === "error") {
+      throw new PlatformError(400, { detail: audioFailure(apiName, payload) });
+    }
+  }
+  throw new PlatformError(502, {
+    detail: audioFailure(apiName, "the stream ended without a complete event"),
+  });
+}
+
+/** Turn whatever the audio endpoint reported into one actionable sentence. The
+ *  gradio error payload is routinely `{"error": null}` with the real reason lost,
+ *  so when nothing usable is present we fall back to a clear message that names
+ *  the likely causes and tells the visitor what to check next. */
+function audioFailure(apiName: string, raw: unknown): string {
+  const record = asRecord(raw);
+  const detail = record.detail ?? record.error ?? record.message;
+  const text = typeof raw === "string" ? raw : typeof detail === "string" ? detail : "";
+  const usable =
+    text.length > 0 &&
+    text !== "null" &&
+    text !== "{}" &&
+    !text.includes('"error":null') &&
+    !text.includes('"error": null');
+  if (usable) return `Audio generation failed — ${text}`;
+  return `Audio generation failed (${apiName}) and the backend reported no reason. Check the caption and the steps/duration range, then try again; if it keeps failing, the audio model files or the ComfyUI backend may be unavailable.`;
 }
 
 function parseComplete(text: string, apiName: string): unknown {

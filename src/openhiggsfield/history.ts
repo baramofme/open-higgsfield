@@ -13,7 +13,7 @@ export interface RunRecord {
   ratio: string;
   meta: string;
   badge?: string;
-  kind: "image" | "video";
+  kind: "image" | "video" | "audio";
   urls: string[];
   status: RunStatus;
   /** Platform request this row is waiting on. Set while status is running so a
@@ -155,7 +155,7 @@ function isRunRecord(value: unknown): value is RunRecord {
   const record = value as Partial<RunRecord>;
   return (
     typeof record.id === "string" &&
-    (record.surface === "image" || record.surface === "video") &&
+    (record.surface === "image" || record.surface === "video" || record.surface === "audio") &&
     typeof record.prompt === "string" &&
     typeof record.ratio === "string" &&
     Array.isArray(record.urls) &&

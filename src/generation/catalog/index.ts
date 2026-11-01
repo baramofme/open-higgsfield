@@ -40,6 +40,7 @@ import { ltx25Pro } from "./ltx-2.5-pro";
 import { minimaxH3 } from "./minimax-h3";
 import { minimaxHailuo23 } from "./minimax-hailuo-2.3";
 import { ltx25Local, minimaxH3Local } from "./local-video";
+import { minimaxMusic3Local } from "./local-audio";
 import {
   nanoBanana,
   nanoBanana2,
@@ -65,6 +66,7 @@ export const MODELS: readonly ModelEntry[] = [
   krea2Turbo,
   ltx25Local,
   minimaxH3Local,
+  minimaxMusic3Local,
   soul,
   soul2,
   soulCinema,

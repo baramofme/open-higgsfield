@@ -2,7 +2,7 @@ import { getModel, parseSettings } from "./catalog";
 import type { GenerationPlane } from "./catalog/types";
 import { useActive } from "./stores/active";
 import { useImageMedia, useVideoMedia } from "./stores/media";
-import { useImagePrompt, useVideoPrompt } from "./stores/prompt";
+import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "./stores/prompt";
 import { useSettings } from "./stores/settings";
 import { useStudio } from "@/openhiggsfield/studio-mode";
 import { useCamera } from "./stores/camera";
@@ -10,7 +10,13 @@ import { useCamera } from "./stores/camera";
 export function assemblePlane(): GenerationPlane {
   const { model: modelId, surface } = useActive.getState();
   const model = getModel(modelId);
-  const text = (surface === "image" ? useImagePrompt : useVideoPrompt).getState().text;
+  /* The caption lives in one store per surface. Audio reads its own store so a
+     video never leaves stale words in an audio caption (and the reverse); the
+     media stores stay image/video only because a standalone audio run carries no
+     input media at all. */
+  const text = (
+    surface === "image" ? useImagePrompt : surface === "audio" ? useAudioPrompt : useVideoPrompt
+  ).getState().text;
   const items = (surface === "image" ? useImageMedia : useVideoMedia).getState().items;
   const media: GenerationPlane["media"] = {};
   for (const item of items) {

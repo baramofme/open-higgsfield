@@ -494,9 +494,21 @@ export function Viewer({
                     <ImageWorkspace url={toProxyImageUrl(url)} />
                   </div>
                 ) : (
-                  <div className="ohf-mshow-image-inner" style={{ backgroundImage: url ? `url("${toProxyImageUrl(url)}")` : undefined }}>
+                  <div
+                    className="ohf-mshow-image-inner"
+                    style={{
+                      backgroundImage:
+                        url && item.kind !== "audio" ? `url("${toProxyImageUrl(url)}")` : undefined,
+                    }}
+                  >
                     {url ? (
-                      item.kind === "video" ? (
+                      item.kind === "audio" ? (
+                        /* A finished clip has no frame to fill the block — it is
+                           the sound itself, so the narrow sheet shows a plain
+                           player over the art. The raw url plays here without a
+                           proxy because audio needs no CORS preflight. */
+                        <audio className="ohf-mshow-audio" src={url} controls preload="metadata" />
+                      ) : item.kind === "video" ? (
                         <video className="ohf-mshow-media" src={url} controls autoPlay loop playsInline />
                       ) : (
                         /* eslint-disable-next-line @next/next/no-img-element */
@@ -620,7 +632,12 @@ export function Viewer({
               >
                 <span className="ohf-viewer-art" style={{ background: item.art }} />
                 {url ? (
-                  item.kind === "video" ? (
+                  item.kind === "audio" ? (
+                    /* Same reasoning as the narrow sheet: the finished clip is the
+                       media, shown over the run's art, and it streams straight from
+                       the raw gradio url the run stored. */
+                    <audio className="ohf-viewer-audio" src={url} controls preload="metadata" />
+                  ) : item.kind === "video" ? (
                     <video
                       ref={measure}
                       className="ohf-viewer-media"

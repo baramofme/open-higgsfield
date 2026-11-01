@@ -12,7 +12,7 @@ import type { GenerationStatus } from "@/generation/platform";
 import { POLL_DEADLINE_MS, isCancelingStatus, stopWatching, watchRequest } from "@/generation/poll";
 import { useActive } from "@/generation/stores/active";
 import { applyFeedFilters, useFeed } from "@/generation/stores/feed";
-import { useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
+import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
 import { useVideoMedia } from "@/generation/stores/media";
 import { useSettings } from "@/generation/stores/settings";
 import { DEFAULT_PROJECT_ID, useProjects } from "@/generation/stores/projects";
@@ -459,6 +459,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       elements: elementsList.length,
       image: history.filter((record) => record.kind === "image").length,
       video: history.filter((record) => record.kind === "video").length,
+      audio: history.filter((record) => record.kind === "audio").length,
       upscaled: 0,
     }),
     [history, projectsList, elementsList],
@@ -477,6 +478,8 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         return history.filter((record) => record.kind === "image");
       case "video":
         return history.filter((record) => record.kind === "video");
+      case "audio":
+        return history.filter((record) => record.kind === "audio");
       case "projects":
         return history.filter(
           (record) => record.projectId && record.projectId !== DEFAULT_PROJECT_ID,
@@ -610,7 +613,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         setModel(record.modelId);
         if (record.settings) setSettings(record.modelId, record.settings);
       }
-      (record.surface === "image" ? useImagePrompt : useVideoPrompt).getState().setText(record.prompt);
+      (record.surface === "image"
+        ? useImagePrompt
+        : record.surface === "audio"
+          ? useAudioPrompt
+          : useVideoPrompt).getState().setText(record.prompt);
       setViewerId(null);
       setError(null);
       setFocusNonce((n) => n + 1);
@@ -837,7 +844,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
      caret; pressing Generate stays their call. */
   const applyStarter = useCallback(
     (text: string) => {
-      (surface === "image" ? useImagePrompt : useVideoPrompt).getState().setText(text);
+      (surface === "image"
+        ? useImagePrompt
+        : surface === "audio"
+          ? useAudioPrompt
+          : useVideoPrompt).getState().setText(text);
       setError(null);
       setFocusNonce((n) => n + 1);
     },

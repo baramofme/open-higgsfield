@@ -14582,3 +14582,28 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-skeleton[data-cancel-requested] .ohf-skeleton-cancel--requested {
   animation: ohf-fade 0.2s var(--ease) both;
 }
+
+/* Standalone-audio media, defined once and shared across the grid card, the
+   desktop viewer and the mobile sheet. A finished clip has no poster frame, so
+   the native player IS the media; it streams from the raw gradio url the run
+   stored, which needs no CORS preflight and reaches readyState 4 directly. */
+.ohf-tile-audio {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 340px;
+  animation: ohf-fade 0.4s ease;
+}
+.ohf-viewer-audio {
+  position: relative;
+  margin: auto;
+  width: min(520px, 82%);
+  animation: ohf-fade 0.3s ease;
+}
+.ohf-mshow-audio {
+  position: relative;
+  margin: auto;
+  width: calc(100% - 48px);
+}

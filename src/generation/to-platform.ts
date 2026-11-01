@@ -1,7 +1,7 @@
 import { getModel } from "./catalog";
 import type { GenerationPlane, PlatformPaths } from "./catalog/types";
 
-type Mapped = { path: string; body: Record<string, unknown> };
+type Mapped = { path: string; body: Record<string, unknown>; data?: unknown[] };
 type Mapper = (plane: GenerationPlane) => Mapped;
 
 const MAP: Record<string, Mapper> = {
@@ -26,6 +26,7 @@ const MAP: Record<string, Mapper> = {
   "krea-2-turbo": mapKrea2Cfwui,
   "ltx-2.5-local": mapVideoCfwui,
   "minimax-h3-local": mapVideoCfwui,
+  "minimax-music-3-local": mapAudioCfwui,
 };
 
 export function toPlatform(plane: GenerationPlane): Mapped {
@@ -490,5 +491,44 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
       ...chips,
       ...(start ? { start_image: start } : {}),
     },
+  };
+}
+
+/* Standalone-audio map: the plane's caption and dials become the seven
+   positional arguments `AudioGen_MiniMax_Music_3` accepts, in its fixed order
+   (caption, lyrics, max_duration, cfg_scale, top_k, steps, seed). The endpoint is
+   synchronous — it runs the ComfyUI workflow, waits, and returns the file URL on
+   the stream's `event: complete` — so the transport reads that stream to
+   completion inside the submit (`submitAudio` in cfwui-platform) instead of
+   polling a task id; there is no async audio task to poll. Every positional is
+   clamped into the backend's own range so a stored or hand-built value cannot
+   bust the sampler's validation. A blank caption is rejected here with a clear
+   reason, rather than reaching the backend and dying silently as `{"error":null}`.
+   Lyrics always ride empty: the composer has no lyrics field, so an untouched
+   plane is instrumental. The fixed backend fields (batch_size, sampler, …) live
+   in the endpoint itself, not in this body. */
+function mapAudioCfwui(plane: GenerationPlane): Mapped {
+  const caption = plane.prompt.text.trim();
+  if (!caption) {
+    throw new Error(
+      "A caption is required to generate audio — describe the music before pressing Generate.",
+    );
+  }
+  const clamp = (value: unknown, min: number, max: number, fallback: number): number => {
+    const n = Number(value);
+    return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+  };
+  return {
+    path: "AudioGen_MiniMax_Music_3",
+    body: {},
+    data: [
+      caption,
+      "",
+      clamp(plane.settings.duration, 5, 300, 10),
+      clamp(plane.settings.cfg, 1, 10, 1.7),
+      clamp(plane.settings.topK, 1, 100, 50),
+      clamp(plane.settings.steps, 10, 100, 10),
+      -1,
+    ],
   };
 }

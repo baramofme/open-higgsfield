@@ -46,7 +46,15 @@ export async function submitGeneration(plane: GenerationPlane) {
      run whatever the composer holds, so routing follows the model alone —
      local models keep their LAN backend even inside the screen, and the
      camera/lens extras the screen adds simply do not reach the local body. */
-  const { path, body } = toPlatform(parsed);
+  const { path, body, data } = toPlatform(parsed);
+  /* A standalone-audio plane carries positional args (`data`) instead of a json
+     body: the local audio endpoint is synchronous and has no task id to poll, so
+     submitAudio opens its stream and reads it to completion, returning the
+     finished URL inside the request id. Everything else keeps the run + poll
+     contract. */
+  if (isLocalModel(model.id) && data) {
+    return createCfwuiClient({ baseUrl: process.env.CFWUI_BASE_URL! }).submitAudio(path, data);
+  }
   const client = isLocalModel(model.id)
     ? createCfwuiClient({ baseUrl: process.env.CFWUI_BASE_URL! })
     : await createCloudClient();
