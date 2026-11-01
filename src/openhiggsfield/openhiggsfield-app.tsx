@@ -9,7 +9,7 @@ import type { GenerationPlane } from "@/generation/catalog/types";
 import type { Surface } from "@/generation/catalog";
 import { assemblePlane, withCamera } from "@/generation/plane";
 import type { GenerationStatus } from "@/generation/platform";
-import { POLL_DEADLINE_MS, stopWatching, watchRequest } from "@/generation/poll";
+import { POLL_DEADLINE_MS, isCancelingStatus, stopWatching, watchRequest } from "@/generation/poll";
 import { useActive } from "@/generation/stores/active";
 import { applyFeedFilters, useFeed } from "@/generation/stores/feed";
 import { useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
@@ -44,6 +44,10 @@ import { Viewer } from "./viewer";
 /* Long enough to read the bar and reach it; the drain line states the window. */
 const UNDO_MS = 6000;
 
+/* No cancel acknowledged yet. Shared so the set stays referentially stable and
+   memoised slots don't recompute until a real acknowledgement arrives. */
+const EMPTY_CANCELING_IDS: ReadonlySet<string> = new Set<string>();
+
 export interface ActiveRun {
   /** Identifies the skeleton this run occupies, so a batch clears one tile at
       a time as its own request settles. */
@@ -56,6 +60,11 @@ export interface ActiveRun {
   modelLabel: string;
   ratio: string;
   startedAt: number;
+  /** True once the backend has acknowledged a cancel for this run's request —
+      either the ack of the cancel call or a mid-cancel status from the poll.
+      A Rendering card swaps its label for a cancelling message and drops the
+      cancel overlay while this is set. Absent until a cancel is acknowledged. */
+  canceling?: boolean;
 }
 
 type RunDraft = {
@@ -216,6 +225,10 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   /* Picked runs, in the order they were picked: the count stack shows the most
      recent sheets on top, and a range extends from the last one touched. */
   const [selected, setSelected] = useState<string[]>([]);
+  /* requestIds whose cancel the backend has acknowledged — the ack of the cancel
+     call or a mid-cancel status from the poll. A Rendering card swaps its label
+     to a cancelling message once its request id joins this set. */
+  const [cancelingIds, setCancelingIds] = useState<ReadonlySet<string>>(EMPTY_CANCELING_IDS);
   const [saving, setSaving] = useState<SaveProgress | null>(null);
   const [keyConfigured, setKeyConfigured] = useState(false);
   const [keysOpen, setKeysOpen] = useState(false);
@@ -323,6 +336,20 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     );
   }, []);
 
+  /* Mark a request as cancelling the moment the backend acknowledges it — the
+     ack of the cancel call or a mid-cancel status surfacing through the poll.
+     The id is idempotent: re-acknowledging an already-cancelling run changes
+     nothing, so the label swap happens exactly once, without flicker. */
+  const markCanceling = useCallback((requestId: string) => {
+    if (!requestId) return;
+    setCancelingIds((prev) => {
+      if (prev.has(requestId)) return prev;
+      const next = new Set(prev);
+      next.add(requestId);
+      return next;
+    });
+  }, []);
+
   /* One watch per platform request, used both by Generate and by a reload that
      found running rows already in the log. */
   const resume = useCallback(
@@ -330,6 +357,12 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       try {
         const status = await watchRequest(requestId, {
           deadline: draft.createdAt + POLL_DEADLINE_MS,
+          /* A mid-cancel status from the poll (the backend acknowledged the
+             cancel but the run has not settled yet) flips the card out of
+             "Rendering" into a cancelling message before the terminal arrives. */
+          onStatus: (polled) => {
+            if (isCancelingStatus(polled.status)) markCanceling(requestId);
+          },
         });
         if (!alive.current) return;
         const records = terminalRows(requestId, draft, status);
@@ -358,7 +391,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         setError((prev) => prev ?? message);
       }
     },
-    [markFresh],
+    [markFresh, markCanceling],
   );
 
   /* After the log hydrates, pick up any request that was still on the platform
@@ -602,13 +635,19 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     void (async () => {
       try {
         await cancelGeneration({ requestId });
+        /* The cloud returned OK — that response is the backend's acknowledgement
+           of the cancel. Flip the card out of "Rendering" into the cancelling
+           message now; the poll's mid-cancel status (if it ever differs) and the
+           terminal all agree with this. A LAN/failed cancel throws above and
+           never marks the card, so we never claim a cancel we could not make. */
+        if (alive.current) markCanceling(requestId);
       } catch (caught) {
         if (!alive.current) return;
         const message = caught instanceof Error ? caught.message : String(caught);
         setError((prev) => prev ?? `취소 요청이 실패했습니다 — ${message}`);
       }
     })();
-  }, []);
+  }, [markCanceling]);
 
   const deleteRuns = useCallback((records: RunRecord[]) => {
     if (records.length === 0) return;
@@ -1159,6 +1198,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             menuActions={tileMenuActions}
             onStarter={applyStarter}
             onCancel={cancelRun}
+            cancelingIds={cancelingIds}
             galleryRef={galleryRef}
           />
 
@@ -1294,6 +1334,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 menuActions={tileMenuActions}
                 onStarter={applyStarter}
                 onCancel={cancelRun}
+                cancelingIds={cancelingIds}
                 galleryRef={assetsScrollRef}
               />
             </div>

@@ -1053,6 +1053,13 @@
   text-transform: uppercase;
   color: var(--tx3);
 }
+/* Once the backend acknowledges a cancel, the label swaps to "Canceling…" and
+   takes a warm warning tone. The attribute selector outranks the plain label
+   rule above, so it wins whichever theme the tile lands in. The skeleton stays
+   mounted — only the text and colour change — so the swap is smooth. */
+.ohf-skeleton[data-canceling] .ohf-skeleton-label {
+  color: var(--danger);
+}
 .ohf-skeleton-clock {
   font-size: 11px;
   font-variant-numeric: tabular-nums;
@@ -5707,6 +5714,13 @@ a.ohf-btn-solid {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--tx3);
+}
+/* Once the backend acknowledges a cancel, the label swaps to "Canceling…" and
+   takes a warm warning tone. The attribute selector outranks the plain label
+   rule above, so it wins whichever theme the tile lands in. The skeleton stays
+   mounted — only the text and colour change — so the swap is smooth. */
+.ohf-skeleton[data-canceling] .ohf-skeleton-label {
+  color: var(--danger);
 }
 .ohf-skeleton-clock {
   font-size: 11px;

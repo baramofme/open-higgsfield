@@ -122,8 +122,21 @@ type Slot =
   | { key: string; kind: "run"; run: ActiveRun }
   | { key: string; kind: "item"; item: RunRecord; index: number };
 
-function slotsOf(runs: ActiveRun[], items: RunRecord[]): Slot[] {
-  const slots: Slot[] = runs.map((run) => ({ key: run.id, kind: "run", run }));
+function slotsOf(
+  runs: ActiveRun[],
+  items: RunRecord[],
+  cancelingIds?: ReadonlySet<string>,
+): Slot[] {
+  /* A run reads as cancelling once its request id has been acknowledged for a
+     cancel — whether the card came from a live skeleton or a running history
+     row. Both carry a requestId, so the same check covers both sources. */
+  const isCanceling = (requestId?: string): boolean =>
+    Boolean(requestId && cancelingIds?.has(requestId));
+  const slots: Slot[] = runs.map((run) => ({
+    key: run.id,
+    kind: "run",
+    run: { ...run, canceling: isCanceling(run.requestId) },
+  }));
   items.forEach((item, index) => {
     if (item.status === "running") {
       slots.push({
@@ -136,6 +149,7 @@ function slotsOf(runs: ActiveRun[], items: RunRecord[]): Slot[] {
           modelLabel: item.modelLabel,
           ratio: item.ratio,
           startedAt: item.createdAt,
+          canceling: isCanceling(item.requestId),
         },
       });
       return;
@@ -513,6 +527,7 @@ export const Gallery = memo(function Gallery({
   menuActions,
   onStarter,
   onCancel,
+  cancelingIds,
   galleryRef,
   layout,
   splitByDate,
@@ -544,6 +559,9 @@ export const Gallery = memo(function Gallery({
   /* Fires a cancel request for a run that the backend already knows about, once
      the visitor clicks the "Cancel Request" overlay on a Rendering card. */
   onCancel?: (requestId: string) => void;
+  /* requestIds whose cancel the backend has acknowledged; forwarded to the grid
+     so a Rendering card whose id has arrived can swap its label. */
+  cancelingIds?: ReadonlySet<string>;
   galleryRef: RefObject<HTMLDivElement | null>;
   layout: FeedLayout;
   splitByDate: boolean;
@@ -591,6 +609,7 @@ export const Gallery = memo(function Gallery({
         cardSize={cardSize}
         fit={fit}
         onCancel={onCancel}
+        cancelingIds={cancelingIds}
       />
     </div>
   );
@@ -804,6 +823,7 @@ function VirtualizedGrid({
   cardSize,
   fit,
   onCancel,
+  cancelingIds,
 }: {
   scrollRef: RefObject<HTMLDivElement | null>;
   selecting: boolean;
@@ -830,9 +850,10 @@ function VirtualizedGrid({
   cardSize: number;
   fit: boolean;
   onCancel?: (requestId: string) => void;
+  cancelingIds?: ReadonlySet<string>;
 }) {
   const width = useInnerWidth(scrollRef);
-  const slots = useMemo(() => slotsOf(runs, items), [runs, items]);
+  const slots = useMemo(() => slotsOf(runs, items, cancelingIds), [runs, items, cancelingIds]);
   const cols = fit ? 1 : ZOOM_COLS[cardSize] ?? CARD_COLS;
   const rows = Math.max(1, Math.ceil(slots.length / cols));
 
@@ -1028,7 +1049,12 @@ function RunningTile({
   const requestId = run.requestId;
   const cancellable = Boolean(requestId) && Boolean(onCancel);
 
-  const overlay = !cancellable
+  /* Once the backend has acknowledged the cancel (run.canceling), the request is
+     already in flight — so the "Cancel Request" overlay is gone and the card's
+     own label carries the cancelling message instead. With the overlay removed
+     there is no button left to fire a second cancel, which is the whole point. */
+  const canceling = Boolean(run.canceling);
+  const overlay = !cancellable || canceling
     ? null
     : requested
       ? (
@@ -1056,10 +1082,11 @@ function RunningTile({
     <div
       className="ohf-skeleton"
       role="status"
-      aria-label={`${run.modelLabel} rendering`}
+      aria-label={`${run.modelLabel} ${canceling ? "cancelling" : "rendering"}`}
       data-cancel-requested={requested || undefined}
+      data-canceling={canceling || undefined}
     >
-      <span className="ohf-skeleton-label">Rendering</span>
+      <span className="ohf-skeleton-label">{canceling ? "Canceling…" : "Rendering"}</span>
       <span className="ohf-skeleton-clock">
         {Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")}
       </span>

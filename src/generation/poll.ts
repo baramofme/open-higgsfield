@@ -4,6 +4,32 @@ import type { GenerationStatus, StatusResult } from "./platform";
 /** Statuses the platform never moves off again. */
 const TERMINAL = new Set(["completed", "failed", "nsfw", "canceled"]);
 
+/* The platform's words for "a cancel was accepted and is still working". These
+   are NOT terminal: the request keeps reporting until it finally reads
+   `canceled`. A card that is Rendering should switch to a cancelling message the
+   moment one of these arrives, so the poll surfaces them as they pass through.
+   Stored in underscore form because the matcher below folds spaces and hyphens
+   into underscores, so a platform's separator or letter-case cannot miss. */
+const CANCELING_TOKENS = new Set([
+  "canceling",
+  "cancelling",
+  "cancel_requested",
+  "canceling_requested",
+  "cancelling_requested",
+  "cancel_in_progress",
+  "cancellation_requested",
+  "cancelling_run",
+  "cancel_pending",
+  "stopping",
+]);
+
+/** True when a poll status means the backend is mid-cancel (not yet terminal). */
+export function isCancelingStatus(status: string | undefined): boolean {
+  if (typeof status !== "string") return false;
+  const key = status.trim().toLowerCase().replace(/[\s-]+/g, "_");
+  return CANCELING_TOKENS.has(key);
+}
+
 export const POLL_INTERVAL_MS = 4000;
 export const POLL_DEADLINE_MS = 10 * 60_000;
 /** Rounds allowed to fail back to back before the watches are given up on. One
@@ -14,6 +40,10 @@ type Waiter = {
   deadline: number;
   resolve: (status: GenerationStatus) => void;
   reject: (reason: Error) => void;
+  /** Told about every status the poll reads for this request, including the
+      non-terminal ones a terminal-only resolve would otherwise drop — so a
+      mid-cancel status can reach the UI before the run finally settles. */
+  onStatus?: (status: GenerationStatus) => void;
 };
 
 const waiting = new Map<string, Waiter>();
@@ -29,13 +59,14 @@ let misses = 0;
     stall again — with the lock gone and the queue doing the same work. */
 export function watchRequest(
   requestId: string,
-  opts?: { deadline?: number },
+  opts?: { deadline?: number; onStatus?: (status: GenerationStatus) => void },
 ): Promise<GenerationStatus> {
   const existing = inflight.get(requestId);
   if (existing) return existing;
   const promise = new Promise<GenerationStatus>((resolve, reject) => {
     waiting.set(requestId, {
       deadline: opts?.deadline ?? Date.now() + POLL_DEADLINE_MS,
+      onStatus: opts?.onStatus,
       resolve: (status) => {
         inflight.delete(requestId);
         resolve(status);
@@ -91,6 +122,16 @@ function deliver(result: StatusResult): void {
     waiting.delete(result.requestId);
     waiter.reject(new Error(result.error));
     return;
+  }
+  /* Surface every status the poll reads — including the non-terminal ones — so a
+     mid-cancel status can reach the UI before the run settles. A bad observer
+     must never break the poll loop, so a throw here is swallowed. */
+  if (waiter.onStatus) {
+    try {
+      waiter.onStatus(result.status);
+    } catch {
+      /* the poll keeps running regardless of what the subscriber does */
+    }
   }
   if (!TERMINAL.has(result.status.status)) return;
   waiting.delete(result.requestId);
