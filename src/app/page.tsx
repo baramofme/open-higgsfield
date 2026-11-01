@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { OpenHiggsfieldApp } from "@/openhiggsfield/openhiggsfield-app";
 
 import "@/openhiggsfield/openhiggsfield.css";
+import "@/openhiggsfield/reference-film.css";
 
 const inter = Inter({
   subsets: ["latin"],

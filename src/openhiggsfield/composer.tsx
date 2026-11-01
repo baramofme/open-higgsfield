@@ -16,10 +16,17 @@ import { AssetPicker } from "./asset-picker";
 import { PROMPT_PLACEHOLDERS, countSetting } from "./data";
 import { ElementPopover } from "./element-popover";
 import { CameraPopover, CharacterPopover, CinemaTiles } from "./cinema-popover";
+import {
+  ReferenceFilmButton,
+  ReferenceFilmPopover,
+  REFERENCE_FILM_OVERLAY,
+} from "./reference-film-popover";
+import { CameraMovementPanel } from "./camera-movement-panel";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, ClapperIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
+import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
 import { useCamera } from "@/generation/stores/camera";
+import { LightingPopover } from "./lighting-popover";
 import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
 import { ModelPicker } from "./model-picker";
@@ -34,6 +41,7 @@ const ELEMENTS = "elements";
 const SETTING = "setting:";
 const CHARACTER = "character";
 const CAMERA = "camera";
+const LIGHTING = "lighting";
 
 /* What the studio itself can deliver for a model that carries no count of its
    own: one platform request per result. */
@@ -67,12 +75,18 @@ const CHARACTER_FLOOR = 64;
     not a search field, so it takes the smaller number. */
 const CAMERA_FLOOR = 78;
 
+/** The lighting pad's minimum face: its padding, the head row and the rim of
+    the ring — the part that must stay whole before the readout folds. */
+const LIGHTING_FLOOR = 84;
+
 /** Declared widths keep an opening popover inside the composer's own column. */
 function popoverWidth(id: string, model: ModelEntry): number {
   if (id === PICKER || id === ASSETS) return 560;
   if (id === ELEMENTS) return 320;
   if (id === CHARACTER) return 360;
+  if (id === REFERENCE_FILM_OVERLAY) return 320;
   if (id === CAMERA) return 400;
+  if (id === LIGHTING) return 340;
   /* A list of an enum's values is the narrow panel; a slider needs its travel. */
   if (id.startsWith(SETTING) && model.settings[id.slice(SETTING.length)]?.type === "enum") {
     return 216;
@@ -313,7 +327,7 @@ export function Composer({
   useEffect(() => {
     const isSetting = (overlay ?? "").startsWith(SETTING);
     const ridesAnchor =
-      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA;
+      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING;
     if (overlay !== ASSETS && !ridesAnchor) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
@@ -332,7 +346,9 @@ export function Composer({
               ? CHARACTER_FLOOR
               : overlay === CAMERA
                 ? CAMERA_FLOOR
-                : PICKER_FLOOR;
+                : overlay === LIGHTING
+                  ? LIGHTING_FLOOR
+                  : PICKER_FLOOR;
       setPopClear(Math.max(floor, Math.round(room)));
     };
     read();
@@ -586,6 +602,10 @@ export function Composer({
         {settingKey && <SettingPopover model={model} settingKey={settingKey} values={values} />}
         {overlay === CHARACTER && <CharacterPopover onClose={() => setOverlay(null)} />}
         {overlay === CAMERA && <CameraPopover onClose={() => setOverlay(null)} />}
+        {overlay === LIGHTING && <LightingPopover onClose={() => setOverlay(null)} />}
+        {overlay === REFERENCE_FILM_OVERLAY && (
+          <ReferenceFilmPopover onClose={() => setOverlay(null)} />
+        )}
         {overlay === ELEMENTS && (
           <ElementPopover
             trayItems={tray.items}
@@ -720,21 +740,10 @@ export function Composer({
                         </span>
                       </span>
                     </button>
-                    <button
-                      type="button"
-                      className="ohf-vtc ohf-vtc--film"
-                      data-off
-                      aria-disabled
-                      title="필름은 화면 미러 — 실행 미연결"
-                    >
-                      <span className="ohf-vtc-ic" aria-hidden>
-                        <ClapperIcon size={16} />
-                      </span>
-                      <span className="ohf-vtc-col">
-                        <span className="ohf-vtc-label">필름</span>
-                        <span className="ohf-vtc-val">자동</span>
-                      </span>
-                    </button>
+                    <ReferenceFilmButton
+                      open={overlay === REFERENCE_FILM_OVERLAY}
+                      onOpen={(trigger) => toggle(REFERENCE_FILM_OVERLAY, trigger)}
+                    />
                     <button
                       type="button"
                       className="ohf-vtc ohf-vtc--camera ohf-tip"
@@ -770,10 +779,13 @@ export function Composer({
                     </button>
                     <button
                       type="button"
-                      className="ohf-vtc ohf-vtc--light"
-                      data-off
-                      aria-disabled
-                      title="조명은 화면 미러 — 실행 미연결"
+                      className="ohf-vtc ohf-vtc--light ohf-tip"
+                      data-tip="조명"
+                      data-tour-anchor="tour-video-lighting"
+                      aria-label="조명"
+                      aria-expanded={overlay === LIGHTING}
+                      aria-haspopup="dialog"
+                      onClick={(event) => toggle(LIGHTING, event.currentTarget)}
                     >
                       <span className="ohf-vtc-ic" aria-hidden>
                         <SparkIcon size={16} />
@@ -962,6 +974,13 @@ export function Composer({
                 </div>
               </div>
             </div>
+
+            {/* The camera movement panel sits at the bottom of the video form,
+                after the rail it follows and before the column closes. It
+                renders only under the video seat — the image and cinematic seats
+                carry no movement vocabulary — and it drives and reads its state
+                through the registry, so nothing in the composer owns it. */}
+            {mode === "cinema" && cinemaMode === "video" && <CameraMovementPanel />}
           </div>
 
             {/* The right column is the fixed edge of the dock: nothing here

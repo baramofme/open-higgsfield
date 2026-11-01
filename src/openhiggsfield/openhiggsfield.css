@@ -14946,3 +14946,361 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     max-width: calc(100vw - 182px) !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Camera movement panel — the cinematic instrument at the bottom of the video
+   form. Five movement tiles, each carrying the two direction toggles its
+   movement can go, an intensity slider and a clear. The plate rides the same
+   frosted surface the video-top row already wears, so the two sit as one family;
+   the tiles are shorter than the top's 48 because a movement group is label plus
+   two glyph buttons, not a two-line instrument.
+
+   The lit state is the whole point of visual feedback: a tile lights when any of
+   its directions is active (data-on), and a direction button lights when its own
+   slot is selected (data-active). Both read the same isTokenActive the prompt
+   reads, so the tile and the prompt phrase can never drift apart — AC4's rule.
+   These classes touch none of the dock-authority selectors, so they live beside
+   that geometry and never against it.
+   ───────────────────────────────────────────────────────────────────────────── */
+.ohf-cam-move {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  padding: 4px 6px;
+  border-radius: 14px;
+  background: rgba(26, 29, 31, 0.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ohf-cam-move::-webkit-scrollbar {
+  display: none;
+}
+.ohf-cam-move-tiles {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: none;
+  min-width: 0;
+}
+/* One movement group: a label and its two direction toggles. A tile lights
+   when any direction is active — the single rule that reads "which movement is
+   on". The accent tint is the same one the rail's on-flag uses, so the lit tile
+   belongs to the dock's language rather than inventing a new one. */
+.ohf-cam-move-tile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  flex: none;
+  transition:
+    background-color 0.15s cubic-bezier(0, 0, 0.2, 1),
+    border-color 0.15s cubic-bezier(0, 0, 0.2, 1);
+}
+.ohf-cam-move-tile[data-on] {
+  background: var(--accent-14);
+  border-color: var(--accent-32);
+}
+.ohf-cam-move-label {
+  font-size: 9.5px;
+  line-height: 11px;
+  font-weight: 600;
+  color: var(--tx3);
+  white-space: nowrap;
+}
+.ohf-cam-move-tile[data-on] .ohf-cam-move-label {
+  color: var(--accent);
+}
+.ohf-cam-move-dirs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+/* A direction toggle: glyph-only, 22 square, so five movements still breathe in
+   the column. The icon carries the whole meaning; the tooltip names the prompt
+   phrase it writes. On is the accent, off is the rail's quiet grey — the same
+   two states every other flag on the dock answers with. */
+.ohf-cam-dir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--tx3);
+  padding: 0;
+  cursor: pointer;
+  flex: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s var(--ease);
+}
+.ohf-cam-dir:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--tx2);
+}
+.ohf-cam-dir:active {
+  transform: scale(0.9);
+}
+.ohf-cam-dir[data-active] {
+  background: var(--accent-14);
+  color: var(--accent);
+}
+/* The intensity slider: a short range on its own, read by a detent word. Three
+   steps past the rest, and the words only speak from "moderate" up — a subtle
+   push needs no phrase beyond the direction itself. The thumb is the accent. */
+.ohf-cam-intensity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  margin-left: 2px;
+  padding-left: 8px;
+  border-left: 1px solid var(--line);
+}
+.ohf-cam-intensity-label {
+  font-size: 9.5px;
+  line-height: 11px;
+  font-weight: 600;
+  color: var(--tx3);
+  white-space: nowrap;
+}
+.ohf-cam-intensity-range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+  outline: none;
+  cursor: pointer;
+}
+.ohf-cam-intensity-range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--s2);
+  cursor: pointer;
+}
+.ohf-cam-intensity-range::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--s2);
+  cursor: pointer;
+}
+.ohf-cam-intensity-stop {
+  font-size: 9.5px;
+  line-height: 11px;
+  color: var(--tx3);
+  white-space: nowrap;
+  min-width: 4ch;
+}
+/* The clear: it appears only when there is something to clear, so it never
+   offers to wipe an already-empty feature. */
+.ohf-cam-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--tx3);
+  font-size: 9.5px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: none;
+  margin-left: 2px;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-cam-clear:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--tx);
+}
+/* Below 560 the dock is a thumb wide: the labels fold, the slider keeps only
+   its track and thumb, and five tiles still read by glyph alone. */
+@media (max-width: 560px) {
+  .ohf-cam-move {
+    border-radius: 12px;
+    gap: 6px;
+    padding: 4px;
+  }
+  .ohf-cam-move-label {
+    display: none;
+  }
+  .ohf-cam-move-tile {
+    padding: 0 6px;
+  }
+  .ohf-cam-intensity-label {
+    display: none;
+  }
+  .ohf-cam-intensity {
+    margin-left: 0;
+    padding-left: 6px;
+  }
+}
+
+/* ── Cinematic Studio screen ───────────────────────────────────────────────
+   The cinematic surface is a separate full-screen page, not a panel riding the
+   dashboard: its own header carries the only way back, a left model rail sits
+   beside a centred generation stage, and the composer docks along the foot.
+   Appended at the end of the file so the cascade resolves here (the file has
+   duplicate selectors; a trailing block wins). */
+.ohf-cinema-screen {
+  position: relative;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--bg);
+}
+.ohf-cinema-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--line);
+}
+.ohf-cinema-top-left,
+.ohf-cinema-top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ohf-cinema-top-right {
+  gap: 12px;
+}
+.ohf-cinema-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.ohf-cinema-exit:hover {
+  color: var(--tx);
+  background: rgba(255, 255, 255, 0.04);
+}
+.ohf-cinema-exit:active {
+  transform: scale(0.97);
+}
+.ohf-cinema-exit svg {
+  color: var(--tx3);
+}
+.ohf-cinema-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--tx);
+}
+.ohf-cinema-brand svg {
+  color: var(--accent);
+}
+.ohf-cinema-body {
+  display: grid;
+  grid-template-columns: 20rem minmax(0, 1fr);
+  min-height: 0;
+}
+.ohf-cinema-rail-col {
+  min-height: 0;
+  padding: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+/* Adopt the app's own cinema rail as the column's child. The selector is scoped
+   to the screen, so the general studio — which never renders the rail — keeps
+   its original floating-pill geometry untouched. */
+.ohf-cinema-screen .ohf-cinema {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  z-index: 1;
+  animation: none;
+}
+.ohf-cinema-canvas {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ohf-cinema-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 24px;
+  text-align: center;
+}
+.ohf-cinema-stage-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tx3);
+}
+.ohf-cinema-stage-note {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--tx4);
+}
+.ohf-cinema-dock {
+  flex: none;
+  padding: 0 20px 16px;
+}
+@media (max-width: 560px) {
+  .ohf-cinema-body {
+    grid-template-columns: 1fr;
+  }
+  .ohf-cinema-rail-col {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ohf-cinema-screen {
+    animation: none;
+  }
+}

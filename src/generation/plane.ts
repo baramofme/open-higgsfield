@@ -6,6 +6,7 @@ import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "./stores/prompt"
 import { useSettings } from "./stores/settings";
 import { useStudio } from "@/openhiggsfield/studio-mode";
 import { useCamera } from "./stores/camera";
+import { mergePromptWithTokens } from "./prompt-registry";
 
 export function assemblePlane(): GenerationPlane {
   const { model: modelId, surface } = useActive.getState();
@@ -29,7 +30,12 @@ export function assemblePlane(): GenerationPlane {
   }
   return {
     model: model.id,
-    prompt: { text },
+    /* The base caption is whatever the visitor typed; the cinematic instruments
+       register their own UI-to-prompt mappings and append through the registry,
+       so a UI selection reaches the run without the core changing. An empty
+       token set leaves the caption exactly as typed — no behaviour moves until a
+       feature actually registers and something is selected. */
+    prompt: { text: mergePromptWithTokens(text, surface) },
     media,
     settings: parseSettings(model, useSettings.getState().byModel[model.id] ?? {}),
     /* The clapper's state rides the plane so the run knows which surface it
