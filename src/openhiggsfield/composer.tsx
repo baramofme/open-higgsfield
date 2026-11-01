@@ -10,7 +10,6 @@ import { MAX_BATCH, useActive } from "@/generation/stores/active";
 import { useElements } from "@/generation/stores/elements";
 import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
 import { useSettings } from "@/generation/stores/settings";
-import { projectLabel, useProjects } from "@/generation/stores/projects";
 
 import { swatchFor } from "./artwork";
 import { AssetPicker } from "./asset-picker";
@@ -19,12 +18,12 @@ import { ElementPopover } from "./element-popover";
 import { CameraPopover, CharacterPopover, CinemaTiles } from "./cinema-popover";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { CaretDownIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PlusIcon, VideoIcon, WarningIcon } from "./icons";
+import { CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, ClapperIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
+import { useCamera } from "@/generation/stores/camera";
 import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
 import { ModelPicker } from "./model-picker";
 import { SettingPill, SettingPopover } from "./settings";
-import { ProjectDialog } from "./project-dialog";
 
 /* Overlay ids: the two fixed panels, or one setting addressed by its catalog
    key — the rail renders whatever the model declares, so the ids cannot be a
@@ -137,13 +136,6 @@ export function Composer({
   /* The shelf the asset panel should land on. The @ button asks for elements
      by name; the + button lets the panel find the shelf that holds something. */
   const [pickerTab, setPickerTab] = useState<"elements" | null>(null);
-  /* The cinematic surface loads a project; the chips under the dock are how it
-     is loaded, and the dialog is how a new one is named. */
-  const projects = useProjects((state) => state.projects);
-  const activeProjectId = useProjects((state) => state.activeProjectId);
-  const setActiveProject = useProjects((state) => state.setActive);
-  const addProject = useProjects((state) => state.addProject);
-  const [projectDialog, setProjectDialog] = useState(false);
   const [anchor, setAnchor] = useState({ x: 0, y: 0 });
   const [popClear, setPopClear] = useState<number | null>(null);
   const [shortcut, setShortcut] = useState<string | null>(null);
@@ -908,43 +900,6 @@ export function Composer({
               </span>
             </div>
             </div>
-            {/* The cinematic surface works inside a project; this strip is how
-                it is chosen. The default shelf stays available, and a new
-                project is one press away — private, because sharing costs. */}
-            {mode === "cinema" && (
-              <div className="ohf-project-chips" role="group" aria-label="Project">
-                <span className="ohf-project-chips-label">My projects</span>
-                <button
-                  type="button"
-                  className="ohf-project-chip"
-                  aria-pressed={activeProjectId === "default"}
-                  onClick={() => setActiveProject("default")}
-                >
-                  {projectLabel(projects, "default")}
-                </button>
-                {projects.map((project) => (
-                  <button
-                    key={project.id}
-                    type="button"
-                    className="ohf-project-chip"
-                    aria-pressed={project.id === activeProjectId}
-                    onClick={() => setActiveProject(project.id)}
-                  >
-                    {project.name}
-                    {project.private && <span className="ohf-project-private">Private</span>}
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  className="ohf-project-chip ohf-project-chip--new"
-                  onClick={() => setProjectDialog(true)}
-                >
-                  <PlusIcon size={12} />
-                  New project
-                  <span className="ohf-project-private">Private</span>
-                </button>
-              </div>
-            )}
           </div>
 
           {selection}
@@ -959,18 +914,6 @@ export function Composer({
           </div>,
           document.body,
         )}
-      {/* Naming a project is the same dialog the picker offers; the chips reach
-          it from here. A new project becomes the one being worked in. */}
-      {projectDialog && (
-        <ProjectDialog
-          onClose={() => setProjectDialog(false)}
-          onCreate={(name) => {
-            const project = addProject(name);
-            setActiveProject(project.id);
-            setProjectDialog(false);
-          }}
-        />
-      )}
     </div>
   );
 }
