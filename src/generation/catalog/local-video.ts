@@ -27,7 +27,7 @@ const localVideoSettings = {
 export const ltx25Local = videoModel(
   "ltx-2.5-local",
   "LTX 2.5 (Local)",
-  { start: 1, reference: 9 },
+  { start: 1, end: 1, reference: 9 },
   { text: "VideoGen_LTX_2_5_run", image: "VideoGen_LTX_2_5_run" },
   localVideoSettings,
 );
@@ -41,7 +41,7 @@ export const ltx25Local = videoModel(
 export const minimaxH3Local = videoModel(
   "minimax-h3-local",
   "MiniMax H3 (Local)",
-  { start: 1, reference: 9, video: 3, audio: 3 },
+  { start: 1, end: 1, reference: 9, video: 3, audio: 3 },
   { text: "VideoGen_H3_run", image: "VideoGen_H3_run" },
   localVideoSettings,
 );

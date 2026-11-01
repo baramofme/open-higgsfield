@@ -409,6 +409,7 @@ function h3NamedTemplate(prompt: string, images: string[], videos: string[], aud
 function mapVideoCfwui(plane: GenerationPlane): Mapped {
   const model = getModel(plane.model);
   const start = urls(plane, "start")[0];
+  const end = urls(plane, "end")[0];
   const prompt = plane.prompt.text;
   const duration = Number(plane.settings.duration) || 5;
   const aspect = String(plane.settings.aspectRatio ?? "16:9");
@@ -461,7 +462,7 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
     return {
       path: "VideoGen_H3_run",
       body: {
-        task_type: start ? "i2va" : "t2va",
+        task_type: start && end ? "flf2va" : start ? "i2va" : "t2va",
         prompt,
         width,
         height,
@@ -474,13 +475,14 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
         async_execution: true,
         ...chips,
         ...(start ? { first_frame_image: start } : {}),
+        ...(end ? { last_frame_image: end } : {}),
       },
     };
   }
   return {
     path: "VideoGen_LTX_2_5_run",
     body: {
-      task_type: start ? "i2va" : "t2va",
+      task_type: start && end ? "flf2va" : start ? "i2va" : "t2va",
       prompt,
       resolution: tier,
       aspect_ratio: LTX_ASPECT[aspect] ?? "16:9 (Widescreen)",
@@ -490,6 +492,7 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
       async_execution: true,
       ...chips,
       ...(start ? { start_image: start } : {}),
+      ...(end ? { end_image: end } : {}),
     },
   };
 }
