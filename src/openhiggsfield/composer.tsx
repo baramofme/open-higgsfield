@@ -364,6 +364,12 @@ export function Composer({
     };
   }, [overlay]);
 
+  /* A screen this short cannot spare the dock a fifth of itself: the fold is
+     the same law the CSS media query applies, kept in step here so the inline
+     height and the ceiling never disagree. */
+  const SHORT_VIEWPORT = 600;
+  const GROW_FLOOR = 34;
+
   /* Auto-grow the prompt, including when text is set programmatically — and
      again when the column narrows, because the field shares its line with the
      attachment now and the same text rewraps onto more of them. Only a width
@@ -373,7 +379,27 @@ export function Composer({
     if (!el) return;
     const grow = () => {
       el.style.height = "auto";
-      el.style.height = `${Math.min(el.scrollHeight, window.innerHeight * 0.2)}px`;
+      /* The screen the visitor actually sees, not just the layout box: under a
+         pinch or a browser zoom the visible slice is smaller than the layout
+         viewport, and the fold has to answer to the slice. */
+      const vv = window.visualViewport;
+      const visible = vv ? Math.min(window.innerHeight, vv.height) : window.innerHeight;
+      const cap = visible * (visible < SHORT_VIEWPORT ? 0.13 : 0.2);
+      el.style.height = `${Math.min(el.scrollHeight, cap)}px`;
+      /* The dock rides the bottom edge, so every extra line it grows travels
+         upward — and past a certain height the field's top disappears under
+         the top bar, which reads to the visitor as the dock leaving the screen.
+         Fold the field back to whatever the nav leaves; the words keep
+         scrolling inside it, so nothing is lost by the fold. */
+      const dock = dockRef.current;
+      const bar = document.querySelector<HTMLElement>(".ohf-topbar");
+      if (!dock || !bar) return;
+      const room = visible - bar.getBoundingClientRect().bottom - 8;
+      const rest = dock.offsetHeight - el.offsetHeight; /* the dock minus the field */
+      const fit = Math.round(room - rest);
+      if (el.offsetHeight > fit) {
+        el.style.height = `${Math.max(GROW_FLOOR, fit)}px`;
+      }
     };
     grow();
     let width = el.clientWidth;
@@ -383,7 +409,17 @@ export function Composer({
       grow();
     });
     observer.observe(el);
-    return () => observer.disconnect();
+    /* A window resize or a pinch changes the room without changing a single
+       word — the fold has to be re-read then, not only when the text moves. */
+    const onResize = () => grow();
+    window.addEventListener("resize", onResize);
+    const vv = window.visualViewport;
+    if (vv) vv.addEventListener("resize", onResize);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
+      if (vv) vv.removeEventListener("resize", onResize);
+    };
   }, [prompt.text]);
 
   useEffect(() => {

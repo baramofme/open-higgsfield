@@ -14471,3 +14471,48 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   letter-spacing: normal;
   color: var(--tx);
 }
+
+/* ─────────────────────────────────────────────────────────────────────
+   Short screens: the dock folds so a long prompt never crowds the field out
+   of the room the top bar leaves (t_cebb9175). Below 600px of height the
+   composer's own vertical padding tightens, the prompt's ceiling drops from
+   a fifth of the screen to an eighth, and the attachment frames stand smaller
+   — the dock's whole height comes down visibly while every control keeps its
+   size, so the send action stays reachable. Above the threshold nothing here
+   applies and the dock keeps its usual measure. Appended last on purpose:
+   this file holds duplicate selectors and the later block wins.
+   ───────────────────────────────────────────────────────────────────── */
+@media (max-height: 599px) {
+  .ohf-dock {
+    padding-bottom: 12px;
+  }
+  .ohf-composer-head {
+    padding: 6px 10px 0;
+  }
+  .ohf-composer-row {
+    padding: 2px 10px 8px;
+  }
+  .ohf-form-col {
+    gap: 8px;
+  }
+  .ohf-prompt {
+    min-height: 34px;
+    max-height: 13dvh;
+  }
+  /* The frames ride a line of their own above the words; at this height that
+     line has to give some of it back. */
+  .ohf-strip {
+    gap: 10px;
+    padding-top: 8px;
+  }
+  .ohf-strip-tile {
+    width: 48px;
+    height: 48px;
+  }
+  /* The cinema surface adds the dock's tallest guest, the project chips under
+     the rail. They ride the fold with less air above them; the rail itself is
+     stretched by the row, so it gives its height back with the row. */
+  .ohf-project-chips {
+    padding-top: 4px;
+  }
+}
