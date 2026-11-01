@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1793425056.8979015,
-    "ast_hash": "dcd4de8b2f8599092495ee4fa6532a1c",
+    "mtime": 1793511483.2089677,
+    "ast_hash": "8e2e9174b3e716394a7434f8ef683cb4",
     "semantic_hash": ""
   },
   "package.json": {
@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "src/app/api/blob/route.ts": {
-    "mtime": 1793424800.3485458,
-    "ast_hash": "1ec6037433b29bc7e0cf2c2be13ad7b0",
+    "mtime": 1793510754.0051813,
+    "ast_hash": "43df16c0fd68b9fbb91e69de8c5c0ecb",
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/generation/actions.ts": {
-    "mtime": 1793452316.0383584,
-    "ast_hash": "983154b715fd30813b6c7e8682a36400",
+    "mtime": 1793506802.403947,
+    "ast_hash": "8a3d2e08ce0e766ab8ec88957f4c87d9",
     "semantic_hash": ""
   },
   "src/generation/catalog/cinema-misc.ts": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/defaults.ts": {
-    "mtime": 1793439675.6652417,
-    "ast_hash": "2f4b72f4becebea913d4479a95dd882f",
+    "mtime": 1793508207.0967495,
+    "ast_hash": "5b967342ddfe8ed26c3ab5dcdf21dc80",
     "semantic_hash": ""
   },
   "src/generation/catalog/dop.ts": {
@@ -175,8 +175,8 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/parse-settings.ts": {
-    "mtime": 1793424800.348854,
-    "ast_hash": "6e507beb985548b262618000bde79e4d",
+    "mtime": 1793508229.4105368,
+    "ast_hash": "f77489792d45bf0b450a47ad2d6bd526",
     "semantic_hash": ""
   },
   "src/generation/catalog/pixverse-6.ts": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "src/generation/to-platform.ts": {
-    "mtime": 1793502266.2860215,
-    "ast_hash": "1979ec4515cce626ee84016bd0c9e722",
+    "mtime": 1793510973.139044,
+    "ast_hash": "892746b9d374448c2b3f7fd2a01dc611",
     "semantic_hash": ""
   },
   "src/generation/upload.ts": {
@@ -335,13 +335,13 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/composer.tsx": {
-    "mtime": 1793485298.3319085,
-    "ast_hash": "738ebac6d4b67abcc317b18c4b864665",
+    "mtime": 1793511710.8709557,
+    "ast_hash": "da28db98fe8ada276382663f804a6e4a",
     "semantic_hash": ""
   },
   "src/openhiggsfield/data.ts": {
-    "mtime": 1793428886.3488855,
-    "ast_hash": "0252d306d5e2249f31085626a40bba43",
+    "mtime": 1793510746.895058,
+    "ast_hash": "74fa741bbc898f6b3e0168ab43fa7bed",
     "semantic_hash": ""
   },
   "src/openhiggsfield/download.ts": {
@@ -355,13 +355,13 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/gallery.tsx": {
-    "mtime": 1793483381.4722924,
-    "ast_hash": "bf007fa26909835ca0646e1c6305c83c",
+    "mtime": 1793510249.466717,
+    "ast_hash": "2d476165162ab2773cd98a9c87b9e7bc",
     "semantic_hash": ""
   },
   "src/openhiggsfield/history.ts": {
-    "mtime": 1793461208.603913,
-    "ast_hash": "2202805c60b4f82b6870eb3b8bafb9cd",
+    "mtime": 1793508037.887668,
+    "ast_hash": "4cea8a42629e3de1cb377765947511c7",
     "semantic_hash": ""
   },
   "src/openhiggsfield/icons.tsx": {
@@ -395,8 +395,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/openhiggsfield-app.tsx": {
-    "mtime": 1793485298.0949779,
-    "ast_hash": "5182a7a4567b77e5cf2bd3e3dfc7b67d",
+    "mtime": 1793510242.9035747,
+    "ast_hash": "b93e7cd22e9554b9dcf8e3fc3c48b9d5",
     "semantic_hash": ""
   },
   "src/openhiggsfield/selection-bar.tsx": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/topbar.tsx": {
-    "mtime": 1793484624.393722,
-    "ast_hash": "19b850eded787be3eab662ae1c1b75ba",
+    "mtime": 1793512000.3501494,
+    "ast_hash": "8b5e8923fef11f267ada9988cb62bc2b",
     "semantic_hash": ""
   },
   "src/openhiggsfield/ui.tsx": {
@@ -430,8 +430,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/viewer.tsx": {
-    "mtime": 1793483835.023487,
-    "ast_hash": "b2a3d7a6367b9cb9162c58e0b0d5e502",
+    "mtime": 1793508552.6062224,
+    "ast_hash": "9e62492a827aa411529da6281b85fc5e",
     "semantic_hash": ""
   },
   "src/proxy.ts": {
@@ -690,8 +690,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/edit-showcase.tsx": {
-    "mtime": 1793477876.7311764,
-    "ast_hash": "6fe1c3774916564912e496f32029fb88",
+    "mtime": 1793506884.124828,
+    "ast_hash": "302deee1c378a7019e020701713c2158",
     "semantic_hash": ""
   },
   "src/openhiggsfield/asset-icons.tsx": {
@@ -705,8 +705,18 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/local-video.ts": {
-    "mtime": 1793502225.3095987,
-    "ast_hash": "db5809d8b3ed1dc6a9a1e1c41d782d2f",
+    "mtime": 1793510719.8785536,
+    "ast_hash": "0f9323884689b305d56858ea7d42d938",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/asset-sidebar.tsx": {
+    "mtime": 1793510194.0428412,
+    "ast_hash": "b7705db396b6a952dc29edad0ea8f8f1",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/expand-crop.tsx": {
+    "mtime": 1793510540.24533,
+    "ast_hash": "07dc03ccf23cac665323ea8dd0814b65",
     "semantic_hash": ""
   }
 }

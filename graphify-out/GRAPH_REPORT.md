@@ -1,16 +1,16 @@
 # Graph Report - open-higgsfield  (2026-11-01)
 
 ## Corpus Check
-- 111 files · ~108,981 words
+- 113 files · ~115,217 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 738 nodes · 1586 edges · 40 communities (37 shown, 3 thin omitted)
+- 776 nodes · 1640 edges · 40 communities (37 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b16a0efe`
+- Built from commit: `1a36d86a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -56,7 +56,7 @@
 ## God Nodes (most connected - your core abstractions)
 1. `base()` - 47 edges
 2. `videoModel()` - 20 edges
-3. `ModelEntry` - 19 edges
+3. `ModelEntry` - 20 edges
 4. `compilerOptions` - 18 edges
 5. `CloseIcon()` - 15 edges
 6. `t2v()` - 14 edges
@@ -66,16 +66,16 @@
 10. `browserStorage()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `createMediaStore()` --calls--> `browserStorage()`  [EXTRACTED]
-  src/generation/stores/media.ts → src/generation/stores/browser-storage.ts
-- `round()` --calls--> `getGenerationStatuses()`  [EXTRACTED]
-  src/generation/poll.ts → src/generation/actions.ts
+- `submitGeneration()` --calls--> `parseSettings()`  [EXTRACTED]
+  src/generation/actions.ts → src/generation/catalog/parse-settings.ts
+- `assemblePlane()` --calls--> `getModel()`  [EXTRACTED]
+  src/generation/plane.ts → src/generation/catalog/index.ts
+- `mapKrea2Cfwui()` --calls--> `getModel()`  [EXTRACTED]
+  src/generation/to-platform.ts → src/generation/catalog/index.ts
+- `mapVideoCfwui()` --calls--> `getModel()`  [EXTRACTED]
+  src/generation/to-platform.ts → src/generation/catalog/index.ts
 - `OpenHiggsfieldApp()` --calls--> `getModel()`  [EXTRACTED]
   src/openhiggsfield/openhiggsfield-app.tsx → src/generation/catalog/index.ts
-- `Composer()` --calls--> `parseSettings()`  [EXTRACTED]
-  src/openhiggsfield/composer.tsx → src/generation/catalog/parse-settings.ts
-- `RunRecord` --references--> `Surface`  [EXTRACTED]
-  src/openhiggsfield/history.ts → src/generation/catalog/types.ts
 
 ## Import Cycles
 - 3-file cycle: `src/openhiggsfield/gallery.tsx -> src/openhiggsfield/openhiggsfield-app.tsx -> src/openhiggsfield/selection-bar.tsx -> src/openhiggsfield/gallery.tsx`
@@ -84,32 +84,32 @@
 ## Communities (40 total, 3 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.14
-Nodes (25): ApertureIcon(), ArrowRightIcon(), ArrowUpIcon(), AssetsIcon(), base(), CameraIcon(), CinematicIcon(), ClapperIcon() (+17 more)
+Cohesion: 0.10
+Nodes (34): ApertureIcon(), ArrowRightIcon(), ArrowUpIcon(), AssetsIcon(), AudioIcon(), base(), CameraIcon(), CinematicIcon() (+26 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.22
-Nodes (9): withCamera(), browserStorage(), createPromptStore(), PromptState, useImagePrompt, useVideoPrompt, SettingsState, useSettings (+1 more)
+Cohesion: 0.20
+Nodes (8): browserStorage(), createMediaStore(), MediaState, createPromptStore(), PromptState, CINEMA_MODES, CinemaMode, StudioState
 
 ### Community 2 - "Community 2"
-Cohesion: 0.12
-Nodes (22): capHistory(), loadHistory(), mergeHistory(), newerRecord(), readIdb(), readLegacy(), replaceRequest(), RunStatus (+14 more)
+Cohesion: 0.17
+Nodes (15): capHistory(), loadHistory(), mergeHistory(), newerRecord(), readIdb(), readLegacy(), replaceRequest(), RunStatus (+7 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.07
-Nodes (41): MODELS, MediaItem, MediaRole, createMediaStore(), MediaState, useImageMedia, useVideoMedia, uploadMedia() (+33 more)
+Nodes (48): MediaItem, MediaRole, ModelEntry, SettingsState, useSettings, uploadMedia(), Asset, AssetKind (+40 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.07
-Nodes (20): t2v(), videoModel(), dop, flux3, grokImagineVideo15, happyHorse11, happyHorse1, kling25 (+12 more)
+Cohesion: 0.09
+Nodes (16): t2v(), videoModel(), dop, flux3, happyHorse11, happyHorse1, kling26, ltx25Fast (+8 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.16
-Nodes (18): aiCast, cinematicPlace, ideogramVector, seedream45, seedream5Flash, seedream5Pro, kling34k, kling3MotionPro (+10 more)
+Cohesion: 0.10
+Nodes (28): aiCast, cinematicPlace, ideogramVector, seedream45, seedream5Flash, seedream5Pro, genjutsu, genjutsuLite (+20 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.21
-Nodes (12): GenerationStatus, deliver(), inflight, round(), schedule(), settleAll(), stopWatching(), sweep() (+4 more)
+Cohesion: 0.16
+Nodes (19): H3_CANVAS, h3NamedTemplate(), KREA2_CANVAS, LTX_ASPECT, MAP, mapByPaths(), mapKling3(), mapKlingMotion() (+11 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.09
@@ -120,16 +120,16 @@ Cohesion: 0.09
 Nodes (22): dependencies, fabric, next, react, react-canvas-masker, react-dom, @tanstack/react-virtual, @vercel/blob (+14 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.17
-Nodes (14): ELEMENT_CATEGORY_LABELS, ELEMENT_DEFAULTS, ELEMENT_STATUS_LABELS, ElementAttr, ElementCategory, ElementItem, ElementState, ElementStatus (+6 more)
+Cohesion: 0.13
+Nodes (19): ELEMENT_CATEGORY_LABELS, ELEMENT_DEFAULTS, ELEMENT_STATUS_LABELS, ElementAttr, ElementCategory, ElementItem, ElementState, ElementStatus (+11 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.06
-Nodes (42): AddGlyph(), AssignGlyph(), ClearGlyph(), DownloadGlyph(), ElementGlyph(), FolderGlyph(), GlyphProps, HeartGlyph() (+34 more)
+Nodes (43): AddGlyph(), AssignGlyph(), ClearGlyph(), DownloadGlyph(), ElementGlyph(), FolderGlyph(), GlyphProps, HeartGlyph() (+35 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.07
-Nodes (3): LOCAL_USER, CREATED, Tab
+Nodes (6): resolutionTierLabel(), toProxyImageUrl(), LOCAL_USER, CREATED, Tab, Viewer()
 
 ### Community 12 - "Community 12"
 Cohesion: 0.26
@@ -144,12 +144,12 @@ Cohesion: 0.13
 Nodes (14): flux3Image, GPT_BATCH, GPT_QUALITY, GPT_RESOLUTION, gptImage15, gptImage2, gptImage25Flare, gptImage25Sunburst (+6 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.13
-Nodes (13): genjutsu, genjutsuLite, krea2Turbo, seedance2, seedance2Fast, seedance2Mini, seedanceRoles, soul (+5 more)
+Cohesion: 0.40
+Nodes (4): seedance2, seedance2Fast, seedance2Mini, seedanceRoles
 
 ### Community 16 - "Community 16"
-Cohesion: 0.19
-Nodes (8): imageModel(), VIDEO_ASPECT, flux2, grokImagine2, ideogram4, qwenImage3, recraft41, zImageTurbo
+Cohesion: 0.14
+Nodes (10): imageModel(), VIDEO_ASPECT, flux2, grokImagine2, ideogram4, klingO1, klingO3, qwenImage3 (+2 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.15
@@ -164,8 +164,8 @@ Cohesion: 0.21
 Nodes (7): bleedPlate(), brackets(), CHROME, markSvg(), ROOT, roundedPlate(), WORK
 
 ### Community 24 - "Community 24"
-Cohesion: 0.09
-Nodes (23): Asset, ChromeCard, SIDEBAR, SidebarId, SORT_LABELS, SortId, TAB_LABELS, TABS (+15 more)
+Cohesion: 0.08
+Nodes (23): nextElementName(), ChromeCard, SIDEBAR, SidebarId, SORT_LABELS, SortId, TAB_LABELS, TABS (+15 more)
 
 ### Community 25 - "Community 25"
 Cohesion: 0.10
@@ -176,12 +176,12 @@ Cohesion: 0.67
 Nodes (3): ALLOWED_ROOTS, deny(), GET()
 
 ### Community 27 - "Community 27"
-Cohesion: 0.15
-Nodes (10): Surface, fileNameFor(), saveFile(), ActiveRun, failedRows(), failureText(), RunDraft, runningRows() (+2 more)
+Cohesion: 0.13
+Nodes (12): countSetting, metaOf(), ratioToCss(), fileNameFor(), saveFile(), failedRows(), failureText(), RunDraft (+4 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.17
-Nodes (17): ratioBox(), settingLabel(), settingPillLabel(), AudioIcon(), CheckIcon(), ClockIcon(), FormatIcon(), GaugeIcon() (+9 more)
+Cohesion: 0.10
+Nodes (17): ASSET_ICON, AssetScope, AssetSidebar(), AUDIO_ICON, ELEMENT_ICON, FAVORITE_ICON, Icon, IMAGE_ICON (+9 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.07
@@ -189,27 +189,27 @@ Nodes (7): EDIT_TOOLS, EditShowcase(), EditToolsCard(), Point, Region, Tool, TOO
 
 ### Community 30 - "Community 30"
 Cohesion: 0.13
-Nodes (18): useElements, Project, projectLabel(), ProjectState, useProjects, AssetPicker(), STUDIO_COUNTS, roleNoun() (+10 more)
+Nodes (17): MODELS, STUDIO_COUNTS, SURFACE_LABELS, CaretDownIcon(), CheckIcon(), ChevronLeftIcon(), ChevronRightIcon(), HammerIcon() (+9 more)
 
 ### Community 32 - "Community 32"
-Cohesion: 0.05
-Nodes (48): asObject(), clearPlatformCredentials(), createCloudClient(), getGenerationStatuses(), hasPlatformCredentials(), parseRequestIds(), readStoredCredentials(), savePlatformCredentials() (+40 more)
+Cohesion: 0.06
+Nodes (41): asObject(), clearPlatformCredentials(), createCloudClient(), getGenerationStatuses(), hasPlatformCredentials(), parseRequestIds(), readStoredCredentials(), savePlatformCredentials() (+33 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.25
-Nodes (7): GalleryView, CINEMA_MODES, CinemaMode, StudioMode, StudioState, MEDIA_ITEMS, Topbar()
+Cohesion: 0.16
+Nodes (7): Edge, ExpandCropEditor(), HANDLES, Pads, padsFrom(), Rect, rectStyle()
 
 ### Community 34 - "Community 34"
-Cohesion: 0.32
-Nodes (6): ActiveState, useActive, ASPECT_MIRROR, CINEMA_TIERS, CinemaPanel(), LENS_MIRROR
+Cohesion: 0.19
+Nodes (11): Surface, ActiveState, useActive, artFor(), rng(), swatchFor(), ASPECT_MIRROR, CINEMA_TIERS (+3 more)
 
 ### Community 35 - "Community 35"
 Cohesion: 0.29
 Nodes (5): inter, metadata, stepRun(), OpenHiggsfieldApp(), useStudio
 
 ### Community 36 - "Community 36"
-Cohesion: 0.60
-Nodes (3): artFor(), rng(), swatchFor()
+Cohesion: 0.23
+Nodes (10): parseSettings(), assemblePlane(), withCamera(), useImageMedia, useVideoMedia, useImagePrompt, useVideoPrompt, Composer() (+2 more)
 
 ### Community 39 - "Community 39"
 Cohesion: 0.67
@@ -220,24 +220,24 @@ Cohesion: 0.40
 Nodes (3): ImageWorkspace(), Tool, TOOL_KEYS
 
 ## Knowledge Gaps
-- **137 isolated node(s):** `nextConfig`, `name`, `private`, `type`, `dev` (+132 more)
+- **155 isolated node(s):** `nextConfig`, `name`, `private`, `type`, `dev` (+150 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `RunRecord` connect `Community 10` to `Community 2`, `Community 11`, `Community 24`, `Community 25`, `Community 27`, `Community 30`?**
+- **Why does `RunRecord` connect `Community 10` to `Community 2`, `Community 34`, `Community 11`, `Community 24`, `Community 25`, `Community 27`, `Community 30`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `getModel()` connect `Community 32` to `Community 34`, `Community 35`, `Community 36`, `Community 5`, `Community 6`, `Community 27`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `getModel()` connect `Community 32` to `Community 1`, `Community 34`, `Community 35`, `Community 5`, `Community 27`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `ModelEntry` connect `Community 15` to `Community 3`, `Community 5`, `Community 14`, `Community 16`, `Community 24`, `Community 28`, `Community 30`?**
+- **Why does `ModelEntry` connect `Community 3` to `Community 36`, `Community 5`, `Community 14`, `Community 15`, `Community 16`, `Community 24`, `Community 30`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `nextConfig`, `name`, `private` to the rest of the system?**
-  _137 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _155 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.1396011396011396 - nodes in this community are weakly interconnected._
-- **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.11724137931034483 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1021021021021021 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.06845513413506013 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06818181818181818 - nodes in this community are weakly interconnected._
+- **Should `Community 4` be split into smaller, more focused modules?**
+  _Cohesion score 0.09425287356321839 - nodes in this community are weakly interconnected._

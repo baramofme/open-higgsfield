@@ -407,7 +407,7 @@
       "label": "readDeviceId()",
       "file_type": "code",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L57",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "src_app_api_blob_route_readdeviceid",
       "community": 12,
@@ -417,7 +417,7 @@
       "label": "withDeviceCookie()",
       "file_type": "code",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "src_app_api_blob_route_withdevicecookie",
       "community": 12,
@@ -427,7 +427,7 @@
       "label": "withDevicePath()",
       "file_type": "code",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L70",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "src_app_api_blob_route_withdevicepath",
       "community": 12,
@@ -437,7 +437,7 @@
       "label": "summarizeBlobEvent()",
       "file_type": "code",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L78",
+      "source_location": "L84",
       "_origin": "ast",
       "id": "src_app_api_blob_route_summarizeblobevent",
       "community": 12,
@@ -674,10 +674,20 @@
       "norm_label": "submitgeneration()"
     },
     {
+      "label": "submitOutpaint()",
+      "file_type": "code",
+      "source_file": "src/generation/actions.ts",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "src_generation_actions_submitoutpaint",
+      "community": 32,
+      "norm_label": "submitoutpaint()"
+    },
+    {
       "label": "getGenerationStatuses()",
       "file_type": "code",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L60",
+      "source_location": "L90",
       "_origin": "ast",
       "id": "src_generation_actions_getgenerationstatuses",
       "community": 32,
@@ -687,7 +697,7 @@
       "label": "readStoredCredentials()",
       "file_type": "code",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L76",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "src_generation_actions_readstoredcredentials",
       "community": 32,
@@ -697,7 +707,7 @@
       "label": "createCloudClient()",
       "file_type": "code",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L81",
+      "source_location": "L111",
       "_origin": "ast",
       "id": "src_generation_actions_createcloudclient",
       "community": 32,
@@ -707,7 +717,7 @@
       "label": "parseRequestIds()",
       "file_type": "code",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L89",
+      "source_location": "L119",
       "_origin": "ast",
       "id": "src_generation_actions_parserequestids",
       "community": 32,
@@ -717,7 +727,7 @@
       "label": "asObject()",
       "file_type": "code",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L101",
+      "source_location": "L131",
       "_origin": "ast",
       "id": "src_generation_actions_asobject",
       "community": 32,
@@ -910,7 +920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_genjutsu",
-      "community": 15,
+      "community": 5,
       "norm_label": "genjutsu.ts"
     },
     {
@@ -920,7 +930,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_generation_catalog_genjutsu_genjutsu",
-      "community": 15,
+      "community": 5,
       "norm_label": "genjutsu"
     },
     {
@@ -930,7 +940,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_generation_catalog_genjutsu_genjutsulite",
-      "community": 15,
+      "community": 5,
       "norm_label": "genjutsulite"
     },
     {
@@ -1060,7 +1070,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_grok_imagine_video_1_5",
-      "community": 4,
+      "community": 37,
       "norm_label": "grok-imagine-video-1.5.ts"
     },
     {
@@ -1070,7 +1080,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_generation_catalog_grok_imagine_video_1_5_grokimaginevideo15",
-      "community": 4,
+      "community": 37,
       "norm_label": "grokimaginevideo15"
     },
     {
@@ -1150,7 +1160,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "src_generation_catalog_index_models",
-      "community": 3,
+      "community": 30,
       "norm_label": "models"
     },
     {
@@ -1170,7 +1180,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_2_5",
-      "community": 4,
+      "community": 5,
       "norm_label": "kling-2.5.ts"
     },
     {
@@ -1180,7 +1190,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_2_5_kling25",
-      "community": 4,
+      "community": 5,
       "norm_label": "kling25"
     },
     {
@@ -1280,7 +1290,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_o1",
-      "community": 4,
+      "community": 16,
       "norm_label": "kling-o1.ts"
     },
     {
@@ -1290,7 +1300,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_o1_klingo1",
-      "community": 4,
+      "community": 16,
       "norm_label": "klingo1"
     },
     {
@@ -1300,7 +1310,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_o3",
-      "community": 4,
+      "community": 16,
       "norm_label": "kling-o3.ts"
     },
     {
@@ -1310,7 +1320,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_generation_catalog_kling_o3_klingo3",
-      "community": 4,
+      "community": 16,
       "norm_label": "klingo3"
     },
     {
@@ -1320,7 +1330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_krea_2_turbo",
-      "community": 15,
+      "community": 5,
       "norm_label": "krea-2-turbo.ts"
     },
     {
@@ -1330,7 +1340,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_generation_catalog_krea_2_turbo_krea2turbo",
-      "community": 15,
+      "community": 5,
       "norm_label": "krea2turbo"
     },
     {
@@ -1347,7 +1357,7 @@
       "label": "ltx25Local",
       "file_type": "code",
       "source_file": "src/generation/catalog/local-video.ts",
-      "source_location": "L9",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_generation_catalog_local_video_ltx25local",
       "community": 5,
@@ -1357,7 +1367,7 @@
       "label": "minimaxH3Local",
       "file_type": "code",
       "source_file": "src/generation/catalog/local-video.ts",
-      "source_location": "L16",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "src_generation_catalog_local_video_minimaxh3local",
       "community": 5,
@@ -1510,17 +1520,17 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_parse_settings",
-      "community": 15,
+      "community": 36,
       "norm_label": "parse-settings.ts"
     },
     {
       "label": "parseSettings()",
       "file_type": "code",
       "source_file": "src/generation/catalog/parse-settings.ts",
-      "source_location": "L3",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "src_generation_catalog_parse_settings_parsesettings",
-      "community": 32,
+      "community": 36,
       "norm_label": "parsesettings()"
     },
     {
@@ -1690,7 +1700,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_soul",
-      "community": 15,
+      "community": 5,
       "norm_label": "soul.ts"
     },
     {
@@ -1700,7 +1710,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_generation_catalog_soul_soul",
-      "community": 15,
+      "community": 5,
       "norm_label": "soul"
     },
     {
@@ -1710,7 +1720,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_generation_catalog_soul_soulcinema",
-      "community": 15,
+      "community": 5,
       "norm_label": "soulcinema"
     },
     {
@@ -1720,7 +1730,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_generation_catalog_soul_soul2",
-      "community": 15,
+      "community": 5,
       "norm_label": "soul2"
     },
     {
@@ -1730,7 +1740,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_types",
-      "community": 15,
+      "community": 5,
       "norm_label": "types.ts"
     },
     {
@@ -1740,7 +1750,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_catalog_types_surface",
-      "community": 27,
+      "community": 34,
       "norm_label": "surface"
     },
     {
@@ -1770,7 +1780,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_generation_catalog_types_settingfield",
-      "community": 15,
+      "community": 5,
       "norm_label": "settingfield"
     },
     {
@@ -1780,7 +1790,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_generation_catalog_types_platformpaths",
-      "community": 15,
+      "community": 5,
       "norm_label": "platformpaths"
     },
     {
@@ -1790,7 +1800,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_generation_catalog_types_modelentry",
-      "community": 15,
+      "community": 3,
       "norm_label": "modelentry"
     },
     {
@@ -1800,7 +1810,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "src_generation_catalog_types_generationplane",
-      "community": 32,
+      "community": 5,
       "norm_label": "generationplane"
     },
     {
@@ -2140,7 +2150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_plane",
-      "community": 1,
+      "community": 36,
       "norm_label": "plane.ts"
     },
     {
@@ -2150,7 +2160,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_generation_plane_assembleplane",
-      "community": 32,
+      "community": 36,
       "norm_label": "assembleplane()"
     },
     {
@@ -2160,7 +2170,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_generation_plane_withcamera",
-      "community": 1,
+      "community": 36,
       "norm_label": "withcamera()"
     },
     {
@@ -2210,7 +2220,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_generation_platform_generationstatus",
-      "community": 6,
+      "community": 32,
       "norm_label": "generationstatus"
     },
     {
@@ -2320,7 +2330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_poll",
-      "community": 6,
+      "community": 32,
       "norm_label": "poll.ts"
     },
     {
@@ -2330,7 +2340,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_generation_poll_terminal",
-      "community": 6,
+      "community": 32,
       "norm_label": "terminal"
     },
     {
@@ -2340,7 +2350,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_generation_poll_waiter",
-      "community": 6,
+      "community": 32,
       "norm_label": "waiter"
     },
     {
@@ -2350,7 +2360,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_generation_poll_waiting",
-      "community": 6,
+      "community": 32,
       "norm_label": "waiting"
     },
     {
@@ -2360,7 +2370,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_generation_poll_inflight",
-      "community": 6,
+      "community": 32,
       "norm_label": "inflight"
     },
     {
@@ -2370,7 +2380,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_generation_poll_watchrequest",
-      "community": 6,
+      "community": 32,
       "norm_label": "watchrequest()"
     },
     {
@@ -2380,7 +2390,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "src_generation_poll_stopwatching",
-      "community": 6,
+      "community": 32,
       "norm_label": "stopwatching()"
     },
     {
@@ -2390,7 +2400,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "src_generation_poll_schedule",
-      "community": 6,
+      "community": 32,
       "norm_label": "schedule()"
     },
     {
@@ -2400,7 +2410,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_generation_poll_round",
-      "community": 6,
+      "community": 32,
       "norm_label": "round()"
     },
     {
@@ -2410,7 +2420,7 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "src_generation_poll_deliver",
-      "community": 6,
+      "community": 32,
       "norm_label": "deliver()"
     },
     {
@@ -2420,7 +2430,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "src_generation_poll_sweep",
-      "community": 6,
+      "community": 32,
       "norm_label": "sweep()"
     },
     {
@@ -2430,7 +2440,7 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "src_generation_poll_settleall",
-      "community": 6,
+      "community": 32,
       "norm_label": "settleall()"
     },
     {
@@ -2670,7 +2680,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "src_generation_stores_elements_useelements",
-      "community": 30,
+      "community": 9,
       "norm_label": "useelements"
     },
     {
@@ -2680,7 +2690,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "src_generation_stores_elements_nextelementname",
-      "community": 9,
+      "community": 24,
       "norm_label": "nextelementname()"
     },
     {
@@ -2840,7 +2850,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_stores_media",
-      "community": 3,
+      "community": 1,
       "norm_label": "media.ts"
     },
     {
@@ -2850,7 +2860,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_generation_stores_media_mediastate",
-      "community": 3,
+      "community": 1,
       "norm_label": "mediastate"
     },
     {
@@ -2860,7 +2870,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_generation_stores_media_createmediastore",
-      "community": 3,
+      "community": 1,
       "norm_label": "createmediastore()"
     },
     {
@@ -2870,7 +2880,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_generation_stores_media_useimagemedia",
-      "community": 3,
+      "community": 36,
       "norm_label": "useimagemedia"
     },
     {
@@ -2880,7 +2890,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_generation_stores_media_usevideomedia",
-      "community": 3,
+      "community": 36,
       "norm_label": "usevideomedia"
     },
     {
@@ -2890,7 +2900,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_stores_projects",
-      "community": 30,
+      "community": 9,
       "norm_label": "projects.ts"
     },
     {
@@ -2900,7 +2910,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_generation_stores_projects_project",
-      "community": 30,
+      "community": 9,
       "norm_label": "project"
     },
     {
@@ -2910,7 +2920,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_generation_stores_projects_projectstate",
-      "community": 30,
+      "community": 9,
       "norm_label": "projectstate"
     },
     {
@@ -2920,7 +2930,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_generation_stores_projects_newid",
-      "community": 30,
+      "community": 9,
       "norm_label": "newid()"
     },
     {
@@ -2930,7 +2940,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_generation_stores_projects_useprojects",
-      "community": 30,
+      "community": 9,
       "norm_label": "useprojects"
     },
     {
@@ -2940,7 +2950,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "src_generation_stores_projects_projectlabel",
-      "community": 30,
+      "community": 9,
       "norm_label": "projectlabel()"
     },
     {
@@ -2980,7 +2990,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_generation_stores_prompt_useimageprompt",
-      "community": 1,
+      "community": 36,
       "norm_label": "useimageprompt"
     },
     {
@@ -2990,7 +3000,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_generation_stores_prompt_usevideoprompt",
-      "community": 1,
+      "community": 36,
       "norm_label": "usevideoprompt"
     },
     {
@@ -3000,7 +3010,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_stores_settings",
-      "community": 1,
+      "community": 3,
       "norm_label": "settings.ts"
     },
     {
@@ -3010,7 +3020,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_generation_stores_settings_settingsstate",
-      "community": 1,
+      "community": 3,
       "norm_label": "settingsstate"
     },
     {
@@ -3020,7 +3030,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_generation_stores_settings_usesettings",
-      "community": 1,
+      "community": 3,
       "norm_label": "usesettings"
     },
     {
@@ -3030,7 +3040,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_generation_to_platform",
-      "community": 32,
+      "community": 6,
       "norm_label": "to-platform.ts"
     },
     {
@@ -3040,7 +3050,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapped",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapped"
     },
     {
@@ -3050,7 +3060,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapper",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapper"
     },
     {
@@ -3060,7 +3070,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_generation_to_platform_map",
-      "community": 32,
+      "community": 6,
       "norm_label": "map"
     },
     {
@@ -3080,7 +3090,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_generation_to_platform_urls",
-      "community": 32,
+      "community": 6,
       "norm_label": "urls()"
     },
     {
@@ -3090,7 +3100,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapsoul",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapsoul()"
     },
     {
@@ -3100,7 +3110,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapmarketingstudio",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapmarketingstudio()"
     },
     {
@@ -3110,7 +3120,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapklingturbo",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapklingturbo()"
     },
     {
@@ -3120,7 +3130,7 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapkling3",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapkling3()"
     },
     {
@@ -3130,7 +3140,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapklingmotion",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapklingmotion()"
     },
     {
@@ -3140,7 +3150,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapbypaths",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapbypaths()"
     },
     {
@@ -3150,7 +3160,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "src_generation_to_platform_seedancebody",
-      "community": 32,
+      "community": 6,
       "norm_label": "seedancebody()"
     },
     {
@@ -3160,7 +3170,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapseedance",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapseedance()"
     },
     {
@@ -3170,7 +3180,7 @@
       "source_location": "L224",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapseedancesource",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapseedancesource()"
     },
     {
@@ -3180,7 +3190,7 @@
       "source_location": "L242",
       "_origin": "ast",
       "id": "src_generation_to_platform_krea2_canvas",
-      "community": 32,
+      "community": 6,
       "norm_label": "krea2_canvas"
     },
     {
@@ -3190,37 +3200,57 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapkrea2cfwui",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapkrea2cfwui()"
     },
     {
-      "label": "H3_DIMS",
+      "label": "H3_CANVAS",
       "file_type": "code",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L340",
+      "source_location": "L344",
       "_origin": "ast",
-      "id": "src_generation_to_platform_h3_dims",
-      "community": 32,
-      "norm_label": "h3_dims"
+      "id": "src_generation_to_platform_h3_canvas",
+      "community": 6,
+      "norm_label": "h3_canvas"
     },
     {
       "label": "LTX_ASPECT",
       "file_type": "code",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L345",
+      "source_location": "L349",
       "_origin": "ast",
       "id": "src_generation_to_platform_ltx_aspect",
-      "community": 32,
+      "community": 6,
       "norm_label": "ltx_aspect"
+    },
+    {
+      "label": "resolutionTier()",
+      "file_type": "code",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L357",
+      "_origin": "ast",
+      "id": "src_generation_to_platform_resolutiontier",
+      "community": 6,
+      "norm_label": "resolutiontier()"
+    },
+    {
+      "label": "h3NamedTemplate()",
+      "file_type": "code",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L376",
+      "_origin": "ast",
+      "id": "src_generation_to_platform_h3namedtemplate",
+      "community": 6,
+      "norm_label": "h3namedtemplate()"
     },
     {
       "label": "mapVideoCfwui()",
       "file_type": "code",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L351",
+      "source_location": "L408",
       "_origin": "ast",
       "id": "src_generation_to_platform_mapvideocfwui",
-      "community": 32,
+      "community": 6,
       "norm_label": "mapvideocfwui()"
     },
     {
@@ -3250,7 +3280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_artwork",
-      "community": 36,
+      "community": 34,
       "norm_label": "artwork.ts"
     },
     {
@@ -3260,7 +3290,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_openhiggsfield_artwork_hash",
-      "community": 36,
+      "community": 34,
       "norm_label": "hash()"
     },
     {
@@ -3270,7 +3300,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_openhiggsfield_artwork_rng",
-      "community": 36,
+      "community": 34,
       "norm_label": "rng()"
     },
     {
@@ -3280,7 +3310,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_openhiggsfield_artwork_artfor",
-      "community": 36,
+      "community": 34,
       "norm_label": "artfor()"
     },
     {
@@ -3290,7 +3320,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_openhiggsfield_artwork_swatchfor",
-      "community": 36,
+      "community": 34,
       "norm_label": "swatchfor()"
     },
     {
@@ -3560,7 +3590,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_openhiggsfield_asset_picker_asset",
-      "community": 24,
+      "community": 3,
       "norm_label": "asset"
     },
     {
@@ -3610,7 +3640,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_openhiggsfield_asset_picker_assetpicker",
-      "community": 30,
+      "community": 9,
       "norm_label": "assetpicker()"
     },
     {
@@ -3652,6 +3682,206 @@
       "id": "src_openhiggsfield_asset_picker_elementcard",
       "community": 24,
       "norm_label": "elementcard()"
+    },
+    {
+      "label": "asset-sidebar.tsx",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar",
+      "community": 28,
+      "norm_label": "asset-sidebar.tsx"
+    },
+    {
+      "label": "AssetScope",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_assetscope",
+      "community": 28,
+      "norm_label": "assetscope"
+    },
+    {
+      "label": "SidebarCounts",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_sidebarcounts",
+      "community": 28,
+      "norm_label": "sidebarcounts"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_path",
+      "community": 28,
+      "norm_label": "path"
+    },
+    {
+      "label": "Icon",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_icon",
+      "community": 28,
+      "norm_label": "icon"
+    },
+    {
+      "label": "ASSET_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_asset_icon",
+      "community": 28,
+      "norm_label": "asset_icon"
+    },
+    {
+      "label": "PROJECT_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_project_icon",
+      "community": 28,
+      "norm_label": "project_icon"
+    },
+    {
+      "label": "FAVORITE_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_favorite_icon",
+      "community": 28,
+      "norm_label": "favorite_icon"
+    },
+    {
+      "label": "ELEMENT_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_element_icon",
+      "community": 28,
+      "norm_label": "element_icon"
+    },
+    {
+      "label": "TRASH_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_trash_icon",
+      "community": 28,
+      "norm_label": "trash_icon"
+    },
+    {
+      "label": "IMAGE_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_image_icon",
+      "community": 28,
+      "norm_label": "image_icon"
+    },
+    {
+      "label": "VIDEO_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_video_icon",
+      "community": 28,
+      "norm_label": "video_icon"
+    },
+    {
+      "label": "AUDIO_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_audio_icon",
+      "community": 28,
+      "norm_label": "audio_icon"
+    },
+    {
+      "label": "UPSCALED_ICON",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_upscaled_icon",
+      "community": 28,
+      "norm_label": "upscaled_icon"
+    },
+    {
+      "label": "RailIcon()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_railicon",
+      "community": 28,
+      "norm_label": "railicon()"
+    },
+    {
+      "label": "Row",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_row",
+      "community": 28,
+      "norm_label": "row"
+    },
+    {
+      "label": "NAV_ROWS",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_nav_rows",
+      "community": 28,
+      "norm_label": "nav_rows"
+    },
+    {
+      "label": "TOOL_ROWS",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_tool_rows",
+      "community": 28,
+      "norm_label": "tool_rows"
+    },
+    {
+      "label": "RailButton()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_railbutton",
+      "community": 28,
+      "norm_label": "railbutton()"
+    },
+    {
+      "label": "AssetSidebar()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_asset_sidebar_assetsidebar",
+      "community": 28,
+      "norm_label": "assetsidebar()"
     },
     {
       "label": "cinema-panel.tsx",
@@ -3850,14 +4080,14 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_openhiggsfield_composer_composer",
-      "community": 1,
+      "community": 36,
       "norm_label": "composer()"
     },
     {
       "label": "BatchStepper()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/composer.tsx",
-      "source_location": "L842",
+      "source_location": "L872",
       "_origin": "ast",
       "id": "src_openhiggsfield_composer_batchstepper",
       "community": 30,
@@ -3960,7 +4190,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_surface_labels",
-      "community": 3,
+      "community": 30,
       "norm_label": "surface_labels"
     },
     {
@@ -3970,7 +4200,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_galleryview",
-      "community": 33,
+      "community": 10,
       "norm_label": "galleryview"
     },
     {
@@ -4060,7 +4290,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_settinglabel",
-      "community": 28,
+      "community": 3,
       "norm_label": "settinglabel()"
     },
     {
@@ -4070,7 +4300,7 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_settingpilllabel",
-      "community": 28,
+      "community": 3,
       "norm_label": "settingpilllabel()"
     },
     {
@@ -4084,10 +4314,20 @@
       "norm_label": "settingvaluelabel()"
     },
     {
+      "label": "resolutionTierLabel()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/data.ts",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_data_resolutiontierlabel",
+      "community": 11,
+      "norm_label": "resolutiontierlabel()"
+    },
+    {
       "label": "ROLE_LABELS",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L127",
+      "source_location": "L143",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_labels",
       "community": 3,
@@ -4097,7 +4337,7 @@
       "label": "ROLE_TAGS",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L136",
+      "source_location": "L152",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_tags",
       "community": 3,
@@ -4107,17 +4347,17 @@
       "label": "AssetKind",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L146",
+      "source_location": "L162",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_assetkind",
-      "community": 24,
+      "community": 3,
       "norm_label": "assetkind"
     },
     {
       "label": "ROLE_KINDS",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L148",
+      "source_location": "L164",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_kinds",
       "community": 3,
@@ -4127,7 +4367,7 @@
       "label": "ROLE_PLURALS",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L158",
+      "source_location": "L174",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_plurals",
       "community": 3,
@@ -4137,17 +4377,17 @@
       "label": "roleNoun()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L166",
+      "source_location": "L182",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_rolenoun",
-      "community": 30,
+      "community": 24,
       "norm_label": "rolenoun()"
     },
     {
       "label": "ROLE_ACCEPT",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L171",
+      "source_location": "L191",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_accept",
       "community": 3,
@@ -4157,7 +4397,7 @@
       "label": "rolesOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L179",
+      "source_location": "L199",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_rolesof",
       "community": 3,
@@ -4167,7 +4407,7 @@
       "label": "defaultRole()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L183",
+      "source_location": "L203",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_defaultrole",
       "community": 3,
@@ -4177,27 +4417,27 @@
       "label": "ratioBox()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L194",
+      "source_location": "L214",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_ratiobox",
-      "community": 28,
+      "community": 3,
       "norm_label": "ratiobox()"
     },
     {
       "label": "ratioToCss()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L203",
+      "source_location": "L223",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_ratiotocss",
-      "community": 3,
+      "community": 27,
       "norm_label": "ratiotocss()"
     },
     {
       "label": "ROLE_PHRASES",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L210",
+      "source_location": "L230",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_role_phrases",
       "community": 3,
@@ -4207,7 +4447,7 @@
       "label": "joinPhrases()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L218",
+      "source_location": "L238",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_joinphrases",
       "community": 3,
@@ -4217,7 +4457,7 @@
       "label": "describeModel()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L226",
+      "source_location": "L246",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_describemodel",
       "community": 3,
@@ -4227,7 +4467,7 @@
       "label": "COUNT_KEYS",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L253",
+      "source_location": "L273",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_count_keys",
       "community": 3,
@@ -4237,27 +4477,27 @@
       "label": "countSetting",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L265",
+      "source_location": "L285",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_countsetting",
-      "community": 3,
+      "community": 27,
       "norm_label": "countsetting"
     },
     {
       "label": "metaOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L284",
+      "source_location": "L304",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_metaof",
-      "community": 3,
+      "community": 27,
       "norm_label": "metaof()"
     },
     {
       "label": "durationBadge()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L294",
+      "source_location": "L314",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_durationbadge",
       "community": 3,
@@ -4267,7 +4507,7 @@
       "label": "formatClock()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L299",
+      "source_location": "L319",
       "_origin": "ast",
       "id": "src_openhiggsfield_data_formatclock",
       "community": 3,
@@ -4640,7 +4880,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_element_popover",
-      "community": 30,
+      "community": 9,
       "norm_label": "element-popover.tsx"
     },
     {
@@ -4650,7 +4890,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_openhiggsfield_element_popover_elementpopover",
-      "community": 30,
+      "community": 9,
       "norm_label": "elementpopover()"
     },
     {
@@ -4660,8 +4900,148 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "src_openhiggsfield_element_popover_elementrow",
-      "community": 30,
+      "community": 9,
       "norm_label": "elementrow()"
+    },
+    {
+      "label": "expand-crop.tsx",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop",
+      "community": 33,
+      "norm_label": "expand-crop.tsx"
+    },
+    {
+      "label": "Edge",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_edge",
+      "community": 33,
+      "norm_label": "edge"
+    },
+    {
+      "label": "Rect",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_rect",
+      "community": 33,
+      "norm_label": "rect"
+    },
+    {
+      "label": "Pads",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_pads",
+      "community": 33,
+      "norm_label": "pads"
+    },
+    {
+      "label": "HANDLES",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_handles",
+      "community": 33,
+      "norm_label": "handles"
+    },
+    {
+      "label": "resize()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_resize",
+      "community": 33,
+      "norm_label": "resize()"
+    },
+    {
+      "label": "clamp()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_clamp",
+      "community": 33,
+      "norm_label": "clamp()"
+    },
+    {
+      "label": "padsFrom()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_padsfrom",
+      "community": 33,
+      "norm_label": "padsfrom()"
+    },
+    {
+      "label": "ExpandCropEditor()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_expandcropeditor",
+      "community": 33,
+      "norm_label": "expandcropeditor()"
+    },
+    {
+      "label": "rectStyle()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L369",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_rectstyle",
+      "community": 33,
+      "norm_label": "rectstyle()"
+    },
+    {
+      "label": "handleStyle()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L375",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_handlestyle",
+      "community": 33,
+      "norm_label": "handlestyle()"
+    },
+    {
+      "label": "BackGlyph()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L395",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_backglyph",
+      "community": 33,
+      "norm_label": "backglyph()"
+    },
+    {
+      "label": "CloseGlyph()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L398",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_closeglyph",
+      "community": 33,
+      "norm_label": "closeglyph()"
+    },
+    {
+      "label": "OriginalGlyph()",
+      "file_type": "code",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L401",
+      "_origin": "ast",
+      "id": "src_openhiggsfield_expand_crop_originalglyph",
+      "community": 33,
+      "norm_label": "originalglyph()"
     },
     {
       "label": "feed-header.tsx",
@@ -5027,7 +5407,7 @@
       "label": "dayLabel()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L749",
+      "source_location": "L753",
       "_origin": "ast",
       "id": "src_openhiggsfield_gallery_daylabel",
       "community": 10,
@@ -5037,7 +5417,7 @@
       "label": "VirtualizedGrid()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L757",
+      "source_location": "L770",
       "_origin": "ast",
       "id": "src_openhiggsfield_gallery_virtualizedgrid",
       "community": 10,
@@ -5047,7 +5427,7 @@
       "label": "RunningTile()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L972",
+      "source_location": "L985",
       "_origin": "ast",
       "id": "src_openhiggsfield_gallery_runningtile",
       "community": 10,
@@ -5057,7 +5437,7 @@
       "label": "runSubtitle()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L996",
+      "source_location": "L1009",
       "_origin": "ast",
       "id": "src_openhiggsfield_gallery_runsubtitle",
       "community": 10,
@@ -5097,7 +5477,7 @@
       "label": "loadHistory()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L43",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_loadhistory",
       "community": 2,
@@ -5107,7 +5487,7 @@
       "label": "saveHistory()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L54",
+      "source_location": "L58",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_savehistory",
       "community": 2,
@@ -5117,7 +5497,7 @@
       "label": "mergeHistory()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L74",
+      "source_location": "L78",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_mergehistory",
       "community": 2,
@@ -5127,7 +5507,7 @@
       "label": "readIdb()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L83",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_readidb",
       "community": 2,
@@ -5137,7 +5517,7 @@
       "label": "readLegacy()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L93",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_readlegacy",
       "community": 2,
@@ -5147,7 +5527,7 @@
       "label": "capHistory()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L108",
+      "source_location": "L112",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_caphistory",
       "community": 2,
@@ -5157,7 +5537,7 @@
       "label": "requestIdOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L116",
+      "source_location": "L120",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_requestidof",
       "community": 2,
@@ -5167,7 +5547,7 @@
       "label": "replaceRequest()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L122",
+      "source_location": "L126",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_replacerequest",
       "community": 2,
@@ -5177,7 +5557,7 @@
       "label": "newerRecord()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L137",
+      "source_location": "L141",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_newerrecord",
       "community": 2,
@@ -5187,7 +5567,7 @@
       "label": "isRunRecord()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L144",
+      "source_location": "L148",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_isrunrecord",
       "community": 2,
@@ -5197,7 +5577,7 @@
       "label": "timeAgo()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L164",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_timeago",
       "community": 10,
@@ -5207,7 +5587,7 @@
       "label": "stepRun()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L178",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "src_openhiggsfield_history_steprun",
       "community": 35,
@@ -5270,7 +5650,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_audioicon",
-      "community": 28,
+      "community": 0,
       "norm_label": "audioicon()"
     },
     {
@@ -5320,7 +5700,7 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_checkicon",
-      "community": 28,
+      "community": 30,
       "norm_label": "checkicon()"
     },
     {
@@ -5420,7 +5800,7 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_gemicon",
-      "community": 28,
+      "community": 0,
       "norm_label": "gemicon()"
     },
     {
@@ -5430,7 +5810,7 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_clockicon",
-      "community": 28,
+      "community": 0,
       "norm_label": "clockicon()"
     },
     {
@@ -5440,7 +5820,7 @@
       "source_location": "L196",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_formaticon",
-      "community": 28,
+      "community": 0,
       "norm_label": "formaticon()"
     },
     {
@@ -5490,7 +5870,7 @@
       "source_location": "L245",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_uploadicon",
-      "community": 9,
+      "community": 24,
       "norm_label": "uploadicon()"
     },
     {
@@ -5510,7 +5890,7 @@
       "source_location": "L265",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_slidersicon",
-      "community": 28,
+      "community": 0,
       "norm_label": "slidersicon()"
     },
     {
@@ -5530,7 +5910,7 @@
       "source_location": "L290",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_hearticon",
-      "community": 24,
+      "community": 0,
       "norm_label": "hearticon()"
     },
     {
@@ -5670,7 +6050,7 @@
       "source_location": "L439",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_gaugeicon",
-      "community": 28,
+      "community": 0,
       "norm_label": "gaugeicon()"
     },
     {
@@ -5680,7 +6060,7 @@
       "source_location": "L451",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_eyeicon",
-      "community": 24,
+      "community": 0,
       "norm_label": "eyeicon()"
     },
     {
@@ -5690,7 +6070,7 @@
       "source_location": "L460",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_cropicon",
-      "community": 24,
+      "community": 0,
       "norm_label": "cropicon()"
     },
     {
@@ -5700,7 +6080,7 @@
       "source_location": "L469",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_pencilicon",
-      "community": 0,
+      "community": 24,
       "norm_label": "pencilicon()"
     },
     {
@@ -5710,7 +6090,7 @@
       "source_location": "L478",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_globeicon",
-      "community": 0,
+      "community": 24,
       "norm_label": "globeicon()"
     },
     {
@@ -5720,7 +6100,7 @@
       "source_location": "L488",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_cubeicon",
-      "community": 0,
+      "community": 24,
       "norm_label": "cubeicon()"
     },
     {
@@ -5740,7 +6120,7 @@
       "source_location": "L509",
       "_origin": "ast",
       "id": "src_openhiggsfield_icons_sparkicon",
-      "community": 24,
+      "community": 0,
       "norm_label": "sparkicon()"
     },
     {
@@ -5900,7 +6280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_image_proxy",
-      "community": 37,
+      "community": 11,
       "norm_label": "image-proxy.ts"
     },
     {
@@ -5910,7 +6290,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_openhiggsfield_image_proxy_toproxyimageurl",
-      "community": 37,
+      "community": 11,
       "norm_label": "toproxyimageurl()"
     },
     {
@@ -6050,7 +6430,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_openhiggsfield_media_tray_usemedia",
-      "community": 3,
+      "community": 36,
       "norm_label": "usemedia()"
     },
     {
@@ -6080,7 +6460,7 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "src_openhiggsfield_media_tray_mediastrip",
-      "community": 3,
+      "community": 36,
       "norm_label": "mediastrip()"
     },
     {
@@ -6090,7 +6470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_icon",
-      "community": 3,
+      "community": 30,
       "norm_label": "model-icon.tsx"
     },
     {
@@ -6100,7 +6480,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_icon_modeliconfile",
-      "community": 3,
+      "community": 30,
       "norm_label": "modeliconfile()"
     },
     {
@@ -6110,7 +6490,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_icon_modeliconsrc",
-      "community": 3,
+      "community": 30,
       "norm_label": "modeliconsrc()"
     },
     {
@@ -6120,7 +6500,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_icon_modelicon",
-      "community": 3,
+      "community": 30,
       "norm_label": "modelicon()"
     },
     {
@@ -6130,7 +6510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_picker",
-      "community": 3,
+      "community": 30,
       "norm_label": "model-picker.tsx"
     },
     {
@@ -6140,7 +6520,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_openhiggsfield_model_picker_modelpicker",
-      "community": 3,
+      "community": 30,
       "norm_label": "modelpicker()"
     },
     {
@@ -6157,17 +6537,17 @@
       "label": "ActiveRun",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_activerun",
-      "community": 27,
+      "community": 34,
       "norm_label": "activerun"
     },
     {
       "label": "RunDraft",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_rundraft",
       "community": 27,
@@ -6177,7 +6557,7 @@
       "label": "hueOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L69",
+      "source_location": "L70",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_hueof",
       "community": 27,
@@ -6187,7 +6567,7 @@
       "label": "rowId()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L75",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_rowid",
       "community": 27,
@@ -6197,7 +6577,7 @@
       "label": "draftOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L79",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_draftof",
       "community": 27,
@@ -6207,7 +6587,7 @@
       "label": "runningRows()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L94",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_runningrows",
       "community": 27,
@@ -6217,7 +6597,7 @@
       "label": "terminalRows()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L118",
+      "source_location": "L119",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_terminalrows",
       "community": 27,
@@ -6227,7 +6607,7 @@
       "label": "failedRows()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L149",
+      "source_location": "L161",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_failedrows",
       "community": 27,
@@ -6237,7 +6617,7 @@
       "label": "failureText()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L157",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_failuretext",
       "community": 27,
@@ -6247,7 +6627,7 @@
       "label": "describeError()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L164",
+      "source_location": "L176",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_describeerror",
       "community": 27,
@@ -6257,7 +6637,7 @@
       "label": "OpenHiggsfieldApp()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L172",
+      "source_location": "L184",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "community": 35,
@@ -6267,7 +6647,7 @@
       "label": "UndoBar()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L1122",
+      "source_location": "L1285",
       "_origin": "ast",
       "id": "src_openhiggsfield_openhiggsfield_app_undobar",
       "community": 27,
@@ -6350,7 +6730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_settings",
-      "community": 28,
+      "community": 3,
       "norm_label": "settings.tsx"
     },
     {
@@ -6360,7 +6740,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_openhiggsfield_settings_glyphfor",
-      "community": 28,
+      "community": 3,
       "norm_label": "glyphfor()"
     },
     {
@@ -6370,7 +6750,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_openhiggsfield_settings_settingpill",
-      "community": 28,
+      "community": 3,
       "norm_label": "settingpill()"
     },
     {
@@ -6380,7 +6760,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "src_openhiggsfield_settings_settingpopover",
-      "community": 28,
+      "community": 3,
       "norm_label": "settingpopover()"
     },
     {
@@ -6390,7 +6770,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_studio_mode",
-      "community": 33,
+      "community": 1,
       "norm_label": "studio-mode.ts"
     },
     {
@@ -6400,7 +6780,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_openhiggsfield_studio_mode_studiomode",
-      "community": 33,
+      "community": 0,
       "norm_label": "studiomode"
     },
     {
@@ -6410,7 +6790,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_openhiggsfield_studio_mode_studiostate",
-      "community": 33,
+      "community": 1,
       "norm_label": "studiostate"
     },
     {
@@ -6430,7 +6810,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "src_openhiggsfield_studio_mode_cinema_modes",
-      "community": 33,
+      "community": 1,
       "norm_label": "cinema_modes"
     },
     {
@@ -6440,7 +6820,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "src_openhiggsfield_studio_mode_cinemamode",
-      "community": 33,
+      "community": 1,
       "norm_label": "cinemamode"
     },
     {
@@ -6450,7 +6830,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_topbar",
-      "community": 33,
+      "community": 0,
       "norm_label": "topbar.tsx"
     },
     {
@@ -6460,7 +6840,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_openhiggsfield_topbar_media_items",
-      "community": 33,
+      "community": 0,
       "norm_label": "media_items"
     },
     {
@@ -6470,7 +6850,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_openhiggsfield_topbar_topbar",
-      "community": 33,
+      "community": 27,
       "norm_label": "topbar()"
     },
     {
@@ -6480,7 +6860,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_ui",
-      "community": 28,
+      "community": 3,
       "norm_label": "ui.tsx"
     },
     {
@@ -6490,7 +6870,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_openhiggsfield_ui_field",
-      "community": 28,
+      "community": 3,
       "norm_label": "field()"
     },
     {
@@ -6500,7 +6880,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "src_openhiggsfield_ui_option",
-      "community": 28,
+      "community": 3,
       "norm_label": "option()"
     },
     {
@@ -6510,7 +6890,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "src_openhiggsfield_ui_optionlist",
-      "community": 28,
+      "community": 3,
       "norm_label": "optionlist()"
     },
     {
@@ -6520,7 +6900,7 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "src_openhiggsfield_ui_slider",
-      "community": 28,
+      "community": 3,
       "norm_label": "slider()"
     },
     {
@@ -6530,7 +6910,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads",
-      "community": 2,
+      "community": 3,
       "norm_label": "uploads.ts"
     },
     {
@@ -6550,7 +6930,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_loaduploads",
-      "community": 2,
+      "community": 3,
       "norm_label": "loaduploads()"
     },
     {
@@ -6560,7 +6940,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_saveuploads",
-      "community": 2,
+      "community": 3,
       "norm_label": "saveuploads()"
     },
     {
@@ -6570,7 +6950,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_mergeuploads",
-      "community": 2,
+      "community": 3,
       "norm_label": "mergeuploads()"
     },
     {
@@ -6580,7 +6960,7 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_readidb",
-      "community": 2,
+      "community": 3,
       "norm_label": "readidb()"
     },
     {
@@ -6590,7 +6970,7 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_readlegacy",
-      "community": 2,
+      "community": 3,
       "norm_label": "readlegacy()"
     },
     {
@@ -6600,7 +6980,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_rememberupload",
-      "community": 2,
+      "community": 3,
       "norm_label": "rememberupload()"
     },
     {
@@ -6610,7 +6990,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_kindoffile",
-      "community": 2,
+      "community": 3,
       "norm_label": "kindoffile()"
     },
     {
@@ -6620,7 +7000,7 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "src_openhiggsfield_uploads_coerceupload",
-      "community": 2,
+      "community": 3,
       "norm_label": "coerceupload()"
     },
     {
@@ -6637,7 +7017,7 @@
       "label": "CREATED",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_created",
       "community": 11,
@@ -6647,7 +7027,7 @@
       "label": "InfoGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_infoglyph",
       "community": 11,
@@ -6657,7 +7037,7 @@
       "label": "EditGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_editglyph",
       "community": 11,
@@ -6667,7 +7047,7 @@
       "label": "CommentGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L59",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_commentglyph",
       "community": 11,
@@ -6677,7 +7057,7 @@
       "label": "PromptGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L71",
+      "source_location": "L72",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_promptglyph",
       "community": 11,
@@ -6687,7 +7067,7 @@
       "label": "CopyGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L80",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_copyglyph",
       "community": 11,
@@ -6697,7 +7077,7 @@
       "label": "CloseGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L86",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_closeglyph",
       "community": 11,
@@ -6707,7 +7087,7 @@
       "label": "CollapseGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L94",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_collapseglyph",
       "community": 11,
@@ -6717,7 +7097,7 @@
       "label": "VideoGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L100",
+      "source_location": "L101",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_videoglyph",
       "community": 11,
@@ -6727,7 +7107,7 @@
       "label": "RecreateGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L107",
+      "source_location": "L108",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_recreateglyph",
       "community": 11,
@@ -6737,7 +7117,7 @@
       "label": "ReferenceGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L116",
+      "source_location": "L117",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_referenceglyph",
       "community": 11,
@@ -6747,7 +7127,7 @@
       "label": "ShareGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L124",
+      "source_location": "L125",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_shareglyph",
       "community": 11,
@@ -6757,7 +7137,7 @@
       "label": "DownloadGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L131",
+      "source_location": "L132",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_downloadglyph",
       "community": 11,
@@ -6767,7 +7147,7 @@
       "label": "HeartGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L137",
+      "source_location": "L138",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_heartglyph",
       "community": 11,
@@ -6777,7 +7157,7 @@
       "label": "PlusGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L149",
+      "source_location": "L150",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_plusglyph",
       "community": 11,
@@ -6787,7 +7167,7 @@
       "label": "HideGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L155",
+      "source_location": "L156",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_hideglyph",
       "community": 11,
@@ -6797,7 +7177,7 @@
       "label": "WorkGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L162",
+      "source_location": "L163",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_workglyph",
       "community": 11,
@@ -6807,7 +7187,7 @@
       "label": "SearchGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L168",
+      "source_location": "L169",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_searchglyph",
       "community": 11,
@@ -6817,7 +7197,7 @@
       "label": "FilterGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L174",
+      "source_location": "L175",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_filterglyph",
       "community": 11,
@@ -6827,7 +7207,7 @@
       "label": "MarkGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L180",
+      "source_location": "L181",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_markglyph",
       "community": 11,
@@ -6837,7 +7217,7 @@
       "label": "EmojiGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L186",
+      "source_location": "L187",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_emojiglyph",
       "community": 11,
@@ -6847,7 +7227,7 @@
       "label": "ResolveGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L195",
+      "source_location": "L196",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_resolveglyph",
       "community": 11,
@@ -6857,7 +7237,7 @@
       "label": "FreeDrawGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L201",
+      "source_location": "L202",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_freedrawglyph",
       "community": 11,
@@ -6867,7 +7247,7 @@
       "label": "SendGlyph()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L207",
+      "source_location": "L208",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_sendglyph",
       "community": 11,
@@ -6877,7 +7257,7 @@
       "label": "Tab",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L213",
+      "source_location": "L214",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_tab",
       "community": 11,
@@ -6887,7 +7267,7 @@
       "label": "shapeOf()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L216",
+      "source_location": "L217",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_shapeof",
       "community": 11,
@@ -6897,17 +7277,17 @@
       "label": "Viewer()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L224",
+      "source_location": "L225",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_viewer",
-      "community": 37,
+      "community": 11,
       "norm_label": "viewer()"
     },
     {
       "label": "CommentPanel()",
       "file_type": "code",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L877",
+      "source_location": "L947",
       "_origin": "ast",
       "id": "src_openhiggsfield_viewer_commentpanel",
       "community": 11,
@@ -7772,7 +8152,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L57",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "src_app_api_blob_route",
       "target": "src_app_api_blob_route_readdeviceid",
@@ -7782,7 +8162,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L78",
+      "source_location": "L84",
       "weight": 1.0,
       "source": "src_app_api_blob_route",
       "target": "src_app_api_blob_route_summarizeblobevent",
@@ -7792,7 +8172,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "weight": 1.0,
       "source": "src_app_api_blob_route",
       "target": "src_app_api_blob_route_withdevicecookie",
@@ -7802,7 +8182,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L70",
+      "source_location": "L76",
       "weight": 1.0,
       "source": "src_app_api_blob_route",
       "target": "src_app_api_blob_route_withdevicepath",
@@ -7879,7 +8259,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L44",
+      "source_location": "L50",
       "weight": 1.0,
       "source": "src_app_api_blob_route_post",
       "target": "src_app_api_blob_route_withdevicecookie",
@@ -7901,7 +8281,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L59",
+      "source_location": "L65",
       "weight": 1.0,
       "source": "src_app_api_blob_route_readdeviceid",
       "target": "src_generation_device_resolvedeviceid",
@@ -7912,7 +8292,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/app/api/blob/route.ts",
-      "source_location": "L74",
+      "source_location": "L80",
       "weight": 1.0,
       "source": "src_app_api_blob_route_withdevicepath",
       "target": "src_generation_device_blobpathname",
@@ -8174,7 +8554,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L101",
+      "source_location": "L131",
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_asobject",
@@ -8194,7 +8574,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L81",
+      "source_location": "L111",
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_createcloudclient",
@@ -8204,7 +8584,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L60",
+      "source_location": "L90",
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_getgenerationstatuses",
@@ -8224,7 +8604,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L89",
+      "source_location": "L119",
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_parserequestids",
@@ -8234,7 +8614,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L76",
+      "source_location": "L106",
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_readstoredcredentials",
@@ -8258,6 +8638,16 @@
       "weight": 1.0,
       "source": "src_generation_actions",
       "target": "src_generation_actions_submitgeneration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/actions.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "src_generation_actions",
+      "target": "src_generation_actions_submitoutpaint",
       "confidence_score": 1.0
     },
     {
@@ -8605,8 +8995,41 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "src/generation/actions.ts",
-      "source_location": "L61",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "src_generation_actions_submitoutpaint",
+      "target": "src_generation_cfwui_mode_iscfwuimode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/generation/actions.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "src_generation_actions_submitoutpaint",
+      "target": "src_generation_cfwui_platform_createcfwuiclient"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app",
+      "target": "src_generation_actions_submitoutpaint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/actions.ts",
+      "source_location": "L91",
       "weight": 1.0,
       "source": "src_generation_actions_getgenerationstatuses",
       "target": "src_generation_actions_parserequestids",
@@ -8639,7 +9062,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L82",
+      "source_location": "L112",
       "weight": 1.0,
       "source": "src_generation_actions_createcloudclient",
       "target": "src_generation_actions_readstoredcredentials",
@@ -8650,7 +9073,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L86",
+      "source_location": "L116",
       "weight": 1.0,
       "source": "src_generation_actions_createcloudclient",
       "target": "src_generation_platform_createplatformclient",
@@ -8661,7 +9084,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/actions.ts",
-      "source_location": "L90",
+      "source_location": "L120",
       "weight": 1.0,
       "source": "src_generation_actions_parserequestids",
       "target": "src_generation_actions_asobject",
@@ -11215,7 +11638,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L352",
+      "source_location": "L409",
       "weight": 1.0,
       "source": "src_generation_to_platform_mapvideocfwui",
       "target": "src_generation_catalog_index_getmodel",
@@ -11260,7 +11683,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L176",
+      "source_location": "L188",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_generation_catalog_index_getmodel"
@@ -11423,7 +11846,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/catalog/local-video.ts",
-      "source_location": "L9",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "src_generation_catalog_local_video",
       "target": "src_generation_catalog_local_video_ltx25local",
@@ -11433,10 +11856,32 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/catalog/local-video.ts",
-      "source_location": "L16",
+      "source_location": "L41",
       "weight": 1.0,
       "source": "src_generation_catalog_local_video",
       "target": "src_generation_catalog_local_video_minimaxh3local",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/catalog/local-video.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_generation_catalog_local_video",
+      "target": "src_generation_catalog_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/catalog/local-video.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_generation_catalog_local_video",
+      "target": "src_generation_catalog_types_modelentry",
       "confidence_score": 1.0
     },
     {
@@ -11555,7 +12000,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/catalog/parse-settings.ts",
-      "source_location": "L3",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "src_generation_catalog_parse_settings",
       "target": "src_generation_catalog_parse_settings_parsesettings",
@@ -12084,7 +12529,7 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_activerun",
       "target": "src_generation_catalog_types_surface",
@@ -13494,7 +13939,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L173",
+      "source_location": "L185",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_generation_stores_active_useactive"
@@ -14205,6 +14650,17 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
+      "target": "src_generation_stores_elements_useelements"
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -14572,7 +15028,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L356",
+      "source_location": "L374",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_generation_stores_feed_usefeed"
@@ -14926,7 +15382,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L211",
+      "source_location": "L227",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_generation_stores_projects_useprojects"
@@ -14970,7 +15426,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/composer.tsx",
-      "source_location": "L783",
+      "source_location": "L813",
       "weight": 1.0,
       "source": "src_openhiggsfield_composer_composer",
       "target": "src_generation_stores_projects_projectlabel"
@@ -15217,7 +15673,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L177",
+      "source_location": "L189",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_generation_stores_settings_usesettings"
@@ -15259,10 +15715,20 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L340",
+      "source_location": "L344",
       "weight": 1.0,
       "source": "src_generation_to_platform",
-      "target": "src_generation_to_platform_h3_dims",
+      "target": "src_generation_to_platform_h3_canvas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L376",
+      "weight": 1.0,
+      "source": "src_generation_to_platform",
+      "target": "src_generation_to_platform_h3namedtemplate",
       "confidence_score": 1.0
     },
     {
@@ -15279,7 +15745,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L345",
+      "source_location": "L349",
       "weight": 1.0,
       "source": "src_generation_to_platform",
       "target": "src_generation_to_platform_ltx_aspect",
@@ -15409,10 +15875,20 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L351",
+      "source_location": "L408",
       "weight": 1.0,
       "source": "src_generation_to_platform",
       "target": "src_generation_to_platform_mapvideocfwui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L357",
+      "weight": 1.0,
+      "source": "src_generation_to_platform",
+      "target": "src_generation_to_platform_resolutiontier",
       "confidence_score": 1.0
     },
     {
@@ -15538,7 +16014,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/generation/to-platform.ts",
-      "source_location": "L353",
+      "source_location": "L410",
       "weight": 1.0,
       "source": "src_generation_to_platform_mapvideocfwui",
       "target": "src_generation_to_platform_urls",
@@ -15564,6 +16040,28 @@
       "weight": 1.0,
       "source": "src_generation_to_platform_mapseedancesource",
       "target": "src_generation_to_platform_seedancebody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L414",
+      "weight": 1.0,
+      "source": "src_generation_to_platform_mapvideocfwui",
+      "target": "src_generation_to_platform_resolutiontier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/generation/to-platform.ts",
+      "source_location": "L444",
+      "weight": 1.0,
+      "source": "src_generation_to_platform_mapvideocfwui",
+      "target": "src_generation_to_platform_h3namedtemplate",
       "confidence_score": 1.0
     },
     {
@@ -15731,7 +16229,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L110",
+      "source_location": "L111",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_runningrows",
       "target": "src_openhiggsfield_artwork_artfor",
@@ -15742,7 +16240,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L141",
+      "source_location": "L152",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_terminalrows",
       "target": "src_openhiggsfield_artwork_artfor",
@@ -15776,7 +16274,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/composer.tsx",
-      "source_location": "L646",
+      "source_location": "L676",
       "weight": 1.0,
       "source": "src_openhiggsfield_composer_composer",
       "target": "src_openhiggsfield_artwork_swatchfor"
@@ -17027,6 +17525,240 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_asset_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_assetscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_assetsidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_audio_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_element_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_favorite_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_image_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_nav_rows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_project_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_railbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_railicon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_row",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_sidebarcounts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_tool_rows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_trash_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_upscaled_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/asset-sidebar.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_asset_sidebar",
+      "target": "src_openhiggsfield_asset_sidebar_video_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app",
+      "target": "src_openhiggsfield_asset_sidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app",
+      "target": "src_openhiggsfield_asset_sidebar_assetscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app",
+      "target": "src_openhiggsfield_asset_sidebar_sidebarcounts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_openhiggsfield_app",
+      "target": "src_openhiggsfield_asset_sidebar_assetsidebar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/cinema-panel.tsx",
       "source_location": "L41",
       "weight": 1.0,
@@ -17335,7 +18067,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_comments",
@@ -17423,7 +18155,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L36",
+      "source_location": "L37",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_comments_loadcomments",
@@ -17466,7 +18198,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/composer.tsx",
-      "source_location": "L842",
+      "source_location": "L872",
       "weight": 1.0,
       "source": "src_openhiggsfield_composer",
       "target": "src_openhiggsfield_composer_batchstepper",
@@ -17904,7 +18636,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/composer.tsx",
-      "source_location": "L643",
+      "source_location": "L673",
       "weight": 1.0,
       "source": "src_openhiggsfield_composer_composer",
       "target": "src_openhiggsfield_model_icon_modeliconsrc"
@@ -18095,7 +18827,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L146",
+      "source_location": "L162",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_assetkind",
@@ -18105,7 +18837,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L253",
+      "source_location": "L273",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_count_keys",
@@ -18115,7 +18847,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L265",
+      "source_location": "L285",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_countsetting",
@@ -18135,7 +18867,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L183",
+      "source_location": "L203",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_defaultrole",
@@ -18145,7 +18877,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L226",
+      "source_location": "L246",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_describemodel",
@@ -18155,7 +18887,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L294",
+      "source_location": "L314",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_durationbadge",
@@ -18165,7 +18897,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L299",
+      "source_location": "L319",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_formatclock",
@@ -18185,7 +18917,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L218",
+      "source_location": "L238",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_joinphrases",
@@ -18195,7 +18927,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L284",
+      "source_location": "L304",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_metaof",
@@ -18225,7 +18957,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L194",
+      "source_location": "L214",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_ratiobox",
@@ -18235,7 +18967,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L203",
+      "source_location": "L223",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_ratiotocss",
@@ -18245,7 +18977,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L171",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_data",
+      "target": "src_openhiggsfield_data_resolutiontierlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/data.ts",
+      "source_location": "L191",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_accept",
@@ -18255,7 +18997,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L148",
+      "source_location": "L164",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_kinds",
@@ -18265,7 +19007,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L127",
+      "source_location": "L143",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_labels",
@@ -18275,7 +19017,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L210",
+      "source_location": "L230",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_phrases",
@@ -18285,7 +19027,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L158",
+      "source_location": "L174",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_plurals",
@@ -18295,7 +19037,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L136",
+      "source_location": "L152",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_role_tags",
@@ -18305,7 +19047,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L166",
+      "source_location": "L182",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_rolenoun",
@@ -18315,7 +19057,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L179",
+      "source_location": "L199",
       "weight": 1.0,
       "source": "src_openhiggsfield_data",
       "target": "src_openhiggsfield_data_rolesof",
@@ -18701,7 +19443,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L239",
+      "source_location": "L259",
       "weight": 1.0,
       "source": "src_openhiggsfield_data_describemodel",
       "target": "src_openhiggsfield_data_settingvaluelabel",
@@ -18750,6 +19492,28 @@
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_data_settingvaluelabel",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/viewer.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_viewer",
+      "target": "src_openhiggsfield_data_resolutiontierlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/openhiggsfield/viewer.tsx",
+      "source_location": "L374",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_viewer_viewer",
+      "target": "src_openhiggsfield_data_resolutiontierlabel"
     },
     {
       "relation": "imports",
@@ -18822,7 +19586,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L186",
+      "source_location": "L206",
       "weight": 1.0,
       "source": "src_openhiggsfield_data_defaultrole",
       "target": "src_openhiggsfield_data_rolesof",
@@ -18833,7 +19597,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L228",
+      "source_location": "L248",
       "weight": 1.0,
       "source": "src_openhiggsfield_data_describemodel",
       "target": "src_openhiggsfield_data_rolesof",
@@ -18921,7 +19685,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L230",
+      "source_location": "L250",
       "weight": 1.0,
       "source": "src_openhiggsfield_data_describemodel",
       "target": "src_openhiggsfield_data_joinphrases",
@@ -18965,7 +19729,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/data.ts",
-      "source_location": "L296",
+      "source_location": "L316",
       "weight": 1.0,
       "source": "src_openhiggsfield_data_durationbadge",
       "target": "src_openhiggsfield_data_formatclock",
@@ -19555,6 +20319,180 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L395",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_backglyph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_clamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L398",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_closeglyph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_edge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_expandcropeditor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_handles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L375",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_handlestyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L401",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_originalglyph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_pads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_padsfrom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_rect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L369",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_rectstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop",
+      "target": "src_openhiggsfield_expand_crop_resize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/viewer.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_viewer",
+      "target": "src_openhiggsfield_expand_crop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop_expandcropeditor",
+      "target": "src_openhiggsfield_expand_crop_padsfrom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/expand-crop.tsx",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_expand_crop_expandcropeditor",
+      "target": "src_openhiggsfield_expand_crop_rectstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/viewer.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_viewer",
+      "target": "src_openhiggsfield_expand_crop_expandcropeditor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/feed-header.tsx",
       "source_location": "L371",
       "weight": 1.0,
@@ -19765,7 +20703,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_feed_header",
@@ -19809,7 +20747,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_feed_header_feedheader",
@@ -19849,7 +20787,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L749",
+      "source_location": "L753",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery",
       "target": "src_openhiggsfield_gallery_daylabel",
@@ -19869,7 +20807,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L921",
+      "source_location": "L934",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery",
       "target": "src_openhiggsfield_gallery_empty",
@@ -19959,7 +20897,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L972",
+      "source_location": "L985",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery",
       "target": "src_openhiggsfield_gallery_runningtile",
@@ -19969,7 +20907,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L996",
+      "source_location": "L1009",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery",
       "target": "src_openhiggsfield_gallery_runsubtitle",
@@ -20069,7 +21007,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L757",
+      "source_location": "L770",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery",
       "target": "src_openhiggsfield_gallery_virtualizedgrid",
@@ -20201,7 +21139,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L800",
+      "source_location": "L813",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery_virtualizedgrid",
       "target": "src_openhiggsfield_gallery_useinnerwidth",
@@ -20278,7 +21216,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L875",
+      "source_location": "L888",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery_virtualizedgrid",
       "target": "src_openhiggsfield_gallery_blocksof",
@@ -20289,7 +21227,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L876",
+      "source_location": "L889",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery_virtualizedgrid",
       "target": "src_openhiggsfield_gallery_planfeed",
@@ -20301,7 +21239,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/gallery.tsx",
-      "source_location": "L997",
+      "source_location": "L1010",
       "weight": 1.0,
       "source": "src_openhiggsfield_gallery_runsubtitle",
       "target": "src_openhiggsfield_history_timeago"
@@ -20310,7 +21248,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L108",
+      "source_location": "L112",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20320,7 +21258,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L144",
+      "source_location": "L148",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_isrunrecord",
@@ -20330,7 +21268,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L43",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_loadhistory",
@@ -20340,7 +21278,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L74",
+      "source_location": "L78",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_mergehistory",
@@ -20350,7 +21288,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L137",
+      "source_location": "L141",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_newerrecord",
@@ -20360,7 +21298,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L83",
+      "source_location": "L87",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_readidb",
@@ -20370,7 +21308,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L93",
+      "source_location": "L97",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_readlegacy",
@@ -20380,7 +21318,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L122",
+      "source_location": "L126",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_replacerequest",
@@ -20390,7 +21328,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L116",
+      "source_location": "L120",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_requestidof",
@@ -20420,7 +21358,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L54",
+      "source_location": "L58",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_savehistory",
@@ -20430,7 +21368,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L178",
+      "source_location": "L183",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_steprun",
@@ -20440,7 +21378,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L164",
+      "source_location": "L169",
       "weight": 1.0,
       "source": "src_openhiggsfield_history",
       "target": "src_openhiggsfield_history_timeago",
@@ -20506,7 +21444,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history",
@@ -20539,7 +21477,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_runrecord",
@@ -20565,6 +21503,17 @@
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_history_runrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/openhiggsfield/history.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "src_openhiggsfield_history_loadhistory",
+      "target": "src_openhiggsfield_history_mergehistory",
       "confidence_score": 1.0
     },
     {
@@ -20575,17 +21524,6 @@
       "source_location": "L51",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_loadhistory",
-      "target": "src_openhiggsfield_history_mergehistory",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "src_openhiggsfield_history_loadhistory",
       "target": "src_openhiggsfield_history_readidb",
       "confidence_score": 1.0
     },
@@ -20594,7 +21532,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L48",
+      "source_location": "L52",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_loadhistory",
       "target": "src_openhiggsfield_history_readlegacy",
@@ -20605,7 +21543,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_loadhistory",
@@ -20616,7 +21554,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L59",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_savehistory",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20627,7 +21565,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_savehistory",
@@ -20638,7 +21576,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L80",
+      "source_location": "L84",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_mergehistory",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20649,7 +21587,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L78",
+      "source_location": "L82",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_mergehistory",
       "target": "src_openhiggsfield_history_newerrecord",
@@ -20660,7 +21598,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_mergehistory",
@@ -20671,7 +21609,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L87",
+      "source_location": "L91",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_readidb",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20682,7 +21620,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L100",
+      "source_location": "L104",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_readlegacy",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20693,7 +21631,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/history.ts",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0,
       "source": "src_openhiggsfield_history_replacerequest",
       "target": "src_openhiggsfield_history_caphistory",
@@ -20704,7 +21642,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_replacerequest",
@@ -20726,7 +21664,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_history_steprun",
@@ -20738,7 +21676,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L920",
+      "source_location": "L1073",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_openhiggsfield_history_steprun"
@@ -21361,7 +22299,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_icons",
@@ -22043,7 +22981,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_icons_closeicon",
@@ -22197,7 +23135,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_icons_undoicon",
@@ -22464,7 +23402,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L444",
+      "source_location": "L494",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer_viewer",
       "target": "src_openhiggsfield_image_proxy_toproxyimageurl"
@@ -22886,7 +23824,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_activerun",
@@ -22896,7 +23834,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L164",
+      "source_location": "L176",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_describeerror",
@@ -22906,7 +23844,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L79",
+      "source_location": "L80",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_draftof",
@@ -22916,7 +23854,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L149",
+      "source_location": "L161",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_failedrows",
@@ -22926,7 +23864,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L157",
+      "source_location": "L169",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_failuretext",
@@ -22936,7 +23874,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_hueof",
@@ -22946,7 +23884,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L172",
+      "source_location": "L184",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
@@ -22956,7 +23894,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_rowid",
@@ -22966,7 +23904,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_rundraft",
@@ -22976,7 +23914,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_runningrows",
@@ -22986,7 +23924,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L118",
+      "source_location": "L119",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_terminalrows",
@@ -22996,7 +23934,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L1122",
+      "source_location": "L1285",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_openhiggsfield_app_undobar",
@@ -23007,7 +23945,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_selection_bar",
@@ -23018,7 +23956,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_selection_bar_saveprogress",
@@ -23029,7 +23967,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_selection_bar_selectionbar",
@@ -23040,7 +23978,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_studio_mode",
@@ -23051,7 +23989,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_studio_mode_usestudio",
@@ -23062,7 +24000,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_topbar",
@@ -23073,7 +24011,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_topbar_topbar",
@@ -23084,7 +24022,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_viewer",
@@ -23095,7 +24033,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app",
       "target": "src_openhiggsfield_viewer_viewer",
@@ -23106,7 +24044,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L150",
+      "source_location": "L162",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_failedrows",
       "target": "src_openhiggsfield_openhiggsfield_app_runningrows",
@@ -23117,7 +24055,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L123",
+      "source_location": "L129",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_terminalrows",
       "target": "src_openhiggsfield_openhiggsfield_app_failuretext",
@@ -23129,7 +24067,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/openhiggsfield/openhiggsfield-app.tsx",
-      "source_location": "L208",
+      "source_location": "L224",
       "weight": 1.0,
       "source": "src_openhiggsfield_openhiggsfield_app_openhiggsfieldapp",
       "target": "src_openhiggsfield_studio_mode_usestudio"
@@ -23518,7 +24456,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L86",
+      "source_location": "L87",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_closeglyph",
@@ -23528,7 +24466,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_collapseglyph",
@@ -23538,7 +24476,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_commentglyph",
@@ -23548,7 +24486,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L877",
+      "source_location": "L947",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_commentpanel",
@@ -23558,7 +24496,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_copyglyph",
@@ -23568,7 +24506,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_created",
@@ -23578,7 +24516,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L131",
+      "source_location": "L132",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_downloadglyph",
@@ -23588,7 +24526,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_editglyph",
@@ -23598,7 +24536,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L186",
+      "source_location": "L187",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_emojiglyph",
@@ -23608,7 +24546,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L174",
+      "source_location": "L175",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_filterglyph",
@@ -23618,7 +24556,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L201",
+      "source_location": "L202",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_freedrawglyph",
@@ -23628,7 +24566,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L137",
+      "source_location": "L138",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_heartglyph",
@@ -23638,7 +24576,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_hideglyph",
@@ -23648,7 +24586,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_infoglyph",
@@ -23658,7 +24596,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_markglyph",
@@ -23668,7 +24606,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L149",
+      "source_location": "L150",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_plusglyph",
@@ -23678,7 +24616,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L71",
+      "source_location": "L72",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_promptglyph",
@@ -23688,7 +24626,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L107",
+      "source_location": "L108",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_recreateglyph",
@@ -23698,7 +24636,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L116",
+      "source_location": "L117",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_referenceglyph",
@@ -23708,7 +24646,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L195",
+      "source_location": "L196",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_resolveglyph",
@@ -23718,7 +24656,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L168",
+      "source_location": "L169",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_searchglyph",
@@ -23728,7 +24666,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L207",
+      "source_location": "L208",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_sendglyph",
@@ -23738,7 +24676,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L216",
+      "source_location": "L217",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_shapeof",
@@ -23748,7 +24686,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L124",
+      "source_location": "L125",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_shareglyph",
@@ -23758,7 +24696,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L213",
+      "source_location": "L214",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_tab",
@@ -23768,7 +24706,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L100",
+      "source_location": "L101",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_videoglyph",
@@ -23778,7 +24716,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L224",
+      "source_location": "L225",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_viewer",
@@ -23788,7 +24726,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/openhiggsfield/viewer.tsx",
-      "source_location": "L162",
+      "source_location": "L163",
       "weight": 1.0,
       "source": "src_openhiggsfield_viewer",
       "target": "src_openhiggsfield_viewer_workglyph",
@@ -24206,5 +25144,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b16a0efe4d7e2707b56f8ccb02387fd2a9d2eddf"
+  "built_at_commit": "1a36d86ac873673f2495c7f1f7c81831aa7fe81a"
 }

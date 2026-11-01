@@ -11427,7 +11427,8 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-nav-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  /* The source's right cluster breathes on 12px (measured on :9222, 2026-11-01). */
+  gap: 12px;
   flex: none;
 }
 
@@ -14100,7 +14101,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   padding: 8px 10px;
   color: var(--tx3);
 }
-.ohf-search-input {
+/* Qualified with the pop ancestor: `.ohf input` (0,1,1) inherits colour, which
+   silently beat the bare `.ohf-search-input` (0,1,0) and typed text came up as
+   muted. The container-prefixed selector (0,2,0) takes the cascade. */
+.ohf-search-pop .ohf-search-input {
   flex: 1;
   min-width: 0;
   border: 0;
