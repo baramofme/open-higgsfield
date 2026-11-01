@@ -183,13 +183,17 @@ export function roleNoun(role: MediaRole, count: number): string {
   return count === 1 ? ROLE_LABELS[role].toLowerCase() : ROLE_PLURALS[role];
 }
 
-/* Mirrors the allow-list in src/app/api/blob/route.ts. */
+/* Mirrors the allow-list in src/app/api/blob/route.ts. The video and audio
+   accepts cover what the H3 reference chain can decode: cfwui writes base64
+   media under its own extension (PyAV and torchaudio sniff the real content,
+   so the name is cosmetic), and the loaders take mp4/webm/mov video and
+   wav/mp3/mp4/flac/ogg audio. */
 export const ROLE_ACCEPT: Record<MediaRole, string> = {
   start: "image/jpeg,image/png,image/webp,image/gif",
   end: "image/jpeg,image/png,image/webp,image/gif",
   reference: "image/jpeg,image/png,image/webp,image/gif",
-  video: "video/mp4",
-  audio: "audio/wav,audio/x-wav",
+  video: "video/mp4,video/webm,video/quicktime",
+  audio: "audio/wav,audio/x-wav,audio/mpeg,audio/mp4,audio/flac,audio/ogg",
 };
 
 export function rolesOf(model: ModelEntry): MediaRole[] {

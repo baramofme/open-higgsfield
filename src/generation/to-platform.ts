@@ -359,6 +359,52 @@ function resolutionTier(value: unknown): string {
   return tier === "544p" || tier === "1080p" ? tier : "768p";
 }
 
+/* H3 named-template (reference-to-video) prompt assembly. The H3 ref2va
+   model was trained on structured six-section prompts — MiniMax's written
+   guide (mirrored by the local PromptBuilder node pack) orders them
+   subject_definitions, summary, retention_analysis, detailed_description,
+   overall_soundscape, non_diegetic_music. Reference labels are 1-based per
+   type in the order the node presents them: images first (<Picture i>),
+   then videos (<Video k>, whose soundtrack takes an <Audio j> label right
+   before it), then standalone audio — so a standalone audio at index i
+   carries ordinal K + i, K being the video count. Dialogue lives inside
+   detailed_description as <d>[lang] text</d>. A prompt the visitor already
+   wrote in that shape is sent verbatim; otherwise the attached media are
+   declared and the plain text becomes the detailed_description body. */
+const H3_SECTION_MARKER = /subject_definitions\s*:|<Subject\s+\d+>|<Picture\s+\d+>|<Video\s+\d+>|<Audio\s+\d+>|<d>\s*\[/i;
+
+function h3NamedTemplate(prompt: string, images: string[], videos: string[], audios: string[]): string {
+  const text = prompt.trim();
+  if (H3_SECTION_MARKER.test(text)) return text;
+  if (!images.length && !videos.length && !audios.length) return text;
+  const k = videos.length;
+  const definitions: string[] = [];
+  const retention: string[] = [];
+  images.forEach((_, i) => {
+    definitions.push(`<Subject ${i + 1}> is the visual identity carried by <Picture ${i + 1}>.`);
+    retention.push(`<Subject ${i + 1}> (appears throughout): fully_preserved - the appearance of <Picture ${i + 1}> is retained.`);
+  });
+  videos.forEach((_, index) => {
+    const n = images.length + index + 1;
+    definitions.push(`<Subject ${n}> is the motion and structure carried by <Video ${index + 1}>.`);
+    retention.push(`<Subject ${n}> (appears throughout): reference - only the motion and structure of <Video ${index + 1}> are reused.`);
+  });
+  audios.forEach((_, index) => {
+    const ordinal = k + index + 1;
+    definitions.push(`<Audio ${ordinal}> is the timbre reference of standalone audio ${index + 1}.`);
+    retention.push(`<Audio ${ordinal}>: reference - its timbre guides the generated voice without copying the signal.`);
+  });
+  const types = ["reference generation", ...(audios.length ? ["audio reference"] : [])];
+  return [
+    `subject_definitions:\n${definitions.join("\n")}`,
+    `summary:\n[${types.join(" + ")}] The target video is generated with the attached references as guidance. ${text}`,
+    `retention_analysis:\n${retention.join("\n")}`,
+    `detailed_description:\n${text}`,
+    `overall_soundscape:\nAmbience and incidental sound follow the scene described above.`,
+    `non_diegetic_music:\nN/A`,
+  ].join("\n");
+}
+
 function mapVideoCfwui(plane: GenerationPlane): Mapped {
   const model = getModel(plane.model);
   const start = urls(plane, "start")[0];
@@ -374,6 +420,39 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
   if (model.id === "minimax-h3-local") {
     const canvas = H3_CANVAS[tier] ?? H3_CANVAS["768p"];
     const [width, height] = canvas[aspect] ?? canvas["16:9"];
+    const refs = urls(plane, "reference");
+    const vids = urls(plane, "video");
+    const auds = urls(plane, "audio");
+    /* Named references, not the start frame, decide the task: a lone start
+       image is an image-to-video conditioning, while a start attached
+       alongside references joins the image list at the head — the pinned
+       frame is then the first Picture. */
+    if (refs.length || vids.length || auds.length) {
+      const images = start ? [start, ...refs].slice(0, 9) : refs;
+      const slots: Record<string, unknown> = {};
+      images.forEach((url, index) => { slots[`ref_image${index + 1}`] = url; });
+      vids.forEach((url, index) => { slots[`ref_video${index + 1}`] = url; });
+      auds.forEach((url, index) => { slots[`ref_audio${index + 1}`] = url; });
+      return {
+        path: "VideoGen_H3_run",
+        body: {
+          task_type: "ref2va",
+          prompt: h3NamedTemplate(prompt, images, vids, auds),
+          width,
+          height,
+          duration,
+          /* The 4-step shortcut belongs to the frame-task branch below;
+             the named path samples at the backend's own default. */
+          steps: 20,
+          cfg: 6.0,
+          flow_shift: 3.0,
+          seed: -1,
+          async_execution: true,
+          ...chips,
+          ...slots,
+        },
+      };
+    }
     return {
       path: "VideoGen_H3_run",
       body: {

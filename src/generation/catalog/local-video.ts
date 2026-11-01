@@ -32,10 +32,16 @@ export const ltx25Local = videoModel(
   localVideoSettings,
 );
 
+/* Reference caps mirror the H3 backend verbatim: the ref2va recipe's
+   injectors accept up to 9 images, 3 videos and 3 standalone audio
+   (run.py's ref_image1..9 / ref_video1..3 / ref_audio1..3), and the
+   hosted reference-to-video schema caps the same 9/3/3. The "+" dialog
+   reads these numbers straight off the roles object — the composer's
+   slot row is this declaration, not hand-written UI. */
 export const minimaxH3Local = videoModel(
   "minimax-h3-local",
   "MiniMax H3 (Local)",
-  { start: 1, reference: 9 },
+  { start: 1, reference: 9, video: 3, audio: 3 },
   { text: "VideoGen_H3_run", image: "VideoGen_H3_run" },
   localVideoSettings,
 );
