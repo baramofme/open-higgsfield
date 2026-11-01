@@ -76,6 +76,16 @@ const SIDEBAR: readonly { id: SidebarId; label: string; icon: "person" | "globe"
   { id: "prop", label: "Props", icon: "cube" },
 ];
 
+/* The generations shelf can be narrowed to one kind of finished run at a time.
+   "All" is the shelf as the run log wrote it; "Video" and "Audio" hide the
+   runs whose kind does not answer to the chosen word. */
+type GenFilter = "all" | "video" | "audio";
+const GEN_FILTERS: readonly { id: GenFilter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "video", label: "Video" },
+  { id: "audio", label: "Audio" },
+];
+
 /* The uploads shelf reads newest first, which is what the app's sort answers to
    by default. "Most recent" is not a sort so much as the order things arrive;
    "Oldest first" is the deliberate flip of it. */
@@ -139,6 +149,10 @@ export function AssetPicker({
   const [scope, setScope] = useState<"recent" | "all">("recent");
   const [sort, setSort] = useState<SortId>("recent");
   const [sidebar, setSidebar] = useState<SidebarId>("all");
+  /* Which kind of finished run the generations shelf is showing. It resets with
+     the panel itself — the shelf unmounts when the popover closes — so a reopen
+     always lands back on the whole log rather than the last narrowing. */
+  const [mediaFilter, setMediaFilter] = useState<GenFilter>("all");
   const [sortOpen, setSortOpen] = useState(false);
   const [projectOpen, setProjectOpen] = useState(false);
   const [preview, setPreview] = useState<Asset | null>(null);
@@ -171,7 +185,9 @@ export function AssetPicker({
   /* Same shelf the rail below the dock draws: every record that finished with
      media in hand, in the same order — the picker filters nothing the gallery
      filters not, so what the visitor sees is what they can attach. A missing
-     kind (an older record) reads as a still. */
+     kind (an older record) reads as a still. The type dial narrows this list
+     before the recent window cuts it, so "Video · Recent" is the fifteen most
+     recent videos, not fifteen runs pared down to the videos among them. */
   const runAssets = useMemo(() => {
     const out: Asset[] = [];
     const rows = [...history].sort((a, b) =>
@@ -179,11 +195,13 @@ export function AssetPicker({
     );
     for (const record of rows) {
       if (record.status === "running" || record.urls.length === 0) continue;
-      const kind = record.kind === "video" ? "video" : "image";
+      const kind: AssetKind =
+        record.kind === "video" ? "video" : record.kind === "audio" ? "audio" : "image";
+      if (mediaFilter !== "all" && kind !== mediaFilter) continue;
       for (const url of record.urls) out.push({ url, kind, title: record.prompt, art: record.art });
     }
     return scope === "recent" ? out.slice(0, RECENT_WINDOW) : out;
-  }, [history, sort, scope]);
+  }, [history, sort, scope, mediaFilter]);
 
   const likedAssets = useMemo(() => {
     const out: Asset[] = [];
@@ -325,7 +343,8 @@ export function AssetPicker({
       ? `Upload a ${roleNoun(role, 1)} from this device`
       : `Every ${roleNoun(role, 1)} slot is taken — press one off to free it`;
 
-  const showToolbar = opened === "uploads" || opened === "elements";
+  const showToolbar =
+    opened === "uploads" || opened === "elements" || opened === "generations";
 
   return (
     <div className="ohf-popover ohf-popover--assets" role="dialog" aria-label="Add input">
@@ -526,6 +545,22 @@ export function AssetPicker({
                 )}
               </div>
             )}
+            {opened === "generations" && (
+              <div className="ohf-v2-seg" role="group" aria-label="Filter runs by type">
+                {GEN_FILTERS.map((entry) => (
+                  <button
+                    key={entry.id}
+                    type="button"
+                    className="ohf-v2-seg-tab"
+                    aria-pressed={mediaFilter === entry.id}
+                    title={`Show ${entry.label === "All" ? "every finished run" : `only ${entry.label.toLowerCase()} runs`}`}
+                    onClick={() => setMediaFilter(entry.id)}
+                  >
+                    {entry.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -579,11 +614,17 @@ export function AssetPicker({
               <span className="ohf-v2-empty-ic">
                 <AssetsIcon size={15} />
               </span>
-              <span className="ohf-v2-empty-title">No finished runs yet</span>
+              <span className="ohf-v2-empty-title">
+                {mediaFilter === "all"
+                  ? "No finished runs yet"
+                  : `No ${mediaFilter} runs yet`}
+              </span>
               <span className="ohf-v2-empty-hint">
-                {kind === "audio"
-                  ? "Attach an audio track from this device instead — it lands on the Uploads shelf."
-                  : "Every run you finish lands here, ready to feed the next run."}
+                {mediaFilter === "video" || mediaFilter === "audio"
+                  ? "Press All to see the runs the other kind made."
+                  : kind === "audio"
+                    ? "Attach an audio track from this device instead — it lands on the Uploads shelf."
+                    : "Every run you finish lands here, ready to feed the next run."}
               </span>
             </div>
           )}
