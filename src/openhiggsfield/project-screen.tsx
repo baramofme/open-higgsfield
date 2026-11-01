@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { useProjects, projectLabel } from "@/generation/stores/projects";
+import { useDirector } from "@/generation/stores/director";
 
-import { ChevronLeftIcon, FolderIcon } from "./icons";
+import { ChevronLeftIcon, FolderIcon, SlidersIcon } from "./icons";
 import { LOCAL_USER } from "./local-user";
+import { DirectorSettings } from "./director-settings";
 
 /* The project detail screen opens as its own surface, the way the Cinematic
    Studio replaced the dashboard shell while it was up: a full-screen layout
@@ -51,24 +53,9 @@ export function ProjectScreen({
   const projects = useProjects((state) => state.projects);
   const label = projectId ? projectLabel(projects, projectId) : "프로젝트";
 
-  /* --- canvas tool slot: 미구현, visible disabled button, no handler --- */
-  const canvasSlot = (
-    <div className="ohf-project-tool ohf-project-tool--canvas">
-      <div className="ohf-project-tool-head">
-        <span className="ohf-project-tool-title">Canvas</span>
-      </div>
-      <div className="ohf-project-tool-body">
-        <button
-          type="button"
-          className="ohf-project-canvas-btn"
-          aria-disabled
-          title="이 도구는 아직 준비 중입니다."
-        >
-          미구현 (준비 중)
-        </button>
-      </div>
-    </div>
-  );
+  /* AI Director settings surface: when true, the project body swaps to the
+     full-width settings panel (cinema exit pattern). */
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <div className="ohf-project-screen">
@@ -77,12 +64,12 @@ export function ProjectScreen({
           <button
             type="button"
             className="ohf-project-exit"
-            onClick={onExit}
-            aria-label="대시보드로 돌아가기"
-            title="Return to dashboard"
+            onClick={settingsOpen ? () => setSettingsOpen(false) : onExit}
+            aria-label={settingsOpen ? "AI 디렉터로 돌아가기" : "대시보드로 돌아가기"}
+            title={settingsOpen ? "Back to AI Director" : "Return to dashboard"}
           >
             <ChevronLeftIcon />
-            <span>대시보드</span>
+            <span>{settingsOpen ? "AI 디렉터" : "대시보드"}</span>
           </button>
           <span className="ohf-project-brand">
             <FolderIcon size={14} />
@@ -97,11 +84,186 @@ export function ProjectScreen({
       </header>
 
       <div className="ohf-project-body">
-        {canvasSlot}
-        <ProjectChat />
+        {settingsOpen ? (
+          /* settings full-swap: takes both columns, cinema exit pattern */
+          <DirectorSettings onExit={() => setSettingsOpen(false)} />
+        ) : (
+          <>
+            <DirectorPanel onOpenSettings={() => setSettingsOpen(true)} />
+            <ProjectChat />
+          </>
+        )}
       </div>
     </div>
   );
+}
+
+/* --- AI Director tool slot: reads director store, calls OpenAI-compatible
+       endpoint, shows response text in a log. No backend of its own. --- */
+function DirectorPanel({ onOpenSettings }: { onOpenSettings: () => void }) {
+  const baseUrl = useDirector((s) => s.baseUrl);
+  const modelId = useDirector((s) => s.modelId);
+  const ctx = useDirector((s) => s.ctx);
+
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+
+  const logRef = useRef<HTMLDivElement>(null);
+
+  const send = async () => {
+    const trimmed = prompt.trim();
+    if (!trimmed) return;
+    if (!baseUrl) {
+      setError("AI 디렉터가 설정되지 않았습니다. ⚙ 설정에서 엔드포인트를 등록하세요.");
+      return;
+    }
+    setSending(true);
+    setError(null);
+    setResponse(null);
+    try {
+      const url = `${baseUrl.replace(/\/+$/, "")}/v1/chat/completions`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: modelId,
+          max_tokens: ctx,
+          messages: [{ role: "user", content: trimmed }],
+        }),
+      });
+      if (!res.ok) {
+        setError(
+          `호출 실패 (${res.status}) — 모델과 엔드포인트가 올바른지 확인하세요.`,
+        );
+        return;
+      }
+      const data: unknown = await res.json();
+      const text = extractResponseText(data);
+      setResponse(text ?? "빈 응답을 받았습니다.");
+    } catch (err: unknown) {
+      setError(
+        `네트워크 오류: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    } finally {
+      setSending(false);
+    }
+  };
+
+  /* Keep the log scrolled to the newest response. */
+  const scrollToBottom = () => {
+    requestAnimationFrame(() => {
+      if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
+    });
+  };
+
+  const handleSend = () => {
+    send().then(() => { if (!error) scrollToBottom(); });
+  };
+
+  const configured = !!(baseUrl && modelId);
+
+  return (
+    <div className="ohf-project-tool ohf-project-tool--director">
+      <div className="ohf-project-tool-head">
+        <span className="ohf-project-tool-title">AI 디렉터</span>
+        <button
+          type="button"
+          className="ohf-director-gear"
+          onClick={onOpenSettings}
+          aria-label="AI 디렉터 설정"
+          title="설정"
+        >
+          <SlidersIcon size={13} />
+        </button>
+        {configured && (
+          <span className="ohf-director-model-badge">{modelId}</span>
+        )}
+      </div>
+
+      {/* status: no config */}
+      {!configured && (
+        <div className="ohf-director-empty">
+          <p className="ohf-director-empty-text">
+            아직 AI 디렉터가 설정되지 않았습니다.
+          </p>
+          <p className="ohf-director-empty-sub">
+            ⚙ 설정에서 로컬 API 엔드포인트를 등록하고 모델을 선택하세요.
+          </p>
+        </div>
+      )}
+
+      {/* response log */}
+      <div className="ohf-director-log ohf-scroll" ref={logRef} role="log" aria-label="디렉터 응답">
+        {response && (
+          <div className="ohf-director-msg" aria-live="polite">
+            <span className="ohf-director-msg-label">디렉터</span>
+            <p className="ohf-director-msg-text">{response}</p>
+          </div>
+        )}
+        {error && (
+          <div className="ohf-director-error-inline" role="alert" aria-live="polite">
+            {error}
+          </div>
+        )}
+      </div>
+
+      {/* prompt input */}
+      <div className="ohf-director-input-row">
+        <input
+          className="ohf-director-prompt"
+          value={prompt}
+          placeholder={configured ? "디렉터에게 지시하세요…" : "먼저 설정에서 모델을 추가하세요"}
+          onChange={(e) => setPrompt(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          }}
+          aria-label="디렉터 프롬프트"
+          disabled={sending}
+        />
+        <button
+          type="button"
+          className="ohf-director-send"
+          onClick={handleSend}
+          disabled={!prompt.trim() || sending}
+          aria-label="전송"
+        >
+          {sending ? "전송 중…" : "전송"}
+        </button>
+      </div>
+
+      {configured && (
+        <div className="ohf-director-meta">
+          <span>{modelId}</span>
+          <span>ctx {ctx}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* Extracts the text from the OpenAI-compatible chat completion response.
+   Standard: { choices: [{ message: { content: "..." } }] }. Some local
+   servers return { choices: [{ text: "..." } }. Falls through to null. */
+function extractResponseText(data: unknown): string | null {
+  if (!data || typeof data !== "object") return null;
+  const d = data as Record<string, unknown>;
+  const choices = d["choices"];
+  if (!Array.isArray(choices) || choices.length === 0) return null;
+  const first = choices[0] as Record<string, unknown>;
+  // message.content (chat format)
+  const msg = first["message"];
+  if (msg && typeof msg === "object") {
+    const content = (msg as Record<string, unknown>)["content"];
+    if (typeof content === "string") return content;
+  }
+  // direct text (legacy completion format)
+  if (typeof first["text"] === "string") return first["text"] as string;
+  return null;
 }
 
 /* --- chat tool slot: screen only, no backend, component-local state --- */

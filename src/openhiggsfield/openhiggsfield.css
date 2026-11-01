@@ -15590,3 +15590,470 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     animation: none;
   }
 }
+
+/* ---- AI Director trailing block — .ohf-director-* scoped selectors only ----
+   The director panel replaces the canvas left slot inside .ohf-project-body.
+   The settings surface full-swaps both columns (cinema exit pattern), so it
+   spans the full grid width. All new selectors are .ohf-director-* — no
+   existing selector is touched. */
+
+/* Director panel (left slot, 20rem column) */
+.ohf-project-tool--director {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+/* Gear button in the director head */
+.ohf-director-gear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 7px;
+  background: var(--s3);
+  color: var(--tx3);
+  cursor: pointer;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.ohf-director-gear:hover {
+  color: var(--tx);
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-director-gear svg {
+  display: block;
+}
+
+/* Model badge (shows configured model id in the head) */
+.ohf-director-model-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: rgba(188, 255, 73, 0.1);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 10rem;
+}
+
+/* Empty state (no config) */
+.ohf-director-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 12px;
+  text-align: center;
+}
+.ohf-director-empty-text {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx2);
+}
+.ohf-director-empty-sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--tx3);
+  line-height: 1.5;
+}
+
+/* Response log */
+.ohf-director-log {
+  flex: 1;
+  min-height: 6rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ohf-director-msg {
+  border-radius: 9px;
+  background: var(--s2);
+  padding: 10px 12px;
+  border-left: 2px solid var(--accent);
+}
+.ohf-director-msg-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--tx3);
+  margin-bottom: 4px;
+}
+.ohf-director-msg-text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--tx);
+  word-break: break-word;
+}
+.ohf-director-error-inline {
+  border-radius: 9px;
+  background: rgba(255, 80, 80, 0.08);
+  padding: 10px 12px;
+  border-left: 2px solid #ff5050;
+  font-size: 12px;
+  font-weight: 500;
+  color: #e05555;
+  line-height: 1.5;
+}
+
+/* Prompt input row */
+.ohf-director-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.ohf-director-prompt {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--tx);
+  outline: none;
+  transition: border-color 0.14s ease;
+}
+.ohf-director-prompt:focus {
+  border-color: var(--accent);
+}
+.ohf-director-prompt::placeholder {
+  color: var(--tx3);
+  opacity: 1;
+}
+.ohf-director-prompt:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.ohf-director-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: color 0.13s ease, background 0.13s ease;
+}
+.ohf-director-send:hover:not(:disabled) {
+  color: var(--accent);
+  background: rgba(188, 255, 73, 0.1);
+}
+.ohf-director-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ohf-director-send:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+/* Meta strip below the prompt (model id + ctx) */
+.ohf-director-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--tx3);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Settings surface (full grid swap) ---- */
+.ohf-director-settings {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  min-height: 0;
+  animation: ohf-director-fade 0.18s ease both;
+}
+@keyframes ohf-director-fade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Settings header (cinema exit pattern) */
+.ohf-director-settings-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--line);
+}
+.ohf-director-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: color 0.14s ease, background 0.14s ease;
+}
+.ohf-director-exit:hover {
+  color: var(--tx);
+  background: rgba(255, 255, 255, 0.04);
+}
+.ohf-director-exit:active {
+  transform: scale(0.97);
+}
+.ohf-director-exit svg {
+  color: var(--tx3);
+}
+.ohf-director-brand {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--tx);
+}
+
+/* Settings body */
+.ohf-director-settings-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* URL input in settings */
+.ohf-director-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--tx);
+  outline: none;
+  transition: border-color 0.14s ease;
+  margin-bottom: 8px;
+}
+.ohf-director-input:focus {
+  border-color: var(--accent);
+}
+.ohf-director-input::placeholder {
+  color: var(--tx3);
+  opacity: 1;
+}
+
+/* Fetch button */
+.ohf-director-fetch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 9px;
+  background: var(--s3);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: color 0.13s ease, background 0.13s ease;
+}
+.ohf-director-fetch-btn:hover:not(:disabled) {
+  color: var(--accent);
+  background: rgba(188, 255, 73, 0.1);
+}
+.ohf-director-fetch-btn:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+.ohf-director-fetch-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Fetch error (no paper-over) */
+.ohf-director-error {
+  border-radius: 9px;
+  background: rgba(255, 80, 80, 0.08);
+  padding: 10px 14px;
+  border-left: 2px solid #ff5050;
+  font-size: 12px;
+  font-weight: 500;
+  color: #e05555;
+  line-height: 1.55;
+}
+
+/* ctx number input */
+.ohf-director-ctx-input {
+  width: 8rem;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--tx);
+  outline: none;
+  transition: border-color 0.14s ease;
+}
+.ohf-director-ctx-input:focus {
+  border-color: var(--accent);
+}
+.ohf-director-ctx-input::-webkit-inner-spin-button,
+.ohf-director-ctx-input::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* Save row */
+.ohf-director-save-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ohf-director-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: rgba(188, 255, 73, 0.12);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.14s ease, opacity 0.14s ease;
+}
+.ohf-director-save-btn:hover:not(:disabled) {
+  background: rgba(188, 255, 73, 0.2);
+}
+.ohf-director-save-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: var(--line-2);
+  color: var(--tx3);
+  background: var(--s2);
+}
+.ohf-director-save-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.ohf-director-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--accent);
+}
+.ohf-director-saved svg {
+  display: block;
+}
+
+/* Current config display */
+.ohf-director-current {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.ohf-director-current-label {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--tx3);
+}
+.ohf-director-current-url,
+.ohf-director-current-model,
+.ohf-director-current-ctx {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--s2);
+  font-size: 11.5px;
+  color: var(--tx2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14rem;
+}
+.ohf-director-current-model {
+  border-left: 2px solid var(--accent);
+}
+.ohf-director-current-ctx {
+  color: var(--tx3);
+}
+
+/* Reset button */
+.ohf-director-clear-btn {
+  align-self: flex-start;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--s2);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--tx3);
+  cursor: pointer;
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.ohf-director-clear-btn:hover {
+  color: #e05555;
+  border-color: rgba(224, 85, 85, 0.35);
+}
+.ohf-director-clear-btn:active {
+  transform: scale(0.96);
+}
+
+/* Responsive: hide director meta on very narrow widths */
+@media (max-width: 560px) {
+  .ohf-project-tool--director {
+    padding: 12px;
+  }
+  .ohf-director-settings-body {
+    padding: 16px;
+  }
+  .ohf-director-meta {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ohf-director-settings {
+    animation: none;
+  }
+}
