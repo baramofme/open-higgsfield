@@ -131,6 +131,12 @@ export function Composer({
   const values = parseSettings(model, settings.byModel[model.id] ?? {});
   const tray = useMediaTray(model, onError);
   const elements = useElements((state) => state.items);
+  /* The video top bar mirrors the app's four instruments: reference rides the
+     asset browser, camera opens the same sheet the cinematic tile does, and the
+     film and lighting faces are screen mirrors until those stores exist. */
+  const { camera: cameraChoice } = useCamera();
+  const referenceCount = tray.items.filter((item) => item.role === "reference").length;
+  const referenceMax = model.roles.reference;
 
   const [overlay, setOverlay] = useState<string | null>(null);
   /* The shelf the asset panel should land on. The @ button asks for elements
@@ -679,6 +685,90 @@ export function Composer({
                 </div>
               )}
               <div className="ohf-form-col">
+                {/* Under the video seat the app lays its four instruments in a
+                    single row above the prompt: reference, film, camera and
+                    lighting. Reference rides the asset browser the attach button
+                    already opens; camera opens the same sheet the cinematic tile
+                    does; film and lighting are screen mirrors until those stores
+                    exist — honest chrome, the same treatment the cinema rail
+                    gives anything it cannot run yet. The image seat shows none
+                    of them, exactly as the app leaves the image form plain. */}
+                {mode === "cinema" && cinemaMode === "video" && (
+                  <div className="ohf-video-top" role="group" aria-label="비디오 연출">
+                    <button
+                      type="button"
+                      className="ohf-vtc ohf-vtc--ref ohf-tip"
+                      data-tip="레퍼런스"
+                      data-tour-anchor="tour-video-reference"
+                      aria-label="레퍼런스"
+                      aria-expanded={overlay === ASSETS}
+                      aria-haspopup="dialog"
+                      onClick={(event) => {
+                        setPickerTab(null);
+                        toggle(ASSETS, event.currentTarget);
+                      }}
+                    >
+                      <span className="ohf-vtc-ic" aria-hidden>
+                        <PlusIcon size={16} />
+                      </span>
+                      <span className="ohf-vtc-col">
+                        <span className="ohf-vtc-label">레퍼런스</span>
+                        <span className="ohf-vtc-val">
+                          {referenceCount}
+                          {referenceMax ? `/${referenceMax}` : ""}
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="ohf-vtc ohf-vtc--film"
+                      data-off
+                      aria-disabled
+                      title="필름은 화면 미러 — 실행 미연결"
+                    >
+                      <span className="ohf-vtc-ic" aria-hidden>
+                        <ClapperIcon size={16} />
+                      </span>
+                      <span className="ohf-vtc-col">
+                        <span className="ohf-vtc-label">필름</span>
+                        <span className="ohf-vtc-val">자동</span>
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="ohf-vtc ohf-vtc--camera ohf-tip"
+                      data-tip="카메라"
+                      data-tour-anchor="tour-camera"
+                      aria-label="카메라"
+                      aria-expanded={overlay === CAMERA}
+                      aria-haspopup="dialog"
+                      onClick={(event) => toggle(CAMERA, event.currentTarget)}
+                    >
+                      <span className="ohf-vtc-ic" aria-hidden>
+                        <CameraIcon size={16} />
+                      </span>
+                      <span className="ohf-vtc-col">
+                        <span className="ohf-vtc-label">카메라</span>
+                        <span className="ohf-vtc-val">{cameraChoice}</span>
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="ohf-vtc ohf-vtc--light"
+                      data-off
+                      aria-disabled
+                      title="조명은 화면 미러 — 실행 미연결"
+                    >
+                      <span className="ohf-vtc-ic" aria-hidden>
+                        <SparkIcon size={16} />
+                      </span>
+                      <span className="ohf-vtc-col">
+                        <span className="ohf-vtc-label">조명</span>
+                        <span className="ohf-vtc-val">자동</span>
+                      </span>
+                    </button>
+                  </div>
+                )}
                 <div className="ohf-composer-head">
                 {/* The prompt lives inside the wrap the outside-pointer rule
                   guards, so it has to dismiss for itself: reaching for the words
@@ -861,9 +951,11 @@ export function Composer({
             {/* The right column is the fixed edge of the dock: nothing here
                 ever scrolls. The generate button owns its corner; when the
                 cinematic surface is up, the character and camera presets ride
-                the button's top edge. */}
+                the button's top edge. The video seat moves those instruments
+                into the row above the prompt instead, so the side tiles fold
+                away there — the app keeps the button's corner alone in video. */}
             <div className="ohf-right-col">
-              {mode === "cinema" && (
+              {mode === "cinema" && cinemaMode !== "video" && (
                 <CinemaTiles
                   characterOpen={overlay === CHARACTER}
                   cameraOpen={overlay === CAMERA}

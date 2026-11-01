@@ -14760,3 +14760,143 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   margin: auto;
   width: calc(100% - 48px);
 }
+
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   VIDEO TOP BAR (mirrored from higgsfield.ai/ko/generate, live CDP 2026-11-02).
+   The app lays its four video instruments — reference · film · camera · lighting
+   — in a single rounded surface above the prompt. The row is a flex line that
+   bottom-aligns the instruments (items-end) with a one-unit gap, exactly the
+   measured `items-end gap-1`; the bar itself wears the form's own 22px radius
+   and a frosted backdrop, matching the reference container. The instruments are
+   48-tall plates at white-5, radius 16 (the app's rounded-2xl), each a 16-glyph
+   icon over a two-line column — the label in the muted ramp, the live value in
+   the bright one. What the app tints lime (the reference's brand mark) we tint
+   with --accent; the two faces the app has but we cannot run yet (film,
+   lighting) read dim and inert, the same honest treatment the cinema rail
+   gives a screen mirror. These classes touch none of the six dock-authority
+   selectors, so they live entirely beside that geometry, never against it.
+   ───────────────────────────────────────────────────────────────────── */
+.ohf-video-top {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  padding: 4px;
+  border-radius: 22px;
+  /* A translucent plate over the form's surface: the frost the reference
+     shows, without reaching for a token that does not exist. */
+  background: rgba(26, 29, 31, 0.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ohf-video-top::-webkit-scrollbar {
+  display: none;
+}
+.ohf-vtc {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  min-width: 0;
+  border: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--tx);
+  padding: 8px 12px 8px 8px;
+  cursor: pointer;
+  transition: background-color 0.15s cubic-bezier(0, 0, 0.2, 1);
+}
+.ohf-vtc:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ohf-vtc:active {
+  filter: brightness(0.7);
+}
+/* The two screen-mirror faces: readable, but unmistakably inert. */
+.ohf-vtc[data-off] {
+  cursor: default;
+  color: var(--tx3);
+}
+.ohf-vtc[data-off]:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-vtc[data-off]:active {
+  filter: none;
+}
+.ohf-vtc-ic {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--tx2);
+}
+/* The reference's own brand mark, the app's lime. */
+.ohf-vtc--ref .ohf-vtc-ic {
+  color: var(--accent);
+}
+.ohf-vtc-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.ohf-vtc-label {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+  color: var(--tx3);
+}
+.ohf-vtc-val {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  color: var(--tx);
+  max-width: 10ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Below 560 the dock is a thumb wide: the bar keeps only the glyphs and the
+   value, the label folds so four instruments still breathe in the column. */
+@media (max-width: 560px) {
+  .ohf-video-top {
+    border-radius: 18px;
+  }
+  .ohf-vtc {
+    padding: 8px;
+    gap: 6px;
+  }
+  .ohf-vtc-label {
+    display: none;
+  }
+  .ohf-vtc-val {
+    max-width: 6ch;
+  }
+}
+/* The video seat folds the side presets away, so the left column's reservation
+   can no longer ride the preset cap (the rule that measures against the tiles).
+   With the rail present and no tiles, the column must pay for the rail and the
+   button alone — pad 18+18, the 72 rail, the two 6 gaps, the button's own 78
+   and its 10 of far-edge breath (208 wide), and 182 once ≤640 cuts the button
+   to 52. Scoped to `rail-and-no-presets`, it fires only in the video seat: the
+   image and cinematic seats still keep their wider preset reservation, so this
+   never reaches back into the dock's own geometry. */
+.ohf-form-row:has(.ohf-pult):not(:has(.ohf-cinema-tile)) .ohf-form-col {
+  max-width: calc(100vw - 208px) !important;
+}
+@media (max-width: 640px) {
+  .ohf-form-row:has(.ohf-pult):not(:has(.ohf-cinema-tile)) .ohf-form-col {
+    max-width: calc(100vw - 182px) !important;
+  }
+}
