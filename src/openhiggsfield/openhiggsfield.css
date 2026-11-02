@@ -16090,14 +16090,14 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-cinema-body {
   display: grid;
-  grid-template-columns: 20rem minmax(0, 1fr);
+  /* HG의 레일 열은 231px + 좌우 4px 틈 = 239px(실측치). */
+  grid-template-columns: 239px minmax(0, 1fr);
   min-height: 0;
 }
 .ohf-cinema-rail-col {
   min-height: 0;
-  padding: 16px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  padding: 4px;
+  overflow: hidden;
 }
 /* Adopt the app's own cinema rail as the column's child. The selector is scoped
    to the screen, so the general studio — which never renders the rail — keeps
@@ -16977,3 +16977,653 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     animation: none;
   }
 }
+
+/* ── t_ae45b58f · dock-left mode plate + cinema-top removal ────────────────
+   The cinematic screen no longer carries its own `ohf-cinema-top` header (the
+   'oh origin' / higgsfield.ai/ko/generate has no bespoke cinema header — its
+   top is only the persistent global nav). So the screen's grid collapses to a
+   single row that the body fills, and the composer's exit / platform-key
+   controls move to a slim strip at the top of the left rail, reusing the very
+   `.ohf-cinema-exit` / `.ohf-key` classes the header used so their look survives.
+
+   The mode plate (`ohf-pult`, "생성 모드") is now a flex-row sibling OUTSIDE the
+   composer box, pinned to the dock's left edge and bottom-aligned — mirroring
+   HF's plate measured at x=404 (72 wide) beside the 800-wide composer box at
+   x=476 with a 4px row gap (72+4+800 = 876, HF's measured dock row width). Every
+   selector is scoped to `.ohf-cinema-screen` (0,2,0), so it outranks the base
+   `.ohf-dock` / `.ohf-composer-wrap` (0,1,0) regardless of source order, and the
+   general studio's floating full-floor dock stays untouched. Appended as its own
+   trailing hunk to stay clear of the dock-rebuild sibling's mid-file appends. */
+.ohf-cinema-screen {
+  grid-template-rows: minmax(0, 1fr);   /* header gone → body owns the whole height */
+}
+.ohf-cinema-screen .ohf-dock {
+  position: relative;
+  inset: auto;
+  padding: 0;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-end;   /* plate + composer share the dock's bottom edge */
+  gap: 4px;                /* HF's measured row gap */
+  width: -moz-fit-content;
+  width: fit-content;      /* row shrinks to plate + composer, never fills the column */
+  margin-inline: auto;     /* centre the [plate][composer] row, like HF */
+}
+.ohf-cinema-screen .ohf-composer-wrap {
+  flex: none;
+  width: min(50rem, 100%); /* HF's fixed ≈800px reading column, graceful shrink */
+  max-width: 50rem;
+  margin-inline: 0;        /* the ROW centres now, not the wrap */
+}
+/* The rail column now stacks a slim control strip above the rail. */
+.ohf-cinema-rail-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 4px;
+  overflow: hidden;
+}
+.ohf-cinema-railbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 2px 8px;
+  min-height: 0;
+}
+.ohf-cinema-rail-col .ohf-cinema {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+@media (max-width: 560px) {
+  /* On the stacked single column the rail (and its strip) are hidden anyway;
+     nothing to lay out. Keep the dock row able to shrink instead. */
+  .ohf-cinema-screen .ohf-dock {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   HF-parity pass for the Cinematic Studio dock (Cinema Studio 4.0).
+   Every value below is a CDP measurement of the live higgsfield.ai composer
+   (out/hf_video-1440.json, hf_image-1440.json, hf_probe facts), never an
+   inference. Selectors are scoped to .ohf-cinema-screen (specificity 0,2,0 or
+   deeper) so the general studio keeps its own geometry; where the transplant
+   pass above pinned rules with !important, this block repeats the !important —
+   it is the later word, and the cinema surface is the only thing it speaks to.
+   ── Faces ───────────────────────────────────────────────────────────────────
+   HF draws the instrument labels in IBM Plex Mono and the generate button in
+   Space Grotesk. The Hangul in the labels falls outside both faces' Latin
+   coverage and resolves through the monospace fallback, exactly as it does on
+   HF's own page — the same stack, the same machine, the same glyphs. */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-latin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin-300-700.woff2") format("woff2");
+}
+.ohf-cinema-screen {
+  /* HF's tokens, measured: surface-primary is rgb(28,30,32), the secondary
+     text is rgb(137,138,139), the brand lime is rgb(209,254,23) and the ink
+     pressed onto it is rgb(19,21,23). */
+  --cine-surface: rgb(28, 30, 32);
+  --cine-secondary: rgb(137, 138, 139);
+  --cine-brand: rgb(209, 254, 23);
+  --cine-ink: rgb(19, 21, 23);
+}
+/* ── The row: rail bottom-anchored, composer beside it ──────────────────── */
+.ohf-cinema-screen .ohf-dock {
+  align-items: flex-end;
+}
+/* ── The rail: 72×116 card, two 52 slots, no blur, no inset ring ────────── */
+.ohf-cinema-screen .ohf-pult {
+  align-self: flex-end;
+  height: 116px;
+  gap: 4px;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  line-height: 24px;
+  background: var(--cine-surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.16),
+    0 4px 16px rgba(0, 0, 0, 0.08) !important;
+}
+.ohf-cinema-screen .ohf-pult-slide {
+  height: 52px;
+}
+.ohf-cinema-screen .ohf-pult:has(#ohf-pult-video[aria-selected="true"]) .ohf-pult-slide {
+  top: 60px; /* 4 of padding + 52 of the first slot + 4 of the gap */
+}
+.ohf-cinema-screen .ohf-pult-tab {
+  flex: 0 0 52px;
+  height: 52px;
+  color: var(--cine-secondary);
+}
+.ohf-cinema-screen .ohf-pult-tab--on {
+  color: rgb(255, 255, 255);
+}
+/* ── The panel: one surface card, 4 of padding, 4 of breathing ──────────── */
+.ohf-cinema-screen .ohf-composer {
+  background: var(--cine-surface);
+  border-radius: 24px;
+  padding: 4px;
+  gap: 4px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.24));
+}
+.ohf-cinema-screen .ohf-composer:has(.ohf-video-top) {
+  min-height: 176px; /* 4 + 56 of instruments + 4 + 108 of the plate + 4 */
+}
+.ohf-cinema-screen .ohf-composer:has(.ohf-cine-image-flow) {
+  min-height: 116px; /* 4 + 108 + 4 */
+}
+/* The columns fold into the card: the instruments row is a bare flex row
+   (HF draws no plate under it), and the prompt column is the plate itself. */
+.ohf-cinema-screen .ohf-form-row {
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+}
+.ohf-cinema-screen .ohf-form-col {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none !important;
+  gap: 0;
+  position: relative;
+}
+/* The instruments keep the four-pixel breath HF leaves before the prompt; the
+   prompt-to-toolbar breath rides inside the row's own padding. */
+.ohf-cinema-screen .ohf-composer-head:has(+ .ohf-video-top) {
+  margin-top: 0;
+}
+.ohf-cinema-screen .ohf-video-top + .ohf-composer-head {
+  margin-top: 4px;
+}
+.ohf-cinema-screen .ohf-video-top {
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  padding: 4px;
+  gap: 4px;
+  overflow: visible;
+  flex: none;
+}
+/* The plate, drawn as two halves of one white/5 rounded rect: the head owns
+   the top corners, the instrument row owns the bottom. The right padding pays
+   for the generate column (12 + 128 + 12) so the plate's interior is exactly
+   HF's 628, and the button hangs off the plate's bottom-right corner. */
+.ohf-cinema-screen .ohf-composer-head {
+  flex: 1 1 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px 20px 0 0;
+  padding: 12px 140px 0 12px;
+}
+.ohf-cinema-screen .ohf-composer-row {
+  flex: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0 0 20px 20px;
+  padding: 4px 140px 12px 12px;
+  gap: 4px;
+}
+.ohf-cinema-screen .ohf-prompt {
+  min-height: 52px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+  padding: 0 4px;
+}
+.ohf-cinema-screen .ohf-prompt::placeholder {
+  color: var(--cine-secondary);
+}
+/* The instruments, HF's five tiles: 48 tall, 16 of radius, white/5. */
+.ohf-cinema-screen .ohf-vtc {
+  gap: 8px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px 8px 8px;
+  gap: 8px;
+  transition: background-color 0.15s ease-out, scale 0.15s ease-out;
+}
+.ohf-cinema-screen .ohf-vtc:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ohf-cinema-screen .ohf-vtc:active:not([data-off]) {
+  filter: none;
+  scale: 0.96;
+}
+.ohf-cinema-screen .ohf-vtc[data-off] {
+  opacity: 0.5;
+  color: rgb(255, 255, 255);
+}
+.ohf-cinema-screen .ohf-vtc--ref { width: 128px; flex: none; }
+.ohf-cinema-screen .ohf-vtc--film,
+.ohf-cinema-screen .ohf-vtc--camera,
+.ohf-cinema-screen .ohf-vtc--palette,
+.ohf-cinema-screen .ohf-vtc--light { width: 160px; flex: none; }
+/* The label is Plex Mono drawn as a gradient of light, and the value is the
+   plain body text under it. */
+.ohf-cinema-screen .ohf-vtc-label {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ohf-cinema-screen .ohf-vtc-val {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+  max-width: none;
+}
+/* The glass keycap the reference mounts its icons in. */
+.ohf-cinema-screen .ohf-vtc-ic {
+  width: 32px;
+  height: 32px;
+}
+.ohf-cine-cap {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 8px;
+  background-color: rgb(15, 15, 16);
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05) 15%,
+    rgba(255, 255, 255, 0.03) 65%,
+    rgba(255, 255, 255, 0.14)
+  );
+  overflow: hidden;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.08);
+}
+.ohf-cine-cap--wide { width: 40px; }
+.ohf-cine-cap__plate {
+  position: absolute;
+  inset: 1px;
+  border-radius: 7px;
+  background: rgb(15, 17, 19);
+}
+.ohf-cine-cap__face {
+  position: absolute;
+  inset: 4px;
+  border-radius: 5px;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 2.6px 2.6px rgba(0, 0, 0, 0.08);
+}
+.ohf-cine-cap__face img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ohf-cine-cap__gloss {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.24) 100%);
+}
+/* Media windows pull the gloss and the hairline in to their own edges, and
+   HF leaves the hard-light sheen off them entirely. */
+.ohf-cine-cap:has(.ohf-cine-cap__face) > .ohf-cine-cap__gloss,
+.ohf-cine-cap:has(.ohf-cine-cap__face) > .ohf-cine-cap__hi {
+  inset: 4px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 5px;
+}
+.ohf-cine-cap:has(.ohf-cine-cap__face) > .ohf-cine-cap__sheen {
+  display: none;
+}
+.ohf-cine-cap__sheen {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  pointer-events: none;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.1) 100%);
+  mix-blend-mode: hard-light;
+}
+.ohf-cine-cap__hi {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
+}
+.ohf-cine-cap__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.ohf-cine-cap__plus {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  box-shadow: 0 2.6px 2.6px rgba(0, 0, 0, 0.08);
+}
+.ohf-cine-cap__plus svg {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* The film and lighting windows are not keycaps: HF measures the film art at
+   37x32 (width auto from the 40x35 original) and the lighting window at 40x32
+   with the webp centred at h32, width auto, clipped by the window. */
+.ohf-cinema-screen .ohf-vtc-ic--film {
+  width: auto;
+  height: 32px;
+}
+.ohf-cinema-screen .ohf-vtc-ic--film img {
+  height: 32px;
+  width: auto;
+  max-width: none;
+  display: block;
+}
+.ohf-cinema-screen .ohf-vtc-ic--light {
+  width: 40px;
+  height: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.ohf-cinema-screen .ohf-vtc-ic--light img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 32px;
+  width: auto;
+  max-width: none;
+}
+/* The palette keycap carries a filmstrip of the preset's own colours. */
+.ohf-cine-strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+.ohf-cine-strip span {
+  flex: 1;
+  min-height: 0;
+}
+/* The composer's toolbar: HF lays it as a 28-high row of key-sized controls. */
+.ohf-cinema-screen .ohf-stream-area { flex: 1 1 auto; }
+.ohf-cinema-screen .ohf-controls { gap: 4px; }
+.ohf-cinema-screen .ohf-controls-fixed { gap: 4px; }
+.ohf-cinema-screen .ohf-controls-flow { gap: 4px; }
+.ohf-cinema-screen .ohf-attach-group {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 28px;
+  gap: 0;
+}
+.ohf-cinema-screen .ohf-attach-divider {
+  height: 16px;
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.ohf-cinema-screen .ohf-attach,
+.ohf-cinema-screen .ohf-cine-camctl {
+  color: rgb(255, 255, 255);
+}
+.ohf-cinema-screen .ohf-attach {
+  background: transparent;
+  border-radius: 0;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+}
+.ohf-cinema-screen .ohf-attach:hover:not(:disabled) {
+  background: transparent;
+}
+.ohf-cinema-screen .ohf-attach-group:hover .ohf-attach-divider {
+  opacity: 0;
+}
+.ohf-cinema-screen .ohf-attach-divider {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ohf-cinema-screen .ohf-ctl {
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  gap: 4px;
+  padding: 4px 8px;
+  color: rgb(255, 255, 255);
+}
+.ohf-cinema-screen .ohf-ctl .ohf-ctl-glyph svg {
+  width: 16px;
+  height: 16px;
+}
+.ohf-cinema-screen .ohf-ctl:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinema-screen .ohf-ctl--model {
+  padding: 0 8px;
+  gap: 0;
+  font-weight: 600;
+}
+.ohf-cinema-screen .ohf-ctl--model .ohf-ctl-name {
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.ohf-cinema-screen .ohf-model-mark {
+  color: var(--cine-brand);
+}
+.ohf-cinema-screen .ohf-ctl--model svg { width: 16px; height: 16px; }
+.ohf-cinema-screen .ohf-caret svg { width: 20px; height: 20px; }
+.ohf-cinema-screen .ohf-edge {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinema-screen .ohf-batch {
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  gap: 4px;
+}
+.ohf-cinema-screen .ohf-batch-step {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.ohf-cinema-screen .ohf-batch-step svg {
+  width: 16px;
+  height: 16px;
+}
+.ohf-cinema-screen .ohf-batch-step:hover:not(:disabled) {
+  color: rgb(255, 255, 255);
+}
+.ohf-cinema-screen .ohf-batch-step:disabled {
+  color: rgb(115, 116, 117);
+  opacity: 0.4;
+}
+.ohf-cinema-screen .ohf-batch-value {
+  font-size: 14px;
+  font-weight: 600;
+  width: 32px;
+  text-align: center;
+}
+.ohf-cinema-screen .ohf-batch-max {
+  color: rgba(255, 255, 255, 0.6);
+}
+/* ── The generate button: lime plate, glow, credit row ─────────────────── */
+.ohf-cinema-screen .ohf-form-row .ohf-generate-slot {
+  position: absolute !important;
+  right: 12px !important;
+  bottom: 16px !important;
+  margin: 0 !important;
+}
+.ohf-cinema-screen .ohf-composer-wrap .ohf-generate {
+  align-self: flex-end !important;
+  width: 128px !important;
+  height: 80px !important;
+  min-height: 80px !important;
+  border-radius: 12px;
+  background: var(--cine-brand);
+  color: var(--cine-ink);
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  padding: 14px 24px 16px;
+  gap: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    10px 34px 24px rgba(0, 0, 0, 0.15),
+    8px 21px 6px rgba(0, 0, 0, 0.01),
+    3px 7px 5px rgba(0, 0, 0, 0.25),
+    1px 3px 4px rgba(0, 0, 0, 0.43),
+    0 1px 2px rgba(0, 0, 0, 0.49),
+    inset 0 -3px 0 rgb(130, 155, 25),
+    inset 0 -2px 0 rgb(130, 155, 25),
+    inset 0 1px 0 rgb(209, 254, 23) !important;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ohf-cinema-screen .ohf-generate::before {
+  content: "";
+  position: absolute;
+  left: 39px;
+  top: 36px;
+  width: 76px;
+  height: 136px;
+  border-radius: 50%;
+  background: rgb(205, 255, 0);
+  filter: blur(41.5px);
+  mix-blend-mode: plus-lighter;
+  transform: rotate(102.79deg) skewX(0.89deg);
+  pointer-events: none;
+  z-index: 0;
+}
+.ohf-cinema-screen .ohf-generate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border-bottom: 3px solid rgba(217, 217, 217, 0.04);
+  pointer-events: none;
+  z-index: 1;
+}
+.ohf-cinema-screen .ohf-generate > * { position: relative; z-index: 2; }
+.ohf-cinema-screen .ohf-generate-glyph,
+.ohf-cinema-screen .ohf-generate-ic,
+.ohf-cinema-screen .ohf-generate-abbr { display: none; }
+.ohf-cinema-screen .ohf-generate-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+}
+.ohf-cinema-screen .ohf-kbd {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--cine-ink);
+}
+/* The camera-movement key and the panel it gates. */
+/* The movement key breathes like HF's instrument keys, and the sheet it opens
+   rides above it as a real popover. */
+.ohf-cine-camctl:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ohf-cinema-screen .ohf-popover--movement {
+  width: min(440px, 100%);
+  padding: 8px;
+  overflow-x: auto;
+  max-height: var(--ohf-pop-clear, calc(100vh - 268px)) !important;
+}
+.ohf-cine-camctl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.ohf-cine-camctl svg { width: 16px; height: 16px; }
+/* The image seat's plate (HF draws no instruments above it). */
+.ohf-cine-image-flow { display: contents; }

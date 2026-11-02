@@ -25,7 +25,17 @@ import { CameraMovementPanel } from "./camera-movement-panel";
 import { CameraAnglePanel } from "./camera-angle-panel";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { AngleIcon, CaretDownIcon, CameraIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, ImageIcon, MinusIcon, PaletteIcon, PlusIcon, SparkIcon, VideoIcon, WarningIcon } from "./icons";
+import { AngleIcon, CaretDownIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, PlusIcon, WarningIcon } from "./icons";
+import {
+  BatchMinusIcon,
+  BatchPlusIcon,
+  CamMoveIcon,
+  KeycapPlusIcon,
+  LimeIcon,
+  ModelChevronIcon,
+  RailImageIcon,
+  RailVideoIcon,
+} from "./cinema-icons";
 import { useCamera } from "@/generation/stores/camera";
 import { CAMERA_ANGLE_FEATURE, angleLabel } from "@/generation/camera-angle";
 import { usePromptTokens } from "@/generation/prompt-registry";
@@ -34,6 +44,7 @@ import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
 import { ModelPicker } from "./model-picker";
 import { SettingPill, SettingPopover } from "./settings";
+import { dockConfig } from "./dock-config";
 
 /* Overlay ids: the two fixed panels, or one setting addressed by its catalog
    key — the rail renders whatever the model declares, so the ids cannot be a
@@ -46,6 +57,7 @@ const CHARACTER = "character";
 const CAMERA = "camera";
 const LIGHTING = "lighting";
 const ANGLE = "angle";
+const MOVEMENT = "movement";
 
 /* What the studio itself can deliver for a model that carries no count of its
    own: one platform request per result. */
@@ -88,6 +100,8 @@ const LIGHTING_FLOOR = 84;
     character floor: the panel's head is a title and a reset, so it takes the
     smaller number. */
 const ANGLE_FLOOR = 64;
+/* The movement sheet keeps its tile row whole before it folds. */
+const MOVEMENT_FLOOR = 110;
 
 /** Declared widths keep an opening popover inside the composer's own column. */
 function popoverWidth(id: string, model: ModelEntry): number {
@@ -161,7 +175,6 @@ export function Composer({
      film and lighting faces are screen mirrors until those stores exist. */
   const { camera: cameraChoice } = useCamera();
   const referenceCount = tray.items.filter((item) => item.role === "reference").length;
-  const referenceMax = model.roles.reference;
   /* The angle pill's face reads the token store the panel writes and the prompt
      reads — the same single-source rule the movement tiles answer with. The pill
      says what the chips say: the picked axes in their Korean labels, in the
@@ -363,7 +376,7 @@ export function Composer({
   useEffect(() => {
     const isSetting = (overlay ?? "").startsWith(SETTING);
     const ridesAnchor =
-      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING || overlay === ANGLE;
+      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING || overlay === ANGLE || overlay === MOVEMENT;
     if (overlay !== ASSETS && !ridesAnchor) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
@@ -386,7 +399,9 @@ export function Composer({
                   ? LIGHTING_FLOOR
                   : overlay === ANGLE
                     ? ANGLE_FLOOR
-                    : PICKER_FLOOR;
+                    : overlay === MOVEMENT
+                      ? MOVEMENT_FLOOR
+                      : PICKER_FLOOR;
       setPopClear(Math.max(floor, Math.round(room)));
     };
     read();
@@ -613,8 +628,56 @@ export function Composer({
   const generateLabel = batchValue > 1 ? `Generate ${batchValue} results` : "Generate";
   const generateTip = disabled ? "Write a prompt first" : `${generateLabel} · ${shortcut ?? "⌘↵"}`;
 
+  /* The dock reads its whole face off one config keyed by the studio mode and,
+     under the clapper, by the seat it chose — so the cinematic-vs-normal branching
+     lives in one place (`dock-config.ts`) instead of a dozen inline ternaries, and
+     flipping the mode (or the seat) re-renders the icons and layout without a
+     reload. Behavior is identical to the inline checks it replaces. */
+  const dock = dockConfig(mode, cinemaMode, surface);
+
   return (
     <div className="ohf-dock" ref={dockRef} data-selecting={selecting}>
+      {/* The mode plate sits OUTSIDE the composer box, on the dock's left — HF's
+          '생성 모드' plate is a flex-row sibling to the composer's left, bottom-
+          aligned and 72 wide (measured at x=404 beside the 800-wide composer box
+          at x=476). Only the cinematic surface shows it; the general dock never
+          renders a plate. */}
+      {dock.plate && (
+        <div
+          className="ohf-pult"
+          data-tour="pult-mode"
+          data-compact-appearance="cinema"
+          aria-label="생성 모드"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <span className="ohf-pult-slide" aria-hidden />
+          <button
+            type="button"
+            role="tab"
+            id="ohf-pult-image"
+            aria-selected={cinemaMode === "image"}
+            data-tour="pult-mode-image"
+            className={"ohf-pult-tab" + (cinemaMode === "image" ? " ohf-pult-tab--on" : "")}
+            onClick={() => onCinemaMode("image")}
+          >
+            <RailImageIcon />
+            <span className="ohf-pult-label">이미지</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="ohf-pult-video"
+            aria-selected={cinemaMode === "video"}
+            data-tour="pult-mode-video"
+            className={"ohf-pult-tab" + (cinemaMode === "video" ? " ohf-pult-tab--on" : "")}
+            onClick={() => onCinemaMode("video")}
+          >
+            <RailVideoIcon />
+            <span className="ohf-pult-label">비디오</span>
+          </button>
+        </div>
+      )}
       <div
         className="ohf-composer-wrap ohf-enter-2"
         ref={wrapRef}
@@ -651,6 +714,11 @@ export function Composer({
         {overlay === CAMERA && <CameraPopover onClose={() => setOverlay(null)} />}
         {overlay === LIGHTING && <LightingPopover onClose={() => setOverlay(null)} />}
         {overlay === ANGLE && <CameraAnglePanel />}
+        {overlay === MOVEMENT && (
+          <div className="ohf-popover ohf-popover--movement" role="dialog" aria-label="카메라 무브먼트">
+            <CameraMovementPanel />
+          </div>
+        )}
         {overlay === REFERENCE_FILM_OVERLAY && (
           <ReferenceFilmPopover onClose={() => setOverlay(null)} />
         )}
@@ -694,13 +762,7 @@ export function Composer({
             and the toolbar rises exactly where the composer's rail was. */}
         <div
           className="ohf-swap"
-          data-tour-anchor={
-            mode === "cinema"
-              ? "tour-cinema-form"
-              : surface === "video"
-                ? "tour-video-form"
-                : "tour-image-form"
-          }
+          data-tour-anchor={dock.anchor}
           data-assets-picker-interaction-boundary=""
         >
           <div className="ohf-composer" data-tour-anchor={surface === "video" ? "tour-video-composition" : undefined}>
@@ -710,48 +772,6 @@ export function Composer({
                 action on the first line, the instruments on the second, the
                 action riding the right edge of both. */}
             <div className="ohf-form-row">
-              {/* The pult rail stands at the composer's left edge (the user's own
-                  markup is the source of truth): a 72-wide column with the tabs
-                  stacked vertically under one sliding plate. It answers only what
-                  the cinematic screen is making — image or video — and never
-                  touches the switch at the studio's top; the two states are
-                  deliberately not connected (user ruling). */}
-              {mode === "cinema" && (
-                <div
-                  className="ohf-pult"
-                  data-tour="pult-mode"
-                  data-compact-appearance="cinema"
-                  aria-label="생성 모드"
-                  role="tablist"
-                  aria-orientation="vertical"
-                >
-                  <span className="ohf-pult-slide" aria-hidden />
-                  <button
-                    type="button"
-                    role="tab"
-                    id="ohf-pult-image"
-                    aria-selected={cinemaMode === "image"}
-                    data-tour="pult-mode-image"
-                    className={"ohf-pult-tab" + (cinemaMode === "image" ? " ohf-pult-tab--on" : "")}
-                    onClick={() => onCinemaMode("image")}
-                  >
-                    <ImageIcon size={16} />
-                    <span className="ohf-pult-label">이미지</span>
-                  </button>
-                  <button
-                    type="button"
-                    role="tab"
-                    id="ohf-pult-video"
-                    aria-selected={cinemaMode === "video"}
-                    data-tour="pult-mode-video"
-                    className={"ohf-pult-tab" + (cinemaMode === "video" ? " ohf-pult-tab--on" : "")}
-                    onClick={() => onCinemaMode("video")}
-                  >
-                    <VideoIcon size={16} />
-                    <span className="ohf-pult-label">비디오</span>
-                  </button>
-                </div>
-              )}
               <div className="ohf-form-col">
                 {/* Under the video seat the app lays its five instruments in a
                     single row above the prompt, in the order the reference seats
@@ -762,7 +782,7 @@ export function Composer({
                     stores exist — honest chrome, the same treatment the cinema
                     rail gives anything it cannot run yet. The image seat shows
                     none of them, exactly as the app leaves the image form plain. */}
-                {mode === "cinema" && cinemaMode === "video" && (
+                {dock.videoTop && (
                   <div className="ohf-video-top" role="group" aria-label="비디오 연출">
                     <button
                       type="button"
@@ -777,15 +797,22 @@ export function Composer({
                         toggle(ASSETS, event.currentTarget);
                       }}
                     >
+                      {/* HF mounts the reference's plus in a glass keycap: the
+                          dark plate, the inset plate inside it, the gloss and
+                          the top highlight, all measured off the live site. */}
                       <span className="ohf-vtc-ic" aria-hidden>
-                        <PlusIcon size={16} />
+                        <span className="ohf-cine-cap">
+                          <span className="ohf-cine-cap__plate" />
+                          <span className="ohf-cine-cap__plus"><KeycapPlusIcon /></span>
+                          <span className="ohf-cine-cap__gloss" />
+                          <span className="ohf-cine-cap__sheen" />
+                          <span className="ohf-cine-cap__hi" />
+                          <span className="ohf-cine-cap__ring" />
+                        </span>
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">레퍼런스</span>
-                        <span className="ohf-vtc-val">
-                          {referenceCount}
-                          {referenceMax ? `/${referenceMax}` : ""}
-                        </span>
+                        <span className="ohf-vtc-val">{referenceCount}</span>
                       </span>
                     </button>
                     <ReferenceFilmButton
@@ -803,11 +830,19 @@ export function Composer({
                       onClick={(event) => toggle(CAMERA, event.currentTarget)}
                     >
                       <span className="ohf-vtc-ic" aria-hidden>
-                        <CameraIcon size={16} />
+                        <span className="ohf-cine-cap">
+                          <span className="ohf-cine-cap__plate" />
+                          <span className="ohf-cine-cap__face">
+                            <img src="/cinema-studio-4/camera-settings.svg" alt="" />
+                          </span>
+                          <span className="ohf-cine-cap__gloss" />
+                          <span className="ohf-cine-cap__hi" />
+                          <span className="ohf-cine-cap__ring" />
+                        </span>
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">카메라</span>
-                        <span className="ohf-vtc-val">{cameraChoice}</span>
+                        <span className="ohf-vtc-val" title={cameraChoice}>{cameraChoice}</span>
                       </span>
                     </button>
                     <button
@@ -818,7 +853,20 @@ export function Composer({
                       title="색상 팔레트는 화면 미러 — 실행 미연결"
                     >
                       <span className="ohf-vtc-ic" aria-hidden>
-                        <PaletteIcon size={16} />
+                        <span className="ohf-cine-cap ohf-cine-cap--wide">
+                          <span className="ohf-cine-cap__plate" />
+                          <span className="ohf-cine-cap__face">
+                            <img src="/cinema-studio-4/color-palette-default.webp" alt="" />
+                            <span className="ohf-cine-strip" aria-hidden>
+                              {["rgb(137, 122, 66)", "rgb(132, 106, 83)", "rgb(86, 61, 17)", "rgb(86, 77, 18)", "rgb(54, 50, 12)", "rgb(77, 69, 7)"].map((c) => (
+                                <span key={c} style={{ background: c }} />
+                              ))}
+                            </span>
+                          </span>
+                          <span className="ohf-cine-cap__gloss" />
+                          <span className="ohf-cine-cap__hi" />
+                          <span className="ohf-cine-cap__ring" />
+                        </span>
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">색상 팔레트</span>
@@ -835,8 +883,11 @@ export function Composer({
                       aria-haspopup="dialog"
                       onClick={(event) => toggle(LIGHTING, event.currentTarget)}
                     >
-                      <span className="ohf-vtc-ic" aria-hidden>
-                        <SparkIcon size={16} />
+                      {/* HF seats the lighting webp flush in a 40x32 window — no
+                          keycap plate, no gloss, no ring. The 156x128 original is
+                          centred at h32 with width auto and clipped by the window. */}
+                      <span className="ohf-vtc-ic ohf-vtc-ic--light" aria-hidden>
+                        <img src="/cinema-studio-4/lightning.webp" alt="" />
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">조명</span>
@@ -924,6 +975,20 @@ export function Composer({
                     </div>
                   </>
                 )}
+                {dock.movement && (
+                  <button
+                    type="button"
+                    className="ohf-cine-camctl ohf-tip"
+                    data-tip="카메라 무브먼트"
+                    aria-label="카메라 무브먼트"
+                    aria-expanded={overlay === MOVEMENT}
+                    aria-haspopup="dialog"
+                    onClick={(event) => toggle(MOVEMENT, event.currentTarget)}
+                  >
+                    {/* HF's own scan-frame mark for movement, verbatim from the site. */}
+                    <CamMoveIcon />
+                  </button>
+                )}
                 <button
                   type="button"
                   className="ohf-ctl ohf-ctl--model ohf-tip"
@@ -938,7 +1003,12 @@ export function Composer({
                       mark rides hidden at every wider measure; the name carries
                       it there. */}
                   <span className="ohf-model-mark">
-                    {modelIconSrc(model.id) ? (
+                    {/* The cinematic seat answers with HF's brand mark — the same
+                        lime sparkle the site puts on every model, whatever is
+                        loaded. The general studio keeps the model's own icon. */}
+                    {dock.mark === "lime" ? (
+                      <LimeIcon />
+                    ) : modelIconSrc(model.id) ? (
                       <ModelIcon modelId={model.id} />
                     ) : (
                       <span className="ohf-model-swatch" style={{ background: swatchFor(surface, model.id) }} />
@@ -946,7 +1016,7 @@ export function Composer({
                   </span>
                   <span className="ohf-ctl-name">{model.label}</span>
                   <span className="ohf-caret">
-                    <CaretDownIcon />
+                    {dock.caret === "chevron" ? <ModelChevronIcon /> : <CaretDownIcon />}
                   </span>
                 </button>
                 {/* The camera-angle pill: the image seat's instrument, mirroring
@@ -956,7 +1026,7 @@ export function Composer({
                     copy of its own. It belongs to the cinematic image dock
                     alone: the video seat speaks through movement, and the
                     general studio carries no angle chrome. */}
-                {mode === "cinema" && cinemaMode === "image" && (
+                {dock.angle && (
                   <button
                     type="button"
                     className="ohf-ctl ohf-angle-ctl ohf-tip"
@@ -992,6 +1062,7 @@ export function Composer({
                 {visibleKeys.map((key) => (
                   <SettingPill
                     key={key}
+                    cinema={dock.cinemaPill}
                     model={model}
                     settingKey={key}
                     values={values}
@@ -1053,7 +1124,6 @@ export function Composer({
                 renders only under the video seat — the image and cinematic seats
                 carry no movement vocabulary — and it drives and reads its state
                 through the registry, so nothing in the composer owns it. */}
-            {mode === "cinema" && cinemaMode === "video" && <CameraMovementPanel />}
           </div>
 
             {/* The right column is the fixed edge of the dock: nothing here
@@ -1063,7 +1133,7 @@ export function Composer({
                 into the row above the prompt instead, so the side tiles fold
                 away there — the app keeps the button's corner alone in video. */}
             <div className="ohf-right-col">
-              {mode === "cinema" && cinemaMode !== "video" && (
+              {dock.tiles && (
                 <CinemaTiles
                   characterOpen={overlay === CHARACTER}
                   cameraOpen={overlay === CAMERA}
@@ -1090,7 +1160,7 @@ export function Composer({
                   <span className="ohf-generate-ic" aria-hidden>
                     <HammerIcon size={16} />
                   </span>
-                  <span className="ohf-generate-label">Generate</span>
+                  <span className="ohf-generate-label">{dock.label}</span>
                   {/* Three standing letters carry the plain column below 640;
                       the full word stays for the wide button. The accessible
                       name is the button's own, not the letters' either way. */}
@@ -1150,7 +1220,7 @@ function BatchStepper({
         disabled={index <= 0}
         onClick={() => step(-1)}
       >
-        <MinusIcon size={12} />
+        <BatchMinusIcon />
       </button>
       <span
         className="ohf-batch-value"
@@ -1195,7 +1265,7 @@ function BatchStepper({
         disabled={index >= last}
         onClick={() => step(1)}
       >
-        <PlusIcon size={12} />
+        <BatchPlusIcon />
       </button>
     </div>
   );

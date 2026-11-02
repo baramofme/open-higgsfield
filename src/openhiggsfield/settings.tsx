@@ -10,12 +10,16 @@ import {
   settingValueLabel,
 } from "./data";
 import { AudioIcon, ClockIcon, FormatIcon, GaugeIcon, GemIcon, SlidersIcon } from "./icons";
+import { AspectIcon, AudioIcon as SpeakerIcon, DurationIcon, ResolutionIcon } from "./cinema-icons";
 import { Field, OptionList, Slider } from "./ui";
 
 /* One drawn mark per setting the catalog is known to declare. Anything new
    arrives as its value alone rather than under a borrowed glyph — a wrong icon
    reads as a wrong control. */
-function glyphFor(key: string, value: unknown) {
+function glyphFor(key: string, value: unknown, cinema = false) {
+  /* The cinematic dock answers with HF’s own marks — the aspect pill takes
+     HF’s frame glyph instead of the app’s drawn ratio box. */
+  if (cinema && key === "aspectRatio") return <AspectIcon />;
   if (key === "aspectRatio") {
     /* The mark is the ratio: the pill draws the frame it is about to make, in a
        fixed optical box so 21:9 and 1:1 leave their labels on the same rail. */
@@ -29,12 +33,12 @@ function glyphFor(key: string, value: unknown) {
       </span>
     );
   }
-  if (key === "resolution") return <GemIcon size={13} />;
+  if (key === "resolution") return cinema ? <ResolutionIcon /> : <GemIcon size={13} />;
   if (key === "quality") return <GaugeIcon size={13} />;
-  if (key === "duration") return <ClockIcon size={13} />;
-  if (key === "outputFormat") return <FormatIcon size={13} />;
+  if (key === "duration") return cinema ? <DurationIcon /> : <ClockIcon size={13} />;
+  if (key === "outputFormat") return cinema ? <AspectIcon /> : <FormatIcon size={13} />;
   if (key === "generateAudio" || key === "sound" || key === "keepOriginalSound") {
-    return <AudioIcon size={13} />;
+    return cinema ? <SpeakerIcon /> : <AudioIcon size={13} />;
   }
   /* Below 560 the pill answers with its mark alone; every control must have a
      mark to answer with, so the detail settings share a slider face. */
@@ -49,12 +53,14 @@ export function SettingPill({
   values,
   open,
   onOpen,
+  cinema = false,
 }: {
   model: ModelEntry;
   settingKey: string;
   values: Record<string, unknown>;
   open: boolean;
   onOpen: (trigger: HTMLElement) => void;
+  cinema?: boolean;
 }) {
   const settings = useSettings();
   const field = model.settings[settingKey];
@@ -62,7 +68,7 @@ export function SettingPill({
 
   const label = settingLabel(settingKey);
   const value = values[settingKey];
-  const glyph = glyphFor(settingKey, value);
+  const glyph = glyphFor(settingKey, value, cinema);
 
   if (field.type === "boolean") {
     const on = value === true;

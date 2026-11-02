@@ -22,7 +22,7 @@ import {
   type ReferenceOption,
 } from "@/generation/reference-film";
 import { swatchFor, GRAIN_URI } from "./artwork";
-import { ClapperIcon, CloseIcon } from "./icons";
+import { CloseIcon } from "./icons";
 
 /** The composer's overlay id for the film panel. Exported here so the composer
  *  needs no new local constant of its own — it imports this id alongside the
@@ -63,11 +63,13 @@ export function ReferenceFilmButton({
       aria-haspopup="dialog"
       onClick={(event) => onOpen(event.currentTarget)}
     >
-      <span className="ohf-vtc-ic" aria-hidden>
-        <ClapperIcon size={16} />
+      {/* HF's film instrument is the animated camera-roll artwork, not a glyph:
+          the 40x35 original rides at h32 with width auto (measured 37x32). */}
+      <span className="ohf-vtc-ic ohf-vtc-ic--film" aria-hidden>
+        <img src="/cinema-studio-4/camera-roll-animated.svg" alt="" />
       </span>
       <span className="ohf-vtc-col">
-        <span className="ohf-vtc-label">필름</span>
+        <span className="ohf-vtc-label">필름 설정</span>
         <span className="ohf-vtc-val">{layers > 0 ? `${layers} 레이어` : "자동"}</span>
       </span>
     </button>

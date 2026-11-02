@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 40 35" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Camera roll</title>
+  <desc id="description">A camera-roll icon with film perforations advancing downward.</desc>
+
+  <style>
+    .film-track {
+      animation: advance-film 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      transform-box: view-box;
+      transform-origin: 0 0;
+    }
+
+    @keyframes advance-film {
+      0%, 22% {
+        transform: translateY(0);
+      }
+      58%, 100% {
+        transform: translateY(6px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .film-track {
+        animation: none;
+      }
+    }
+  </style>
+
+  <defs>
+    <path id="body-shape" d="M1.90772 9.88264C2.24299 7.07722 2.41063 5.6745 3.79971 4.25318C5.18879 2.83185 6.62824 2.62624 9.50712 2.215C12.3398 1.81036 15.9339 1.46289 19.9241 1.46289C24.2062 1.46289 27.8223 1.80241 30.5923 2.20106C33.292 2.58958 34.6418 2.78385 36.0272 4.19706C37.4126 5.61028 37.5786 6.95316 37.9108 9.63893C38.1778 11.7985 38.3856 14.4476 38.3856 17.4629C38.3856 20.4782 38.1778 23.1273 37.9108 25.2868C37.5786 27.9726 37.4126 29.3155 36.0272 30.7287C34.6418 32.1419 33.292 32.3362 30.5923 32.7247C27.8223 33.1234 24.2062 33.4629 19.9241 33.4629C15.9339 33.4629 12.3398 33.1154 9.50711 32.7108C6.62823 32.2995 5.18879 32.0939 3.79971 30.6726C2.41063 29.2513 2.24299 27.8486 1.90772 25.0431C1.65508 22.9291 1.46252 20.3657 1.46252 17.4629C1.46252 14.56 1.65508 11.9966 1.90772 9.88264Z"/>
+
+    <clipPath id="body-clip">
+      <use href="#body-shape"/>
+    </clipPath>
+
+    <clipPath id="left-film-window">
+      <rect x="4.25" y="8.95" width="5.05" height="17.05" rx="1"/>
+    </clipPath>
+
+    <clipPath id="right-film-window">
+      <rect x="30.35" y="8.95" width="5.05" height="17.05" rx="1"/>
+    </clipPath>
+
+    <linearGradient id="body-gradient" x1="19.9746" y1="1.46289" x2="26.7741" y2="31.9462" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7D7F73"/>
+      <stop offset="1" stop-color="#9C9F90"/>
+    </linearGradient>
+
+    <linearGradient id="edge-gradient" x1="4.22408" y1="5.46289" x2="12.8142" y2="14.6064" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CBCBCB"/>
+      <stop offset="1" stop-color="#626262" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="outline-gradient" cx="0" cy="0" r="1" gradientTransform="matrix(-0.05114 32 -36.9231 -0.0564062 19.9752 1.46289)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A1A1A1"/>
+      <stop offset="1" stop-color="#494949"/>
+    </radialGradient>
+
+    <linearGradient id="dot-gradient" x1="-1.55" y1="-1.5" x2="1.3" y2="2" gradientUnits="userSpaceOnUse">
+      <stop offset="0.14" stop-color="#181818"/>
+      <stop offset="1" stop-color="#555555"/>
+    </linearGradient>
+
+    <linearGradient id="dot-edge" x1="-0.2" y1="0" x2="1.7" y2="2.1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#958F8D"/>
+      <stop offset="1" stop-color="#E6E6E6"/>
+    </linearGradient>
+
+    <filter id="body-shadow" x="0" y="0" width="40" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="0.73" flood-color="#000" flood-opacity="0.6"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.28" result="soft-alpha"/>
+      <feComposite in="soft-alpha" in2="SourceAlpha" operator="out" result="inner-cut"/>
+      <feFlood flood-color="#000" flood-opacity="0.42" result="inner-color"/>
+      <feComposite in="inner-color" in2="inner-cut" operator="in" result="inner-shadow"/>
+      <feComposite in="SourceGraphic" in2="inner-shadow" operator="over"/>
+    </filter>
+
+    <filter id="dot-inset" x="-2.6" y="-2.3" width="5.5" height="4.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="-0.12" dy="0.12" stdDeviation="0.06" flood-color="#000" flood-opacity="0.65"/>
+      <feDropShadow dx="0.12" dy="-0.12" stdDeviation="0.06" flood-color="#FFF" flood-opacity="0.18"/>
+    </filter>
+
+    <filter id="top-glow" x="-10" y="-12" width="60" height="35" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="4.06"/>
+    </filter>
+
+    <filter id="bottom-glow" x="2" y="28" width="36" height="7" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="1.22"/>
+    </filter>
+
+    <g id="film-dot" filter="url(#dot-inset)">
+      <rect x="-2.3075" y="-2" width="4.615" height="4" rx="1.18" fill="url(#dot-gradient)" stroke="url(#dot-edge)" stroke-width="0.065"/>
+    </g>
+  </defs>
+
+  <g filter="url(#body-shadow)">
+    <use href="#body-shape" fill="url(#body-gradient)"/>
+
+    <g clip-path="url(#body-clip)">
+      <ellipse cx="19.9752" cy="5.61211" rx="21.0697" ry="8.95" fill="#FFF" opacity="0.7" filter="url(#top-glow)"/>
+      <ellipse cx="20.1798" cy="31.9129" rx="15.4443" ry="0.95" fill="#FFF" opacity="0.8" filter="url(#bottom-glow)"/>
+    </g>
+
+    <path d="M19.9244 2.68164C23.1933 2.68166 26.0658 2.8827 28.4586 3.15527C31.9815 3.55658 33.2879 3.73962 34.8658 5.35449C35.6905 6.19851 36.1031 6.9461 36.3629 7.85156C36.642 8.82418 36.7513 9.98804 36.9108 11.751C37.0639 13.4443 37.1666 15.3629 37.1666 17.4629C37.1666 19.5629 37.0639 21.4815 36.9108 23.1748C36.7513 24.9377 36.642 26.1016 36.3629 27.0742C36.1031 27.9797 35.6905 28.7273 34.8658 29.5713C33.2879 31.1862 31.9815 31.3692 28.4586 31.7705C26.0658 32.0431 23.1933 32.2441 19.9244 32.2441C16.9067 32.2441 14.1165 32.0416 11.7194 31.7666C7.93368 31.3324 6.52469 31.131 4.95178 29.5117C3.37595 27.8894 3.22246 26.5275 2.90979 22.8633C2.77191 21.2474 2.68127 19.435 2.68127 17.4629C2.68127 16.7511 2.74934 15.7234 2.86389 14.5176C3.11247 11.901 3.29015 10.0607 3.62952 8.625C3.95724 7.2388 4.41683 6.32645 5.1803 5.55078C5.94282 4.77621 6.84997 4.30192 8.23889 3.95117C9.67683 3.58807 11.5259 3.3805 14.153 3.08887C16.3282 2.84739 18.3893 2.68164 19.9244 2.68164Z" stroke="url(#edge-gradient)" stroke-opacity="0.5" stroke-width="2.4375"/>
+    <use href="#body-shape" fill="none" stroke="url(#outline-gradient)" stroke-opacity="0.8" stroke-width="0.975"/>
+
+    <g clip-path="url(#left-film-window)">
+      <g class="film-track">
+        <use href="#film-dot" transform="translate(6.7702 5.4629)"/>
+        <use href="#film-dot" transform="translate(6.7702 11.4629)"/>
+        <use href="#film-dot" transform="translate(6.7702 17.4629)"/>
+        <use href="#film-dot" transform="translate(6.7702 23.4629)"/>
+      </g>
+    </g>
+
+    <g clip-path="url(#right-film-window)">
+      <g class="film-track">
+        <use href="#film-dot" transform="translate(32.9002 5.4629)"/>
+        <use href="#film-dot" transform="translate(32.9002 11.4629)"/>
+        <use href="#film-dot" transform="translate(32.9002 17.4629)"/>
+        <use href="#film-dot" transform="translate(32.9002 23.4629)"/>
+      </g>
+    </g>
+  </g>
+</svg>
