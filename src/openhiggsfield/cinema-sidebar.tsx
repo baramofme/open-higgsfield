@@ -561,6 +561,9 @@ export function CinemaSidebar() {
     const onDown = (event: PointerEvent) => {
       const target = event.target as HTMLElement | null;
       if (target?.closest("[data-ohf-cine-popup]")) return;
+      /* 트리거(점 세 개)의 pointerdown은 '바깥'이 아니다 — 여기서 닫히면
+         직후의 click이 토글되어 다시 열려버린다(재클릭 토글이 죽는 현상). */
+      if (target?.closest(".ohf-cinebar-dots")) return;
       setSortOpen(false);
       setFolderMenuId(null);
     };
@@ -1084,22 +1087,26 @@ export function CinemaSidebar() {
                           <FolderIcon />
                         </span>
                         <span className="ohf-cinebar-row-label">{project.name}</span>
-                        <span className="ohf-cinebar-row-reveal">
-                          <button
-                            type="button"
-                            className="ohf-cinebar-dots"
-                            aria-label="폴더 옵션"
-                            aria-haspopup="menu"
-                            aria-expanded={folderMenuId === project.id}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              setFolderMenuId(folderMenuId === project.id ? null : project.id);
-                            }}
-                          >
-                            <DotsIcon />
-                          </button>
-                        </span>
                       </button>
+                      {/* 점 세 개는 folder 버튼의 자식으로 두지 않는다 — 버튼 안
+                          버튼은 무효 HTML이라 하이드레이션 오류를 낳고, 브라우저가
+                          태그를 다시 짜맞추면서 실 클릭 경로가 어긋난다(HF도 행 안의
+                          형제 버튼으로 둔다). */}
+                      <span className="ohf-cinebar-row-reveal">
+                        <button
+                          type="button"
+                          className="ohf-cinebar-dots"
+                          aria-label="폴더 옵션"
+                          aria-haspopup="menu"
+                          aria-expanded={folderMenuId === project.id}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setFolderMenuId(folderMenuId === project.id ? null : project.id);
+                          }}
+                        >
+                          <DotsIcon />
+                        </button>
+                      </span>
                       {folderMenuId === project.id && (
                         <div className="ohf-cinebar-popup" data-ohf-cine-popup role="menu" aria-label={`${project.name} 폴더 옵션`}>
                           <button type="button" className="ohf-cinebar-menuitem" data-off title="화면 미러 — 고정 대상 미구현" role="menuitem">고정</button>

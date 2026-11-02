@@ -4277,6 +4277,11 @@ a.ohf-btn-solid {
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
+  /* 목록을 핸들(z:10)보다 위에 둔다 — 핸들이 레일 안쪽 24px를 덮어
+     도트 버튼이 실클릭에서 계속 장악되던 것을 끊는다(HF의 실측에서도
+     도트 중심(210)이 핸들 경계와 닿으므로 stacking이 결정한다). */
+  position: relative;
+  z-index: 11;
 }
 .ohf-cinebar-folders::-webkit-scrollbar {
   display: none;
@@ -4284,9 +4289,12 @@ a.ohf-btn-solid {
 .ohf-cinebar-row {
   position: relative;
   flex: none;
+  display: flex;
+  align-items: center;
 }
 .ohf-cinebar-folder {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   height: 36px;
   display: flex;
   align-items: center;
@@ -4331,6 +4339,7 @@ a.ohf-btn-solid {
 /* 점 세 개는 줄에 손이 닿을 때만 나타난다(HG의 opacity 게이트와 같게). */
 .ohf-cinebar-row-reveal {
   flex: none;
+  margin-right: 4px;
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -4339,6 +4348,8 @@ a.ohf-btn-solid {
   opacity: 1;
 }
 .ohf-cinebar-dots {
+  position: relative;
+  z-index: 11;
   width: 24px;
   height: 24px;
   display: flex;

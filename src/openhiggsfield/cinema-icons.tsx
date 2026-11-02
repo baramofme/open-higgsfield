@@ -7,13 +7,13 @@ import type { SVGProps } from "react";
 
 export function RailImageIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path fill="currentColor" fill-rule="evenodd" d="M3 4.75C3 3.784 3.784 3 4.75 3h14.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 19.25 21H4.75A1.75 1.75 0 0 1 3 19.25zm1.75-.25a.25.25 0 0 0-.25.25v9.69l2.263-2.263a1.75 1.75 0 0 1 2.474 0l7.324 7.323h2.689a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25zm9.69 15-6.263-6.263a.25.25 0 0 0-.354 0L4.5 16.561v2.689c0 .138.112.25.25.25z" clip-rule="evenodd"></path><path fill="currentColor" d="M13.426 8.537a.25.25 0 0 0 .111-.112l.74-1.478a.25.25 0 0 1 .447 0l.739 1.478a.25.25 0 0 0 .112.112l1.478.74a.25.25 0 0 1 0 .447l-1.479.739a.25.25 0 0 0-.111.112l-.74 1.478a.25.25 0 0 1-.447 0l-.739-1.479a.25.25 0 0 0-.112-.111l-1.478-.74a.25.25 0 0 1 0-.447z"></path></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path fill="currentColor" fillRule="evenodd" d="M3 4.75C3 3.784 3.784 3 4.75 3h14.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 19.25 21H4.75A1.75 1.75 0 0 1 3 19.25zm1.75-.25a.25.25 0 0 0-.25.25v9.69l2.263-2.263a1.75 1.75 0 0 1 2.474 0l7.324 7.323h2.689a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25zm9.69 15-6.263-6.263a.25.25 0 0 0-.354 0L4.5 16.561v2.689c0 .138.112.25.25.25z" clipRule="evenodd"></path><path fill="currentColor" d="M13.426 8.537a.25.25 0 0 0 .111-.112l.74-1.478a.25.25 0 0 1 .447 0l.739 1.478a.25.25 0 0 0 .112.112l1.478.74a.25.25 0 0 1 0 .447l-1.479.739a.25.25 0 0 0-.111.112l-.74 1.478a.25.25 0 0 1-.447 0l-.739-1.479a.25.25 0 0 0-.112-.111l-1.478-.74a.25.25 0 0 1 0-.447z"></path></svg>
   );
 }
 
 export function RailVideoIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 6.25a1 1 0 0 1 1-1h12.5a1 1 0 0 1 1 1v11.5a1 1 0 0 1-1 1H3.75a1 1 0 0 1-1-1zM17.25 9l3.094-1.375a1 1 0 0 1 1.406.914v6.922a1 1 0 0 1-1.406.914L17.25 15"></path></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.75 6.25a1 1 0 0 1 1-1h12.5a1 1 0 0 1 1 1v11.5a1 1 0 0 1-1 1H3.75a1 1 0 0 1-1-1zM17.25 9l3.094-1.375a1 1 0 0 1 1.406.914v6.922a1 1 0 0 1-1.406.914L17.25 15"></path></svg>
   );
 }
 
@@ -25,19 +25,19 @@ export function KeycapPlusIcon(props: SVGProps<SVGSVGElement>) {
 
 export function PromptPlusIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12 5.25V12m0 0v6.75M12 12H5.25M12 12h6.75"></path></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" d="M12 5.25V12m0 0v6.75M12 12H5.25M12 12h6.75"></path></svg>
   );
 }
 
 export function ElementGlyphIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M16.8684 19.8667C15.4543 20.7437 13.7863 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 13.9797 20.2662 16.0242 17.9715 15.8156C16.0837 15.644 14.7249 13.9258 14.993 12.0492L15.5226 8.40278M14.9375 12.4805C14.63 14.6681 12.8291 16.2235 10.9149 15.9544C9.00068 15.6854 7.69817 13.6939 8.00562 11.5063C8.31308 9.31862 10.1141 7.76327 12.0283 8.03229C13.9424 8.30131 15.245 10.2928 14.9375 12.4805Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M16.8684 19.8667C15.4543 20.7437 13.7863 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 13.9797 20.2662 16.0242 17.9715 15.8156C16.0837 15.644 14.7249 13.9258 14.993 12.0492L15.5226 8.40278M14.9375 12.4805C14.63 14.6681 12.8291 16.2235 10.9149 15.9544C9.00068 15.6854 7.69817 13.6939 8.00562 11.5063C8.31308 9.31862 10.1141 7.76327 12.0283 8.03229C13.9424 8.30131 15.245 10.2928 14.9375 12.4805Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path></svg>
   );
 }
 
 export function CamMoveIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M8.25 20.25H4.75C4.19772 20.25 3.75 19.8023 3.75 19.25V15.75M15.75 20.25H19.25C19.8023 20.25 20.25 19.8023 20.25 19.25V15.75M3.75 8.25V4.75C3.75 4.19772 4.19772 3.75 4.75 3.75H8.25M15.75 3.75H19.25C19.8023 3.75 20.25 4.19772 20.25 4.75V8.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.75 14.25V9.75C7.75 9.19772 8.19772 8.75 8.75 8.75H9.33579C9.601 8.75 9.85536 8.64464 10.0429 8.45711L10.4571 8.04289C10.6446 7.85536 10.899 7.75 11.1642 7.75H12.8358C13.101 7.75 13.3554 7.85536 13.5429 8.04289L13.9571 8.45711C14.1446 8.64464 14.399 8.75 14.6642 8.75H15.25C15.8023 8.75 16.25 9.19772 16.25 9.75V14.25C16.25 14.8023 15.8023 15.25 15.25 15.25H8.75C8.19772 15.25 7.75 14.8023 7.75 14.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 11.85V11.835M12.75 11.85C12.75 12.2642 12.4142 12.6 12 12.6C11.5858 12.6 11.25 12.2642 11.25 11.85C11.25 11.4358 11.5858 11.1 12 11.1C12.4142 11.1 12.75 11.4358 12.75 11.85Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M8.25 20.25H4.75C4.19772 20.25 3.75 19.8023 3.75 19.25V15.75M15.75 20.25H19.25C19.8023 20.25 20.25 19.8023 20.25 19.25V15.75M3.75 8.25V4.75C3.75 4.19772 4.19772 3.75 4.75 3.75H8.25M15.75 3.75H19.25C19.8023 3.75 20.25 4.19772 20.25 4.75V8.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M7.75 14.25V9.75C7.75 9.19772 8.19772 8.75 8.75 8.75H9.33579C9.601 8.75 9.85536 8.64464 10.0429 8.45711L10.4571 8.04289C10.6446 7.85536 10.899 7.75 11.1642 7.75H12.8358C13.101 7.75 13.3554 7.85536 13.5429 8.04289L13.9571 8.45711C14.1446 8.64464 14.399 8.75 14.6642 8.75H15.25C15.8023 8.75 16.25 9.19772 16.25 9.75V14.25C16.25 14.8023 15.8023 15.25 15.25 15.25H8.75C8.19772 15.25 7.75 14.8023 7.75 14.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 11.85V11.835M12.75 11.85C12.75 12.2642 12.4142 12.6 12 12.6C11.5858 12.6 11.25 12.2642 11.25 11.85C11.25 11.4358 11.5858 11.1 12 11.1C12.4142 11.1 12.75 11.4358 12.75 11.85Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
   );
 }
 
@@ -49,19 +49,19 @@ export function LimeIcon() {
 
 export function ModelChevronIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path fill-rule="evenodd" clip-rule="evenodd" d="M9.46967 7.46967C9.76256 7.17678 10.2374 7.17678 10.5303 7.46967L14.1768 11.1161C14.6649 11.6043 14.6649 12.3957 14.1768 12.8839L10.5303 16.5303C10.2374 16.8232 9.76256 16.8232 9.46967 16.5303C9.17678 16.2374 9.17678 15.7626 9.46967 15.4697L12.9393 12L9.46967 8.53033C9.17678 8.23744 9.17678 7.76256 9.46967 7.46967Z" fill="currentColor"></path></svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path fillRule="evenodd" clipRule="evenodd" d="M9.46967 7.46967C9.76256 7.17678 10.2374 7.17678 10.5303 7.46967L14.1768 11.1161C14.6649 11.6043 14.6649 12.3957 14.1768 12.8839L10.5303 16.5303C10.2374 16.8232 9.76256 16.8232 9.46967 16.5303C9.17678 16.2374 9.17678 15.7626 9.46967 15.4697L12.9393 12L9.46967 8.53033C9.17678 8.23744 9.17678 7.76256 9.46967 7.46967Z" fill="currentColor"></path></svg>
   );
 }
 
 export function ScrollChevronIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M14.5 18.25L8.25 12L14.5 5.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M14.5 18.25L8.25 12L14.5 5.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
   );
 }
 
 export function ResolutionIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.5 7.75 6.25 10l2.25 2.25m-.688-8.5a1 1 0 0 0-.713.299L1.945 9.293A1 1 0 0 0 1.95 10.7l9.342 9.342a1 1 0 0 0 1.414 0L22.05 10.7a1 1 0 0 0 .006-1.408l-5.154-5.244a1 1 0 0 0-.713-.299z"></path></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.5 7.75 6.25 10l2.25 2.25m-.688-8.5a1 1 0 0 0-.713.299L1.945 9.293A1 1 0 0 0 1.95 10.7l9.342 9.342a1 1 0 0 0 1.414 0L22.05 10.7a1 1 0 0 0 .006-1.408l-5.154-5.244a1 1 0 0 0-.713-.299z"></path></svg>
   );
 }
 
@@ -73,13 +73,13 @@ export function AspectIcon() {
 
 export function DurationIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><circle cx="7" cy="7" r="5.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M7 4.375V7L8.75 8.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><circle cx="7" cy="7" r="5.25" stroke="currentColor" strokeWidth="1.5"></circle><path d="M7 4.375V7L8.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
   );
 }
 
 export function AudioIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M19.2478 4.75195C21.1027 6.60684 22.25 9.16934 22.25 11.9998C22.25 14.8303 21.1027 17.3928 19.2478 19.2476M15.8891 8.11133C16.8844 9.10663 17.5 10.4816 17.5 12.0004C17.5 13.5192 16.8844 14.8942 15.8891 15.8895M2.75 7.75H5.7074C5.89846 7.75 6.08552 7.69526 6.24645 7.59227L12.25 3.75V20.25L6.24645 16.4077C6.08552 16.3047 5.89846 16.25 5.7074 16.25H2.75C2.19772 16.25 1.75 15.8023 1.75 15.25V8.75C1.75 8.19772 2.19772 7.75 2.75 7.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}><path d="M19.2478 4.75195C21.1027 6.60684 22.25 9.16934 22.25 11.9998C22.25 14.8303 21.1027 17.3928 19.2478 19.2476M15.8891 8.11133C16.8844 9.10663 17.5 10.4816 17.5 12.0004C17.5 13.5192 16.8844 14.8942 15.8891 15.8895M2.75 7.75H5.7074C5.89846 7.75 6.08552 7.69526 6.24645 7.59227L12.25 3.75V20.25L6.24645 16.4077C6.08552 16.3047 5.89846 16.25 5.7074 16.25H2.75C2.19772 16.25 1.75 15.8023 1.75 15.25V8.75C1.75 8.19772 2.19772 7.75 2.75 7.75Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
   );
 }
 
