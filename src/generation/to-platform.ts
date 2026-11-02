@@ -1,5 +1,8 @@
 import { getModel } from "./catalog";
 import type { GenerationPlane, PlatformPaths } from "./catalog/types";
+import { chipsToNumeric } from "./camera-angle-numeric";
+import { CAMERA_ANGLE_FEATURE } from "./camera-angle";
+import { usePromptTokens } from "./prompt-registry";
 
 type Mapped = { path: string; body: Record<string, unknown>; data?: unknown[] };
 type Mapper = (plane: GenerationPlane) => Mapped;
@@ -269,6 +272,60 @@ const KREA2_CANVAS: Record<string, Record<string, readonly [number, number]>> = 
   },
 };
 
+/* Additive second camera channel — the dock's numeric node inputs.
+   Reads the camera-angle token store (the single source of truth) and, once the
+   visitor has picked at least one dock chip on view/elevation/distance,
+   re-expands those discrete qwenmultiangle tokens into numeric node inputs the
+   cfwui krea-2 recipe can wire into its camera nodes. The custom free-text slot
+   is NOT one of the three numeric axes, so a custom-only selection keeps this
+   path closed (the free text still rides the prompt). The prompt-token channel
+   (plane.prompt.text) is left untouched — this rides alongside it as a
+   top-level `node_inputs` dict that cfwui folds into conditioning via
+   ConditioningCombine, never replacing pos/neg CLIPTextEncode. With no axis
+   chip selected it returns undefined, so the body stays byte-identical to the
+   pre-change baseline (zero regression). The krea2_anygles reprojection needs a
+   source image; we hand it the start image when one exists, otherwise cfwui
+   skips that sub-path and applies qwenmultiangle alone. */
+function cameraAngleNodeInputs(startImage?: string) {
+  let view: unknown;
+  let elevation: unknown;
+  let distance: unknown;
+  let selected = false;
+  for (const t of usePromptTokens.getState().tokens) {
+    if (t.featureId !== CAMERA_ANGLE_FEATURE) continue;
+    if (t.controlKey === "view") {
+      view = t.value;
+      selected = true;
+    } else if (t.controlKey === "elevation") {
+      elevation = t.value;
+      selected = true;
+    } else if (t.controlKey === "distance") {
+      distance = t.value;
+      selected = true;
+    }
+  }
+  if (!selected) return undefined;
+  const n = chipsToNumeric(
+    typeof view === "string" ? view : undefined,
+    typeof elevation === "string" ? elevation : undefined,
+    typeof distance === "string" ? distance : undefined,
+  );
+  return {
+    qwenmultiangle: {
+      horizontal_angle: n.qwenmultiangle.h,
+      vertical_angle: n.qwenmultiangle.v,
+      zoom: n.qwenmultiangle.z,
+    },
+    krea2_anygles: {
+      yaw: n.anygles.yaw,
+      elevation: n.anygles.elevation,
+      distance: n.anygles.distance,
+      extra_prompt: n.anygles.extra_prompt,
+      ...(typeof startImage === "string" && startImage ? { source: startImage } : {}),
+    },
+  };
+}
+
 /** Local cfwui semantic-API map: plane -> ImageGen_run_imagegen json_params.
  *  The reference role feeds krea2_style_reference injectors (cap 3, matched to
  *  krea2_style_reference max_count). Media URLs may be data URIs: cfwui's
@@ -296,6 +353,7 @@ function mapKrea2Cfwui(plane: GenerationPlane): Mapped {
   const cfg = Number(plane.settings.cfg);
   const sampler = typeof plane.settings.sampler === "string" ? plane.settings.sampler : "euler";
   const scheduler = typeof plane.settings.scheduler === "string" ? plane.settings.scheduler : "simple";
+  const nodeInputs = cameraAngleNodeInputs(initImage);
   return {
     path: "ImageGen_run_imagegen",
     body: {
@@ -329,6 +387,9 @@ function mapKrea2Cfwui(plane: GenerationPlane): Mapped {
             lens: String(plane.settings.lens ?? ""),
           }
         : {}),
+      /* Additive numeric camera node inputs (the second channel). Present only
+         when a dock chip was picked; absent keeps the body byte-identical. */
+      ...(nodeInputs ? { node_inputs: nodeInputs } : {}),
     },
   };
 }
