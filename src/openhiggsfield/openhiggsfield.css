@@ -10174,6 +10174,13 @@ a.ohf-btn-solid {
 .ohf-pult {
   flex: none;
   align-self: stretch;
+  /* The plate sits OUTSIDE the composer box, on the dock's left, as a sibling of
+     .ohf-composer-wrap. The dock floors its whole area pointer-events:none and only
+     re-enables the composer wrap, so the plate inherited none and both tabs fell
+     through to the dock ancestor on hit-test — the seat looked alive to JS .click()
+     but a real mouse never reached it. Make the plate its own interactive island,
+     exactly like the composer wrap; the active tab stays inert (HF's active style). */
+  pointer-events: auto;
   width: 72px;
   min-width: 72px;
   border-radius: 24px;
@@ -10231,7 +10238,7 @@ a.ohf-btn-solid {
 }
 .ohf-pult-tab:hover { color: var(--tx); }
 .ohf-pult-tab:active { filter: brightness(0.6); }
-.ohf-pult-tab--on { color: var(--tx); }
+.ohf-pult-tab--on { color: var(--tx); pointer-events: none; }
 .ohf-pult-tab svg { width: 16px; height: 16px; }
 .ohf-pult-label { line-height: 12px; }
 .ohf-edge[data-active] { display: grid !important; place-items: center; opacity: 1 !important; pointer-events: auto !important; }
