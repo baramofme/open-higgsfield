@@ -52,9 +52,9 @@ import { Topbar } from "./topbar";
 import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
 /* Separate import block, anchored away from the top cluster so it forms its own
-   diff hunk: the dedicated Cinematic Studio screen plus the app's own cinema
-   rail, which it adopts as its left column (the rail was defined but unused). */
-import { CinemaPanel } from "./cinema-panel";
+   diff hunk: the dedicated Cinematic Studio screen plus the HG-mirrored sidebar
+   it adopts as its left column. */
+import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
@@ -1297,7 +1297,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             setCinemaMode("image");
           }}
           composer={composerEl}
-          rail={<CinemaPanel />}
+          rail={<CinemaSidebar />}
           busy={busy}
           keyConfigured={keyConfigured}
           onKeys={openKeys}

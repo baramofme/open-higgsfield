@@ -88,7 +88,7 @@
 }
 
 /* :where() keeps the reset at zero extra specificity so component classes win. */
-.ohf :where(button) {
+:where(.ohf button) {
   font-family: inherit;
   border: 0;
   background: none;
@@ -96,7 +96,7 @@
   padding: 0;
   cursor: pointer;
 }
-.ohf :where(button:disabled) {
+:where(.ohf button:disabled) {
   cursor: default;
 }
 .ohf input,
@@ -3827,166 +3827,868 @@ a.ohf-btn-solid {
   display: inline;
 }
 
-/* ---------- cinema panel ---------- */
+/* ---------- cinema sidebar (HG 미러) ---------- */
 
-/* The panel grows out of the left edge the way the composer floats over the
-   grid: the gallery keeps its full width underneath and the panel carries its
-   own scroll, so switching modes never reflows the runs. */
-.ohf-cinema {
-  position: absolute;
-  left: 16px;
-  top: 74px;
-  bottom: 108px;
-  width: 20rem;
-  max-width: calc(100vw - 32px);
-  z-index: 25;
-  display: flex;
-  background: var(--s2);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow-2), var(--glint);
-  animation: ohf-cinema-in 0.38s var(--ease-slide);
-}
-@keyframes ohf-cinema-in {
-  from {
-    opacity: 0;
-    transform: translateX(-14px);
-  }
-}
-.ohf-cinema-scroll {
+/* HG의 /ko/generate 레일은 231px 폭의 세로 카드다: 16px 모서리, 5% 흰 테두리,
+  页面과 같은 #131416 바탕. 실측한 색상·수치를 그대로literal로 되살린다 —
+   OH 토큰의 초록 기미(#edefef) 대신 HG의 순백/#828282/#898A8B를 쓰는 이유다. */
+.ohf-cinebar {
+  --cine-bg: #131416;
+  --cine-pop: #1c1e21;
+  --cine-line: rgba(255, 255, 255, 0.05);
+  --cine-fg: #ffffff;
+  --cine-half: rgba(255, 255, 255, 0.5);
+  --cine-sec: #828282;
+  --cine-ter: #898a8b;
+  --cine-dim: rgba(255, 255, 255, 0.35);
+  position: relative;
+  height: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 16px 14px 18px;
+  border: 1px solid var(--cine-line);
+  border-radius: 16px;
+  background: var(--cine-bg);
+  color: var(--cine-fg);
+  font-size: 14px;
+  font-weight: 500;
+}
+.ohf-cinebar-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: none;
 }
-.ohf-cinema-sec {
+.ohf-cinebar-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── 머리: 선택 트리거와 접기 단추 ── */
+.ohf-cinebar-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
+  padding: 8px;
+  background: var(--cine-bg);
 }
-.ohf-cinema-head {
+.ohf-cinebar-headrow {
   display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0;
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--tx3);
+  gap: 4px;
 }
-.ohf-cinema-rail {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-}
-.ohf-cinema-mode {
-  height: 30px;
-  padding: 0 12px;
-  border: 1px solid var(--line-2);
-  border-radius: 9px;
-  background: var(--s3);
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 550;
-  color: var(--tx2);
-  cursor: pointer;
-}
-.ohf-cinema-mode:hover:not([data-off]) {
-  color: var(--tx);
-}
-.ohf-cinema-mode[aria-pressed="true"] {
-  color: var(--accent);
-  border-color: var(--accent-32);
-  background: var(--accent-08);
-}
-.ohf-cinema-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
-}
-.ohf-cinema-tier {
-  display: flex;
-  align-items: center;
-  gap: 7px;
+.ohf-cinebar-trigger {
+  flex: 1;
   min-width: 0;
-  padding: 8px 9px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--s3);
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 550;
-  color: var(--tx2);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 6px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+.ohf-cinebar-trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ohf-cinebar-trigger-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.ohf-cine-tile {
+  display: block;
+}
+.ohf-cinebar-trigger-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+.ohf-cinebar-trigger[aria-expanded="true"] .ohf-cinebar-trigger-label {
+  opacity: 1;
+}
+.ohf-cinebar-trigger-chev {
+  flex: none;
+  margin-inline-start: auto;
+  padding-inline-start: 8px;
+  color: var(--cine-sec);
+  display: flex;
+}
+.ohf-cine-chev {
+  display: block;
+}
+.ohf-cinebar-fold {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-fold:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+/* 하위 목록은 줄 템플릿이 0fr에서 1fr로 밀려나며 드러난다(HG의 전환과 같게). */
+.ohf-cinebar-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.3s ease;
+}
+.ohf-cinebar-sub[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.ohf-cinebar-sub-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+.ohf-cinebar-subrow {
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
   cursor: pointer;
   text-align: left;
+  transition: background 0.15s ease;
 }
-.ohf-cinema-tier:hover {
-  color: var(--tx);
-  border-color: var(--line-2);
+.ohf-cinebar-subrow:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
 }
-.ohf-cinema-tier[aria-current="true"] {
-  color: var(--accent);
-  border-color: var(--accent-32);
-  background: var(--accent-08);
-}
-.ohf-cinema-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.ohf-cinebar-subrow svg {
   flex: none;
+  width: 16px;
+  height: 16px;
 }
-.ohf-cinema-tier-name {
+.ohf-cinebar-subrow-label {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.ohf-cinema-flag {
-  flex: none;
-  font-size: 9.5px;
-  font-weight: 650;
-  letter-spacing: 0.03em;
-  color: var(--tx-off);
-  background: var(--rail);
-  border-radius: 6px;
-  padding: 2px 5px;
+/* 헤더 아래로 스크롤해야 나타나는 장막 — HG는 머리에 붙여 숨긴다. */
+.ohf-cinebar-fade {
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  height: 64px;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(var(--cine-bg) 0%, rgba(19, 20, 22, 0) 100%);
+  transition: opacity 0.3s ease;
 }
-.ohf-cinema-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.ohf-cinema-chip {
-  font-size: 11.5px;
-  font-weight: 550;
-  padding: 5px 9px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--s3);
-  color: var(--tx2);
-}
-/* Screen-mirror values: dimmed, inert, and titled with why. */
-.ohf-cinema [data-off] {
-  color: var(--tx-off);
-  cursor: default;
-}
-.ohf-cinema-note,
-.ohf-cinema-foot {
-  margin: 0;
-  font-size: 10.5px;
-  line-height: 1.5;
-  color: var(--tx4);
-}
-.ohf-cinema-count {
-  font-size: 11.5px;
-  font-weight: 550;
-  color: var(--tx4);
+.ohf-cinebar-fade[data-scrolled="true"] {
+  opacity: 1;
 }
 
+/* ── 메뉴 다섯 줄 ── */
+.ohf-cinebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+}
+.ohf-cinebar-action {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-action:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-action[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-action[data-off] {
+  color: var(--cine-dim);
+  cursor: default;
+}
+.ohf-cinebar-action-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 유리기운 칩: 135° 두 stop의 본체 + 겹쳐 밝히는 두 장막 + 24% 테두리. */
+.ohf-cine-chip {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+}
+.ohf-cine-chip-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 2px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.24);
+}
+.ohf-cine-chip-over {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
+  mix-blend-mode: overlay;
+}
+.ohf-cine-chip-hard {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.32) 100%);
+  mix-blend-mode: hard-light;
+}
+.ohf-cine-chip-line {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 197, 197, 0.24);
+}
+.ohf-cine-chip-glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-cine-glyph,
+.ohf-cine-line {
+  display: block;
+}
+
+/* ── 프로젝트 ── */
+.ohf-cinebar-projects {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px 8px;
+}
+.ohf-cinebar-proj-inner {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ohf-cinebar-proj-pt {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0 2px;
+}
+.ohf-cinebar-proj-head {
+  position: relative;
+  flex: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px;
+}
+.ohf-cinebar-proj-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cine-sec);
+}
+.ohf-cinebar-proj-tools {
+  position: relative;
+  display: flex;
+  gap: 2px;
+}
+.ohf-cinebar-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.ohf-cinebar-tool {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--cine-sec);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-cinebar-tool:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-tool[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+/* 검색은 라벨 줄을 그대로 덮어쓰는 판이다(HG의 오버레이와 같게). */
+.ohf-cinebar-search {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: var(--cine-pop);
+}
+.ohf-cinebar-search-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cine-ter);
+}
+.ohf-cinebar-search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
+  outline: none;
+}
+.ohf-cinebar-search-close {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cine-ter);
+  cursor: pointer;
+}
+.ohf-cinebar-search-close:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-new {
+  flex: none;
+  margin-top: 6px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-sec);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-new:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+/* 새 프로젝트의 더하기 칩: 8% 흰 바탕에 안쪽 발광, 30% 회선. */
+.ohf-cinebar-new-chip {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+  color: var(--cine-half);
+}
+.ohf-cinebar-new:hover .ohf-cinebar-new-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-new-label {
+  transition: color 0.15s ease;
+}
+.ohf-cinebar-folders {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+.ohf-cinebar-folders::-webkit-scrollbar {
+  display: none;
+}
+.ohf-cinebar-row {
+  position: relative;
+  flex: none;
+}
+.ohf-cinebar-folder {
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-ter);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-cinebar-folder:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-folder[data-active="true"] {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-row-chip {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-row-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 점 세 개는 줄에 손이 닿을 때만 나타난다(HG의 opacity 게이트와 같게). */
+.ohf-cinebar-row-reveal {
+  flex: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.ohf-cinebar-row:hover .ohf-cinebar-row-reveal,
+.ohf-cinebar-row:focus-within .ohf-cinebar-row-reveal {
+  opacity: 1;
+}
+.ohf-cinebar-dots {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cine-ter);
+  cursor: pointer;
+}
+.ohf-cinebar-dots:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-rename-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
+  outline: none;
+}
+.ohf-cinebar-all {
+  flex: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-half);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.ohf-cinebar-all[data-off] {
+  cursor: default;
+}
+.ohf-cinebar-all:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-all-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── 발: 요금제와 계정 ── */
+.ohf-cinebar-foot {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--cine-line);
+  padding: 8px;
+}
+.ohf-cinebar-price {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-half);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.ohf-cinebar-price[data-off] {
+  cursor: default;
+}
+.ohf-cinebar-price:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--cine-fg);
+}
+.ohf-cinebar-account {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 36px;
+}
+.ohf-cinebar-account-btn {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-account-btn[data-off] {
+  cursor: default;
+}
+.ohf-cinebar-account-btn:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-account-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-cinebar-avatar {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.18);
+}
+.ohf-cinebar-avatar-face {
+  position: relative;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(209, 254, 23, 0.12);
+  color: #d1fe17;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 650;
+}
+.ohf-cinebar-ring {
+  position: absolute;
+  inset: 0;
+  width: 24px;
+  height: 24px;
+}
+.ohf-cinebar-bell {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cine-fg);
+  cursor: pointer;
+}
+.ohf-cinebar-bell[data-off] {
+  cursor: default;
+}
+.ohf-cinebar-bell-chip {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-bell:hover:not([data-off]) .ohf-cinebar-bell-chip {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── 팝업: HG의 180·8·2·12 규격 ── */
+.ohf-cinebar-popup {
+  position: absolute;
+  z-index: 30;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--cine-pop);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.ohf-cinebar-popup--sort {
+  top: calc(100% + 4px);
+  left: 0;
+}
+.ohf-cinebar-row .ohf-cinebar-popup {
+  top: calc(100% + 4px);
+  left: 6px;
+}
+.ohf-cinebar-popup-label {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--cine-sec);
+}
+.ohf-cinebar-menuitem {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--cine-fg);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-menuitem:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-menuitem[data-off] {
+  color: var(--cine-dim);
+  cursor: default;
+}
+.ohf-cinebar-menuitem[data-active="true"] {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-menuitem--danger {
+  color: var(--danger);
+}
+.ohf-cinebar-menuitem--danger:hover {
+  background: var(--danger-bg);
+}
+
+/* ── 너비 손잡이: hairline은 hover·drag에서만 드러난다 ── */
+.ohf-cinebar-handle {
+  position: absolute;
+  right: -24px;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  z-index: 10;
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-cinebar-hairline {
+  width: 1px;
+  height: 100%;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 18%,
+    rgba(255, 255, 255, 0.2) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: opacity 0.15s ease;
+}
+.ohf-cinebar-handle:hover .ohf-cinebar-hairline,
+.ohf-cinebar-handle[data-active] .ohf-cinebar-hairline {
+  opacity: 1;
+}
+.ohf-cinebar-handle:active {
+  cursor: grabbing;
+}
+
+/* ── 접힌 판: 라벨이 물러나고 그림만 남는다(HG의 52px 폭과 같게). ── */
+.ohf-cinebar[data-collapsed="true"] {
+  overflow: visible;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-trigger,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-sub,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-proj-label,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-all-label,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-all svg,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-price-label,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-account-name,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-row-reveal,
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-handle {
+  display: none;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-headrow {
+  justify-content: center;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-action {
+  gap: 0;
+  padding: 6px 0;
+  justify-content: center;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-action-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-proj-tools {
+  flex-direction: column;
+  align-items: center;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-proj-head {
+  justify-content: center;
+  padding: 0;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-new {
+  justify-content: center;
+  padding: 6px 0;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-new-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-folder {
+  justify-content: center;
+  padding: 6px 0;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-row-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-price {
+  justify-content: center;
+  padding: 6px 0;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-account {
+  justify-content: center;
+}
+.ohf-cinebar[data-collapsed="true"] .ohf-cinebar-account-btn {
+  flex: none;
+  justify-content: center;
+  padding: 6px 0;
+}
+
+/* 좁은 화면에서는 레일이 창 너비를 넘지 않는다. */
 @media (max-width: 560px) {
   .ohf-mode-label {
     display: none;
@@ -3994,13 +4696,15 @@ a.ohf-btn-solid {
   .ohf-mode-seg {
     padding: 0 9px;
   }
-  .ohf-cinema {
-    width: min(20rem, calc(100vw - 32px));
+  .ohf-cinebar {
+    max-width: calc(100vw - 8px);
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .ohf-cinema {
-    animation: none;
+  .ohf-cinebar-fade,
+  .ohf-cinebar-sub {
+    transition: none;
   }
 }
 
@@ -4772,7 +5476,7 @@ a.ohf-btn-solid {
 }
 
 /* :where() keeps the reset at zero extra specificity so component classes win. */
-.ohf :where(button) {
+:where(.ohf button) {
   font-family: inherit;
   border: 0;
   background: none;
@@ -4780,7 +5484,7 @@ a.ohf-btn-solid {
   padding: 0;
   cursor: pointer;
 }
-.ohf :where(button:disabled) {
+:where(.ohf button:disabled) {
   cursor: default;
 }
 .ohf input,
