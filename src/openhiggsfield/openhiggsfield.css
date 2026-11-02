@@ -15444,6 +15444,29 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   flex: none;
   padding: 0 20px 16px;
 }
+/* ── Cinematic Studio reading width ──────────────────────────────────────────
+   HF keeps the dock's composer a fixed, centred reading column (desktop ≈50rem,
+   ≈800px — measured 800px at 1440/1200, shrinking gracefully to the column below
+   that cap) laid inside the canvas beside the rail. OH floated the composer's
+   .ohf-dock across the whole screen (position:absolute; inset:auto 0 0 resolved
+   against the screen, not the column), so the reading stretched full width and
+   rode over the rail too. Confine the dock to the canvas column's flow, then cap
+   + centre the reading to mirror HF. Every selector is scoped to .ohf-cinema-screen
+   so the general studio's floating dock keeps its original full-floor geometry.
+   The scoped selectors (.ohf-cinema-screen .ohf-dock = 0,2,0 and
+   .ohf-cinema-screen .ohf-composer-wrap = 0,2,0) outrank the base .ohf-dock /
+   .ohf-composer-wrap (0,1,0), so they win the cascade regardless of source order. */
+.ohf-cinema-screen .ohf-dock {
+  position: relative;   /* flow inside the canvas column, not the screen-wide absolute */
+  inset: auto;          /* drop the bottom-anchored full-width inset */
+  padding: 0;           /* the cinema dock owns the foot padding */
+  min-width: 0;
+}
+.ohf-cinema-screen .ohf-composer-wrap {
+  width: 100%;
+  max-width: 50rem;     /* HF's fixed reading width (≈800px at the desktop root) */
+  margin-inline: auto;  /* centre like HF's mx-auto; shrink to the column below the cap */
+}
 /* ── CSV toolbar for the 요소 scope of the asset browser. ────────────────────
    New selectors only, scoped to the dialog header's own classes — no existing
    rule is touched. The block is anchored beside the cinema screen's tail rather
