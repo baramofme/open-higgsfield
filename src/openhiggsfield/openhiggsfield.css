@@ -17016,21 +17016,13 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   max-width: 50rem;
   margin-inline: 0;        /* the ROW centres now, not the wrap */
 }
-/* The rail column now stacks a slim control strip above the rail. */
+/* The rail column stacks the model sidebar directly (no control strip). */
 .ohf-cinema-rail-col {
   display: flex;
   flex-direction: column;
   min-height: 0;
   padding: 4px;
   overflow: hidden;
-}
-.ohf-cinema-railbar {
-  flex: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 2px 2px 8px;
-  min-height: 0;
 }
 .ohf-cinema-rail-col .ohf-cinema {
   flex: 1 1 auto;

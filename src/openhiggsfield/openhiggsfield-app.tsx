@@ -1292,15 +1292,8 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     <div className={`ohf ${fontClassName}`} style={{ "--ohf-grain": GRAIN_URI } as React.CSSProperties}>
       {mode === "cinema" ? (
         <CinemaStudioScreen
-          onExit={() => {
-            setMode("general");
-            setCinemaMode("image");
-          }}
           composer={composerEl}
           rail={<CinemaSidebar />}
-          busy={busy}
-          keyConfigured={keyConfigured}
-          onKeys={openKeys}
         />
       ) : projectViewOpen ? (
         <ProjectScreen
