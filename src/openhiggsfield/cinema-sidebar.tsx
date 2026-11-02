@@ -602,7 +602,11 @@ export function CinemaSidebar() {
           {/* 하위 목록: 줄 템플릿이 0fr에서 1fr로 밀려난다(HG의 전환과 동일). */}
           <div className="ohf-cinebar-sub" data-open={selectOpen ? "true" : "false"}>
             <div className="ohf-cinebar-sub-clip">
-              <button type="button" className="ohf-cinebar-subrow" data-off title="화면 미러 — 제품 목록은 로컬과 무관">
+              <button
+                type="button"
+                className="ohf-cinebar-subrow"
+                onClick={() => setMode("general")}
+              >
                 <BrandHeart />
                 <span className="ohf-cinebar-subrow-label">Higgsfield AI</span>
               </button>
