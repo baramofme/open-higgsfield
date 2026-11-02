@@ -17626,3 +17626,978 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-cine-camctl svg { width: 16px; height: 16px; }
 /* The image seat's plate (HF draws no instruments above it). */
 .ohf-cine-image-flow { display: contents; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   t_ff978a44 RIGHT-REGION PIN — the cinematic seats' tiles + generate ride the
+   composer's corner exactly as HF draws it. HF ground truth (crop pixel pass on
+   hf_image-1440.png, dock-local + screen at 1440): the instrument corner is ONE
+   row 332x80 at dx528 db16 — on screen 932..1264, bottom 864 — built from two
+   100x80 tiles with HF's 4 gap, butting a static 128x80 generate whose right
+   edge lands 12 inside the wrap (strict-lime interior 1142..1262 sat inside
+   1136..1264). The plate itself stays full composer width; its interior must
+   END 4 before the tiles, because HF's column content (424 wide, 418 of toolbar)
+   never rides under the corner. What broke before: the tiles were left in the
+   form-row FLOW while the slot was corner-anchored — the row sized to
+   max-content, the wrap shrank to that content instead of HF's fixed 50rem
+   reading column, the pair spilled 82 past the dock edge, and the button
+   painted over the tiles the user reported ("이미지 눌렀을때 우측에 생성하기·카메라
+   버튼이 정상 위치에 있지 않다"). The pass below: (1) the dock keeps HF's fixed
+   876 reading row via a min-width floor — the approved max-width:100% still
+   clamps it gracefully below the cap; (2) the WHOLE right column lifts onto the
+   wrap-anchored corner (out of flow, so the row can never spill again), tiles
+   100x80 gap 4 butting the now-static slot flush, height 80, bottom 16; (3) the
+   prompt and the streaming area are capped so plate interior ends 4 clear of
+   the tiles at every width >= 561 (right = wrap right - 350, proven by the
+   fixed-point math, not eyeballed). Below 560 the cinema dock stacks
+   single-column and the old flow rules keep owning the corner there.
+   Specificity 0,3,0 with !important outranks the 0,2,0 `!important` slot rule
+   and the mid-file FINAL AUTHORITY pair; append order makes this the last word.
+   ════════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 1025px) {
+  .ohf-cinema-screen .ohf-dock {
+    /* the pult lane (72+4) plus HF's fixed 50rem reading column — HF keeps the
+       dock row at 876 even when its content is narrower; without this floor the
+       fit-content dock shrink-wrapped to the plate (757) and dragged the corner
+       16 left of HF. Below 1025 the approved fit-content rules own the row and
+       shrink it into the column instead. */
+    min-width: calc(50rem + 76px);
+  }
+  .ohf-cinema-screen .ohf-right-col {
+    position: absolute !important;   /* the composer wrap is the positioned ancestor */
+    right: 16px !important;          /* wrap pad 4 + HF's 12 off the plate's inner edge */
+    bottom: 20px !important;         /* dock floor's 16 + the plate's 4 — HF's corner sits 20 above the floor */
+    margin: 0 !important;            /* kills the flow margins and margin-left:auto */
+    width: 332px !important;         /* HF's corner: 100 + 4 + 100 + 128 */
+    height: 80px !important;         /* the corner's single row */
+    gap: 0 !important;               /* the tile pair butts the button, flush as HF seats them */
+    align-items: flex-end !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tiles {
+    gap: 4px !important;             /* HF leaves exactly 4 between the instruments */
+    flex: none !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--character {
+    width: 100px !important;         /* HF's square instrument, not OH's 80 */
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--camera {
+    width: 100px !important;         /* HF's second instrument matches the first */
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-generate-slot {
+    position: static !important;     /* back in flow; owns the corner's right edge */
+    right: auto !important;
+    bottom: auto !important;
+  }
+  /* HF's plate interior ends before the corner: the prompt and the streaming
+     strip are capped to what the plate has left once the corner is seated —
+     100% resolves against the plate's interior, so the cap tracks the shrink
+     below the fixed column without ever riding under the tiles. HF's interior
+     room is exactly 424 (its column); 432 here leaves HF's 4 of clearance to
+     the corner. */
+  .ohf-cinema-screen .ohf-prompt {
+    max-width: calc(100% - 208px);
+  }
+  .ohf-cinema-screen .ohf-stream-area {
+    max-width: calc(100% - 208px);
+  }
+}
+/* 561..1024: the approved fit-content row owns the width (the column shrinks,
+   the wrap follows — t_0dd1fcbc's accepted sweep). The corner rides the row in
+   FLOW here, HF's own architecture: the plate is the flex column and the
+   332-wide corner is its sibling, so no cap and no overlap are needed; the
+   corner bottom-anchors 16 above the plate's floor, which maps to HF's corner
+   floor exactly. */
+@media (min-width: 561px) and (max-width: 1024px) {
+  .ohf-cinema-screen .ohf-right-col {
+    position: static !important;
+    flex: 0 0 332px !important;      /* HF's corner, rigid as HF seats it */
+    width: 332px !important;
+    height: 80px !important;         /* the corner's single row */
+    margin: 0 !important;            /* kills margin-left:auto — the column owns the rest */
+    margin-bottom: 16px !important;  /* HF's corner floor above the plate */
+    align-self: flex-end !important; /* HF draws the corner self-end */
+    gap: 0 !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tiles {
+    gap: 4px !important;
+    flex: none !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--character {
+    width: 100px !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--camera {
+    width: 100px !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-generate-slot {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
+
+/* ── 새 프로젝트 대화창 (HF 지상 실측 2026-11-03) ─────────────────────────
+   원본은 480×380 뜨는 반투명 카드 하나 — 배경 암전은 없고, 겉을 누르면
+   닫히는 투명한 받침이 뒤를 받친다. 값은 실측 그대로: 테두리 두께 1의
+   흰 5%, 모서리 24px, 배경 rgb(41,43,44)의 75%에 40px 흐림, 본체 여백 16px. */
+.ohf-np-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.ohf-np-catcher {
+  position: absolute;
+  inset: 0;       /* 원본은 화면을 어둡게 하지 않는다 — 받침만투명하다. */
+}
+.ohf-np-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  min-height: 380px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  background: rgba(41, 43, 44, 0.75);
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+  color: #f7f7f8;
+  font-family: var(--font-ui);
+}
+.ohf-np-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 32px;
+}
+.ohf-np-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #ffffff;
+}
+.ohf-np-close {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-np-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ohf-np-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+.ohf-np-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 0;
+}
+/* 이름줄: 32px 반굵은 제목이 곧 입력창. 안보이는 거울줄이 상자를 재고,
+   입력은 그 위에 얹는다(원본의 자동너비 방식 그대로). */
+.ohf-np-name-row {
+  display: flex;
+  height: 36px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  cursor: text;
+}
+.ohf-np-name-fit {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+.ohf-np-name-mirror {
+  visibility: hidden;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+.ohf-np-name-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  color: #ffffff;
+  outline: none;
+}
+.ohf-np-name-input::placeholder {
+  color: rgb(137, 138, 139);   /* 실측된 자리표시자 색 */
+}
+.ohf-np-priv {
+  display: flex;
+  height: 36px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ohf-np-priv-icon {
+  display: inline-flex;
+  color: rgb(137, 138, 139);   /* 실측된 잠금 색(= --fg-dim) */
+}
+.ohf-np-priv-icon[data-on="true"] {
+  color: var(--accent);
+}
+.ohf-np-priv-label {
+  white-space: nowrap;
+}
+.ohf-np-team {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+}
+.ohf-np-team-row {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+}
+.ohf-np-team-icon {
+  flex: none;
+  display: inline-flex;
+  color: rgb(137, 138, 139);
+}
+.ohf-np-team-text {
+  min-width: 0;
+  flex: 1;
+}
+.ohf-np-team-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-np-team-sub {
+  margin: 0;
+  font-size: 12px;
+  color: rgb(137, 138, 139);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 업그레이드 알약은 로컬에서 과금하지 않으므로 무동작 미러로 남는다. */
+.ohf-np-upgrade {
+  flex: none;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent);        /* 실측 rgb(209,254,23) = --accent 그 자체 */
+  font-size: 12px;
+  font-weight: 600;
+  cursor: default;
+}
+.ohf-np-submit {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 12px;
+  background: rgb(41, 43, 44);
+  color: rgb(115, 116, 117);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: default;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+/* 이름이 채워진 만들기: 원본의 뒤집힌 기본 단추 — 흰 바탕에 먹 19,21,23. */
+.ohf-np-submit:not(:disabled) {
+  background: #ffffff;
+  color: rgb(19, 21, 23);
+  cursor: pointer;
+}
+
+/* ── 프로젝트 레일: HF의 프로젝트 경로에서 실측한 내비게이션 ─────────────
+   레일 폭·접기·손잡이는 스튜디오 레일과 같은 규격(213px 기준, 줄 36px·
+   줄간격 2px·모서리 12px·본문 13px 반 medium). 원본의 항목 순서:
+   뒤로 → 프로젝트명 → 프로젝트 브리프 → 설정 → 요소 → 도구 → Canvas →
+   채팅 → AI 디렉터 → 폴더(모든 에셋·폴더 추가) → 휴지통 → 발. */
+.ohf-cinebar-phead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: var(--cine-bg);
+}
+.ohf-cinebar-pback {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-fg);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-pback:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-pback-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-cinebar-ptitle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 8px;
+}
+.ohf-cinebar-ptitle-chip {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--cine-fg);
+}
+.ohf-cinebar-ptitle-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ohf-cinebar-pnav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 8px;
+}
+.ohf-cinebar-prow {
+  height: 36px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--cine-fg);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-cinebar-prow:hover:not([data-off]) {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-prow[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cinebar-prow[data-off] {
+  color: var(--cine-dim);
+  cursor: default;
+}
+.ohf-cinebar-prow-chip {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+}
+.ohf-cinebar-prow-label {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-cinebar-prow-count {
+  flex: none;
+  font-size: 12px;
+  color: var(--cine-ter);
+}
+.ohf-cinebar-pfold {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 6px;
+}
+.ohf-cinebar-pfold-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cine-ter);
+}
+.ohf-cinebar-pfold-tools {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ohf-cinebar-pspacer {
+  flex: 1 1 auto;
+  min-height: 24px;
+}
+/* 접히면 글자를 감추고 칩만 남긴다(스튜디오 레일과 같은 수순). */
+.ohf-cinebar[data-collapsed="true"].ohf-cinebar--project .ohf-cinebar-pback-label,
+.ohf-cinebar[data-collapsed="true"].ohf-cinebar--project .ohf-cinebar-ptitle-label,
+.ohf-cinebar[data-collapsed="true"].ohf-cinebar--project .ohf-cinebar-pfold-label,
+.ohf-cinebar[data-collapsed="true"].ohf-cinebar--project .ohf-cinebar-prow-label,
+.ohf-cinebar[data-collapsed="true"].ohf-cinebar--project .ohf-cinebar-prow-count {
+  display: none;
+}
+.ohf-cinebar--project[data-collapsed="true"] .ohf-cinebar-pback,
+.ohf-cinebar--project[data-collapsed="true"] .ohf-cinebar-ptitle,
+.ohf-cinebar--project[data-collapsed="true"] .ohf-cinebar-prow {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ohf-cinebar--project[data-collapsed="true"] .ohf-cinebar-pnav {
+  padding: 0 4px;
+}
+
+/* ── 프로젝트 기둥: HF의 프로젝트 경로가 레일과 함께 통째로 바꾸는 본문 ──
+   실측 순서: 이름 줄(48px) + 작업 클러스터 → 패널. 무대 자리에 서고,
+   컴포저 독은 아래 자리를 그대로 지킨다(HF가 프로젝트를 띄운 채 컴포저를
+   유지하는 것과 같게). */
+.ohf-cproj {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ohf-cproj-head {
+  flex: none;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+.ohf-cproj-crumb {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tx);
+}
+.ohf-cproj-cluster {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ohf-cproj-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--tx2);
+  font-size: 12.5px;
+  font-weight: 550;
+  cursor: default;
+}
+.ohf-cproj-chip-label {
+  white-space: nowrap;
+}
+.ohf-cproj-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px;
+}
+/* 빈 갈러리 — 원본에서 그대로 읽은 두 줄. */
+.ohf-cproj-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+.ohf-cproj-empty-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tx2);
+}
+.ohf-cproj-empty-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tx4);
+}
+.ohf-cproj-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+.ohf-cproj-tile {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--s1);
+}
+.ohf-cproj-tile-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ohf-cproj-tile-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-cproj-tile-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tx3);
+}
+/* 요소 패널 */
+.ohf-cproj-elbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.ohf-cproj-elcount {
+  margin-right: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx);
+  white-space: nowrap;
+}
+.ohf-cproj-elbtn {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--tx);
+  font-size: 12.5px;
+  font-weight: 550;
+  cursor: pointer;
+}
+.ohf-cproj-elbtn:disabled {
+  color: var(--tx-off);
+  cursor: default;
+}
+.ohf-cproj-elbtn--new {
+  border-color: var(--accent-32);
+  color: var(--accent);
+}
+.ohf-cproj-hidden-file {
+  display: none;
+}
+.ohf-cproj-elcats {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.ohf-cproj-elcat {
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx2);
+  font-size: 12.5px;
+  font-weight: 550;
+  cursor: pointer;
+}
+.ohf-cproj-elcat--on {
+  background: var(--accent-14);
+  color: var(--tx);
+}
+.ohf-cproj-elsearch {
+  width: 160px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx);
+  font-family: inherit;
+  font-size: 12.5px;
+}
+.ohf-cproj-eltool {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx3);
+  cursor: default;
+}
+.ohf-cproj-ellist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ohf-cproj-elrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--s1);
+}
+.ohf-cproj-elthumb {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--s2);
+  color: var(--tx3);
+}
+.ohf-cproj-elthumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ohf-cproj-elname {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--tx);
+}
+.ohf-cproj-elid {
+  flex: none;
+  font-size: 11px;
+  color: var(--tx4);
+}
+.ohf-cproj-el-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 40px;
+  text-align: center;
+}
+.ohf-cproj-elcreate {
+  height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ohf-cproj-elhints {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ohf-cproj-elhints li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--tx4);
+}
+/* 설정 패널 */
+.ohf-cproj-settings {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.ohf-cproj-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.ohf-cproj-tab {
+  height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx3);
+  font-size: 12.5px;
+  font-weight: 550;
+  cursor: default;
+}
+.ohf-cproj-tab--on {
+  background: var(--accent-08);
+  color: var(--tx);
+}
+.ohf-cproj-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ohf-cproj-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ohf-cproj-field-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tx2);
+}
+.ohf-cproj-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--s1);
+  color: var(--tx);
+  font-family: inherit;
+  font-size: 13.5px;
+}
+.ohf-cproj-input--area {
+  resize: vertical;
+}
+.ohf-cproj-field-help {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--tx4);
+}
+/* 브리프·채팅·디렉터는 로컬 패널 본문을 그대로 프로젝트 폭으로 끌어온다. */
+.ohf-cproj-brief,
+.ohf-cproj-chat,
+.ohf-cproj-director {
+  height: 100%;
+  min-height: 0;
+}
+.ohf-cproj-brief .ohf-project-tool,
+.ohf-cproj-chat .ohf-project-tool,
+.ohf-cproj-director .ohf-project-tool {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+/* 시작 프롬프트 줄(브리프가 AI 디렉터에게 건네는 씨앗) */
+.ohf-director-starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.ohf-director-starter {
+  min-height: 30px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx2);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ohf-director-starter:hover {
+  border-color: var(--accent-32);
+  color: var(--tx);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   t_ff978a44 dock pass 2 (2026-11-03). Two facts, both live-measured, not
+   inferred: (a) HF's cinematic prompt is a FIXED 52-high field that scrolls
+   internally — the cinema editable on higgsfield.ai stayed 52px tall with 120
+   characters typed (minH 0px, overflow-y auto). OH's autosize grew the field
+   to 60, which pushed the plate to 116 and the dock row to 124 where HF draws
+   108 and 116 — capping the cinema field restores all three heights at once.
+   (b) below the 50rem cap the fit-content dock shrink-wrapped while the wrap
+   kept its width, so the wrap overhung the dock by the plate lane (at 1024:
+   wrap right 1080 against dock right 1004) and the instrument corner rode out
+   of the dock entirely — the user's "이미지 눌렀을때 우측에 생성하기·카메라
+   버튼이 정상 위치에 있지 않다". The row must FILL the canvas column and let the
+   composer flex; the corner keeps the wrap-pinned architecture at every
+   desktop band so the plate can shrink beneath the cap without the
+   instruments ever leaving the dock. Append-wins: this is the last word on the
+   cinema dock. The general studio keeps its autosize and its floating
+   full-floor dock — every selector here is scoped to .ohf-cinema-screen.
+   ════════════════════════════════════════════════════════════════════════════ */
+.ohf-cinema-screen .ohf-prompt {
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  overflow-y: auto;
+}
+/* 1025+: HF keeps the 876 row when the column has room, but never forces it
+   past the column — min() clamps the floor so the row can never spill the page
+   (at 1100 the fixed floor outran the canvas column by ~19px). */
+@media (min-width: 1025px) {
+  .ohf-cinema-screen .ohf-dock {
+    min-width: min(50rem + 76px, 100%) !important;
+  }
+}
+/* 561..1024: fill the column, flex the composer, pin the corner to the wrap.
+   The corner's 348 (332 + 16 right inset) is exactly what the plate's 140 of
+   right padding plus the 208 content cap leave it, so the 4px clearance
+   between the prompt's right edge and the tiles holds at every wrap width. */
+@media (min-width: 561px) and (max-width: 1024px) {
+  .ohf-cinema-screen .ohf-dock {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center;
+  }
+  .ohf-cinema-screen .ohf-composer-wrap {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 50rem !important;
+  }
+  .ohf-cinema-screen .ohf-right-col {
+    position: absolute !important;
+    right: 16px !important;
+    bottom: 20px !important;
+    margin: 0 !important;
+    width: 332px !important;
+    height: 80px !important;
+    gap: 0 !important;
+    align-items: flex-end !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tiles {
+    gap: 4px !important;
+    flex: none !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--character,
+  .ohf-cinema-screen .ohf-right-col .ohf-cinema-tile--camera {
+    width: 100px !important;
+  }
+  .ohf-cinema-screen .ohf-right-col .ohf-generate-slot {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
+/* below the breakpoint the same fill rule stops the wrap overhanging the dock */
+@media (max-width: 560px) {
+  .ohf-cinema-screen .ohf-dock {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .ohf-cinema-screen .ohf-composer-wrap {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  /* The stacked fold caps the reading column at a VIEWPORT width
+     (calc(100vw - 126px)) written for the old floating dock: at 390 that lands
+     2px wider than the wrap's interior minus the 40px thumb lane, so the corner
+     sticks past the dock edge (measured: thumb lane right 372 against dock
+     right 370). The fold's cap is `.ohf-form-row:has(.ohf-cinema-tile)
+     .ohf-form-col` — :has() counts the tile, so it outranks a plain
+     `.ohf-cinema-screen .ohf-form-col` override; this repeats the chain to
+     outrank it back. The replacement keeps the fold's VIEWPORT basis instead of
+     going flow-relative, because the mobile row is sized by its content: a
+     percentage cap feeds back into the row width and the column ran to 543px at
+     390, shoving the thumb lane off-screen to x=611 (measured). Viewport basis
+     breaks that loop — 8 more px surrendered than the fold asks, and the row
+     fits the wrap exactly. */
+  .ohf-cinema-screen .ohf-form-col,
+  .ohf-cinema-screen .ohf-form-row:has(.ohf-cinema-tile) .ohf-form-col {
+    max-width: calc(100vw - 134px) !important;
+  }
+}

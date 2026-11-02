@@ -1294,6 +1294,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         <CinemaStudioScreen
           composer={composerEl}
           rail={<CinemaSidebar />}
+          history={history}
         />
       ) : projectViewOpen ? (
         <ProjectScreen

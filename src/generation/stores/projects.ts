@@ -26,7 +26,7 @@ type ProjectState = {
   /** The project the cinematic surface is standing in. Elements, mentions and
       finished runs gather under it while it is chosen. */
   activeProjectId: string;
-  addProject: (name: string) => Project;
+  addProject: (name: string, isPrivate?: boolean) => Project;
   renameProject: (id: string, name: string) => void;
   removeProject: (id: string) => void;
   setActive: (id: string) => void;

@@ -9,11 +9,23 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
-import { useProjects, type Project } from "@/generation/stores/projects";
+import { useProjects, projectLabel, DEFAULT_PROJECT_ID, type Project } from "@/generation/stores/projects";
 import { useFeed } from "@/generation/stores/feed";
+import { useProjectSurface } from "@/generation/stores/project-surface";
 import { LOCAL_USER } from "./local-user";
 import { useStudio } from "./studio-mode";
 import { ProjectDialog } from "./project-dialog";
+import {
+  ApertureIcon,
+  AssetsIcon,
+  ChevronLeftIcon,
+  ClapperIcon,
+  CubeIcon,
+  HammerIcon,
+  PersonIcon,
+  SlidersIcon,
+  TrashIcon,
+} from "./icons";
 
 /* ── 실측된 글리프들 ───────────────────────────────────────────────────────
    HG의 아이콘은 Figma 내그림자 필터와 흰색→투명 그라디언트를 각 아이콘 좌표계에
@@ -490,6 +502,11 @@ export function CinemaSidebar() {
   const setActive = useProjects((s) => s.setActive);
   const setMode = useStudio((s) => s.setMode);
   const setLikedOnly = useFeed((s) => s.setLikedOnly);
+  const surfaceId = useProjectSurface((s) => s.projectId);
+  const panel = useProjectSurface((s) => s.panel);
+  const openSurface = useProjectSurface((s) => s.openSurface);
+  const closeSurface = useProjectSurface((s) => s.closeSurface);
+  const setPanel = useProjectSurface((s) => s.setPanel);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -565,6 +582,288 @@ export function CinemaSidebar() {
     setDragging(false);
   };
 
+  /* 프로젝트 surface가 서 있는 동안 레일 전체가 HF의 프로젝트 내비게이션으로
+     바뀐다(지상 실측 2026-11-03). 스튜디오 레일의 선택 트리거·메뉴 다섯 줄·
+     프로젝트 목록은 그 자리를 비우고, 대신 뒤로 — 프로젝트명 — 여섯 이동 줄 —
+     폴더 — 모든 에셋 — 폴더 추가 — 휴지통이 36px 줄간격 2px로 쌓인다. 각 줄은
+     스토어의 panel을 옮겨 기둥(레이아웃·패널)과 레일을 그 프로젝트로 함께
+     갈아끼운다. HF가 Canvas·도구·휴지통을 유료· hosted 기능으로 둔 곳은 정직하게
+     화면 미러로 남긴다. */
+  if (surfaceId) {
+    const surfaceLabel = projectLabel(projects, surfaceId);
+    return (
+      <aside
+        className="ohf-cinebar ohf-cinebar--project"
+        data-collapsed={collapsed ? "true" : "false"}
+        aria-label={`${surfaceLabel} 프로젝트 사이드바`}
+        style={{ width: collapsed ? 52 : width }}
+      >
+        <div className="ohf-cinebar-scroll" ref={scrollRef}>
+          {/* ── 머리: 뒤로 + 접기 ── */}
+          <div className="ohf-cinebar-phead">
+            <button type="button" className="ohf-cinebar-pback" onClick={closeSurface}>
+              <ChevronLeftIcon size={16} />
+              <span className="ohf-cinebar-pback-label">뒤로</span>
+            </button>
+            <button
+              type="button"
+              className="ohf-cinebar-fold"
+              aria-label={collapsed ? "사이드바 펼치기" : "사이드바 접기"}
+              onClick={() => setCollapsed((c) => !c)}
+            >
+              {collapsed ? <PanelOpenIcon /> : <PanelIcon />}
+            </button>
+          </div>
+
+          {/* ── 프로젝트 이름 줄: 접기 메뉴의 부채표와 같은 실 ── */}
+          <div className="ohf-cinebar-ptitle">
+            {renamingId === surfaceId ? (
+              <input
+                className="ohf-cinebar-rename-input"
+                value={renameDraft}
+                autoFocus
+                aria-label="프로젝트 이름"
+                onChange={(event) => setRenameDraft(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" && renameDraft.trim()) {
+                    renameProject(surfaceId, renameDraft.trim());
+                    setRenamingId(null);
+                  }
+                  if (event.key === "Escape") setRenamingId(null);
+                }}
+                onBlur={() => {
+                  if (renameDraft.trim()) renameProject(surfaceId, renameDraft.trim());
+                  setRenamingId(null);
+                }}
+              />
+            ) : (
+              <>
+                <span className="ohf-cinebar-ptitle-chip">
+                  <FolderIcon />
+                </span>
+                <span className="ohf-cinebar-ptitle-label">{surfaceLabel}</span>
+                <button
+                  type="button"
+                  className="ohf-cinebar-dots"
+                  aria-label="폴더 옵션"
+                  aria-haspopup="menu"
+                  aria-expanded={folderMenuId === surfaceId}
+                  onClick={() => setFolderMenuId(folderMenuId === surfaceId ? null : surfaceId)}
+                >
+                  <DotsIcon />
+                </button>
+              </>
+            )}
+            {folderMenuId === surfaceId && renamingId !== surfaceId && (
+              <div className="ohf-cinebar-popup" data-ohf-cine-popup role="menu" aria-label={`${surfaceLabel} 폴더 옵션`}>
+                <button type="button" className="ohf-cinebar-menuitem" data-off title="화면 미러 — 고정 대상 미구현" role="menuitem">고정</button>
+                <button
+                  type="button"
+                  className="ohf-cinebar-menuitem"
+                  role="menuitem"
+                  onClick={() => {
+                    setFolderMenuId(null);
+                    setRenamingId(surfaceId);
+                    setRenameDraft(surfaceLabel);
+                  }}
+                >
+                  편집
+                </button>
+                <button
+                  type="button"
+                  className="ohf-cinebar-menuitem"
+                  role="menuitem"
+                  onClick={() => {
+                    setFolderMenuId(null);
+                    setDialogOpen(true);
+                  }}
+                >
+                  폴더 추가
+                </button>
+                <button type="button" className="ohf-cinebar-menuitem" data-off title="화면 미러 — 링크 복사 대상 미구현" role="menuitem">링크 복사</button>
+                <button type="button" className="ohf-cinebar-menuitem" data-off title="화면 미러 — 숨김 상태 미구현" role="menuitem">숨기기</button>
+                <button
+                  type="button"
+                  className="ohf-cinebar-menuitem ohf-cinebar-menuitem--danger"
+                  role="menuitem"
+                  onClick={() => {
+                    removeProject(surfaceId);
+                    closeSurface();
+                    setActive(DEFAULT_PROJECT_ID);
+                    setFolderMenuId(null);
+                  }}
+                >
+                  삭제
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* ── 이동 여섯 줄 + 도구 + Canvas ── */}
+          <nav className="ohf-cinebar-pnav" aria-label="프로젝트 내비게이션">
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "brief" ? "page" : undefined}
+              aria-label="프로젝트 브리프"
+              onClick={() => setPanel("brief")}
+            >
+              <span className="ohf-cinebar-prow-chip"><ClapperIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">프로젝트 브리프</span>
+            </button>
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "settings" ? "page" : undefined}
+              aria-label="설정"
+              onClick={() => setPanel("settings")}
+            >
+              <span className="ohf-cinebar-prow-chip"><SlidersIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">설정</span>
+            </button>
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "elements" ? "page" : undefined}
+              aria-label="요소"
+              onClick={() => setPanel("elements")}
+            >
+              <span className="ohf-cinebar-prow-chip"><CubeIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">요소</span>
+            </button>
+            <button type="button" className="ohf-cinebar-prow" data-off aria-label="도구" title="화면 미러 — 도구 갈러리 미구현">
+              <span className="ohf-cinebar-prow-chip"><HammerIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">도구</span>
+            </button>
+            <button type="button" className="ohf-cinebar-prow" data-off aria-label="Canvas" title="화면 미러 — Canvas 미구현">
+              <span className="ohf-cinebar-prow-chip"><CubeIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">Canvas</span>
+            </button>
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "chat" ? "page" : undefined}
+              aria-label="채팅"
+              onClick={() => setPanel("chat")}
+            >
+              <span className="ohf-cinebar-prow-chip"><PersonIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">채팅</span>
+            </button>
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "director" ? "page" : undefined}
+              aria-label="AI 디렉터"
+              onClick={() => setPanel("director")}
+            >
+              <span className="ohf-cinebar-prow-chip"><ApertureIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">AI 디렉터</span>
+            </button>
+
+            {/* ── 폴더 접기 머리 + 실 세 줄 ── */}
+            <div className="ohf-cinebar-pfold">
+              <span className="ohf-cinebar-pfold-label">폴더</span>
+              <span className="ohf-cinebar-pfold-tools">
+                <button type="button" className="ohf-cinebar-tool" data-off aria-disabled="true" aria-label="폴더 검색" title="화면 미러 — 하위 폴더 검색 미구현">
+                  <SearchIcon />
+                </button>
+                <button type="button" className="ohf-cinebar-tool" data-off aria-disabled="true" aria-label="폴더 정렬" title="화면 미러 — 하위 폴더 정렬 미구현">
+                  <SortIcon />
+                </button>
+              </span>
+            </div>
+            <button
+              type="button"
+              className="ohf-cinebar-prow"
+              aria-current={panel === "assets" ? "page" : undefined}
+              aria-label="모든 에셋"
+              onClick={() => setPanel("assets")}
+            >
+              <span className="ohf-cinebar-prow-chip"><AssetsIcon size={16} /></span>
+              <span className="ohf-cinebar-prow-label">모든 에셋</span>
+            </button>
+            <button type="button" className="ohf-cinebar-prow" aria-label="폴더 추가" onClick={() => setDialogOpen(true)}>
+              <span className="ohf-cinebar-prow-chip"><PlusIcon /></span>
+              <span className="ohf-cinebar-prow-label">폴더 추가</span>
+            </button>
+          </nav>
+
+          <div className="ohf-cinebar-pspacer" aria-hidden="true" />
+
+          {/* ── 휴지통: HF는 hosted 휴지통으로 데려간다. 로컬에는 그 문이 없다. ── */}
+          <button type="button" className="ohf-cinebar-prow" data-off aria-label="휴지통" title="화면 미러 — hosted 휴지통 미구현">
+            <span className="ohf-cinebar-prow-chip"><TrashIcon size={16} /></span>
+            <span className="ohf-cinebar-prow-label">휴지통</span>
+            <span className="ohf-cinebar-prow-count">0</span>
+          </button>
+
+          {/* ── 발: 요금제 + 계정 ── */}
+          <div className="ohf-cinebar-foot">
+            <button type="button" className="ohf-cinebar-price" data-off title="화면 미러 — OH는 과금하지 않습니다">
+              <TagIcon size={14} />
+              <span className="ohf-cinebar-price-label">요금제</span>
+            </button>
+            <div className="ohf-cinebar-account">
+              <button
+                type="button"
+                className="ohf-cinebar-account-btn"
+                data-off
+                aria-haspopup="menu"
+                aria-disabled="true"
+                title="화면 미러 — 계정 시스템 미구현"
+              >
+                <span className="ohf-cinebar-avatar">
+                  <span className="ohf-cinebar-avatar-face">{LOCAL_USER.initial}</span>
+                  <svg className="ohf-cinebar-ring" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle r="11" cx="12" cy="12" fill="transparent" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </span>
+                <span className="ohf-cinebar-account-name">{LOCAL_USER.handle}</span>
+              </button>
+              <button
+                type="button"
+                className="ohf-cinebar-bell"
+                data-off
+                aria-label="알림"
+                aria-disabled="true"
+                title="화면 미러 — 알림함 미구현"
+              >
+                <span className="ohf-cinebar-bell-chip">
+                  <BellIcon />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 너비 손잡이: 스튜디오 레일과 같은 실 ── */}
+        <div
+          className="ohf-cinebar-handle"
+          data-active={dragging || undefined}
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="사이드바 너비 조절"
+          onPointerDown={onDragStart}
+          onPointerMove={onDragMove}
+          onPointerUp={onDragEnd}
+          onPointerCancel={onDragEnd}
+        >
+          <span className="ohf-cinebar-hairline" aria-hidden="true" />
+        </div>
+
+        {dialogOpen && (
+          <ProjectDialog
+            onClose={() => setDialogOpen(false)}
+            onCreate={(name, isPrivate) => {
+              addProject(name, isPrivate);
+              setDialogOpen(false);
+            }}
+          />
+        )}
+      </aside>
+    );
+  }
+
   return (
     <aside
       className="ohf-cinebar"
@@ -621,7 +920,17 @@ export function CinemaSidebar() {
             <GlassChip kind="home" glyph={<CineHomeGlyph />} />
             <span className="ohf-cinebar-action-label">홈</span>
           </button>
-          <button type="button" className="ohf-cinebar-action" aria-label="내 생성" onClick={() => setMode("general")}>
+          <button
+            type="button"
+            className="ohf-cinebar-action"
+            aria-label="내 생성"
+            onClick={() => {
+              // HF의 내 생성은 /generate=all — 즐겨찾기 필터를 비우고 일반
+              // 갈러리로 돌아간다. 같은 기준으로 필터를 풀고 나간다.
+              setLikedOnly(false);
+              setMode("general");
+            }}
+          >
             <GlassChip kind="generations" glyph={<CineSparkGlyph />} />
             <span className="ohf-cinebar-action-label">내 생성</span>
           </button>
@@ -764,7 +1073,12 @@ export function CinemaSidebar() {
                         className="ohf-cinebar-folder"
                         aria-label={project.name}
                         data-active={active}
-                        onClick={() => setActive(project.id)}
+                        onClick={() => {
+                          setActive(project.id);
+                          // HF의 프로젝트 레일 클릭이 스튜디오 전체를 그 프로젝트로
+                          // 데려간다(레일·레이아웃·패널이 함께 갈아끼워진다).
+                          openSurface(project.id);
+                        }}
                       >
                         <span className="ohf-cinebar-row-chip">
                           <FolderIcon />
@@ -899,8 +1213,8 @@ export function CinemaSidebar() {
       {dialogOpen && (
         <ProjectDialog
           onClose={() => setDialogOpen(false)}
-          onCreate={(name) => {
-            addProject(name);
+          onCreate={(name, isPrivate) => {
+            addProject(name, isPrivate);
             setDialogOpen(false);
           }}
         />

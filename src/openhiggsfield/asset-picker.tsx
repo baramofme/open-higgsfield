@@ -832,8 +832,8 @@ export function AssetPicker({
       {projectDialog && (
         <ProjectDialog
           onClose={() => setProjectDialog(false)}
-          onCreate={(name) => {
-            const project = addProject(name);
+          onCreate={(name, isPrivate) => {
+            const project = addProject(name, isPrivate);
             setActive(project.id);
             setProjectDialog(false);
           }}

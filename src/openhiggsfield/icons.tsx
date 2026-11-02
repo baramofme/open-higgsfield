@@ -622,3 +622,15 @@ export function FeedFitIcon({ size = 16 }: IconProps) {
   );
 }
 
+
+/* The private-folder mark. Higgsfield's 비공개 프로젝트 row carries a lock at
+   16px in the dim tone (measured rgb(137,138,139), which is --fg-dim); this is
+   the same silhouette the reference draws — shackle over body. */
+export function LockIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <rect x="3.5" y="10.5" width="17" height="10" rx="2.5" />
+      <path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5" />
+    </svg>
+  );
+}

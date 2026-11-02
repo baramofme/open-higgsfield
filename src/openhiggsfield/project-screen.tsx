@@ -100,7 +100,15 @@ export function ProjectScreen({
 
 /* --- AI Director tool slot: reads director store, calls OpenAI-compatible
        endpoint, shows response text in a log. No backend of its own. --- */
-function DirectorPanel({ onOpenSettings }: { onOpenSettings: () => void }) {
+export function DirectorPanel({
+  onOpenSettings,
+  starters,
+}: {
+  onOpenSettings: () => void;
+  /** Prompt seeds shown under the log; pressing one fills the prompt box.
+      The project brief surface passes Higgsfield's own starter lines here. */
+  starters?: ReadonlyArray<string>;
+}) {
   const baseUrl = useDirector((s) => s.baseUrl);
   const modelId = useDirector((s) => s.modelId);
   const ctx = useDirector((s) => s.ctx);
@@ -242,6 +250,22 @@ function DirectorPanel({ onOpenSettings }: { onOpenSettings: () => void }) {
           <span>ctx {ctx}</span>
         </div>
       )}
+
+      {/* Prompt seeds — pressing one fills the box, nothing is sent. */}
+      {starters && starters.length > 0 && (
+        <div className="ohf-director-starters" aria-label="시작 프롬프트">
+          {starters.map((seed) => (
+            <button
+              key={seed}
+              type="button"
+              className="ohf-director-starter"
+              onClick={() => setPrompt(seed)}
+            >
+              {seed}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -267,7 +291,7 @@ function extractResponseText(data: unknown): string | null {
 }
 
 /* --- chat tool slot: screen only, no backend, component-local state --- */
-function ProjectChat() {
+export function ProjectChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([...SEED_MESSAGES]);
   const [input, setInput] = useState("");
 
@@ -321,7 +345,7 @@ function ProjectChat() {
         <input
           className="ohf-project-input"
           value={input}
-          placeholder="메시지를 입력하세요…"
+          placeholder="메시지를 입력해 보세요"
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
