@@ -16,7 +16,7 @@ import {
 } from "./credentials";
 import { createPlatformClient } from "./platform";
 import type { StatusResult } from "./platform";
-import { toPlatform } from "./to-platform";
+import { isUnmappedModel, toPlatform } from "./to-platform";
 
 export async function savePlatformCredentials(data: unknown) {
   const { apiKey } = parseCredentialInput(data);
@@ -42,6 +42,10 @@ export async function submitGeneration(plane: GenerationPlane) {
     ...plane,
     settings: parseSettings(model, plane.settings),
   };
+  /* Reject unmapped models with a clear message before attempting toPlatform. */
+  if (isUnmappedModel(model.id)) {
+    throw new Error(`UNMAPPED_MODEL:${model.id}`);
+  }
   /* The cinematic screen is a screen, not a paywall: its image and video tabs
      run whatever the composer holds, so routing follows the model alone —
      local models keep their LAN backend even inside the screen, and the

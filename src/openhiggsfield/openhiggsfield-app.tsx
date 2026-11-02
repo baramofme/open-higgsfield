@@ -221,6 +221,9 @@ function describeError(caught: unknown): string {
   if (caught instanceof MissingCredentialsError || message.includes("Missing platform key")) {
     return "Add your platform key to generate.";
   }
+  if (message.includes("UNMAPPED_MODEL:")) {
+    return "이 모델은 아직 백엔드 연동이 준비되지 않았습니다. 다른 모델을 선택해 주세요.";
+  }
   return `Generation failed — ${message}. Try again; if it repeats, check the key in the sidebar.`;
 }
 

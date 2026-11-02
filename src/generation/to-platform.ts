@@ -32,6 +32,21 @@ const MAP: Record<string, Mapper> = {
   "minimax-music-3-local": mapAudioCfwui,
 };
 
+/** Models that appear in the catalogue but have no backend mapping yet. */
+const UNMAPPED_IDS: ReadonlySet<string> = new Set([
+  "seedream-5-pro",
+  "seedream-5-flash",
+  "seedream-4.5",
+  "ideogram-vector",
+  "ai-cast",
+  "cinematic-place",
+]);
+
+/** Returns true if a model id is selectable but cannot generate yet. */
+export function isUnmappedModel(id: string): boolean {
+  return UNMAPPED_IDS.has(id);
+}
+
 export function toPlatform(plane: GenerationPlane): Mapped {
   const model = getModel(plane.model);
   const map = MAP[model.id] ?? (model.paths ? (next) => mapByPaths(next, model.paths!) : undefined);
