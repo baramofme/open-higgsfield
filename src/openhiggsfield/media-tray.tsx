@@ -10,6 +10,7 @@ import { uploadMedia } from "@/generation/upload";
 import { ROLE_ACCEPT, ROLE_LABELS, ROLE_TAGS, rolesOf } from "./data";
 import { AudioIcon, CloseIcon, VideoIcon } from "./icons";
 import { toProxyMediaUrl } from "./image-proxy";
+import { removeStripReference } from "./reference-removal";
 import { kindOfFile, loadUploads, mergeUploads, rememberUpload, saveUploads, type UploadRecord } from "./uploads";
 import { cachedWaveformForAsset } from "@/lib/waveform";
 
@@ -332,7 +333,7 @@ export function MediaStrip({ model }: { model: ModelEntry }) {
             type="button"
             className="ohf-strip-remove"
             aria-label={`Remove ${ROLE_LABELS[item.role].toLowerCase()}`}
-            onClick={() => media.remove(item.id)}
+            onClick={() => removeStripReference(media, model, item)}
           >
             <CloseIcon size={10} />
           </button>
