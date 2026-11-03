@@ -19,14 +19,20 @@ export type ProjectPanel =
   | "chat"
   | "director";
 
+/** What the cinema canvas shows when no project is open. null = stage placeholder. */
+export type CinemaView = "generations" | "elements" | "favorites";
+
 type ProjectSurfaceState = {
   /** Which project the cinematic studio is standing in; null = studio rail. */
   projectId: string | null;
   /** Which panel the main column shows inside that project. */
   panel: ProjectPanel;
+  /** When no project is open, the cinema canvas content. null = stage. */
+  cinemaView: CinemaView | null;
   openSurface: (projectId: string) => void;
   closeSurface: () => void;
   setPanel: (panel: ProjectPanel) => void;
+  setCinemaView: (view: CinemaView | null) => void;
 };
 
 export const useProjectSurface = create<ProjectSurfaceState>()(
@@ -34,11 +40,13 @@ export const useProjectSurface = create<ProjectSurfaceState>()(
     (set) => ({
       projectId: null,
       panel: "assets",
+      cinemaView: null,
       // Opening a project always starts on its asset feed, the way HF's
       // project route does; the rail's 모든 에셋 carries aria-current there.
-      openSurface: (projectId) => set({ projectId, panel: "assets" }),
-      closeSurface: () => set({ projectId: null, panel: "assets" }),
+      openSurface: (projectId) => set({ projectId, panel: "assets", cinemaView: null }),
+      closeSurface: () => set({ projectId: null, panel: "assets", cinemaView: null }),
       setPanel: (panel) => set({ panel }),
+      setCinemaView: (view) => set({ cinemaView: view }),
     }),
     { name: "openhiggsfield.projectSurface.v1" },
   ),

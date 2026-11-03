@@ -7,6 +7,7 @@ import { useActive } from "@/generation/stores/active";
 import { useProjectSurface } from "@/generation/stores/project-surface";
 
 import { CinemaProjectSurface } from "./cinema-project-panels";
+import { CinemaTileView } from "./cinema-tile-view";
 import type { RunRecord } from "./history";
 
 /* The Cinematic Studio opens as its OWN surface, the way higgsfield.ai/ko/generate
@@ -38,6 +39,7 @@ export function CinemaStudioScreen({
   const modelId = useActive((state) => state.model);
   const model = getModel(modelId);
   const surfaceId = useProjectSurface((state) => state.projectId);
+  const cinemaView = useProjectSurface((state) => state.cinemaView);
 
   return (
     <div className="ohf-cinema-screen">
@@ -48,9 +50,12 @@ export function CinemaStudioScreen({
         <main className="ohf-cinema-canvas">
           {/* 서 있는 프로젝트가 있으면 무대가 그 프로젝트의 기둥으로 통째
               갈아끼워진다(HF의 프로젝트 경로가 레일과 본문을 함께 바꾸는 것과
-              같게). 프로젝트가 없으면 모델 안내가 그대로 무대에 남는다. */}
+              같게). 프로젝트가 없으면 사이드바가 고른 cinemaView에 따라
+              타일 갈러리 또는 모델 안내가 무대에 남는다. */}
           {surfaceId ? (
             <CinemaProjectSurface history={history} />
+          ) : cinemaView ? (
+            <CinemaTileView view={cinemaView} history={history} />
           ) : (
             <div className="ohf-cinema-stage">
               <h2 className="ohf-cinema-stage-title">Cinematic Studio</h2>

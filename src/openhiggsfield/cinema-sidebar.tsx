@@ -10,7 +10,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 import { useProjects, projectLabel, DEFAULT_PROJECT_ID, type Project } from "@/generation/stores/projects";
-import { useFeed } from "@/generation/stores/feed";
 import { useProjectSurface } from "@/generation/stores/project-surface";
 import { LOCAL_USER } from "./local-user";
 import { useStudio } from "./studio-mode";
@@ -501,12 +500,13 @@ export function CinemaSidebar() {
   const removeProject = useProjects((s) => s.removeProject);
   const setActive = useProjects((s) => s.setActive);
   const setMode = useStudio((s) => s.setMode);
-  const setLikedOnly = useFeed((s) => s.setLikedOnly);
   const surfaceId = useProjectSurface((s) => s.projectId);
   const panel = useProjectSurface((s) => s.panel);
+  const cinemaView = useProjectSurface((s) => s.cinemaView);
   const openSurface = useProjectSurface((s) => s.openSurface);
   const closeSurface = useProjectSurface((s) => s.closeSurface);
   const setPanel = useProjectSurface((s) => s.setPanel);
+  const setCinemaView = useProjectSurface((s) => s.setCinemaView);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -919,36 +919,42 @@ export function CinemaSidebar() {
 
         {/* ── 메뉴 다섯 줄 ── */}
         <nav className="ohf-cinebar-menu" aria-label="사이드바 메뉴">
-          <button type="button" className="ohf-cinebar-action" aria-current="page" aria-label="홈">
+          <button
+            type="button"
+            className="ohf-cinebar-action"
+            aria-current={!cinemaView ? "page" : undefined}
+            aria-label="홈"
+            onClick={() => setCinemaView(null)}
+          >
             <GlassChip kind="home" glyph={<CineHomeGlyph />} />
             <span className="ohf-cinebar-action-label">홈</span>
           </button>
           <button
             type="button"
             className="ohf-cinebar-action"
+            aria-current={cinemaView === "generations" ? "page" : undefined}
             aria-label="내 생성"
-            onClick={() => {
-              // HF의 내 생성은 /generate=all — 즐겨찾기 필터를 비우고 일반
-              // 갈러리로 돌아간다. 같은 기준으로 필터를 풀고 나간다.
-              setLikedOnly(false);
-              setMode("general");
-            }}
+            onClick={() => setCinemaView("generations")}
           >
             <GlassChip kind="generations" glyph={<CineSparkGlyph />} />
             <span className="ohf-cinebar-action-label">내 생성</span>
           </button>
-          <button type="button" className="ohf-cinebar-action" data-off aria-label="내 요소" title="화면 미러 — 요소 갈러리 미구현">
+          <button
+            type="button"
+            className="ohf-cinebar-action"
+            aria-current={cinemaView === "elements" ? "page" : undefined}
+            aria-label="내 요소"
+            onClick={() => setCinemaView("elements")}
+          >
             <GlassChip kind="elements" glyph={<CineRefreshGlyph />} />
             <span className="ohf-cinebar-action-label">내 요소</span>
           </button>
           <button
             type="button"
             className="ohf-cinebar-action"
+            aria-current={cinemaView === "favorites" ? "page" : undefined}
             aria-label="내 즐겨찾기"
-            onClick={() => {
-              setLikedOnly(true);
-              setMode("general");
-            }}
+            onClick={() => setCinemaView("favorites")}
           >
             <GlassChip kind="favorites" glyph={<CineHeartGlyph />} />
             <span className="ohf-cinebar-action-label">내 즐겨찾기</span>
