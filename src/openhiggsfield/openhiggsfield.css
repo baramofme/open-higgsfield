@@ -1410,9 +1410,15 @@
 .ohf-composer-wrap {
   pointer-events: auto;
   position: relative;
-  /* The app lets the form own the whole dock width; the receipts are
-     centered within it, so nothing here caps the span. */
+  /* The dock may own the whole floor, but HF caps the composer to a fixed
+     reading column and centres it — 50rem (≈800px at the 16px desktop root).
+     General mode now matches the cinematic dock: same cap, same centering, so
+     the dock never spills past HF's reading width no matter how wide the floor
+     is. The cinematic screen re-declares the same 50rem at higher specificity,
+     so cinema is unchanged. */
   width: 100%;
+  max-width: 50rem;       /* HF's fixed reading width (≈800px at the desktop root) */
+  margin-inline: auto;    /* centre like HF's mx-auto; shrink to the floor below the cap */
 }
 .ohf-composer {
   /* One radius for every control the composer holds — the attachment, each
@@ -6828,9 +6834,15 @@ a.ohf-btn-solid {
 .ohf-composer-wrap {
   pointer-events: auto;
   position: relative;
-  /* The app lets the form own the whole dock width; the receipts are
-     centered within it, so nothing here caps the span. */
+  /* The dock may own the whole floor, but HF caps the composer to a fixed
+     reading column and centres it — 50rem (≈800px at the 16px desktop root).
+     General mode now matches the cinematic dock: same cap, same centering, so
+     the dock never spills past HF's reading width no matter how wide the floor
+     is. The cinematic screen re-declares the same 50rem at higher specificity,
+     so cinema is unchanged. */
   width: 100%;
+  max-width: 50rem;       /* HF's fixed reading width (≈800px at the desktop root) */
+  margin-inline: auto;    /* centre like HF's mx-auto; shrink to the floor below the cap */
 }
 .ohf-composer {
   /* One radius for every control the composer holds — the attachment, each
