@@ -8,6 +8,7 @@ import { parseSettings } from "@/generation/catalog";
 import type { ModelEntry, Surface } from "@/generation/catalog";
 import { MAX_BATCH, useActive } from "@/generation/stores/active";
 import { useElements } from "@/generation/stores/elements";
+import { PromptOptimizeButton } from "./prompt-optimize-button";
 import { useAudioPrompt, useImagePrompt, useVideoPrompt } from "@/generation/stores/prompt";
 import { useSettings } from "@/generation/stores/settings";
 
@@ -1019,6 +1020,12 @@ export function Composer({
                     {dock.caret === "chevron" ? <ModelChevronIcon /> : <CaretDownIcon />}
                   </span>
                 </button>
+                {/* Prompt optimization rides the fixed control group so the flowing
+                    settings strip can never page it away. It acts on the caption the
+                    same surface's prompt store holds, asks the local LLM for a rewrite,
+                    and writes that rewrite back before submit; a failure keeps the
+                    writer's original words and raises the reason in the banner. */}
+                <PromptOptimizeButton surface={surface} onError={onError} disabled={disabled} />
                 {/* The camera-angle pill: the image seat's instrument, mirroring
                     the video seat's camera instruments — a press opens the
                     panel above the rail, the face carries the current pick, and

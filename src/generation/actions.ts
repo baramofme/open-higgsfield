@@ -17,6 +17,7 @@ import {
 import { createPlatformClient } from "./platform";
 import type { StatusResult } from "./platform";
 import { isUnmappedModel, toPlatform } from "./to-platform";
+import { optimizePrompt } from "./prompt-optimize";
 
 export async function savePlatformCredentials(data: unknown) {
   const { apiKey } = parseCredentialInput(data);
@@ -93,6 +94,22 @@ export async function submitOutpaint(input: {
     feathering: input.feathering ?? 10,
     async_execution: true,
   });
+}
+
+/** Rewrite the composer's caption through the local LLM before the run is sent.
+ *  The HTTP call happens here, on the server, so the browser never touches the
+ *  LLM endpoint: the API key stays server-side and Chrome's loopback
+ *  Private-Network-Access preflight never enters the picture. A failure returns
+ *  the original text plus the logged reason — the caller keeps the prompt and
+ *  warns the writer, exactly as the source node does. */
+export async function optimizePromptDraft(
+  data: unknown,
+): Promise<{ text: string; changed: boolean; cached: boolean; error?: string }> {
+  const payload = asObject(data, "Invalid optimize payload");
+  const raw = typeof payload.text === "string" ? payload.text : "";
+  const enabled = payload.enabled !== false;
+  const result = await optimizePrompt(raw, { enabled });
+  return { text: result.text, changed: result.changed, cached: result.cached, error: result.error };
 }
 
 /** Every request in flight, answered in one round trip. Next dispatches server
