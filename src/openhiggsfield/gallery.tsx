@@ -488,7 +488,8 @@ const Tile = memo(function Tile({
           speech bubble bottom-left counting the run's comments, a vertical
           action column (heart · download · copy · ⋯) down the right edge, and a
           remix trio bottom-right (remake · to-video · 3D, the 3D left inert).
-          They rise only on hover, so a resting card shows just the bubble. */}
+          Everything rises only on hover — at rest the tile is bare, mirroring
+          the source's ground truth ("At rest there is NO caption and NO time label"). */}
       {!selecting && (
         <>
           {/* Higgsfield only raises the speech bubble when a thread exists; an

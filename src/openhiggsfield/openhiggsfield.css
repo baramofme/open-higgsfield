@@ -14571,9 +14571,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 /* ── Hover furniture on the studio result photo, mirroring Higgsfield ────────
    A speech bubble bottom-left counting the run's comments, a vertical action
    column down the right edge (heart · download · copy · ⋯) and a remix trio
-   bottom-right (remake · to-video · 3D). The bubble is always there when a
-   thread exists; the column and trio rise only on hover, riding the same
-   opacity-and-lift the corner actions already use. Appended last so it wins. */
+   bottom-right (remake · to-video · 3D). Every piece rises only on hover —
+   at rest the tile is bare except the picture, mirroring the source's
+   ground truth ("At rest there is NO caption and NO time label"). Appended
+   last so it wins. */
 .ohf-tile-comment {
   position: absolute;
   left: 8px;
@@ -14593,7 +14594,20 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
   font: 600 13px/1 var(--font);
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  opacity: 0;
+  translate: 0 4px;
+  pointer-events: none;
+  transition:
+    opacity 0.16s ease,
+    translate 0.2s var(--ease),
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.ohf-tile:hover .ohf-tile-comment,
+.ohf-tile:has(:focus-visible) .ohf-tile-comment {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
 }
 .ohf-tile-comment:hover {
   background: #ffffff;
