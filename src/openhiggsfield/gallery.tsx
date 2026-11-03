@@ -17,6 +17,7 @@ import {
 } from "./icons";
 import { MoreMenu } from "./context-menu";
 import { buildAssetMenu } from "./asset-menu";
+import { toProxyImageUrl } from "./image-proxy";
 import { timeAgo, type RunRecord } from "./history";
 import { TILE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 
@@ -424,7 +425,7 @@ const Tile = memo(function Tile({
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             className="ohf-tile-media"
-            src={poster}
+            src={toProxyImageUrl(poster)}
             alt="image generation"
             loading="eager"
             decoding="async"

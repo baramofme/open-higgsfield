@@ -8,6 +8,7 @@
 
 import { useElements } from "@/generation/stores/elements";
 import type { CinemaView } from "@/generation/stores/project-surface";
+import { toProxyImageUrl } from "./image-proxy";
 import type { RunRecord } from "./history";
 
 /* ── Tile grid ────────────────────────────────────────────────────────────── */
@@ -23,7 +24,7 @@ function GenerationTile({ record, onOpen }: { record: RunRecord; onOpen?: () => 
     >
       {record.status === "completed" && record.urls[0] ? (
         record.kind === "image" ? (
-          <img className="ohf-cine-tile-media" src={record.urls[0]} alt={record.prompt} loading="lazy" />
+          <img className="ohf-cine-tile-media" src={toProxyImageUrl(record.urls[0])} alt={record.prompt} loading="lazy" />
         ) : record.kind === "video" ? (
           <video
             className="ohf-cine-tile-media"
@@ -54,7 +55,7 @@ function ElementTile({ name, url, elementId }: { name: string; url: string; elem
   return (
     <div className="ohf-cine-tile" style={{ aspectRatio: "4 / 3" }}>
       {url ? (
-        <img className="ohf-cine-tile-media" src={url} alt={name} loading="lazy" />
+        <img className="ohf-cine-tile-media" src={toProxyImageUrl(url)} alt={name} loading="lazy" />
       ) : (
         <div className="ohf-cine-tile-art ohf-cine-tile-art--el">
           <span className="ohf-cine-tile-badge">{elementId || "요소"}</span>
