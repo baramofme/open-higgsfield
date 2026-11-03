@@ -61,6 +61,14 @@ export function KeyModal({
       ref={ref}
       aria-labelledby="ohf-keys-title"
       onClose={onClose}
+      /* Escape dismisses a modal dialog with a native `cancel` before it closes,
+         and the `close` event that follows is not delivered to React here — the
+         visitor is left with the dialog mounted but closed and the app's state
+         still "open". Every later click on the key control then sets the same
+         value and re-opens nothing. Handle `cancel` so Escape takes the dialog
+         out of the tree like any other dismissal, and the next click can bring
+         it back. */
+      onCancel={onClose}
       onClick={(event) => {
         if (event.target === ref.current) onClose();
       }}

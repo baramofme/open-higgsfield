@@ -352,10 +352,18 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     };
   }, [historyLoaded, commentIdsKey]);
 
+  /* Read whether a key exists, but do NOT open the key dialog on mount. A modal
+     dialog shown at mount parks the whole studio behind the dialog's inert
+     layer: the visitor's first real click anywhere — a dock control, a tile,
+     the showcase close — lands on the dialog (or its backdrop, which hit-tests
+     to the dialog too), so the control the visitor actually reached for never
+     fires and the click is spent dismissing the gate instead. The unconfigured
+     state still announces itself without the gate: the topbar key control reads
+     "Add key", pressing Generate without a key opens this dialog with an
+     explicit message, and a platform-key error from a live run reopens it. */
   useEffect(() => {
     void hasPlatformCredentials().then((ready) => {
       setKeyConfigured(ready);
-      if (!ready) setKeysOpen(true);
     });
   }, []);
 
