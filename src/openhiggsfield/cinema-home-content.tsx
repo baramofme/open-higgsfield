@@ -51,7 +51,19 @@ function HeroCollage() {
             <div className="ohf-cine-home-collage-scrim" />
           </div>
           {"browse" in tile && tile.browse ? (
-            <a className="ohf-cine-home-browse" href="/ko/contest" aria-label="둘러보기">
+            /* HF's centre ("둘러보기") tile is a real anchor that opens the
+               Cully Hill Boys open-project showcase — measured on
+               higgsfield.ai/ko/generate, 2026-11-03: href is that project's page
+               and aria-label "The Cully Hill Boys 프로젝트 열기". OH carries no
+               local cully project, so the faithful HF-equivalent action is to
+               navigate the browser to the very same destination HF's click
+               triggers. Absolute href, same tab (HF's <a> had no target attr). */
+            <a
+              className="ohf-cine-home-browse"
+              href="https://higgsfield.ai/@higgsfield.studio/projects/cully-hill-boys"
+              aria-label="The Cully Hill Boys 프로젝트 열기"
+              title="The Cully Hill Boys 프로젝트 열기"
+            >
               <span className="ohf-cine-home-browse-label">둘러보기</span>
               <ArrowGlyph />
             </a>
