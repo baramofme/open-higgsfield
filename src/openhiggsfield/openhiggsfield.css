@@ -18720,3 +18720,312 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     max-width: calc(100vw - 134px) !important;
   }
 }
+
+/* ══ ohf-cine-home — cinematic studio HOME right-content (t_e00e13c1) ══════
+   A class-for-class mirror of higgsfield.ai/ko/generate's scrollable content
+   column, measured over CDP (2026-11-03) and reproduced with the reference's
+   own spacing: the home container is a flex column on a 32px gutter with a 24px
+   foot pad; the hero section opens with 54px of top pad; the centred hero column
+   caps at 1150px and breathes 40px between the collage and the headline; the
+   project grid is auto-fill at minmax(min(260px,100%),1fr) on a 16px gutter. All
+   selectors are namespaced `ohf-cine-home`, so nothing existing is touched and
+   the block is append-wins-safe. */
+.ohf-cine-home {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;                 /* HF gap-8 */
+  padding-bottom: 24px;      /* HF pb-6 */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.ohf-cine-home::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+.ohf-cine-home-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 33.5px;               /* HF gap-[2.09375rem] */
+  padding-top: 54px;         /* HF pt-13.5 */
+  background: #131416;       /* HF bg-qc-background-primary, measured rgb(19,20,22) */
+}
+.ohf-cine-home-hero-clip {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-inline: 12px;      /* HF px-3 */
+}
+.ohf-cine-home-hero-col {
+  display: flex;
+  width: 100%;
+  max-width: 1150px;         /* HF max-w-287.5 */
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;                 /* HF gap-10 */
+}
+/* HF's collage stage: aspect 687/166, width min(100%,687px), overflow visible
+   so the fanned tiles spill past it. The tiles ride at the measured offsets. */
+.ohf-cine-home-collage {
+  position: relative;
+  flex: none;
+  width: min(100%, 687px);
+  aspect-ratio: 687 / 166;
+  overflow: visible;
+}
+.ohf-cine-home-collage-item {
+  position: absolute;
+  aspect-ratio: 16 / 9;      /* HF aspect-video */
+  overflow: visible;
+}
+.ohf-cine-home-collage-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow:
+    -0.9765rem 0 1.953rem rgba(0, 0, 0, 0.32),
+    0.9765rem 0 1.953rem rgba(0, 0, 0, 0.32),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.ohf-cine-home-collage-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ohf-cine-home-collage-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.24) 100%);
+  opacity: 0.6;
+}
+/* The brand browse affordance lives on the centre tile and rises on hover, the
+   way HF's group-hover reveal does. Inert in OH — it only carries HF's look. */
+.ohf-cine-home-browse {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%) scale(0.95);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding-inline: 14px;
+  border-radius: 9px;
+  font: 500 14px/1 var(--font-ui);
+  color: var(--accent-ink);
+  background: var(--cine-brand, #d1fe17);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.ohf-cine-home-collage-item:hover .ohf-cine-home-browse {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* The headline: Space Grotesk, gradient-clipped, the reference's clamp sizing
+   and -0.04em tracking. Hangul uppercases to itself, so `uppercase` is a no-op
+   there exactly as it is on HF's own page. */
+.ohf-cine-home-title {
+  margin: 0;
+  width: 592px;              /* HF w-148 */
+  max-width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1.25rem, 6vw, 2.5rem);
+  line-height: clamp(1.625rem, 7vw, 2.25rem);
+  letter-spacing: -0.04em;
+  background-image: linear-gradient(180deg, #ffffff 14%, rgba(255, 255, 255, 0.41) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-feature-settings: "ss04" 1;
+}
+
+/* ── 내 프로젝트 ──────────────────────────────────────────────────────────── */
+.ohf-cine-home-projects-wrap {
+  width: 100%;
+  padding-block: 16px;       /* HF py-4 */
+}
+.ohf-cine-home-projects-inner {
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;         /* HF max-w-360, clamped to the column */
+  gap: 32px;                 /* HF gap-8 */
+  padding-inline: 32px;      /* HF's effective inset: inner ran 32px inboard each side (1131 in a 1195 column) */
+}
+.ohf-cine-home-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;                 /* HF gap-4 */
+}
+.ohf-cine-home-projects-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-inline: 8px;       /* HF px-2 */
+  min-height: 24px;
+}
+.ohf-cine-home-projects-title {
+  margin: 0;
+  min-width: 0;
+  font: 600 16px/24px var(--font-ui);
+  color: #ffffff;            /* HF text-font-primary */
+}
+.ohf-cine-home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 16px;                 /* HF gap-4 */
+}
+.ohf-cine-home-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 4px;              /* HF inset the thumb ~4px inside the card (thumb 263 in a 271 card) */
+  border-radius: 12px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition: scale 0.2s ease-out, background-color 0.2s ease-out;
+}
+.ohf-cine-home-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.ohf-cine-home-card:active {
+  scale: 0.99;
+}
+.ohf-cine-home-card-thumb {
+  position: relative;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;       /* HF rounded-q-300 */
+  aspect-ratio: 16 / 9;      /* HF aspect-video */
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* The create affordance: a circled plus on a white/5 chip, 1px hairline. */
+.ohf-cine-home-create-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  color: var(--tx3);
+  box-shadow: 0 20.5px 20.5px rgba(0, 0, 0, 0.18);
+}
+/* HF's project cover mosaic: a wide frame flexing beside two stacked squares,
+   8px between the pieces, each rounded and filled with the reverted plate. */
+.ohf-cine-home-cover {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 8px;                  /* HF var(--hlg-gap) */
+}
+.ohf-cine-home-cover--solo {
+  display: block;
+}
+.ohf-cine-home-cover-wide {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--s2);
+}
+.ohf-cine-home-cover-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 70px;
+}
+.ohf-cine-home-cover-square {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--s2);
+  aspect-ratio: 1 / 1;
+}
+.ohf-cine-home-cover-piece {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ohf-cine-home-cover-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.12);
+}
+/* Footer: the title, the 비공개 chip with a lock, and a hover-only overflow. */
+.ohf-cine-home-card-foot {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 4px 8px;          /* HF p-2 py-1 */
+}
+.ohf-cine-home-card-title {
+  min-width: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+  font: 500 14px/16px var(--font-ui);
+}
+.ohf-cine-home-priv {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: rgb(130, 130, 130); /* HF text-q-text-secondary */
+  font: 400 12px/16px var(--font-ui);
+}
+.ohf-cine-home-priv-lock {
+  display: inline-flex;
+  align-items: center;
+  color: rgb(130, 130, 130);
+}
+.ohf-cine-home-overflow {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--tx3);
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+.ohf-cine-home-card:hover .ohf-cine-home-overflow {
+  width: 24px;
+  opacity: 1;
+}
+@media (max-width: 560px) {
+  .ohf-cine-home-title {
+    white-space: normal;
+  }
+}

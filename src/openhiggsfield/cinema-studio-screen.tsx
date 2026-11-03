@@ -2,11 +2,10 @@
 
 import { type ReactNode } from "react";
 
-import { getModel } from "@/generation/catalog";
-import { useActive } from "@/generation/stores/active";
 import { useProjectSurface } from "@/generation/stores/project-surface";
 
 import { CinemaProjectSurface } from "./cinema-project-panels";
+import { CinemaHomeContent } from "./cinema-home-content";
 import { CinemaTileView } from "./cinema-tile-view";
 import type { RunRecord } from "./history";
 
@@ -36,8 +35,6 @@ export function CinemaStudioScreen({
   /** Finished runs, so a project surface can show the work filed under it. */
   history: RunRecord[];
 }) {
-  const modelId = useActive((state) => state.model);
-  const model = getModel(modelId);
   const surfaceId = useProjectSurface((state) => state.projectId);
   const cinemaView = useProjectSurface((state) => state.cinemaView);
 
@@ -57,13 +54,7 @@ export function CinemaStudioScreen({
           ) : cinemaView ? (
             <CinemaTileView view={cinemaView} history={history} />
           ) : (
-            <div className="ohf-cinema-stage">
-              <h2 className="ohf-cinema-stage-title">Cinematic Studio</h2>
-              <p className="ohf-cinema-stage-note">
-                {model.label} · 아래 컴포저에서 모델과 모드를 골라 생성합니다. 왼쪽 사이드바는 HG와 같은
-                메뉴·프로젝트 레일입니다.
-              </p>
-            </div>
+            <CinemaHomeContent history={history} />
           )}
           <div className="ohf-cinema-dock">{composer}</div>
         </main>
