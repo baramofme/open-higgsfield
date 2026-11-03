@@ -125,6 +125,14 @@ export function FailureModal({
       ref={ref}
       aria-labelledby="ohf-fail-title"
       onClose={onClose}
+      /* Escape dismisses a modal dialog with a native `cancel` before it closes,
+         and the `close` event that follows is not delivered to React here — the
+         visitor is left with the dialog mounted but closed and the app's
+         failureId still set. Every later click on the same failed tile then
+         re-sets that id, which re-opens nothing. Handle `cancel` so Escape
+         takes the dialog out of the tree like any other dismissal and the next
+         click can bring it back (same fix as key-modal.tsx). */
+      onCancel={onClose}
       onClick={(event) => {
         if (event.target === ref.current) onClose();
       }}
