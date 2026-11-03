@@ -15,6 +15,7 @@ import {
 
 import { CaretDownIcon, CloseIcon, UploadIcon } from "./icons";
 import { OptionList } from "./ui";
+import { toProxyImageUrl } from "./image-proxy";
 
 /** Name and file an element. The app opens with the media on the left — a
     drop target that takes images and video — and the record on the right:
@@ -105,7 +106,7 @@ export function ElementForm({
                 <video className="ohf-v2-form-preview" src={url} muted playsInline onPointerUp={() => setIsVideo(false)} />
               ) : (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img className="ohf-v2-form-preview" src={url} alt="" onError={() => setIsVideo(true)} />
+                <img className="ohf-v2-form-preview" src={toProxyImageUrl(url)} alt="" onError={() => setIsVideo(true)} />
               )
             ) : (
               <button

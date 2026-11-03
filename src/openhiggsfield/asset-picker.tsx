@@ -14,6 +14,7 @@ import {
 
 import { ROLE_KINDS, ROLE_LABELS, defaultRole, roleNoun, type AssetKind } from "./data";
 import type { RunRecord } from "./history";
+import { toProxyImageUrl } from "./image-proxy";
 import {
   AssetsIcon,
   AudioIcon,
@@ -953,8 +954,13 @@ const ChromeCard = memo(function ChromeCard({
             <AudioIcon size={20} />
           </span>
         ) : (
+          /* Stills ride the same-origin proxy: from a remote (tailnet/LAN)
+             origin Chrome's PNA blocks the raw loopback gradio url, which is
+             what made this card's preview render broken. Video and audio keep
+             the raw url — plain media loads are not preflighted, and the
+             image proxy refuses non-image extensions outright. */
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img className="ohf-asset-media" src={asset.url} alt="" style={{ objectFit: "contain" }} />
+          <img className="ohf-asset-media" src={toProxyImageUrl(asset.url)} alt="" style={{ objectFit: "contain" }} />
         )}
         {asset.kind === "video" && (
           <span className="ohf-asset-kind" aria-hidden>
@@ -1033,7 +1039,7 @@ function ElementCard({
         onClick={onToggle}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="ohf-asset-media" src={element.url} alt="" loading="lazy" />
+        <img className="ohf-asset-media" src={toProxyImageUrl(element.url)} alt="" loading="lazy" />
       </button>
       <button
         type="button"

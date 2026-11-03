@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 
 import { CloseIcon } from "./icons";
 import type { AssetKind } from "./data";
+import { toProxyImageUrl } from "./image-proxy";
 
 /** The app's answer when a reference is the wrong shape: cut the frame down to
     the part that should be seen. Drag inside to move the window, pull an edge
@@ -166,11 +167,14 @@ export function CropTool({
               onLoadedMetadata={measure}
             />
           ) : (
+            /* The still rides the same-origin proxy: a raw cross-origin gradio
+               url would taint the cut-out canvas and `confirm()`'s toDataURL
+               would throw, on top of the PNA block a remote origin gets. */
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               ref={mediaRef as React.RefObject<HTMLImageElement>}
               className="ohf-v2-crop-media"
-              src={url}
+              src={toProxyImageUrl(url)}
               alt=""
               onLoad={measure}
             />
