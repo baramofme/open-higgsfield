@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 import { CloseIcon } from "./icons";
 import type { AssetKind } from "./data";
-import { toProxyImageUrl } from "./image-proxy";
+import { toProxyImageUrl, toProxyMediaUrl } from "./image-proxy";
 
 /** The app's answer when a reference is the wrong shape: cut the frame down to
     the part that should be seen. Drag inside to move the window, pull an edge
@@ -157,10 +157,15 @@ export function CropTool({
         </div>
         <div className="ohf-v2-crop-stage" ref={stageRef} onLoad={measure}>
           {kind === "video" ? (
+            /* The video rides the same-origin proxy too. A raw cross-origin
+               gradio url has no CORS headers, so drawing its frame into the crop
+               canvas taints it and `confirm()`'s toDataURL throws ("Tainted
+               canvases may not be exported"). Same-origin bytes keep the canvas
+               clean; the proxy already serves the video extension. */
             <video
               ref={mediaRef as React.RefObject<HTMLVideoElement>}
               className="ohf-v2-crop-media"
-              src={url}
+              src={toProxyMediaUrl(url)}
               muted
               playsInline
               preload="auto"

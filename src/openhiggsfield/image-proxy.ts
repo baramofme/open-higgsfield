@@ -28,3 +28,25 @@ export function toProxyImageUrl(url: string | undefined | null): string {
   if (NON_IMAGE_EXT.test(path)) return url;
   return `/api/ohf-image?file=${encodeURIComponent(path)}`;
 }
+
+/** Rewrite ANY comfy-webui (loopback) media url — image, video OR audio — into
+    this app's same-origin proxy. Unlike `toProxyImageUrl` (which hands back the
+    raw url for video/audio so plain playback stays untouched), this one always
+    proxies, because the caller is about to either draw the media into a canvas
+    (video crop, first-frame thumbnail) or `fetch()` its bytes (audio waveform).
+    Both of those need the SAME-ORIGIN bytes: a raw cross-origin gradio video
+    taints the canvas (no CORS headers → `toDataURL` throws), and a raw byte-read
+    from a remote (tailnet/LAN) origin dies on Chrome's Private Network Access
+    preflight. `/api/ohf-image` already admits the whole media set (its SAFE_NAME
+    whitelist) and serves it same-origin, so taint and PNA both disappear.
+    Non-gradio urls (`blob:`, `data:`, a real external host) pass through — there
+    is no taint or preflight to defeat there. */
+export function toProxyMediaUrl(url: string | undefined | null): string {
+  if (!url) return "";
+  const marker = "/gradio_api/file=";
+  const i = url.indexOf(marker);
+  if (i < 0) return url;
+  const path = url.slice(i + marker.length);
+  if (!path.startsWith("/")) return url;
+  return `/api/ohf-image?file=${encodeURIComponent(path)}`;
+}

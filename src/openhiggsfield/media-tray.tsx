@@ -9,6 +9,7 @@ import { uploadMedia } from "@/generation/upload";
 
 import { ROLE_ACCEPT, ROLE_LABELS, ROLE_TAGS, rolesOf } from "./data";
 import { AudioIcon, CloseIcon, VideoIcon } from "./icons";
+import { toProxyMediaUrl } from "./image-proxy";
 import { kindOfFile, loadUploads, mergeUploads, rememberUpload, saveUploads, type UploadRecord } from "./uploads";
 import { cachedWaveformForAsset } from "@/lib/waveform";
 
@@ -234,10 +235,18 @@ export function StripTile({ item }: { item: MediaItem }) {
 
     async function generate() {
       try {
+        /* Route both through the same-origin proxy. A raw gradio video has no
+           CORS headers, so drawing its first frame taints the canvas and the
+           thumbnail's toDataURL throws — the tile silently falls back to a glyph.
+           A raw audio byte-read (`fetch` inside cachedWaveformForAsset) dies on
+           Chrome's PNA preflight from a tailnet/LAN origin, and the waveform
+           never gets built. Same-origin bytes defeat both. Blob/data urls pass
+           through untouched — there is nothing to defeat there. */
+        const proxied = toProxyMediaUrl(item.url);
         const image =
           item.role === "video"
-            ? await firstFrameOfVideo(item.url)
-            : await cachedWaveformForAsset({ id: item.id, url: item.url });
+            ? await firstFrameOfVideo(proxied)
+            : await cachedWaveformForAsset({ id: item.id, url: proxied });
         if (!cancelled && image) setBg(image);
       } catch {
         /* A clip the browser can't decode, or a waveform that throws, just keeps
