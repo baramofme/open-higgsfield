@@ -564,8 +564,10 @@ export function FeedHeader({
             className="ohf-feed-header-tab"
             onClick={() => moveTab("record")}
           >
-            <FeedRecordIcon size={16} />
-            <span>기록</span>
+            <span className="ohf-feed-header-tab-content">
+              <FeedRecordIcon size={16} />
+              <span>기록</span>
+            </span>
           </button>
           <button
             type="button"
@@ -577,8 +579,10 @@ export function FeedHeader({
             className="ohf-feed-header-tab"
             onClick={() => moveTab("guide")}
           >
-            <FeedGuideIcon size={16} />
-            <span>이용 방법</span>
+            <span className="ohf-feed-header-tab-content">
+              <FeedGuideIcon size={16} />
+              <span>이용 방법</span>
+            </span>
           </button>
         </div>
       ) : null}

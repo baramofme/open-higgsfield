@@ -121,16 +121,22 @@ export function FeedShowcase() {
   );
 }
 
-/* 이용 방법 탭의 가이드 판. HF 실측(라이브 재실측 2): 쇼케이스 판을
-   hide-scrollbar 스크래퍼(flex-1)에 넣고, 하우에 justify-end pt-8 푸터를 둔다
-   (푸터 x361 y815 1046×40, 버튼 32×32 x1375 y823, color rgb(130,130,130)).
+/* 이용 방법 탭의 가이드 판. HF 라이브 재실측(2026-11-04, 구조 트리) 원본:
+   내측 컬럼의 자식으로 ① 래퍼 `flex min-h-0 flex-1 flex-col gap-2.5`(714,
+   자식이 스크래퍼 하나뿐 — 공백 관측 0)와 ② 그 형제 푸터
+   `flex shrink-0 justify-end pt-2`(x361 y815 1046×40, 버튼 32×32 x1375 y823,
+   bg rgb(19,20,22)+border white/.05+rounded-full, color rgb(130,130,130)).
+   OH도 같은 2형제 형태로 착지한다(래퍼 714 + 푸터 40, 합 754가 아니라
+   래퍼 자체가 714이므로 guideWrap 동값 판정이 성립).
    HF의 푸터 버튼은 "Seedance 더 알아보기" — OH에는 그 문서 페이지가 없으므로
    관례대로 honest inert로 착지(aria-disabled + data-off). */
 export function FeedGuide() {
   return (
-    <div className="ohf-feed-guide">
-      <div className="ohf-feed-guide-scroll">
-        <FeedShowcase />
+    <>
+      <div className="ohf-feed-guide">
+        <div className="ohf-feed-guide-scroll">
+          <FeedShowcase />
+        </div>
       </div>
       <div className="ohf-feed-guide-foot">
         <button
@@ -143,6 +149,6 @@ export function FeedGuide() {
           <FeedMoreInfoIcon size={16} />
         </button>
       </div>
-    </div>
+    </>
   );
 }

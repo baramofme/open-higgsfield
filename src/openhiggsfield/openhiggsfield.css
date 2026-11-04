@@ -20073,6 +20073,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-feed-col {
   min-height: 0;
   overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -20120,13 +20121,17 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   gap: 4px;
   flex: none;
 }
+/* HF의 q-tabs-tab 실측: justify-content center, gap normal(간격은 내측
+   q-tabs-tab-content의 gap-1=4px에서 나온다), border투명(너비 0이라 무페인트).
+   OH도 같은 2중 구조(버튼 > content span)로 미러한다. */
 .ohf-feed-header-tab {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
   height: 32px;
   padding: 4px 8px;
   border: none;
+  border-color: transparent;
   border-radius: 8px;
   background: transparent;
   font-size: 12px;
@@ -20144,6 +20149,11 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-feed-header-tab[data-off] {
   cursor: default;
   pointer-events: none;
+}
+.ohf-feed-header-tab-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 /* ── t_2adadf77 — 탭 실배선 + HF 쇼케이스·가이드 판 + nav 신규 배지 ──────
    :9222 라이브 재실측(2026-11-04, 1440×900)의 원문 기하·도색을 그대로 이식. */
@@ -20254,12 +20264,14 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
    1046×714)에 담고, justify-end pt-8 푸터(1046×40, y815) 끝에 32×32 버튼 하나
    (x1375 y823). 스크래퍼 바닥 y815과 푸터 꼭대기 y815가 붙는다 — HF의 gap-2.5는
    외자식 래퍼에서 관측 공백 0이므로 기하만 미러한다(714+40=754). */
+/* HF 래퍼 실측: `flex min-h-0 flex-1 flex-col gap-2.5`(10px gap, 외자식이
+   스크래퍼라 관측 공백 0). flex-1 = basis 0. 푸터는 이 래퍼의 형제다. */
 .ohf-feed-guide {
-  flex: 1 1 auto;
+  flex: 1 1 0%;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
 }
 .ohf-feed-guide-scroll {
   min-height: 0;
@@ -20276,8 +20288,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   justify-content: flex-end;
   padding-top: 8px;
 }
-/* 실측 도색 rgb(130,130,130)의 ghost icon 버튼. OH에는 "Seedance 더 알아보기"
-   문서 페이지가 없으므로 honest inert — 페인트와 기하만 미러한다. */
+/* 실측 도색: bg rgb(19,20,22) + border 1px rgba(255,255,255,.05) +
+   rounded-full(Tailwind calc(infinity*1px) → 실측 3.35544e+07px) + overflow
+   hidden + fs16/lh24 상속. OH에는 "Seedance 더 알아보기" 문서 페이지가
+   없으므로 honest inert — 페인트와 기하만 미러한다. */
 .ohf-feed-guide-more {
   display: inline-flex;
   align-items: center;
@@ -20285,9 +20299,12 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   flex: none;
   width: 32px;
   height: 32px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgb(19, 20, 22);
+  border-radius: calc(infinity * 1px);
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 24px;
   color: rgb(130, 130, 130);
   cursor: default;
 }
