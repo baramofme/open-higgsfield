@@ -16300,6 +16300,28 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   max-width: 28rem;
 }
 
+/* ── Cinema-style bounded generation screen (t_2f8b602f) ────────────────────
+   t_ce2cf50b restored the create shell's left nav rail but the shell still
+   painted nothing — the feed showed straight through it, so generation read
+   as inline chrome bolted onto the general layout. The ruling (the user's own
+   words: "시네마 스튜디오처럼 별도의 화면 영역을 가지고 작동을 하게 해야만
+   한다") is that the video/audio create UI must work inside its OWN bounded
+   screen region, sidebar contained. The shell becomes an opaque plate: its
+   own paint (HF body token --bg), frame (--line), radius and elevation —
+   occluding the feed tiles behind its bounds (measured live: tiles under the
+   transparent shell were fully visible) so rail + card read as one dedicated
+   screen, not part of the page. Additive properties ONLY — the co-located
+   cascade-isolated block owns the geometry (inset/width/padding/rail), which
+   is deliberately untouched here. Selector is scoped (.ohf-main .ohf-gct,
+   0,2,0) so a generic descendant rule can never silently out-rank it. */
+.ohf-main .ohf-gct {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.45), var(--glint);
+  margin-bottom: .5rem;
+}
+
 /* ── Cinematic Studio reading width ──────────────────────────────────────────
    HF keeps the dock's composer a fixed, centred reading column (desktop ≈50rem,
    ≈800px — measured 800px at 1440/1200, shrinking gracefully to the column below
