@@ -19,6 +19,9 @@ import type { MediaTray } from "./media-tray";
 /* ============================================================================
    general-create-tabs.tsx  —  t_1fd6032c 셸 + t_d5b517ad 패널 이식
                                + t_47de09bd 실행·첨부·모델 panel 실배선
+   + t_edb910c3 생성 폼 내부 HF 동값 이식(피겨 카드·세그먼트 탭·드롭존·
+     프롬프트 박스+발·모델 트리거·설정 셀·CTA 좌정) — svg 원문은 CDP 실측
+     hf_details.json의 무트런케이트 d를 그대로 쓴다(재구성 금지 규칙)
 
    HF ground truth (CDP :9222 실측, 2026-11-04 — scratch/gct_hf_detail.json,
    gct09_hf_probe3.json A_mc_tree1, gct09_hf_probe5b.json dtv_details,
@@ -178,30 +181,303 @@ function settingOf(model: ModelEntry, key: string): SettingField | undefined {
 }
 
 /* ---- one settings dial: the HF h-13.5 button + its dropdown panel ---- */
+/* ============================================================================
+   HF svg 원문 — CDP :9222 라이브 실측 2026-11-04, hf_details.json의 무트런케이트
+   d 문자열 그대로. 재구성 금지 규칙에 따라 패스·viewBox·stroke·fill을 원본값으로
+   쓴다. (세그먼트 탭의 실측 d는 카드 본문에 기록된 earlier 값과 현재 DOM에서
+   달라져 있어 라이브 재발취본을 정본으로 삼는다 — 실측이 원문이다.)
+   ========================================================================== */
+
+function HfChevron() {
+  /* 모델 트리거·설정 셀의 공통 chevron — vb 20-box를 16으로 렌더(실측 16x16). */
+  return (
+    <svg className="ohf-gct-hchev" width={16} height={16} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path d="M3.81344 7.97848C4.0087 7.78322 4.32528 7.78322 4.52055 7.97848L10.0003 13.4583L15.4801 7.97848C15.6754 7.78322 15.9919 7.78322 16.1872 7.97848C16.3825 8.17374 16.3825 8.49032 16.1872 8.68558L10.3539 14.5189L10.0003 14.8725L9.64677 14.5189L3.81344 8.68558C3.61818 8.49032 3.61818 8.17374 3.81344 7.97848Z" />
+    </svg>
+  );
+}
+
+function HfCoin() {
+  /* 생성하기 크레딧의 스파클 코인 — vb 20, 20x20 렌더, fill currentColor. */
+  return (
+    <svg width={20} height={20} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path d="m11.852 4.217-.13-.978a.476.476 0 0 0-.943 0l-.13.978A6.41 6.41 0 0 1 5.14 9.724l-.978.13a.476.476 0 0 0 0 .943l.978.13a6.41 6.41 0 0 1 5.507 5.508l.13.978a.476.476 0 0 0 .944 0l.13-.978a6.41 6.41 0 0 1 5.508-5.507l.977-.13a.476.476 0 0 0 0-.944l-.977-.13a6.41 6.41 0 0 1-5.508-5.507Zm-7.2 10.54.169-.549a.188.188 0 0 1 .36 0l.168.549a2.222 2.222 0 0 0 1.47 1.47l.549.169a.188.188 0 0 1 0 .36l-.549.168a2.222 2.222 0 0 0-1.47 1.47l-.169.549a.188.188 0 0 1-.36 0l-.168-.548a2.222 2.222 0 0 0-1.47-1.47l-.549-.17a.188.188 0 0 1 0-.36l.548-.168a2.222 2.222 0 0 0 1.47-1.47Z" />
+    </svg>
+  );
+}
+
+function HfModelBars() {
+  /* 모델 트리거 값 옆의 브랜드 아이콘(16-box, fill currentColor — CSS가 노랑). */
+  return (
+    <svg className="ohf-gct-hic" width={16} height={16} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="m3.154 12.154-2.62.655V1.2l2.62.655v10.3Zm12.668.679-2.626.656V.519l2.627.65v11.664Zm-8.509-.325-2.622.656v-6.84l2.622.655v5.53ZM9.025 5.31l2.627-.656v6.84l-2.627-.656V5.31Z" />
+    </svg>
+  );
+}
+
+function HfBadgePen() {
+  /* 피겨 배지 '변경'의 아이콘 — svg 14x16 렌더(실측 rect), vb 20-box. */
+  return (
+    <svg width={14} height={16} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path d="M13.5479 2.14282C14.1661 1.5247 15.1679 1.5247 15.7861 2.14282L18.3584 4.71411C18.9761 5.33243 18.9764 6.33519 18.3584 6.95337L7.31641 17.9954C7.01974 18.2919 6.61689 18.459 6.19727 18.4592H2.79199C2.37808 18.4592 2.04248 18.123 2.04199 17.7092V14.304C2.042 13.8842 2.20904 13.4817 2.50586 13.1848L11.0117 4.67798L13.5479 2.14282ZM3.56641 14.2454C3.55098 14.2609 3.542 14.2819 3.54199 14.304V16.9592H6.19727C6.2189 16.959 6.24037 16.9502 6.25586 16.9348L14.2314 8.95923L11.542 6.26978L3.56641 14.2454ZM14.7256 3.20337C14.6931 3.17104 14.6409 3.17104 14.6084 3.20337L12.6025 5.20825L15.292 7.89771L17.2979 5.89282C17.33 5.86043 17.3298 5.8072 17.2979 5.77466L14.7256 3.20337Z" />
+    </svg>
+  );
+}
+
+function HfTabRefIcon() {
+  /* 세그먼트 탭 '레퍼런스' — vb 24, stroke 1.5, round/round, fill none. */
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3.75 5.75v12.5m4-13.5v14.5m4 .017V4.734a1 1 0 0 1 1.207-.979l6.5 1.374a1 1 0 0 1 .793.979v11.784a1 1 0 0 1-.793.979l-6.5 1.374a1 1 0 0 1-1.207-.979" />
+    </svg>
+  );
+}
+
+function HfTabExtIcon() {
+  /* 세그먼트 탭 '영상 확장' — vb 24, stroke 1.5, lc round, lj square(원문).
+     React의 타입 union은 square를 모르고 SVG2 원문은 square이 정본이므로,
+     재구성 금지 규칙을 지키기 위해 스프레드 캐스트로 원문 값을 보낸다. */
+  return (
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      {...({ strokeLinejoin: "square" } as unknown as React.SVGProps<SVGSVGElement>)}
+      aria-hidden="true"
+    >
+      <path d="M12.992 11.559V6.673a1 1 0 0 1 1.65-.76l6.221 5.327a1 1 0 0 1 0 1.52l-6.22 5.326a1 1 0 0 1-1.65-.76v-4.885m0-.882L6.4 5.913a1 1 0 0 0-1.65.76v10.654a1 1 0 0 0 1.65.76l6.592-5.646m0-.882v.882" />
+    </svg>
+  );
+}
+
+/* 드롭존 서클의 3 아이콘 — HF는 fill을 각 svg의 defs 그라데이션으로 입힌다
+   (linearGradient x1=0 y1=0 x2=0 y2=1, #fff → #EDEDED @ opacity .3). 동일 id가
+   HF에서 반복 사용되지만 여기서는 인스턴스 간 참조 충돌을 피하기 위해 타입별
+   고유 id를 쓴다 — 실측 정지는 그라데이션 정의 원문이고, id만 OH 스코프다. */
+function BadgeGradDefs({ id }: { id: string }) {
+  return (
+    <defs>
+      <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="#fff" />
+        <stop offset="1" stopColor="#EDEDED" stopOpacity="0.3" />
+      </linearGradient>
+    </defs>
+  );
+}
+
+function HfBadgeFace({ id }: { id: string }) {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <BadgeGradDefs id={id} />
+      <g fill={`url(#${id})`}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M9.941 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M22.781 18.34a8 8 0 0 0-.24-.82v-.03c-.82-2.5-1.67-4.46-2.54-5.81-.44-.67-.9-1.22-1.4-1.6-.51-.38-1.09-.62-1.72-.56-1.86.15-3.12 1.68-4.01 2.84-.12.16-.24.32-.35.46-.33.43-.61.81-.89 1.11-.39.42-.6.49-.69.49-.19 0-.41-.06-.72-.22-.27-.14-.55-.33-.88-.54-.04-.03-.09-.06-.13-.09-.72-.47-1.68-1.1-2.84-1.1-.61 0-1.14.27-1.57.62-.42.35-.78.82-1.09 1.31-.62.98-1.1 2.2-1.43 3.18v.03c-.1.27-.19.53-.24.75-.06.25-.08.52 0 .82.1.42.39.82.76 1.05.26.17.54.23.8.25.24.02.52.02.83.02h15.92c.33 0 .63 0 .88-.02.26-.02.55-.08.82-.25.37-.24.65-.62.76-1.04.08-.31.04-.59-.01-.85z" />
+      </g>
+    </svg>
+  );
+}
+
+function HfBadgeImage({ id }: { id: string }) {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <BadgeGradDefs id={id} />
+      <g fill={`url(#${id})`}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M15.75 4.5c.966 0 1.75.784 1.75 1.75v11.5a1.75 1.75 0 0 1-1.75 1.75h-12A1.75 1.75 0 0 1 2 17.75V6.25c0-.966.784-1.75 1.75-1.75zM20.443 7.215A1.5 1.5 0 0 1 22.5 8.607v6.786a1.5 1.5 0 0 1-2.057 1.392l-1.943-.777V7.992z" />
+      </g>
+    </svg>
+  );
+}
+
+function HfBadgeAudio({ id }: { id: string }) {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <BadgeGradDefs id={id} />
+      <g fill={`url(#${id})`}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M13 3.75a.75.75 0 0 0-1.154-.632L5.842 6.961A.25.25 0 0 1 5.707 7H2.75A1.75 1.75 0 0 0 1 8.75v6.5c0 .966.784 1.75 1.75 1.75h2.957a.25.25 0 0 1 .135.04l6.004 3.842A.75.75 0 0 0 13 20.25zM18.718 4.222a.75.75 0 0 1 1.06 0A10.97 10.97 0 0 1 23 12c0 3.037-1.232 5.788-3.222 7.778a.75.75 0 1 1-1.06-1.06A9.47 9.47 0 0 0 21.5 12a9.47 9.47 0 0 0-2.782-6.718.75.75 0 0 1 0-1.06M16.42 7.581a.75.75 0 0 0-1.061 1.06 4.73 4.73 0 0 1 1.391 3.36c0 1.311-.53 2.498-1.391 3.358a.75.75 0 1 0 1.06 1.06A6.23 6.23 0 0 0 18.25 12c0-1.725-.7-3.289-1.83-4.419" />
+      </g>
+    </svg>
+  );
+}
+
+function HfElementIcon() {
+  /* 프롬프트 발의 '요소' 버튼 아이콘 — vb 24, stroke 1.5, lc round. */
+  return (
+    <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" aria-hidden="true">
+      <path d="M16.8684 19.8667C15.4543 20.7437 13.7863 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 13.9797 20.2662 16.0242 17.9715 15.8156C16.0837 15.644 14.7249 13.9258 14.993 12.0492L15.5226 8.40278M14.9375 12.4805C14.63 14.6681 12.8291 16.2235 10.9149 15.9544C9.00068 15.6854 7.69817 13.6939 8.00562 11.5063C8.31308 9.31862 10.1141 7.76327 12.0283 8.03229C13.9424 8.30131 15.245 10.2928 14.9375 12.4805Z" />
+    </svg>
+  );
+}
+
+function HfWaveIcon() {
+  /* '켬' 발의 스피커+웨이브 아이콘 — vb 24, stroke 1.5, round/round. */
+  return (
+    <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M19.2478 4.75195C21.1027 6.60684 22.25 9.16934 22.25 11.9998C22.25 14.8303 21.1027 17.3928 19.2478 19.2476M15.8891 8.11133C16.8844 9.10663 17.5 10.4816 17.5 12.0004C17.5 13.5192 16.8844 14.8942 15.8891 15.8895M2.75 7.75H5.7074C5.89846 7.75 6.08552 7.69526 6.24645 7.59227L12.25 3.75V20.25L6.24645 16.4077C6.08552 16.3047 5.89846 16.25 5.7074 16.25H2.75C2.19772 16.25 1.75 15.8023 1.75 15.25V8.75C1.75 8.19772 2.19772 7.75 2.75 7.75Z" />
+    </svg>
+  );
+}
+
+/* ---- HF의 피겨 카드(모델 데모 루프) — 카드 본문 원본 실측 2· 라이브 재실측 동값 ----
+   FIGURE 302x130 radius12 overflow hidden; video 302x130(모델 데모 루프, HF
+   실측 src https://static.higgsfield.ai/seedance-2.5/video-banner-general.mp4를
+   같은 바이트로 로컬화한 /model-demos/video-banner-general.mp4를 쓴다 — 오프라인
+   견고성 우선, HF의 속성 그대로 loop·playsinline·disablePictureInPicture·
+   preload=none에 OH 루프 재생을 위한 autoPlay만 더한다); figcaption 하단
+   pb-3 pl-3 pr-1.5(실측 pad 0 6px 12px 12px)에 브랜드 'General'(Space Grotesk
+   20/700 uppercase -1% 노랑)과 현재 모델명(12/400 white/.8); 우상단 배지 컨테이너
+   top-1.5 right-1.5 gap-4에 '변경'만 렌더한다 — HF는 이 모델 상태에서 '믹스'를
+   display:none으로 렌더하지 않으므로(실측 disp:none) 미렌더가 실측 그대로다.
+   figure의 role=button과 '변경' 버튼은 OH에 대응 실기능이 없어 honest inert로
+   aria-disabled="true" + data-off=""를 달고 기하는 실측 동값으로 남는다. */
+function ModelFigure({ model }: { model: ModelEntry }) {
+  return (
+    <fieldset className="ohf-gct-figure-wrap">
+      <figure
+        className="ohf-gct-figure"
+        role="button"
+        tabIndex={-1}
+        aria-disabled="true"
+        data-off=""
+        aria-label={`모델 데모 ${model.label}`}
+      >
+        <video
+          className="ohf-gct-figure-video"
+          src="/model-demos/video-banner-general.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          disablePictureInPicture
+          preload="none"
+        >
+          사용 중인 브라우저가 영상을 지원하지 않아요.
+        </video>
+        <figcaption className="ohf-gct-figure-caption">
+          <p className="ohf-gct-figure-brand">General</p>
+          <p className="ohf-gct-figure-name">{model.label}</p>
+        </figcaption>
+        <div className="ohf-gct-figure-badges">
+          <button type="button" className="ohf-gct-figure-badge" aria-disabled="true" data-off="">
+            <HfBadgePen />
+            <span className="ohf-gct-figure-badge-text">변경</span>
+          </button>
+        </div>
+      </figure>
+    </fieldset>
+  );
+}
+
+/* ---- HF의 드롭존(레퍼런스 추가) — 실측 4의 첫 블록 동값 ----
+   outer gap-3 pad-4 bg white/5 r12; inner h-37 pad16 gap-12 r8에 halo(절대
+   position, pointer-events none) + full-face hit button(z-10, 실배선: 이 카드의
+   onAttach가 그대로 열쇠다) + 36px 서클 3종(-8px 중첩, fill rgb(28,30,32) 위에
+   ring border rgba(197,197,197,.3)+white/4, 각 16px 그라데이션 아이콘) +
+   텍스트 스택(gap-1.5: 라벨 14/600, 힌트 12/400 rgb(130,130,130)). */
+function DropZone({
+  label,
+  hint,
+  disabled,
+  onOpen,
+}: {
+  label: string;
+  hint: string;
+  disabled: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <div className="ohf-gct-drop">
+      <div className="ohf-gct-drop-inner">
+        <span className="ohf-gct-drop-halo" aria-hidden="true" />
+        <button
+          type="button"
+          className="ohf-gct-drop-hit"
+          aria-label={label}
+          aria-disabled={disabled ? "true" : undefined}
+          data-off={disabled ? "" : undefined}
+          onClick={() => {
+            if (!disabled) onOpen();
+          }}
+        />
+        <span className="ohf-gct-drop-circles" aria-hidden="true">
+          <span className="ohf-gct-badge-circle">
+            <span className="ohf-gct-badge-fill" />
+            <span className="ohf-gct-badge-ring" />
+            <span className="ohf-gct-badge-ic">
+              <HfBadgeFace id="ohf-grad-badge-face" />
+            </span>
+          </span>
+          <span className="ohf-gct-badge-circle">
+            <span className="ohf-gct-badge-fill" />
+            <span className="ohf-gct-badge-ring" />
+            <span className="ohf-gct-badge-ic">
+              <HfBadgeImage id="ohf-grad-badge-image" />
+            </span>
+          </span>
+          <span className="ohf-gct-badge-circle">
+            <span className="ohf-gct-badge-fill" />
+            <span className="ohf-gct-badge-ring" />
+            <span className="ohf-gct-badge-ic">
+              <HfBadgeAudio id="ohf-grad-badge-audio" />
+            </span>
+          </span>
+        </span>
+        <span className="ohf-gct-drop-text">
+          <span className="ohf-gct-drop-title">{label}</span>
+          <span className="ohf-gct-drop-hint">{hint}</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function Dial({
   label,
   value,
   open,
   onOpen,
   children,
+  hf = false,
 }: {
   label: string;
   value: React.ReactNode;
   open: boolean;
   onOpen: (next: string | null) => void;
   children: React.ReactNode;
+  hf?: boolean;
+  /* hf=true: HF의 h-13.5 셀/트리거 기하와 2단 스택+chevron으로 렌더한다
+     (실측 동값 — CSS의 .ohf-gct-hbtn이 착지 기준). 기본은 OH의 구버전 행. */
 }) {
   return (
     <div className="ohf-gct-dial">
       <button
         type="button"
-        className="ohf-gct-dial-btn"
+        className={hf ? "ohf-gct-hbtn" : "ohf-gct-dial-btn"}
+        data-model-select-trigger={hf && label === "모델" ? "" : undefined}
         aria-expanded={open}
+        aria-haspopup="dialog"
         data-active={open || undefined}
         onClick={() => onOpen(open ? null : label)}
       >
-        <span className="ohf-gct-dial-name">{label}</span>
-        <span className="ohf-gct-dial-value">{value}</span>
+        {hf ? (
+          <>
+            <span className="ohf-gct-hcol">
+              <span className="ohf-gct-hname">{label}</span>
+              <span className="ohf-gct-hval">
+                <span className="ohf-gct-hval-text">{value}</span>
+                {label === "모델" ? <HfModelBars /> : null}
+              </span>
+            </span>
+            <HfChevron />
+          </>
+        ) : (
+          <>
+            <span className="ohf-gct-dial-name">{label}</span>
+            <span className="ohf-gct-dial-value">{value}</span>
+          </>
+        )}
       </button>
       {open && (
         <div className="ohf-gct-dial-panel" role="region" aria-label={label}>
@@ -449,6 +725,10 @@ function MakeBody({
   const [extendMode, setExtendMode] = useState(false);
   const baseModel = useRef<string | null>(null);
 
+  const refMax = model.roles.reference ?? 0;
+  const refCount = tray.items.filter((item) => item.role === "reference").length;
+  const refFull = refMax > 0 && refCount >= refMax;
+
   const pickMode = (next: "레퍼런스" | "영상 확장") => {
     if (next === "영상 확장") {
       if (model.id !== "seedance-2.5-extend") baseModel.current = model.id;
@@ -470,250 +750,329 @@ function MakeBody({
   };
 
   return (
-    <div className="ohf-gct-subtab-body ohf-gct-body--make">
-      {/* 모드 탭 — HF의 [레퍼런스|영상 확장] 세그먼트(실측 cy243·role=tab). */}
-      <div className="ohf-gct-mode" role="tablist" aria-label="생성 모드">
-        <button
-          type="button"
-          role="tab"
-          className="ohf-gct-mode-tab"
-          aria-selected={!extendMode}
-          data-on={!extendMode || undefined}
-          onClick={() => pickMode("레퍼런스")}
-        >
-          레퍼런스
-        </button>
-        <button
-          type="button"
-          role="tab"
-          className="ohf-gct-mode-tab"
-          aria-selected={extendMode}
-          data-on={extendMode || undefined}
-          onClick={() => pickMode("영상 확장")}
-        >
-          영상 확장
-        </button>
-      </div>
-
-      {extendMode ? (
-        <>
-          <AttachSlot
-            role="video"
-            label="확장할 영상 추가"
-            hint="최대 30초"
-            model={model}
-            tray={tray}
-            onOpen={onAttach}
-          />
-          <AttachSlot
-            role="reference"
-            label="요소 또는 레퍼런스 추가"
-            hint="이미지 또는 오디오 최대 50개"
-            model={model}
-            tray={tray}
-            onOpen={onAttach}
-          />
-        </>
-      ) : (
-        <AttachSlot
-          role="reference"
-          label="레퍼런스 추가하기"
-          hint="이미지, 영상 또는 오디오"
-          model={model}
-          tray={tray}
-          onOpen={onAttach}
-        />
-      )}
-
-      <textarea
-        className="ohf-gct-prompt-real"
-        aria-label="프롬프트"
-        placeholder="프롬프트를 입력하세요"
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-      />
-
-      {/* 요소 켬 — HF's audio-in-video toggle, mapped to generateAudio. */}
-      <div className="ohf-gct-element">
-        <button
-          type="button"
-          className="ohf-gct-toggle"
-          role="switch"
-          aria-checked={audioOn}
-          aria-label="요소"
-          data-off={!generateAudio ? "" : undefined}
-          aria-disabled={!generateAudio ? "true" : undefined}
-          onClick={() => generateAudio && onSetting({ generateAudio: !audioOn })}
-        >
-          {generateAudio ? (audioOn ? "켬" : "끔") : "요소"}
-        </button>
-        <span className="ohf-gct-element-hint">
-          {generateAudio ? "오디오 생성" : "이 모델은 오디오 설정이 없습니다"}
-        </span>
-      </div>
-
-      {extendMode && (
-        /* 방향 — 실측된 메뉴(CDP :9222 probe19: '방향 | 시퀄 | 끝난 뒤
-           이어가기 | 프리퀄 | 시작 앞부분 만들기'). 선택은 저장되어 버튼 값에
-           실표시된다. 실행 페이로드가 방향을 받는지는 미실측이므로 실행에는
-           얹지 않는다 — UI 실측분만 배선한다. */
-        <div className="ohf-gct-direction">
-          <button
-            type="button"
-            className="ohf-gct-direction-btn"
-            aria-label="방향"
-            aria-expanded={directionOpen}
-            data-state={directionOpen ? "open" : "closed"}
-            onClick={() => setDirectionOpen((v) => !v)}
-          >
-            {direction}
-          </button>
-          {directionOpen && (
-            <div className="ohf-gct-direction-menu" role="menu" aria-label="방향">
-              {(["시퀄", "프리퀄"] as const).map((opt) => (
-                <button
-                  key={opt}
-                  type="button"
-                  role="menuitemradio"
-                  aria-checked={direction === opt}
-                  className="ohf-gct-direction-item"
-                  data-on={direction === opt || undefined}
-                  onClick={() => {
-                    setDirection(opt);
-                    setDirectionOpen(false);
-                  }}
-                >
-                  <span className="ohf-gct-direction-label">{opt}</span>
-                  <span className="ohf-gct-direction-hint">
-                    {opt === "시퀄" ? "끝난 뒤 이어가기" : "시작 앞부분 만들기"}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      <Dial label="모델" value={model.label} open={openMenu === "모델"} onOpen={setOpenMenu}>
-        <ModelPanel
-          activeId={model.id}
-          onPick={(id) => {
-            onModel(id);
-            setOpenMenu(null);
-          }}
-        />
-      </Dial>
-
-      <div className="ohf-gct-grid">
-        <Dial
-          label="길이"
-          value={`${curDuration}s`}
-          open={openMenu === "길이"}
-          onOpen={setOpenMenu}
-        >
-          <div className="ohf-gct-panel-title">총 길이</div>
-          <div className="ohf-gct-chiprow">
-            <span className="ohf-gct-chip ohf-gct-chip--on">{curDuration}s</span>
-            {DURATION_PRESETS.filter((v) => v !== curDuration).map((v) => (
-              <button
-                key={v}
-                type="button"
-                className="ohf-gct-chip"
-                disabled={duration?.type !== "range" || v < duration.min || v > duration.max}
-                onClick={() => onSetting({ duration: v })}
-              >
-                {v}
-              </button>
-            ))}
+    <div className="ohf-gct-makeflow">
+      {/* HF 생성 폼의 스크롤 콘텐츠 — 실측 위계 그대로(피겨 → 세그먼트 탭 → 패널).
+          생성 CTA는 스크롤 밖의 발(fixed foot)에 좌정한다(HF: pad 0 8px 12px,
+          rounded-b-2xl). */}
+      <div className="ohf-gct-make-scroll">
+        <ModelFigure model={model} />
+        <div className="ohf-gct-segwrap">
+          {/* 세그먼트 탭 — HF의 [레퍼런스|영상 확장] q-tabs-list(실측 302x40 r12
+              pad3 gap4; 탭 145x32 12px/500; 선택=white, 비선택=white/.5;
+              인디케이터는 투명+border, hover 시 bg). 실기능 전환은 OH의 기존
+              pickMode에 배선돼 있다(레퍼런스/영상 확장 ↔ OH 레퍼런스 셀렉션/
+              영상 확장). */}
+          <div className="ohf-gct-seg" role="tablist" aria-label="생성 모드">
+            <button
+              type="button"
+              role="tab"
+              className="ohf-gct-seg-tab"
+              aria-selected={!extendMode}
+              data-on={!extendMode || undefined}
+              onClick={() => pickMode("레퍼런스")}
+            >
+              <HfTabRefIcon />
+              <span className="ohf-gct-seg-label">레퍼런스</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              className="ohf-gct-seg-tab"
+              aria-selected={extendMode}
+              data-on={extendMode || undefined}
+              onClick={() => pickMode("영상 확장")}
+            >
+              <HfTabExtIcon />
+              <span className="ohf-gct-seg-label">영상 확장</span>
+            </button>
+            <span className="ohf-gct-seg-ind" data-side={extendMode ? "right" : "left"} aria-hidden="true" />
           </div>
-          {duration?.type === "range" && (
-            <input
-              type="range"
-              className="ohf-gct-range"
-              min={duration.min}
-              max={duration.max}
-              step={duration.step ?? 1}
-              value={curDuration}
-              onChange={(e) => onSetting({ duration: Number(e.target.value) })}
-            />
-          )}
-        </Dial>
 
-        <Dial label="종횡비" value={curAspect} open={openMenu === "종횡비"} onOpen={setOpenMenu}>
-          {aspect?.type === "enum" ? (
-            <div className="ohf-gct-chiprow">
-              {aspect.values.map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  className="ohf-gct-chip"
-                  data-on={v === curAspect || undefined}
-                  onClick={() => onSetting({ aspectRatio: v })}
-                >
-                  {v}
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className="ohf-gct-deferred">이 모델은 종횡비 설정을 받지 않습니다.</p>
-          )}
-        </Dial>
+          <div className="ohf-gct-panel">
+            {extendMode ? (
+              /* 영상 확장 모드의 슬롯 — HF의 확장 상태 세부는 이번 런에서 라이브
+                 재실측되지 않아(패널 전체가 재렌더되는 지점) 기존 OH AttachSlot
+                 기하를 유지한다. 실기능(슬롯 첨부·삭제·파일)은 그대로 배선. */
+              <div className="ohf-gct-slotgrid">
+                <AttachSlot
+                  role="video"
+                  label="확장할 영상 추가"
+                  hint="최대 30초"
+                  model={model}
+                  tray={tray}
+                  onOpen={onAttach}
+                />
+                <AttachSlot
+                  role="reference"
+                  label="요소 또는 레퍼런스 추가"
+                  hint="이미지 또는 오디오 최대 50개"
+                  model={model}
+                  tray={tray}
+                  onOpen={onAttach}
+                />
+              </div>
+            ) : (
+              /* HF의 드롭존(레퍼런스 추가하기) — 실측 동값 착지. 실배선 유지:
+                 누르면 OH의 첨부 선택기(onAttach)가 그대로 열린다. 모델이
+                 레퍼런스 역할을 받지 않는 순간만 honest inert로 잠긴다. */
+              <DropZone
+                label="레퍼런스 추가하기"
+                hint={
+                  refFull
+                    ? `가득 찼어요 (${refCount}/${refMax})`
+                    : "이미지, 영상 또는 오디오"
+                }
+                disabled={refMax === 0}
+                onOpen={() => onAttach("reference")}
+              />
+            )}
+            <MediaStrip model={model} />
 
-        <Dial label="품질" value={curResolution} open={openMenu === "품질"} onOpen={setOpenMenu}>
-          {resolution?.type === "enum" ? (
-            <div className="ohf-gct-chiprow">
-              {resolution.values.map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  className="ohf-gct-chip"
-                  data-on={v === curResolution || undefined}
-                  onClick={() => onSetting({ resolution: v })}
-                >
-                  {v}
-                </button>
-              ))}
+            {/* HF의 프롬프트 박스 — 실측: 레이블이 박 안에 절대 좌정(top3 left3),
+                발(foot)에 요소/켬이 붙는다(실측 pad 8 12 12). */}
+            <div className="ohf-gct-pblock">
+              <div className="ohf-gct-pbox">
+                <p className="ohf-gct-pbox-label">프롬프트</p>
+                <textarea
+                  className="ohf-gct-pbox-field"
+                  aria-label="프롬프트"
+                  placeholder="프롬프트를 입력하세요"
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                />
+              </div>
+              <div className="ohf-gct-pbox-foot">
+                {generateAudio ? (
+                  <span className="ohf-gct-pbox-group">
+                    <button
+                      type="button"
+                      className="ohf-gct-el-btn"
+                      aria-label="요소"
+                      onClick={() => onSetting({ generateAudio: !audioOn })}
+                    >
+                      <HfElementIcon />
+                      <span className="ohf-gct-el-label">요소</span>
+                    </button>
+                    <label className="ohf-gct-el-on" data-on={audioOn || undefined}>
+                      <HfWaveIcon />
+                      <span className="ohf-gct-el-state">{audioOn ? "켬" : "끔"}</span>
+                      <input
+                        type="checkbox"
+                        className="ohf-gct-el-check"
+                        aria-label={`오디오 ${audioOn ? "켬" : "끔"}`}
+                        checked={audioOn}
+                        onChange={() => onSetting({ generateAudio: !audioOn })}
+                      />
+                    </label>
+                  </span>
+                ) : (
+                  /* honest inert — HF의 기하를 그대로 입되, 이 모델은 오디오
+                     설정이 없어 두 발위젯 모두 잠긴다. */
+                  <span className="ohf-gct-pbox-group">
+                    <button
+                      type="button"
+                      className="ohf-gct-el-btn"
+                      aria-label="요소"
+                      aria-disabled="true"
+                      data-off=""
+                    >
+                      <HfElementIcon />
+                      <span className="ohf-gct-el-label">요소</span>
+                    </button>
+                    <span className="ohf-gct-el-on" aria-disabled="true" data-off="">
+                      <HfWaveIcon />
+                      <span className="ohf-gct-el-state">끔</span>
+                    </span>
+                  </span>
+                )}
+              </div>
             </div>
-          ) : (
-            <p className="ohf-gct-deferred">이 모델은 품질 선택을 받지 않습니다.</p>
-          )}
-        </Dial>
 
-        <Dial
-          label="비트레이트"
-          value={BITRATE_LABEL[curBitrate]?.label ?? curBitrate}
-          open={openMenu === "비트레이트"}
-          onOpen={setOpenMenu}
-        >
-          {bitrate?.type === "enum" ? (
-            <div className="ohf-gct-chiprow ohf-gct-chiprow--stack">
-              {bitrate.values.map((v) => (
+            {extendMode && (
+              /* 방향 — 실측된 메뉴(CDP :9222 probe19: '방향 | 시퀄 | 끝난 뒤
+                 이어가기 | 프리퀄 | 시작 앞부분 만들기'). 선택은 저장되어 버튼 값에
+                 실표시된다. 실행 페이로드가 방향을 받는지는 미실측이므로 실행에는
+                 얹지 않는다 — UI 실측분만 배선한다. */
+              <div className="ohf-gct-direction">
                 <button
-                  key={v}
                   type="button"
-                  className="ohf-gct-chip"
-                  data-on={v === curBitrate || undefined}
-                  onClick={() => onSetting({ bitrateMode: v })}
+                  className="ohf-gct-direction-btn"
+                  aria-label="방향"
+                  aria-expanded={directionOpen}
+                  data-state={directionOpen ? "open" : "closed"}
+                  onClick={() => setDirectionOpen((v) => !v)}
                 >
-                  <span className="ohf-gct-chip-label">{BITRATE_LABEL[v]?.label ?? v}</span>
-                  <span className="ohf-gct-chip-hint">{BITRATE_LABEL[v]?.hint ?? ""}</span>
+                  {direction}
                 </button>
-              ))}
+                {directionOpen && (
+                  <div className="ohf-gct-direction-menu" role="menu" aria-label="방향">
+                    {(["시퀄", "프리퀄"] as const).map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={direction === opt}
+                        className="ohf-gct-direction-item"
+                        data-on={direction === opt || undefined}
+                        onClick={() => {
+                          setDirection(opt);
+                          setDirectionOpen(false);
+                        }}
+                      >
+                        <span className="ohf-gct-direction-label">{opt}</span>
+                        <span className="ohf-gct-direction-hint">
+                          {opt === "시퀄" ? "끝난 뒤 이어가기" : "시작 앞부분 만들기"}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* HF의 모델 트리거 — 실측 302x54, 라벨 12px white/.6 + 값 14px에
+                브랜드 아이콘(노랑)이 값 뒤에 따라온다. */}
+            <Dial label="모델" value={model.label} open={openMenu === "모델"} onOpen={setOpenMenu} hf>
+              <ModelPanel
+                activeId={model.id}
+                onPick={(id) => {
+                  onModel(id);
+                  setOpenMenu(null);
+                }}
+              />
+            </Dial>
+
+            {/* HF의 설정 그리드 — grid-cols-2 gap-2, 셀 147x54(r12 white/5,
+                라벨 위·값 아래 2단 + chevron 우). */}
+            <div className="ohf-gct-grid">
+              <Dial
+                label="길이"
+                value={`${curDuration}s`}
+                open={openMenu === "길이"}
+                onOpen={setOpenMenu}
+                hf
+              >
+                <div className="ohf-gct-panel-title">총 길이</div>
+                <div className="ohf-gct-chiprow">
+                  <span className="ohf-gct-chip ohf-gct-chip--on">{curDuration}s</span>
+                  {DURATION_PRESETS.filter((v) => v !== curDuration).map((v) => (
+                    <button
+                      key={v}
+                      type="button"
+                      className="ohf-gct-chip"
+                      disabled={duration?.type !== "range" || v < duration.min || v > duration.max}
+                      onClick={() => onSetting({ duration: v })}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </div>
+                {duration?.type === "range" && (
+                  <input
+                    type="range"
+                    className="ohf-gct-range"
+                    min={duration.min}
+                    max={duration.max}
+                    step={duration.step ?? 1}
+                    value={curDuration}
+                    onChange={(e) => onSetting({ duration: Number(e.target.value) })}
+                  />
+                )}
+              </Dial>
+
+              <Dial label="종횡비" value={curAspect} open={openMenu === "종횡비"} onOpen={setOpenMenu} hf>
+                {aspect?.type === "enum" ? (
+                  <div className="ohf-gct-chiprow">
+                    {aspect.values.map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        className="ohf-gct-chip"
+                        data-on={v === curAspect || undefined}
+                        onClick={() => onSetting({ aspectRatio: v })}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="ohf-gct-deferred">이 모델은 종횡비 설정을 받지 않습니다.</p>
+                )}
+              </Dial>
+
+              <Dial label="품질" value={curResolution} open={openMenu === "품질"} onOpen={setOpenMenu} hf>
+                {resolution?.type === "enum" ? (
+                  <div className="ohf-gct-chiprow">
+                    {resolution.values.map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        className="ohf-gct-chip"
+                        data-on={v === curResolution || undefined}
+                        onClick={() => onSetting({ resolution: v })}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="ohf-gct-deferred">이 모델은 품질 선택을 받지 않습니다.</p>
+                )}
+              </Dial>
+
+              <Dial
+                label="비트레이트"
+                value={BITRATE_LABEL[curBitrate]?.label ?? curBitrate}
+                open={openMenu === "비트레이트"}
+                onOpen={setOpenMenu}
+                hf
+              >
+                {bitrate?.type === "enum" ? (
+                  <div className="ohf-gct-chiprow ohf-gct-chiprow--stack">
+                    {bitrate.values.map((v) => (
+                      <button
+                        key={v}
+                        type="button"
+                        className="ohf-gct-chip"
+                        data-on={v === curBitrate || undefined}
+                        onClick={() => onSetting({ bitrateMode: v })}
+                      >
+                        <span className="ohf-gct-chip-label">{BITRATE_LABEL[v]?.label ?? v}</span>
+                        <span className="ohf-gct-chip-hint">{BITRATE_LABEL[v]?.hint ?? ""}</span>
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="ohf-gct-deferred">이 모델은 비트레이트 선택을 받지 않습니다.</p>
+                )}
+              </Dial>
             </div>
-          ) : (
-            <p className="ohf-gct-deferred">이 모델은 비트레이트 선택을 받지 않습니다.</p>
-          )}
-        </Dial>
+          </div>
+        </div>
       </div>
 
-      <button
-        type="button"
-        className="ohf-gct-generate"
-        disabled={!prompt.trim() || !onGenerate}
-        onClick={onGenerate}
-      >
-        생성하기
-      </button>
+      {/* HF의 발: 생성 CTA는 스크롤 밖 우하단 좌정 — 실측 302x48 r12 노랑
+          rgb(209,254,23)에 글자 rgb(20,21,26) 16px/600, 크레딧 코인+숫자.
+          크레딧 80은 HF Seedance 2.5에서 실측한 정적 수치다(이 앱의 과금이
+          아님을 title로 밝힌다). 다른 모델은 HF 원본에서 코인이 렌더되지
+          않아 함께 렌더하지 않는다. disabled 근사: HF의 disabled 관례는
+          opacity-50이므로 같은 값으로 착지(정적 미러의 실측 근사). */}
+      <div className="ohf-gct-foot">
+        <button
+          type="button"
+          className="ohf-gct-cta"
+          disabled={!prompt.trim() || !onGenerate}
+          onClick={onGenerate}
+        >
+          <span className="ohf-gct-cta-label">생성하기</span>
+          {model.id === "seedance-2.5" ? (
+            <span className="ohf-gct-cta-credit" title="Higgsfield에서 실측한 크레딧 수 — 이 앱의 과금이 아닙니다">
+              <HfCoin />
+              <span className="ohf-gct-cta-num">80</span>
+            </span>
+          ) : null}
+        </button>
+      </div>
     </div>
   );
 }
@@ -1939,8 +2298,13 @@ export function GeneralCreateTabs({
         </div>
 
         <div className="ohf-gct-subtab-panels">
-          {/* Attached inputs first — the frames read before the words do. */}
-          <MediaStrip model={model} />
+          {/* Attached inputs first — the frames read before the words do.
+              단, 만들기 흐름은 예외: HF의 실측 위계에서 첨부는 레퍼런스
+              영역(드롭존 바로 아래)에 붙으므로 MediaStrip이 MakeBody 패널
+              안에 자체 렌더된다(중복을 막기 위해 여기서 생략). 편집·
+              Motion·오디오 흐름은 HF의 첨부 위치가 이 런에서 미실측이라
+              기존 배치를 유지한다. */}
+          {surface === "audio" || active !== "비디오 만들기" ? <MediaStrip model={model} /> : null}
           {body}
         </div>
       </div>
@@ -2005,7 +2369,12 @@ export const generalCreateTabsStyle = `
   color:var(--tx);
   font-size:14px; font-weight:500;
 }
-.ohf-gct-lay{ display:flex; flex-direction:column; align-items:stretch; gap:.75rem; flex:1; min-width:0; }
+.ohf-gct-lay{ display:flex; flex-direction:column; align-items:stretch; gap:0; flex:1; min-width:0; }
+/* t_edb910c3 실측: HF의 스트립→콘텐츠 간격은 0(y93에서 콘텐츠가 바로 시작,
+   콘텐츠 좌측은 판의 p-2로 x25). 단 편집·Motion·오디오 흐름의 첨부와 바디
+   자리는 HF에서 미실측이라 기존 시각적 등가(스트립 아래 12px)를 margin으로
+   유지한다 — lay의 gap을 0으로 낮추는 대신 여기서 되돌린다. */
+.ohf-gct-subtab-panels > .ohf-strip{ margin-top:.75rem; }
 /* the subtab strip — HF's horizontal tabs with bottom-border indicator.
    HF live 재실측(:9222, 2026-11-04): strip pad 12px 16px 0, gap 12px,
    overflow-x auto, border 없음; 탭 pad 0, h36(=14px/500 라인), 활성
@@ -2206,6 +2575,221 @@ export const generalCreateTabsStyle = `
   appearance:none; cursor:pointer; border:0; background:transparent;
   color:var(--tx2); font-size:16px; line-height:1; padding:.1rem .3rem;
 }
+/* ============================================================================
+   t_edb910c3 — HF 좌측 생성 판 내부 전량 이식(operator 지시 "4 전부다 HF 이식
+   — 똑같이 베껴"). 정본: CDP :9222 라이브 실측 2026-11-04(1440x900,
+   hf_tree.json·hf_details.json·hf_outline.txt)로 OH↔HF 동값 착지.
+   기하·색·radius·서체·간격은 실측 그대로. HF에서 display:none이던 요소는
+   미렌더로 동값이며(hf_details의 mix disp:none), 실측 없는 상태(확장 슬롯의
+   세부 등)는 해당 마크업 주석이 밝힌다.
+   ========================================================================== */
+.ohf-gct-makeflow{ display:flex; flex-direction:column; flex:1; min-height:0; gap:0; }
+.ohf-gct-make-scroll{
+  flex:1; min-height:0; display:flex; flex-direction:column; gap:8px;
+  padding:8px 8px 0; overflow-y:auto; scrollbar-width:none;
+}
+.ohf-gct-make-scroll::-webkit-scrollbar{ display:none; }
+/* ---- 피겨 카드 — 실측 FIELDSET>FIGURE 302x130 @25,101 r12 ovY hidden ----
+   video 302x130 object-fit cover(HF의 video radius 6, 실측 rect 동값);
+   figcaption 하단 pad 0 6px 12px 12px(pb-3 pl-3 pr-1.5 실측 환산),
+   brand 'General' Space Grotesk 20/700 uppercase -0.01em lh28
+   rgb(209,254,23) + truncate, name 12/400 rgba(255,255,255,.8) lh18;
+   배지 컨테이너 top6 right6 gap4(실측 배지행 x263 y107). */
+.ohf-gct-figure-wrap{ margin:0; padding:0; border:0; min-width:0; }
+.ohf-gct-figure{
+  position:relative; margin:0; width:100%; height:130px;
+  border-radius:12px; overflow:hidden; user-select:none;
+}
+.ohf-gct-figure-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:6px; }
+.ohf-gct-figure-caption{
+  position:absolute; left:0; right:0; bottom:0; z-index:10; width:100%;
+  padding:0 6px 12px 12px; box-sizing:border-box;
+}
+.ohf-gct-figure-brand{
+  margin:0; font-family:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size:20px; font-weight:700; letter-spacing:-1%; text-transform:uppercase;
+  line-height:28px; color:rgb(209, 254, 23);
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.ohf-gct-figure-name{
+  margin:0; font-size:12px; font-weight:400; line-height:18px;
+  color:rgba(255, 255, 255, .8);
+  overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.ohf-gct-figure-badges{ position:absolute; top:6px; right:6px; z-index:2; display:flex; gap:4px; }
+.ohf-gct-figure-badge{
+  appearance:none; cursor:default; font:inherit; display:inline-grid;
+  grid-auto-flow:column; align-items:center; justify-content:center; gap:4px;
+  padding:0 8px; height:24px; max-width:100%; overflow:hidden;
+  background:rgba(27, 27, 27, .3); border:1px solid rgba(255, 255, 255, .06);
+  border-radius:8px; color:rgb(255, 255, 255); font-size:12px; font-weight:500;
+}
+.ohf-gct-figure-badge-text{ overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+/* ---- 세그먼트 탭 — 실측 302x40 @25,239 bg white/.5 border white/.1 r12
+   pad3 gap4; 탭 145x32 @29,243 r8 pad 4px 8px gap4, 12px/500;
+   선택=white, 비선택=rgba(255,255,255,.5); 인디케이터 투명+border white/.05
+   (HF의 tone-glass — 실측 bg 투명·border 실재), hover 시 bg. ---- */
+.ohf-gct-segwrap{ position:relative; display:flex; flex-direction:column; }
+.ohf-gct-seg{
+  position:relative; display:flex; width:100%; gap:4px; padding:3px;
+  background:rgba(255, 255, 255, .05); border:1px solid rgba(255, 255, 255, .1);
+  border-radius:12px; box-sizing:border-box;
+}
+.ohf-gct-seg-tab{
+  appearance:none; cursor:pointer; font:inherit; flex:1;
+  display:inline-flex; align-items:center; justify-content:center; gap:4px;
+  height:32px; padding:4px 8px; border:0; border-radius:8px;
+  background:transparent; color:rgba(255, 255, 255, .5);
+  font-size:12px; font-weight:500; transition:background-color .15s,color .15s;
+}
+.ohf-gct-seg-tab:hover{ background:rgba(255, 255, 255, .05); color:rgb(255, 255, 255); }
+.ohf-gct-seg-tab[data-on]{ background:transparent; color:rgb(255, 255, 255); }
+.ohf-gct-seg-tab svg{ flex:none; }
+.ohf-gct-seg-ind{
+  position:absolute; top:3px; bottom:3px; left:3px; pointer-events:none;
+  width:calc((100% - 10px) / 2);
+  border:1px solid rgba(255, 255, 255, .05); border-radius:8px;
+  background:transparent;
+}
+.ohf-gct-seg-ind[data-side="right"]{ left:auto; right:3px; }
+.ohf-gct-panel{ display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+/* ---- 드롭존(HF의 attach 블록) — 실측 outer 302x168 gap12 pad4 bg white/.5
+   r12; inner 294x148 pad16 gap12 r8에 halo(절대 좌표·pointer-events none)와
+   full-face hit button(z-10); 서클 36px 3종 -8px 중첩: fill rgb(28,30,32)
+   반마디+ring border rgba(197,197,197,.3)·bg white/.4(실측 rect x130,158,186);
+   아이콘은 16px에 HF의 세로 그라데이션(#fff→#EDEDED .3); 텍스트 gap6 —
+   라벨 14/600 rgb(247,247,248), 힌트 12/400 rgb(130,130,130)(실측 y376/398). ---- */
+.ohf-gct-drop{
+  position:relative; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:12px; width:100%; padding:4px;
+  background:rgba(255, 255, 255, .05); border-radius:12px; box-sizing:border-box;
+}
+.ohf-gct-drop-inner{
+  position:relative; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:12px; width:100%; height:160px; padding:16px;
+  border-radius:8px; box-sizing:border-box;
+}
+.ohf-gct-drop-halo{ position:absolute; inset:0; border-radius:8px; pointer-events:none; }
+.ohf-gct-drop-hit{
+  position:absolute; inset:0; z-index:10; border:0; border-radius:inherit;
+  background:transparent; cursor:pointer; padding:0; appearance:none; font:inherit;
+}
+.ohf-gct-drop-hit[data-off]{ cursor:not-allowed; }
+.ohf-gct-drop-circles{ isolation:isolate; display:flex; align-items:center; }
+.ohf-gct-badge-circle{
+  position:relative; display:flex; width:36px; height:36px; flex:none;
+  align-items:center; justify-content:center;
+}
+.ohf-gct-badge-circle + .ohf-gct-badge-circle{ margin-left:-8px; }
+.ohf-gct-badge-fill{ position:absolute; inset:0; border-radius:9999px; background:rgb(28, 30, 32); }
+.ohf-gct-badge-ring{
+  position:absolute; inset:0; border-radius:9999px;
+  border:1px solid rgba(197, 197, 197, .3); background:rgba(255, 255, 255, .04);
+}
+.ohf-gct-badge-ic{ position:relative; display:flex; width:16px; height:16px; }
+.ohf-gct-drop-text{ display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; }
+.ohf-gct-drop-title{ font-size:14px; font-weight:600; line-height:16px; color:rgb(255, 255, 255); }
+.ohf-gct-drop-hint{ font-size:12px; font-weight:400; line-height:16px; color:rgb(130, 130, 130); }
+/* ---- 프롬프트 박스 — 실측 block 302x160(min-h-40 max-h-64), pbox 116 +
+   발 44(pad 8 12 12 = p-3 pt-2 실측, r 0 0 12 12, bg white/.5); 레이블은
+   박 안에 절대 top12 left12, 14px/500 rgb(247,247,248)(실측 y475=463+12);
+   필드 pad 36px 12px 12px에 14px/400 lh20(실측 텍스트 y499=463+36); 발의
+   위젯 24px r8 pad 4px 6px gap6 12px/500 white(실측 54x24/43x24). ---- */
+.ohf-gct-pblock{
+  display:flex; flex-direction:column; width:100%;
+  min-height:160px; max-height:256px; box-sizing:border-box;
+}
+.ohf-gct-pbox{
+  position:relative; flex:none; height:116px; overflow-y:auto;
+  background:rgba(255, 255, 255, .05); border-radius:12px; scrollbar-width:none;
+}
+.ohf-gct-pbox::-webkit-scrollbar{ display:none; }
+.ohf-gct-pbox-label{
+  position:absolute; top:12px; left:12px; margin:0; pointer-events:none;
+  font-size:14px; font-weight:500; line-height:16px; color:rgb(255, 255, 255);
+}
+.ohf-gct-pbox-field{
+  appearance:none; width:100%; min-height:116px; box-sizing:border-box;
+  border:0; background:transparent; color:rgb(247, 247, 248); font:inherit;
+  font-size:14px; font-weight:400; line-height:20px;
+  padding:36px 12px 12px; resize:none; outline:none; overflow-y:auto;
+}
+.ohf-gct-pbox-field::placeholder{ color:rgb(130, 130, 130); }
+.ohf-gct-pbox-foot{
+  background:rgba(255, 255, 255, .05); border-radius:0 0 12px 12px;
+  padding:8px 12px 12px; display:flex; flex-wrap:wrap; gap:4px;
+}
+.ohf-gct-pbox-group{ display:flex; align-items:center; gap:6px; }
+.ohf-gct-el-btn{
+  appearance:none; cursor:pointer; font:inherit;
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:4px 6px; height:24px; border:0; border-radius:8px;
+  background:rgba(255, 255, 255, .05); color:rgb(255, 255, 255);
+  font-size:12px; font-weight:500;
+}
+.ohf-gct-el-btn[data-off]{ cursor:not-allowed; }
+.ohf-gct-el-on{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:4px 6px; height:24px; border-radius:8px; cursor:pointer;
+  background:rgba(255, 255, 255, .05); color:rgb(255, 255, 255);
+  font-size:12px; font-weight:500;
+}
+.ohf-gct-el-on[data-off]{ cursor:not-allowed; }
+.ohf-gct-el-check{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+/* ---- HF의 트리거·설정 셀(h-13.5 = 54px) — 실측 트리거 302x54 @25,631 /
+   셀 147x54 @25,693·x180: bg white/.5 r12 pad 8px 12px; 2단 스택 gap4 —
+   라벨 12px/500 rgba(255,255,255,.6) lh16 + 값 14px/500 rgb(247,247,248)
+   lh20(모델 값에 노랑 브랜드 아이콘); chevron 우 white/.6. hover는 실측
+   hoverCls의 white/.08 계열로 착지. ---- */
+.ohf-gct-hbtn{
+  appearance:none; cursor:pointer; font:inherit; width:100%; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  height:54px; min-height:54px; padding:8px 12px; border:0; border-radius:12px;
+  background:rgba(255, 255, 255, .05); color:inherit; text-align:left;
+  font-size:16px;
+  transition:background-color .15s;
+}
+/* HF의 모델 트리거만 grid 1fr auto(computed display:grid·justify normal 실측,
+   셀은 flex space-between 실측 — 두 기하를 HF의 속성 후크 [data-model-select-
+   trigger]로 갈라 동값을 지킨다). */
+.ohf-gct-hbtn[data-model-select-trigger]{
+  display:grid; grid-template-columns:1fr auto; align-items:center;
+}
+.ohf-gct-hbtn:hover{ background:rgba(255, 255, 255, .08); }
+.ohf-gct-hbtn[data-active]{ background:rgba(255, 255, 255, .08); }
+.ohf-gct-hcol{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; min-width:0; }
+.ohf-gct-hname{ font-size:12px; font-weight:500; line-height:16px; color:rgba(255, 255, 255, .6); }
+.ohf-gct-hval{
+  display:flex; align-items:center; gap:4px; min-width:0;
+  font-size:14px; font-weight:500; line-height:20px; color:rgb(247, 247, 248);
+}
+.ohf-gct-hval-text{ overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.ohf-gct-hic{ width:16px; height:16px; flex:none; color:rgb(209, 254, 23); }
+.ohf-gct-hchev{ width:16px; height:16px; flex:none; color:rgba(255, 255, 255, .6); }
+/* ---- HF의 발(CTA 좌정) — 실측 pad 0 8px 12px + rounded-b-2xl(16px);
+   CTA 302x48 @25,811 r12 bg rgb(209,254,23) 글자 rgb(20,21,26) 16px/600
+   pad 0 16px 2px gap8; 크레딧은 코인 20px + 숫자 16/600 tabular.
+   active 시 HF의 active:scale-97(실측 클래스 원문)을 .97로 착지. disabled 근사:
+   HF의 공통 관례 disabled:opacity-50를 same-value로 착지(정적 미러의 실측 근사).
+   HF의 그리드 끝(809)과 발(811) 사이 2px는 발 자체의 padding이 아니라 실측
+   간격이므로 margin-top:2px로 착지(발 pad 원문은 top 0가 정본). ---- */
+.ohf-gct-foot{
+  position:relative; flex:none; width:100%; box-sizing:border-box;
+  margin-top:2px; padding:0 8px 12px; border-radius:0 0 16px 16px;
+}
+.ohf-gct-cta{
+  appearance:none; cursor:pointer; font:inherit; width:100%; box-sizing:border-box;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  height:48px; padding:0 16px 2px; border:0; border-radius:12px;
+  background:rgb(209, 254, 23); color:rgb(20, 21, 26);
+  font-size:16px; font-weight:600; line-height:24px;
+  transition:transform .2s;
+}
+.ohf-gct-cta:active{ transform:scale(.97); }
+.ohf-gct-cta[disabled]{ cursor:not-allowed; opacity:.5; }
+.ohf-gct-cta-credit{ display:inline-flex; align-items:center; gap:2px; }
+.ohf-gct-cta-credit svg{ width:20px; height:20px; color:rgb(20, 21, 26); }
+.ohf-gct-cta-num{ font-size:16px; font-weight:600; color:rgb(20, 21, 26); font-variant-numeric:tabular-nums; }
 /* ---- the fullscreen Draw modal ---- */
 .ohf-gct-draw{
   position:fixed; inset:0; z-index:1200;
