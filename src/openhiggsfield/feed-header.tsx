@@ -16,7 +16,9 @@ import {
   FeedCalendarIcon,
   FeedFilterIcon,
   FeedFitIcon,
+  FeedGuideIcon,
   FeedModelIcon,
+  FeedRecordIcon,
   FeedViewIcon,
   SparkIcon,
 } from "./icons";
@@ -472,7 +474,7 @@ function ChipStrip() {
   );
 }
 
-export function FeedHeader() {
+export function FeedHeader({ feedTabs = false }: { feedTabs?: boolean }) {
   /* Only one dial is open at a time; the filter dial additionally tracks which
      of its two rows is reaching into a submenu. */
   const [open, setOpen] = useState<"filter" | "view" | null>(null);
@@ -488,6 +490,38 @@ export function FeedHeader() {
 
   return (
     <div className="ohf-feed-header" ref={dismiss}>
+      {/* t_b8a39dd7 — HF의 feed 컬럼 헤더 좌측 role=tab 2종(실측 기록 x361 y55
+          w58 h32 · 이용 방법 x423 y55 w83 h32, 12px/500, radius 8). 이 화면에는
+          아직 실제 패널 배선이 없어 관례대로 honest inert로 착지:
+          aria-disabled + data-off. HF의 image surface에는 이 탭이 없어
+          (라이브 실측 tabs=[]) video/audio 분기에서만 렌더하는 feedTabs 게이트. */}
+      {feedTabs ? (
+        <div className="ohf-feed-header-tabs" role="tablist" aria-label="피드 뷰">
+        <button
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-disabled="true"
+          data-off=""
+          data-active="true"
+          className="ohf-feed-header-tab"
+        >
+          <FeedRecordIcon size={16} />
+          <span>기록</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-disabled="true"
+          data-off=""
+          className="ohf-feed-header-tab"
+        >
+          <FeedGuideIcon size={16} />
+          <span>이용 방법</span>
+        </button>
+        </div>
+      ) : null}
       <div className="ohf-feed-header-left">
         <ChipStrip />
       </div>

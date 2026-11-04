@@ -574,6 +574,24 @@ export function FeedViewIcon({ size = 16 }: IconProps) {
   );
 }
 
+/* t_b8a39dd7 — the feed header tab glyphs, lifted verbatim from the live
+   기록 / 이용 방법 tabs on :9222 (q-tabs-tab svgs, 24-unit box, round caps). */
+export function FeedRecordIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M2.75 4.75v13.5a1 1 0 0 0 1 1h16.5a1 1 0 0 0 1-1V7.75a1 1 0 0 0-1-1h-7.715a1 1 0 0 1-.832-.445l-1.406-2.11a1 1 0 0 0-.832-.445H3.75a1 1 0 0 0-1 1" />
+    </svg>
+  );
+}
+
+export function FeedGuideIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M12 21.25a3.66 3.66 0 0 0-1.35-1.478 3.64 3.64 0 0 0-1.927-.522H2.75a1 1 0 0 1-1-1V5.75a1 1 0 0 1 1-1H9a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6.25a1 1 0 0 1 1 1v12.5a1 1 0 0 1-1 1h-5.973a3.64 3.64 0 0 0-1.926.522A3.66 3.66 0 0 0 12 21.25m0-13.5v13.5" />
+    </svg>
+  );
+}
+
 /* The four-point sparkle that opens the model submenu. */
 export function FeedModelIcon({ size = 16 }: IconProps) {
   return (

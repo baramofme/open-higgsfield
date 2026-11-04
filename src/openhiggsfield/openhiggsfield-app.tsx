@@ -1519,7 +1519,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 />
               </div>
               <div className="ohf-feed-col">
-                <FeedHeader />
+                <FeedHeader feedTabs />
                 <Gallery
                   view={view}
                   surface={surface}

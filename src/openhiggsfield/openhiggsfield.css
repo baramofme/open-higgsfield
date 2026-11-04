@@ -20028,34 +20028,48 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   gap: 8px;
   padding: 0 16px 8px;
 }
+/* HF's left create column: bounded plate — opaque bg rgb(19,21,23), 20px radius,
+   1px border rgba(217,217,217,.04), overflow-hidden with max-height clamp.
+   Measured at y=44 h=828 on :9222 (CDP hf_probe_r2/r4). */
 .ohf-create-col {
   min-height: 0;
-  overflow-y: auto;
+  max-height: 100%;
+  overflow-y: hidden;
+  align-self: start;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  /* HF's column area has essentially no bg elevation above page bg (#0F1113 vs
-     #131517 — barely visible). Visual separation comes from the inner form card
-     (--s3 ≈ #2A2E31) rather than the column container. */
-  background: transparent;
+  background: rgb(19, 21, 23);
+  border: 1px solid rgba(217, 217, 217, 0.04);
+  border-radius: 20px;
 }
+/* HF's feed column: transparent bg plate with 20px radius and
+   1px border rgba(255,255,255,.1), overflow-hidden (gallery scrolls internally).
+   Inner padding 0 16px 16px 16px. Measured on :9222 feedPlate + feedInner. */
 .ohf-feed-col {
   min-height: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  padding: 0 16px 16px;
 }
 .ohf-feed-col .ohf-gallery {
   flex: 1;
   min-height: 0;
+  overflow-y: auto;
   padding-bottom: 8px;
 }
 /* HF's topbar has no distinct bg — it blends with the page. Override the
-   in-flow topbar definition to transparent. */
+   in-flow topbar definition to transparent. Padding 4px 14px makes total
+   height 44px (4 + tallest-child 36 + 4 = 44, HF y=44 on :9222). */
 .ohf-topbar {
   background: transparent;
   border-bottom: none;
   min-height: 42px;
+  padding: 4px 14px;
 }
 /* HF's create card bg ≈ #2A2E31 (42,46,49) ≈ --s3 — closer to HF's form card. */
 .ohf-gct-subtab-body {
@@ -20066,5 +20080,54 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
    (HF's layout has no selection bar; OHF's rides along in the column). */
 .ohf-create-col .ohf-selbar {
   align-self: center;
+}
+/* HF feed header row: pad 8px 0 12px 0, gap 12 (measured on :9222).
+   Tabs 기록/이용 방법 at left, 필터/보기 dials at right (justify-between). */
+.ohf-create-feed-grid .ohf-feed-header {
+  padding: 8px 0 12px;
+  margin-top: 0;
+}
+/* HF feed header tab group (q-tabs segmented glass, 12px/500 weight, 8px radius). */
+.ohf-feed-header-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+.ohf-feed-header-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.ohf-feed-header-tab[data-active="true"] {
+  color: rgb(255, 255, 255);
+  border-color: transparent;
+}
+.ohf-feed-header-tab[data-off] {
+  cursor: default;
+  pointer-events: none;
+}
+/* HF filter/view dials in feed header: h=36, radius=10, pad=4px 12px,
+   fontSize=16, bg=rgba(255,255,255,0.02), color=rgb(137,138,139). */
+.ohf-create-feed-grid .ohf-feed-dial-btn {
+  height: 36px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: rgb(137, 138, 139);
+  font-size: 16px;
 }
 
