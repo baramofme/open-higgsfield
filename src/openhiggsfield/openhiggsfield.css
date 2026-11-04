@@ -20027,15 +20027,21 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   grid-template-columns: 20rem minmax(0, 1fr);
   gap: 8px;
   padding: 0 16px 8px;
+  /* HF reserves 20px below the grid: area-[main] h856 vs grid h836
+     (areaBottomGap=20, r2_feed live). The 20px reserve makes the grid row
+     content 828px so both plates clamp to HF's h828. */
+  margin-bottom: 20px;
 }
 /* HF's left create column: bounded plate — opaque bg rgb(19,21,23), 20px radius,
    1px border rgba(217,217,217,.04), overflow-hidden with max-height clamp.
-   Measured at y=44 h=828 on :9222 (CDP hf_probe_r2/r4). */
+   Measured at y=44 h=828 on :9222 (CDP hf_probe_r2/r4). Plate align-self is
+   flex-start on HF (plateCS live: 'flex-start') — content-sized, clamped by
+   max-height:100% of the grid row. */
 .ohf-create-col {
-  min-height: 0;
+  min-height: 100%;
   max-height: 100%;
   overflow-y: hidden;
-  align-self: stretch;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   gap: 8px;
