@@ -37,6 +37,12 @@ export type ModelEntry = {
   settings: Record<string, SettingField>;
   /** Submit paths when the shared mapper is enough. Soul, Kling 3, and Seedance keep custom maps. */
   paths?: PlatformPaths;
+  /** Opt-in guard for slot-absent lanes: when true, the transport drops dead
+      `@동영상N` / `@오디오N` literals before the prompt reaches the text encoder.
+      Default absent = OFF, so a stored prompt renders exactly as it did before
+      this flag existed (t_094811e6 — the strip is noise removal and a render
+      change at once, which is why it ships opt-in, not on). */
+  stripDeadMediaRefs?: boolean;
 };
 
 export type GenerationPlane = {
