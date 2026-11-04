@@ -893,11 +893,63 @@ export function Viewer({
               {showTab !== "comment" && (
                 <div className="ohf-viewer-rail-foot" data-tab={showTab} data-kind={kind}>
                   {showTab === "info" ? (
-                    <>
+                    kind === "audio" ? (
+                      /* HF's audio foot (the kp set off rdUc6zfL2zX8Fqj0.js): 다시
+                         만들기 wears the accent as the primary and 다운로드 sits
+                         beside it as a secondary tile — three columns each on the
+                         first row — while 좋아요 · 공유 · ⋯ split the second row two
+                         columns each. So the audio foot stands its five buttons as
+                         the rail's own grid children: the foot-row wrapper the image
+                         and the video use would drop the download onto a row of its
+                         own instead of the accent's, which is exactly the placement
+                         the source keeps on one line. */
+                      <>
+                        <button
+                          type="button"
+                          className="ohf-viewer-act-recreate"
+                          onClick={onReuse}
+                        >
+                          <RecreateGlyph />
+                          <span>다시 만들기</span>
+                        </button>
+                        <button
+                          type="button"
+                          className="ohf-viewer-act-download"
+                          onClick={() => onDownload()}
+                        >
+                          <DownloadGlyph />
+                          <span>다운로드</span>
+                        </button>
+                        <button
+                          type="button"
+                          className="ohf-viewer-act-like"
+                          aria-pressed={item.favorite === true}
+                          aria-label="좋아요"
+                          onClick={onFavorite}
+                        >
+                          <HeartGlyph filled={item.favorite === true} />
+                        </button>
+                        <button
+                          type="button"
+                          className="ohf-viewer-act-share"
+                          aria-label="공유"
+                          title="미디어 링크 복사"
+                          onClick={() => void navigator.clipboard?.writeText(url)}
+                        >
+                          <ShareGlyph />
+                        </button>
+                        <MoreMenu
+                          items={menuItems}
+                          label="자세히"
+                          className="ohf-viewer-act-more"
+                        />
+                      </>
+                    ) : (
+                      <>
                         {/* The full-width primary differs by asset type: an image sends
                           itself to video and a video re-runs itself — there is no
                           send-to-video for a video, so the rail's accent button
-                          changes with the kind. */}
+                          changes with the kind. (A sound keeps its own foot above.) */}
                       {kind === "image" ? (
                         <button
                           type="button"
@@ -920,7 +972,8 @@ export function Viewer({
                       )}
                       {/* The secondary set carries the reference and download moves
                           for both kinds here, and a video never repeats the recreate
-                          that already sits as its primary. */}
+                          that already sits as its primary. (A sound's own foot keeps
+                          its reactions on the grid above.) */}
                       <div className="ohf-viewer-foot-row">
                         <button
                           type="button"
@@ -952,7 +1005,7 @@ export function Viewer({
                           type="button"
                           className="ohf-viewer-act-share"
                           aria-label="공유"
-                          title="이미지 링크 복사"
+                          title="미디어 링크 복사"
                           onClick={() => void navigator.clipboard?.writeText(url)}
                         >
                           <ShareGlyph />
@@ -964,6 +1017,7 @@ export function Viewer({
                         />
                       </div>
                     </>
+                    )
                   ) : (
                     <>
                       <button

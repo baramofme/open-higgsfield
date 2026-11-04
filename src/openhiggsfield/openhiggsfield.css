@@ -14866,6 +14866,86 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-color: transparent;
   font-weight: 600;
 }
+
+/* t_64c160d1 — the audio foot reconciles with HF's kp set (the audio job's rail
+   foot in production): 다시 만들기 wears the accent as the primary and 다운로드
+   sits beside it as a secondary tile, three columns each on the first row, then
+   좋아요 · 공유 · ⋯ split the second row two columns each. Only the audio kind
+   switches to this six-column grid; the image and the video keep the wide primary
+   and the wrapped row above untouched. The download tile is raised with
+   [type="button"] so a stranded audio-primary accent (an uncommitted sibling
+   rule that still styles the audio's download as a full-width primary) loses both
+   its placement and its hover until that card lands its own commit. */
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-recreate {
+  grid-column: span 3;
+  background: var(--accent);
+  border-color: transparent;
+  color: #101214;
+  font-weight: 600;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-recreate:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--accent);
+  border-color: transparent;
+  color: #101214;
+  filter: brightness(1.06);
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-download[type="button"] {
+  grid-column: span 3;
+  grid-row: auto;
+  justify-self: stretch;
+  width: auto;
+  background: var(--s3);
+  border-color: var(--line);
+  color: var(--tx);
+  font-weight: 500;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-download[type="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--s4);
+  border-color: var(--line);
+  color: var(--tx);
+}
+/* The three reactions share the second row the way the source's audio set spreads
+   them — two columns each, never the icon-only single of the image and video row. */
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-like,
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-share {
+  grid-column: span 2;
+  width: auto;
+  aspect-ratio: auto;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-more {
+  grid-column: span 2;
+  height: 100%;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-more .ohf-more-btn {
+  width: 100%;
+  height: 100%;
+}
+/* Under the sheet breakpoint the foot becomes a horizontal strip the way the
+   responsive block above turns every foot into one; the audio keeps its reading
+   order there — the accent first, the download next, then the three reactions. */
+@media (max-width: 768px) {
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-recreate {
+    flex: 1 1 100%;
+  }
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-download[type="button"] {
+    flex: 1 1 100%;
+    width: auto;
+  }
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-like,
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-share,
+  .ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-more {
+    flex: 1 1 0%;
+  }
+}
 .ohf-viewer-foot-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
