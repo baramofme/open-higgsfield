@@ -20,6 +20,18 @@ const MEDIA_ITEMS = [
   { id: "audio", label: "Audio" },
 ] as const;
 
+/* HF의 nav pill에 붙은 `신규` 배지 3종(t_2adadf77, :9222 라이브 재실측 2026-11-04).
+   배지의 담지 pill은 Shorts · Mangaka · Academy — 실측에서 배지 3개가 정확히 이
+   pill들(Shorts x454 안에 배지 x510, Mangaka x755 안에 x829, Academy x970 안에
+   x1046, 모두 y10 31×16)에 1:1로 매달렸다. OH nav에는 세 페이지가 없으므로
+   관례대로 honest inert로 HF의 순서(미디어 그룹 다음, studio 구분선 이전)에
+   착지하고, 배지 기하만 HF 원문값으로 이식한다. */
+const HF_NEW_ITEMS = [
+  { id: "shorts", label: "Shorts" },
+  { id: "mangaka", label: "Mangaka" },
+  { id: "academy", label: "Academy" },
+] as const;
+
 export function Topbar({
   view,
   onView,
@@ -92,6 +104,16 @@ export function Topbar({
                 </li>
               );
             })}
+            {HF_NEW_ITEMS.map((item) => (
+              /* HF에는 있고 OH에는 없는 세 페이지 — 클릭 없는 inert로 라벨과
+                 `신규` 배지만 HF 원문 그대로 걸어둔다. */
+              <li key={item.id}>
+                <button type="button" className="ohf-nav-item" aria-disabled="true" data-off="">
+                  {item.label}
+                  <span className="ohf-nav-badge">신규</span>
+                </button>
+              </li>
+            ))}
             <li className="ohf-nav-sep" aria-hidden />
             <li>
               <button type="button" className="ohf-nav-item" aria-disabled="true">

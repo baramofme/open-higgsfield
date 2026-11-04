@@ -592,6 +592,17 @@ export function FeedGuideIcon({ size = 16 }: IconProps) {
   );
 }
 
+/* HF guide 판을 끝내는 질문표 glyph — "Seedance 더 알아보기" 버튼의 아이콘.
+   라이브 실측(t_2adadf77, :9222 2026-11-04)의 path 원문 그대로 이식했다. */
+export function FeedMoreInfoIcon({ size = 16 }: IconProps) {
+  return (
+    <svg {...base24(size)}>
+      <path d="M12 15.75c0-4.25 4.25-3.317 4.25-6.976 0-4.987-7.385-5.446-8.388-.774" />
+      <path d="M12 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+    </svg>
+  );
+}
+
 /* The four-point sparkle that opens the model submenu. */
 export function FeedModelIcon({ size = 16 }: IconProps) {
   return (

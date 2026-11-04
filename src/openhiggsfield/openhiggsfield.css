@@ -20111,8 +20111,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   padding: 8px 0 12px;
   margin-top: 0;
 }
-/* HF feed header tab group (q-tabs segmented glass, 12px/500 weight, 8px radius). */
+/* HF feed header tab group (q-tabs segmented glass, 12px/500 weight, 8px radius).
+   position:relative는 indicator가 선택 탭의 offset을 읽는 기준점(t_2adadf77). */
 .ohf-feed-header-tabs {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -20143,6 +20145,179 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   cursor: default;
   pointer-events: none;
 }
+/* ── t_2adadf77 — 탭 실배선 + HF 쇼케이스·가이드 판 + nav 신규 배지 ──────
+   :9222 라이브 재실측(2026-11-04, 1440×900)의 원문 기하·도색을 그대로 이식. */
+
+/* HF의 segmented glass는 선택된 탭 위에 q-tabs-indicator를 겹쳐 입힌다(실측:
+   선택 탭과 동 rect — 기록 x361 y55 58×32, bg transparent,
+   border rgba(255,255,255,.05), radius 8,
+   shadow 0 2px 2px rgba(0,0,0,.12) + inset 0 2px 3px rgba(255,255,255,.05)).
+   기하는 feed-header의 sync effect이 선택 탭의 offsetLeft/offsetWidth를
+   읽어 transform/width로 심는다. */
+.ohf-feed-header-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 12%),
+    inset 0 2px 3px 0 rgb(255 255 255 / 5%);
+  pointer-events: none;
+  transition:
+    transform 0.15s var(--ease),
+    width 0.15s var(--ease);
+}
+
+/* HF의 guide 상태는 필터/보기 클러스터에 invisible을 얹는다(실측 cls:
+   'flex items-center gap-2 invisible' x1255 y53 152×36) — 자리 유지, 페인트만 감춤. */
+.ohf-feed-header-dials[data-hidden="true"] {
+  visibility: hidden;
+}
+
+/* 쇼케이스 판의 SECTION(실측 px-8 py-24 flex flex-col self-start w-full:
+   pad 96px 32px, x361 y101 1046×620, transparent·radius0·overflow visible).
+   HF의 기본 상태에서는 래퍼 없이 컬럼에 직접 놓인다 — 그대로 flex:none. */
+.ohf-feed-showcase {
+  flex: none;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 96px 32px;
+}
+/* HEADER mb-8 = 32px. */
+.ohf-feed-showcase-head {
+  margin-bottom: 32px;
+}
+/* brand-h-md-caps-bold: 40/700 uppercase, lh48, mb8, color(247,247,248), align start.
+   Hangul은 Space Grotesk의 라틴 서브셋 밖이라 HF와 OH 모두 같은 폴백으로
+   렌더된다(동일 스택 — 동값 유지). */
+.ohf-feed-showcase-title {
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--tx);
+  margin-bottom: 8px;
+}
+/* text-sm text-font-secondary: 14/20, color(137,138,139). 실측 한 줄 h20. */
+.ohf-feed-showcase-sub {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--tx2);
+}
+/* grid-cols-3 gap-10 → 40px. 실측 셀 301×320 at x393/734/1074, y305. */
+.ohf-feed-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+/* FIGURE group relative w-full mb-4 rounded-2xl overflow-hidden — radius 16,
+   mb 16, aspect-ratio 1.31646/1(실측 301×228의 원천). */
+.ohf-feed-showcase-figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.31646 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+/* object-cover size-full — 프레임을 가득 채운다. */
+.ohf-feed-showcase-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* brand-h-xxs-caps-bold: 20/700 uppercase, lh28, mb8, color(247,247,248). */
+.ohf-feed-showcase-step-title {
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tx);
+  margin-bottom: 8px;
+}
+/* text-sm text-font-secondary: 14/20 — 실측 1·3단계 2줄(h40), 2단계 1줄(h20). */
+.ohf-feed-showcase-step-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--tx2);
+}
+
+/* 이용 방법 패널(실측): 쇼케이스를 hide-scrollbar 스크래퍼(flex-1, x361 y101
+   1046×714)에 담고, justify-end pt-8 푸터(1046×40, y815) 끝에 32×32 버튼 하나
+   (x1375 y823). 스크래퍼 바닥 y815과 푸터 꼭대기 y815가 붙는다 — HF의 gap-2.5는
+   외자식 래퍼에서 관측 공백 0이므로 기하만 미러한다(714+40=754). */
+.ohf-feed-guide {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ohf-feed-guide-scroll {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ohf-feed-guide-scroll::-webkit-scrollbar {
+  display: none;
+}
+.ohf-feed-guide-foot {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+/* 실측 도색 rgb(130,130,130)의 ghost icon 버튼. OH에는 "Seedance 더 알아보기"
+   문서 페이지가 없으므로 honest inert — 페인트와 기하만 미러한다. */
+.ohf-feed-guide-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: rgb(130, 130, 130);
+  cursor: default;
+}
+.ohf-feed-guide-more[data-off] {
+  pointer-events: none;
+}
+
+/* HF의 필터/보기 라벨은 버튼 박스(16px)보다 한 급 작은 14px/500로 적힌다
+   (실측 span.text-sm-medium w26 h20) — 버튼 폭 72·클러스터 폭 152가 여기서
+   나온다. 박스의 16px는 아이콘(16, currentColor)에만 걸린다. */
+.ohf-create-feed-grid .ohf-feed-dial-btn > span {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+/* nav의 `신규` 배지(실측 px-1.5 py-0.5: 31×16, pad 2px 6px, radius 6,
+   bg rgb(35,38,42)=--s2, color rgb(137,138,139)=--tx2, 10px/500). */
+.ohf-nav-badge {
+  flex: none;
+  height: 16px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--s2);
+  color: var(--tx2);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+}
+
 /* HF filter/view dials in feed header: h=36, radius=10, pad=4px 12px,
    fontSize=16, bg=rgba(255,255,255,0.02), color=rgb(137,138,139). */
 .ohf-create-feed-grid .ohf-feed-dial-btn {

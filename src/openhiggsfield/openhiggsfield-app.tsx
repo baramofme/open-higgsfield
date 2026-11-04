@@ -44,7 +44,8 @@ import {
 } from "./data";
 import { Gallery, type TileMenuActions } from "./gallery";
 import { AssetSidebar, type AssetScope, type SidebarCounts } from "./asset-sidebar";
-import { FeedHeader } from "./feed-header";
+import { FeedHeader, type FeedPanel } from "./feed-header";
+import { FeedGuide, FeedShowcase } from "./feed-showcase";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
 import { loadComments } from "./comments";
 import { CloseIcon, UndoIcon } from "./icons";
@@ -277,6 +278,10 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const [inpaintBusy, setInpaintBusy] = useState(false);
   const [outpaintBusy, setOutpaintBusy] = useState(false);
   const [view, setView] = useState<GalleryView>(surface);
+  /* HF의 피드 우측 컬럼 상태기계(t_2adadf77): 페이지가 열리면 쇼케이스 판이
+     기록 탭이 선택된 채 뜬다(HF 라이브 기본값과 동상태). 탭은 그 판만
+     갈아끼운다 — 기록은 로컬 히스토리, 이용 방법은 HF 가이드 정적 미러. */
+  const [feedPanel, setFeedPanel] = useState<FeedPanel>("showcase");
   const [focusNonce, setFocusNonce] = useState(0);
   /* The run the viewer last opened — HF flags exactly that asset on the tile. */
   const [lastViewedId, setLastViewedId] = useState("");
@@ -1519,7 +1524,15 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                 />
               </div>
               <div className="ohf-feed-col">
-                <FeedHeader feedTabs />
+                <FeedHeader feedTabs panel={feedPanel} onPanel={setFeedPanel} />
+                {feedPanel === "showcase" ? (
+                  /* 착지 전 기본 표시: 로컬 히스토리 타일 16개(241×241)를
+                     HF의 쇼케이스 판으로 전면 교체한 operator ruling의 결과.
+                     로컬 히스토리는 기록 탭을 눌러 되찾는다. */
+                  <FeedShowcase />
+                ) : feedPanel === "guide" ? (
+                  <FeedGuide />
+                ) : (
                 <Gallery
                   view={view}
                   surface={surface}
@@ -1547,6 +1560,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
                   cancelingIds={cancelingIds}
                   galleryRef={galleryRef}
                 />
+                )}
               </div>
             </div>
           ) : (

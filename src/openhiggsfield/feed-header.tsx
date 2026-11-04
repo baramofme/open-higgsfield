@@ -474,7 +474,21 @@ function ChipStrip() {
   );
 }
 
-export function FeedHeader({ feedTabs = false }: { feedTabs?: boolean }) {
+/* 피드 판의 세 가지 상태(t_2adadf77). HF의 라이브 상태기계 그대로:
+   showcase = 페이지가 열렸을 때의 기본값(HF는 기록 탭이 선택된 채 쇼케이스를
+   보여준다), record = 기록 탭이 고른 로컬 생성 히스토리, guide = 이용 방법
+   탭의 HF 가이드 판. 쇼케이스로 돌아오는 길은 HF에도 없다 — 재시작만. */
+export type FeedPanel = "showcase" | "record" | "guide";
+
+export function FeedHeader({
+  feedTabs = false,
+  panel = "showcase",
+  onPanel,
+}: {
+  feedTabs?: boolean;
+  panel?: FeedPanel;
+  onPanel?: (next: FeedPanel) => void;
+}) {
   /* Only one dial is open at a time; the filter dial additionally tracks which
      of its two rows is reaching into a submenu. */
   const [open, setOpen] = useState<"filter" | "view" | null>(null);
@@ -488,44 +502,95 @@ export function FeedHeader({ feedTabs = false }: { feedTabs?: boolean }) {
     if (open !== "filter") setSub(null);
   }, [open]);
 
+  /* HF의 q-tabs는 로빙 tabindex(선택 0·비선택 -1)와 화살표 이동을 쓴다 —
+     라이브 실측(기록 tabindex 0, 이용 방법 -1)을 미러한다. 언더라인처럼
+     따라붙는 glass indicator(q-tabs-indicator)는 선택된 탭의 기하를
+     옮겨입히므로 실측 폭·위치를 DOM에서 읽어 그대로 심는다. */
+  const tabsBox = useRef<HTMLDivElement>(null);
+  const indicator = useRef<HTMLSpanElement>(null);
+  const recordTab = useRef<HTMLButtonElement>(null);
+  const guideTab = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!feedTabs) return;
+    const sync = () => {
+      const box = tabsBox.current;
+      const ind = indicator.current;
+      if (!box || !ind) return;
+      const chosen = box.querySelector<HTMLElement>('[aria-selected="true"]');
+      if (!chosen) return;
+      ind.style.transform = `translateX(${chosen.offsetLeft}px)`;
+      ind.style.width = `${chosen.offsetWidth}px`;
+    };
+    sync();
+    window.addEventListener("resize", sync);
+    return () => window.removeEventListener("resize", sync);
+  }, [panel, feedTabs]);
+
+  const moveTab = (next: FeedPanel) => {
+    onPanel?.(next);
+    (next === "guide" ? guideTab : recordTab).current?.focus();
+  };
+
+  const onTabsKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    moveTab(panel === "guide" ? "record" : "guide");
+  };
+
   return (
     <div className="ohf-feed-header" ref={dismiss}>
-      {/* t_b8a39dd7 — HF의 feed 컬럼 헤더 좌측 role=tab 2종(실측 기록 x361 y55
-          w58 h32 · 이용 방법 x423 y55 w83 h32, 12px/500, radius 8). 이 화면에는
-          아직 실제 패널 배선이 없어 관례대로 honest inert로 착지:
-          aria-disabled + data-off. HF의 image surface에는 이 탭이 없어
-          (라이브 실측 tabs=[]) video/audio 분기에서만 렌더하는 feedTabs 게이트. */}
+      {/* t_b8a39dd7에서 honest inert로 착지했던 탭 2종(실측 기록 x361 y55 58×32 ·
+          이용 방법 x423 y55 83×32)을 본 카드에서 실배선으로 전환: 패널을
+          갈아끼우는 진짜 전환이므로 inert 마커(aria-disabled/data-off)를 떼었다.
+          HF의 image surface에는 이 탭이 없어(라이브 실측 tabs=[]) video/audio
+          분기에서만 렌더하는 feedTabs 게이트는 그대로 유지. */}
       {feedTabs ? (
-        <div className="ohf-feed-header-tabs" role="tablist" aria-label="피드 뷰">
-        <button
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-disabled="true"
-          data-off=""
-          data-active="true"
-          className="ohf-feed-header-tab"
+        <div
+          className="ohf-feed-header-tabs"
+          role="tablist"
+          aria-label="피드 뷰"
+          ref={tabsBox}
+          onKeyDown={onTabsKeyDown}
         >
-          <FeedRecordIcon size={16} />
-          <span>기록</span>
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-disabled="true"
-          data-off=""
-          className="ohf-feed-header-tab"
-        >
-          <FeedGuideIcon size={16} />
-          <span>이용 방법</span>
-        </button>
+          <span className="ohf-feed-header-indicator" ref={indicator} aria-hidden />
+          <button
+            type="button"
+            role="tab"
+            ref={recordTab}
+            aria-selected={panel !== "guide"}
+            data-active={panel !== "guide" ? "true" : "false"}
+            tabIndex={panel !== "guide" ? 0 : -1}
+            className="ohf-feed-header-tab"
+            onClick={() => moveTab("record")}
+          >
+            <FeedRecordIcon size={16} />
+            <span>기록</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            ref={guideTab}
+            aria-selected={panel === "guide"}
+            data-active={panel === "guide" ? "true" : "false"}
+            tabIndex={panel === "guide" ? 0 : -1}
+            className="ohf-feed-header-tab"
+            onClick={() => moveTab("guide")}
+          >
+            <FeedGuideIcon size={16} />
+            <span>이용 방법</span>
+          </button>
         </div>
       ) : null}
       <div className="ohf-feed-header-left">
         <ChipStrip />
       </div>
-      <div className="ohf-feed-header-dials">
+      {/* HF의 guide 상태는 필터/보기 클러스터에 invisible을 얹는다(실측:
+         gap-2 invisible, 자리 유지·투명). 같은 규칙을 data-hidden으로 미러. */}
+      <div
+        className="ohf-feed-header-dials"
+        data-hidden={panel === "guide" ? "true" : "false"}
+      >
         <div className="ohf-feed-dial">
           <button
             type="button"
