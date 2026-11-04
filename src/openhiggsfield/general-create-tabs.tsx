@@ -2006,24 +2006,28 @@ export const generalCreateTabsStyle = `
   font-size:14px; font-weight:500;
 }
 .ohf-gct-lay{ display:flex; flex-direction:column; align-items:stretch; gap:.75rem; flex:1; min-width:0; }
-/* the subtab strip — HF's horizontal tabs with bottom-border indicator. */
+/* the subtab strip — HF's horizontal tabs with bottom-border indicator.
+   HF live 재실측(:9222, 2026-11-04): strip pad 12px 16px 0, gap 12px,
+   overflow-x auto, border 없음; 탭 pad 0, h36(=14px/500 라인), 활성
+   언더라인 2px WHITE, 비활성 color rgba(255,255,255,.6)·언더라인 투명. */
 .ohf-gct-subtab-strip,.ohf-gct-rail{
   display:flex;
-  flex-direction:row; align-items:stretch; gap:0;
+  flex-direction:row; align-items:flex-start; gap:12px;
   width:100%; align-self:stretch;
-  background:transparent; border:0; border-bottom:1px solid var(--line);
-  border-radius:0; padding:0;
+  background:transparent; border:0; border-bottom:0;
+  border-radius:0; padding:12px 16px 0;
+  overflow-x:auto; scrollbar-width:none;
 }
 .ohf-gct-subtab{
   appearance:none; cursor:pointer; border:0; background:transparent;
-  color:var(--tx3); font:inherit; padding:.5rem .8rem; border-radius:0;
+  color:rgba(255, 255, 255, .6); font:inherit; padding:0; border-radius:0;
   border-bottom:2px solid transparent;
-  text-align:left; width:auto;
+  text-align:left; width:auto; height:36px; white-space:nowrap;
   transition:border-color .15s,color .15s;
 }
 .ohf-gct-subtab[data-active]{
-  background:transparent; color:var(--tx);
-  border-bottom-color:var(--accent);
+  background:transparent; color:rgb(255, 255, 255);
+  border-bottom-color:rgb(255, 255, 255);
 }
 .ohf-gct-subtab-panels{ flex:1; min-width:0; width:auto; display:flex; flex-direction:column; gap:.5rem; }
 .ohf-gct-subtab-body{
