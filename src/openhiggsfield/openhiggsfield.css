@@ -12193,7 +12193,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-nav-wrap {
   display: flex;
   align-items: center;
-  gap: 14px;
+  /* HF breathes 12px between the 20px glyph and the nav row: glyph ends x36, the
+     first pill starts x48 (harvested off :9222, 2026-11-05). */
+  gap: 12px;
   min-width: 0;
 }
 .ohf-brand {
@@ -12204,6 +12206,22 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   color: var(--tx);
   white-space: nowrap;
 }
+/* HF's brand is a 20×20 glyph at x16 y8 (harvested off :9222, 2026-11-05) — the
+   glyph replaces the wordmark wherever the glyph class is worn. */
+.ohf-brand--glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  color: var(--tx);
+}
+.ohf-brand--glyph svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
 .ohf-nav {
   min-width: 0;
   flex: 1 1 auto;
@@ -12213,7 +12231,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-nav-list {
   display: flex;
   align-items: center;
-  gap: 2px;
+  /* HF's pills sit edge-to-edge (이미지 ends x171 = 비디오 starts x171 — gap 0),
+     harvested off :9222, 2026-11-05. */
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -12231,7 +12251,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: var(--tx2);
+  /* HF paints every idle pill white/30 (measured on :9222 2026-11-05 — the pill
+     that is not the current page carries no other colour, live or inert). */
+  color: rgba(255, 255, 255, 0.3);
   white-space: nowrap;
   cursor: pointer;
   transition:
@@ -12245,18 +12267,23 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-nav-item:disabled,
 .ohf-nav-item[aria-disabled="true"] {
-  color: var(--tx3);
+  color: rgba(255, 255, 255, 0.3);
   cursor: default;
 }
+.ohf-nav-item:hover[aria-disabled="true"] {
+  background: transparent;
+}
+/* HF marks the current page by colour alone: the pill's label turns lime and the
+   plate stays transparent (비디오 = rgb(209,254,23), bg rgba(0,0,0,0)). */
 .ohf-nav-item[data-active="true"] {
-  background: var(--s3);
-  border-color: var(--line-2);
-  color: var(--tx);
+  background: transparent;
+  border-color: transparent;
+  color: var(--accent);
 }
 .ohf-nav-item[aria-pressed="true"] {
-  background: var(--accent-14);
-  border-color: var(--accent-32);
-  color: var(--tx);
+  background: transparent;
+  border-color: transparent;
+  color: var(--accent);
 }
 .ohf-nav-sep {
   width: 1px;
@@ -12264,6 +12291,36 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   flex: none;
   background: var(--line-2);
   margin: 0 6px;
+}
+/* HF's primary right group (harvested off :9222, 2026-11-05): Enterprise 90×24
+   in white/30 and 요금제 -30% 101×24 in lime, 14px/500, radius 10, pad 0 10px,
+   transparent plate. Both honest inert here — the studio carries neither page. */
+.ohf-nav-ent,
+.ohf-nav-price {
+  height: 24px;
+  padding: 0 10px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: default;
+}
+.ohf-nav-ent {
+  color: rgba(255, 255, 255, 0.3);
+}
+.ohf-nav-price {
+  color: var(--accent);
+}
+/* HF hangs the two primary pills 6px from the bar's top edge; the actions row
+   centres its taller controls, so these two ride the row's top with a 2px drop. */
+.ohf-nav-ent,
+.ohf-nav-price {
+  align-self: flex-start;
+  margin-top: 2px;
 }
 .ohf-nav-actions {
   display: flex;
@@ -20094,7 +20151,12 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   background: transparent;
   border-bottom: none;
   min-height: 42px;
-  padding: 4px 14px;
+  /* HF top-aligns its cluster inside the bar: brand x16 y8, pills start x48 y4,
+     Enterprise y6, hairline y12, badges y10 (harvested off :9222, 2026-11-05).
+     OH mirrors the same anchoring — a 4px pad from the top with flex-start puts
+     the 28px row exactly at y4 and centres the 20px glyph at y8 within it. */
+  align-items: flex-start;
+  padding: 4px 14px 0 16px;
 }
 /* HF's create card bg ≈ #2A2E31 (42,46,49) ≈ --s3 — closer to HF's form card. */
 .ohf-gct-subtab-body {
