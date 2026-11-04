@@ -16,17 +16,17 @@ import { swatchFor } from "./artwork";
 import { AssetPicker } from "./asset-picker";
 import { PROMPT_PLACEHOLDERS, countSetting } from "./data";
 import { ElementPopover } from "./element-popover";
-import { CameraPopover, CharacterPopover, CinemaTiles } from "./cinema-popover";
+import { CharacterPopover, CinemaTiles } from "./cinema-popover";
+import { CameraDialog } from "./camera-dialog";
 import {
   ReferenceFilmButton,
-  ReferenceFilmPopover,
+  ReferenceFilmDialog,
   REFERENCE_FILM_OVERLAY,
 } from "./reference-film-popover";
 import { CameraMovementPanel } from "./camera-movement-panel";
-import { CameraAnglePanel } from "./camera-angle-panel";
 import type { CinemaMode, StudioMode } from "./studio-mode";
 import type { RunRecord } from "./history";
-import { AngleIcon, CaretDownIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, PlusIcon, WarningIcon } from "./icons";
+import { CaretDownIcon, ChevronLeftIcon, ChevronRightIcon, CloseIcon, HammerIcon, PlusIcon, WarningIcon } from "./icons";
 import {
   BatchMinusIcon,
   BatchPlusIcon,
@@ -38,14 +38,23 @@ import {
   RailVideoIcon,
 } from "./cinema-icons";
 import { useCamera } from "@/generation/stores/camera";
-import { CAMERA_ANGLE_FEATURE, angleLabel } from "@/generation/camera-angle";
 import { usePromptTokens } from "@/generation/prompt-registry";
+import { lightingChoice } from "@/generation/lighting";
 import { LightingPopover } from "./lighting-popover";
 import { MediaStrip, useMediaTray } from "./media-tray";
 import { ModelIcon, modelIconSrc } from "./model-icon";
 import { ModelPicker } from "./model-picker";
 import { SettingPill, SettingPopover } from "./settings";
 import { dockConfig } from "./dock-config";
+import { MentionMenu } from "./mention-menu";
+import { PromptTint } from "./prompt-tint";
+import {
+  buildMentionOptions,
+  findMentionWindow,
+  filterMentionOptions,
+  type MentionOption,
+} from "./media-mention";
+import { useProjects } from "@/generation/stores/projects";
 
 /* Overlay ids: the two fixed panels, or one setting addressed by its catalog
    key — the rail renders whatever the model declares, so the ids cannot be a
@@ -57,7 +66,6 @@ const SETTING = "setting:";
 const CHARACTER = "character";
 const CAMERA = "camera";
 const LIGHTING = "lighting";
-const ANGLE = "angle";
 const MOVEMENT = "movement";
 
 /* What the studio itself can deliver for a model that carries no count of its
@@ -95,12 +103,6 @@ const CAMERA_FLOOR = 78;
 /** The lighting pad's minimum face: its padding, the head row and the rim of
     the ring — the part that must stay whole before the readout folds. */
 const LIGHTING_FLOOR = 84;
-
-/** The angle panel's minimum face: its padding and border plus the head row —
-    everything above the chip axes, which fold first. Same reasoning as the
-    character floor: the panel's head is a title and a reset, so it takes the
-    smaller number. */
-const ANGLE_FLOOR = 64;
 /* The movement sheet keeps its tile row whole before it folds. */
 const MOVEMENT_FLOOR = 110;
 
@@ -109,10 +111,8 @@ function popoverWidth(id: string, model: ModelEntry): number {
   if (id === PICKER || id === ASSETS) return 560;
   if (id === ELEMENTS) return 320;
   if (id === CHARACTER) return 360;
-  if (id === REFERENCE_FILM_OVERLAY) return 320;
   if (id === CAMERA) return 400;
   if (id === LIGHTING) return 340;
-  if (id === ANGLE) return 300;
   /* A list of an enum's values is the narrow panel; a slider needs its travel. */
   if (id.startsWith(SETTING) && model.settings[id.slice(SETTING.length)]?.type === "enum") {
     return 216;
@@ -167,48 +167,92 @@ export function Composer({
      tab never inherits a half-written video caption (or the reverse). */
   const prompt =
     surface === "image" ? imagePrompt : surface === "audio" ? audioPrompt : videoPrompt;
+  /* A 무브먼트 preset names a camera move; the app adds that name to the caption
+     when the preset is tapped, so mirroring it means appending the name the same
+     way — keeping the popup open so a writer can stack several moves, just as
+     the app lets them. */
+  const addMovement = (name: string) =>
+    prompt.setText(prompt.text ? `${prompt.text} ${name}` : name);
   const settings = useSettings();
   const values = parseSettings(model, settings.byModel[model.id] ?? {});
   const tray = useMediaTray(model, onError);
   const elements = useElements((state) => state.items);
+  /* The `@` menu reads the reference attachments the tray holds and the named
+     elements of the project the canvas is actually working on (the same project
+     the name-element panel scopes to), so the popup lists what this run can bind. */
+  const activeProjectId = useProjects((state) => state.activeProjectId);
+  const workProject = mode === "cinema" ? activeProjectId : "default";
+  const namedNames = useMemo(() => {
+    /* 틴 미러와 배지가 알아야 할 핸들은 전부다: 요소의 name과 elementId(`@` 핸들)가
+       모두 프롬프트에 들어올 수 있으므로 두 형식을 중복 없이 나열한다. */
+    const seen = new Set<string>();
+    const handles: string[] = [];
+    for (const e of elements.filter((e) => (e.projectId ?? "default") === workProject)) {
+      for (const raw of [e.name, e.elementId]) {
+        const h = (raw ?? "").trim();
+        if (h && !seen.has(h)) {
+          seen.add(h);
+          handles.push(h);
+        }
+      }
+    }
+    return handles;
+  }, [elements, workProject]);
+  /* The element badge counts what is actually attached to the working dock: a
+     named element is in play once the prompt carries its @-handle — selecting
+     it from the @ picker writes that handle, removing the reference clears it,
+     so the number rises and falls with what is on the dock and never with the
+     store's total. The start/end/reference chips carry their own counts on
+     their own faces; this badge covers the named element alone. */
+  const attachedElementCount = useMemo(
+    () =>
+      elements
+        .filter((e) => (e.projectId ?? "default") === workProject)
+        .filter((e) =>
+          [e.name, e.elementId].some((h) => !!h && prompt.text.includes(`@${h}`)),
+        ).length,
+    [elements, workProject, prompt.text],
+  );
   /* The video top bar mirrors the app's four instruments: reference rides the
      asset browser, camera opens the same sheet the cinematic tile does, and the
      film and lighting faces are screen mirrors until those stores exist. */
   const { camera: cameraChoice } = useCamera();
+  /* The plate reads the camera's name; the app's own Auto detent speaks as 자동,
+     so the face mirrors the app's word rather than the store's English key. */
+  const cameraChoiceLabel = cameraChoice === "Auto" ? "자동" : cameraChoice;
   const referenceCount = tray.items.filter((item) => item.role === "reference").length;
-  /* The angle pill's face reads the token store the panel writes and the prompt
-     reads — the same single-source rule the movement tiles answer with. The pill
-     says what the chips say: the picked axes in their Korean labels, in the
-     order the prompt composes them (not the order they were clicked). Nothing
-     picked yet, the pill says 자동. The subscription takes the tokens array by
-     reference (the reference-film and lighting panels' pattern) — a selector
-     that filtered here would build a fresh array every snapshot and spin the
-     store into an update loop. */
   const promptTokens = usePromptTokens((state) => state.tokens);
-  const angleTokens = useMemo(
-    () => promptTokens.filter((t) => t.featureId === CAMERA_ANGLE_FEATURE),
-    [promptTokens],
-  );
-  const angleAxisOrder: Record<string, number> = { view: 0, elevation: 1, distance: 2 };
-  const angleSummary =
-    angleTokens
-      .filter((t) => t.controlKey in angleAxisOrder && typeof t.value === "string")
-      .sort((a, b) => angleAxisOrder[a.controlKey]! - angleAxisOrder[b.controlKey]!)
-      .map((t) => angleLabel(t.value as string))
-      .join(" ") || "자동";
-  /* Something is live when a slot holds a word — the same presence test the
-     composition applies, so the lit pill and the written phrase never drift. */
-  const angleActive = angleTokens.some(
-    (t) => typeof t.value !== "string" || (t.value as string).trim().length > 0,
-  );
+  /* The lighting pill mirrors the same single slot the composition grid writes:
+     whatever composition is live, the plate reads its name the way the live site
+     does — Auto and the no-selection state collapse to 자동, every other look
+     shows its own label. Same subscription-by-reference rule as the angle pill. */
+  const lightActiveId = promptTokens.find(
+    (t) => t.featureId === "lighting" && t.controlKey === "composition",
+  )?.value as string | undefined;
+  const lightChoice = lightingChoice(lightActiveId);
 
   const [overlay, setOverlay] = useState<string | null>(null);
+  /* Which tab the camera sheet opens on when it is summoned. The camera plate
+     sends 설정; the camera-movement instrument sends 무브먼트 so the icon lands
+     where the visitor meant to go (the app's movement control opens straight on
+     that tab). The sheet is remounted on every fresh open, so this re-seeds it
+     rather than leaving the last tab stuck. */
+  const [camInitialTab, setCamInitialTab] = useState<"settings" | "movement">("settings");
   /* The shelf the asset panel should land on. The @ button asks for elements
      by name; the + button lets the panel find the shelf that holds something. */
   const [pickerTab, setPickerTab] = useState<"elements" | null>(null);
   const [anchor, setAnchor] = useState({ x: 0, y: 0 });
   const [popClear, setPopClear] = useState<number | null>(null);
   const [shortcut, setShortcut] = useState<string | null>(null);
+  /* The live `@`-mention state: the window typed at the caret, the colour-coded
+     options it filters to, and which row the keyboard highlight sits on. null
+     whenever no handle is being typed (the menu is simply not mounted). */
+  const [mention, setMention] = useState<{
+    start: number;
+    query: string;
+    options: MentionOption[];
+    activeIndex: number;
+  } | null>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const promptRef = useRef<HTMLTextAreaElement>(null);
@@ -263,6 +307,62 @@ export function Composer({
       const after = caret + mention.length;
       el?.setSelectionRange(after, after);
     });
+  }
+
+  /* Recompute the live `@`-mention window from the field's current text + caret:
+     the last `@` before the caret with no whitespace after it is a handle being
+     typed. Filter it to the colour-coded reference handles + this project's named
+     elements; when at least one matches, the popup opens and the keyboard highlight
+     resets to the first row. A caret past a closed handle (whitespace) closes it. */
+  function recomputeMention(el: HTMLTextAreaElement) {
+    const window = findMentionWindow(el.value, el.selectionStart);
+    if (!window) {
+      setMention(null);
+      return;
+    }
+    const options = filterMentionOptions(
+      buildMentionOptions(tray.items, elements, workProject),
+      window.query,
+    );
+    setMention((prev) => {
+      if (options.length === 0) return null;
+      const activeIndex =
+        prev && prev.start === window.start && prev.query === window.query
+          ? Math.min(prev.activeIndex, options.length - 1)
+          : 0;
+      return { start: window.start, query: window.query, options, activeIndex };
+    });
+  }
+
+  /* Accepting the highlighted row: replace the typed `@query` window with the chosen
+     handle plus a trailing space, then hand the caret back just past it so the writer
+     keeps typing the rest of the prompt — exactly what the source editor's chip did. */
+  function pickMention(option: MentionOption) {
+    const el = promptRef.current;
+    if (!el || !mention) return;
+    const value = el.value;
+    const caret = el.selectionStart;
+    const inserted = `${option.token} `;
+    const next = value.slice(0, mention.start) + inserted + value.slice(caret);
+    prompt.setText(next);
+    setMention(null);
+    const after = mention.start + inserted.length;
+    requestAnimationFrame(() => {
+      el.focus();
+      el.setSelectionRange(after, after);
+    });
+  }
+
+  function moveMention(delta: number) {
+    setMention((prev) =>
+      prev && prev.options.length
+        ? {
+            ...prev,
+            activeIndex:
+              (prev.activeIndex + delta + prev.options.length) % prev.options.length,
+          }
+        : prev,
+    );
   }
 
   /* The controls are TWO REGIONS (the user's model): a FIXED left group (+, @,
@@ -377,7 +477,7 @@ export function Composer({
   useEffect(() => {
     const isSetting = (overlay ?? "").startsWith(SETTING);
     const ridesAnchor =
-      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING || overlay === ANGLE || overlay === MOVEMENT;
+      isSetting || overlay === PICKER || overlay === CHARACTER || overlay === CAMERA || overlay === LIGHTING || overlay === MOVEMENT;
     if (overlay !== ASSETS && !ridesAnchor) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
@@ -398,11 +498,9 @@ export function Composer({
                 ? CAMERA_FLOOR
                 : overlay === LIGHTING
                   ? LIGHTING_FLOOR
-                  : overlay === ANGLE
-                    ? ANGLE_FLOOR
-                    : overlay === MOVEMENT
-                      ? MOVEMENT_FLOOR
-                      : PICKER_FLOOR;
+                  : overlay === MOVEMENT
+                    ? MOVEMENT_FLOOR
+                    : PICKER_FLOOR;
       setPopClear(Math.max(floor, Math.round(room)));
     };
     read();
@@ -492,7 +590,7 @@ export function Composer({
       /* Portaled modals live outside the wrap by design and are their own
          dismissers — reaching through them would close the picker underneath
          every click made inside a crop or a lightbox. */
-      if ((event.target as Element)?.closest?.(".ohf-v2-scrim, .ohf-modal-backdrop")) return;
+      if ((event.target as Element)?.closest?.(".ohf-v2-scrim, .ohf-modal-backdrop, .ohf-camdialog, .ohf-rfd")) return;
       if (wrapRef.current && !wrapRef.current.contains(event.target as Node)) setOverlay(null);
     };
     const onKeyDown = (event: KeyboardEvent) => {
@@ -571,17 +669,35 @@ export function Composer({
   /* A panel anchored to a control the visitor can no longer see is a stray
      plate — the swap closes whatever the composer had open. */
   useEffect(() => {
-    if (selecting) setOverlay(null);
+    if (selecting) {
+      setOverlay(null);
+      setMention(null);
+    }
   }, [selecting]);
 
-  /* The angle is image-seat chrome: when the dock leaves the image seat — the
-     pult moves to video, or the clapper leaves for the general studio — the
-     pill unmounts, and an open panel with no trigger would float over the new
-     form. The fold rides the same one-way rule as the swap's. */
+  /* A click anywhere outside the composer closes the mention menu too — it is the
+     same "click-away" contract the popovers keep, and it also stops the menu shadowing
+     a control the writer just reached for. The textarea's own Escape (handled in its
+     keydown) drops it while the field holds focus. */
   useEffect(() => {
-    setOverlay((current) =>
-      current === ANGLE && (mode !== "cinema" || cinemaMode !== "image") ? null : current);
-  }, [mode, cinemaMode]);
+    if (!mention) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if ((event.target as Element)?.closest?.(".ohf-popover--mention")) return;
+      if (wrapRef.current && !wrapRef.current.contains(event.target as Node)) setMention(null);
+    };
+    /* Escape closes the menu from anywhere, not only while the field holds focus —
+       a writer who has tabbed away can still want out, and the field's own keydown
+       handler covers the focused case. */
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMention(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mention]);
 
   // Rendered only after mount: the modifier is the visitor's, not the server's.
   useEffect(() => {
@@ -712,16 +828,17 @@ export function Composer({
 
         {settingKey && <SettingPopover model={model} settingKey={settingKey} values={values} />}
         {overlay === CHARACTER && <CharacterPopover onClose={() => setOverlay(null)} />}
-        {overlay === CAMERA && <CameraPopover onClose={() => setOverlay(null)} />}
+        {overlay === CAMERA && (
+          <CameraDialog onClose={() => setOverlay(null)} onAddMovement={addMovement} initialTab={camInitialTab} />
+        )}
         {overlay === LIGHTING && <LightingPopover onClose={() => setOverlay(null)} />}
-        {overlay === ANGLE && <CameraAnglePanel />}
         {overlay === MOVEMENT && (
           <div className="ohf-popover ohf-popover--movement" role="dialog" aria-label="카메라 무브먼트">
             <CameraMovementPanel />
           </div>
         )}
         {overlay === REFERENCE_FILM_OVERLAY && (
-          <ReferenceFilmPopover onClose={() => setOverlay(null)} />
+          <ReferenceFilmDialog onClose={() => setOverlay(null)} />
         )}
         {overlay === ELEMENTS && (
           <ElementPopover
@@ -828,7 +945,10 @@ export function Composer({
                       aria-label="카메라"
                       aria-expanded={overlay === CAMERA}
                       aria-haspopup="dialog"
-                      onClick={(event) => toggle(CAMERA, event.currentTarget)}
+                      onClick={(event) => {
+                        setCamInitialTab("settings");
+                        toggle(CAMERA, event.currentTarget);
+                      }}
                     >
                       <span className="ohf-vtc-ic" aria-hidden>
                         <span className="ohf-cine-cap">
@@ -843,7 +963,7 @@ export function Composer({
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">카메라</span>
-                        <span className="ohf-vtc-val" title={cameraChoice}>{cameraChoice}</span>
+                        <span className="ohf-vtc-val" title={cameraChoiceLabel}>{cameraChoiceLabel}</span>
                       </span>
                     </button>
                     <button
@@ -892,7 +1012,7 @@ export function Composer({
                       </span>
                       <span className="ohf-vtc-col">
                         <span className="ohf-vtc-label">조명</span>
-                        <span className="ohf-vtc-val">자동</span>
+                        <span className="ohf-vtc-val" title={lightChoice}>{lightChoice}</span>
                       </span>
                     </button>
                   </div>
@@ -903,24 +1023,82 @@ export function Composer({
                   puts the open control away. Pointer and focus both, because a
                   button click does not move focus on every platform — the field
                   can still hold it while a popover stands open. */}
-              <textarea
-                ref={promptRef}
-                className="ohf-prompt"
-                data-tour-anchor={surface === "video" ? "tour-video-prompt" : "tour-image-prompt"}
-                rows={1}
-                value={prompt.text}
-                placeholder={PROMPT_PLACEHOLDERS[surface]}
-                aria-label="Prompt"
-                onPointerDown={() => setOverlay(null)}
-                onFocus={() => setOverlay(null)}
-                onChange={(event) => prompt.setText(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-                    event.preventDefault();
-                    if (!disabled) onGenerate();
-                  }
-                }}
-              />
+              <div className="ohf-prompt-field">
+                {/* Colour rides a mirror painted behind the transparent textarea, so a
+                    plain <textarea> (not a contenteditable rewrite) keeps its caret,
+                    auto-grow and IME path while @imageN / @이름 still read as colour. */}
+                <PromptTint
+                  text={prompt.text}
+                  namedNames={namedNames}
+                  trackRef={promptRef}
+                />
+                <textarea
+                  ref={promptRef}
+                  className="ohf-prompt"
+                  data-tour-anchor={surface === "video" ? "tour-video-prompt" : "tour-image-prompt"}
+                  rows={1}
+                  value={prompt.text}
+                  placeholder={PROMPT_PLACEHOLDERS[surface]}
+                  aria-label="Prompt"
+                  onPointerDown={() => setOverlay(null)}
+                  onFocus={() => setOverlay(null)}
+                  onChange={(event) => {
+                    prompt.setText(event.target.value);
+                    recomputeMention(event.target);
+                  }}
+                  onSelect={() => {
+                    const el = promptRef.current;
+                    if (el) recomputeMention(el);
+                  }}
+                  onClick={() => {
+                    const el = promptRef.current;
+                    if (el) recomputeMention(el);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+                      event.preventDefault();
+                      if (!disabled) onGenerate();
+                      return;
+                    }
+                    /* While a handle is being typed the listbox owns the navigation keys:
+                       ↑/↓ move the highlight, Enter/Tab accept it, Escape drops it — the
+                       textarea's own newline/submit behaviour waits for the menu to close. */
+                    if (mention) {
+                      if (event.key === "ArrowDown") {
+                        event.preventDefault();
+                        moveMention(1);
+                        return;
+                      }
+                      if (event.key === "ArrowUp") {
+                        event.preventDefault();
+                        moveMention(-1);
+                        return;
+                      }
+                      if (event.key === "Enter" || event.key === "Tab") {
+                        event.preventDefault();
+                        const active = mention.options[mention.activeIndex];
+                        if (active) pickMention(active);
+                        return;
+                      }
+                      if (event.key === "Escape") {
+                        event.preventDefault();
+                        setMention(null);
+                        return;
+                      }
+                    }
+                  }}
+                />
+                {mention && (
+                  <MentionMenu
+                    options={mention.options}
+                    activeIndex={mention.activeIndex}
+                    onPick={pickMention}
+                    onHover={(index) =>
+                      setMention((prev) => (prev ? { ...prev, activeIndex: index } : prev))
+                    }
+                  />
+                )}
+              </div>
             </div>
 
             <div className="ohf-composer-row">
@@ -969,8 +1147,8 @@ export function Composer({
                         }}
                       >
                         <span className="ohf-at-glyph" aria-hidden>@</span>
-                        {elements.length > 0 && (
-                          <span className="ohf-attach-badge">{elements.length}</span>
+                        {attachedElementCount > 0 && (
+                          <span className="ohf-attach-badge">{attachedElementCount}</span>
                         )}
                       </button>
                     </div>
@@ -982,9 +1160,12 @@ export function Composer({
                     className="ohf-cine-camctl ohf-tip"
                     data-tip="카메라 무브먼트"
                     aria-label="카메라 무브먼트"
-                    aria-expanded={overlay === MOVEMENT}
+                    aria-expanded={overlay === CAMERA}
                     aria-haspopup="dialog"
-                    onClick={(event) => toggle(MOVEMENT, event.currentTarget)}
+                    onClick={(event) => {
+                      setCamInitialTab("movement");
+                      toggle(CAMERA, event.currentTarget);
+                    }}
                   >
                     {/* HF's own scan-frame mark for movement, verbatim from the site. */}
                     <CamMoveIcon />
@@ -1026,31 +1207,6 @@ export function Composer({
                     and writes that rewrite back before submit; a failure keeps the
                     writer's original words and raises the reason in the banner. */}
                 <PromptOptimizeButton surface={surface} onError={onError} disabled={disabled} />
-                {/* The camera-angle pill: the image seat's instrument, mirroring
-                    the video seat's camera instruments — a press opens the
-                    panel above the rail, the face carries the current pick, and
-                    the lit state reads the same store the prompt reads, never a
-                    copy of its own. It belongs to the cinematic image dock
-                    alone: the video seat speaks through movement, and the
-                    general studio carries no angle chrome. */}
-                {dock.angle && (
-                  <button
-                    type="button"
-                    className="ohf-ctl ohf-angle-ctl ohf-tip"
-                    data-tip="카메라 앵글"
-                    data-tour-anchor="tour-image-angle"
-                    aria-label="카메라 앵글"
-                    aria-expanded={overlay === ANGLE}
-                    aria-haspopup="dialog"
-                    data-active={angleActive || undefined}
-                    onClick={(event) => toggle(ANGLE, event.currentTarget)}
-                  >
-                    <span className="ohf-angle-ic" aria-hidden>
-                      <AngleIcon size={16} />
-                    </span>
-                    <span className="ohf-angle-name">{angleSummary}</span>
-                  </button>
-                )}
                 </div>
                 <div className="ohf-controls-flow" ref={controlsFlowRef}>
                 <button

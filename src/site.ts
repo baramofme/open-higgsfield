@@ -23,7 +23,7 @@ export const SITE_DESCRIPTION =
   "A studio for image and video generation — one prompt bar, each model’s own settings, and every finished run in one gallery.";
 
 /** Near-black studio ground; also the installed-app and browser-chrome color. */
-export const STUDIO_BG = "#0a0a0b";
+export const STUDIO_BG = "#131416"; /* HF --color-q-background-primary (live body paint) */
 
 /* The card built by scripts/build-brand-assets.mjs. It lives in public/ rather
    than as an app/opengraph-image file on purpose: the file convention outranks

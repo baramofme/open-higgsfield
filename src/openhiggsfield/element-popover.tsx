@@ -81,7 +81,7 @@ export function ElementPopover({
               element={element}
               onRename={(name) => rename(element.id, name)}
               onRemove={() => remove(element.id)}
-              onMention={() => onMention(element.name)}
+              onMention={() => onMention(element.elementId?.trim() || element.name)}
             />
           ))}
           <button

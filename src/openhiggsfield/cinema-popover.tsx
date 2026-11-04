@@ -12,7 +12,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { CAMERAS, CAMERA_AUTO_ART, CHOICE_ART, LENSES, useCamera } from "@/generation/stores/camera";
+import { CAMERA_AUTO_ART, CHOICE_ART, useCamera } from "@/generation/stores/camera";
 import { CameraIcon, ChevronIcon, CloseIcon, PersonIcon } from "./icons";
 
 export function CharacterPopover({ onClose }: { onClose: () => void }) {
@@ -56,16 +56,24 @@ export function CharacterPopover({ onClose }: { onClose: () => void }) {
    the mouse wheel (one detent per notch), dragging the drum itself (the app
    is a cursor-grab surface), and the hover arrows the app reveals on top and
    bottom of each wheel. */
-function CameraWheel<T extends string>({
+/* One endless drum, ported row-for-row from the app's own markup. Exported so
+   the camera dialog's 설정 tab can seat all three drums (카메라·렌즈·조리개) on the
+   same proven geometry; the old two-wheel sheet is gone, replaced by that dialog. */
+export function CameraWheel<T extends string>({
   items,
   value,
   onChange,
   label,
+  art,
 }: {
   items: readonly T[];
   value: T;
   onChange: (next: T) => void;
   label: string;
+  /* A choice's cover scene. The camera and lens drums pass their own art maps;
+     the aperture drum passes nothing, so its rows fall through to a flat plate
+     carrying only the f-stop text — exactly how the app paints the third column. */
+  art?: Partial<Record<string, string>>;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const acc = useRef(0);
@@ -74,6 +82,10 @@ function CameraWheel<T extends string>({
   const step = 120; // the app's own --wheel-step
   const index = items.indexOf(value);
   const n = items.length;
+  /* The Auto detent's own mark. The camera drum uses its dedicated glyph; every
+     other drum with an Auto row (the lens) shares the generic auto art. A drum
+     with no art at all (the aperture) never renders an auto mark. */
+  const autoArt = art?.Auto ?? CAMERA_AUTO_ART;
 
   /* The endless drum: every row rides at (its cyclic offset from the selection
      × one detent) plus the live spin, so turning the wheel by any amount —
@@ -141,7 +153,8 @@ function CameraWheel<T extends string>({
 
   return (
     <div className="ohf-cine-wheel">
-      <span className="ohf-cine-wheel-head">{label}</span>
+      {/* The app's 설정 drums carry no column caption — the centre row's own word
+          names the column. The label survives only as the listbox's aria-label. */}
       <div className="ohf-cine-wheel-body">
         <div
           ref={viewport}
@@ -175,22 +188,32 @@ function CameraWheel<T extends string>({
                 style={{ transform: `translateY(${rowY(i)}px)` }}
               >
                 <div className="ohf-cine-pill">
-                {item === "Auto" ? (
-                  /* The app's own auto marks, downloaded from its CDN: a flat
-                     plate carries the svg, centred, with the word beneath. */
+                {art?.[item] ? (
+                  item === "Auto" ? (
+                    /* The app's own auto marks, downloaded from its CDN: a flat
+                       plate carries the svg, centred, with the word beneath. */
+                    <>
+                      <div className="ohf-cine-auto-plate" />
+                      <img className="ohf-cine-auto-mark" src={autoArt} alt="" />
+                      <span className="ohf-cine-auto-label">{item}</span>
+                    </>
+                  ) : (
+                    /* The app's own cover scene, full-bleed inside the pill;
+                       the shade and the bottom label ride it as they did on
+                       the wash — the word has to stay readable over a photo. */
+                    <>
+                      <img className="ohf-cine-art" src={art[item]} alt="" />
+                      <div className="ohf-cine-wash-shade" />
+                      <span className="ohf-cine-row-label">{item}</span>
+                    </>
+                  )
+                ) : (
+                  /* No cover scene for this choice — the aperture drum's f-stops.
+                     A flat plate carries the value alone, the way the app paints
+                     the third column. */
                   <>
                     <div className="ohf-cine-auto-plate" />
-                    <img className="ohf-cine-auto-mark" src={label === "카메라" ? CAMERA_AUTO_ART : CHOICE_ART.Auto} alt="" />
                     <span className="ohf-cine-auto-label">{item}</span>
-                  </>
-                ) : (
-                  /* The app's own cover scene, full-bleed inside the pill;
-                     the shade and the bottom label ride it as they did on
-                     the wash — the word has to stay readable over a photo. */
-                  <>
-                    <img className="ohf-cine-art" src={CHOICE_ART[item]} alt="" />
-                    <div className="ohf-cine-wash-shade" />
-                    <span className="ohf-cine-row-label">{item}</span>
                   </>
                 )}
                 </div>
@@ -218,28 +241,6 @@ function CameraWheel<T extends string>({
             <ChevronIcon size={14} />
           </button>
         </div>
-      </div>
-    </div>
-  );
-}
-
-/* The app's sheet has no close button: tapping the camera tile again, or
-   anywhere outside the sheet, folds it away — the composer already wires both
-   — so onClose is accepted and deliberately unused. */
-export function CameraPopover(_props: { onClose: () => void }) {
-  const { camera, lens, setCamera, setLens, reset } = useCamera();
-  return (
-    <div className="ohf-popover ohf-popover--sheet" role="dialog" aria-label="카메라 설정">
-      <header className="ohf-cine-head">
-        <span className="ohf-cine-title">카메라 설정하기</span>
-        <button type="button" className="ohf-cine-reset" onClick={reset}>
-          초기화
-        </button>
-      </header>
-      <div className="ohf-cine-grid">
-        <CameraWheel items={CAMERAS} value={camera} onChange={setCamera} label="카메라" />
-        <CameraWheel items={LENSES} value={lens} onChange={setLens} label="렌즈" />
-        <span className="ohf-cine-divider" aria-hidden="true" />
       </div>
     </div>
   );

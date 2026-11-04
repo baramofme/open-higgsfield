@@ -1,17 +1,17 @@
 {
   "next-env.d.ts": {
-    "mtime": 1793424851.794355,
-    "ast_hash": "aa94238a90e7d04b7a47ecc3145ba6a0",
+    "mtime": 1793671547.604379,
+    "ast_hash": "8195d2c60ce847a459ae9d308d6a5724",
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1793511483.2089677,
-    "ast_hash": "8e2e9174b3e716394a7434f8ef683cb4",
+    "mtime": 1793670745.7380185,
+    "ast_hash": "967c65044543bb0ae9d3c43606533a16",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1793467158.9305987,
-    "ast_hash": "e6b6685736ec26f3ea963ed75f368fb9",
+    "mtime": 1793695565.713116,
+    "ast_hash": "f7067ab0579f4360487b4479e9e35ca7",
     "semantic_hash": ""
   },
   "scripts/build-brand-assets.mjs": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "src/app/page.tsx": {
-    "mtime": 1793424800.3485458,
-    "ast_hash": "1cff5735f0153d624d6bce224be5e37a",
+    "mtime": 1793554665.4509294,
+    "ast_hash": "6c9c3642e31aa8ef2b211bfd712f081e",
     "semantic_hash": ""
   },
   "src/app/robots.ts": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/generation/actions.ts": {
-    "mtime": 1793525394.168359,
-    "ast_hash": "2019a5a8dbc92c5a71f77c1ba6cbf9d7",
+    "mtime": 1793726654.2747738,
+    "ast_hash": "c02aedd6bcf87f53344abc83fa16d5c8",
     "semantic_hash": ""
   },
   "src/generation/catalog/cinema-misc.ts": {
@@ -115,8 +115,8 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/index.ts": {
-    "mtime": 1793525283.9313362,
-    "ast_hash": "770fbbb37ffaf3bb0e135e1023ee3908",
+    "mtime": 1793549882.241968,
+    "ast_hash": "ca79323f2e3a585b02ddb2bde73e6382",
     "semantic_hash": ""
   },
   "src/generation/catalog/kling-2.5.ts": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/types.ts": {
-    "mtime": 1793525272.3598952,
-    "ast_hash": "e48f783736e0a6aa327a4edd530ce707",
+    "mtime": 1793756420.8312023,
+    "ast_hash": "a1dbc1ba666afc8a2440503979d27f26",
     "semantic_hash": ""
   },
   "src/generation/catalog/wan-2.6.ts": {
@@ -245,8 +245,8 @@
     "semantic_hash": ""
   },
   "src/generation/cfwui-platform.ts": {
-    "mtime": 1793525497.9265785,
-    "ast_hash": "2ec3bb72012f1ab0c6be9dfb47cfd680",
+    "mtime": 1793543884.8915927,
+    "ast_hash": "5ebad36446e20bcc000a990b896cdbd2",
     "semantic_hash": ""
   },
   "src/generation/device.ts": {
@@ -255,13 +255,13 @@
     "semantic_hash": ""
   },
   "src/generation/plane.ts": {
-    "mtime": 1793525553.2014205,
-    "ast_hash": "35d047d73791ea12c53ba6bbf061765d",
+    "mtime": 1793756420.8308163,
+    "ast_hash": "136f5bc14874e66f1fb85bda26b03c3e",
     "semantic_hash": ""
   },
   "src/generation/platform.ts": {
-    "mtime": 1793513094.4898078,
-    "ast_hash": "0670c0f41d4e220f0b16dd803025101a",
+    "mtime": 1793543884.7584326,
+    "ast_hash": "a3850d951cbce3812436a82ef030b5ed",
     "semantic_hash": ""
   },
   "src/generation/poll.ts": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "src/generation/stores/camera.ts": {
-    "mtime": 1793445735.3120863,
-    "ast_hash": "6740e6f9b72a479c44d43fcf4fc25544",
+    "mtime": 1793729064.5822196,
+    "ast_hash": "0959705eeef1e2be6f951bb5b24a1573",
     "semantic_hash": ""
   },
   "src/generation/stores/elements.ts": {
@@ -290,8 +290,8 @@
     "semantic_hash": ""
   },
   "src/generation/stores/media.ts": {
-    "mtime": 1793424800.3495789,
-    "ast_hash": "cdf315312f25a178615fc5b80cb57fa7",
+    "mtime": 1793729997.610852,
+    "ast_hash": "aa02babddeadb41c02d6b432002c1a0e",
     "semantic_hash": ""
   },
   "src/generation/stores/prompt.ts": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "src/generation/to-platform.ts": {
-    "mtime": 1793525335.7525666,
-    "ast_hash": "be0026e8c1534d569e0b87731e0d0e0e",
+    "mtime": 1793756542.7289855,
+    "ast_hash": "a32f6d8ff8ae4f30eea8fa0ada5aa588",
     "semantic_hash": ""
   },
   "src/generation/upload.ts": {
@@ -320,23 +320,18 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/asset-picker.tsx": {
-    "mtime": 1793460339.5093417,
-    "ast_hash": "1e897d6ce40b8ad0ba8761835704044b",
-    "semantic_hash": ""
-  },
-  "src/openhiggsfield/cinema-panel.tsx": {
-    "mtime": 1793436704.320036,
-    "ast_hash": "f09499b83ce58ef47ef6eacea08cdaad",
+    "mtime": 1793739667.734739,
+    "ast_hash": "509b5fb6e8e5383876e9b7730830f725",
     "semantic_hash": ""
   },
   "src/openhiggsfield/cinema-popover.tsx": {
-    "mtime": 1793453667.2084079,
-    "ast_hash": "f97b4ef557c61fa76caa249956c23cf6",
+    "mtime": 1793673404.037125,
+    "ast_hash": "a3505cefd3ccab5839a077ccab261f26",
     "semantic_hash": ""
   },
   "src/openhiggsfield/composer.tsx": {
-    "mtime": 1793525559.4630358,
-    "ast_hash": "f2b39f14fac34fc8dc7e3a81117a84cb",
+    "mtime": 1793733755.6039243,
+    "ast_hash": "c020b95e61eeca52bd8a5c5a9ae63d50",
     "semantic_hash": ""
   },
   "src/openhiggsfield/data.ts": {
@@ -345,18 +340,18 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/download.ts": {
-    "mtime": 1793424800.3498309,
-    "ast_hash": "8a3211681b0bb5f64076acf1be285849",
+    "mtime": 1793555973.7228937,
+    "ast_hash": "3df6a31c81700001e05ada17945131b1",
     "semantic_hash": ""
   },
   "src/openhiggsfield/element-popover.tsx": {
-    "mtime": 1793457137.4740012,
-    "ast_hash": "85149d325b94b66ea05d6dfbc9689241",
+    "mtime": 1793730102.805952,
+    "ast_hash": "24921e19d48801bbc629c89109937d0f",
     "semantic_hash": ""
   },
   "src/openhiggsfield/gallery.tsx": {
-    "mtime": 1793525610.5610483,
-    "ast_hash": "19c1a162e69787f4a683d54265574338",
+    "mtime": 1793689911.1364725,
+    "ast_hash": "8faede981244b409669096461c7ccc21",
     "semantic_hash": ""
   },
   "src/openhiggsfield/history.ts": {
@@ -365,8 +360,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/icons.tsx": {
-    "mtime": 1793462228.798262,
-    "ast_hash": "ed2de8c7094d1e89ba25e04c59e82faf",
+    "mtime": 1793727429.8760338,
+    "ast_hash": "fa356443069fec02dea6c22a50cc0cb5",
     "semantic_hash": ""
   },
   "src/openhiggsfield/idb.ts": {
@@ -375,13 +370,13 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/key-modal.tsx": {
-    "mtime": 1793424800.3498309,
-    "ast_hash": "741ec6babeb2b6ca923fcb6de0807f19",
+    "mtime": 1793677025.2789843,
+    "ast_hash": "8648f5432031dee4f8853c7af34d5a0c",
     "semantic_hash": ""
   },
   "src/openhiggsfield/media-tray.tsx": {
-    "mtime": 1793456692.215887,
-    "ast_hash": "99a1ccd16957ed0ce38865be84b55080",
+    "mtime": 1793744926.1459765,
+    "ast_hash": "1a327182ead339ba27b75b2da3b57bb7",
     "semantic_hash": ""
   },
   "src/openhiggsfield/model-icon.tsx": {
@@ -395,8 +390,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/openhiggsfield-app.tsx": {
-    "mtime": 1793525693.1366355,
-    "ast_hash": "95adeec8d5e0ac5437395c409853adcb",
+    "mtime": 1793740380.7933848,
+    "ast_hash": "bf8dd094f2c2cec6bde8d4f5e33837b6",
     "semantic_hash": ""
   },
   "src/openhiggsfield/selection-bar.tsx": {
@@ -405,8 +400,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/settings.tsx": {
-    "mtime": 1793454462.1795154,
-    "ast_hash": "7ea8b1c6f74ed17cbbbcac861f950eb5",
+    "mtime": 1793635327.095481,
+    "ast_hash": "f4bb9671cf885f8499b62acc036031a0",
     "semantic_hash": ""
   },
   "src/openhiggsfield/studio-mode.ts": {
@@ -430,8 +425,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/viewer.tsx": {
-    "mtime": 1793525635.7080238,
-    "ast_hash": "3cb388bbc86025d88531bb79f7d3cab5",
+    "mtime": 1793762853.4565053,
+    "ast_hash": "13d44c08e5f5b02fa69da4992067e518",
     "semantic_hash": ""
   },
   "src/proxy.ts": {
@@ -440,8 +435,8 @@
     "semantic_hash": ""
   },
   "src/site.ts": {
-    "mtime": 1793424800.3500688,
-    "ast_hash": "ba6a1b9787fea2d691428bda8eea49fe",
+    "mtime": 1793674935.1496491,
+    "ast_hash": "97ad621d1db3dbcbb2ec562d754adc72",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -620,28 +615,28 @@
     "semantic_hash": ""
   },
   "src/generation/stores/projects.ts": {
-    "mtime": 1793456444.092409,
-    "ast_hash": "bfb0e2a7a8ab11f052bb55e7650955f9",
+    "mtime": 1793642993.7895787,
+    "ast_hash": "2166902a73f0a7d2ea946b0b31666694",
     "semantic_hash": ""
   },
   "src/openhiggsfield/crop-tool.tsx": {
-    "mtime": 1793457766.2628443,
-    "ast_hash": "95ff74136a0e2f07113e78c0e6e6dd0d",
+    "mtime": 1793677419.9438493,
+    "ast_hash": "6b95b8ac367bb41eadd2da39995918c6",
     "semantic_hash": ""
   },
   "src/openhiggsfield/element-form.tsx": {
-    "mtime": 1793457134.8725164,
-    "ast_hash": "8874539ff5ebded1eae36b0c5a349a35",
+    "mtime": 1793676499.0282967,
+    "ast_hash": "e8f2e09c3e5d254b92101c2eab30b6bd",
     "semantic_hash": ""
   },
   "src/openhiggsfield/preview-lightbox.tsx": {
-    "mtime": 1793456729.218852,
-    "ast_hash": "cd6e5f84532abdea04d26a71f44ee772",
+    "mtime": 1793676488.4701178,
+    "ast_hash": "33dd57724ccee5a0dc3589751acf28ce",
     "semantic_hash": ""
   },
   "src/openhiggsfield/project-dialog.tsx": {
-    "mtime": 1793456719.338279,
-    "ast_hash": "20e6eeb6185be183114c42900b0ae232",
+    "mtime": 1793642981.148681,
+    "ast_hash": "ac279b521f016cdbd713543f8f737c8d",
     "semantic_hash": ""
   },
   "src/generation/stores/feed.ts": {
@@ -680,8 +675,8 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/image-proxy.ts": {
-    "mtime": 1793521574.2983286,
-    "ast_hash": "fb5681645e38d4fa64f67e86dc435b7c",
+    "mtime": 1793677415.8931704,
+    "ast_hash": "d845b477ae8e3b429ce7f35cef1f6cd1",
     "semantic_hash": ""
   },
   "src/openhiggsfield/local-user.ts": {
@@ -705,8 +700,8 @@
     "semantic_hash": ""
   },
   "src/generation/catalog/local-video.ts": {
-    "mtime": 1793510719.8785536,
-    "ast_hash": "0f9323884689b305d56858ea7d42d938",
+    "mtime": 1793549928.8123238,
+    "ast_hash": "02aa58b70cf43ab1d6d817e8c56b4305",
     "semantic_hash": ""
   },
   "src/openhiggsfield/asset-sidebar.tsx": {
@@ -720,13 +715,398 @@
     "semantic_hash": ""
   },
   "src/openhiggsfield/failure-modal.tsx": {
-    "mtime": 1793514378.5100255,
-    "ast_hash": "1530dec23283fad4516af5b5f122bf14",
+    "mtime": 1793677229.679491,
+    "ast_hash": "2dad35fb586b92683533ec07f3035fe2",
     "semantic_hash": ""
   },
   "src/generation/catalog/local-audio.ts": {
     "mtime": 1793525272.3561046,
     "ast_hash": "f1d9ec1117747ca7aaf59df557cd4e2e",
+    "semantic_hash": ""
+  },
+  "src/lib/waveform.ts": {
+    "mtime": 1793548200.244858,
+    "ast_hash": "52ccd32056fcc644cc9589e59f2a2689",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/use-audio-waveform.ts": {
+    "mtime": 1793548949.2040188,
+    "ast_hash": "7b51cce9c82cb8f77bc485b077c99f58",
+    "semantic_hash": ""
+  },
+  "src/generation/catalog/reference-policy.ts": {
+    "mtime": 1793549876.5578265,
+    "ast_hash": "0b4c0f7ffc4da3c2407c46c937cf049e",
+    "semantic_hash": ""
+  },
+  "src/generation/prompt-registry.ts": {
+    "mtime": 1793553930.2949228,
+    "ast_hash": "5237fb5e53cc2eb1dcdb31e1321fb044",
+    "semantic_hash": ""
+  },
+  "src/generation/camera-movement.ts": {
+    "mtime": 1793554234.663457,
+    "ast_hash": "2bae82d644ac977ca7ca5419b26e94bc",
+    "semantic_hash": ""
+  },
+  "src/generation/lighting.ts": {
+    "mtime": 1793731357.3623686,
+    "ast_hash": "fc076ce993d35b4b7bc5b69a7da2c74b",
+    "semantic_hash": ""
+  },
+  "src/generation/reference-film.ts": {
+    "mtime": 1793733333.366326,
+    "ast_hash": "3c7194228f94ee052fa5a864b91c339f",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/camera-movement-panel.tsx": {
+    "mtime": 1793554307.2820346,
+    "ast_hash": "0f619e9c26904afb82c8eed48554a7a7",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/lighting-popover.tsx": {
+    "mtime": 1793731554.4662642,
+    "ast_hash": "003fbcc6e091ff225c0577b81be95676",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/reference-film-popover.tsx": {
+    "mtime": 1793760178.2306685,
+    "ast_hash": "e19baa8cbb69eb3fa77cefea7df261e2",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-studio-screen.tsx": {
+    "mtime": 1793726621.9300604,
+    "ast_hash": "f05a4fe7d10c01be4a905ade19e2941e",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/project-view.ts": {
+    "mtime": 1793555953.3306146,
+    "ast_hash": "2ad47447a096072f567b8d22eac8fb5e",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/element-csv.ts": {
+    "mtime": 1793555968.6112292,
+    "ast_hash": "e1ff9bf0557b9d2a2db8846b1642bc61",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/project-screen.tsx": {
+    "mtime": 1793643582.8254948,
+    "ast_hash": "7342f50cdf6e3949004ac118f27edb3f",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/director.ts": {
+    "mtime": 1793556376.3177855,
+    "ast_hash": "1a28638e8508b33accf8d041ff9e5357",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/director-settings.tsx": {
+    "mtime": 1793556390.0968807,
+    "ast_hash": "a39beaf7fae0821bc47cddbc8507e088",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-sidebar.tsx": {
+    "mtime": 1793671520.867228,
+    "ast_hash": "170406027a463e6d285cc64d69f87ade",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/camera-roll-animated.svg": {
+    "mtime": 1793633976.005051,
+    "ast_hash": "3762d7a1e1385f92aea23c93ccc3dd51",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/camera-settings.svg": {
+    "mtime": 1793633976.051446,
+    "ast_hash": "a6646395286527e587b97b59786a6f70",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/color-palette-default.webp": {
+    "mtime": 1793633976.0985236,
+    "ast_hash": "2b657d29da461750e0baab65326f0bf9",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lightning.webp": {
+    "mtime": 1793633976.1475275,
+    "ast_hash": "748ca15341d712cab526ffbe36b98940",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-icons.tsx": {
+    "mtime": 1793647903.657408,
+    "ast_hash": "2697ea756a42ba9e96e226b5c07f15a2",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/dock-config.ts": {
+    "mtime": 1793727535.3775313,
+    "ast_hash": "ef51f20ef0918f727c216db8092ccbd5",
+    "semantic_hash": ""
+  },
+  "src/generation/stores/project-surface.ts": {
+    "mtime": 1793671493.9278162,
+    "ast_hash": "cdbead18f8a1c3602158a334bec32ac6",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-project-panels.tsx": {
+    "mtime": 1793643305.761863,
+    "ast_hash": "18e300f7bef208bfba7351fce260aecf",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-tile-view.tsx": {
+    "mtime": 1793732223.3481078,
+    "ast_hash": "201b48fbf80677bfa7e95acedcba7dc1",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/camera-dialog.tsx": {
+    "mtime": 1793729080.3089716,
+    "ast_hash": "059fbfe33c69c1e81ffe3e0323129676",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/cinema-home-content.tsx": {
+    "mtime": 1793674926.6214864,
+    "ast_hash": "7262be5f7b70a126a2253d4d261cf00c",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/media-mention.ts": {
+    "mtime": 1793730086.0811725,
+    "ast_hash": "4d7cdd2f03f583aae571e936523ceeca",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/mention-menu.tsx": {
+    "mtime": 1793673641.0083714,
+    "ast_hash": "4749250cca53a5c9ce86f121f21ffd24",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/movement-presets.ts": {
+    "mtime": 1793673431.2156785,
+    "ast_hash": "091be61d9d014f473bac96ff835b24cc",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/prompt-tint.tsx": {
+    "mtime": 1793675131.5834641,
+    "ast_hash": "ac43d52b29827496bb60c055d248aa55",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/hero-cully-hill-boys.webp": {
+    "mtime": 1793672780.1787648,
+    "ast_hash": "a4915c63a5a37fec04c28ae09fd5a55d",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/hero-hell-grind.webp": {
+    "mtime": 1793672780.0922666,
+    "ast_hash": "3342d85cca2cee99bb6c3727e7a31976",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/hero-zephyr.webp": {
+    "mtime": 1793672780.1257868,
+    "ast_hash": "ccf6bdf7c971e156d04c7b5f677c948b",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/auto.webp": {
+    "mtime": 1793673790.9095373,
+    "ast_hash": "3923965a854177e09aa157af16a29c1e",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/contre-jour.webp": {
+    "mtime": 1793673790.9155374,
+    "ast_hash": "f0b9a9134b82e642eb5e0697b253bced",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/overhead-fall.webp": {
+    "mtime": 1793673790.9225376,
+    "ast_hash": "2e2287b208353fbf3ecfbf8bac6bdded",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/practicals.webp": {
+    "mtime": 1793673790.9285376,
+    "ast_hash": "2d7a6eda3859b503feb0704010f508e4",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/silhouette.webp": {
+    "mtime": 1793673790.9335377,
+    "ast_hash": "773597387afe5660d50eaa6d4a570c56",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/soft-cross.webp": {
+    "mtime": 1793673790.9385376,
+    "ast_hash": "2a1fa8fb9fd36b1743a141ba5c3b45b0",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/lighting/window.webp": {
+    "mtime": 1793673790.9435377,
+    "ast_hash": "0ee11e209819845865f1078758166f0c",
+    "semantic_hash": ""
+  },
+  "src/generation/prompt-optimize.ts": {
+    "mtime": 1793726636.1363537,
+    "ast_hash": "eed7ec2e18660c5e5404937d4995bd79",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/prompt-optimize-button.tsx": {
+    "mtime": 1793727395.855124,
+    "ast_hash": "21aa24b0c4218cca5d83fc23c432fbc4",
+    "semantic_hash": ""
+  },
+  "tests/prompt-optimize/boot.mjs": {
+    "mtime": 1793693763.7001066,
+    "ast_hash": "7cd08819373e29c1d89151731ba4fa38",
+    "semantic_hash": ""
+  },
+  "tests/prompt-optimize/next-headers-stub.mjs": {
+    "mtime": 1793693446.8622115,
+    "ast_hash": "934f230313f50edef2478177c17e4d66",
+    "semantic_hash": ""
+  },
+  "tests/prompt-optimize/prompt-optimize.test.ts": {
+    "mtime": 1793726757.521915,
+    "ast_hash": "342c83ae9987da8aad0fee7354f8cfbe",
+    "semantic_hash": ""
+  },
+  "tests/prompt-optimize/repo-resolve-hook.mjs": {
+    "mtime": 1793695386.671912,
+    "ast_hash": "5532920474fb5fede2e8150ff8a62547",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/reference-removal.ts": {
+    "mtime": 1793730165.5397608,
+    "ast_hash": "1e17221a543d35b8872d4fc78dbca748",
+    "semantic_hash": ""
+  },
+  "tests/reference-removal/reference-removal.test.ts": {
+    "mtime": 1793730304.8743322,
+    "ast_hash": "91040ff97f758c483a8c8e2cefa8bb5c",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/general-create-tabs.tsx": {
+    "mtime": 1793759649.0643065,
+    "ast_hash": "96b7a34e40f09e03a27c2d41e7c32162",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/reference-showcase.ts": {
+    "mtime": 1793729348.5592737,
+    "ast_hash": "5e2a2d3aa14d86c2c8991f3fdc962bfb",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/aperture/aperture-auto.svg": {
+    "mtime": 1793729043.8498125,
+    "ast_hash": "a4357e038c978fd1c8fea43775afd42a",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/aperture/aperture-f1.4-wide.webp": {
+    "mtime": 1793729042.9380088,
+    "ast_hash": "b3fa2953add68bc0aa78b98316c1511b",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/aperture/aperture-f11-deep.webp": {
+    "mtime": 1793729043.7970276,
+    "ast_hash": "2612ee902e0a80df4e86552c5d907c52",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/aperture/aperture-f4-moderate.webp": {
+    "mtime": 1793729043.2450156,
+    "ast_hash": "962024de3ed504f9c5ab977d0c71318b",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/reference-use-next.tsx": {
+    "mtime": 1793730018.7304518,
+    "ast_hash": "bc4f3d171a7e5464d0d406146b417824",
+    "semantic_hash": ""
+  },
+  "src/openhiggsfield/video-edit.tsx": {
+    "mtime": 1793733791.8676574,
+    "ast_hash": "7d1f04c873f4aeeae39e8694276b98bc",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/default.webp": {
+    "mtime": 1793733311.8422236,
+    "ast_hash": "01b3af907d93b697b20c52ad96aa7b4f",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/action.webp": {
+    "mtime": 1793733311.836254,
+    "ast_hash": "174e5ccace4ddda35def6ff912e4b822",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/comedy.webp": {
+    "mtime": 1793733311.8335316,
+    "ast_hash": "38ae2345b5bc8fd7b9204a5cb6eb9404",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/drama.webp": {
+    "mtime": 1793733311.831336,
+    "ast_hash": "d47bd430288ac898fd52616a897877f4",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/epic.webp": {
+    "mtime": 1793733311.8295567,
+    "ast_hash": "804e9f98998acbd4b15f9e1498c5b089",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/general.webp": {
+    "mtime": 1793733311.8282213,
+    "ast_hash": "f7953d1ecb33a9a0a56c3da33d19bf51",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/horror.webp": {
+    "mtime": 1793733311.8348415,
+    "ast_hash": "fc709679a953ce21aa36bc6013001e4f",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/genre/noir.webp": {
+    "mtime": 1793733311.8325462,
+    "ast_hash": "d046e29f4ed670580d0123c6353efa27",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/tempo/auto.webp": {
+    "mtime": 1793733311.8371177,
+    "ast_hash": "a4b61e6ffaaba8b8811720f4bc9ed4bd",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/tempo/calm.webp": {
+    "mtime": 1793733311.8401814,
+    "ast_hash": "0f0b37159465cb7a4368994dfb164d96",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/tempo/chaotic.webp": {
+    "mtime": 1793733311.8381727,
+    "ast_hash": "97ff80050671c1a11e10695c96b0f7a2",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/tempo/dynamic.webp": {
+    "mtime": 1793733311.839223,
+    "ast_hash": "9c5c87026cb8ddbf8ef0bbc3757d538c",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/tempo/single-shot.webp": {
+    "mtime": 1793733311.841195,
+    "ast_hash": "d77a728e54bd3655795198152db3efcd",
+    "semantic_hash": ""
+  },
+  "tests/slot-ordering/slot-ordering.test.ts": {
+    "mtime": 1793756556.2076733,
+    "ast_hash": "0533772259da7c4ff65d5309449c083a",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/1960s.webp": {
+    "mtime": 1793757302.1496158,
+    "ast_hash": "3ca132f2e365852e302815f0c3bba4f0",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/1980s.webp": {
+    "mtime": 1793757302.4378903,
+    "ast_hash": "4387702d5ddac56aaf2a0afe80ebd706",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/1990s.webp": {
+    "mtime": 1793759844.3250642,
+    "ast_hash": "79d65b96a5398505e0ef42fb732b6737",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/2000s.webp": {
+    "mtime": 1793760175.7932394,
+    "ast_hash": "a3ffa2c70cd61158a40e930df4c44b1b",
+    "semantic_hash": ""
+  },
+  "public/cinema-studio-4/film/era/2020s.webp": {
+    "mtime": 1793760176.0881803,
+    "ast_hash": "581c88b747ff0d012ccbc36c242dbef2",
     "semantic_hash": ""
   }
 }

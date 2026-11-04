@@ -1,4 +1,4 @@
-import { PlatformError } from "./platform";
+import { PlatformError, statusErrorText } from "./platform";
 import type { GenerationStatus, QueuedGeneration } from "./platform";
 
 /**
@@ -122,11 +122,16 @@ export function createCfwuiClient(options: CfwuiClientOptions) {
             const url = findMediaUrl(ret);
             return url ? [{ url: rewriteFileUrl(url, origin) }] : [];
           })();
+      /* Flatten a structured backend error into its message so the failed card
+         names the real reason instead of the generic "the platform reported a
+         failure". Carry the string forward; keep the raw object only when
+         nothing readable came back. */
+      const reason = statusErrorText(ret.error);
       return {
         status,
         requestId: stringField(ret, "task_id") ?? requestId,
         ...(media.length ? { images: media } : {}),
-        ...(ret.error !== undefined ? { error: ret.error } : {}),
+        ...(reason ? { error: reason } : ret.error !== undefined ? { error: ret.error } : {}),
       };
     },
   };

@@ -46,7 +46,9 @@ export function PromptOptimizeButton({
     if (!current.trim()) return;
     setBusy(true);
     try {
-      const result = await optimizePromptDraft({ text: current });
+      /* Pass the surface through so the server routes an image caption to the
+         still-image optimizer; video/audio keep the video-optimised prompt. */
+      const result = await optimizePromptDraft({ text: current, surface });
       if (result.error) {
         /* Failure: keep the writer's words, tell them why nothing changed. */
         onError(`Prompt optimization failed — kept original: ${result.error}`);
@@ -70,13 +72,13 @@ export function PromptOptimizeButton({
     <button
       type="button"
       className="ohf-ctl ohf-tip"
-      data-tip="Optimize prompt"
-      aria-label="Optimize prompt"
+      data-tip="프롬프트 최적화"
+      aria-label="프롬프트 최적화"
       disabled={blocked}
       onClick={run}
     >
       {busy ? <span className="ohf-spinner" aria-hidden /> : <LimeIcon />}
-      <span className="ohf-ctl-name">{busy ? "Optimizing…" : "Optimize"}</span>
+      <span className="ohf-ctl-name">{busy ? "최적화 중" : "최적화"}</span>
     </button>
   );
 }

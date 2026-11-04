@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent, ReactNode } from "react";
 
 import type { MediaItem, MediaRole, ModelEntry } from "@/generation/catalog";
 import { useImageMedia, useVideoMedia } from "@/generation/stores/media";
@@ -13,6 +13,9 @@ import { toProxyMediaUrl } from "./image-proxy";
 import { removeStripReference } from "./reference-removal";
 import { kindOfFile, loadUploads, mergeUploads, rememberUpload, saveUploads, type UploadRecord } from "./uploads";
 import { cachedWaveformForAsset } from "@/lib/waveform";
+/* t_9ddf99e1: the tile's open seam. Anchored past the waveform import so it
+   forms its own hunk, clear of the import cluster siblings are editing right now. */
+import { useReferenceShowcase } from "./reference-showcase";
 
 function useMedia(model: ModelEntry) {
   const imageMedia = useImageMedia();
@@ -43,6 +46,10 @@ export interface MediaTray {
   /** Take a file off the shelf. The URL itself stays public — what disappears
       is the record, so the picker stops offering it. */
   forget: (url: string) => void;
+  /** Attach media this app produced itself — a canvas PNG off the draw stage —
+      without opening the OS picker. It takes the same upload path a picked file
+      takes, so the drawing lands on the plane the same way an attachment does. */
+  put: (role: MediaRole, blob: Blob, name: string) => Promise<string | null>;
 }
 
 export function useMediaTray(
@@ -158,7 +165,31 @@ export function useMediaTray(
     setUploads((prev) => prev.filter((record) => record.url !== url));
   }
 
-  return { roles, items: media.items, uploads, staged, uploading, allFull, input, begin, apply, forget };
+  /* A drawing the app made itself has no file to pick, so the picker is out of
+     the loop: the blob is wrapped as a File and takes the identical upload
+     path, then joins the store straight away — the strip renders it and the
+     plane reads it without waiting for a press to apply a set. */
+  async function put(role: MediaRole, blob: Blob, name: string): Promise<string | null> {
+    onError(null);
+    setUploading(true);
+    try {
+      const file = new File([blob], name, { type: blob.type || "image/png" });
+      const uploaded = await uploadMedia(file);
+      media.add({ id: crypto.randomUUID(), url: uploaded.url, role });
+      return uploaded.url;
+    } catch (caught) {
+      onError(
+        caught instanceof Error
+          ? `Upload failed — ${caught.message}. Check the Blob store is configured, then retry.`
+          : "Upload failed. Retry, or drop the file and generate from the prompt alone.",
+      );
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  return { roles, items: media.items, uploads, staged, uploading, allFull, input, begin, apply, forget, put };
 }
 
 /* Pull the first decodable frame out of a video and hand it back as a JPEG data
@@ -228,6 +259,19 @@ export function StripTile({ item }: { item: MediaItem }) {
   const [bg, setBg] = useState<string | null>(null);
   const tileRef = useRef<HTMLSpanElement>(null);
 
+  /* The tile body is the showcase's open control. Clicking it raises this
+     reference's scoped showcase — the same dialog a finished run or an element
+     opens — while the × remove button beside it stays a separate action. The
+     tile carries the click and the two keys a button answers to, so it is a
+     real control in the strip, not dead chrome. */
+  const openShowcase = () => useReferenceShowcase.getState().open(item);
+  const openWithKey = (event: ReactKeyboardEvent<HTMLSpanElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openShowcase();
+    }
+  };
+
   useEffect(() => {
     if (!isMedia) return;
     const el = tileRef.current;
@@ -281,7 +325,14 @@ export function StripTile({ item }: { item: MediaItem }) {
     /* Blob-hosted user upload; next/image would proxy an arbitrary remote host
        for a 56px thumb. */
     return (
-      <span className="ohf-strip-tile">
+      <span
+        className="ohf-strip-tile"
+        role="button"
+        tabIndex={0}
+        onClick={openShowcase}
+        onKeyDown={openWithKey}
+        aria-label={`${ROLE_LABELS[item.role].toLowerCase()} 쇼케이스 열기`}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="ohf-strip-thumb"
@@ -300,6 +351,11 @@ export function StripTile({ item }: { item: MediaItem }) {
     <span
       ref={tileRef}
       className="ohf-strip-tile"
+      role="button"
+      tabIndex={0}
+      onClick={openShowcase}
+      onKeyDown={openWithKey}
+      aria-label={`${ROLE_LABELS[item.role].toLowerCase()} 쇼케이스 열기`}
       style={
         bg
           ? { backgroundImage: `url("${bg}")`, backgroundSize: "cover", backgroundPosition: "center" }

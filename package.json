@@ -6,6 +6,7 @@
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
+    "test": "node --experimental-strip-types --import ./tests/prompt-optimize/boot.mjs --test tests/prompt-optimize/*.test.ts",
     "brand": "node scripts/build-brand-assets.mjs"
   },
   "dependencies": {

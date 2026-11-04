@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   // Allow the split-shell origin (:7860) and both IP/localhost forms so Next's
   // dev JS chunks + HMR are served instead of blocked. Without this the client
   // bundle never loads, hydration never happens, and every click is a no-op.
+  // Next 16의 blockCrossSiteDEV는 **Origin 헤더의 호스트명만** allowedDevOrigins와
+  // 비교한다(포트/스킴은 비교 대상이 아님 — csrf-protection.js의 hostname 문자열 일치).
+  // 따라서 폰이 tailnet 매직DNS 이름(pg4-ubuntu)이나 테일넷 IP로 접근하면 발신 Origin의
+  // host가 "pg4-ubuntu"/"100.72.155.4"가 되어 기본 허용목록(localhost 계열)에 못 붙고
+  // 동적 import된 앱 청크가 403 "Unauthorized"으로 떨어진다 → 클라이언트 번들이 안 돌고
+  // 하이드레이션이 안 되어 SSR 버튼 클릭이 전부 무반응. 맨 아래 4개가 이 케이스를 막는다.
   allowedDevOrigins: [
     "127.0.0.1",
     "localhost",
@@ -11,6 +17,11 @@ const nextConfig: NextConfig = {
     "http://localhost:3100",
     "http://127.0.0.1:7860",
     "http://localhost:7860",
+    // ── remote (phone / tailnet / LAN) origins — hostname만 매칭되므로 맨 이름으로 적는다
+    "pg4-ubuntu",                 // magicDNS short name
+    "pg4-ubuntu.codlet-macaroni.ts.net", // magicDNS FQDN
+    "100.72.155.4",               // tailscale IPv4
+    "192.168.45.82",              // LAN (wlp6s0) IPv4
   ],
   /* Next 16의 dev indicator가 화면 좌상단(20,20)에 "N Issues" 배지를 얹는다 —
      시네마 레일 최상단(뒤로 행 중심 99,31)과 그대로 겹쳐 실마우스 클릭이 배지로

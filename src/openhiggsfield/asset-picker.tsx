@@ -40,6 +40,7 @@ import { ElementForm } from "./element-form";
 import { PreviewLightbox } from "./preview-lightbox";
 import { ProjectDialog } from "./project-dialog";
 import type { UploadRecord } from "./uploads";
+import { TILE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 
 /** The library, cut the way the app cuts it: what this device sent, who could
     perform the work, the named elements a project gathers, what has already
@@ -66,6 +67,12 @@ interface Asset {
   /** The run's layered-gradient art, so a tile whose media is slow to arrive or
       has aged off the platform's CDN is still a picture rather than a hole. */
   art?: string;
+  /** The run's id, when this tile came from a finished record. The waveform
+      cache keys by the asset's own id, so passing it is how the picker shares
+      its waveform with the gallery tile and the showcase hero for the same
+      run. Uploads and other no-run tiles leave it undefined and fall back to
+      the url. */
+  runId?: string;
 }
 
 /* The sidebar files the element library the way the app's category menu does:
@@ -79,11 +86,12 @@ const SIDEBAR: readonly { id: SidebarId; label: string; icon: "person" | "globe"
 ];
 
 /* The generations shelf can be narrowed to one kind of finished run at a time.
-   "All" is the shelf as the run log wrote it; "Video" and "Audio" hide the
-   runs whose kind does not answer to the chosen word. */
-type GenFilter = "all" | "video" | "audio";
+   "All" is the shelf as the run log wrote it; "Image", "Video" and "Audio" hide
+   the runs whose kind does not answer to the chosen word. */
+type GenFilter = "all" | "image" | "video" | "audio";
 const GEN_FILTERS: readonly { id: GenFilter; label: string }[] = [
   { id: "all", label: "All" },
+  { id: "image", label: "Image" },
   { id: "video", label: "Video" },
   { id: "audio", label: "Audio" },
 ];
@@ -110,6 +118,7 @@ export function AssetPicker({
   staged,
   uploading,
   initialTab,
+  initialRole: requestedRole,
   onUpload,
   onApply,
   onForget,
@@ -126,6 +135,11 @@ export function AssetPicker({
   /** Where the panel lands when a trigger asks for a specific shelf instead
       of letting it find the one that holds something. */
   initialTab?: V2Tab;
+  /** Where a slot wants to land: the shelf a caller opens for one specific
+      role. Honoured only when the model's policy actually enables that role —
+      an edit card asking for a video the model rejects falls back to the first
+      enabled slot, exactly as the un-asked-for panel would. */
+  initialRole?: MediaRole;
   onUpload: (role: MediaRole) => void;
   onApply: (role: MediaRole, urls: string[]) => void;
   /** Take a file off the shelf — the hovered card's trash does exactly this. */
@@ -140,8 +154,11 @@ export function AssetPicker({
   /* Land on the first slot this model actually accepts; an audio model that
      rejects every reference has none, so we fall back to the declared default
      and the panel explains why nothing is selectable. */
-  const initialRole = policy.options.find((option) => option.enabled)?.role ?? defaultRole(model);
-  const [role, setRole] = useState<MediaRole>(() => initialRole);
+  const startRole =
+    requestedRole && policy.options.some((option) => option.enabled && option.role === requestedRole)
+      ? requestedRole
+      : policy.options.find((option) => option.enabled)?.role ?? defaultRole(model);
+  const [role, setRole] = useState<MediaRole>(() => startRole);
   /* null until the visitor lands: the panel opens on the shelf that actually
      holds something, so someone who has generated all day and uploaded nothing
      does not land on an empty tab. */
@@ -149,7 +166,7 @@ export function AssetPicker({
   /* The role's inputs as this panel would leave them — seeded with what is
      already on the plane, so an attached tile opens marked and can be pressed
      off again. An array, not a Set: the order picked is the order attached. */
-  const [selected, setSelected] = useState<string[]>(() => urlsOf(items, initialRole));
+  const [selected, setSelected] = useState<string[]>(() => urlsOf(items, startRole));
   const tabsRef = useRef<HTMLDivElement>(null);
   const tabButtons = useRef<Record<string, HTMLButtonElement | null>>({});
   /* The plate that slides under the chosen tab. Its place is measured, never
@@ -181,6 +198,11 @@ export function AssetPicker({
 
   const kind = ROLE_KINDS[role];
   const max = model.roles[role] ?? 0;
+  /* An image model feeds only stills — it has no use for a video or audio
+     reference — so the type dial locks to Image and the shelf shows only the
+     image runs. Every other surface keeps the full All | Image | Video | Audio. */
+  const imageMode = model.surface === "image";
+  const activeFilter: GenFilter = imageMode ? "image" : mediaFilter;
   const current = useMemo(() => urlsOf(items, role), [items, role]);
   const room = Math.max(0, max - selected.length);
 
@@ -207,8 +229,8 @@ export function AssetPicker({
       if (record.status === "running" || record.urls.length === 0) continue;
       const kind: AssetKind =
         record.kind === "video" ? "video" : record.kind === "audio" ? "audio" : "image";
-      if (mediaFilter !== "all" && kind !== mediaFilter) continue;
-      for (const url of record.urls) out.push({ url, kind, title: record.prompt, art: record.art });
+      if (activeFilter !== "all" && kind !== activeFilter) continue;
+      for (const url of record.urls) out.push({ url, kind, title: record.prompt, art: record.art, runId: record.id });
     }
     return scope === "recent" ? out.slice(0, RECENT_WINDOW) : out;
   }, [history, sort, scope, mediaFilter]);
@@ -218,7 +240,7 @@ export function AssetPicker({
     for (const record of history) {
       if (record.status === "running" || record.urls.length === 0 || !record.favorite) continue;
       const kind = record.kind === "video" ? "video" : "image";
-      for (const url of record.urls) out.push({ url, kind, title: record.prompt, art: record.art });
+      for (const url of record.urls) out.push({ url, kind, title: record.prompt, art: record.art, runId: record.id });
     }
     return out;
   }, [history]);
@@ -590,19 +612,37 @@ export function AssetPicker({
               </div>
             )}
             {opened === "generations" && (
-              <div className="ohf-v2-seg" role="group" aria-label="Filter runs by type">
-                {GEN_FILTERS.map((entry) => (
-                  <button
-                    key={entry.id}
-                    type="button"
-                    className="ohf-v2-seg-tab"
-                    aria-pressed={mediaFilter === entry.id}
-                    title={`Show ${entry.label === "All" ? "every finished run" : `only ${entry.label.toLowerCase()} runs`}`}
-                    onClick={() => setMediaFilter(entry.id)}
-                  >
-                    {entry.label}
-                  </button>
-                ))}
+              <div
+                className="ohf-v2-seg"
+                role="group"
+                aria-label={
+                  imageMode
+                    ? "Filter runs by type — locked to Image"
+                    : "Filter runs by type"
+                }
+              >
+                {(imageMode ? GEN_FILTERS.filter((entry) => entry.id === "image") : GEN_FILTERS).map(
+                  (entry) => (
+                    <button
+                      key={entry.id}
+                      type="button"
+                      className="ohf-v2-seg-tab"
+                      aria-pressed={imageMode || mediaFilter === entry.id}
+                      disabled={imageMode}
+                      title={
+                        imageMode
+                          ? "Image models reference stills only — the type filter is pinned to Image"
+                          : `Show ${entry.label === "All" ? "every finished run" : `only ${entry.label.toLowerCase()} runs`}`
+                      }
+                      onClick={() => {
+                        if (imageMode) return;
+                        setMediaFilter(entry.id);
+                      }}
+                    >
+                      {entry.label}
+                    </button>
+                  ),
+                )}
               </div>
             )}
           </div>
@@ -659,16 +699,18 @@ export function AssetPicker({
                 <AssetsIcon size={15} />
               </span>
               <span className="ohf-v2-empty-title">
-                {mediaFilter === "all"
+                {activeFilter === "all"
                   ? "No finished runs yet"
-                  : `No ${mediaFilter} runs yet`}
+                  : `No ${activeFilter} runs yet`}
               </span>
               <span className="ohf-v2-empty-hint">
-                {mediaFilter === "video" || mediaFilter === "audio"
-                  ? "Press All to see the runs the other kind made."
-                  : kind === "audio"
-                    ? "Attach an audio track from this device instead — it lands on the Uploads shelf."
-                    : "Every run you finish lands here, ready to feed the next run."}
+                {imageMode
+                  ? "This is an image model — only image references apply here."
+                  : activeFilter !== "all"
+                    ? "Press All to see the runs the other kind made."
+                    : kind === "audio"
+                      ? "Attach an audio track from this device instead — it lands on the Uploads shelf."
+                      : "Every run you finish lands here, ready to feed the next run."}
               </span>
             </div>
           )}
@@ -912,6 +954,18 @@ const ChromeCard = memo(function ChromeCard({
   onDelete?: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  /* Audio tiles get a waveform behind the glyph — the same image the gallery
+     tile draws, so the picker and the shelf agree on the sound's shape. When
+     this card came from a finished run we key by the run's own id, so the same
+     waveform the gallery cached lands here without a re-decode; a plain upload
+     falls back to its url, which is the only identity it has. A fetch failure
+     is silent: the slate behind the glyph is a fine fallback. */
+  const waveUrl = useAudioWaveform(
+    asset.runId ?? asset.url,
+    asset.url,
+    asset.kind === "audio",
+    TILE_WAVEFORM,
+  );
 
   return (
     <div className="ohf-v2-card" data-picked={picked}>
@@ -938,6 +992,13 @@ const ChromeCard = memo(function ChromeCard({
             through the letterbox bands. */}
         {asset.kind === "audio" && (
           <span className="ohf-asset-art" style={asset.art ? { background: asset.art } : undefined} />
+        )}
+        {asset.kind === "audio" && waveUrl && (
+          <span
+            className="ohf-asset-wave"
+            aria-hidden
+            style={{ backgroundImage: `url("${waveUrl}")` }}
+          />
         )}
         {asset.kind === "video" ? (
           <video

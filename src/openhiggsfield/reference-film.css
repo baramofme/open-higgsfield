@@ -1,219 +1,578 @@
 /* Reference film's chrome. Carried in its own sheet so the feature never edits
    the app's openhiggsfield.css and never collides with a sibling instrument
-   landing styles there. The panel inherits `.ohf-popover`'s positioning from the
-   composer's --ohf-pop-x / --ohf-pop-y and only shapes its own body. The plates
-   are the same layered-gradient artwork the gallery uses, seeded per reference,
-   laid under the film-grain overlay — so a reference reads as film stock before
-   you commit to it. */
+   landing styles there. This file is the port of the app's own film dialog:
+   every number is measured off the live page (CDP :9222, viewport 1440x900,
+   2026-11-04) — the 800x504 panel, its 24px radius and 4px padding, the 1px
+   body gap, the 184px/12px tab rail with its 36px r-8 tabs, the white/5
+   surfaces over #1c1e20, the #0f1113 card frame with its 4px pad around the
+   #0b0b0b media well, the pager's 32px r-full buttons with the
+   rgba(197,197,197,.3) border over white/5, and the drum's measured slot
+   choreography (front 230x129 at top 130 with its card scaled 1.4, squares
+   254 at ±300/192, portraits 129x230 at ±425/505, squares 254 at ±427/793).
+   The exact inset shadows and tick colours are filled by the computed-style
+   probe (hf10_full.json); TODO markers name what is still pending. */
 
-.ohf-rf-pop {
-  width: 320px;
-  max-width: 100%;
-  max-height: min(56vh, 452px);
-  overflow-y: auto;
+/* ------------------------------------------------------------ the dialog */
+
+.ohf-rfd {
+  position: fixed;
+  inset: 0;
+  z-index: 1000; /* HF's own dialog wrapper sits at z-1000 (CDP :9222 dlgCS) */
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px;
-  background: #232326;
-  border-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px);
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+/* The portal escapes the app's global border-box reset — restore it for the
+   whole subtree. Without it the 184px rail renders 208 (184+24 padding),
+   tabs run 184 instead of 160, and the guide ring reads 1082 (hf12_full.json:
+   HF rail 184 border-box, tab 160, guide 1080 incl. border). */
+.ohf-rfd,
+.ohf-rfd * {
+  box-sizing: border-box;
 }
 
-/* Panel head: the title flexes, 초기화 and the ghost close sit at its end. */
-.ohf-rf-head {
+.ohf-rfd__panel {
+  pointer-events: auto;
+  /* The dialog renders in a portal outside `.ohf`, so the app's global
+     border-box reset does not reach it — set it here. HF measures the panel
+     at exactly 800x504 including its p-1 (4px) padding (CDP :9222). */
+  box-sizing: border-box;
+  width: min(800px, calc(100vw - 32px));
+  height: 504px;
+  max-height: calc(100vh - 32px);
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  background: #1c1e20;
+  color: rgb(247, 247, 248); /* HF panel foreground (hf10/hf12 panelCS) */
+  line-height: 24px; /* HF panel carries 24px line-height down the subtree (hf12 panelCS) */
+  border-radius: 24px;
+  overflow: clip;
+}
+
+.ohf-rfd__head {
+  flex: none;
+  height: 44px;
+  padding-bottom: 4px;
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 32px;
-  padding: 0 4px;
 }
-.ohf-rf-title {
+.ohf-rfd__title {
+  flex: none; /* HF sizes this to its text (max-w-77ch), it does not grow */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0; /* HF title carries no padding (hf10 style-probe) */
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400; /* HF: body-16-regular, not a heading */
+  color: rgb(247, 247, 248);
+}
+
+.ohf-rfd__reset {
+  flex: none;
+  display: flex;
+  height: 32px;
+  min-width: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9999px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgb(247, 247, 248);
+  font-size: 16px; /* HF reset is body-16-regular (hf10 style-probe) */
+  line-height: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out, scale 0.15s ease-out;
+}
+.ohf-rfd__reset:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.ohf-rfd__reset:active {
+  scale: 0.94;
+}
+
+.ohf-rfd__close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  padding: 0; /* HF close carries no padding (hf10 style-probe); a global button rule otherwise rides 1px 6px */
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgb(247, 247, 248);
+  cursor: pointer;
+  transition: background-color 0.15s ease-out, scale 0.15s ease-out;
+}
+.ohf-rfd__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ohf-rfd__close:active {
+  scale: 0.94;
+}
+
+/* ------------------------------------------------------------ the body */
+
+.ohf-rfd__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 1px;
+  border-radius: 20px;
+  overflow: clip;
+}
+
+.ohf-rfd__tabs {
+  flex: none;
+  width: 184px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ohf-rfd__tab {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px 8px 8px;
+  background: transparent;
+  color: rgb(137, 138, 139);
+  font-size: 16px; /* HF button inherits body-16-regular; the visible label is styled on __tab-label */
+  line-height: 24px;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out, scale 0.15s ease-out, color 0.15s ease-out;
+}
+.ohf-rfd__tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-rfd__tab:active {
+  scale: 0.94;
+}
+.ohf-rfd__tab--on {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.ohf-rfd__tab-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.ohf-rfd__tab-label {
   min-width: 0;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px; /* HF measured label: 14/500/16 (hf12 tabs lblcs) */
   line-height: 16px;
-  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
 }
-.ohf-rf-reset {
+
+/* ------------------------------------------------------------- the pane */
+
+.ohf-rfd__pane {
+  flex: 1;
+  min-width: 0;
   display: flex;
-  height: 24px;
-  min-width: 24px;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.ohf-rfd__caption {
+  flex: none;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px; /* HF outer row: gap-2 items-start px-4 pt-4 (hf_film_dump/hf12 capCS); the vertical title/sub spacing rides the inner column's gap-1 */
+  padding: 16px 16px 0;
+}
+.ohf-rfd__caption-col {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* HF inner column h36 = 16+4+16 */
+}
+.ohf-rfd__caption-title {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+}
+.ohf-rfd__caption-sub {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: rgb(137, 138, 139);
+}
+
+.ohf-rfd__picker {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  cursor: grab; /* HF: cursor-grab select-none active:cursor-grabbing (hf_film_dump) */
+  user-select: none;
+}
+.ohf-rfd__picker:active {
+  cursor: grabbing;
+}
+
+/* ----------------------------------------------------------- the pager */
+
+.ohf-rfd__pager {
+  position: absolute;
+  bottom: 28px; /* HF: bottom-7 (CDP :9222 measured) */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px; /* HF gap 6px */
+  z-index: 10; /* HF z-10 */
+}
+
+.ohf-rfd__arrow {
+  display: flex;
   align-items: center;
   justify-content: center;
-  border: 0;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0 6px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 12px;
-  font-weight: 500;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgb(247, 247, 248); /* HF arrow foreground (hf12 arrows cs) */
   cursor: pointer;
   transition: background-color 0.15s ease-out, scale 0.15s ease-out;
+  /* HF rides a two-part shadow on the nav circles (CDP :9222):
+     inset rgba(185,185,185,0.35) 0 -0.3px 5.4px + drop rgba(0,0,0,0.09)
+     0 20.5px 10.3px. The remaining slots in HF's computed value are transparent. */
+  box-shadow: inset 0 -0.3px 5.4px rgba(185, 185, 185, 0.35),
+              0 20.5px 10.3px rgba(0, 0, 0, 0.09);
 }
-.ohf-rf-reset:hover {
-  background: rgba(255, 255, 255, 0.15);
+.ohf-rfd__arrow:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
-.ohf-rf-reset:active {
-  scale: 0.96;
+.ohf-rfd__arrow:active {
+  scale: 0.94;
+}
+.ohf-rfd__arrow svg {
+  width: 20px;
+  height: 20px;
 }
 
-/* The preview plate: the active grade laid full-bleed, its word riding a shade
-   at the foot so it stays readable over the gradient. */
-.ohf-rf-preview {
-  position: relative;
-  height: 88px;
-  border-radius: 12px;
-  overflow: hidden;
+.ohf-rfd__pill {
+  box-sizing: border-box; /* portal escape hatch, see .ohf-rfd__panel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 96px;
+  padding: 0 16px; /* HF px-4 */
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  border-radius: 9999px;
   background: rgba(255, 255, 255, 0.05);
+  color: rgb(247, 247, 248);
+  font-size: 16px; /* HF body text, not caption size */
+  line-height: 24px;
+  font-weight: 400;
+  white-space: nowrap;
 }
-.ohf-rf-preview .ohf-rf-plate {
+
+/* ---------------------------------------------------------- the card */
+
+.ohf-rfd-card {
+  position: relative;
   width: 100%;
   height: 100%;
-}
-.ohf-rf-preview-shade {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 48px;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
-  pointer-events: none;
-}
-.ohf-rf-preview-label {
-  position: absolute;
-  left: 10px;
-  bottom: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  padding: 4px;
+  background: #0f1113;
+  border-radius: 24px;
+  box-shadow: 0 -2.6px 5.2px 0 rgba(0, 0, 0, 0.08),
+    inset 0 -1.3px 1.3px 0 rgba(255, 255, 255, 0.12),
+    inset 0 1.3px 2.6px 0 rgba(0, 0, 0, 0.04);
+  /* Measured computed value, verbatim (hf10_full.json style-probe). */
 }
 
-/* The plate itself — layered gradients carried as background, full-bleed, with
-   the film grain riding on top so the reference reads as stock. */
-.ohf-rf-plate {
+.ohf-rfd-card-media {
   position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #0b0b0b;
+  overflow: hidden;
+}
+.ohf-rfd-card-media img {
   display: block;
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
+  object-fit: cover;
 }
-.ohf-rf-grain {
+.ohf-rfd-card-media--era {
+  border-radius: 17px;
+}
+
+/* -------------------------------------------------------- the genre drum */
+
+.ohf-rfd-drum {
   position: absolute;
   inset: 0;
-  background-repeat: repeat;
-  background-size: 128px 128px;
-  opacity: 0.32;
-  mix-blend-mode: overlay;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+/* HF's guide ring is the faint white/20 circle, 1080px across, centred on
+   (pane centre, picker-top + 580px) — hf12 measured its rect top at 338 with
+   the picker top at 298, i.e. CSS top 40px. The slots ride fixed positions,
+   not this circle; it is chrome. */
+.ohf-rfd-drum-guide {
+  position: absolute;
+  left: calc(50% - 540px);
+  top: 40px;
+  width: 1080px;
+  height: 1080px;
+  border-radius: 9999px;
+  border: 0.86px solid rgba(255, 255, 255, 0.2); /* HF border-[0.86px] border-white/20 */
   pointer-events: none;
 }
 
-/* One reference layer: its label, then a plate per option. The chips wrap so a
-   long vocabulary stays whole inside the column. */
-.ohf-rf-axis {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0 2px;
+.ohf-rfd-slot {
+  position: absolute;
+  transition: opacity 0.15s ease-out;
 }
-.ohf-rf-axis-head {
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 14px;
-  color: rgba(255, 255, 255, 0.45);
-}
-.ohf-rf-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.ohf-rf-chip {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 4px;
-  width: 88px;
-  padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  cursor: pointer;
-  transition: border-color 0.15s ease-out, scale 0.15s ease-out, background-color 0.15s ease-out;
-}
-.ohf-rf-chip:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-}
-.ohf-rf-chip:active {
-  scale: 0.97;
-}
-.ohf-rf-chip .ohf-rf-plate {
-  height: 30px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.ohf-rf-chip-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 10px;
-  line-height: 13px;
-  color: rgba(255, 255, 255, 0.7);
-}
-/* The plate already chosen wears the white ring the camera drum gives its detent
-   row — the same tell the rest of the studio uses for "this is the live one". */
-.ohf-rf-chip[data-selected] {
-  border-color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.1);
-}
-.ohf-rf-chip[data-selected] .ohf-rf-chip-label {
-  color: #fff;
+.ohf-rfd-slot-card {
+  width: 100%;
+  height: 100%;
 }
 
-/* The intensity strip: one square per detent. */
-.ohf-rf-detents {
-  display: flex;
-  gap: 4px;
+/* Slot choreography, measured at 1440x900 against the drum's own top edge. */
+.ohf-rfd-slot--e0 {
+  width: 230px;
+  height: 129px;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
 }
-.ohf-rf-detent {
-  display: flex;
-  width: 28px;
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 12px;
+/* The front card wears its frame scaled 1.4 about the centre — the app's own
+   measured 322x181 out of the 230x129 slot. */
+.ohf-rfd-slot--e0 .ohf-rfd-card {
+  transform: scale(1.4);
+}
+.ohf-rfd-slot--e1 {
+  width: 254px;
+  height: 254px;
+  top: 192px;
+  left: calc(50% + 300px);
+  transform: translateX(-50%);
+  opacity: 0.55;
+  cursor: pointer;
+}
+.ohf-rfd-slot--e-1 {
+  width: 254px;
+  height: 254px;
+  top: 192px;
+  left: calc(50% - 300px);
+  transform: translateX(-50%);
+  opacity: 0.55;
+  cursor: pointer;
+}
+.ohf-rfd-slot--e1:hover,
+.ohf-rfd-slot--e-1:hover {
+  opacity: 1;
+}
+/* The app dims its neighbours to 0.55 while the wheel is browsing away from
+   the committed item, and leaves them at full opacity when the wheel sits on
+   the live one (measured both states). */
+.ohf-rfd-drum[data-aligned] .ohf-rfd-slot--e1,
+.ohf-rfd-drum[data-aligned] .ohf-rfd-slot--e-1 {
+  opacity: 1;
+}
+.ohf-rfd-slot--e2 {
+  width: 129px;
+  height: 230px;
+  top: 505px;
+  left: calc(50% + 425px);
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.ohf-rfd-slot--e-2 {
+  width: 129px;
+  height: 230px;
+  top: 505px;
+  left: calc(50% - 425px);
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.ohf-rfd-slot--e3 {
+  width: 254px;
+  height: 254px;
+  top: 793px;
+  left: calc(50% + 427px);
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.ohf-rfd-slot--e-3 {
+  width: 254px;
+  height: 254px;
+  top: 793px;
+  left: calc(50% - 427px);
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------- the era ruler */
+
+.ohf-rfd-era {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.ohf-rfd-era-preview {
+  position: absolute;
+  top: 55px; /* HF absolute top 353 with picker top 298 → rel 55 (hf12) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 190px;
+}
+/* HF's era preview card is a softer variant of the genre card: radius 21 and
+   a smaller three-part shadow (hf_micro era-srcmap2 cardCS: 21px,
+   0 -2.2px 4.5px + inset -1.1px 1.1px + inset 1.1px 2.2px). */
+.ohf-rfd-era-preview .ohf-rfd-card {
+  border-radius: 21px;
+  box-shadow: 0 -2.2px 4.5px 0 rgba(0, 0, 0, 0.08),
+    inset 0 -1.1px 1.1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 1.1px 2.2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* HF's era ruler is NOT a centred chip: 81 hairline ticks run full pane
+   width at 16.8px pitch, every 10th tick (168px = one detent, directly under
+   a label) grows to 24px, and the pane-centre detent carries a 4x32 yellow
+   marker on top of its tall tick. Ticks beyond the pane edge are clipped by
+   the pane's overflow:hidden — same as HF. (CDP :9222, 1440x900.) */
+.ohf-rfd-era-ruler {
+  position: absolute;
+  top: 300px; /* tick band centre lands at HF absolute y 614 (= picker 298 + 300 + 16) */
+  left: 0;
+  right: 0;
+  height: 32px;
+}
+.ohf-rfd-tick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(calc(-50% + var(--tx, 0px)), -50%);
+  width: 2px;
+  height: 16px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.1); /* HF tick alpha, measured */
+}
+.ohf-rfd-tick--lab {
+  height: 24px; /* label-column detents */
+}
+.ohf-rfd-tick--mid {
+  width: 4px;
+  height: 32px;
+  background: rgb(209, 254, 23); /* HF centre marker yellow */
+}
+
+.ohf-rfd-era-wheel {
+  position: absolute;
+  top: 324px;
+  left: 0;
+  right: 0;
+  height: 80px;
+}
+.ohf-rfd-era-label {
+  position: absolute;
+  left: 50%;
+  top: 40px; /* with translate(-50%,-50%) this IS the label centre: lands at HF absolute y 662 (= picker 298 + wheel 324 + 40) */
+  border: 0;
+  background: transparent;
+  padding: 0 8px;
+  font-size: 18px; /* HF era labels are heading-size, not caption */
+  line-height: 24px;
   font-weight: 600;
+  color: rgb(130, 130, 130); /* HF unselected era label grey */
+  white-space: nowrap;
   cursor: pointer;
-  transition: border-color 0.15s ease-out, scale 0.15s ease-out, background-color 0.15s ease-out;
+  transition: color 0.15s ease-out;
 }
-.ohf-rf-detent:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.07);
+.ohf-rfd-era-label:hover {
+  color: rgb(224, 224, 224);
 }
-.ohf-rf-detent:active {
-  scale: 0.94;
-}
-.ohf-rf-detent[data-selected] {
-  border-color: rgba(255, 255, 255, 0.85);
-  background: rgba(217, 254, 62, 0.16);
-  color: #d9fe3e;
+.ohf-rfd-era-label[data-selected] {
+  color: rgb(209, 254, 23); /* HF selected era label yellow */
 }
 
-/* The footer receipt: how many layers will ride into the prompt. */
-.ohf-rf-receipt {
-  margin-top: 2px;
-  padding: 0 2px;
-  font-size: 11px;
-  line-height: 15px;
-  color: rgba(217, 254, 62, 0.7);
+/* -------------------------------------------------------- the tempo wheel */
+
+.ohf-rfd-tempo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+/* HF tempo wheel geometry (hf_micro tempo-cards, 1440x900): every slot rides
+   op 1 — there is NO neighbour fade — natural card 199x124 centred at page
+   cy 462 (picker 298 + 164 → hit top 102), pitch 300, and the front card
+   scales ~1.467 about that centre (visible 292x182, top 371 = rel 73).
+   Slots beyond the pane are clipped by overflow, still opacity 1. */
+.ohf-rfd-tempo-slot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  opacity: 1;
+}
+
+.ohf-rfd-tempo-hit {
+  position: absolute;
+  left: 50%;
+  top: 102px;
+  transform: translateX(-50%);
+  width: 199px;
+  height: 124px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.ohf-rfd-tempo-slot--front .ohf-rfd-card--tempo {
+  transform: scale(1.467); /* HF front 292x182 from the 199x124 card about its centre */
+}
+.ohf-rfd-card--tempo {
+  width: 100%;
+  height: 100%;
 }

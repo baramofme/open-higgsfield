@@ -6,21 +6,35 @@
    hover scale. Empty states use the same language as the project feed's
    empty state ("아직 아무것도 없어요"). */
 
-import { useElements } from "@/generation/stores/elements";
+import { useElements, type ElementItem } from "@/generation/stores/elements";
 import type { CinemaView } from "@/generation/stores/project-surface";
 import { toProxyImageUrl } from "./image-proxy";
 import type { RunRecord } from "./history";
 
 /* ── Tile grid ────────────────────────────────────────────────────────────── */
 
-function GenerationTile({ record, onOpen }: { record: RunRecord; onOpen?: () => void }) {
+function GenerationTile({
+  record,
+  onOpenRun,
+  onShowFailure,
+}: {
+  record: RunRecord;
+  onOpenRun?: (id: string) => void;
+  onShowFailure?: (id: string) => void;
+}) {
+  /* A finished run opens the showcase; a failed one opens its failure detail. A
+     run still rendering has nothing finished to open yet, so its tile stays
+     inert until the result lands. */
+  const handleClick = () => {
+    if (record.status === "completed" && record.urls[0]) onOpenRun?.(record.id);
+    else if (record.status === "failed") onShowFailure?.(record.id);
+  };
   return (
     <button
       type="button"
       className="ohf-cine-tile-btn"
-      onClick={onOpen}
+      onClick={handleClick}
       aria-label={record.prompt}
-      style={{ aspectRatio: record.ratio }}
     >
       {record.status === "completed" && record.urls[0] ? (
         record.kind === "image" ? (
@@ -51,9 +65,28 @@ function GenerationTile({ record, onOpen }: { record: RunRecord; onOpen?: () => 
   );
 }
 
-function ElementTile({ name, url, elementId }: { name: string; url: string; elementId: string }) {
+function ElementTile({
+  element,
+  onOpenElement,
+}: {
+  element: ElementItem;
+  onOpenElement?: (element: ElementItem) => void;
+}) {
+  const { name, url, elementId } = element;
   return (
-    <div className="ohf-cine-tile" style={{ aspectRatio: "4 / 3" }}>
+    <div
+      className="ohf-cine-tile"
+      role="button"
+      tabIndex={0}
+      aria-label={name}
+      onClick={() => onOpenElement?.(element)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onOpenElement?.(element);
+        }
+      }}
+    >
       {url ? (
         <img className="ohf-cine-tile-media" src={toProxyImageUrl(url)} alt={name} loading="lazy" />
       ) : (
@@ -82,9 +115,15 @@ function EmptyState({ title, sub }: { title: string; sub: string }) {
 export function CinemaTileView({
   view,
   history,
+  onOpenRun,
+  onShowFailure,
+  onOpenElement,
 }: {
   view: CinemaView;
   history: RunRecord[];
+  onOpenRun?: (id: string) => void;
+  onShowFailure?: (id: string) => void;
+  onOpenElement?: (element: ElementItem) => void;
 }) {
   const elements = useElements((s) => s.items);
 
@@ -112,7 +151,12 @@ export function CinemaTileView({
         <h3 className="ohf-cine-tile-view-title">내 생성</h3>
         <div className="ohf-cine-tile-grid">
           {items.map((record) => (
-            <GenerationTile key={record.id} record={record} />
+            <GenerationTile
+              key={record.id}
+              record={record}
+              onOpenRun={onOpenRun}
+              onShowFailure={onShowFailure}
+            />
           ))}
         </div>
       </section>
@@ -137,12 +181,7 @@ export function CinemaTileView({
         <h3 className="ohf-cine-tile-view-title">내 요소</h3>
         <div className="ohf-cine-tile-grid">
           {elements.map((item) => (
-            <ElementTile
-              key={item.id}
-              name={item.name}
-              url={item.url}
-              elementId={item.elementId}
-            />
+            <ElementTile key={item.id} element={item} onOpenElement={onOpenElement} />
           ))}
         </div>
       </section>
@@ -172,7 +211,12 @@ export function CinemaTileView({
       <h3 className="ohf-cine-tile-view-title">내 즐겨찾기</h3>
       <div className="ohf-cine-tile-grid">
         {favorites.map((record) => (
-          <GenerationTile key={record.id} record={record} />
+          <GenerationTile
+            key={record.id}
+            record={record}
+            onOpenRun={onOpenRun}
+            onShowFailure={onShowFailure}
+          />
         ))}
       </div>
     </section>

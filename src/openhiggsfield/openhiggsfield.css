@@ -5,42 +5,40 @@
    type carries measurement. */
 
 .ohf {
-  --bg: #0a0a0b;
-  --rail: #101112;
-  --s1: #151719;
-  --s2: #1a1d1f;
-  --s3: #222629;
-  --s4: #2b3033;
-  --line: rgba(255, 255, 255, 0.06);
-  --line-2: rgba(255, 255, 255, 0.11);
-  --tx: #edefef;
-  --tx2: #a8aeaf;
-  --tx3: #878e90;
-  /* tx4 carries small metadata type, so it holds the 4.5:1 body floor on --rail;
-     --tx-off is the dimmer value reserved for disabled controls. */
-  --tx4: #7d8486;
-  --tx-off: #5c6365;
+  --bg: #131416;            /* HF body paint = --color-q-background-primary */
+  --rail: #131416;          /* HF sidebar paint (same token as body) */
+  --s1: #1c1e20;            /* HF --color-surface-primary */
+  --s2: #23262a;            /* HF --color-surface-secondary */
+  --s3: #2a2d32;            /* HF --color-surface-secondary-hover */
+  --s4: #2b2e33;            /* HF --canvas-rgb-surface-highlight (43,46,51) */
+  --line: #ffffff0d;        /* HF --color-border-subtle (white/5) */
+  --line-2: #ffffff1a;      /* HF --color-border-default (white/10) */
+  --tx: #f7f7f8;            /* HF --color-text-primary (body paint 247,247,248) */
+  --tx2: #898a8b;           /* HF --color-icon-secondary / font-secondary */
+  --tx3: #828282;           /* HF --color-q-text-secondary / hf-text-secondary */
+  /* tx4/tx-off: HF canonical tertiary & disabled grays (98,98,98 / 72,78,86). */
+  --tx4: #626262;
+  --tx-off: #484e56;
   --accent: #d1fe17;
-  --accent-strong: #ddfe51;
-  --accent-ink: #141a02;
-  --accent-08: rgba(209, 254, 23, 0.08);
-  --accent-14: rgba(209, 254, 23, 0.14);
-  --accent-32: rgba(209, 254, 23, 0.32);
-  /* Smoked plate for chrome that sits on a returned picture. 0.7 holds the
-     4.5:1 ink floor even against a blown-out white frame; lighter did not. */
-  --plate: rgba(6, 9, 8, 0.7);
-  --plate-ink: rgba(246, 250, 248, 0.9);
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.35);
-  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.4), 0 32px 88px rgba(0, 0, 0, 0.52);
-  --glint: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  --accent-strong: #d1fe17; /* HF has no stronger lime; hover emphasis is a brightness filter */
+  --accent-ink: #131517;    /* HF --color-btn-accent-text / font-primary-reverted */
+  --accent-08: #d1fe170d;   /* HF --color-q-lime-alpha-05 */
+  --accent-14: #d1fe171a;   /* HF --color-q-transparent-lime-10 */
+  --accent-32: #d1fe174d;   /* HF --color-primary-30 */
+  /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
+  --plate: #000000b3;
+  --plate-ink: #ffffffe6;
+  --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
+  --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
+  --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
+  --glint: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d; /* HF --hf-shadow-sheen */
   --ease: cubic-bezier(0.2, 0, 0, 1);
   /* Deeper exponential ease-out — the scope indicator's travel. */
   --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
   --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
-  --danger: #ff8d78;
-  --danger-bg: rgba(255, 141, 120, 0.1);
-  --danger-line: rgba(255, 141, 120, 0.28);
+  --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
+  --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
+  --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
 
   font-family: var(--font-ui);
   font-size: 14px;
@@ -1678,7 +1676,9 @@
   padding: 10px 12px 2px;
 }
 .ohf-prompt {
-  flex: 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   min-width: 0;
   resize: none;
   min-height: 40px;
@@ -1689,6 +1689,10 @@
   font-size: 15px;
   line-height: 1.5;
   outline: none;
+  /* Wrap on whitespace and break long words identically to the mirror behind it, so
+     the colour chips stay under their glyphs line-for-line. */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .ohf-prompt:focus-visible {
   outline: none;
@@ -3926,7 +3930,7 @@ a.ohf-btn-solid {
     opacity 0.15s ease;
 }
 .ohf-cinebar-trigger:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff14;
 }
 .ohf-cinebar-trigger-icon {
   flex: none;
@@ -4089,7 +4093,7 @@ a.ohf-btn-solid {
   inset: 0;
   border-radius: 8px;
   box-shadow:
-    0 4px 2px rgba(0, 0, 0, 0.08),
+    0 4px 2px #00000014,
     inset 0 2px 4px rgba(255, 255, 255, 0.24);
 }
 .ohf-cine-chip-over {
@@ -4103,7 +4107,7 @@ a.ohf-btn-solid {
   position: absolute;
   inset: 0;
   border-radius: 8px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.32) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #ffffff52 100%);
   mix-blend-mode: hard-light;
 }
 .ohf-cine-chip-line {
@@ -4282,12 +4286,12 @@ a.ohf-btn-solid {
   justify-content: center;
   border: 1px solid rgba(197, 197, 197, 0.3);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff14;
   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
   color: var(--cine-half);
 }
 .ohf-cinebar-new:hover .ohf-cinebar-new-chip {
-  background: rgba(255, 255, 255, 0.12);
+  background: #ffffff1a;
   color: var(--cine-fg);
 }
 .ohf-cinebar-new-label {
@@ -4500,7 +4504,7 @@ a.ohf-btn-solid {
   height: 24px;
   display: grid;
   place-items: center;
-  color: rgba(255, 255, 255, 0.18);
+  color: #ffffff2e;
 }
 .ohf-cinebar-avatar-face {
   position: relative;
@@ -4508,7 +4512,7 @@ a.ohf-btn-solid {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(209, 254, 23, 0.12);
+  background: #d1fe171a;
   color: #d1fe17;
   display: grid;
   place-items: center;
@@ -5064,7 +5068,7 @@ a.ohf-btn-solid {
   padding: 7px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
+  color: #ffffffb3;
   background: transparent;
   cursor: pointer;
 }
@@ -5104,7 +5108,7 @@ a.ohf-btn-solid {
   height: 80px;
 }
 .ohf-cinema-tile-ic {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fffc;
 }
 .ohf-cinema-tile-label {
   font-size: 13px;
@@ -5112,7 +5116,7 @@ a.ohf-btn-solid {
 }
 .ohf-cinema-tile-sub {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff9;
 }
 .ohf-popover--cinema {
   width: 100%;
@@ -5130,7 +5134,7 @@ a.ohf-btn-solid {
 }
 .ohf-cinema-pop-note {
   font-size: 12.5px;
-  color: var(--muted, rgba(255, 255, 255, 0.55));
+  color: var(--muted, #fff9);
   margin: 0 0 12px;
 }
 .ohf-cinema-pop-rows {
@@ -5154,13 +5158,13 @@ a.ohf-btn-solid {
   display: block;
   margin-top: 3px;
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff9;
 }
 .ohf-cinema-flag {
   display: block;
   margin-top: 12px;
   font-size: 11px;
-  color: rgba(217, 254, 62, 0.75);
+  color: #d1fe17b2;
 }
 /* The camera sheet, ported from the app's own markup (user-supplied HTML):
    a 400-wide panel with a 20px radius and a hairline white border, two wheels
@@ -5210,7 +5214,7 @@ a.ohf-btn-solid {
   transition: background-color 0.15s ease-out, scale 0.15s ease-out;
 }
 .ohf-cine-reset:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: #ffffff26;
 }
 .ohf-cine-reset:active {
   scale: 0.96;
@@ -5237,7 +5241,7 @@ a.ohf-btn-solid {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.45);
+  color: #ffffff73;
 }
 .ohf-cine-wheel-body {
   position: relative;
@@ -5258,30 +5262,30 @@ a.ohf-btn-solid {
   touch-action: none;
   -webkit-mask-image: linear-gradient(
     transparent 0,
-    rgba(0, 0, 0, 0.08) 27px,
-    rgba(0, 0, 0, 0.28) 57px,
-    rgba(0, 0, 0, 0.58) 93px,
-    rgba(0, 0, 0, 0.85) 123px,
+    #00000014 27px,
+    #00000047 57px,
+    #0009 93px,
+    #000000e6 123px,
     #000 150px,
     #000 calc(100% - 150px),
-    rgba(0, 0, 0, 0.85) calc(100% - 123px),
-    rgba(0, 0, 0, 0.58) calc(100% - 93px),
-    rgba(0, 0, 0, 0.28) calc(100% - 57px),
-    rgba(0, 0, 0, 0.08) calc(100% - 27px),
+    #000000e6 calc(100% - 123px),
+    #0009 calc(100% - 93px),
+    #00000047 calc(100% - 57px),
+    #00000014 calc(100% - 27px),
     transparent 100%
   );
   mask-image: linear-gradient(
     transparent 0,
-    rgba(0, 0, 0, 0.08) 27px,
-    rgba(0, 0, 0, 0.28) 57px,
-    rgba(0, 0, 0, 0.58) 93px,
-    rgba(0, 0, 0, 0.85) 123px,
+    #00000014 27px,
+    #00000047 57px,
+    #0009 93px,
+    #000000e6 123px,
     #000 150px,
     #000 calc(100% - 150px),
-    rgba(0, 0, 0, 0.85) calc(100% - 123px),
-    rgba(0, 0, 0, 0.58) calc(100% - 93px),
-    rgba(0, 0, 0, 0.28) calc(100% - 57px),
-    rgba(0, 0, 0, 0.08) calc(100% - 27px),
+    #000000e6 calc(100% - 123px),
+    #0009 calc(100% - 93px),
+    #00000047 calc(100% - 57px),
+    #00000014 calc(100% - 27px),
     transparent 100%
   );
 }
@@ -5404,13 +5408,13 @@ a.ohf-btn-solid {
   justify-content: center;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff14;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.15s ease-out, scale 0.15s ease-out;
 }
 .ohf-cine-arrow:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: #ffffff24;
 }
 .ohf-cine-arrow:active {
   scale: 0.96;
@@ -5421,7 +5425,7 @@ a.ohf-btn-solid {
   bottom: 0;
   left: 50%;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.06), transparent);
+  background: linear-gradient(to bottom, transparent, #ffffff0f, transparent);
 }/* OpenHiggsfield AI — scoped design system.
    Identity: near-black studio, one lime accent reserved for selection,
    primary action and liveness. Structure = hairline borders; elevation =
@@ -5429,42 +5433,40 @@ a.ohf-btn-solid {
    type carries measurement. */
 
 .ohf {
-  --bg: #0a0a0b;
-  --rail: #101112;
-  --s1: #151719;
-  --s2: #1a1d1f;
-  --s3: #222629;
-  --s4: #2b3033;
-  --line: rgba(255, 255, 255, 0.06);
-  --line-2: rgba(255, 255, 255, 0.11);
-  --tx: #edefef;
-  --tx2: #a8aeaf;
-  --tx3: #878e90;
-  /* tx4 carries small metadata type, so it holds the 4.5:1 body floor on --rail;
-     --tx-off is the dimmer value reserved for disabled controls. */
-  --tx4: #7d8486;
-  --tx-off: #5c6365;
+  --bg: #131416;            /* HF body paint = --color-q-background-primary */
+  --rail: #131416;          /* HF sidebar paint (same token as body) */
+  --s1: #1c1e20;            /* HF --color-surface-primary */
+  --s2: #23262a;            /* HF --color-surface-secondary */
+  --s3: #2a2d32;            /* HF --color-surface-secondary-hover */
+  --s4: #2b2e33;            /* HF --canvas-rgb-surface-highlight (43,46,51) */
+  --line: #ffffff0d;        /* HF --color-border-subtle (white/5) */
+  --line-2: #ffffff1a;      /* HF --color-border-default (white/10) */
+  --tx: #f7f7f8;            /* HF --color-text-primary (body paint 247,247,248) */
+  --tx2: #898a8b;           /* HF --color-icon-secondary / font-secondary */
+  --tx3: #828282;           /* HF --color-q-text-secondary / hf-text-secondary */
+  /* tx4/tx-off: HF canonical tertiary & disabled grays (98,98,98 / 72,78,86). */
+  --tx4: #626262;
+  --tx-off: #484e56;
   --accent: #d1fe17;
-  --accent-strong: #ddfe51;
-  --accent-ink: #141a02;
-  --accent-08: rgba(209, 254, 23, 0.08);
-  --accent-14: rgba(209, 254, 23, 0.14);
-  --accent-32: rgba(209, 254, 23, 0.32);
-  /* Smoked plate for chrome that sits on a returned picture. 0.7 holds the
-     4.5:1 ink floor even against a blown-out white frame; lighter did not. */
-  --plate: rgba(6, 9, 8, 0.7);
-  --plate-ink: rgba(246, 250, 248, 0.9);
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.35);
-  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.4), 0 32px 88px rgba(0, 0, 0, 0.52);
-  --glint: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  --accent-strong: #d1fe17; /* HF has no stronger lime; hover emphasis is a brightness filter */
+  --accent-ink: #131517;    /* HF --color-btn-accent-text / font-primary-reverted */
+  --accent-08: #d1fe170d;   /* HF --color-q-lime-alpha-05 */
+  --accent-14: #d1fe171a;   /* HF --color-q-transparent-lime-10 */
+  --accent-32: #d1fe174d;   /* HF --color-primary-30 */
+  /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
+  --plate: #000000b3;
+  --plate-ink: #ffffffe6;
+  --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
+  --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
+  --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
+  --glint: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d; /* HF --hf-shadow-sheen */
   --ease: cubic-bezier(0.2, 0, 0, 1);
   /* Deeper exponential ease-out — the scope indicator's travel. */
   --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
   --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
-  --danger: #ff8d78;
-  --danger-bg: rgba(255, 141, 120, 0.1);
-  --danger-line: rgba(255, 141, 120, 0.28);
+  --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
+  --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
+  --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
 
   font-family: var(--font-ui);
   font-size: 14px;
@@ -7102,7 +7104,9 @@ a.ohf-btn-solid {
   padding: 10px 12px 2px;
 }
 .ohf-prompt {
-  flex: 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   min-width: 0;
   resize: none;
   min-height: 40px;
@@ -7113,6 +7117,10 @@ a.ohf-btn-solid {
   font-size: 15px;
   line-height: 1.5;
   outline: none;
+  /* Wrap on whitespace and break long words identically to the mirror behind it, so
+     the colour chips stay under their glyphs line-for-line. */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .ohf-prompt:focus-visible {
   outline: none;
@@ -9862,7 +9870,7 @@ a.ohf-btn-solid {
   padding: 7px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
+  color: #ffffffb3;
   background: transparent;
   cursor: pointer;
 }
@@ -9921,7 +9929,7 @@ a.ohf-btn-solid {
   margin-top: 2px;
 }
 .ohf-cinema-tile-ic {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fffc;
 }
 .ohf-cinema-tile-label {
   font-size: 10px;
@@ -9934,7 +9942,7 @@ a.ohf-btn-solid {
 .ohf-cinema-tile-sub {
   font-size: 8px;
   line-height: 10px;
-  color: rgba(255, 255, 255, 0.45);
+  color: #ffffff73;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -9962,7 +9970,7 @@ a.ohf-btn-solid {
 }
 .ohf-cinema-pop-note {
   font-size: 12.5px;
-  color: var(--muted, rgba(255, 255, 255, 0.55));
+  color: var(--muted, #fff9);
   margin: 0 0 12px;
 }
 .ohf-cinema-pop-rows {
@@ -9986,13 +9994,13 @@ a.ohf-btn-solid {
   display: block;
   margin-top: 3px;
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff9;
 }
 .ohf-cinema-flag {
   display: block;
   margin-top: 12px;
   font-size: 11px;
-  color: rgba(217, 254, 62, 0.75);
+  color: #d1fe17b2;
 }
 /* The camera panel, as the app draws it: two wheels side by side — 카메라 and
    렌즈 — each with its own label, the selected option riding the centre with a
@@ -10112,7 +10120,7 @@ a.ohf-btn-solid {
 .ohf-cinema-tile-photo {
   display: block;
   width: 100%;
-  height: 60px;
+  height: 50px;
   object-fit: cover;
   border-radius: 12px;
 }
@@ -10163,7 +10171,7 @@ a.ohf-btn-solid {
    the single source of the layout. If a symptom contradicts this file, the
    contradiction lives elsewhere (structure or JS), never in these numbers.
    ════════════════════════════════════════════════════════════════════════ */
-.ohf-composer { flex-direction: column; align-items: stretch !important; }
+.ohf-composer { flex-direction: column; flex-wrap: nowrap !important; align-items: stretch !important; }
 .ohf-form-row { flex-direction: row !important; align-items: stretch !important; gap: 6px; }
 .ohf-form-col { flex: 1 1 0 !important; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 /* THE LEFT COLUMN YIELDS FIRST (user ruling at width 444): the dock may never
@@ -10183,6 +10191,7 @@ a.ohf-btn-solid {
    head's left padding gives the prompt (user ruling: symmetry), so it is never
    flush against the dock's wall. */
 .ohf-right-col { flex: none !important; margin-left: auto !important; margin-right: 10px !important; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: 6px; }
+.ohf-composer-head { min-width: 0; }
 .ohf-composer-row { display: flex; align-items: center; min-width: 0; }
 .ohf-controls-wrap { flex: 1 1 0 !important; min-width: 0; display: flex; align-items: center; }
 /* The stream is the left column minus the pinned group — its width is set
@@ -16138,159 +16147,6 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   }
 }
 
-/* ── Camera-angle instrument (the image dock's angle picker) ──────────────
-   The mirror of the video's camera-movement instrument: the trigger is a pill
-   on the dock toolbar, the panel is a compact popover, and every lit state is
-   read from the same token store the prompt reads — never a private copy that
-   could drift. Chip words ride tooltips (the English qwenmultiangle tokens,
-   angle-prompt-spec §1d), Korean labels ride faces (§1e glossary). Appended
-   above the Cinematic Studio screen block so the cascade resolves here; every
-   variable it uses is one the dock already answers with. */
-.ohf-angle-ctl {
-  gap: 6px;
-  padding: 0 10px;
-}
-.ohf-angle-ctl[data-active] {
-  border-color: var(--accent-32);
-}
-.ohf-angle-ic {
-  display: inline-flex;
-  align-items: center;
-}
-.ohf-angle-name {
-  max-width: 13ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 12px;
-}
-/* The angle panel rides the composer's measured room on the axis every panel
-   was given (--ohf-pop-clear; no new variable), as a ceiling over its content —
-   a max-height can only lower, never raise. The head stays whole above the
-   fold; the axes scroll beneath it. */
-.ohf-popover--angle {
-  width: min(300px, 100%);
-  padding: 10px 12px 12px;
-  max-height: var(--ohf-pop-clear, calc(100vh - 268px)) !important;
-  overflow-y: auto;
-}
-.ohf-angle-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.ohf-angle-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--tx3);
-}
-/* The reset: it appears only when the feature actually holds something, so it
-   never offers to wipe an already-empty feature — the movement panel's rule. */
-.ohf-angle-clear {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  height: 22px;
-  padding: 0 8px;
-  border: 0;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--tx3);
-  font-size: 9.5px;
-  font-weight: 600;
-  cursor: pointer;
-  flex: none;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
-}
-.ohf-angle-clear:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--tx);
-}
-.ohf-angle-axis {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 8px;
-}
-.ohf-angle-axis-label {
-  font-size: 9.5px;
-  line-height: 11px;
-  font-weight: 600;
-  color: var(--tx3);
-}
-/* Chips: word pills wrapping two or three deep. On is the accent, off is the
-   rail's quiet grey — the same two states every other flag on the dock answers
-   with, and the tooltip names the English phrase the chip writes. */
-.ohf-angle-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-.ohf-angle-chip {
-  display: inline-flex;
-  align-items: center;
-  height: 26px;
-  padding: 0 9px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--tx3);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 550;
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
-}
-.ohf-angle-chip:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--tx2);
-}
-.ohf-angle-chip[data-active] {
-  background: var(--accent-14);
-  border-color: var(--accent-32);
-  color: var(--accent);
-}
-/* The free-text slot: one line. The words land after the axis vocabulary,
-   appended verbatim, the way krea2-anygles appends its `extra_prompt`. */
-.ohf-angle-input {
-  margin-top: 10px;
-  width: 100%;
-  height: 30px;
-  padding: 0 10px;
-  border: 1px solid var(--line-2);
-  border-radius: 9px;
-  background: var(--s3);
-  color: var(--tx);
-  font-family: inherit;
-  font-size: 11.5px;
-  outline: none;
-}
-.ohf-angle-input::placeholder {
-  color: var(--tx-off);
-}
-.ohf-angle-input:focus {
-  border-color: var(--accent-32);
-}
-/* Below 560 the dock is a thumb wide: the pill answers with the protractor
-   alone; the summary folds. */
-@media (max-width: 560px) {
-  .ohf-angle-name {
-    display: none;
-  }
-  .ohf-angle-ctl {
-    width: 34px;
-    padding: 0;
-    justify-content: center;
-  }
-}
-
 /* ── Cinematic Studio screen ───────────────────────────────────────────────
    The cinematic surface is a separate full-screen page: a left model rail sits
    beside a centred generation stage, and the composer docks along the foot.
@@ -16385,13 +16241,17 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-cine-tile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 16px;
+  /* HF 내생성/내요소 tiles are media-aspect (per-asset variable). Each card's
+     height follows its own thumbnail, so tiles must NOT stretch to the row's
+     tallest item — that would leave an empty plate below a shorter media. */
+  align-items: start;
 }
 .ohf-cine-tile,
 .ohf-cine-tile-btn {
   position: relative;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--bg3);
   cursor: pointer;
@@ -16411,7 +16271,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-cine-tile-media {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
 }
@@ -17456,7 +17316,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   -webkit-backdrop-filter: none;
   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.16),
-    0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    0 4px 16px #00000014 !important;
 }
 .ohf-cinema-screen .ohf-pult-slide {
   height: 52px;
@@ -17557,7 +17417,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   transition: background-color 0.15s ease-out, scale 0.15s ease-out;
 }
 .ohf-cinema-screen .ohf-vtc:hover:not([data-off]) {
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff14;
 }
 .ohf-cinema-screen .ohf-vtc:active:not([data-off]) {
   filter: none;
@@ -17579,7 +17439,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background-image: linear-gradient(to top, #fff6 0%, rgba(255, 255, 255, 0.1) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -17605,13 +17465,13 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-radius: 8px;
   background-color: rgb(15, 15, 16);
   background-image: linear-gradient(
-    rgba(255, 255, 255, 0.14),
+    #ffffff24,
     rgba(255, 255, 255, 0.05) 15%,
-    rgba(255, 255, 255, 0.03) 65%,
-    rgba(255, 255, 255, 0.14)
+    #ffffff08 65%,
+    #ffffff24
   );
   overflow: hidden;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 8px #00000014;
 }
 .ohf-cine-cap--wide { width: 40px; }
 .ohf-cine-cap__plate {
@@ -17627,7 +17487,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   background: rgb(0, 0, 0);
   overflow: hidden;
   isolation: isolate;
-  box-shadow: 0 2.6px 2.6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2.6px 2.6px #00000014;
 }
 .ohf-cine-cap__face img {
   position: absolute;
@@ -17669,7 +17529,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   height: 26px;
   border-radius: 5px;
   pointer-events: none;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background-image: linear-gradient(to top, #ffffff0a 0%, rgba(255, 255, 255, 0.1) 100%);
   mix-blend-mode: hard-light;
 }
 .ohf-cine-cap__hi {
@@ -17680,14 +17540,14 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   height: 26px;
   border-radius: 5px;
   pointer-events: none;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 2px #ffffff1a;
 }
 .ohf-cine-cap__ring {
   position: absolute;
   inset: 0;
   border-radius: 8px;
   pointer-events: none;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 2px 4px #0000000a;
 }
 .ohf-cine-cap__plus {
   position: absolute;
@@ -17699,7 +17559,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   width: 26px;
   height: 26px;
   border-radius: 5px;
-  box-shadow: 0 2.6px 2.6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2.6px 2.6px #00000014;
 }
 .ohf-cine-cap__plus svg {
   width: 18px;
@@ -17838,7 +17698,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-cinema-screen .ohf-batch-step {
   width: 16px;
   height: 16px;
-  color: rgba(255, 255, 255, 0.4);
+  color: #fff6;
 }
 .ohf-cinema-screen .ohf-batch-step svg {
   width: 16px;
@@ -17869,47 +17729,40 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-cinema-screen .ohf-composer-wrap .ohf-generate {
   align-self: flex-end !important;
-  width: 128px !important;
+  width: 64px !important;
   height: 80px !important;
   min-height: 80px !important;
   border-radius: 12px;
-  background: var(--cine-brand);
+  background: var(--cine-brand) linear-gradient(to top right, #ffffff26 0%, #ffffff0d 100%); /* HF btn-accent-bg + background-gradient-default sheen */
   color: var(--cine-ink);
-  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: 0;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  padding: 14px 24px 16px;
+  padding: 12px 8px 14px;
   gap: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    10px 34px 24px rgba(0, 0, 0, 0.15),
-    8px 21px 6px rgba(0, 0, 0, 0.01),
-    3px 7px 5px rgba(0, 0, 0, 0.25),
-    1px 3px 4px rgba(0, 0, 0, 0.43),
-    0 1px 2px rgba(0, 0, 0, 0.49),
-    inset 0 -3px 0 rgb(130, 155, 25),
-    inset 0 -2px 0 rgb(130, 155, 25),
-    inset 0 1px 0 rgb(209, 254, 23) !important;
+  box-shadow: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, inset 0 -1px 1px 0 #ffffff14, 0 0 0 1px #ffffff26, 0 2px 16px 0 #d1fe1729; /* HF generate box-shadow, verbatim */
   overflow: hidden;
   isolation: isolate;
 }
 .ohf-cinema-screen .ohf-generate::before {
   content: "";
   position: absolute;
-  left: 39px;
-  top: 36px;
-  width: 76px;
-  height: 136px;
+  right: -6px;
+  bottom: -13px;
+  width: 32px;
+  height: 34px;
   border-radius: 50%;
-  background: rgb(205, 255, 0);
-  filter: blur(41.5px);
+  background: linear-gradient(112deg, #fff 0%, rgba(217, 217, 217, 0.5) 100%); /* HF glowEffect gradient, verbatim */
+  opacity: 0.7;
+  filter: blur(22.5px);
   mix-blend-mode: plus-lighter;
-  transform: rotate(102.79deg) skewX(0.89deg);
+  transform: rotate(112.66deg) skewY(-21.6deg);
   pointer-events: none;
   z-index: 0;
 }
@@ -17946,7 +17799,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 /* The movement key breathes like HF's instrument keys, and the sheet it opens
    rides above it as a real popover. */
 .ohf-cine-camctl:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff14;
 }
 .ohf-cinema-screen .ohf-popover--movement {
   width: min(440px, 100%);
@@ -18011,7 +17864,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     right: 16px !important;          /* wrap pad 4 + HF's 12 off the plate's inner edge */
     bottom: 20px !important;         /* dock floor's 16 + the plate's 4 — HF's corner sits 20 above the floor */
     margin: 0 !important;            /* kills the flow margins and margin-left:auto */
-    width: 332px !important;         /* HF's corner: 100 + 4 + 100 + 128 */
+    width: auto !important;          /* content-sized: image = tiles+gap+button, video = the button alone */
     height: 80px !important;         /* the corner's single row */
     gap: 0 !important;               /* the tile pair butts the button, flush as HF seats them */
     align-items: flex-end !important;
@@ -18038,10 +17891,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
      room is exactly 424 (its column); 432 here leaves HF's 4 of clearance to
      the corner. */
   .ohf-cinema-screen .ohf-prompt {
-    max-width: calc(100% - 208px);
+    max-width: calc(100% - 284px);
   }
   .ohf-cinema-screen .ohf-stream-area {
-    max-width: calc(100% - 208px);
+    max-width: calc(100% - 284px);
   }
 }
 /* 561..1024: the approved fit-content row owns the width (the column shrinks,
@@ -18053,8 +17906,8 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 @media (min-width: 561px) and (max-width: 1024px) {
   .ohf-cinema-screen .ohf-right-col {
     position: static !important;
-    flex: 0 0 332px !important;      /* HF's corner, rigid as HF seats it */
-    width: 332px !important;
+    flex: 0 0 auto !important;       /* content-sized: image = tiles+button, video = the button alone */
+    width: auto !important;
     height: 80px !important;         /* the corner's single row */
     margin: 0 !important;            /* kills margin-left:auto — the column owns the rest */
     margin-bottom: 16px !important;  /* HF's corner floor above the plate */
@@ -18895,7 +18748,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     right: 16px !important;
     bottom: 20px !important;
     margin: 0 !important;
-    width: 332px !important;
+    width: auto !important;
     height: 80px !important;
     gap: 0 !important;
     align-items: flex-end !important;
@@ -19132,7 +18985,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   transition: scale 0.2s ease-out, background-color 0.2s ease-out;
 }
 .ohf-cine-home-card:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff08;
 }
 .ohf-cine-home-card:active {
   scale: 0.99;
@@ -19202,7 +19055,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.12);
+  color: #ffffff1a;
 }
 /* Footer: the title, the 비공개 chip with a lock, and a hover-only overflow. */
 .ohf-cine-home-card-foot {
@@ -19254,6 +19107,555 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     white-space: normal;
   }
 }
+/* ===== Lighting composition panel (mirrors HF lighting dialog) =====
+   Appended last so it wins the cascade (openhiggsfield.css is append-wins).
+   The dialog reads as HF's: a ~800px panel centred over the cinema column,
+   opening above the dock, clamped by --ohf-pop-clear so a panel the dock has
+   eaten still scrolls instead of clipping under the nav. The preset cards lay
+   on the source's own 3-column grid with a 16:9 thumbnail plus a name; the
+   selected look is a lime ring drawn as an OUTLINE so it sits outside the
+   border cascade and always paints. */
+.ohf-cinema-screen .ohf-popover--lighting {
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(50rem, 100%);
+  max-width: min(50rem, 100%);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  max-height: var(--ohf-pop-clear, none);
+  overflow-y: auto;
+}
+.ohf-lighting__head { display: flex; align-items: center; gap: 8px; }
+.ohf-lighting__title { font-size: 16px; font-weight: 600; color: var(--tx); }
+.ohf-lighting__reset {
+  height: 32px; padding: 0 14px; border: 0; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1); color: var(--tx);
+  font-size: 13px; font-weight: 500; cursor: pointer;
+}
+.ohf-lighting__reset:hover { background: rgba(255, 255, 255, 0.16); }
+.ohf-lighting__close {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: transparent; color: var(--tx); font-size: 13px; cursor: pointer;
+}
+.ohf-lighting__close:hover { border-color: var(--tx3); }
+.ohf-lighting__bar { display: flex; align-items: center; gap: 8px; }
+.ohf-lighting__sortwrap { position: relative; }
+.ohf-lighting__sort {
+  height: 32px; padding: 6px 12px; border: 0; border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2); color: #fff;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+}
+.ohf-lighting__sort:hover { background: rgba(255, 255, 255, 0.28); }
+.ohf-lighting__menu {
+  position: absolute; top: calc(100% + 6px); right: 0; min-width: 160px;
+  padding: 6px; border-radius: 10px; background: var(--s2);
+  border: 1px solid var(--line-2); box-shadow: var(--shadow-3);
+  z-index: 40; display: grid; gap: 2px;
+}
+.ohf-lighting__opt {
+  text-align: left; padding: 8px 10px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--tx); font-size: 13px; cursor: pointer;
+}
+.ohf-lighting__opt:hover { background: rgba(255, 255, 255, 0.06); }
+.ohf-lighting__opt[data-active] { background: var(--accent-08); color: var(--accent); }
+.ohf-lighting__search {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: transparent; color: var(--tx); cursor: pointer;
+}
+.ohf-lighting__search:hover { border-color: var(--tx3); }
+.ohf-lighting__search[aria-pressed="true"] { background: var(--accent-08); border-color: var(--accent); }
+.ohf-lighting__input {
+  width: 100%; height: 34px; padding: 0 10px; border-radius: 8px;
+  border: 1px solid var(--line-2); background: var(--s1); color: var(--tx);
+  font-size: 13px; outline: none;
+}
+.ohf-lighting__hint { margin: 0; font-size: 12px; color: var(--tx3); }
+.ohf-lighting__modes { display: flex; gap: 4px; }
+.ohf-lighting__mode {
+  padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 8px;
+  background: transparent; color: var(--tx2); font-size: 13px; cursor: pointer;
+}
+.ohf-lighting__mode[data-active] { background: var(--accent-08); color: var(--tx); border-color: var(--accent); }
+.ohf-lighting__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 20px; }
+.ohf-lighting__card {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 0; border: 0; background: transparent; cursor: pointer;
+  color: var(--tx); text-align: center;
+}
+.ohf-lighting__thumb {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: 12px; background: var(--s3); transition: filter 0.15s ease-out;
+}
+.ohf-lighting__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ohf-lighting__card:hover .ohf-lighting__thumb { filter: brightness(1.25); }
+.ohf-lighting__name { font-size: 14px; font-weight: 500; color: var(--tx); }
+/* The picked look is a lime ring on the thumbnail, an outline so it always paints. */
+.ohf-lighting__card[data-picked] .ohf-lighting__thumb { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ohf-lighting__card[data-picked] .ohf-lighting__name { color: var(--accent); }
+.ohf-lighting__create {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; aspect-ratio: 3 / 2; border-radius: 12px;
+  border: 1px dashed var(--line-2); background: var(--s1); color: var(--tx3);
+}
+.ohf-lighting__create[data-off] { cursor: default; }
+.ohf-lighting__create-plus { display: grid; place-items: center; opacity: 0.7; }
+.ohf-lighting__create-label { font-size: 12px; font-weight: 500; }
+.ohf-lighting__readout { font-size: 12px; color: var(--tx3); }
+.ohf-lighting__readout span { color: var(--tx); font-weight: 600; }
+
+/* ─── solo/video camera popup (pixel-for-pixel off the app, CDP 2026-11-03) ─── */
+/* The app's dialog: a 800×504 fixed modal centred in the viewport (`fixed z-1000
+   … md:top-1/2 md:left-1/2 -translate-1/2`), a 48px header, a 184px (w-46) white/5
+   left menu of two vertical tabs, and a content column that holds either a
+   white/5 rounded plate of three drums or a scrollable 4-wide grid of 33 clips.
+   The app's own tab/plate fills are white-on-dark alphas (neutral-*-reverted-N =
+   N% white over black); the drums reuse the cinema wheel geometry above, so the
+   only new rules are the frame, the menu and the movement grid. */
+.ohf-camdialog,
+.ohf-camdialog * {
+  box-sizing: border-box; /* the app's Tailwind preflight is border-box; match it so
+   the 184 rail and the 607 plate report the same widths the app measured */
+}
+.ohf-camdialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* mx-4 my-4 — the panel never touches the viewport edges */
+  pointer-events: none; /* the scrim is not a button; the panel re-enables its own */
+}
+.ohf-camdialog__panel {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 504px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  border-radius: 16px; /* rounded-2xl */
+  background: #101013; /* surface-tertiary, reverted on black */
+  overflow: hidden;
+}
+.ohf-camdialog__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 12px;
+}
+.ohf-camdialog__title {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #fff;
+}
+/* 모두 초기화 — a ghost small button on the app's transparent fill. */
+.ohf-camdialog__reset {
+  flex: none;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  cursor: pointer;
+}
+.ohf-camdialog__reset:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.ohf-camdialog__close {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+.ohf-camdialog__body {
+  flex: 1 1 0;
+  display: flex;
+  min-height: 0;
+}
+/* The left menu: w-46 (184), white/5, p-3 (12), gap-2 (2), flex-col. */
+.ohf-camdialog__tabs {
+  flex: none;
+  width: 184px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.ohf-cam-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 36px; /* h-9 */
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: #8a8a8a; /* muted-foreground */
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.ohf-cam-tab[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+  color: #fff;
+}
+.ohf-cam-tab:hover {
+  color: #fff;
+}
+.ohf-cam-tab > svg {
+  flex: none;
+}
+
+.ohf-camdialog__content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  /* The plate is 607 wide inside a 616 column; the 9px gutter stands where the
+     app leaves room to the panel's right edge (measured grid right 1116, panel
+     right 1120). */
+  padding-right: 9px;
+}
+/* The 설정 plate: white/5 rounded-2xl, overflow hidden, pt-2 (8), 3 equal cols. */
+.ohf-camdialog__grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 8px 0 0; /* pt-2; no horizontal pad so the 3 tracks sum to 607 */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* The 무브먼트 tab. 정렬 기준 sits top-right; the grid scrolls on its own axis
+   (the app's h-[1546px] overflow-y-auto inside a fixed-height column) with the
+   scrollbar hidden (hide-scrollbar) and pb-1 (4). */
+.ohf-camdialog__move {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* The 4-wide grid needs a content box of 569 so each card lands at the app's
+     136px (136×4 + 8×3 gaps); the gutter is the difference against the 607 column. */
+  padding: 12px 19px;
+}
+.ohf-camdialog__movehead {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+}
+.ohf-camdialog__sort {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  cursor: pointer;
+}
+.ohf-camdialog__sort:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.ohf-camdialog__movescroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ohf-camdialog__movescroll::-webkit-scrollbar {
+  display: none;
+}
+/* grid-cols-4, gap-x-2 (8) gap-y-3 (12), pb-1 (4). */
+.ohf-camdialog__movegrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 8px;
+  padding-bottom: 4px;
+}
+.ohf-cam-movecard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* gap-2 */
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  text-align: center;
+}
+.ohf-cam-movecard-tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1; /* aspect-square */
+  border-radius: 8px; /* rounded-lg */
+  border: 1px solid rgba(255, 255, 255, 0.04); /* border-white/4 */
+  background: rgba(255, 255, 255, 0.05); /* neutral-primary-reverted-5 */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+.ohf-cam-movecard:hover .ohf-cam-movecard-tile {
+  border-color: rgba(255, 255, 255, 0.15); /* group-hover:border-white/15 */
+}
+.ohf-cam-movecard-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ohf-cam-movecard-add {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6px 8px;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  opacity: 0;
+}
+.ohf-cam-movecard:hover .ohf-cam-movecard-add {
+  opacity: 1;
+}
+.ohf-cam-movecard-name {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Narrow viewports: the menu flips to a horizontal strip under the header so the
+   three drums and the movement grid keep a usable width without the 184 rail. */
+@media (max-width: 768px) {
+  .ohf-camdialog__panel {
+    width: min(560px, calc(100vw - 24px));
+    height: min(504px, calc(100vh - 24px));
+  }
+  .ohf-camdialog__body {
+    flex-direction: column;
+  }
+  .ohf-camdialog__tabs {
+    flex-direction: row;
+    width: auto;
+    gap: 4px;
+  }
+  .ohf-camdialog__movegrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ── Dock `@`-mention editor (ported from ComfyUI-MiniMaxH3-Easy's rich prompt editor). ──
+   The mirror that paints colour behind the transparent textarea: it must match the
+   field's box exactly so chips land under their glyphs. */
+.ohf-prompt-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.ohf-prompt-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: transparent;
+  padding: 9px 8px 8px 4px;
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.ohf-prompt-chip {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 0 2px;
+  font-weight: 600;
+}
+/* The listbox that rises above the prompt while a handle is being typed. */
+.ohf-popover--mention {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  z-index: 50;
+  width: min(320px, 100%);
+  max-height: 232px;
+  overflow-y: auto;
+}
+.ohf-mention-list {
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+}
+.ohf-mention-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ohf-mention-row--on {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ohf-mention-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex: none;
+}
+.ohf-mention-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex: none;
+}
+.ohf-mention-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ohf-mention-kind {
+  font-size: 11px;
+  color: var(--tx3);
+  flex: none;
+}
+/* Dialogue-line cue in the mirror: a `#` line wears the source editor's teal block tint
+   (a translucent teal plate behind the line, so the plain textarea's words read on top). */
+.ohf-prompt-line {
+  display: inline;
+}
+.ohf-prompt-dialogue {
+  background: rgba(0, 226, 187, 0.14);
+  border-left: 2px solid #00e2bb;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+/* Camera movement sort menu — the 정렬 기준 popover the camera dialog's movement
+   tab now carries. Mirrors the lighting panel's sort look (same two options,
+   same dropdown), measured against higgsfield.ai, 2026-11-03. */
+.ohf-camdialog__sortwrap { position: relative; }
+.ohf-camdialog__sortmenu {
+  position: absolute; top: calc(100% + 6px); right: 0; min-width: 160px;
+  padding: 6px; border-radius: 10px; background: var(--s2);
+  border: 1px solid var(--line-2); box-shadow: var(--shadow-3);
+  z-index: 41; display: grid; gap: 2px;
+}
+.ohf-camdialog__sopt {
+  text-align: left; padding: 8px 10px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--tx); font-size: 13px; cursor: pointer;
+}
+.ohf-camdialog__sopt:hover { background: rgba(255, 255, 255, 0.06); }
+.ohf-camdialog__sopt[data-active] { background: var(--accent-08); color: var(--accent); }
+
+/* ── Hover scrim and selection ring ───────────────────────────────────────────
+   Mirrors HF ground truth: at rest the picture is bare; on hover a dark scrim
+   lifts under it and a white ring traces the edge. The scrim sits beneath the
+   open plate (z-0) so clicks pass through; the ring traces outside it (z-1).
+   The footrow is HF's empty bottom furniture — reserved space, answers to nothing. */
+.ohf-tile-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.30);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.ohf-tile:hover .ohf-tile-scrim,
+.ohf-tile:has(:focus-visible) .ohf-tile-scrim {
+  opacity: 1;
+}
+.ohf-tile-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.ohf-tile:hover .ohf-tile-ring,
+.ohf-tile:has(:focus-visible) .ohf-tile-ring {
+  opacity: 1;
+}
+.ohf-tile-footrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+
+/* ===== t_5c17be85 — 에셋 쇼케이스 타입별 변형 ===== */
+
+/* the media stage's wrapper is now the anchor for the bottom-right corner cluster */
+.ohf-viewer-media-wrap {
+  position: relative;
+}
+
+/* The corner cluster HF paints at the media's bottom-right (absolute, bottom-3
+   right-3). It carries 댓글 추가하기 + 미디어 보기 확장 for image/video; an audio
+   asset renders only the comment button because there is no frame to widen. */
+.ohf-viewer-media-bottom {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 4;
+}
+.ohf-viewer-media-bottom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.ohf-viewer-media-bottom-btn svg {
+  width: 22px;
+  height: 22px;
+}
+.ohf-viewer-media-bottom-btn:hover:not([aria-disabled="true"]) {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.ohf-viewer-media-bottom-btn[aria-disabled="true"] {
+  opacity: 0.4;
+}
 
 /* The info-foot primary that stands in for send-to-video on a video (다시 만들기)
    and on an audio (다운로드) must wear the same full-width accent tile the image's
@@ -19276,6 +19678,192 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-color: transparent;
   color: #101214;
 }
+
+/* A video's 편집 tab stands up a per-type shell (the clip plus a held notice) in
+   place of the image inpaint canvas, and its rail shows a placeholder card until
+   the full timeline editor ships. */
+.ohf-viewer-video-edit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-viewer-video-edit .ohf-viewer-media {
+  max-width: 88%;
+  max-height: 86%;
+}
+.ohf-viewer-video-edit-note {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 13px;
+}
+.ohf-viewer-video-edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+.ohf-viewer-video-edit-card-title {
+  font-weight: 600;
+  color: var(--text);
+}
+.ohf-viewer-video-edit-card-note {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ===== Lighting orbit editor + HF-faithful toolbar (appended last — wins) =====
+   The create card now opens a 3D orbit editor, mirroring HF's `새 조명 프리셋`
+   dialog: a draggable CSS-3D object orbited by draggable light markers, a six-way
+   quick-select pad, per-light colour/brightness/diffusion, and a save-to-name flow.
+   The toolbar lays the source's heading+hint on the left with sort and an inline
+   (group) search on the right, on one row. Every rule here re-declares the lighting
+   classes with the editor's geometry, so the later block wins the cascade. */
+.ohf-lighting__bar {
+  align-items: flex-start;        /* the source's items-start toolbar */
+  gap: 10px;
+}
+.ohf-lighting__lead {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0; flex: 1 1 auto;
+}
+.ohf-lighting__lead-title { font-size: 13px; font-weight: 500; color: var(--tx); }
+.ohf-lighting__hint { font-size: 12px; color: var(--tx3); }
+.ohf-lighting__sortwrap { margin-left: auto; }     /* pack sort + search to the right */
+.ohf-lighting__group-search {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  border: 1px solid var(--line-2); border-radius: 8px; background: var(--s1);
+  padding: 0 6px; height: 32px; min-width: 32px;
+}
+.ohf-lighting__group-search:focus-within { border-color: var(--accent); }
+.ohf-lighting__search-icon { display: grid; place-items: center; color: var(--tx3); flex-shrink: 0; }
+.ohf-lighting__group-search .ohf-lighting__input {
+  width: 0; min-width: 0; border: 0; background: transparent; padding: 0;
+  transition: width .18s ease-out; height: 30px; font-size: 13px; color: var(--tx);
+}
+.ohf-lighting__group-search:focus-within .ohf-lighting__input { width: 180px; padding: 0 4px; }
+
+.ohf-lighting__editor { display: grid; gap: 10px; }
+.ohf-lighting__editor-head { display: flex; align-items: center; gap: 8px; }
+.ohf-lighting__back {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 8px; background: transparent;
+  color: var(--tx); font-size: 14px; cursor: pointer;
+}
+.ohf-lighting__back:hover { border-color: var(--tx3); }
+
+.ohf-lighting__chips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ohf-lighting__chip {
+  padding: 3px 8px; border: 1px solid var(--line-2); border-radius: 999px;
+  background: rgba(255,255,255,.06); color: var(--tx2); font-size: 11px; cursor: pointer;
+}
+.ohf-lighting__chip[data-active] { background: var(--accent-08); color: var(--tx); border-color: var(--accent); }
+.ohf-lighting__chip-add {
+  padding: 3px 8px; border: 0; border-radius: 999px; background: transparent;
+  color: var(--tx3); font-size: 11px; cursor: pointer;
+}
+.ohf-lighting__chip-add:hover { color: var(--tx); }
+
+/* The stage: a square that hosts the orbit ring + the spinning 3D object, the
+   floating per-light console on the left and the quick-select pad on the right. */
+.ohf-lighting__stage {
+  position: relative; height: 328px; border-radius: 16px;
+  background: radial-gradient(circle, rgba(255,255,255,.03), rgba(0,0,0,0) 60%);
+  touch-action: none; user-select: none; cursor: grab; overflow: hidden;
+}
+.ohf-lighting__stage:active { cursor: grabbing; }
+.ohf-lighting__ring {
+  position: absolute; left: 50%; top: 50%; width: 320px; height: 320px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,.16);
+  perspective: 650px;
+}
+.ohf-lighting__ring::before {
+  content: ""; position: absolute; inset: 14%; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.05); pointer-events: none;
+}
+/* the spinning 3D object, centred in the ring; its rotate rides the inline style */
+.ohf-lighting__spin {
+  position: absolute; left: 50%; top: 50%; width: 120px; height: 92px;
+}
+
+/* The orbit light markers ride the ring; the 3D object is centred in the ring. */
+.ohf-lighting__marker {
+  position: absolute; transform: translate(-50%, -50%); padding: 0;
+  border: 1px solid rgba(255,255,255,.6); border-radius: 50%; cursor: grab;
+  margin-left: 0; margin-top: 0;
+}
+.ohf-lighting__marker[data-selected] { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* the per-light console floats at the stage's left edge */
+.ohf-lighting__console {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  display: grid; gap: 6px; width: 180px; padding: 8px; border-radius: 10px;
+  background: var(--s2); border: 1px solid var(--line-2);
+}
+.ohf-lighting__color { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--tx2); }
+.ohf-lighting__color input[type="color"] { width: 28px; height: 22px; padding: 0; border: 1px solid var(--line-2); border-radius: 6px; background: transparent; cursor: pointer; }
+.ohf-lighting__slider { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--tx2); }
+.ohf-lighting__slider span { width: 28px; }
+.ohf-lighting__slider input[type="range"] { flex: 1; accent-color: var(--accent); }
+.ohf-lighting__slider em { width: 36px; text-align: right; font-style: normal; color: var(--tx); opacity: .8; }
+
+/* the quick-select pad floats at the stage's right edge */
+.ohf-lighting__pospad {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  display: grid; gap: 4px; width: 180px;
+}
+.ohf-lighting__pospad-label { font-size: 10px; font-weight: 500; color: var(--tx3); }
+.ohf-lighting__pospad-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.ohf-lighting__pos {
+  padding: 6px 8px; border: 1px solid var(--line-2); border-radius: 8px;
+  background: rgba(255,255,255,.05); color: var(--tx2); font-size: 12px; cursor: pointer;
+}
+.ohf-lighting__pos:hover { color: var(--tx); }
+.ohf-lighting__pos[data-selected] { border: 2px solid #fff; color: var(--tx); }
+
+.ohf-lighting__foot { display: flex; align-items: center; justify-content: center; gap: 8px; padding-top: 2px; }
+.ohf-lighting__save-btn {
+  height: 32px; padding: 0 14px; border: 1px solid var(--line-2); border-radius: 8px;
+  background: transparent; color: var(--tx); font-size: 13px; cursor: pointer;
+}
+.ohf-lighting__save-btn:hover { border-color: var(--tx3); }
+
+/* the save name sheet overlays the editor */
+.ohf-lighting__savedlg {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 400px; padding: 16px; border-radius: 14px; background: var(--s2);
+  border: 1px solid var(--line); box-shadow: var(--shadow-3);
+  display: grid; gap: 12px; z-index: 50;
+}
+.ohf-lighting__savedlg-title { margin: 0; font-size: 16px; font-weight: 600; color: var(--tx); }
+.ohf-lighting__savedlg-input {
+  width: 100%; height: 40px; padding: 0 12px; border-radius: 8px;
+  border: 1px solid var(--line-2); background: var(--s1); color: var(--tx); font-size: 14px; outline: none;
+}
+.ohf-lighting__savedlg-foot { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.ohf-lighting__cancel {
+  height: 32px; padding: 0 14px; border: 0; border-radius: 8px; background: transparent;
+  color: var(--tx2); font-size: 13px; cursor: pointer;
+}
+.ohf-lighting__cancel:hover { color: var(--tx); }
+
+/* user-preset cards appended to the grid */
+.ohf-lighting__thumb--user { background: var(--s1); }
+.ohf-lighting__orbit-preview {
+  position: absolute; inset: 0; display: block;
+  background: radial-gradient(circle, rgba(255,255,255,.04), rgba(0,0,0,0) 70%);
+}
+
 /* t_4811a7b2 — the video 편집 tab's timeline workbench (video-edit.tsx).
    HF's video editor is a full workbench: the clip on its stage, a timeline lane
    with ticks, a playhead, in/out trim handles and a caption lane, the clip tools
@@ -19428,79 +20016,4 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-vedit-inspector-row-label { flex: 1 1 auto; min-width: 0; font: 600 .8rem/1 var(--sans); color: var(--ink-2); }
 .ohf-vedit-inspector-row-caret { display: inline-flex; flex: none; color: var(--ink-mute); }
 .ohf-vedit-inspector-row-caret > svg { width: 14px; height: 14px; transform: rotate(-90deg); }
-/* The corner cluster HF paints at the media's bottom-right (absolute, bottom-3
-   right-3). It carries 댓글 추가하기 + 미디어 보기 확장 for image/video; an audio
-   asset renders only the comment button because there is no frame to widen. */
-.ohf-viewer-media-bottom {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  z-index: 4;
-}
-.ohf-viewer-media-bottom-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-.ohf-viewer-media-bottom-btn svg {
-  width: 22px;
-  height: 22px;
-}
-.ohf-viewer-media-bottom-btn:hover:not([aria-disabled="true"]) {
-  color: var(--text);
-  border-color: var(--accent);
-}
-.ohf-viewer-media-bottom-btn[aria-disabled="true"] {
-  opacity: 0.4;
-}
 
-/* A video's 편집 tab stands up a per-type shell (the clip plus a held notice) in
-   place of the image inpaint canvas, and its rail shows a placeholder card until
-   the full timeline editor ships. */
-.ohf-viewer-video-edit {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ohf-viewer-video-edit .ohf-viewer-media {
-  max-width: 88%;
-  max-height: 86%;
-}
-.ohf-viewer-video-edit-note {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--muted);
-  font-size: 13px;
-}
-.ohf-viewer-video-edit-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-}
-.ohf-viewer-video-edit-card-title {
-  font-weight: 600;
-  color: var(--text);
-}
-.ohf-viewer-video-edit-card-note {
-  color: var(--muted);
-  font-size: 13px;
-}

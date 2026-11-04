@@ -44,7 +44,44 @@ Rewrite rules:
 - Do not invent scene directions the user didn't request.
 `;
 
-/* ── URL normalisation (ported) ────────────────────────────────────────────── */
+/** Still-image optimization instructions. Used when the composer surface is
+ *  "image": it pushes static, visual-only qualities (composition, lighting,
+ *  colour palette, style, detail density) and explicitly forbids the temporal /
+ *  motion vocabulary the video prompt above leans on (camera movement, pacing,
+ *  frame sequence, temporal coherence). The video prompt stays untouched for
+ *  every non-image surface, so existing video behaviour is byte-identical. */
+export const IMAGE_SYSTEM_PROMPT = `\
+You are a prompt optimization assistant for text-to-IMAGE generation (still-image diffusion and similar models).
+
+Given a user's raw prompt, rewrite it so that it:
+1. Adds still-image quality cues: deliberate composition, framing, lighting, a coherent colour palette, sharp fine detail, rich texture.
+2. Preserves every creative intent the user expressed — do NOT add unrelated subjects, do NOT remove user elements.
+3. Restructures for token efficiency: keep under ~300 words. Prefer concrete visual nouns over abstract adjectives.
+4. Treat the scene as a single frozen frame: emphasise spatial layout, depth layering, and surface detail. Do NOT introduce motion, animation, camera movement, pacing, frame sequence, or temporal-continuity language.
+5. If a specific aspect ratio or orientation is implied or requested, reflect it as a static framing hint (portrait, wide, square). Never fabricate one the user did not request.
+6. If the prompt references an image, video, or audio asset by name/tag, keep that reference intact. Never hallucinate details about attached media unless the media's content is explicitly described by the user in text.
+7. Output ONLY the rewritten prompt text. No preamble, no explanation, no code fences.
+
+Rewrite rules:
+- Keep the user's language (do NOT translate unless asked).
+- If dialogue or spoken words appear in the prompt, preserve them verbatim.
+- Prefer present-tense, active-voice descriptions.
+- Do not invent scene directions the user didn't request.
+`;
+
+/** What the optimizer is being asked to make. "image" routes the still-image
+ *  system prompt; everything else (video, audio, unknown) keeps the default
+ *  video-optimised prompt so behaviour there is unchanged. */
+export type GenerationMode = "image" | "video" | "audio";
+
+/** Pick the system prompt for a generation mode. Only an explicit image mode
+ *  selects the still-image template; any other value falls back to the video
+ *  default so pre-change callers (no mode at all) are unaffected. */
+export function systemPromptForMode(mode?: string | null): string {
+  return mode === "image" ? IMAGE_SYSTEM_PROMPT : DEFAULT_SYSTEM_PROMPT;
+}
+
+/* ── URL normalisation (ported) ─────────────────────────────────────────────── */
 
 const KNOWN_ENDPOINT_SUFFIXES = [
   "/v1/chat/completions",
@@ -252,6 +289,9 @@ export interface OptimizerConfig {
   apiKey: string;
   model: string;
   apiFormat: OptimizerFormat;
+  /** Generation mode that selects the default system prompt when no explicit
+   *  `systemPrompt` override is supplied. "image" → still-image template. */
+  mode?: GenerationMode;
   systemPrompt: string;
   timeoutMs?: number;
   maxOutputTokens?: number;
@@ -404,6 +444,14 @@ export type OptimizeResult = {
 };
 
 export function resolveOptimizerConfig(overrides: Partial<OptimizerConfig> = {}): OptimizerConfig {
+  /* Mode resolution: an explicit per-call `mode` wins, else an env default
+     (OHPROMPT_MODE). When neither is set the mode is undefined and
+     `systemPromptForMode(undefined)` returns the video DEFAULT — so callers that
+     pass no mode keep the exact pre-change behaviour. Precedence for the system
+     prompt itself is unchanged: an explicit per-call `systemPrompt` beats the
+     global `OHPROMPT_SYSTEM_PROMPT` env, which in turn beats the mode-derived
+     default. */
+  const mode = overrides.mode ?? (process.env.OHPROMPT_MODE as GenerationMode | undefined);
   return {
     apiUrl: overrides.apiUrl ?? process.env.OHPROMPT_API_URL ?? "http://localhost:8081/v1",
     apiKey: overrides.apiKey ?? process.env.OHPROMPT_API_KEY ?? "",
@@ -411,10 +459,11 @@ export function resolveOptimizerConfig(overrides: Partial<OptimizerConfig> = {})
     apiFormat: (overrides.apiFormat ??
       (process.env.OHPROMPT_FORMAT as OptimizerFormat | undefined) ??
       "openai") as OptimizerFormat,
+    mode,
     systemPrompt:
       overrides.systemPrompt && overrides.systemPrompt.trim()
         ? overrides.systemPrompt
-        : process.env.OHPROMPT_SYSTEM_PROMPT?.trim() || DEFAULT_SYSTEM_PROMPT,
+        : process.env.OHPROMPT_SYSTEM_PROMPT?.trim() || systemPromptForMode(mode),
     timeoutMs: overrides.timeoutMs ?? DEFAULT_TIMEOUT_MS,
     maxOutputTokens: overrides.maxOutputTokens ?? DEFAULT_MAX_OUTPUT_TOKENS,
   };

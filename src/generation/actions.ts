@@ -18,6 +18,7 @@ import { createPlatformClient } from "./platform";
 import type { StatusResult } from "./platform";
 import { isUnmappedModel, toPlatform } from "./to-platform";
 import { optimizePrompt } from "./prompt-optimize";
+import type { GenerationMode } from "./prompt-optimize";
 
 export async function savePlatformCredentials(data: unknown) {
   const { apiKey } = parseCredentialInput(data);
@@ -108,7 +109,20 @@ export async function optimizePromptDraft(
   const payload = asObject(data, "Invalid optimize payload");
   const raw = typeof payload.text === "string" ? payload.text : "";
   const enabled = payload.enabled !== false;
-  const result = await optimizePrompt(raw, { enabled });
+  /* The composer tells us which surface it is on (image | video | audio); forward
+     it as the optimizer's generation mode so an image caption is rewritten with the
+     still-image system prompt. A missing or unknown surface falls back to the video
+     default, so the action stays backward-compatible with callers that send none. */
+  const surface =
+    typeof payload.surface === "string"
+      ? payload.surface
+      : typeof payload.mode === "string"
+        ? payload.mode
+        : undefined;
+  const result = await optimizePrompt(raw, {
+    enabled,
+    mode: surface as GenerationMode | undefined,
+  });
   return { text: result.text, changed: result.changed, cached: result.cached, error: result.error };
 }
 

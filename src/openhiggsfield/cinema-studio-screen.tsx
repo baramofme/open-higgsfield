@@ -3,6 +3,7 @@
 import { type ReactNode } from "react";
 
 import { useProjectSurface } from "@/generation/stores/project-surface";
+import { type ElementItem } from "@/generation/stores/elements";
 
 import { CinemaProjectSurface } from "./cinema-project-panels";
 import { CinemaHomeContent } from "./cinema-home-content";
@@ -27,6 +28,9 @@ export function CinemaStudioScreen({
   composer,
   rail,
   history,
+  onOpenRun,
+  onShowFailure,
+  onOpenElement,
 }: {
   /** The studio composer, already wired by the app — docked at the foot. */
   composer: ReactNode;
@@ -34,6 +38,12 @@ export function CinemaStudioScreen({
   rail: ReactNode;
   /** Finished runs, so a project surface can show the work filed under it. */
   history: RunRecord[];
+  /** Opens the showcase for a finished generation tile (내 생성 · 내 즐겨찾기). */
+  onOpenRun?: (id: string) => void;
+  /** Opens the failure detail for a failed generation tile. */
+  onShowFailure?: (id: string) => void;
+  /** Opens the showcase for a 내 요소 tile. */
+  onOpenElement?: (element: ElementItem) => void;
 }) {
   const surfaceId = useProjectSurface((state) => state.projectId);
   const cinemaView = useProjectSurface((state) => state.cinemaView);
@@ -52,7 +62,13 @@ export function CinemaStudioScreen({
           {surfaceId ? (
             <CinemaProjectSurface history={history} />
           ) : cinemaView ? (
-            <CinemaTileView view={cinemaView} history={history} />
+            <CinemaTileView
+              view={cinemaView}
+              history={history}
+              onOpenRun={onOpenRun}
+              onShowFailure={onShowFailure}
+              onOpenElement={onOpenElement}
+            />
           ) : (
             <CinemaHomeContent history={history} />
           )}

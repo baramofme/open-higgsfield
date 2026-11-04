@@ -145,3 +145,25 @@ function messageFromBody(status: number, body: unknown): string {
   if (typeof detail === "string" && detail) return detail;
   return `Platform request failed (${status})`;
 }
+
+/** Turn whatever the platform reported as a run's failure into one readable
+    sentence. The cfwui backend returns a structured `{code, message}` dict —
+    carrying a real, actionable reason — but the failed-card renderer only
+    accepted a plain string, so an object collapsed to the generic "the platform
+    reported a failure" and hid the reason (the "no partial output" class). This
+    recovers the reason: prefer `message`, fall back to `detail`, then a short
+    line naming the bare `code`. Returns undefined only when nothing usable is
+    present, leaving the caller's generic fallback standing. */
+export function statusErrorText(raw: unknown): string | undefined {
+  if (typeof raw === "string") return raw || undefined;
+  if (raw !== null && typeof raw === "object") {
+    const rec = asRecord(raw);
+    const message = rec.message;
+    if (typeof message === "string" && message) return message;
+    const detail = rec.detail;
+    if (typeof detail === "string" && detail) return detail;
+    const code = rec.code;
+    if (typeof code === "string" && code) return `The run failed (${code}).`;
+  }
+  return undefined;
+}

@@ -9,6 +9,7 @@ import type { GenerationPlane } from "@/generation/catalog/types";
 import type { Surface } from "@/generation/catalog";
 import { assemblePlane, withCamera } from "@/generation/plane";
 import type { GenerationStatus } from "@/generation/platform";
+import { statusErrorText } from "@/generation/platform";
 import { POLL_DEADLINE_MS, isCancelingStatus, stopWatching, watchRequest } from "@/generation/poll";
 import { useActive } from "@/generation/stores/active";
 import { applyFeedFilters, useFeed } from "@/generation/stores/feed";
@@ -62,6 +63,7 @@ import { CinemaStudioScreen } from "./cinema-studio-screen";
    it. The swap mirrors the cinematic screen's pattern — the shell is replaced
    while the project is open, so the general layout never overlaps it. */
 import { useProjectView } from "@/generation/stores/project-view";
+import { useProjectSurface } from "@/generation/stores/project-surface";
 import { ProjectScreen } from "./project-screen";
 
 /* Long enough to read the bar and reach it; the drain line states the window. */
@@ -70,6 +72,22 @@ const UNDO_MS = 6000;
 /* No cancel acknowledged yet. Shared so the set stays referentially stable and
    memoised slots don't recompute until a real acknowledgement arrives. */
 const EMPTY_CANCELING_IDS: ReadonlySet<string> = new Set<string>();
+
+/* Separate import, anchored BELOW the const above so it forms its own diff hunk
+   well clear of the top import cluster where a sibling is editing right now
+   (concurrent-hunk-commit adjacency rule): the nested video/audio create shell
+   that replaces the general view's standalone generation dock. */
+import { GeneralCreateTabs } from "./general-create-tabs";
+
+/* t_9ddf99e1 — the reference-scoped showcase. Anchored past the create-shell
+   import so these lines form their own hunk, clear of the top cluster siblings
+   are mutating. Each pulls a symbol the showcase render needs: the role→kind map
+   and the role label for the synthesized record, the two media stores so 삭제 can
+   reach the right one, and the open seam the strip tile raises. */
+import { ROLE_KINDS, ROLE_LABELS } from "./data";
+import { useImageMedia } from "@/generation/stores/media";
+import { removeStripReference } from "./reference-removal";
+import { useReferenceShowcase } from "./reference-showcase";
 
 export interface ActiveRun {
   /** Identifies the skeleton this run occupies, so a batch clears one tile at
@@ -212,7 +230,11 @@ function failedRows(requestId: string, count: number, draft: RunDraft, error: st
 function failureText(status: GenerationStatus): string {
   if (status.status === "nsfw") return "the platform flagged the result as NSFW";
   if (status.status === "canceled") return "the run was canceled";
-  if (typeof status.error === "string" && status.error) return status.error;
+  /* A structured backend error (cfwui's {code,message}) carries the real
+     reason; recover it so the card says WHY it failed rather than the generic
+     line below. A plain string still wins verbatim. */
+  const reason = statusErrorText(status.error);
+  if (reason) return reason;
   return "the platform reported a failure";
 }
 
@@ -233,6 +255,10 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   const setModel = useActive((state) => state.setModel);
   const model = getModel(modelId);
   const setSettings = useSettings((state) => state.set);
+  /* t_47de09bd — the general cards read their settings through the store, not
+     through a one-time getState(): a control's press updates what its own dial
+     shows, the way the composer's dials already do. */
+  const modelValues = useSettings((state) => state.byModel[model.id]);
 
   const [history, setHistory] = useState<RunRecord[]>([]);
   const [runs, setRuns] = useState<ActiveRun[]>([]);
@@ -242,6 +268,12 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
   /* The failed run whose detail dialog is up, by its row id. A completed run
      opens the media viewer instead, so this only ever names a failed row. */
   const [failureId, setFailureId] = useState<string | null>(null);
+  /* The 요소 whose showcase is up. Clicking a 내 요소 tile opens the same Viewer
+     the finished runs use, fed a picture-only record derived from the element — a
+     baseline showcase showing the element's image and name. The element's own
+     category / version / description / editing tabs are separate follow-up work
+     (see the showcase child card). */
+  const [elementShowcase, setElementShowcase] = useState<ElementItem | null>(null);
   const [inpaintBusy, setInpaintBusy] = useState(false);
   const [outpaintBusy, setOutpaintBusy] = useState(false);
   const [view, setView] = useState<GalleryView>(surface);
@@ -640,6 +672,31 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     const slots = native
       ? [{ skeletons: pending.map((slot) => slot.id) }]
       : pending.map((slot) => ({ skeletons: [slot.id] }));
+
+    /* Home bootstrap (HF parity): generating an image or video from the cinematic
+       HOME — no project surface open, no tile view active, and still parked on the
+       default shelf — files the run into a fresh 새프로젝트 and takes the studio
+       there, so the right canvas shows a rendering tile now and a result tile when
+       the render finishes. Once a surface is up, later generations reuse that
+       project, so a session never sprouts duplicate 새프로젝트 cards. Read every
+       input off the stores at call time (getState) — generate's dependency list is
+       [keyConfigured, resume], so a value captured in this closure would go stale. */
+    const modeAtCall = useStudio.getState().mode;
+    const activeProjectAtCall = useProjects.getState().activeProjectId;
+    let filingProjectId = modeAtCall === "cinema" ? activeProjectAtCall : DEFAULT_PROJECT_ID;
+    if (
+      modeAtCall === "cinema" &&
+      (entry.surface === "image" || entry.surface === "video") &&
+      useProjectSurface.getState().projectId === null &&
+      useProjectSurface.getState().cinemaView === null &&
+      activeProjectAtCall === DEFAULT_PROJECT_ID
+    ) {
+      const fresh = useProjects.getState().addProject("새프로젝트");
+      useProjects.getState().setActive(fresh.id);
+      useProjectSurface.getState().openSurface(fresh.id);
+      filingProjectId = fresh.id;
+    }
+
     const draft: RunDraft = {
       surface: entry.surface,
       modelId: entry.id,
@@ -651,8 +708,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       settings: plane.settings,
       createdAt: startedAt,
       /* The cinematic surface gathers its runs inside the project it loaded;
-         ordinary work files them on the default shelf. */
-      projectId: mode === "cinema" ? activeProjectId : DEFAULT_PROJECT_ID,
+         ordinary work files them on the default shelf. A home generation filed
+         into a fresh 새프로젝트 routes through filingProjectId above. */
+      projectId: filingProjectId,
     };
 
     setError(null);
@@ -947,6 +1005,80 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
     if (!id) return;
     setFailureId(id);
   }, []);
+
+  /* Build the picture-only record the Viewer renders for an element: the image,
+     the element's name as its title, the element's description (or name) as its
+     prompt, and a neutral 4/3 frame. It is not a real run — no model, no request,
+     no regeneration — so the Viewer's run-only handlers stay inert below. */
+  const openElementShowcase = useCallback((element: ElementItem) => {
+    setElementShowcase(element);
+  }, []);
+  const elementViewerRecord = useMemo<RunRecord | null>(() => {
+    if (!elementShowcase) return null;
+    const url = elementShowcase.url;
+    return {
+      id: `el-view-${elementShowcase.id}`,
+      surface: "image",
+      modelId: "",
+      modelLabel: elementShowcase.name,
+      prompt: elementShowcase.description || elementShowcase.name,
+      ratio: "4 / 3",
+      meta: elementShowcase.elementId || elementShowcase.category,
+      kind: "image",
+      urls: url ? [url] : [],
+      status: "completed",
+      art: "linear-gradient(135deg, rgba(60,64,67,1), rgba(34,38,41,1))",
+      createdAt: Date.now(),
+    };
+  }, [elementShowcase]);
+  /* The showcase closes back to the grid; 삭제 drops the element from the shelf
+     and the store, not the run log (a baseline viewer never filed it there). */
+  const closeElementShowcase = useCallback(() => setElementShowcase(null), []);
+
+  /* t_9ddf99e1 — the reference attachment's scoped showcase. A strip tile raised
+     it; the record the viewer renders is derived from the attachment, with the
+     media kind read off the role's kind map. The attachment index plays no part
+     here — it only names the `@`-mention — so the viewer's existing branches
+     render video, audio and image straight from this shape. */
+  const referenceItem = useReferenceShowcase((state) => state.item);
+  const closeReferenceShowcase = useCallback(() => useReferenceShowcase.getState().close(), []);
+  const referenceViewerRecord = useMemo<RunRecord | null>(() => {
+    if (!referenceItem) return null;
+    const kind = ROLE_KINDS[referenceItem.role];
+    const refSurface = kind === "audio" ? "audio" : kind === "video" ? "video" : "image";
+    return {
+      id: `ref-view-${referenceItem.id}`,
+      surface: refSurface,
+      modelId: "",
+      modelLabel: ROLE_LABELS[referenceItem.role],
+      prompt: ROLE_LABELS[referenceItem.role],
+      ratio: kind === "video" ? "16 / 9" : "4 / 3",
+      meta: "",
+      kind,
+      urls: [referenceItem.url],
+      status: "completed",
+      art: "linear-gradient(135deg, rgba(60,64,67,1), rgba(34,38,41,1))",
+      createdAt: Date.now(),
+    };
+  }, [referenceItem]);
+  /* A video reference sends itself down the video surface: the reference is already
+     attached, so the send is just the move plus the close. An audio reference has no
+     onToVideo path, so the viewer's 영상으로 전환 stays disabled there, as this build
+     already has it for audio runs. */
+  const toVideoFromReference = useCallback(() => {
+    switchView("video");
+    useReferenceShowcase.getState().close();
+  }, [switchView]);
+  /* 삭제 drops the reference the way the strip's × does — the 정합 removal that also
+     clears a named element on the same url and the prompt handles that pointed at it —
+     then closes the showcase. The media store the item lives in is the one for the
+     active surface (the same mapping the strip reads). */
+  const removeReferenceFromShowcase = useCallback(() => {
+    if (!referenceItem) return;
+    const media = model.surface === "image" ? useImageMedia.getState() : useVideoMedia.getState();
+    removeStripReference(media, model, referenceItem);
+    useReferenceShowcase.getState().close();
+  }, [referenceItem, model]);
   /* Re-send a finished run down the video surface: the grid switches to Video,
      the picture is laid down as a reference and the words carry over. */
   const toVideoFor = useCallback(
@@ -1306,6 +1438,9 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           composer={composerEl}
           rail={<CinemaSidebar />}
           history={history}
+          onOpenRun={openViewer}
+          onShowFailure={showFailure}
+          onOpenElement={openElementShowcase}
         />
       ) : projectViewOpen ? (
         <ProjectScreen
@@ -1372,52 +1507,52 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             galleryRef={galleryRef}
           />
 
-          {composerEl}
+          {/* t_1fd6032c — HF's nested create shell replaces the general view's
+              standalone generation dock on the video and audio surfaces. Image
+              keeps the composer dock. The cinema branch above hands composerEl to
+              CinemaStudioScreen as its own dock, so Cinema Studio's video
+              generation dock is deliberately untouched by this swap.
+              t_d5b517ad — the shell now carries the real panel contents (measured
+              on :9222) and reclaims the dock's side losses: the selection toolbar,
+              the error banner and the undo bar ride along in slots. */}
+          {(surface === "video" || surface === "audio") ? (
+            <GeneralCreateTabs
+              surface={surface}
+              model={model}
+              values={modelValues ?? {}}
+              onModel={setModel}
+              onSetting={(patch) => setSettings(model.id, patch)}
+              history={history}
+              error={error}
+              onError={setError}
+              notice={deleted && (
+                <UndoBar
+                  records={deleted}
+                  onUndo={restoreDeleted}
+                  onDismiss={dismissDeleted}
+                />
+              )}
+              selection={selected.length > 0 && (
+                <SelectionBar
+                  records={pickedRecords}
+                  saving={saving}
+                  menuActions={tileMenuActions}
+                  onOpen={openViewer}
+                  onReuse={retry}
+                  onDownload={downloadSelection}
+                  onFavorite={favoritePicked}
+                  onDelete={deletePicked}
+                  onAddToFolder={addPickedToFolder}
+                  onClose={clearPicked}
+                />
+              )}
+              onGenerate={runGenerate}
+            />
+          ) : (
+            composerEl
+          )}
         </main>
 
-        {viewerItem && (
-          <Viewer
-            item={viewerItem}
-            onPrev={prevRun ? () => setViewerId(prevRun.id) : undefined}
-            onNext={nextRun ? () => setViewerId(nextRun.id) : undefined}
-            onClose={() => setViewerId(null)}
-            onReuse={() => retry(viewerItem)}
-            onToVideo={() => toVideoFor(viewerItem)}
-            onCommentCount={(count) =>
-              setCommentCounts((prev) => ({ ...prev, [viewerItem.id]: count }))
-            }
-            onInpaint={(image, prompt) => void runInpaint(viewerItem, image, prompt)}
-            onOutpaint={(image, pads, prompt) => void runOutpaint(viewerItem, image, pads, prompt)}
-            onApplyCrop={(image) => void runCrop(viewerItem, image)}
-            outpaintBusy={outpaintBusy}
-            busy={inpaintBusy}
-            onFavorite={() => toggleFavorite(viewerItem)}
-            onDownload={() => void downloadRun(viewerItem)}
-            /* The viewer is released along with the run, so undoing the
-               delete restores it to the grid and not back over the studio. */
-            onDelete={() => {
-              setViewerId(null);
-              deleteRun(viewerItem);
-            }}
-          />
-        )}
-        {keysOpen && (
-          <KeyModal
-            configured={keyConfigured}
-            onClose={() => setKeysOpen(false)}
-            onSaved={() => {
-              setKeyConfigured(true);
-              setKeysOpen(false);
-              setError(null);
-            }}
-            onCleared={() => {
-              setKeyConfigured(false);
-            }}
-          />
-        )}
-        {failureId && (
-          <FailureModal record={failureRecord} onClose={() => setFailureId(null)} />
-        )}
         {assetsAllOpen && (
           /* Higgsfield's /asset/all, mirrored: every surface's finished runs in
              one full-screen browse, selectable, opening the viewer — the same
@@ -1527,6 +1662,94 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           </div>
         )}
         </div>
+      )}
+
+      {/* The showcase, the key dialog and the failure dialog mount here —
+          outside the mode branch — so a tile opened in the cinema canvas finds
+          the same showcase the gallery hands it. Inside the general shell alone
+          they would never render while the studio is up, and a cinema tile click
+          would open nothing. */}
+      {viewerItem && (
+        <Viewer
+          item={viewerItem}
+          onPrev={prevRun ? () => setViewerId(prevRun.id) : undefined}
+          onNext={nextRun ? () => setViewerId(nextRun.id) : undefined}
+          onClose={() => setViewerId(null)}
+          onReuse={() => retry(viewerItem)}
+          onToVideo={() => toVideoFor(viewerItem)}
+          onCommentCount={(count) =>
+            setCommentCounts((prev) => ({ ...prev, [viewerItem.id]: count }))
+          }
+          onInpaint={(image, prompt) => void runInpaint(viewerItem, image, prompt)}
+          onOutpaint={(image, pads, prompt) => void runOutpaint(viewerItem, image, pads, prompt)}
+          onApplyCrop={(image) => void runCrop(viewerItem, image)}
+          outpaintBusy={outpaintBusy}
+          busy={inpaintBusy}
+          onFavorite={() => toggleFavorite(viewerItem)}
+          onDownload={() => void downloadRun(viewerItem)}
+          /* The viewer is released along with the run, so undoing the
+             delete restores it to the grid and not back over the studio. */
+          onDelete={() => {
+            setViewerId(null);
+            deleteRun(viewerItem);
+          }}
+        />
+      )}
+      {keysOpen && (
+        <KeyModal
+          configured={keyConfigured}
+          onClose={() => setKeysOpen(false)}
+          onSaved={() => {
+            setKeyConfigured(true);
+            setKeysOpen(false);
+            setError(null);
+          }}
+          onCleared={() => {
+            setKeyConfigured(false);
+          }}
+        />
+      )}
+      {failureId && (
+        <FailureModal record={failureRecord} onClose={() => setFailureId(null)} />
+      )}
+      {/* The 요소 showcase reuses the same Viewer the runs open, so a 내 요소 tile
+          click lands on a real dialog instead of dead chrome. The run-only actions
+          (다시 만들기 · 즐겨찾기) stay inert for an element — it is a stored picture,
+          not a generation — while 다운로드 saves its file and 삭제 drops it from the
+          요소 shelf and the store. */}
+      {elementViewerRecord && elementShowcase && (
+        <Viewer
+          item={elementViewerRecord}
+          onClose={closeElementShowcase}
+          onReuse={() => {}}
+          onFavorite={() => {}}
+          onDownload={() => void downloadRun(elementViewerRecord)}
+          onDelete={() => {
+            useElements.getState().remove(elementShowcase.id);
+            closeElementShowcase();
+          }}
+        />
+      )}
+      {/* t_9ddf99e1 — a reference attachment's scoped showcase. A strip tile raised
+          this; the viewer is fed the record derived above so a video or audio
+          reference renders through the same branches a finished run uses — the Info
+          tab carries the role's name, the media is the native player, and the rail
+          foot is the documented shell. 다운로드 saves the attached file; 영상으로 전환
+          is wired only for a video reference (audio has no path, so the button stays
+          disabled as documented). 다시 만들기/좋아요 stay inert — a reference is an
+          input, not a generation, the same way they stay inert for an element. The
+          레퍼런스 button inside the viewer is already aria-disabled in this build.
+          삭제 is the strip's 정합 removal, so it clears the named element too. */}
+      {referenceViewerRecord && referenceItem && (
+        <Viewer
+          item={referenceViewerRecord}
+          onClose={closeReferenceShowcase}
+          onReuse={() => {}}
+          onFavorite={() => {}}
+          onToVideo={referenceViewerRecord.kind === "video" ? toVideoFromReference : undefined}
+          onDownload={() => void downloadRun(referenceViewerRecord)}
+          onDelete={removeReferenceFromShowcase}
+        />
       )}
     </div>
   );

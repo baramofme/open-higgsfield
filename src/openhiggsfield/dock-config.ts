@@ -6,7 +6,7 @@ import type { CinemaMode, StudioMode } from "./studio-mode";
    cinematic seat and every plain seat — the model's icon, the caret, the generate
    word, whether the plate mounts and whether the settings pills answer with HF's
    marks. A second, seat-keyed record holds the instruments that mount only under
-   the clapper: the image seat speaks through the angle pill, the video seat
+   the clapper: the image seat keeps its preset tiles, the video seat
    through the instrument row above the prompt and the movement key. Both halves
    are folded into one object by `dockConfig`, so switching the studio mode (or the
    clapper's seat) re-renders the dock's icons and layout without touching the
@@ -39,26 +39,24 @@ const DOCK_BY_MODE: Record<StudioMode, DockMode> = {
 /** The instruments that mount only under the clapper, keyed by the seat the mode
     rail (or the pult) has chosen. `videoTop` is the video seat's instrument row
     above the prompt; `movement` is the camera-movement key that row's seat also
-    carries in the rail; `angle` belongs to the image seat alone; `tiles` are the
+    carries in the rail; `tiles` are the
     character/camera presets in the right column, present on the seats that keep
     the button's corner free — image and cinematic — and folded away on video. */
 type DockSeat = {
   videoTop: boolean;
   movement: boolean;
-  angle: boolean;
   tiles: boolean;
 };
 
 const CINEMA_SEAT: Record<CinemaMode, DockSeat> = {
-  image: { videoTop: false, movement: false, angle: true, tiles: true },
-  video: { videoTop: true, movement: true, angle: false, tiles: false },
-  cinematic: { videoTop: false, movement: false, angle: false, tiles: true },
+  image: { videoTop: false, movement: false, tiles: true },
+  video: { videoTop: true, movement: true, tiles: false },
+  cinematic: { videoTop: false, movement: false, tiles: true },
 };
 
 /** The plain studio mounts none of the clapper's instruments — the app leaves the
-    image and video forms plain outside the screen, and the studio carries no angle
-    chrome at all. */
-const PLAIN_SEAT: DockSeat = { videoTop: false, movement: false, angle: false, tiles: false };
+    image and video forms plain outside the screen. */
+const PLAIN_SEAT: DockSeat = { videoTop: false, movement: false, tiles: false };
 
 /** The full face the render reads: the mode-keyed half plus the seat's instruments
     plus the tour anchor that mirrors the source's per-state anchor set. */
