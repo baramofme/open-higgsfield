@@ -37,6 +37,10 @@ export function assemblePlane(): GenerationPlane {
        feature actually registers and something is selected. */
     prompt: { text: mergePromptWithTokens(text, surface) },
     media,
+    /* The tray (add) order survives here unfiltered — the popup numbers that same
+       store sequence, so the transport can rewrite `@이미지N` tokens into the slot
+       coordinate without guessing at the inter-role order the role buckets lose. */
+    tray: items,
     settings: parseSettings(model, useSettings.getState().byModel[model.id] ?? {}),
     /* The clapper's state rides the plane so the run knows which surface it
        was produced under: plain (general) or cinematic — the cinematic answer

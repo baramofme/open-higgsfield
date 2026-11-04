@@ -482,6 +482,101 @@ function h3NamedTemplate(prompt: string, images: string[], videos: string[], aud
   ].join("\n");
 }
 
+/* Image-lane coordinate unification (t_277eac4f): the dock popup numbers `@이미지N`
+   by tray (add) order while the model's slot list is assembled independently — H3
+   pins the start frame at the head and carries no end slot, LTX exposes only the two
+   anchors. When those orders diverge, the backend resolver's numeric transposition
+   (`@이미지N` → `<Picture N>`) binds a file the user never meant. The transport
+   rewrites each token's ordinal into the slot ordinal the resolver expects, so
+   intent and bound file coincide; a token no slot can carry (H3's end, picks past
+   the nine-slot cap, LTX free references) is removed with a warning instead of left
+   to land on the wrong file. The image-lane membership rule is the one
+   media-mention.ts applies to popup numbering (role first, URL sniff for
+   reference-role videos), restated here because media-mention.ts is not committed
+   yet — importing it would break HEAD, committing it would sweep another card's
+   work; the slot-ordering probe pins the two rules to agree. */
+/* The tray record's element type, read off the plane so this file adds no new
+   type import to the header (the header is another card's working line). */
+type TrayItem = NonNullable<GenerationPlane["media"][keyof GenerationPlane["media"]]>[number];
+
+const SLOT_IMAGE_TOKEN_RE = /@(?:이미지|image|Image|img|그림)\s*(\d+)/gi;
+
+function slotMediaKind(item: TrayItem): "image" | "video" | "audio" {
+  if (item.role === "video") return "video";
+  if (item.role === "audio") return "audio";
+  if (item.url.startsWith("data:video/")) return "video";
+  const leaf = item.url.split(/[?#]/)[0] ?? "";
+  if (/\.(mp4|webm|mov|m4v|mkv|avi)$/i.test(item.url) || /\.(mp4|webm|mov|m4v|mkv|avi)$/i.test(leaf))
+    return "video";
+  return "image";
+}
+
+/* Popup ordinals for the image lane in tray order — the same counting the `@` menu
+   performed, rebuilt from the plane's tray record. */
+function imageLaneOrdinals(tray: TrayItem[]): { item: TrayItem; n: number }[] {
+  let n = 0;
+  const out: { item: TrayItem; n: number }[] = [];
+  for (const item of tray) {
+    if (slotMediaKind(item) === "image") out.push({ item, n: ++n });
+  }
+  return out;
+}
+
+type SlotOf = { byItem: Map<TrayItem, number>; byUrl: Map<string, number> };
+
+function slotCoordinate(slotItems: TrayItem[]): SlotOf {
+  const byItem = new Map<TrayItem, number>();
+  const byUrl = new Map<string, number>();
+  slotItems.forEach((item, index) => {
+    byItem.set(item, index + 1);
+    if (!byUrl.has(item.url)) byUrl.set(item.url, index + 1);
+  });
+  return { byItem, byUrl };
+}
+
+/* Rewrite every `@이미지N` into the slot ordinal its intent file occupies. Tokens
+   whose intent never reaches a slot are dropped — a dangling tag would bind the
+   wrong file or nothing. Ordinals the tray never handed out (stale or hand-typed)
+   stay for the resolver to treat as today. The alias word is preserved; only the
+   number moves. Identity first, URL second: a plane rebuilt through serialization
+   (where object identity breaks but the file is still the same file) rewrites too.
+   A plane without a tray record skips the rewrite entirely — old hand-built
+   payloads leave byte-identical. */
+function rewriteImageTokens(prompt: string, tray: TrayItem[] | undefined, slotOf: SlotOf): string {
+  if (!tray) return prompt;
+  const intentByOrdinal = new Map<number, TrayItem>();
+  for (const entry of imageLaneOrdinals(tray)) intentByOrdinal.set(entry.n, entry.item);
+  return prompt.replace(SLOT_IMAGE_TOKEN_RE, (token: string, digits: string) => {
+    const intent = intentByOrdinal.get(parseInt(digits, 10));
+    if (intent === undefined) return token;
+    const slot = slotOf.byItem.get(intent) ?? slotOf.byUrl.get(intent.url);
+    if (slot === undefined) {
+      console.warn(`[cfwui-map] dropped "${token}": ${intent.url} has no slot on this lane`);
+      return "";
+    }
+    return token.replace(/\d+/, String(slot));
+  });
+}
+
+/* The H3 ref2va coordinate with item identity: slot k is the k-th image of the
+   assembled list — the start frame pinned first, then references in tray order,
+   truncated at the backend's nine-slot cap. Items past the cap and end-role items
+   never appear, so their tokens fall out of the map and are dropped (R4). */
+function h3SlotCoordinate(plane: GenerationPlane): SlotOf {
+  const startItem = plane.media.start?.[0];
+  const refItems = plane.media.reference ?? [];
+  return slotCoordinate((startItem ? [startItem, ...refItems] : refItems).slice(0, 9));
+}
+
+/* LTX carries no free-reference lane — the graph holds only the two anchors the
+   backend numbers 1 (the starting frame) and 2 (the ending frame). Anything else
+   the popup numbered cannot bind here, so it falls out of the map and is dropped
+   with a warning rather than mis-binding an anchor. */
+function ltxSlotCoordinate(plane: GenerationPlane): SlotOf {
+  const anchors = [plane.media.start?.[0], plane.media.end?.[0]].filter(Boolean) as TrayItem[];
+  return slotCoordinate(anchors);
+}
+
 function mapVideoCfwui(plane: GenerationPlane): Mapped {
   const model = getModel(plane.model);
   const start = urls(plane, "start")[0];
@@ -515,11 +610,14 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
       images.forEach((url, index) => { slots[`ref_image${index + 1}`] = url; });
       videoSlots.forEach((url, index) => { slots[`ref_video${index + 1}`] = url; });
       audioSlots.forEach((url, index) => { slots[`ref_audio${index + 1}`] = url; });
+      /* Tokens enter the six-section template in the slot coordinate the backend's
+         resolver transposes by number (t_277eac4f). */
+      const lanePrompt = rewriteImageTokens(prompt, plane.tray, h3SlotCoordinate(plane));
       return {
         path: "VideoGen_H3_run",
         body: {
           task_type: "ref2va",
-          prompt: h3NamedTemplate(prompt, images, videoSlots, audioSlots),
+          prompt: h3NamedTemplate(lanePrompt, images, videoSlots, audioSlots),
           width,
           height,
           duration,
@@ -555,11 +653,17 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
       },
     };
   }
+  /* The LTX graph carries only the two anchors, and the backend numbers them 1 =
+     the starting frame, 2 = the ending frame. Tokens are rewritten into that
+     coordinate so an anchor mention lands on its own file, and free-reference
+     mentions — which this lane never sends — are removed with a warning instead
+     of mis-binding an anchor (t_277eac4f). */
+  const ltxPrompt = rewriteImageTokens(prompt, plane.tray, ltxSlotCoordinate(plane));
   return {
     path: "VideoGen_LTX_2_5_run",
     body: {
       task_type: start && end ? "flf2va" : start ? "i2va" : "t2va",
-      prompt,
+      prompt: ltxPrompt,
       resolution: tier,
       aspect_ratio: LTX_ASPECT[aspect] ?? "16:9 (Widescreen)",
       duration,

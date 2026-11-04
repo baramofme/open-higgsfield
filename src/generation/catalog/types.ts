@@ -43,6 +43,13 @@ export type GenerationPlane = {
   model: string;
   prompt: { text: string };
   media: Partial<Record<MediaRole, MediaItem[]>>;
+  /** Attachments in tray (add) order, unfiltered — exactly the sequence the dock's
+      `@` popup counts per type (start/end included, image-typed by role first, then
+      URL sniff). The role buckets above lose the inter-role order, which is what the
+      transport needs to rewrite `@이미지N` tokens into the slot coordinate, so carry
+      the raw record and the rewrite never has to guess (t_277eac4f). Absent on
+      hand-built planes, where the transport leaves tokens untouched. */
+  tray?: MediaItem[];
   settings: Record<string, unknown>;
   /** Which topbar surface produced the plane; absent reads as "general". */
   studio?: "general" | "cinema";
