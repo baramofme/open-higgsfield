@@ -20035,13 +20035,31 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   min-height: 0;
   max-height: 100%;
   overflow-y: hidden;
-  align-self: start;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   gap: 8px;
   background: rgb(19, 21, 23);
   border: 1px solid rgba(217, 217, 217, 0.04);
   border-radius: 20px;
+}
+/* HF's left plate carries exactly ONE bound; the create tabs sit flat on it.
+   The cinema plate styling (bg/border/radius/shadow/margin) established for the
+   pre-column layout (t_7d69c9da ruling) must not double-plate inside .ohf-create-col —
+   HF's live DOM (2026-11-04, :9222) shows no nested card inside its 320px plate:
+   the tab strip and form sit directly on the plate bg. Flatten + give the tabs
+   the inner scroll role (HF: col overflow hidden, form scrolls inside). Scoped to
+   the in-column context so any other gct surface keeps its plate styling. */
+.ohf-create-col .ohf-gct {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 /* HF's feed column: transparent bg plate with 20px radius and
    1px border rgba(255,255,255,.1), overflow-hidden (gallery scrolls internally).
@@ -20100,16 +20118,16 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   gap: 4px;
   height: 32px;
   padding: 4px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   border-radius: 8px;
   background: transparent;
   font-size: 12px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 16px;
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s;
 }
 .ohf-feed-header-tab[data-active="true"] {
   color: rgb(255, 255, 255);
