@@ -12,7 +12,14 @@ import { CheckIcon } from "./icons";
 import { LOCAL_USER } from "./local-user";
 import { EditShowcase, EditToolsCard } from "./edit-showcase";
 import { ExpandCropEditor } from "./expand-crop";
+import { VideoEditor, VideoEditRail, SEED_CAPTIONS, type CaptionSeg } from "./video-edit";
 import { SHOWCASE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
+/* t_114a2802 — the image reference's centre-click "use as next". The plate is
+   raised from the viewer's own image branch and the role it writes goes straight
+   to the media store; the config card is a sibling file so the showcase keeps no
+   new handler threaded through it. */
+import { useImageMedia } from "@/generation/stores/media";
+import { ReferenceUseNextPopover } from "./reference-use-next";
 
 /* Backstop only: the exit normally ends on the panel's own animationend. */
 const EXIT_TIMEOUT_MS = 420;
@@ -135,6 +142,18 @@ const DownloadGlyph = () => (
     <path d="M20.25 14.75V19.25C20.25 19.8023 19.8023 20.25 19.25 20.25H4.75C4.19772 20.25 3.75 19.8023 3.75 19.25V14.75M12 15V3.75M12 15L8.5 11.5M12 15L15.5 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+/* The bottom-right media control that widens the stage. Mirrors the showcase's
+   own corner affordance; only image and video carry it, audio has no frame to
+   enlarge so it is never rendered for a sound. */
+const MediaExpandGlyph = () => (
+  <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M5.5 12.5v5a1 1 0 0 0 1 1h5m1-13h5a1 1 0 0 1 1 1v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+/* The video 편집 tab's centre workbench (timeline · clip tools) and its rail
+   inspector (caption track · clip properties) stand in video-edit.tsx. */
 
 const HeartGlyph = ({ filled }: { filled?: boolean }) => (
   <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -342,6 +361,11 @@ export function Viewer({
      tab's resolution tier and size line are allowed to trust. */
   const [dims, setDims] = useState<readonly [number, number] | null>(null);
   const [shown, setShown] = useState(item.id);
+  /* The image reference's "use as next" card, open by its own centred plate. */
+  const [useNextOpen, setUseNextOpen] = useState(false);
+  /* The video editor's caption track. The centre timeline lane and the rail's
+     inspector read and write the same list, so one owner keeps them in step. */
+  const [captions, setCaptions] = useState<CaptionSeg[]>(SEED_CAPTIONS);
   if (shown !== item.id) {
     setShown(item.id);
     setDelivered(null);
@@ -349,6 +373,8 @@ export function Viewer({
     setCopied(false);
     setTab("info");
     setEditTool("showcase");
+    setUseNextOpen(false);
+    setCaptions(SEED_CAPTIONS);
   }
   const kind = item.kind;
   /* 오디오 has no 편집 tab in HF's showcase, so a stale "edit" tab can never be
@@ -359,6 +385,18 @@ export function Viewer({
   /* The waveform the showcase draws as a hero for an audio run. Non-audio runs
      resolve to null without a fetch, so nothing here changes for images or video. */
   const wave = useAudioWaveform(item.id, url, item.kind === "audio", SHOWCASE_WAVEFORM);
+
+  /* t_114a2802 — the image reference's "use as next". A reference showcase is the
+     viewer fed a record the app derives off the attachment, and that record's id
+     is tagged `ref-view-` before the attachment's own id; a finished run or an
+     element wears a different prefix, so this is how the viewer tells the two
+     apart without importing the showcase's own store. Only the image kind gets
+     the special centred plate — video and audio references carry none. The held
+     attachment is found back through the media store by its url, so choosing a
+     role there re-tags the live tile behind the glass, not a detached copy. */
+  const imageItems = useImageMedia((s) => s.items);
+  const refImageMode = item.id.startsWith("ref-view-") && item.kind === "image";
+  const refItem = refImageMode ? imageItems.find((i) => i.url === url) : undefined;
 
   const measure = useCallback((media: HTMLImageElement | HTMLVideoElement | null) => {
     if (!media) return;
@@ -605,7 +643,7 @@ export function Viewer({
           {/* Under the edit tab a narrow strip of edit-history thumbnails stands
               to the left of the canvas, snapping in order; the active step wears a
               lime ring. We hold only the original so far. */}
-          {tab === "edit" && (
+          {showTab === "edit" && kind === "image" && (
             <div className="ohf-viewer-edit-history">
               <aside className="ohf-viewer-edit-history-inner">
                 <ul aria-label="편집 기록" className="ohf-viewer-edit-history-list">
@@ -700,10 +738,63 @@ export function Viewer({
                 ) : (
                   <span className="ohf-grain" />
                 )}
+                {refImageMode && url && (
+                  /* The image reference's centred plate — the one control HF's
+                     image showcase hides at the centre. It is a real button, so a
+                     pointer and the two keys a button answers to both raise the
+                     card; clicking the empty ground still closes the dialog. */
+                  <button
+                    type="button"
+                    className="ohf-ref-next-plate"
+                    onClick={() => setUseNextOpen(true)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setUseNextOpen(true);
+                      }
+                    }}
+                    aria-label="다음으로 사용"
+                    title="이 이미지를 다음 생성의 입력으로"
+                  >
+                    <span className="ohf-ref-next-plate-text">다음으로 사용</span>
+                  </button>
+                )}
               </figure>
+              {/* The bottom-right corner cluster rides on the media itself rather than
+                  the stage chrome, and it trims itself per asset type: an audio asset
+                  has no frame to widen, so its 미디어 보기 확장 is dropped, leaving just
+                  댓글 추가하기. Image and video keep both controls. */}
+              <div className="ohf-viewer-media-bottom" data-kind={kind}>
+                <button
+                  type="button"
+                  className="ohf-viewer-media-bottom-btn"
+                  aria-label="댓글 추가하기"
+                  onClick={() => setTab("comment")}
+                >
+                  <CommentGlyph />
+                </button>
+                {kind !== "audio" && (
+                  <button
+                    type="button"
+                    className="ohf-viewer-media-bottom-btn"
+                    aria-label="미디어 보기 확장"
+                    aria-disabled="true"
+                    title="미디어 보기 확장은 이 빌드에서 아직 경로가 없습니다"
+                  >
+                    <MediaExpandGlyph />
+                  </button>
+                )}
+              </div>
+              {refImageMode && useNextOpen && refItem && (
+                <ReferenceUseNextPopover
+                  currentRole={refItem.role}
+                  onPick={(role) => useImageMedia.getState().setRole(refItem.id, role)}
+                  onClose={() => setUseNextOpen(false)}
+                />
+              )}
             </div>
             )}
-            {tab === "edit" && (
+            {showTab === "edit" && kind === "image" && (
               <EditShowcase
                 url={toProxyImageUrl(url)}
                 aspect={aspect}
@@ -712,6 +803,12 @@ export function Viewer({
                 busy={!!busy}
                 status={inpaintStatus}
               />
+            )}
+            {/* A video's 편집 tab is HF's timeline workbench — the clip, the
+                timeline lane with its playhead and trim handles, the caption lane
+                and the row of clip tools docked under it all stand here. */}
+            {showTab === "edit" && kind === "video" && (
+              <VideoEditor url={url} captions={captions} />
             )}
             <h2 className="ohf-viewer-heading" hidden>에셋 쇼케이스</h2>
             <p className="ohf-viewer-describe" hidden>{item.id} 에셋 상세 정보</p>
@@ -756,34 +853,47 @@ export function Viewer({
               </header>
 
               <div className="ohf-viewer-tabs" role="tablist" aria-label="에셋 쇼케이스 탭">
-                {(
-                  [
-                    { id: "info", text: "Info", glyph: <InfoGlyph /> },
-                    { id: "edit", text: "편집", glyph: <EditGlyph /> },
-                    { id: "comment", text: "댓글", glyph: <CommentGlyph /> },
-                  ] as const
-                ).map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={tab === t.id}
-                    className={`ohf-viewer-tab${tab === t.id ? " ohf-viewer-tab--on" : ""}`}
-                    onClick={() => setTab(t.id)}
-                  >
-                    <span className="ohf-viewer-tab-icon">{t.glyph}</span>
-                    <span className="ohf-viewer-tab-label">{t.text}</span>
-                  </button>
-                ))}
-                <span
-                  className="ohf-viewer-tab-indicator"
-                  aria-hidden
-                  style={{
-                    transform: `translateX(${
-                      (["info", "edit", "comment"] as const).indexOf(tab) * 100
-                    }%)`,
-                  }}
-                />
+                {(() => {
+                  /* 오디오 has no 편집 tab in HF's showcase — the rail shows only
+                     info and 댓글 for a sound, so the strip differs by asset type. */
+                  const defs =
+                    kind === "audio"
+                      ? ([
+                          { id: "info", text: "Info", glyph: <InfoGlyph /> },
+                          { id: "comment", text: "댓글", glyph: <CommentGlyph /> },
+                        ] as const)
+                      : ([
+                          { id: "info", text: "Info", glyph: <InfoGlyph /> },
+                          { id: "edit", text: "편집", glyph: <EditGlyph /> },
+                          { id: "comment", text: "댓글", glyph: <CommentGlyph /> },
+                        ] as const);
+                  const idx = defs.findIndex((d) => d.id === showTab);
+                  return (
+                    <>
+                      {defs.map((t) => (
+                        <button
+                          key={t.id}
+                          type="button"
+                          role="tab"
+                          aria-selected={showTab === t.id}
+                          className={`ohf-viewer-tab${showTab === t.id ? " ohf-viewer-tab--on" : ""}`}
+                          onClick={() => setTab(t.id)}
+                        >
+                          <span className="ohf-viewer-tab-icon">{t.glyph}</span>
+                          <span className="ohf-viewer-tab-label">{t.text}</span>
+                        </button>
+                      ))}
+                      <span
+                        className="ohf-viewer-tab-indicator"
+                        aria-hidden
+                        style={{
+                          width: `${100 / defs.length}%`,
+                          transform: `translateX(${idx * 100}%)`,
+                        }}
+                      />
+                    </>
+                  );
+                })()}
               </div>
 
               <div className="ohf-viewer-rail-body">
@@ -844,7 +954,7 @@ export function Viewer({
                   </div>
                 )}
 
-                {tab === "edit" && (
+                {showTab === "edit" && kind === "image" && (
                   <div className="ohf-viewer-edit">
                     <EditToolsCard onOpenExpandCrop={() => setEditTool("expand")} />
                     <section className="ohf-viewer-layers">
@@ -882,7 +992,13 @@ export function Viewer({
                   </div>
                 )}
 
-                {tab === "comment" && <CommentPanel runId={item.id} onCount={onCommentCount} />}
+                {/* A video's 편집 rail holds the residual editing panel: the caption
+                    track and the clip-property inspector (video-edit.tsx). */}
+                {showTab === "edit" && kind === "video" && <VideoEditRail captions={captions} onCaptions={setCaptions} />}
+
+                {showTab === "comment" && (
+                  <CommentPanel runId={item.id} kind={kind} onCount={onCommentCount} />
+                )}
               </div>
 
               {/* The foot under the rail changes with the tab the way the source
@@ -1066,9 +1182,11 @@ export function Viewer({
 /* The thread for one run, read from IndexedDB the way the run log is. */
 function CommentPanel({
   runId,
+  kind,
   onCount,
 }: {
   runId: string;
+  kind: "image" | "video" | "audio";
   /* Reports the thread's length up so the tile bubble under it can refresh. */
   onCount?: (count: number) => void;
 }) {
@@ -1148,7 +1266,11 @@ function CommentPanel({
                   <p className="ohf-viewer-comment-body">{c.text}</p>
                   <div className="ohf-viewer-comment-acts">
                     <button type="button" className="ohf-viewer-comment-reply" aria-disabled="true">답장</button>
-                    <button type="button" className="ohf-viewer-comment-mark" aria-label="마크 추가하기" aria-disabled="true"><MarkGlyph /></button>
+                    {/* 마크 그리는 소리를 위에 얹을 수 없으니, 오디오의 댓글에서는 마크를
+                        빼고 이미지·비디오만 유지한다 — 댓글이 타입마다 다르게 렌더된다. */}
+                    {kind !== "audio" && (
+                      <button type="button" className="ohf-viewer-comment-mark" aria-label="마크 추가하기" aria-disabled="true"><MarkGlyph /></button>
+                    )}
                     <button type="button" className="ohf-viewer-comment-emoji" aria-label="이모지 추가하기" aria-disabled="true"><EmojiGlyph /></button>
                     <button type="button" className="ohf-viewer-comment-resolve" aria-label="댓글 해결" aria-disabled="true"><ResolveGlyph /></button>
                     <button type="button" className="ohf-viewer-comment-work" aria-label="댓글 작업 열기" aria-haspopup="menu" aria-expanded="false" aria-disabled="true"><WorkGlyph /></button>
@@ -1179,7 +1301,11 @@ function CommentPanel({
         />
         <fieldset className="ohf-viewer-composer-bar">
           <div className="ohf-viewer-composer-tools">
-            <button type="button" className="ohf-viewer-composer-draw" aria-label="자유 그리기" aria-disabled="true" data-asset-comment-free-draw-anchor><FreeDrawGlyph /></button>
+            {/* 자유 그리기는 이미지에 그리는 도구다. 소리는 그릴 면이 없으니 오디오의
+                작성창에서는 이 단추를 빼서 타입마다 다른 작성을 보여준다. */}
+            {kind !== "audio" && (
+              <button type="button" className="ohf-viewer-composer-draw" aria-label="자유 그리기" aria-disabled="true" data-asset-comment-free-draw-anchor><FreeDrawGlyph /></button>
+            )}
             <button type="button" className="ohf-viewer-composer-emoji" aria-label="이모지 추가하기" aria-disabled="true"><EmojiGlyph /></button>
           </div>
           <button

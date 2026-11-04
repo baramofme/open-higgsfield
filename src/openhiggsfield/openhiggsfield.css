@@ -12818,6 +12818,103 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   align-items: center;
   justify-content: center;
 }
+/* t_114a2802 — the image reference's centre-click "use as next". The wrap is the
+   containing block the config card centres against (the figure clips its own
+   overflow, so the card must not live inside it); the plate rides the figure's
+   centre and the card the stage's, both centred so they read as a configuration
+   of the picture, not a panel detached from it. */
+.ohf-viewer-media-wrap { position: relative; }
+.ohf-ref-next-plate {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: rgba(8, 10, 12, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #edf2f0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.14s ease,
+    transform 0.14s var(--ease);
+}
+.ohf-ref-next-plate:hover { background: rgba(8, 10, 12, 0.78); }
+.ohf-ref-next-plate:active { transform: translate(-50%, -50%) scale(0.97); }
+.ohf-ref-next-plate-text { pointer-events: none; }
+.ohf-ref-next-pop {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 268px;
+  max-width: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--s2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-3);
+}
+.ohf-ref-next-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ohf-ref-next-title {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: #edf2f0;
+}
+.ohf-ref-next-reset {
+  border: 0;
+  background: none;
+  color: rgba(237, 242, 240, 0.6);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ohf-ref-next-reset:hover { color: #edf2f0; }
+.ohf-ref-next-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ohf-ref-next-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  color: #edf2f0;
+  cursor: pointer;
+}
+.ohf-ref-next-opt:hover { background: rgba(255, 255, 255, 0.08); }
+.ohf-ref-next-opt[data-selected="true"] {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+.ohf-ref-next-opt-label { font-size: 13px; font-weight: 600; }
+.ohf-ref-next-opt-hint { font-size: 11px; color: rgba(237, 242, 240, 0.6); }
+.ohf-ref-next-receipt { font-size: 11px; color: rgba(237, 242, 240, 0.5); }
 
 /* The rail, the showcase's glass card: square corners per the studio, padded and
    gapped the way the source lays its sections out. */
@@ -19178,4 +19275,232 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   background: var(--accent);
   border-color: transparent;
   color: #101214;
+}
+/* t_4811a7b2 — the video 편집 tab's timeline workbench (video-edit.tsx).
+   HF's video editor is a full workbench: the clip on its stage, a timeline lane
+   with ticks, a playhead, in/out trim handles and a caption lane, the clip tools
+   docked under it, and a caption + clip-property inspector on the rail. This
+   reuses the showcase's own tokens and the image edit workspace's idiom — hairline
+   borders, transparent fills, mono chrome, and the single accent reserved for
+   selection and liveness (the playhead, the active tools, the focused field). */
+/* The workbench fills the stage the same way the image editor's canvas does:
+   the stage is a size container, so height:100% takes its full inner height
+   regardless of the stage's align-items:center, and the picture lane below the
+   docked timeline takes the rest. */
+.ohf-viewer-stage .ohf-viewer-video-editor {
+  width: 100%; height: 100%; min-height: 0;
+  display: flex; flex-direction: column; gap: 10px; padding: 6px 8px 4px;
+}
+/* The picture the clip plays inside, with the live caption laid over it. */
+.ohf-vedit-stage {
+  position: relative; flex: 1 1 0; min-height: 0; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--panel);
+}
+.ohf-vedit-video { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.ohf-vedit-caption-overlay {
+  position: absolute; left: 50%; bottom: 10%; transform: translateX(-50%);
+  max-width: 72%; padding: 5px 14px; border-radius: 6px;
+  background: var(--plate); color: var(--plate-ink); pointer-events: none;
+  font: 600 clamp(.95rem,.8rem + .7vmin,1.15rem)/1.25 var(--sans); text-align: center;
+}
+/* Transport: play / pause, the clock and mute. */
+.ohf-vedit-transport { flex: none; display: flex; align-items: center; gap: 9px; }
+.ohf-vedit-play, .ohf-vedit-mute {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 8px; background: transparent;
+  color: var(--ink-2); transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.ohf-vedit-play { width: 36px; height: 36px; }
+.ohf-vedit-mute { width: 30px; height: 30px; }
+.ohf-vedit-play > svg { width: 18px; height: 18px; transform: translate(-1px, 1px); }
+.ohf-vedit-mute > svg { width: 16px; height: 16px; }
+.ohf-vedit-play:hover, .ohf-vedit-mute:hover { border-color: var(--line-2); color: var(--ink); }
+.ohf-vedit-play:active, .ohf-vedit-mute:active { transform: translateY(1px); }
+.ohf-vedit-play[aria-pressed="true"], .ohf-vedit-mute[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.ohf-vedit-clock { font: 600 13px/1 var(--mono); color: var(--ink); letter-spacing: -.01em; }
+.ohf-vedit-clock-total { color: var(--ink-3); }
+.ohf-vedit-transport-fill { flex: 1 1 0; min-width: 0; }
+.ohf-vedit-transport-lane-label {
+  font: 600 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute);
+}
+/* The timeline: a video lane with ticks, a caption lane under it, a playhead and
+   the two trim handles you drag to cut the span. */
+.ohf-vedit-timeline {
+  position: relative; flex: none; height: 70px; overflow: visible;
+  border: 1px solid var(--line); border-radius: 9px; background: var(--panel);
+  touch-action: none; cursor: ew-resize; outline: none;
+}
+.ohf-vedit-timeline:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-14); }
+.ohf-vedit-lane { position: absolute; left: 9px; right: 9px; pointer-events: none; }
+.ohf-vedit-lane--video {
+  top: 9px; height: 34px; border-radius: 6px; overflow: hidden; background: rgba(255,255,255,.04);
+}
+.ohf-vedit-lane-strip { position: absolute; inset: 0; border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,.03), rgba(255,255,255,.08) 50%, rgba(255,255,255,.03)); }
+.ohf-vedit-tick { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.08); }
+.ohf-vedit-lane--caption { top: 48px; height: 14px; }
+.ohf-vedit-caption-block {
+  position: absolute; top: 0; height: 100%; overflow: hidden; border-radius: 4px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--line-2);
+}
+.ohf-vedit-caption-block-text {
+  display: block; padding: 0 6px; font: 600 10px/12px var(--mono); color: var(--ink-2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ohf-vedit-playhead { position: absolute; top: 3px; bottom: 3px; width: 2px; transform: translateX(-1px); pointer-events: none; }
+.ohf-vedit-playhead-bar { position: absolute; inset: 0; background: var(--accent); border-radius: 1px; box-shadow: 0 0 6px 0 var(--accent-32); }
+.ohf-vedit-playhead::before {
+  content: ""; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+  width: 12px; height: 9px; background: var(--accent); clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+.ohf-vedit-in, .ohf-vedit-out { position: absolute; top: 0; bottom: 0; width: 0; pointer-events: none; }
+.ohf-vedit-handle {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 11px; height: 30px; min-height: 0; border-radius: 4px; pointer-events: auto;
+  background: var(--panel-3); border: 1px solid var(--line-2); cursor: ew-resize;
+}
+.ohf-vedit-handle:hover { background: var(--panel-2); }
+.ohf-vedit-in .ohf-vedit-handle { border-left: 2px solid var(--accent); }
+.ohf-vedit-out .ohf-vedit-handle { border-right: 2px solid var(--accent); }
+/* The clip tools, docked under the timeline where HF seats them. The cut and
+   speed tools are honest inert chrome; volume drives the mute. */
+.ohf-vedit-cliptools { flex: none; display: flex; flex-wrap: wrap; gap: 7px; padding: 2px 0 6px; }
+.ohf-vedit-cliptool {
+  display: inline-flex; align-items: center; gap: 7px; min-height: 30px; padding: 5px 9px;
+  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-2);
+  cursor: pointer; transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.ohf-vedit-cliptool-icon { display: inline-flex; flex: none; }
+.ohf-vedit-cliptool-icon > svg { width: 18px; height: 18px; }
+.ohf-vedit-cliptool-label { font: 600 .68rem/1 var(--mono); letter-spacing: .01em; white-space: nowrap; }
+.ohf-vedit-cliptool:hover { border-color: var(--line-2); color: var(--ink); }
+.ohf-vedit-cliptool:active { transform: translateY(1px); }
+.ohf-vedit-cliptool[aria-disabled="true"] { opacity: .5; cursor: default; }
+.ohf-vedit-cliptool[aria-disabled="true"]:hover { border-color: var(--line); color: var(--ink-2); }
+/* The rail's residual panel: the caption track and the clip inspector, sharing
+   the rail's edit container with the image workspace's own cards. */
+.ohf-vedit-caption-panel { display: flex; flex-direction: column; min-height: 0; }
+.ohf-vedit-caption-head { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 2px; }
+.ohf-vedit-caption-head-icon { display: inline-flex; flex: none; color: var(--ink-2); }
+.ohf-vedit-caption-head-icon > svg { width: 18px; height: 18px; }
+.ohf-vedit-caption-head-title { flex: 1 1 auto; font: 600 .82rem/1 var(--sans); color: var(--ink); }
+.ohf-vedit-caption-add {
+  flex: none; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-2);
+  cursor: pointer; transition: color .18s var(--ease), border-color .18s var(--ease);
+}
+.ohf-vedit-caption-add > svg { width: 16px; height: 16px; }
+.ohf-vedit-caption-add:hover { border-color: var(--accent); color: var(--accent); }
+.ohf-vedit-caption-list { display: flex; flex-direction: column; gap: 6px; }
+.ohf-vedit-caption-empty { font: 600 .72rem/1 var(--mono); color: var(--ink-mute); padding: 6px 0; }
+.ohf-vedit-caption-row { display: flex; align-items: center; gap: 8px; }
+.ohf-vedit-caption-index { flex: none; width: 26px; font: 600 .66rem/1 var(--mono); color: var(--ink-3); }
+.ohf-vedit-caption-input {
+  flex: 1 1 0; min-width: 0; height: 32px; padding: 0 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: transparent; color: var(--ink); outline: none;
+  font: 500 .82rem/1 var(--sans);
+}
+.ohf-vedit-caption-input:hover { border-color: var(--line-2); }
+.ohf-vedit-caption-input:focus { border-color: var(--accent); }
+.ohf-vedit-caption-input::placeholder { color: var(--ink-mute); }
+.ohf-vedit-caption-span { flex: none; font: 600 .6rem/1 var(--mono); color: var(--ink-mute); }
+.ohf-vedit-caption-del {
+  flex: none; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: 7px; background: transparent; color: var(--ink-3); cursor: pointer;
+}
+.ohf-vedit-caption-del > svg { width: 14px; height: 14px; }
+.ohf-vedit-caption-del:hover { color: var(--ink); background: rgba(255,255,255,.04); }
+/* The clip-property inspector mirrors the image tools card's row idiom. */
+.ohf-vedit-inspector { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 2px; }
+.ohf-vedit-inspector-head {
+  display: flex; align-items: center; gap: 8px; min-height: 34px; padding: 0 2px;
+  font: 600 .74rem/1 var(--mono); letter-spacing: .03em; color: var(--ink-3);
+}
+.ohf-vedit-inspector-head > svg { width: 16px; height: 16px; color: var(--ink-3); }
+.ohf-vedit-inspector-row {
+  display: flex; align-items: center; gap: 9px; min-height: 34px; padding: 0 8px;
+  border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: default;
+}
+.ohf-vedit-inspector-row[aria-disabled="true"] { opacity: .55; }
+.ohf-vedit-inspector-row-icon { display: inline-flex; flex: none; color: var(--ink-2); }
+.ohf-vedit-inspector-row-icon > svg { width: 18px; height: 18px; }
+.ohf-vedit-inspector-row-label { flex: 1 1 auto; min-width: 0; font: 600 .8rem/1 var(--sans); color: var(--ink-2); }
+.ohf-vedit-inspector-row-caret { display: inline-flex; flex: none; color: var(--ink-mute); }
+.ohf-vedit-inspector-row-caret > svg { width: 14px; height: 14px; transform: rotate(-90deg); }
+/* The corner cluster HF paints at the media's bottom-right (absolute, bottom-3
+   right-3). It carries 댓글 추가하기 + 미디어 보기 확장 for image/video; an audio
+   asset renders only the comment button because there is no frame to widen. */
+.ohf-viewer-media-bottom {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 4;
+}
+.ohf-viewer-media-bottom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.ohf-viewer-media-bottom-btn svg {
+  width: 22px;
+  height: 22px;
+}
+.ohf-viewer-media-bottom-btn:hover:not([aria-disabled="true"]) {
+  color: var(--text);
+  border-color: var(--accent);
+}
+.ohf-viewer-media-bottom-btn[aria-disabled="true"] {
+  opacity: 0.4;
+}
+
+/* A video's 편집 tab stands up a per-type shell (the clip plus a held notice) in
+   place of the image inpaint canvas, and its rail shows a placeholder card until
+   the full timeline editor ships. */
+.ohf-viewer-video-edit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-viewer-video-edit .ohf-viewer-media {
+  max-width: 88%;
+  max-height: 86%;
+}
+.ohf-viewer-video-edit-note {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 13px;
+}
+.ohf-viewer-video-edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+.ohf-viewer-video-edit-card-title {
+  font-weight: 600;
+  color: var(--text);
+}
+.ohf-viewer-video-edit-card-note {
+  color: var(--muted);
+  font-size: 13px;
 }
