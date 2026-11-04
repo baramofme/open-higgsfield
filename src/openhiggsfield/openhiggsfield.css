@@ -20017,3 +20017,54 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-vedit-inspector-row-caret { display: inline-flex; flex: none; color: var(--ink-mute); }
 .ohf-vedit-inspector-row-caret > svg { width: 14px; height: 14px; transform: rotate(-90deg); }
 
+/* t_b8a39dd7 — HF's column structure for video/audio create pages:
+   a 2-column grid (20rem create card | 1fr feed) matching HF's measured
+   grid-cols-[20rem_1fr] gap-2 px-4 pb-2 on /ko/ai/video. */
+.ohf-create-feed-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 20rem minmax(0, 1fr);
+  gap: 8px;
+  padding: 0 16px 8px;
+}
+.ohf-create-col {
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* HF's column area has essentially no bg elevation above page bg (#0F1113 vs
+     #131517 — barely visible). Visual separation comes from the inner form card
+     (--s3 ≈ #2A2E31) rather than the column container. */
+  background: transparent;
+}
+.ohf-feed-col {
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.ohf-feed-col .ohf-gallery {
+  flex: 1;
+  min-height: 0;
+  padding-bottom: 8px;
+}
+/* HF's topbar has no distinct bg — it blends with the page. Override the
+   in-flow topbar definition to transparent. */
+.ohf-topbar {
+  background: transparent;
+  border-bottom: none;
+  min-height: 42px;
+}
+/* HF's create card bg ≈ #2A2E31 (42,46,49) ≈ --s3 — closer to HF's form card. */
+.ohf-gct-subtab-body {
+  background: var(--s3);
+  border-radius: 14px;
+}
+/* SelectionBar needs flex-column centering when inside the create column
+   (HF's layout has no selection bar; OHF's rides along in the column). */
+.ohf-create-col .ohf-selbar {
+  align-self: center;
+}
+

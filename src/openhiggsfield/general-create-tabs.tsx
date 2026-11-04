@@ -1911,13 +1911,14 @@ export function GeneralCreateTabs({
       )}
 
       <div className="ohf-gct-lay">
-        {/* 좌측 네비게이션 사이드바 — HF 원본의 수직 생성 레일. 서브탭이 레일의
-            탭이고, 선택한 탭의 카드가 오른쪽 본문에 렌더된다. */}
+        {/* HF의 서브탭 스트립 — 카드 최상단, 수평 탭 + 하단 border indicator.
+            HF measured: flex row at the top of the left column, h=48,
+            each tab a border-b-2 underline. */}
         <div
           className="ohf-gct-rail ohf-gct-subtab-strip"
           role="tablist"
           aria-label={surface === "audio" ? "오디오 만들기 탭" : "비디오 만들기 탭"}
-          aria-orientation="vertical"
+          aria-orientation="horizontal"
         >
           {subtabs.map((t) => {
             const on = active === t;
@@ -1993,42 +1994,42 @@ export function GeneralCreateTabs({
 
 /* ---- co-located, cascade-isolated styles ---- */
 export const generalCreateTabsStyle = `
-/* t_ce2cf50b — the create shell returns to HF's LEFT navigation: a vertical
-   subtab rail (the sidebar) pinned to the left edge with the card body to its
-   right. It had become a bottom-docked horizontal strip; the user's ruling is
-   that entering the video/audio tab in general mode must show the left nav the
-   way HF's create screen does (실측: HF의 생성 rail은 좌측 x≈25..312의 수직 스택).
-   The dedicated full region is the follow-up t_2f8b602f; here the sidebar
-   itself is restored — visible and functional. */
+/* t_ce2cf50b / t_b8a39dd7 — HF's column layout: the create shell fills the
+   left column in-flow (not an absolute overlay). Subtabs sit at the top as
+   horizontal tabs with bottom-border indicators (HF measured: flex row,
+   border-b-2, h=48). The body flows below in a single vertical stack. */
 .ohf-gct{
-  position:absolute; inset:6.5rem auto 0 0;   /* below the header, full height, pinned to the left edge */
+  position:static;
   display:flex; flex-direction:column; gap:.5rem;
-  padding:.75rem 1rem; width:min(52rem,78%); box-sizing:border-box;
+  width:100%; box-sizing:border-box;
   color:var(--tx);
   font-size:14px; font-weight:500;
 }
-.ohf-gct-lay{ display:flex; flex-direction:row; align-items:flex-start; gap:.75rem; flex:1; min-width:0; }
-/* the vertical left navigation rail — HF's create rail, tab-structured. */
+.ohf-gct-lay{ display:flex; flex-direction:column; align-items:stretch; gap:.75rem; flex:1; min-width:0; }
+/* the subtab strip — HF's horizontal tabs with bottom-border indicator. */
 .ohf-gct-subtab-strip,.ohf-gct-rail{
-  flex-direction:column; align-items:stretch; gap:.25rem;
-  width:min(11rem,40%); min-width:8.5rem; align-self:flex-start;
-  background:var(--s3); border:1px solid var(--line);
-  border-radius:14px; padding:.25rem;
+  display:flex;
+  flex-direction:row; align-items:stretch; gap:0;
+  width:100%; align-self:stretch;
+  background:transparent; border:0; border-bottom:1px solid var(--line);
+  border-radius:0; padding:0;
 }
 .ohf-gct-subtab{
   appearance:none; cursor:pointer; border:0; background:transparent;
-  color:var(--tx3); font:inherit; padding:.5rem .8rem; border-radius:10px;
-  text-align:left; width:100%;
-  transition:background .15s,color .15s;
+  color:var(--tx3); font:inherit; padding:.5rem .8rem; border-radius:0;
+  border-bottom:2px solid transparent;
+  text-align:left; width:auto;
+  transition:border-color .15s,color .15s;
 }
 .ohf-gct-subtab[data-active]{
-  background:var(--accent-08); color:var(--accent);
+  background:transparent; color:var(--tx);
+  border-bottom-color:var(--accent);
 }
 .ohf-gct-subtab-panels{ flex:1; min-width:0; width:auto; display:flex; flex-direction:column; gap:.5rem; }
 .ohf-gct-subtab-body{
   display:flex; flex-direction:column; gap:.6rem;
-  background:var(--s2); border:1px solid var(--line);
-  border-radius:16px; padding:.75rem;
+  background:var(--s3); border:1px solid var(--line);
+  border-radius:14px; padding:.75rem;
 }
 .ohf-gct-mode{
   display:inline-flex; gap:.2rem; align-items:center; align-self:flex-start;

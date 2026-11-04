@@ -1477,79 +1477,110 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           />
 
 
-          <FeedHeader />
-
-          <Gallery
-            view={view}
-            surface={surface}
-            items={visible}
-            layout={feed.layout}
-            splitByDate={feed.splitByDate}
-            cardSize={feed.cardSize}
-            fit={feed.fit}
-            runs={runsHere}
-            freshIds={freshIds}
-            picked={pickedSet}
-            onOpen={openViewer}
-            onShowFailure={showFailure}
-            onPick={togglePick}
-            onReuse={retry}
-            onFavorite={toggleFavorite}
-            onDownload={downloadRun}
-            onToVideo={toVideoFor}
-            lastViewedId={lastViewedId}
-            commentCounts={commentCounts}
-            onDelete={deleteRun}
-            menuActions={tileMenuActions}
-            onStarter={applyStarter}
-            onCancel={cancelRun}
-            cancelingIds={cancelingIds}
-            galleryRef={galleryRef}
-          />
-
-          {/* t_1fd6032c — HF's nested create shell replaces the general view's
-              standalone generation dock on the video and audio surfaces. Image
-              keeps the composer dock. The cinema branch above hands composerEl to
-              CinemaStudioScreen as its own dock, so Cinema Studio's video
-              generation dock is deliberately untouched by this swap.
-              t_d5b517ad — the shell now carries the real panel contents (measured
-              on :9222) and reclaims the dock's side losses: the selection toolbar,
-              the error banner and the undo bar ride along in slots. */}
+          {/* t_b8a39dd7 — HF's column layout: when on video/audio the body splits
+              into a left create card (20rem) beside the feed (1fr), matching
+              HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
+              HF's feed controls (tabs, sort) live inside the right column header
+              (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
           {(surface === "video" || surface === "audio") ? (
-            <GeneralCreateTabs
-              surface={surface}
-              model={model}
-              values={modelValues ?? {}}
-              onModel={setModel}
-              onSetting={(patch) => setSettings(model.id, patch)}
-              history={history}
-              error={error}
-              onError={setError}
-              notice={deleted && (
-                <UndoBar
-                  records={deleted}
-                  onUndo={restoreDeleted}
-                  onDismiss={dismissDeleted}
+            <div className="ohf-create-feed-grid">
+              <div className="ohf-create-col">
+                <GeneralCreateTabs
+                  surface={surface}
+                  model={model}
+                  values={modelValues ?? {}}
+                  onModel={setModel}
+                  onSetting={(patch) => setSettings(model.id, patch)}
+                  history={history}
+                  error={error}
+                  onError={setError}
+                  notice={deleted && (
+                    <UndoBar
+                      records={deleted}
+                      onUndo={restoreDeleted}
+                      onDismiss={dismissDeleted}
+                    />
+                  )}
+                  selection={selected.length > 0 && (
+                    <SelectionBar
+                      records={pickedRecords}
+                      saving={saving}
+                      menuActions={tileMenuActions}
+                      onOpen={openViewer}
+                      onReuse={retry}
+                      onDownload={downloadSelection}
+                      onFavorite={favoritePicked}
+                      onDelete={deletePicked}
+                      onAddToFolder={addPickedToFolder}
+                      onClose={clearPicked}
+                    />
+                  )}
+                  onGenerate={runGenerate}
                 />
-              )}
-              selection={selected.length > 0 && (
-                <SelectionBar
-                  records={pickedRecords}
-                  saving={saving}
-                  menuActions={tileMenuActions}
+              </div>
+              <div className="ohf-feed-col">
+                <FeedHeader />
+                <Gallery
+                  view={view}
+                  surface={surface}
+                  items={visible}
+                  layout={feed.layout}
+                  splitByDate={feed.splitByDate}
+                  cardSize={feed.cardSize}
+                  fit={feed.fit}
+                  runs={runsHere}
+                  freshIds={freshIds}
+                  picked={pickedSet}
                   onOpen={openViewer}
+                  onShowFailure={showFailure}
+                  onPick={togglePick}
                   onReuse={retry}
-                  onDownload={downloadSelection}
-                  onFavorite={favoritePicked}
-                  onDelete={deletePicked}
-                  onAddToFolder={addPickedToFolder}
-                  onClose={clearPicked}
+                  onFavorite={toggleFavorite}
+                  onDownload={downloadRun}
+                  onToVideo={toVideoFor}
+                  lastViewedId={lastViewedId}
+                  commentCounts={commentCounts}
+                  onDelete={deleteRun}
+                  menuActions={tileMenuActions}
+                  onStarter={applyStarter}
+                  onCancel={cancelRun}
+                  cancelingIds={cancelingIds}
+                  galleryRef={galleryRef}
                 />
-              )}
-              onGenerate={runGenerate}
-            />
+              </div>
+            </div>
           ) : (
-            composerEl
+            <>
+              <FeedHeader />
+              <Gallery
+                view={view}
+                surface={surface}
+                items={visible}
+                layout={feed.layout}
+                splitByDate={feed.splitByDate}
+                cardSize={feed.cardSize}
+                fit={feed.fit}
+                runs={runsHere}
+                freshIds={freshIds}
+                picked={pickedSet}
+                onOpen={openViewer}
+                onShowFailure={showFailure}
+                onPick={togglePick}
+                onReuse={retry}
+                onFavorite={toggleFavorite}
+                onDownload={downloadRun}
+                onToVideo={toVideoFor}
+                lastViewedId={lastViewedId}
+                commentCounts={commentCounts}
+                onDelete={deleteRun}
+                menuActions={tileMenuActions}
+                onStarter={applyStarter}
+                onCancel={cancelRun}
+                cancelingIds={cancelingIds}
+                galleryRef={galleryRef}
+              />
+              {composerEl}
+            </>
           )}
         </main>
 
