@@ -19077,3 +19077,25 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
     white-space: normal;
   }
 }
+
+/* The info-foot primary that stands in for send-to-video on a video (다시 만들기)
+   and on an audio (다운로드) must wear the same full-width accent tile the image's
+   send-to-video wears. These are scoped by data-kind so they beat the legacy
+   accent rule and never collide with the image primary. */
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="video"] > .ohf-viewer-act-recreate,
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-download {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: center;
+  width: min(260px, 100%);
+  background: var(--accent);
+  border-color: transparent;
+  color: #101214;
+  font-weight: 600;
+}
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="video"] > .ohf-viewer-act-recreate:hover:not(:disabled):not([aria-disabled="true"]),
+.ohf-viewer-rail-foot[data-tab="info"][data-kind="audio"] > .ohf-viewer-act-download:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--accent);
+  border-color: transparent;
+  color: #101214;
+}

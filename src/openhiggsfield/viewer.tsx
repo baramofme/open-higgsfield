@@ -350,6 +350,10 @@ export function Viewer({
     setTab("info");
     setEditTool("showcase");
   }
+  const kind = item.kind;
+  /* 오디오 has no 편집 tab in HF's showcase, so a stale "edit" tab can never be
+     shown here — fall back to the info tab if the kind collapsed under us. */
+  const showTab: Tab = tab === "edit" && kind === "audio" ? "info" : tab;
   const aspect = delivered ?? w / h;
   const url = item.urls[0];
   /* The waveform the showcase draws as a hero for an audio run. Non-audio runs
@@ -886,20 +890,25 @@ export function Viewer({
                   composer, info spreads the run's whole set of moves with a
                   prominent send-to-video, and editing keeps the three the source
                   pins to the rail. */}
-              {tab !== "comment" && (
-                <div className="ohf-viewer-rail-foot" data-tab={tab}>
-                  {tab === "info" ? (
+              {showTab !== "comment" && (
+                <div className="ohf-viewer-rail-foot" data-tab={showTab} data-kind={kind}>
+                  {showTab === "info" ? (
                     <>
-                      <button
-                        type="button"
-                        className="ohf-viewer-act-video"
-                        onClick={onToVideo ?? onReuse}
-                        disabled={!onToVideo}
-                      >
-                        <VideoGlyph />
-                        <span>영상으로 전환</span>
-                      </button>
-                      <div className="ohf-viewer-foot-row">
+                        {/* The full-width primary differs by asset type: an image sends
+                          itself to video and a video re-runs itself — there is no
+                          send-to-video for a video, so the rail's accent button
+                          changes with the kind. */}
+                      {kind === "image" ? (
+                        <button
+                          type="button"
+                          className="ohf-viewer-act-video"
+                          onClick={onToVideo ?? onReuse}
+                          disabled={!onToVideo}
+                        >
+                          <VideoGlyph />
+                          <span>영상으로 전환</span>
+                        </button>
+                      ) : (
                         <button
                           type="button"
                           className="ohf-viewer-act-recreate"
@@ -908,6 +917,11 @@ export function Viewer({
                           <RecreateGlyph />
                           <span>다시 만들기</span>
                         </button>
+                      )}
+                      {/* The secondary set carries the reference and download moves
+                          for both kinds here, and a video never repeats the recreate
+                          that already sits as its primary. */}
+                      <div className="ohf-viewer-foot-row">
                         <button
                           type="button"
                           className="ohf-viewer-act-reference"
