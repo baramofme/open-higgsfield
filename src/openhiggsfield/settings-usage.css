@@ -253,6 +253,7 @@
   font-weight: var(--us-weight-500);
   line-height: var(--us-lh-18);
   color: var(--us-white);
+  text-align: start;                                /* HF 실측 textAlign=left(메뉴 동) */
 }
 .ohf-us-logout-ico-wrap {
   width: var(--us-size-24);
@@ -290,6 +291,7 @@
   font-size: var(--us-font-24);
   font-weight: var(--us-weight-600);
   line-height: var(--us-lh-28);
+  letter-spacing: -0.4px;                           /* HF 실측 h1 ls=-0.4px(로컬) */
   color: var(--us-white);
 }
 .ohf-us-subtitle {
@@ -297,6 +299,7 @@
   font-size: var(--us-font-14);
   font-weight: var(--us-weight-400);
   line-height: var(--us-lh-20);
+  letter-spacing: 0.1px;                            /* HF 실측 subtitle ls=0.1px(로컬) */
   color: var(--us-dim);
 }
 .ohf-us-toolbar { display: flex; align-items: center; gap: var(--us-size-8); }
