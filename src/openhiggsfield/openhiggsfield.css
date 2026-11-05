@@ -20403,3 +20403,593 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-size: 16px;
 }
 
+
+/* ════════════════════════════════════════════════════════════════════════════
+   DRILL-DOWN SCREENS — HF project drill-down, folders/<uuid>, trash ported to
+   OHF (card t_2eae8ad5).
+
+   This block re-uses the 3-layer tokens unchanged; it adds no new primitive and
+   redesigns nothing. One component-local --drill-* namespace re-exposes the
+   --ohf-* roles, exactly like the control plane's --ctl-* aliases, so the
+   selectors stay scoped. Two tones are documented as HF-only because they have
+   no --ohf-* primitive; every value traces to captures/measured-styles.md:
+
+     breadcrumb + rail          → deep-regions.json  (public drill-down, 1440×900)
+     folder panel (220px, rows) → pub-project-folders.json
+     card (329×186, cover)      → community-projects.json
+     inline folder/trash        → auth-drilldown.json (authed CDP :9223)
+
+   Exact token mappings (verified against the palette in tokens.css):
+     --tx  #f7f7f8  = HF text-primary rgb(255,255,255) / #f7f7f8 nav
+     --tx2 #898a8b  = HF breadcrumb link rgb(137,138,139)   (exact)
+     --tx3 #828282  = HF folder secondary rgb(130,130,130)  (exact)
+     --line rgba(255,255,255,.05) = HF bg-q-overlay-hover    (exact)
+     --line-2 rgba(255,255,255,.10) = HF bg-qc-transparent-10 (exact)
+     --s1  #1c1e20  = HF card cover rgb(28,30,33)            (≈exact)
+     --accent #d1fe17 = HF brand hover (tile title)          (exact)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.ohf-drill {
+  /* 3-layer roles, re-exposed (no redesign). */
+  --drill-fg: var(--tx);                 /* primary text #f7f7f8 */
+  --drill-secondary: var(--tx2);         /* #898a8b = breadcrumb link, exact */
+  --drill-tertiary: var(--tx3);          /* #828282 = folder secondary, exact */
+  --drill-off: var(--tx-off);            /* disabled tone for honest-inert marks */
+  --drill-hover: var(--line);            /* rgba(255,255,255,.05) overlay-hover, exact */
+  --drill-selected: var(--line-2);       /* rgba(255,255,255,.10) selected row, exact */
+  --drill-cover: var(--s1);              /* #1c1e20 card cover, ≈exact */
+  --drill-accent: var(--accent);         /* #d1fe17 brand hover, exact */
+  /* HF-only tones with no --ohf-* primitive; the values are the capture. */
+  --drill-card-name: rgb(204, 204, 204); /* measured card name */
+  --drill-card-date: rgb(151, 151, 151); /* measured card date / rail meta */
+
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 16px 24px;                    /* header sits ~16px under the shell top */
+  gap: 16px;
+}
+
+/* ── breadcrumb: HF nav[aria-label=탐색 경로] ────────────────────────────────
+   root r=16,62 1393×20 · ol flex gap-4 items-center overflow-hidden · li flex
+   min-w-0 items-center shrink-0 · link truncate 14/400 lh20 #898a8b hover:#fff ·
+   sep "/" flex-center h-5 14/500 lh20 secondary · current flex-1 truncate. */
+.ohf-drill-crumb {
+  flex: none;
+  width: 100%;
+  min-width: 0;
+  font-size: 16px;                       /* crumb root 16/400 lh24 */
+  font-weight: 400;
+  line-height: 24px;
+  color: rgb(247, 247, 248);             /* measured nav color (= --tx #f7f7f8) */
+}
+.ohf-drill-crumb-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;                              /* ol gap-1 measured 4px */
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;                      /* overflow-hidden */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ohf-drill-crumb-item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: none;                            /* shrink-0 */
+}
+.ohf-drill-crumb-item--current {
+  flex: 1 1 auto;                        /* current li flex-1 */
+}
+.ohf-drill-crumb-link {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;                   /* truncate */
+  font-size: 14px;                       /* text-[14px] measured */
+  font-weight: 400;
+  line-height: 20px;                     /* leading-5 measured 20px */
+  color: var(--drill-secondary);         /* #898a8b = rgb(137,138,139) */
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;          /* transition-colors */
+}
+.ohf-drill-crumb-link:hover {
+  color: var(--drill-fg);                /* hover:text-white */
+}
+.ohf-drill-crumb-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: 20px;                          /* h-5 */
+}
+.ohf-drill-crumb-sep-mark {
+  font-size: 14px;
+  font-weight: 500;                      /* font-semi / md:text-sm-medium */
+  line-height: 20px;
+  color: var(--drill-secondary);
+}
+.ohf-drill-crumb-current {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--drill-secondary);         /* measured current span rgb(137,138,139) */
+}
+
+/* ── folder panel: HF's 220px w-55 folder list ───────────────────────────────
+   root 220×714 p-2 border-r 1px border-q-border-subtle flex-col · inner gap-2 ·
+   header h-7 px-2 py-1.5 "폴더" 14/500 lh16 #828282 · scroll gap-0.5 overflow auto ·
+   row h-9 rounded-xl pl-6px pr-6px gap-2 14/500 lh16, selected bg rgba(255,255,255,.1),
+   hover rgba(255,255,255,.05), active scale(.96) · icon size-6 · count h-6 min-w-6
+   12/500 lh16 #828282 · expander size-6 rounded-lg · nest h-7 pl-3 pr-6 13/500. */
+.ohf-drill-folder {
+  flex: none;
+  width: 220px;                          /* w-55 = 220px measured */
+  display: flex;
+  flex-direction: column;
+  padding: 8px;                          /* p-2 measured */
+  border-right: 1px solid var(--line);   /* border-q-border-subtle (faint, OHF --line) */
+  background: transparent;
+}
+.ohf-drill-folder-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                              /* inner flex-col gap-2 measured 8px */
+  min-height: 0;
+}
+.ohf-drill-folder-head {
+  display: flex;
+  align-items: center;
+  height: 28px;                          /* h-7 measured */
+  padding: 6px 8px;                      /* px-2 py-1.5 measured */
+}
+.ohf-drill-folder-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--drill-tertiary);          /* #828282 measured */
+}
+.ohf-drill-folder-tools {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;                              /* gap-0.5 measured */
+}
+.ohf-drill-folder-tool {
+  width: 24px;
+  height: 24px;                          /* size-6 measured */
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;                    /* rounded-lg measured */
+  background: transparent;
+  color: var(--drill-tertiary);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ohf-drill-folder-tool[data-off] {       /* honest-inert: no local search/sort */
+  color: var(--drill-off);
+  cursor: default;
+}
+.ohf-drill-folder-scroll {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.ohf-drill-folder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;                              /* flex-col gap-0.5 measured 2px */
+  min-height: 100%;
+}
+
+/* folder row (the row is the hover/selected surface; the hit/expander fill it) */
+.ohf-drill-row {
+  position: relative;                    /* group relative */
+  display: flex;
+  align-items: center;
+  gap: 8px;                              /* gap-2 measured */
+  height: 36px;                          /* h-9 measured */
+  min-width: 0;
+  padding-left: 6px;                     /* pl-1.5 measured 6px */
+  padding-right: 6px;                    /* pr-1.5 measured */
+  border-radius: 12px;                   /* rounded-xl measured */
+  background: transparent;
+  color: var(--drill-fg);                /* text-qc-text-primary */
+  font-size: 14px;                       /* text-qc-label-sm-medium */
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-drill-row:hover:not([data-selected]) {
+  background: var(--drill-hover);        /* hover:bg-qc-overlay-hover */
+}
+.ohf-drill-row[data-selected] {
+  background: var(--drill-selected);     /* bg-qc-transparent-10 (selected) */
+}
+.ohf-drill-row-hit {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ohf-drill-row-expander {
+  flex: none;
+  width: 24px;
+  height: 24px;                          /* size-6 measured */
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;                    /* rounded-lg measured */
+  background: transparent;
+  color: var(--drill-tertiary);          /* rgb(151,151,151)-ish secondary */
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ohf-drill-row-expander:hover {
+  background: var(--drill-hover);
+  color: var(--drill-fg);                /* hover:text-qc-text-primary */
+}
+.ohf-drill-row-expander:active {
+  transform: scale(0.96);                /* active:scale-96 measured */
+}
+.ohf-drill-expander-caret {
+  display: inline-flex;
+  transform: rotate(-90deg);             /* collapsed: points right */
+  transition: transform 0.15s ease;
+}
+.ohf-drill-expander-caret[data-open] {
+  transform: rotate(0deg);               /* open: points down */
+}
+.ohf-drill-row-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;                          /* size-6 measured */
+  display: grid;
+  place-items: center;
+}
+.ohf-drill-row-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;                   /* truncate */
+}
+.ohf-drill-row-count {
+  flex: none;
+  height: 24px;                          /* h-6 measured */
+  min-width: 24px;                       /* min-w-6 measured */
+  display: grid;
+  place-items: center;
+  padding: 0 4px;
+  font-size: 12px;                       /* text-qc-caption-sm-medium */
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--drill-tertiary);          /* text-qc-text-secondary #828282 */
+}
+
+/* folder-add button: reuses the row surface */
+.ohf-drill-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--drill-fg);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ohf-drill-add:hover {
+  background: var(--drill-hover);
+}
+
+/* nested asset leaf: pl-3 pr-6 h-7 rounded-lg 13/500 secondary, hover→primary */
+.ohf-drill-nest {
+  padding-left: 12px;                    /* pl-3 measured 12px */
+  padding-right: 24px;                   /* pr-6 measured 24px */
+  height: 28px;                          /* h-7 measured */
+  display: flex;
+  align-items: center;
+  gap: 8px;                              /* gap-2 measured */
+  border-radius: 8px;                    /* rounded-lg measured */
+  transition: background 0.15s ease;
+}
+.ohf-drill-nest:hover:not([data-off]) {
+  background: var(--drill-hover);
+}
+.ohf-drill-nest-hit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--drill-tertiary);          /* text-secondary #828282 measured */
+  font-size: 13px;                       /* measured fs13 */
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  cursor: default;                       /* honest-inert: opening a single asset is hosted */
+}
+.ohf-drill-nest-hit[data-off] {
+  color: var(--drill-off);
+}
+.ohf-drill-nest-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── drill-down layout: folder | assets | rail ───────────────────────────────*/
+.ohf-drill-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+.ohf-drill-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* ── recommendation rail: right column, "전체 프로젝트 보기" + tiles ──────────
+   rail flex-col gap-2 · heading 16/500 lh24 primary · tile 383×119 group flex
+   items-start gap-3(12px) px-0, hover bg-q-overlay-hover rounded-2xl ·
+   thumb w-[min(55cqi,31.25rem)]→211×119 aspect-video rounded-xl(12px) cover ·
+   title 14/500 lh20 #fff hover:brand line-clamp-3 · meta flex-col 12/400 lh18
+   #979797 two truncate lines. */
+.ohf-drill-rail {
+  flex: none;
+  width: 383px;                          /* measured rail 383px */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                              /* gap-2 measured */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.ohf-drill-rail-head {
+  flex: none;
+  margin: 0;
+  font-size: 16px;                       /* heading 16/500 */
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--drill-fg);
+}
+.ohf-drill-rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ohf-drill-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;                             /* gap-3 measured 12px */
+  padding: 0;
+  border-radius: 0;
+  color: var(--drill-fg);
+  text-decoration: none;
+  cursor: pointer;
+}
+.ohf-drill-tile[data-off] {              /* honest-inert: recommendations are hosted */
+  cursor: default;
+}
+.ohf-drill-tile-thumb {
+  flex: none;
+  width: 211px;                          /* min(55cqi,31.25rem) measured ≈211 */
+  aspect-ratio: 16 / 9;                  /* aspect-video */
+  overflow: hidden;
+  border-radius: 12px;                   /* rounded-xl measured */
+  background: var(--drill-cover);
+}
+.ohf-drill-tile-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                     /* object-cover measured */
+}
+.ohf-drill-tile-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ohf-drill-tile-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ohf-drill-tile-title {
+  font-size: 14px;                       /* text-q-body-sm-medium */
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--drill-fg);                /* text-q-text-primary */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;                 /* line-clamp-3 */
+  -webkit-box-orient: vertical;
+  transition: color 0.15s ease;
+}
+.ohf-drill-tile:hover:not([data-off]) .ohf-drill-tile-title {
+  color: var(--drill-accent);            /* group-hover:text-font-brand */
+}
+.ohf-drill-tile-meta {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;                       /* text-q-label-xs-regular */
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--drill-card-date);         /* text-q-text-secondary rgb(151,151,151) */
+}
+.ohf-drill-tile-meta-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── project card grid: HF community-project-card ────────────────────────────
+   card 329×186 rounded-10(10px) · cover bg rgb(28,30,33) #1c1e20 aspect-video ·
+   grid 4 cols ×329 colGap20 rowGap20 · name 14/500 rgb(204,204,204) ·
+   date 12/500 rgb(151,151,151). */
+.ohf-drill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;                             /* colGap + rowGap measured 20px */
+  align-content: start;
+  padding: 4px 0 24px;
+}
+.ohf-drill-card {
+  position: relative;                    /* relative isolate */
+  min-width: 0;
+  border-radius: 10px;                   /* rounded-q-250 = 10px measured */
+  overflow: hidden;
+  background: var(--drill-cover);        /* cover rgb(28,30,33) */
+  aspect-ratio: 329 / 186;               /* measured card ratio 1.7647 */
+  color: var(--drill-fg);
+  cursor: pointer;
+  outline: none;
+}
+.ohf-drill-card-cover {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--drill-cover);
+}
+.ohf-drill-card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                     /* q-media-fill object-cover */
+}
+.ohf-drill-card-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* bottom scrim for legibility; base tone = measured card press rgb(0,0,0,0.3) */
+.ohf-drill-card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to top, rgb(0, 0, 0, 0.3), rgb(0, 0, 0, 0) 62%);
+}
+.ohf-drill-card-foot {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ohf-drill-card-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--drill-card-name);         /* rgb(204,204,204) measured */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-drill-card-sub {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;                     /* measured lh14 */
+  color: var(--drill-card-date);         /* rgb(151,151,151) measured */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── empty + trash states ────────────────────────────────────────────────────*/
+.ohf-drill-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 40px 20px;
+}
+.ohf-drill-empty-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--drill-secondary);
+}
+.ohf-drill-empty-sub {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--drill-card-date);
+}
+.ohf-drill-trash {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 40px 20px;
+}
+.ohf-drill-trash-btn {
+  margin-top: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--drill-hover);
+  color: var(--drill-fg);
+  font-size: 13px;
+  font-weight: 550;
+  cursor: default;
+}
+.ohf-drill-trash-btn[data-off] {
+  color: var(--drill-off);
+}

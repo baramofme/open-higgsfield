@@ -17,7 +17,12 @@ export type ProjectPanel =
   | "settings"
   | "elements"
   | "chat"
-  | "director";
+  | "director"
+  /* The drill-down screens this card ports. assets is the project drill-down
+     (breadcrumb + folder panel + assets + rail); folders and trash are the
+     folders/<uuid> and trash views reached from the folder panel. */
+  | "folders"
+  | "trash";
 
 /** What the cinema canvas shows when no project is open. null = stage placeholder. */
 export type CinemaView = "generations" | "elements" | "favorites";
