@@ -1,0 +1,1208 @@
+{
+  "title": "Cinema Studio 4.0 · 모든 디테일을 직접 연출 | Higgsfield",
+  "url": "https://higgsfield.ai/ko/generate?view=projects",
+  "bodyChildren": [
+    {
+      "tag": "BUTTON",
+      "cls": "cmp-revoke-consent",
+      "id": "",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "absolute"
+    },
+    {
+      "tag": "DIV",
+      "cls": "pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top)] z-9999 h-0.5",
+      "id": "",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 2
+      },
+      "childCount": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "fixed"
+    },
+    {
+      "tag": "HEADER",
+      "cls": "relative text-caption-l area-[header-promotion] z-3 grid grid-rows-[0fr]",
+      "id": "header-promotion",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "relative"
+    },
+    {
+      "tag": "MAIN",
+      "cls": "h-full min-w-0 area-[main]",
+      "id": "main",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 900
+      },
+      "childCount": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "FOOTER",
+      "cls": "contain-layout w-full bg-surface-tertiary area-[footer] max-md:hidden!",
+      "id": "footer",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 1,
+      "bg": "rgb(15, 17, 19)",
+      "position": "static"
+    },
+    {
+      "tag": "SCRIPT",
+      "cls": "",
+      "id": "",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "SCRIPT",
+      "cls": "",
+      "id": "",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "SCRIPT",
+      "cls": "",
+      "id": "",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "SCRIPT",
+      "cls": "",
+      "id": "",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "DIV",
+      "cls": "grid auto-cols-fr items-center grid-flow-col md:hidden container contain-layout sticky px-1 pt-1 pb-[calc(0.25rem+env(safe-area-inset-bottom))] -bottom-px z-50 w-full area-[header-mobile] border-t border-neutral-primary-3",
+      "id": "header-mobile",
+      "display": "none",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "sticky"
+    },
+    {
+      "tag": "SECTION",
+      "cls": "Toastify",
+      "id": "",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "SECTION",
+      "cls": "",
+      "id": "",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "SECTION",
+      "cls": "",
+      "id": "",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 900,
+        "w": 1440,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "DIV",
+      "cls": "hidden md:contents",
+      "id": "",
+      "display": "contents",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "childCount": 0,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    },
+    {
+      "tag": "DIV",
+      "cls": "",
+      "id": "_r_a_",
+      "display": "block",
+      "flexDir": "row",
+      "rect": {
+        "x": 0,
+        "y": 900,
+        "w": 1440,
+        "h": 0
+      },
+      "childCount": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "position": "static"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "전체",
+      "rect": {
+        "x": 253,
+        "y": 61,
+        "w": 46,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaSelected": "true",
+      "tabIndex": "0",
+      "role": "tab",
+      "cls": "q-tabs-tab"
+    },
+    {
+      "text": "비공개",
+      "rect": {
+        "x": 303,
+        "y": 61,
+        "w": 57,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaSelected": "false",
+      "tabIndex": "-1",
+      "role": "tab",
+      "cls": "q-tabs-tab"
+    },
+    {
+      "text": "공유됨",
+      "rect": {
+        "x": 364,
+        "y": 61,
+        "w": 57,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaSelected": "false",
+      "tabIndex": "-1",
+      "role": "tab",
+      "cls": "q-tabs-tab"
+    },
+    {
+      "text": "숨김",
+      "rect": {
+        "x": 425,
+        "y": 61,
+        "w": 46,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaSelected": "false",
+      "tabIndex": "-1",
+      "role": "tab",
+      "cls": "q-tabs-tab"
+    }
+  ],
+  "tablists": [
+    {
+      "rect": {
+        "x": 252,
+        "y": 57,
+        "w": 220,
+        "h": 40
+      },
+      "display": "inline-flex",
+      "gap": "4px",
+      "flexDirection": "row",
+      "cls": "q-tabs-list border-transparent! bg-transparent! px-0!",
+      "childCount": 5,
+      "bg": "rgba(0, 0, 0, 0)"
+    }
+  ],
+  "toolbarButtons": [
+    {
+      "text": "Cinema Studio",
+      "rect": {
+        "x": 13,
+        "y": 13,
+        "w": 173,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "borderRadius": "12px",
+      "padding": "0px 6px",
+      "ariaLabel": "",
+      "cls": "flex h-9 w-full items-center justify-between gap-0.5 rounded-xl bg-neutral-primary-reverted/5 pl-2.5 pr-3 shadow-[0_2px_8px_0_rgba(0,0,0,0.06)] transition-colors duration-150 hover:bg-neutral-primary-reverted/10",
+      "disabled": false
+    },
+    {
+      "text": "Higgsfield AI",
+      "rect": {
+        "x": 13,
+        "y": 51,
+        "w": 173,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "0px 12px 0px 10px",
+      "ariaLabel": "",
+      "cls": "flex h-9 w-full items-center gap-1.5 rounded-xl pl-2.5 pr-3 transition-colors duration-150 hover:bg-neutral-primary-reverted/5",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "rect": {
+        "x": 190,
+        "y": 13,
+        "w": 36,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "bg": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+      "borderRadius": "12px",
+      "padding": "4px",
+      "ariaLabel": "사이드바 접기",
+      "cls": "flex size-7 shrink-0 items-center justify-center rounded-md p-1 text-qc-text-secondary transition-colors hover:bg-qc-overlay-hover hover:text-qc-text-primary size-9! rounded-xl! bg-white/5 hover:bg-white/10!",
+      "disabled": false
+    },
+    {
+      "text": "홈",
+      "rect": {
+        "x": 13,
+        "y": 65,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "6px",
+      "ariaLabel": "",
+      "cls": "w-full group/top-action flex h-9 items-center gap-3 rounded-xl pr-1.5 pl-3 text-left transition-colors duration-150 hover:transition-none group-data-[collapsed]/sidebar:h-9 text-font-primary hover:bg-white/5 group-data-[collapsed]/sidebar:hover:bg-transparent h-9! min-h-9! gap-2! rounded-xl! p-1.5! hover:bg-white/5! data-[hovered]:bg-white/5! group-data-[collapsed]/sidebar:hover:bg-transparent! group-data-[collapsed]/sidebar:data-[hovered]:bg-transparent!",
+      "disabled": false
+    },
+    {
+      "text": "내 요소",
+      "rect": {
+        "x": 13,
+        "y": 103,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "6px",
+      "ariaLabel": "",
+      "cls": "w-full group/top-action flex h-9 items-center gap-3 rounded-xl pr-1.5 pl-3 text-left transition-colors duration-150 hover:transition-none group-data-[collapsed]/sidebar:h-9 text-font-primary hover:bg-white/5 group-data-[collapsed]/sidebar:hover:bg-transparent h-9! min-h-9! gap-2! rounded-xl! p-1.5! hover:bg-white/5! data-[hovered]:bg-white/5! group-data-[collapsed]/sidebar:hover:bg-transparent! group-data-[collapsed]/sidebar:data-[hovered]:bg-transparent!",
+      "disabled": false
+    },
+    {
+      "text": "내 즐겨찾기",
+      "rect": {
+        "x": 13,
+        "y": 141,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "6px",
+      "ariaLabel": "",
+      "cls": "w-full group/top-action flex h-9 items-center gap-3 rounded-xl pr-1.5 pl-3 text-left transition-colors duration-150 hover:transition-none group-data-[collapsed]/sidebar:h-9 text-font-primary hover:bg-white/5 group-data-[collapsed]/sidebar:hover:bg-transparent h-9! min-h-9! gap-2! rounded-xl! p-1.5! hover:bg-white/5! data-[hovered]:bg-white/5! group-data-[collapsed]/sidebar:hover:bg-transparent! group-data-[collapsed]/sidebar:data-[hovered]:bg-transparent!",
+      "disabled": false
+    },
+    {
+      "text": "커뮤니티",
+      "rect": {
+        "x": 13,
+        "y": 179,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "6px",
+      "ariaLabel": "",
+      "cls": "w-full group/top-action flex h-9 items-center gap-3 rounded-xl pr-1.5 pl-3 text-left transition-colors duration-150 hover:transition-none group-data-[collapsed]/sidebar:h-9 text-font-primary hover:bg-white/5 group-data-[collapsed]/sidebar:hover:bg-transparent h-9! min-h-9! gap-2! rounded-xl! p-1.5! hover:bg-white/5! data-[hovered]:bg-white/5! group-data-[collapsed]/sidebar:hover:bg-transparent! group-data-[collapsed]/sidebar:data-[hovered]:bg-transparent!",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "rect": {
+        "x": 170,
+        "y": 245,
+        "w": 24,
+        "h": 24
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "padding": "0px",
+      "ariaLabel": "프로젝트 검색",
+      "cls": "flex size-6 shrink-0 items-center justify-center rounded-lg text-q-text-secondary transition-colors duration-150 hover:bg-q-overlay-hover hover:text-q-text-primary active:scale-96 group-data-[collapsed]/sidebar:hidden",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "rect": {
+        "x": 196,
+        "y": 245,
+        "w": 24,
+        "h": 24
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "padding": "0px",
+      "ariaLabel": "프로젝트 정렬",
+      "cls": "flex size-6 shrink-0 items-center justify-center rounded-lg text-qc-text-secondary transition-colors hover:bg-qc-overlay-hover hover:text-qc-text-primary data-[popup-open]:bg-qc-overlay-hover data-[popup-open]:text-qc-text-primary q-dropdown-trigger",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "rect": {
+        "x": 193,
+        "y": 245,
+        "w": 24,
+        "h": 24
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "6px",
+      "padding": "0px",
+      "ariaLabel": "검색 닫기",
+      "cls": "flex size-6 shrink-0 items-center justify-center rounded-md text-q-text-secondary transition-colors duration-150 hover:bg-q-overlay-hover hover:text-q-text-primary active:scale-96",
+      "disabled": false
+    },
+    {
+      "text": "새 프로젝트",
+      "rect": {
+        "x": 13,
+        "y": 281,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "12px",
+      "padding": "0px 6px",
+      "ariaLabel": "",
+      "cls": "group/glass-action flex h-9 w-full items-center gap-2 rounded-xl px-1.5 text-left text-qc-label-sm-medium transition-colors hover:transition-none text-qc-text-secondary hover:text-qc-text-primary mt-1.5 group-data-[collapsed]/sidebar:mt-1 group-data-[collapsed]/sidebar:justify-center group-data-[collapsed]/sidebar:px-0",
+      "disabled": false
+    },
+    {
+      "text": "",
+      "rect": {
+        "x": 205,
+        "y": 544,
+        "w": 16,
+        "h": 16
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "ariaLabel": "닫기",
+      "cls": "absolute right-q-100 top-q-100 z-10 flex items-center justify-center text-q-icon-secondary transition-colors hover:text-q-icon-primary",
+      "disabled": false
+    },
+    {
+      "text": "자세히 알아보기",
+      "rect": {
+        "x": 26,
+        "y": 741,
+        "w": 187,
+        "h": 40
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(26, 26, 26)",
+      "bg": "rgb(255, 255, 255)",
+      "borderRadius": "10px",
+      "padding": "8px 16px",
+      "ariaLabel": "",
+      "cls": "q-button q-button-secondary q-button-sm w-full",
+      "disabled": false
+    },
+    {
+      "text": "로그인",
+      "rect": {
+        "x": 13,
+        "y": 851,
+        "w": 213,
+        "h": 36
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(0, 0, 0)",
+      "bg": "rgb(209, 254, 23)",
+      "borderRadius": "12px",
+      "padding": "0px 12px 0px 10.5px",
+      "ariaLabel": "로그인",
+      "cls": "flex shrink-0 items-center border-[1.5px] text-sm-medium transition-colors rounded-xl! border-lime bg-lime text-black hover:border-[#c5f015] hover:bg-[#c5f015] focus-visible:outline-2 focus-visible:outline-black h-9 w-full gap-3 pl-[calc(0.75rem_-_1.5px)] pr-3",
+      "disabled": false
+    },
+    {
+      "text": "홈",
+      "rect": {
+        "x": 254,
+        "y": 21,
+        "w": 13,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "ariaLabel": "",
+      "cls": "min-w-0 truncate text-qc-text-secondary shrink-0 transition-colors hover:text-qc-text-primary",
+      "disabled": false
+    },
+    {
+      "text": "전체",
+      "rect": {
+        "x": 253,
+        "y": 61,
+        "w": 46,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaLabel": "",
+      "cls": "q-tabs-tab",
+      "disabled": false
+    },
+    {
+      "text": "비공개",
+      "rect": {
+        "x": 303,
+        "y": 61,
+        "w": 57,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaLabel": "",
+      "cls": "q-tabs-tab",
+      "disabled": false
+    },
+    {
+      "text": "공유됨",
+      "rect": {
+        "x": 364,
+        "y": 61,
+        "w": 57,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaLabel": "",
+      "cls": "q-tabs-tab",
+      "disabled": false
+    },
+    {
+      "text": "숨김",
+      "rect": {
+        "x": 425,
+        "y": 61,
+        "w": 46,
+        "h": 32
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "9999px",
+      "padding": "4px 8px",
+      "ariaLabel": "",
+      "cls": "q-tabs-tab",
+      "disabled": false
+    },
+    {
+      "text": "정렬 기준",
+      "rect": {
+        "x": 1316,
+        "y": 61,
+        "w": 107,
+        "h": 32
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "padding": "6px 12px",
+      "ariaLabel": "",
+      "cls": "q-button q-button-ghost q-button-xs text-q-text-secondary transition-[color,scale] duration-150 ease-out hover:text-q-text-primary active:scale-96 data-popup-open:bg-q-transparent-light-05 data-popup-open:text-q-text-primary [--q-button-hover-overlay:var(--hf-color-transparent-light-05)] q-dropdown-trigger",
+      "disabled": false
+    },
+    {
+      "text": "새 프로젝트 만들기",
+      "rect": {
+        "x": 252,
+        "y": 118,
+        "w": 281,
+        "h": 191
+      },
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "color": "rgb(255, 255, 255)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "16px",
+      "padding": "4px 4px 6px",
+      "ariaLabel": "",
+      "cls": "group text-left transition-[background-color,scale] duration-200 ease-out active:scale-99 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 flex w-full flex-col gap-1 rounded-q-400 p-1 pb-1.5 h-auto bg-transparent hover:bg-white/5",
+      "disabled": false
+    }
+  ],
+  "grids": [
+    {
+      "cls": "grid transition-[grid-template-rows,opacity] duration-180 ease-out grid-rows-[0fr] opacity-0",
+      "rect": {
+        "x": 13,
+        "y": 49,
+        "w": 173,
+        "h": 0
+      },
+      "gridTemplateColumns": "173px",
+      "gridTemplateRows": "0px",
+      "gap": "normal",
+      "display": "grid",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "overflow": "visible",
+      "childCount": 1
+    },
+    {
+      "cls": "grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-4",
+      "rect": {
+        "x": 252,
+        "y": 118,
+        "w": 1171,
+        "h": 191
+      },
+      "gridTemplateColumns": "280.75px 280.75px 280.75px 280.75px",
+      "gridTemplateRows": "191.422px",
+      "gap": "16px",
+      "display": "grid",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "overflow": "visible",
+      "childCount": 1
+    },
+    {
+      "cls": "grid h-11 w-[4.125rem] place-items-center rounded-xl bg-surface-brand shadow-[inset_0_-3px_0_0_#829b19] drop-shadow-[0_32px_12px_rgba(0,0,0,0.15)] transition active:opacity-90 active:translate-y-0.5",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "gridTemplateColumns": "none",
+      "gridTemplateRows": "none",
+      "gap": "normal",
+      "display": "grid",
+      "bg": "rgb(209, 254, 23)",
+      "borderRadius": "12px",
+      "padding": "0px",
+      "overflow": "visible",
+      "childCount": 1
+    }
+  ],
+  "scrollers": [
+    {
+      "cls": "h-full min-h-0 overflow-y-auto overflow-x-hidden hide-scrollbar",
+      "tag": "DIV",
+      "rect": {
+        "x": 5,
+        "y": 5,
+        "w": 229,
+        "h": 797
+      },
+      "overflow": "hidden auto",
+      "overflowX": "hidden",
+      "overflowY": "auto",
+      "bg": "rgba(0, 0, 0, 0)",
+      "childCount": 1
+    },
+    {
+      "cls": "min-h-0 flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar [overflow-anchor:none]",
+      "tag": "MAIN",
+      "rect": {
+        "x": 252,
+        "y": 110,
+        "w": 1171,
+        "h": 781
+      },
+      "overflow": "hidden auto",
+      "overflowX": "hidden",
+      "overflowY": "auto",
+      "bg": "rgba(0, 0, 0, 0)",
+      "childCount": 1
+    }
+  ],
+  "emptyStates": [],
+  "spinners": [],
+  "header": {
+    "cls": "relative text-caption-l area-[header-promotion] z-3 grid grid-rows-[0fr]",
+    "tag": "HEADER",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "display": "none",
+    "flexDir": "row",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padding": "0px",
+    "childCount": 1
+  },
+  "mainArea": {
+    "cls": "h-full min-w-0 area-[main]",
+    "tag": "MAIN",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    "display": "block",
+    "gridTemplate": "none",
+    "bg": "rgba(0, 0, 0, 0)",
+    "padding": "0px",
+    "gap": "normal",
+    "childCount": 1
+  },
+  "textElements": [
+    {
+      "tag": "SPAN",
+      "text": "Cinema Studio",
+      "rect": {
+        "x": 51,
+        "y": 21,
+        "w": 97,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm font-semibold text-icon-primary/50"
+    },
+    {
+      "tag": "SPAN",
+      "text": "Higgsfield AI",
+      "rect": {
+        "x": 49,
+        "y": 59,
+        "w": 86,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm font-medium text-icon-primary/50"
+    },
+    {
+      "tag": "SPAN",
+      "text": "홈",
+      "rect": {
+        "x": 51,
+        "y": 73,
+        "w": 13,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm-medium text-font-primary flex items-center justify-center text-qc-body-sm-medium text-qc-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "내 요소",
+      "rect": {
+        "x": 51,
+        "y": 111,
+        "w": 42,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm-medium text-font-primary flex items-center justify-center text-qc-body-sm-medium text-qc-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "내 즐겨찾기",
+      "rect": {
+        "x": 51,
+        "y": 149,
+        "w": 68,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm-medium text-font-primary flex items-center justify-center text-qc-body-sm-medium text-qc-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "커뮤니티",
+      "rect": {
+        "x": 51,
+        "y": 187,
+        "w": 52,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "truncate text-sm-medium text-font-primary flex items-center justify-center text-qc-body-sm-medium text-qc-text-primary"
+    },
+    {
+      "tag": "P",
+      "text": "프로젝트",
+      "rect": {
+        "x": 19,
+        "y": 249,
+        "w": 143,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "16px",
+      "cls": "min-w-0 flex-1 truncate text-q-caption-sm-medium text-q-text-secondary group-data-[collapsed]/sidebar:hidden"
+    },
+    {
+      "tag": "SPAN",
+      "text": "새 프로젝트",
+      "rect": {
+        "x": 51,
+        "y": 291,
+        "w": 68,
+        "h": 16
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "16px",
+      "cls": "truncate group-data-[collapsed]/sidebar:hidden"
+    },
+    {
+      "tag": "P",
+      "text": "영화 제작 배우기",
+      "rect": {
+        "x": 30,
+        "y": 552,
+        "w": 163,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "16px",
+      "cls": "text-q-caption-sm-regular text-q-text-secondary"
+    },
+    {
+      "tag": "P",
+      "text": "현업 AI 필름메이커가 알려주는 실전 워크플로우",
+      "rect": {
+        "x": 30,
+        "y": 572,
+        "w": 163,
+        "h": 40
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "text-q-body-sm-medium text-q-text-primary"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "자세히 알아보기",
+      "rect": {
+        "x": 26,
+        "y": 741,
+        "w": 187,
+        "h": 40
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(26, 26, 26)",
+      "lineHeight": "16px",
+      "cls": "q-button q-button-secondary q-button-sm w-full"
+    },
+    {
+      "tag": "SPAN",
+      "text": "요금제",
+      "rect": {
+        "x": 51,
+        "y": 819,
+        "w": 39,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "hfnav-pricing-label"
+    },
+    {
+      "tag": "SPAN",
+      "text": "30% 할인",
+      "rect": {
+        "x": 150,
+        "y": 820,
+        "w": 53,
+        "h": 18
+      },
+      "fontSize": "12px",
+      "fontWeight": "700",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "normal",
+      "cls": "q-badge-label"
+    },
+    {
+      "tag": "SPAN",
+      "text": "로그인",
+      "rect": {
+        "x": 53,
+        "y": 859,
+        "w": 39,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(0, 0, 0)",
+      "lineHeight": "20px",
+      "cls": ""
+    },
+    {
+      "tag": "BUTTON",
+      "text": "홈",
+      "rect": {
+        "x": 254,
+        "y": 21,
+        "w": 13,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "20px",
+      "cls": "min-w-0 truncate text-qc-text-secondary shrink-0 transition-colors hover:text-qc-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "/",
+      "rect": {
+        "x": 275,
+        "y": 21,
+        "w": 5,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "20px",
+      "cls": "shrink-0 text-qc-text-secondary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "내 프로젝트",
+      "rect": {
+        "x": 288,
+        "y": 21,
+        "w": 69,
+        "h": 20
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "20px",
+      "cls": "min-w-0 truncate text-qc-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "전체",
+      "rect": {
+        "x": 261,
+        "y": 69,
+        "w": 30,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "16px",
+      "cls": "q-tabs-tab-text"
+    },
+    {
+      "tag": "SPAN",
+      "text": "비공개",
+      "rect": {
+        "x": 311,
+        "y": 69,
+        "w": 41,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "lineHeight": "16px",
+      "cls": "q-tabs-tab-text"
+    },
+    {
+      "tag": "SPAN",
+      "text": "공유됨",
+      "rect": {
+        "x": 372,
+        "y": 69,
+        "w": 41,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "lineHeight": "16px",
+      "cls": "q-tabs-tab-text"
+    },
+    {
+      "tag": "SPAN",
+      "text": "숨김",
+      "rect": {
+        "x": 433,
+        "y": 69,
+        "w": 30,
+        "h": 16
+      },
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "lineHeight": "16px",
+      "cls": "q-tabs-tab-text"
+    },
+    {
+      "tag": "SPAN",
+      "text": "검색",
+      "rect": {
+        "x": 1267,
+        "y": 69,
+        "w": 32,
+        "h": 16
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "16px",
+      "cls": "whitespace-nowrap pr-1.5 text-q-text-secondary transition-[opacity,color] duration-150 opacity-100 group-hover/search:text-q-text-primary"
+    },
+    {
+      "tag": "SPAN",
+      "text": "정렬 기준",
+      "rect": {
+        "x": 1344,
+        "y": 69,
+        "w": 67,
+        "h": 16
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(130, 130, 130)",
+      "lineHeight": "16px",
+      "cls": "q-button-label-frame"
+    },
+    {
+      "tag": "SPAN",
+      "text": "새 프로젝트 만들기",
+      "rect": {
+        "x": 264,
+        "y": 283,
+        "w": 257,
+        "h": 16
+      },
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(255, 255, 255)",
+      "lineHeight": "16px",
+      "cls": "min-w-0 flex-1 truncate text-white text-q-label-sm-medium"
+    }
+  ],
+  "viewport": {
+    "w": 1440,
+    "h": 900,
+    "dpr": 1
+  }
+}
