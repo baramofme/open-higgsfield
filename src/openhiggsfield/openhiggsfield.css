@@ -20458,6 +20458,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   --set-sticky-top: 64px;                     /* md:top-16 — CSS 사슬 부재(JSON에만) → 로컬 */
   --set-header-offset: 64px;                  /* HF h-[calc(100vh-4rem)] — 로컬(사슬 부재) */
   --set-ohf-header-h: calc(var(--o-size-40) + var(--o-size-2)); /* OHF Topbar 실측 42 = 40+2 (재사용 결정) */
+  --set-fold-gap: 2px;                          /* HF header 44 − Topbar 42 — Content 정렬 보정(Usage 선례) */
   background: var(--set-canvas);
   color: var(--tx);
   min-height: 100dvh;
@@ -20522,7 +20523,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-set-label-wrap { min-width: 0; display: block; }
 .ohf-set-workspace {
   margin: 0;
-  padding-inline: var(--o-size-4);                    /* mx-1 = 4px */
+  padding-inline: 0;                                  /* HF 실측 paddingL/R=0px */
   color: var(--tx2);                                  /* text-font-secondary EXACT */
   font-size: var(--o-font-12);
   font-weight: var(--o-weight-400);                   /* HF 실측 fw 400 */
@@ -20550,7 +20551,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   outline-offset: var(--o-size-2);
   text-align: left;
   font-size: var(--o-font-14);
-  font-weight: var(--o-weight-400);                   /* HF 실측 fw 400 */
+  font-weight: var(--o-weight-500);                   /* HF 실측 fw 500 — 메뉴 전체 실측 500 */
   line-height: var(--set-lh-20);
   letter-spacing: var(--set-track-zero);
   text-decoration: none;
@@ -20630,7 +20631,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   max-width: var(--set-content-max);
   --set-content-max: 736px;                           /* HF max-w-184 — 로컬(사슬 부재) */                           /* HF max-w-184 = 46rem */
   height: 100%;
-  padding-block-start: var(--o-size-32);              /* md:pt-8 */
+  padding-block-start: calc(var(--o-size-32) + var(--set-fold-gap));  /* md:pt-8 + 2px fold보정(Usage 선례) */
   padding-block-end: var(--o-size-40);                /* pb-10 */
   display: flex;
   flex-direction: column;
@@ -20765,6 +20766,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-set-charge {
   flex-shrink: 0;
   height: var(--o-size-32);
+  padding-block: var(--o-size-6);                     /* HF 실측 padT/B=6px */
   padding-inline: var(--o-size-12);                   /* px-3 */
   border: var(--set-size-1) solid var(--set-hair-4);
   border-radius: var(--ohf-radius-md);                /* rounded-lg? 실측 8px */
