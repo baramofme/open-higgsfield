@@ -40,6 +40,34 @@
   --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
   --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
 
+  /* Legacy aliases: the pre-migration viewer / image-showcase / vedit CSS still
+     references the old palette (--edge/--muted/--ink/--text/--font/--mono/--sans/
+     --s0/--panel/--bg2-4). The design-system migration defines the canonical
+     tokens above, so these references silently dropped — borders, text colours
+     and font declarations resolved to nothing. Map every legacy name to the
+     canonical palette so borders, colours and fonts render again. */
+  --edge: var(--line);
+  --edge-strong: var(--line-2);
+  --muted: var(--tx2);
+  --muted-ink: var(--tx3);
+  --ink: var(--tx);
+  --ink-2: var(--tx2);
+  --ink-3: var(--tx3);
+  --ink-mute: var(--tx4);
+  --text: var(--tx);
+  --tx1: var(--tx);
+  --font: var(--font-ui);
+  --sans: var(--font-ui);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --amber: #c9a227;
+  --s0: #161719;
+  --panel: var(--s2);
+  --panel-2: var(--s2);
+  --panel-3: var(--s3);
+  --bg2: var(--s1);
+  --bg3: var(--s2);
+  --bg4: var(--s3);
+
   font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1.45;
@@ -5467,6 +5495,34 @@ a.ohf-btn-solid {
   --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
   --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
   --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
+
+  /* Legacy aliases: the pre-migration viewer / image-showcase / vedit CSS still
+     references the old palette (--edge/--muted/--ink/--text/--font/--mono/--sans/
+     --s0/--panel/--bg2-4). The design-system migration defines the canonical
+     tokens above, so these references silently dropped — borders, text colours
+     and font declarations resolved to nothing. Map every legacy name to the
+     canonical palette so borders, colours and fonts render again. */
+  --edge: var(--line);
+  --edge-strong: var(--line-2);
+  --muted: var(--tx2);
+  --muted-ink: var(--tx3);
+  --ink: var(--tx);
+  --ink-2: var(--tx2);
+  --ink-3: var(--tx3);
+  --ink-mute: var(--tx4);
+  --text: var(--tx);
+  --tx1: var(--tx);
+  --font: var(--font-ui);
+  --sans: var(--font-ui);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --amber: #c9a227;
+  --s0: #161719;
+  --panel: var(--s2);
+  --panel-2: var(--s2);
+  --panel-3: var(--s3);
+  --bg2: var(--s1);
+  --bg3: var(--s2);
+  --bg4: var(--s3);
 
   font-family: var(--font-ui);
   font-size: 14px;

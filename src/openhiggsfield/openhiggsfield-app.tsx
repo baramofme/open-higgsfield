@@ -1160,7 +1160,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       const url = record.urls[0];
       if (!url) return;
       if (target === "link") {
-        void navigator.clipboard?.writeText(url);
+        void navigator.clipboard?.writeText(url).catch(() => { /* clipboard denied / non-secure context — link stays readable on screen */ });
         return;
       }
       const enc = encodeURIComponent(url);
