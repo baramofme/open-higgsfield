@@ -20422,16 +20422,16 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   --set-size-200: calc(var(--o-size-56) + var(--o-size-56) + var(--o-size-56) + var(--o-size-32));
   --set-size-224: calc(var(--set-size-236) - var(--o-size-12));
   --set-size-236: calc(var(--set-size-200) + var(--set-size-36));
-  --set-cone-size: 512px;
-  --set-bars-h: 57px;
-  --set-chart-h: 86px;
+  --set-cone-size: 512px;                           /* size-128 — 로컬(사슬 부재) */
+  --set-bars-h: calc(var(--o-size-56) + var(--set-size-1));   /* HF 57 = 56+1 (체인 성립) */
+  --set-chart-h: 86px;                              /* HF 86 — 로컬(사슬 부재: --o-size-80 미제공) */
   --set-tooltip-shift: -37.5px;
   /* Tier-3: 라디우스/타이포/트래킹 로컬 */
-  --set-radius-99: 99px;
+  --set-radius-99: 99px;                              /* rounded-[99px] — 로컬(사슬 부재: 99px를 Tier-2로 환산 불가) */
   --set-radius-infinite: calc(infinity * 1px);
-  --set-font-24: 24px;
-  --set-lh-12: 12px; --set-lh-14: 14px; --set-lh-16: 16px; --set-lh-18: 18px;
-  --set-lh-20: 20px; --set-lh-24: 24px; --set-lh-28: 28px;
+  --set-font-24: 24px;                    /* HF 본문 16/lh24의 24 — 로컬(사슬 부재) */
+  --set-lh-12: 12px; --set-lh-14: 14px; --set-lh-16: 16px; --set-lh-18: 18px;   /* 로컬(사슬 부재) */
+  --set-lh-20: 20px; --set-lh-24: 24px; --set-lh-28: 28px;   /* 로컬(사슬 부재) */
   --set-track-zero: 0%;
   --set-track-neg1: -1%;
   --set-track-neg04: -0.4px;
@@ -20455,9 +20455,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   --set-chip-shadow: 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), inset 0 0 0 1px rgba(197, 197, 197, 0.24), 0 4px 4px 0 rgba(0, 0, 0, 0.08), inset 0 2px 4px 0 rgba(255, 255, 255, 0.24);
   --set-ring-shadow: inset 0 0 0 1px rgba(209, 254, 23, 0.2);
   --set-glow-shadow: drop-shadow(rgb(209, 254, 23) 0px 0px 2px) drop-shadow(rgba(209, 254, 23, 0.7) 0px 0px 8px);
-  --set-sticky-top: 64px;                     /* md:top-16 */
-  --set-header-offset: 64px;                  /* HF h-[calc(100vh-4rem)] 실측 836@900 */
-  --set-ohf-header-h: 42px;                   /* OHF Topbar 실측(재사용 결정) */
+  --set-sticky-top: 64px;                     /* md:top-16 — CSS 사슬 부재(JSON에만) → 로컬 */
+  --set-header-offset: 64px;                  /* HF h-[calc(100vh-4rem)] — 로컬(사슬 부재) */
+  --set-ohf-header-h: calc(var(--o-size-40) + var(--o-size-2)); /* OHF Topbar 실측 42 = 40+2 (재사용 결정) */
   background: var(--set-canvas);
   color: var(--tx);
   min-height: 100dvh;
@@ -20547,7 +20547,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   color: var(--tx);                                   /* text-white → 잠금 재사용(선례) */
   cursor: pointer;
   appearance: none;
-  outline-offset: 2px;
+  outline-offset: var(--o-size-2);
   text-align: left;
   font-size: var(--o-font-14);
   font-weight: var(--o-weight-400);                   /* HF 실측 fw 400 */
@@ -20628,7 +20628,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   margin-inline: auto;
   width: 100%;
   max-width: var(--set-content-max);
-  --set-content-max: 736px;                           /* HF max-w-184 = 46rem */
+  --set-content-max: 736px;                           /* HF max-w-184 — 로컬(사슬 부재) */                           /* HF max-w-184 = 46rem */
   height: 100%;
   padding-block-start: var(--o-size-32);              /* md:pt-8 */
   padding-block-end: var(--o-size-40);                /* pb-10 */
@@ -20702,7 +20702,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-set-email:hover { color: var(--set-oklab-60); }
 .ohf-set-email-text { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .ohf-set-email-ico { width: var(--o-size-16); height: var(--o-size-16); flex-shrink: 0; }
-@media (min-width: 768px) { .ohf-set-email-ico { display: none; } } /* HF md:hidden */
+@media (min-width: 48rem) { .ohf-set-email-ico { display: none; } } /* HF md:hidden */
 
 /* 카드 영역 */
 .ohf-set-cards { display: flex; flex-direction: column; width: 100%; gap: var(--o-size-16); } /* 249 flex-col gap-4 */
@@ -21010,7 +21010,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   align-items: center;
   justify-content: center;
   background: var(--set-help-bg);
-  box-shadow: inset 0 0 0 1px var(--o-color-black);
+  box-shadow: inset 0 0 0 var(--set-size-1) var(--o-color-black);  /* 1px hairline — Tier-3 로컬 토큰 */
   overflow: hidden;
   isolation: isolate;
 }
@@ -21027,7 +21027,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   color: var(--tx);
   cursor: default;
   appearance: none;
-  outline-offset: 2px;
+  outline-offset: var(--o-size-2);
   border-radius: var(--set-radius-infinite);
   font-size: var(--o-font-14);
   line-height: var(--set-lh-20);
