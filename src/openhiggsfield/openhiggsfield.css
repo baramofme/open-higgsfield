@@ -5,40 +5,37 @@
    type carries measurement. */
 
 .ohf {
-  --bg: #131416;            /* HF body paint = --color-q-background-primary */
-  --rail: #131416;          /* HF sidebar paint (same token as body) */
-  --s1: #1c1e20;            /* HF --color-surface-primary */
-  --s2: #23262a;            /* HF --color-surface-secondary */
-  --s3: #2a2d32;            /* HF --color-surface-secondary-hover */
-  --s4: #2b2e33;            /* HF --canvas-rgb-surface-highlight (43,46,51) */
-  --line: #ffffff0d;        /* HF --color-border-subtle (white/5) */
-  --line-2: #ffffff1a;      /* HF --color-border-default (white/10) */
-  --tx: #f7f7f8;            /* HF --color-text-primary (body paint 247,247,248) */
-  --tx2: #898a8b;           /* HF --color-icon-secondary / font-secondary */
-  --tx3: #828282;           /* HF --color-q-text-secondary / hf-text-secondary */
-  /* tx4/tx-off: HF canonical tertiary & disabled grays (98,98,98 / 72,78,86). */
-  --tx4: #626262;
-  --tx-off: #484e56;
-  --accent: #d1fe17;
-  --accent-strong: #d1fe17; /* HF has no stronger lime; hover emphasis is a brightness filter */
-  --accent-ink: #131517;    /* HF --color-btn-accent-text / font-primary-reverted */
-  --accent-08: #d1fe170d;   /* HF --color-q-lime-alpha-05 */
-  --accent-14: #d1fe171a;   /* HF --color-q-transparent-lime-10 */
-  --accent-32: #d1fe174d;   /* HF --color-primary-30 */
-  /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
-  --plate: #000000b3;
-  --plate-ink: #ffffffe6;
-  --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
-  --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
-  --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
-  --glint: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d; /* HF --hf-shadow-sheen */
-  --ease: cubic-bezier(0.2, 0, 0, 1);
-  /* Deeper exponential ease-out — the scope indicator's travel. */
-  --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
-  --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
-  --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
-  --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
+  --bg: var(--ohf-color-background);
+  --rail: var(--ohf-color-rail);
+  --s1: var(--ohf-color-surface-1);
+  --s2: var(--ohf-color-surface-2);
+  --s3: var(--ohf-color-surface-3);
+  --s4: var(--ohf-color-surface-4);
+  --line: var(--ohf-color-border-subtle);
+  --line-2: var(--ohf-color-border-default);
+  --tx: var(--ohf-color-text-primary);
+  --tx2: var(--ohf-color-text-secondary);
+  --tx3: var(--ohf-color-text-tertiary);
+  --tx4: var(--ohf-color-text-quaternary);
+  --tx-off: var(--ohf-color-text-disabled);
+  --accent: var(--ohf-color-accent);
+  --accent-strong: var(--ohf-color-accent-strong);
+  --accent-ink: var(--ohf-color-accent-ink);
+  --accent-08: var(--ohf-color-accent-alpha-8);
+  --accent-14: var(--ohf-color-accent-alpha-14);
+  --accent-32: var(--ohf-color-accent-alpha-32);
+  --plate: var(--ohf-color-plate);
+  --plate-ink: var(--ohf-color-plate-ink);
+  --shadow-1: var(--ohf-shadow-1);
+  --shadow-2: var(--ohf-shadow-2);
+  --shadow-3: var(--ohf-shadow-3);
+  --glint: var(--ohf-shadow-sheen);
+  --ease: var(--ohf-ease-standard);
+  --ease-slide: var(--ohf-ease-decelerate);
+  --font-ui: var(--ohf-font-family-ui);
+  --danger: var(--ohf-color-danger);
+  --danger-bg: var(--ohf-color-danger-bg);
+  --danger-line: var(--ohf-color-danger-line);
 
   font-family: var(--font-ui);
   font-size: 14px;
@@ -5433,40 +5430,37 @@ a.ohf-btn-solid {
    type carries measurement. */
 
 .ohf {
-  --bg: #131416;            /* HF body paint = --color-q-background-primary */
-  --rail: #131416;          /* HF sidebar paint (same token as body) */
-  --s1: #1c1e20;            /* HF --color-surface-primary */
-  --s2: #23262a;            /* HF --color-surface-secondary */
-  --s3: #2a2d32;            /* HF --color-surface-secondary-hover */
-  --s4: #2b2e33;            /* HF --canvas-rgb-surface-highlight (43,46,51) */
-  --line: #ffffff0d;        /* HF --color-border-subtle (white/5) */
-  --line-2: #ffffff1a;      /* HF --color-border-default (white/10) */
-  --tx: #f7f7f8;            /* HF --color-text-primary (body paint 247,247,248) */
-  --tx2: #898a8b;           /* HF --color-icon-secondary / font-secondary */
-  --tx3: #828282;           /* HF --color-q-text-secondary / hf-text-secondary */
-  /* tx4/tx-off: HF canonical tertiary & disabled grays (98,98,98 / 72,78,86). */
-  --tx4: #626262;
-  --tx-off: #484e56;
-  --accent: #d1fe17;
-  --accent-strong: #d1fe17; /* HF has no stronger lime; hover emphasis is a brightness filter */
-  --accent-ink: #131517;    /* HF --color-btn-accent-text / font-primary-reverted */
-  --accent-08: #d1fe170d;   /* HF --color-q-lime-alpha-05 */
-  --accent-14: #d1fe171a;   /* HF --color-q-transparent-lime-10 */
-  --accent-32: #d1fe174d;   /* HF --color-primary-30 */
-  /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
-  --plate: #000000b3;
-  --plate-ink: #ffffffe6;
-  --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
-  --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
-  --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
-  --glint: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d; /* HF --hf-shadow-sheen */
-  --ease: cubic-bezier(0.2, 0, 0, 1);
-  /* Deeper exponential ease-out — the scope indicator's travel. */
-  --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
-  --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
-  --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
-  --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
+  --bg: var(--ohf-color-background);
+  --rail: var(--ohf-color-rail);
+  --s1: var(--ohf-color-surface-1);
+  --s2: var(--ohf-color-surface-2);
+  --s3: var(--ohf-color-surface-3);
+  --s4: var(--ohf-color-surface-4);
+  --line: var(--ohf-color-border-subtle);
+  --line-2: var(--ohf-color-border-default);
+  --tx: var(--ohf-color-text-primary);
+  --tx2: var(--ohf-color-text-secondary);
+  --tx3: var(--ohf-color-text-tertiary);
+  --tx4: var(--ohf-color-text-quaternary);
+  --tx-off: var(--ohf-color-text-disabled);
+  --accent: var(--ohf-color-accent);
+  --accent-strong: var(--ohf-color-accent-strong);
+  --accent-ink: var(--ohf-color-accent-ink);
+  --accent-08: var(--ohf-color-accent-alpha-8);
+  --accent-14: var(--ohf-color-accent-alpha-14);
+  --accent-32: var(--ohf-color-accent-alpha-32);
+  --plate: var(--ohf-color-plate);
+  --plate-ink: var(--ohf-color-plate-ink);
+  --shadow-1: var(--ohf-shadow-1);
+  --shadow-2: var(--ohf-shadow-2);
+  --shadow-3: var(--ohf-shadow-3);
+  --glint: var(--ohf-shadow-sheen);
+  --ease: var(--ohf-ease-standard);
+  --ease-slide: var(--ohf-ease-decelerate);
+  --font-ui: var(--ohf-font-family-ui);
+  --danger: var(--ohf-color-danger);
+  --danger-bg: var(--ohf-color-danger-bg);
+  --danger-line: var(--ohf-color-danger-line);
 
   font-family: var(--font-ui);
   font-size: 14px;
