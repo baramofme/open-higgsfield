@@ -1,0 +1,46 @@
+<svg
+  viewBox="0 0 1440 280"
+  preserveAspectRatio="xMidYMid slice"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#profile-cover-pattern-clip)">
+    <rect width="1440" height="280" fill="url(#profile-cover-pattern-bg)" fill-opacity="0.04" />
+    <g filter="url(#profile-cover-pattern-shadow)">
+      <path
+        d="M1321.27 192.291L1320.13 179.383C1309.28 55.5025 1231.08 -177.566 1014.17 -177.566C853.211 -177.566 731.619 -13.7668 624.311 130.645C538.684 246.296 464.495 345.505 382.86 345.505C361.163 343.165 333.199 332.008 316.083 306.764C300.67 283.859 296.677 254.509 304.662 219.285C317.213 163.513 389.144 111.847 465.051 56.6638C506.711 27.3135 549.533 -3.80386 579.215 -33.7432C664.842 -118.866 708.22 -180.511 708.22 -279.72C708.22 -378.929 655.139 -428.255 610.615 -449.393C521.568 -491.651 390.862 -466.996 307.526 -393.015C294.975 -381.268 282.409 -370.127 270.987 -359.558C187.079 -282.648 130.578 -230.393 1 -270.329V-109.475C172.81 -31.387 317.229 -180.511 372.028 -249.192C414.261 -294.395 458.784 -320.817 491.903 -320.817H493.621C508.462 -320.228 521.012 -314.355 530.159 -303.786C545 -286.166 550.711 -265.617 547.847 -242.729C541.564 -194.581 493.048 -138.236 404.001 -76.5905C299.541 -4.37606 124.883 116.559 111.171 268.612C100.895 377.817 155.695 487.005 241.321 529.264C441.096 626.722 562.688 458.816 691.677 281.52C790.427 144.731 884.039 14.9944 1014.19 14.9944C1131.2 14.9944 1174.58 114.792 1174.58 177.616V189.952L1163.16 192.291C879.474 243.957 724.779 517.534 724.779 643.753C724.779 769.973 828.667 878 956.526 878C1106.08 878 1291.02 746.496 1320.7 376.639L1321.84 363.142H1440V192.308H1321.27V192.291ZM1166.58 381.907C1143.75 603.228 1033.58 706.56 966.802 706.56C936.547 706.56 894.315 680.727 894.315 632.595C894.315 578.59 972.513 414.791 1148.32 366.07L1168.87 360.786L1166.58 381.923V381.907Z"
+        fill="url(#profile-cover-pattern-mark)"
+        shape-rendering="crispEdges"
+      />
+    </g>
+  </g>
+  <defs>
+    <filter id="profile-cover-pattern-shadow" x="-3" y="-472" width="1447" height="1356" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="2" />
+      <feGaussianBlur stdDeviation="2" />
+      <feComposite in2="hardAlpha" operator="out" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="4" />
+      <feGaussianBlur stdDeviation="3" />
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0" />
+      <feBlend mode="normal" in2="shape" result="effect2_innerShadow" />
+    </filter>
+    <linearGradient id="profile-cover-pattern-bg" x1="720" y1="0" x2="720" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" />
+      <stop offset="1" stop-color="#999999" />
+    </linearGradient>
+    <linearGradient id="profile-cover-pattern-mark" x1="720.5" y1="-470" x2="720.5" y2="878" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.02" />
+      <stop offset="1" stop-color="white" stop-opacity="0.04" />
+    </linearGradient>
+    <clipPath id="profile-cover-pattern-clip">
+      <rect width="1440" height="280" fill="white" />
+    </clipPath>
+  </defs>
+</svg>

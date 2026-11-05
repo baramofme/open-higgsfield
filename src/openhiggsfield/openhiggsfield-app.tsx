@@ -45,6 +45,8 @@ import {
 import { Gallery, type TileMenuActions } from "./gallery";
 import { AssetSidebar, type AssetScope, type SidebarCounts } from "./asset-sidebar";
 import { FeedHeader, type FeedPanel } from "./feed-header";
+/* t_2afe2cd0 — HF public 프로필의 정적 미러(이식 1단계). */
+import { ProfileScreen } from "./profile-screen";
 import { FeedGuide, FeedShowcase } from "./feed-showcase";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
 import { loadComments } from "./comments";
@@ -250,7 +252,7 @@ function describeError(caught: unknown): string {
   return `Generation failed — ${message}. Try again; if it repeats, check the key in the sidebar.`;
 }
 
-export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: string }) {
+export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: { fontClassName?: string; profileHandle?: string | null }) {
   const surface = useActive((state) => state.surface);
   const modelId = useActive((state) => state.model);
   const setModel = useActive((state) => state.setModel);
@@ -1487,7 +1489,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
               HF's feed controls (tabs, sort) live inside the right column header
               (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
-          {(surface === "video" || surface === "audio") ? (
+          {/* t_2afe2cd0 — 프로필 라우트(정적 미러): 라우터가 핸들을 들고 오면
+              스urface 갈림길 위에서 이 화면이 전체 본문을 대체한다. */}
+          {profileHandle ? (
+            <ProfileScreen handle={profileHandle} />
+          ) : (surface === "video" || surface === "audio") ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
