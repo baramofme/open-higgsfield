@@ -20440,7 +20440,11 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   --drill-cover: var(--s1);              /* #1c1e20 card cover, ≈exact */
   --drill-accent: var(--accent);         /* #d1fe17 brand hover, exact */
   /* HF-only tones with no --ohf-* primitive; the values are the capture. */
-  --drill-card-name: rgb(204, 204, 204); /* measured card name */
+  --drill-card-name: var(--tx);   /* HF renders card names q-text-primary white=rgb(255,255,255);
+      live auth measurement (2026-11-06, [::1]:9222) confirmed HF card name = 255,255,255. The prior
+      literal rgb(204,204,204)=#cccccc was unsourced across every capture (auth-drilldown.json had 0x204,
+      community cards were q-text-primary, measured-styles.md had no 204). Corrected to the near-white
+      token --tx (rgb 247,247,248), mirroring the locked tile-title equivalence (HF 255 -> OHF --tx 247). */
   --drill-card-date: rgb(151, 151, 151); /* measured card date / rail meta */
 
   flex: 1;
@@ -20867,7 +20871,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 
 /* ── project card grid: HF community-project-card ────────────────────────────
    card 329×186 rounded-10(10px) · cover bg rgb(28,30,33) #1c1e20 aspect-video ·
-   grid 4 cols ×329 colGap20 rowGap20 · name 14/500 rgb(204,204,204) ·
+   grid 4 cols ×329 colGap20 rowGap20 · name 14/500 → var(--drill-card-name)=var(--tx) (HF card
+   name is q-text-primary white=255; live auth re-measure 2026-11-06 confirmed 255, corrected from the
+   unsourced rgb(204,204,204)) ·
    date 12/500 rgb(151,151,151). */
 .ohf-drill-grid {
   display: grid;
