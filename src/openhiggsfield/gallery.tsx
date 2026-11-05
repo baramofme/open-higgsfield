@@ -541,7 +541,7 @@ const Tile = memo(function Tile({
               title="프롬프트 복사"
               onClick={(event) => {
                 event.stopPropagation();
-                void navigator.clipboard?.writeText(item.prompt);
+                void navigator.clipboard?.writeText(item.prompt).catch(() => { /* clipboard denied / non-secure context — prompt still readable */ });
               }}
             >
               <CopyGlyph />

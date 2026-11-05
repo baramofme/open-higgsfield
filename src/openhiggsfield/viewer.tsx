@@ -1050,7 +1050,7 @@ export function Viewer({
                           className="ohf-viewer-act-share"
                           aria-label="공유"
                           title="미디어 링크 복사"
-                          onClick={() => void navigator.clipboard?.writeText(url)}
+                          onClick={() => void navigator.clipboard?.writeText(url).catch(() => { /* denied / non-secure context: nothing copied, title still readable */ })}
                         >
                           <ShareGlyph />
                         </button>
@@ -1122,7 +1122,7 @@ export function Viewer({
                           className="ohf-viewer-act-share"
                           aria-label="공유"
                           title="미디어 링크 복사"
-                          onClick={() => void navigator.clipboard?.writeText(url)}
+                          onClick={() => void navigator.clipboard?.writeText(url).catch(() => { /* denied / non-secure context: nothing copied, title still readable */ })}
                         >
                           <ShareGlyph />
                         </button>
