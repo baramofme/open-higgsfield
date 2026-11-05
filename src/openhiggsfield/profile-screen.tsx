@@ -1,192 +1,333 @@
 "use client";
 
-import { NumberFlow } from "number-flow-react";
-
-/* ── HF 원문 자산(ground-truth에서 무손실 복제) ────────────────────────
-   모든 SVG d경로·viewBox·문구는 https://higgsfield.ai/ko/@exploringdonut1792
-   라이브 CDP 수확(hf_detail.json / hf_dom.html / precise.json)의 원문이다. */
-
-const STAR_PATH =
-  "M6 0.54834C6.3262 0.54834 6.60313 0.769108 6.71255 1.07966L7.85406 4.26879L11.1726 4.44524C11.4943 4.46231 11.7652 4.67854 11.8583 4.98608C11.9514 5.29362 11.8458 5.62417 11.5911 5.82353L8.92813 7.86215L9.87014 11.0961C9.97296 11.4384 9.83136 11.8036 9.52435 11.991C9.21734 12.1784 8.83147 12.1398 8.56592 11.8931L6 10.0225L3.43408 11.8931C3.16853 12.1398 2.78266 12.1784 2.47565 11.991C2.16864 11.8036 2.02704 11.4384 2.12986 11.0961L3.07187 7.86215L0.408908 5.82353C0.154173 5.62417 0.0485914 5.29362 0.141694 4.98608C0.234797 4.67854 0.505735 4.46231 0.827435 4.44524L4.14594 4.26879L5.28745 1.07966C5.39687 0.769108 5.6738 0.54834 6 0.54834Z";
-const ACH_WAVE_PATH =
-  "M0.5 22.1667C13.881 22.1667 22.6406 25.733 33.0788 28.3144C44.694 31.1856 56.0918 28.6402 68.5444 26.6042C81.9565 24.4101 94.8507 26.5306 107.006 28.9087C119.176 31.29 131.576 29.0839 143.5 26.6745C156.407 24.0702 169.336 25.9792 181.84 27.8222C193.261 29.5106 205.464 27.4929 217.105 26.6745C229.737 25.788 242.289 27.3768 254.306 28.5542C266.095 29.7073 278.987 28.2672 291.21 26.6745C293.487 26.3875 295.937 25.5589 297.778 24.5";
-const PLUS_PATH =
-  "M10.5 5.5H14.5C15.0523 5.5 15.5 5.05228 15.5 4.5C15.5 3.94772 15.0523 3.5 14.5 3.5H10.5V2.5C10.5 1.94772 10.0523 1.5 9.5 1.5C8.94772 1.5 8.5 1.94772 8.5 2.5V3.5H4.5C3.94772 3.5 3.5 3.94772 3.5 4.5C3.5 5.05228 3.94772 5.5 4.5 5.5H8.5V6.5C8.5 7.05228 8.94772 7.5 9.5 7.5C10.0523 7.5 10.5 7.05228 10.5 6.5V5.5Z";
-const TROPHY_PATH =
-  "M12.25 3.5C12.25 3.77614 12.0261 4 11.75 4L10.5 4V5C10.5 6.51039 9.26039 7.75 7.75 7.75L7 7.75L7 11L9 11C9.55228 11 10 11.4477 10 12L10 14.0549C10.5642 14.2145 11 14.7243 11 15.3242L11 17C11 17.5523 10.5523 18 10 18L4 18C3.44772 18 3 17.5523 3 17L3 15.3242C3 14.7243 3.43579 14.2145 4 14.0549L4 12C4 11.4477 4.44772 11 5 11L7 11L7 7.75L6.25 7.75C4.73971 7.75 3.5 6.51039 3.5 5L3.5 4L2.25 4C1.97386 4 1.75 3.77614 1.75 3.5C1.75 3.22386 1.97386 3 2.25 3L11.75 3C12.0261 3 12.25 3.22386 12.25 3.5ZM2 12C2 10.3431 3.34315 9 5 9L5.5 9L5.5 12L5 12C3.34315 12 2 13.3431 2 15L2 18L1 18L1 15C1 12.2386 3.23858 10 6 10L6 9L5 9C3.067 9 1.5 10.567 1.5 12.5L1.5 18.5L0.5 18.5L0.5 12.5C0.5 10.0147 2.51472 8 5 8L5.5 8L5.5 5L5.5 4L2 4L2 5C2 6.20503 2.94493 7.18144 4.13643 7.24636L4.25 7.25L4.25 9.5L3.5 9.5L3.5 12L4.25 12L4.25 14.0549C3.68848 14.2149 3.25136 14.7235 3.25 15.3242L3.25 17L2.25 17L2.25 15C2.25 13.4812 3.48118 12.25 5 12.25L5.5 12.25L5.5 9.5L6 9.5L6 10C3.23858 10 1 12.2386 1 15L1 17.5";
-const CAL_PATH =
-  "M3.5 2.75C3.5 2.47386 3.72386 2.25 4 2.25L6 2.25C6.27614 2.25 6.5 2.47386 6.5 2.75L6.5 3.75L9.5 3.75L9.5 2.75C9.5 2.47386 9.72386 2.25 10 2.25L12 2.25C12.2761 2.25 12.5 2.47386 12.5 2.75L12.5 3.75L16 3.75C16.6904 3.75 17.25 4.30964 17.25 5L17.25 6L18.25 6C18.9404 6 19.5 6.55964 19.5 7.25L19.5 16.25C19.5 17.4049 18.5711 18.3338 17.4163 18.3338L4.08375 18.3338C2.92893 18.3338 2 17.4049 2 16.25L2 7.25C2 6.55964 2.55964 6 3.25 6L3.5 6L3.5 2.75ZM3.5 6L4 6L4 7C4 7.55228 4.44772 8 5 8L14.5 8L14.5 6L17 6L17 16.25C17 16.592 16.7249 16.8338 16.3837 16.8338L5.11625 16.8338C4.77509 16.8338 4.5 16.592 4.5 16.25L4.5 7L3.5 7L3.5 6Z";
+/* ════════════════════════════════════════════════════════════════════════
+   t_2afe2cd0 — HF public 프로필(@exploringdonut1792) 이식 v2 (2026-11-06)
+   권위 원천: https://higgsfield.ai/ko/@exploringdonut1792 — 2026-11-06 라이브 CDP
+   (1440×900, scroll 0, guest) 수확: precise_new.json(런346 hf_precise7).
+   HF가 프로필 설계를 재배치했으므로 런1의 구버전 수확은 폐기하고 오늘 구조로 재생산.
+   모든 문자열·SVG d·viewBox·인라인 스타일은 HF 실측 원문 그대로(재창작 금지).
+   인터랙션(탭전환·팔로우·pinned 상태)은 honest-inert: 렌더 동일, 동작 없음(data-off).
+   ════════════════════════════════════════════════════════════════════════ */
 
 const AVATAR_SRC = "/profile/avatar-exploringdonut1792.webp";
 const COVER_SRC = "/profile/cover-pattern.svg";
 
-const TABS = [
-  "모든 작품",
-  "이미지",
-  "동영상",
-  "Project",
-  "Audio",
-] as const;
+/* HF 실측 라벨/숫자/문구 원문(게스트 상태) */
+const TABS = ["모든 작품", "프로젝트", "Shots", "블로그", "업적"] as const;
+const STAT_LABELS = ["팔로워", "팔로잉", "조회수", "좋아요"] as const;
+const STAT_NUMS = ["0", "0", "0", "0"] as const;
+const ACH_TEXT = "아직 업적이 없어요";
+const JOIN_TEXT = "가입일: 2026년 10월";
+const RATING_TEXT = "5";
 
-const STATS: { label: string; value: number; kind: "button" | "div" | "plain" }[] = [
-  { label: "팔로워", value: 14, kind: "button" },
-  { label: "팔로잉", value: 500, kind: "button" },
-  { label: "작품 수", value: 1994, kind: "div" },
-  { label: "좋아요 수", value: 813, kind: "plain" },
-];
+/* HF styleattr 실측 인라인 문자열(동등 serialization용) */
+const INL_OP1: React.CSSProperties = { opacity: 1 };
+const INL_WELL: React.CSSProperties = { opacity: 1, filter: "blur(0px)", transform: "none" };
+const INL_RATING_PILL: React.CSSProperties = {
+  background:
+    "linear-gradient(170.39deg, rgba(255, 255, 255, 0.2) 15.72%, rgba(209, 209, 209, 0.2) 84.28%), rgb(11, 12, 13)",
+  boxShadow: "rgba(255, 255, 255, 0.1) 0px 4px 16px",
+  /* HF computed 실측 문자열. 시트에 두면 Lightning CSS가 oklab→lab으로 환산해
+     HF와 serialization이 어긋난다(실측 확인). 인라인은 미니파이어를 거치지 않는다. */
+  borderColor: "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+};
+const INL_PLATE: React.CSSProperties = {
+  backgroundColor: "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)", /* HF computed 실측, 같은 회피 */
+};
+const INL_LINE: React.CSSProperties = {
+  borderColor: "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)", /* HF border-white/25 computed 실측 */
+};
+const INL_RATING_NUM: React.CSSProperties = {
+  backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.8), rgb(121, 121, 121))",
+};
+const INL_RATING_GLOW: React.CSSProperties = {
+  boxShadow:
+    "rgba(126, 126, 126, 0.8) 0px 1px 3px inset, rgba(178, 178, 178, 0.5) 0px 4px 8px -2px inset, rgb(180, 180, 180) 0px -2px 3px -2px inset, rgb(143, 143, 143) 0px -3px 8px -2px inset",
+};
+const INL_FADE: React.CSSProperties = {
+  backgroundImage:
+    "radial-gradient(101.2% 100% at 50% 0%, color(srgb 0 0 0 / 0.4), rgb(0, 0, 0))",
+};
+const INL_TABS_VARS = {
+  "--q-tint": "var(--hf-color-brand-primary)",
+  "--q-tint-fg": "var(--hf-color-text-inverse)",
+} as React.CSSProperties;
+const INL_IND_VARS = {
+  "--active-tab-left": "0px",
+  "--active-tab-right": "289.7344px",
+  "--active-tab-top": "0px",
+  "--active-tab-bottom": "0px",
+  "--active-tab-width": "87.25px", /* HF 실측 computed width 87.25px 정정(원본 인라인 87.2656px) */
+  "--active-tab-height": "32px",
+} as React.CSSProperties;
+const INL_ASIDE_VARS = {
+  "--profile-sidebar-top":
+    "min(calc(var(--ohf-pf-header-height-v2) + 3.5rem), calc(100dvh - 491px - 1rem))",
+} as React.CSSProperties;
 
-/* HF 원문 인라인 스타일 태그(검은 캔버스 + 헤더 높이 변수) 무손실 미러 */
-const HF_STYLE_MIRROR = `
-  body {
-    --ohf-pf-page-bg: #000;
-    background: var(--ohf-pf-page-bg) !important;
-  }
-  html { --header-height-v2: 36px; color-scheme: light; }
-  .ohf, .ohf-shell, .ohf-main { background: var(--ohf-pf-page-bg) !important; }
-`;
+/* ── SVG 원문(HF 라이브 outerHTML verbatim; id만 OHF 네임스페이스로 접두) ── */
 
 function RingSvg() {
   return (
-    <svg className="ohf-pf-ring-svg" viewBox="0 0 116 116" aria-hidden="true">
-      <circle cx="58" cy="58" r="56" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="4" />
+    <svg aria-hidden="true" viewBox="0 0 116 116" fill="none" className="ohf-pf-ring-svg">
+      <defs>
+        <linearGradient id="ohf-pf-ring-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="116">
+          <stop offset="0" stopColor="rgba(255,255,255,0.3)" />
+          <stop offset="0.35" stopColor="rgba(255,255,255,0.2)" />
+          <stop offset="0.75" stopColor="rgba(255,255,255,0.3)" />
+          <stop offset="0.9" stopColor="rgba(255,255,255,0)" />
+        </linearGradient>
+      </defs>
+      <circle cx="58" cy="58" r="56" stroke="url(#ohf-pf-ring-grad)" strokeWidth="4" />
+    </svg>
+  );
+}
+
+const STAR_D =
+  "M5.62782 0.250811C5.79018 -0.0836008 6.20987 -0.0836049 6.37223 0.250807C7.43837 2.44673 8.96106 4.274 10.791 5.55335C11.0697 5.74819 11.0697 6.25181 10.791 6.44664C8.96106 7.726 7.43837 9.55327 6.37223 11.7492C6.20987 12.0836 5.79018 12.0836 5.62782 11.7492C4.56169 9.55328 3.0389 7.72601 1.20899 6.44663C0.930319 6.2518 0.930319 5.7482 1.20899 5.55337C3.0389 4.27399 4.56169 2.44672 5.62782 0.250811Z";
+
+function StarSvg() {
+  return (
+    <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" className="ohf-pf-star">
+      <defs>
+        <clipPath id="ohf-pf-star-shape">
+          <path d={STAR_D} />
+        </clipPath>
+        <linearGradient id="ohf-pf-star-fill" x1="4.43488" y1="-1.25234" x2="4.43923" y2="12.5756" gradientUnits="userSpaceOnUse">
+          <stop offset="0.164925" style={{ stopColor: "rgba(255, 255, 255, 0.8)" }} />
+          <stop offset="0.852503" style={{ stopColor: "rgba(255, 255, 255, 0.4)" }} />
+        </linearGradient>
+      </defs>
+      <path d={STAR_D} fill="url(#ohf-pf-star-fill)" />
+      <g clipPath="url(#ohf-pf-star-shape)" stroke="white" strokeLinejoin="round">
+        <path d={STAR_D} stroke="black" strokeOpacity="0.15" strokeWidth="1.5" />
+        <path d={STAR_D} stroke="black" strokeOpacity="0.1" strokeWidth="2" />
+        <path d={STAR_D} stroke="black" strokeOpacity="0.06" strokeWidth="4" strokeLinejoin="round" />
+        <path d={STAR_D} transform="translate(0 2)" fill="#A6A6A6" fillOpacity="0.24" />
+      </g>
+    </svg>
+  );
+}
+
+const WAVE_D =
+  "M289.775 24.5H8.50292C5.82705 24.5 3.90575 21.9235 4.66915 19.3588L6.53916 13.0765C8.05372 7.98831 12.7316 4.5 18.0404 4.5H280.237C285.546 4.5 290.224 7.9883 291.738 13.0765L293.608 19.3588C294.372 21.9235 292.451 24.5 289.775 24.5Z";
+
+function WaveSvg() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 298.278 29"
+      preserveAspectRatio="none"
+      overflow="visible"
+      fill="none"
+      className="ohf-pf-wave-svg"
+    >
+      <defs>
+        <linearGradient id="ohf-pf-wave-fill" x1="263.745" y1="4.30392" x2="263.745" y2="24.5002" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#3A434C" />
+          <stop offset="1" stopColor="#8D8D8D" />
+        </linearGradient>
+        <linearGradient id="ohf-pf-wave-edge" x1="3.13883" y1="14.5" x2="295.139" y2="14.5" gradientUnits="userSpaceOnUse">
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.5" stopColor="white" stopOpacity="0.1" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d={WAVE_D} stroke="black" strokeOpacity="0.06" strokeWidth="4" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      <path d={WAVE_D} stroke="black" strokeOpacity="0.1" strokeWidth="2" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      <path d={WAVE_D} transform="translate(0 2)" fill="#A6A6A6" fillOpacity="0.24" />
+      <path d={WAVE_D} transform="translate(0 1)" fill="url(#ohf-pf-wave-fill)" fillOpacity="0.82" />
+      <path d={WAVE_D} fill="url(#ohf-pf-wave-fill)" />
+      <path d={WAVE_D} stroke="url(#ohf-pf-wave-edge)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+      <path d={WAVE_D} stroke="black" strokeOpacity="0.06" strokeWidth="1" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
+
+function ChevLeftSvg() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ohf-pf-comm-icon">
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M14.5 18.25 8.25 12l6.25-6.25" />
+    </svg>
+  );
+}
+
+function PlusSvg() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ohf-pf-follow-icon">
+      <path stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" d="M12 5.25V12m0 0v6.75M12 12H5.25M12 12h6.75" />
+    </svg>
+  );
+}
+
+function ChevRightSvg() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="ohf-pf-ach-chev">
+      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.5 18.25 15.75 12 9.5 5.75" />
+    </svg>
+  );
+}
+
+const FIRE_D =
+  "m20.35 11.844-.016-.173c-.15-1.654-1.238-4.766-4.252-4.766-2.238 0-3.927 2.187-5.419 4.116-1.19 1.544-2.221 2.868-3.356 2.868-.301-.03-.69-.18-.928-.517-.214-.306-.27-.698-.159-1.168.175-.745 1.175-1.434 2.23-2.171.579-.392 1.174-.808 1.586-1.208 1.19-1.136 1.793-1.96 1.793-3.284 0-1.325-.737-1.984-1.356-2.266-1.238-.564-3.054-.235-4.213.753-.174.157-.349.306-.508.447C4.586 5.502 3.801 6.2 2 5.666v2.148c2.388 1.043 4.395-.948 5.157-1.866.587-.603 1.206-.956 1.666-.956h.024c.206.008.38.086.508.227q.307.355.245.816c-.087.643-.761 1.395-1.999 2.218-1.452.965-3.88 2.58-4.07 4.61-.143 1.458.619 2.916 1.81 3.48 2.776 1.302 4.466-.94 6.258-3.308 1.373-1.826 2.674-3.559 4.483-3.559 1.626 0 2.229 1.333 2.229 2.172v.164l-.159.032c-3.943.69-6.093 4.343-6.093 6.028 0 1.686 1.444 3.128 3.221 3.128 2.079 0 4.65-1.756 5.062-6.695l.016-.18H22v-2.281zm-2.15 2.532c-.317 2.955-1.849 4.335-2.777 4.335-.42 0-1.007-.345-1.007-.988 0-.721 1.087-2.908 3.53-3.559l.286-.07z";
+
+function FireSvg() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ohf-pf-join-icon">
+      <path fill="currentColor" d={FIRE_D} />
     </svg>
   );
 }
 
 export function ProfileScreen({ handle }: { handle: string }) {
-  const name = handle;
+  /* HF URL은 /@handle. RSC flight 페이로드가 '@'를 %40로 인코딩해 전달한 실측 버그가 있어
+     두 접두를 모두 strip한다(이름 h1=맨 이름, 핸들행=@+맨 이름 — HF 원문과 동자·동폭). */
+  const bare = handle.replace(/^(@|%40)+/i, "");
+
   return (
     <div className="ohf-pf-page">
-      <style>{HF_STYLE_MIRROR}</style>
       <div className="ohf-pf-group">
-        {/* ── 커버(fixed, z -1) — HF .profile-cover 원문 기하 ── */}
-        <div className="ohf-pf-cover">
-          <img className="ohf-pf-cover-img" src={COVER_SRC} alt="" aria-hidden="true" />
-          <img className="ohf-pf-cover-img-blurred" src={COVER_SRC} alt="" aria-hidden="true" />
-          <div className="ohf-pf-cover-fade" aria-hidden="true"></div>
+        {/* ── 커버: fixed, bottom 500px, h400, z -1(HF .profile-cover) ── */}
+        <div className="ohf-pf-cover" aria-hidden="true">
+          <img className="ohf-pf-cover-img" src={COVER_SRC} alt="" />
+          <img className="ohf-pf-cover-img ohf-pf-cover-img-blurred" src={COVER_SRC} alt="" />
+          <div className="ohf-pf-cover-fade" style={INL_FADE}></div>
         </div>
 
-        {/* ── 좌측 사이드바(HF aside, 340px) ── */}
-        <aside className="ohf-pf-aside">
-          <div className="ohf-pf-commrow" aria-hidden="true">
-            <a className="ohf-pf-comm-btn" data-off aria-disabled="true">
+        {/* ── aside(w-340) — 커뮤니티 줄 + sticky 프로필 헤더 ── */}
+        <aside className="ohf-pf-aside" style={INL_ASIDE_VARS}>
+          <div className="ohf-pf-commrow">
+            <a className="ohf-pf-comm-btn" href="#ohf-community" data-off="true">
+              <ChevLeftSvg />
               <span className="ohf-pf-comm-label">커뮤니티</span>
             </a>
           </div>
+
           <div className="ohf-pf-aside-sticky">
             <header className="ohf-pf-header">
-              <div className="ohf-pf-avatar-col">
+              {/* 1) 스택: 아바타 + 평점(오버레이) → 이름/핸들 */}
+              <div className="ohf-pf-stack">
                 <div className="ohf-pf-avatar-wrap">
-                  <span className="ohf-pf-ring"><RingSvg /></span>
-                  <div className="ohf-pf-avatar-mat">
-                    <div className="ohf-pf-avatar-size">
-                      <span className="ohf-pf-avatar-face">
-                        <img className="ohf-pf-avatar-img" src={AVATAR_SRC} alt="프로필 아바타" />
-                      </span>
-                      <span className="ohf-pf-avatar-line" aria-hidden="true"></span>
-                    </div>
-                  </div>
-                  <span className="ohf-pf-rating-overlay">
-                    <a className="ohf-pf-rating-a" data-off aria-disabled="true">
-                      <span className="ohf-pf-rating-pill">
-                        <svg className="ohf-pf-rating-svg" viewBox="0 0 12 12" aria-hidden="true">
-                          <path fillRule="evenodd" clipRule="evenodd" d={STAR_PATH} />
-                        </svg>
-                        <span className="ohf-pf-rating-num">5</span>
-                        <span className="ohf-pf-sr">평점 5</span>
-                        <span className="ohf-pf-rating-glow" aria-hidden="true"></span>
+                  <span className="ohf-pf-glow" style={INL_OP1} aria-hidden="true">
+                    <RingSvg />
+                    <a
+                      className="ohf-pf-rating-a"
+                      href="#ohf-rating"
+                      data-off="true"
+                      aria-label={`평점 ${RATING_TEXT}. 업적 안내`}
+                    >
+                      <span className="ohf-pf-rating-pill" style={INL_RATING_PILL}>
+                        <StarSvg />
+                        <span className="ohf-pf-rating-num" aria-hidden="true" style={INL_RATING_NUM}>
+                          {RATING_TEXT}
+                        </span>
+                        <span className="ohf-pf-sr">{`평점 ${RATING_TEXT}`}</span>
+                        <span className="ohf-pf-rating-glow" aria-hidden="true" style={INL_RATING_GLOW}></span>
                       </span>
                     </a>
                   </span>
+                  <div className="ohf-pf-rel-wrap">
+                    <div className="ohf-pf-mat">
+                      <span className="ohf-pf-face">
+                        <img className="ohf-pf-avatar-img" src={AVATAR_SRC} alt={bare} />
+                      </span>
+                      <span className="ohf-pf-avatar-line" aria-hidden="true" style={INL_LINE}></span>
+                    </div>
+                  </div>
+                  <span className="ohf-pf-glow2" style={INL_OP1} aria-hidden="true"></span>
                 </div>
 
-                <div className="ohf-pf-name-block">
-                  <div className="ohf-pf-name-col">
-                    <h1 className="ohf-pf-name">{name}</h1>
+                <div className="ohf-pf-name-pad">
+                  <div className="ohf-pf-name-block">
+                    <h1 className="ohf-pf-name">{bare}</h1>
                     <div className="ohf-pf-handle-row">
-                      <span className="ohf-pf-handle">@{handle}</span>
+                      <span className="ohf-pf-handle">{`@${bare}`}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="ohf-pf-stat-block">
-                <ul className="ohf-pf-stats">
-                  {STATS.map((s) => (
-                    <li className="ohf-pf-stat-cell" key={s.label}>
-                      {s.kind === "button" ? (
-                        <button className="ohf-pf-stat-btn" data-off aria-disabled="true">
-                          <span className="ohf-pf-stat-num"><NumberFlow value={s.value} /></span>
-                          <span className="ohf-pf-stat-label">{s.label}</span>
-                        </button>
-                      ) : s.kind === "div" ? (
-                        <div className="ohf-pf-stat-div">
-                          <span className="ohf-pf-stat-num"><NumberFlow value={s.value} /></span>
-                          <span className="ohf-pf-stat-label">{s.label}</span>
-                        </div>
-                      ) : (
-                        <div className="ohf-pf-stat-plain">
-                          <span className="ohf-pf-stat-num"><NumberFlow value={s.value} /></span>
-                          <span className="ohf-pf-stat-label">{s.label}</span>
-                        </div>
-                      )}
-                    </li>
-                  ))}
+              {/* 2) 스탯 그리드 + 팔로우 버튼 */}
+              <div className="ohf-pf-stat-pad">
+                <ul className="ohf-pf-stats-ul">
+                  <li className="ohf-pf-stat-li">
+                    <button className="ohf-pf-stat-cell" type="button" data-off="true">
+                      <span className="ohf-pf-stat-num">
+                        <span className="ohf-pf-stat-digit">{STAT_NUMS[0]}</span>
+                      </span>
+                      <span className="ohf-pf-stat-label">{STAT_LABELS[0]}</span>
+                    </button>
+                  </li>
+                  <li className="ohf-pf-stat-li">
+                    <button className="ohf-pf-stat-cell" type="button" data-off="true">
+                      <span className="ohf-pf-stat-num">
+                        <span className="ohf-pf-stat-digit">{STAT_NUMS[1]}</span>
+                      </span>
+                      <span className="ohf-pf-stat-label">{STAT_LABELS[1]}</span>
+                    </button>
+                  </li>
+                  <li className="ohf-pf-stat-li">
+                    {/* HF 원문: 버튼 대신 div(cursor-default, data-state="closed") — 툴팁 비활성 */}
+                    <div className="ohf-pf-stat-cell ohf-pf-stat-div" data-state="closed" data-off="true">
+                      <span className="ohf-pf-stat-num">
+                        <span className="ohf-pf-stat-digit">{STAT_NUMS[2]}</span>
+                      </span>
+                      <span className="ohf-pf-stat-label">{STAT_LABELS[2]}</span>
+                    </div>
+                  </li>
+                  <li className="ohf-pf-stat-li">
+                    {/* HF 원문: 패딩/음수마진 없는 플레인 div(gap-0.5) */}
+                    <div className="ohf-pf-stat-plain">
+                      <span className="ohf-pf-stat-num">
+                        <span className="ohf-pf-stat-digit">{STAT_NUMS[3]}</span>
+                      </span>
+                      <span className="ohf-pf-stat-label">{STAT_LABELS[3]}</span>
+                    </div>
+                  </li>
                 </ul>
 
                 <div className="ohf-pf-follow-row">
                   <div className="ohf-pf-follow-wrap">
-                    <button className="ohf-pf-follow-btn" data-off aria-disabled="true">
+                    <button className="ohf-pf-follow-btn" type="button" data-off="true" aria-busy="false">
                       <span className="ohf-pf-follow-lead">
-                        <span className="ohf-pf-follow-icon-box">
-                          <span className="ohf-pf-follow-icon-well">
-                            <span className="ohf-pf-follow-icon-center">
-                              <svg className="ohf-pf-follow-icon" viewBox="0 0 20 20" aria-hidden="true">
-                                <path fillRule="evenodd" clipRule="evenodd" d={PLUS_PATH} />
-                              </svg>
+                        <span className="ohf-pf-follow-flex">
+                          <span className="ohf-pf-follow-icon-box" aria-hidden="true">
+                            <span className="ohf-pf-follow-well" style={INL_WELL}>
+                              <PlusSvg />
                             </span>
                           </span>
                         </span>
-                        <span className="ohf-pf-follow-label">팔로우</span>
+                        <span className="ohf-pf-follow-label" style={INL_WELL}>
+                          팔로우
+                        </span>
                       </span>
                     </button>
                   </div>
                 </div>
               </div>
 
+              {/* 3) 구분선(그라디언트 1px) */}
               <hr className="ohf-pf-divider" />
 
-              <div className="ohf-pf-ach">
+              {/* 4) 업적: h-14 행 위에 웨이브 + 알약 */}
+              <div className="ohf-pf-ach-outer">
                 <div className="ohf-pf-ach-row">
-                  <div className="ohf-pf-ach-wave" aria-hidden="true">
-                    <svg className="ohf-pf-ach-wave-svg" viewBox="0 0 298.278 29" preserveAspectRatio="none" aria-hidden="true">
-                      <path
-                        fill="none"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        strokeDasharray="1 3"
-                        strokeOpacity="0.3"
-                        stroke="rgb(247,247,248)"
-                        d={ACH_WAVE_PATH}
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    </svg>
+                  <div className="ohf-pf-ach-wave-wrap" aria-hidden="true">
+                    <WaveSvg />
                   </div>
-                  <a className="ohf-pf-ach-pill" data-off aria-disabled="true">
-                    <svg className="ohf-pf-ach-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" clipRule="evenodd" d={TROPHY_PATH} />
-                    </svg>
+                  <a className="ohf-pf-ach-pill" href="#ohf-achievements" data-off="true">
+                    {ACH_TEXT}
+                    <ChevRightSvg />
                   </a>
                 </div>
               </div>
 
-              <div className="ohf-pf-meta">
+              {/* 5) 메타: 가입일(불꽃 아이콘) */}
+              <div className="ohf-pf-meta-gap">
                 <div className="ohf-pf-meta-inner">
-                  <div className="ohf-pf-join">
-                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fillRule="evenodd" clipRule="evenodd" d={CAL_PATH} />
-                    </svg>
-                    <span className="ohf-pf-join-text">가입일: 2026년 10월</span>
+                  <div className="ohf-pf-join-row">
+                    <FireSvg />
+                    <span className="ohf-pf-join-label">{JOIN_TEXT}</span>
                   </div>
                 </div>
               </div>
@@ -194,23 +335,30 @@ export function ProfileScreen({ handle }: { handle: string }) {
           </div>
         </aside>
 
-        {/* ── 우측 콘텐츠 컬럼(HF md:grow 서브트리) ── */}
-        <div className="ohf-pf-content-col">
+        {/* ── main(콘텐츠 컬럼): 스페이서 196 → select-none → 앵커/탭바/워크 ── */}
+        <main className="ohf-pf-main-col">
           <div className="ohf-pf-spacer" aria-hidden="true"></div>
           <div className="ohf-pf-select">
-            <div className="ohf-pf-anchor">
-              <div className="ohf-pf-tabbar">
-                <div className="ohf-pf-tabs">
-                  <div className="ohf-pf-tablist">
-                    <span className="ohf-pf-indicator" style={{ width: "87.2656px", height: "32px" }} aria-hidden="true"></span>
-                    {TABS.map((label, i) => (
-                      <button className="ohf-pf-tab" key={label} data-off aria-disabled={i !== 0 || undefined}>
-                        <span className="ohf-pf-tab-content">
-                          <span className="ohf-pf-tab-text">{label}</span>
+            <div className="ohf-pf-anchor" aria-hidden="true"></div>
+            <div className="ohf-pf-tabbar">
+              <div className="ohf-pf-tabs" data-orientation="horizontal" style={INL_TABS_VARS}>
+                <div className="ohf-pf-tablist" data-orientation="horizontal">
+                  {TABS.map((label, i) => (
+                    <button
+                      key={label}
+                      className="ohf-pf-tab"
+                      type="button"
+                      data-off="true"
+                      {...(i === 0 ? { "data-active": "" } : { "data-orientation": "horizontal" })}
+                    >
+                      <span className="ohf-pf-tab-content">
+                        <span className="ohf-pf-tab-text" data-text={label}>
+                          {label}
                         </span>
-                      </button>
-                    ))}
-                  </div>
+                      </span>
+                    </button>
+                  ))}
+                  <span className="ohf-pf-indicator" data-orientation="horizontal" style={INL_IND_VARS}></span>
                 </div>
               </div>
             </div>
@@ -218,23 +366,23 @@ export function ProfileScreen({ handle }: { handle: string }) {
             <div className="ohf-pf-work-col">
               <div className="ohf-pf-work-box">
                 <div className="ohf-pf-grid" aria-hidden="true">
-                  {Array.from({ length: 20 }).map((_, i) => (
+                  {Array.from({ length: 6 }, (_, i) => (
                     <div className="ohf-pf-tile" key={i}>
-                      <div className="ohf-pf-tile-plate"></div>
+                      <div className="ohf-pf-tile-plate" style={INL_PLATE}></div>
                       <div className="ohf-pf-tile-sheen"></div>
                     </div>
                   ))}
                 </div>
                 <div className="ohf-pf-empty">
                   <div className="ohf-pf-empty-block">
-                    <p className="ohf-pf-empty-title">{name} 님이 아직 게시한 작품이 없어요</p>
-                    <p className="ohf-pf-empty-sub">{name} 님을 팔로우하고 공개되는 작품을 확인해 보세요</p>
+                    <p className="ohf-pf-empty-title">{`${bare} 님이 아직 게시한 작품이 없어요`}</p>
+                    <p className="ohf-pf-empty-sub">{`${bare} 님을 팔로우하고 공개되는 작품을 확인해 보세요`}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

@@ -23,10 +23,12 @@ export async function generateMetadata({
   params: Promise<{ handle: string }>;
 }): Promise<Metadata> {
   const { handle } = await params;
+  /* HF URL은 /@handle — Next 동적 세그먼트가 '@'를 포함해 전달된다.
+     표시는 HF와 동일하도록 '@'를剥이고 조립(이름=맨 이름, 핸들행=@+맨 이름). */
+  const bare = handle.startsWith("@") ? handle.slice(1) : handle;
   return {
-    title: `Higgsfield의 @${handle}`,
-    /* HF의 description은 사용자별(자기소개 문구). guest 수확에선 소개가 빈
-       문자열이었다 → 소개가 없는 계정의 빈 description을 미러한다. */
+    /* HF guest 실측 타이틀과 동자(레이아웃 접미사 없이 절대 지정). */
+    title: { absolute: `Higgsfield의 @${bare}` },
     description: "",
   };
 }
