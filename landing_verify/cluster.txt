@@ -1,0 +1,695 @@
+### dock #169 rect x=280 y=760 w=880 h=124
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  borderRadius = 20px
+  display = flex
+  flexDirection = column
+  alignItems = center
+  justifyContent = center
+  position = fixed
+  overflow = visible
+  opacity = 1
+  zIndex = 50
+  textAlign = start
+
+### form #170 rect x=280 y=760 w=880 h=124
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgb(28, 30, 33)
+  borderRadius = 20px
+  boxShadow = rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 0px 32px 24px 0px
+  padding = 4px
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### fieldset #171 rect x=284 y=764 w=872 h=116
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgb(39, 41, 44)
+  borderRadius = 16px
+  padding = 12px
+  gap = 12px
+  display = flex
+  flexDirection = row
+  alignItems = flex-end
+  justifyContent = flex-end
+  position = relative
+  overflow = visible
+  opacity = 1
+  zIndex = 2
+  textAlign = start
+
+### promptrow #173 rect x=296 y=776 w=630 h=48
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  padding = 4px
+  margin = 0px 0px 12px
+  gap = 12px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### prompt #174 rect x=300 y=780 w=622 h=40
+  fontSize = 14px
+  lineHeight = 20px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif
+  letterSpacing = 0.1px
+  color = rgb(255, 255, 255)
+  display = block
+  flexDirection = row
+  position = relative
+  opacity = 1
+  textAlign = start
+
+### editor #175 rect x=300 y=780 w=622 h=20
+  fontSize = 14px
+  lineHeight = 20px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif
+  letterSpacing = 0%
+  color = rgb(255, 255, 255)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### controls #178 rect x=296 y=836 w=630 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### assets #179 rect x=296 y=836 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = hidden
+  opacity = 1
+  textAlign = start
+
+### assetsbtn #180 rect x=296 y=836 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### modelwrap #183 rect x=332 y=836 w=158 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### modelfieldset #184 rect x=332 y=836 w=158 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### modellabel #185 rect x=332 y=836 w=158 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### modelbtn #186 rect x=332 y=836 w=158 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgba(255, 255, 255, 0.6)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 12px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### setwrap #195 rect x=494 y=836 w=432 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### chevronGhost #196 rect x=500 y=844 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = hidden
+  opacity = 1
+  textAlign = center
+
+### trackscroll #198 rect x=494 y=836 w=432 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = auto hidden
+  opacity = 1
+  textAlign = start
+
+### track #199 rect x=494 y=836 w=534 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### trackInner #200 rect x=494 y=836 w=534 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### camera #201 rect x=494 y=836 w=77 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 8px 10px
+  gap = 6px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### camicon #202 rect x=505 y=844 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = grid
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### camiconinner #203 rect x=505 y=844 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = grid
+  flexDirection = row
+  alignItems = center
+### ctgroup #214 rect x=878 y=836 w=150 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### ct #215 rect x=878 y=836 w=150 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### ctinner #216 rect x=878 y=836 w=150 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### ctbtn #217 rect x=878 y=836 w=150 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 600
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 8px 10px
+  gap = 6px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### ctnew #226 rect x=986 y=843 w=30 h=18
+  fontSize = 10px
+  lineHeight = 14px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  letterSpacing = 0%
+  color = rgb(209, 254, 23)
+  backgroundColor = rgba(209, 254, 23, 0.24)
+  borderRadius = 6px
+  padding = 2px 6px
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### ratio #227 rect x=575 y=836 w=72 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 6px 12px
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### ratioicon #228 rect x=587 y=844 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### ratiolabel #231 rect x=607 y=844 w=28 h=16
+  fontSize = 14px
+  lineHeight = 16px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif
+  color = rgb(255, 255, 255)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = hidden
+  opacity = 1
+  textAlign = center
+
+### quality #232 rect x=651 y=836 w=60 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 6px 12px
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### qualicon #233 rect x=663 y=844 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### quallabel #236 rect x=683 y=844 w=16 h=16
+  fontSize = 14px
+  lineHeight = 16px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif
+  color = rgb(255, 255, 255)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = hidden
+  opacity = 1
+  textAlign = center
+
+### elements #237 rect x=715 y=836 w=57 h=32
+  fontSize = 14px
+  lineHeight = 20px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 12px
+  gap = 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### stepperouter #240 rect x=776 y=836 w=98 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### stepper #241 rect x=776 y=836 w=98 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 500
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  padding = 10px 12px
+  gap = normal 4px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### chevronRight #250 rect x=898 y=838 w=28 h=28
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  backgroundColor = rgba(255, 255, 255, 0.05)
+  borderRadius = 8px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = absolute
+  overflow = visible
+  opacity = 1
+  zIndex = 10
+  textAlign = center
+
+### aside #253 rect x=938 y=788 w=206 h=80
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  gap = 6px
+  display = flex
+  flexDirection = row
+  alignItems = flex-end
+  justifyContent = flex-end
+  position = relative
+  overflow = visible
+  opacity = 1
+  zIndex = 20
+  textAlign = start
+
+### charwrap #254 rect x=938 y=788 w=80 h=80
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### generate #264 rect x=1024 y=788 w=120 h=80
+  fontSize = 12px
+  lineHeight = 18px
+  fontWeight = 700
+  fontFamily = "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(19, 21, 23)
+  backgroundColor = rgb(209, 254, 23)
+  borderRadius = 12px
+  boxShadow = rgba(0, 0, 0, 0.15) 10px 34px 24px 0px, rgba(0, 0, 0, 0.01) 8px 21px 6px 0px, rgba(0, 0, 0, 0.25) 3px 7px 5px 0px, rgba(0, 0, 0, 0.43) 1px 3px 4px 0px, rgba(0, 0, 0, 0.49) 0px 1px 2px 0px, rgb(130, 155, 25) 0px -3px 0px 0px inset, rgb(130, 155, 25) 0px -2px 0px 0px inset, rgb(209, 254, 23) 0px 1px 0px 0px inset
+  padding = 14px 12px 16px
+  display = flex
+  flexDirection = column
+  alignItems = center
+  justifyContent = center
+  position = relative
+  overflow = hidden
+  opacity = 1
+  textAlign = center
+
+### genhairline #265 rect x=1024 y=788 w=120 h=80
+  fontSize = 12px
+  lineHeight = 18px
+  fontWeight = 700
+  fontFamily = "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(19, 21, 23)
+  borderRadius = 14px
+  display = block
+  flexDirection = row
+  position = absolute
+  overflow = hidden
+  opacity = 1
+  textAlign = center
+
+### genglow #266 rect x=1026 y=841 w=150 h=102
+  fontSize = 12px
+  lineHeight = 18px
+  fontWeight = 700
+  fontFamily = "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(19, 21, 23)
+  backgroundColor = rgb(205, 255, 0)
+  borderRadius = 50%
+  display = block
+  flexDirection = row
+  position = absolute
+### helpzone #274 rect x=1396 y=856 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = flex
+  flexDirection = row
+  position = absolute
+  overflow = visible
+  opacity = 1
+  zIndex = 20
+  textAlign = start
+
+### help #275 rect x=1396 y=856 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  backgroundColor = rgba(39, 41, 44, 0.9)
+  borderRadius = 16px
+  display = block
+  flexDirection = row
+  position = relative
+  overflow = hidden
+  opacity = 1
+  textAlign = start
+
+### helptab #276 rect x=1396 y=856 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(247, 247, 248)
+  display = block
+  flexDirection = row
+  position = absolute
+  overflow = visible
+  opacity = 1
+  textAlign = start
+
+### helptrigger #277 rect x=1396 y=856 w=32 h=32
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  padding = 0px 8px
+  display = flex
+  flexDirection = row
+  alignItems = center
+  justifyContent = center
+  position = relative
+  overflow = visible
+  opacity = 1
+  textAlign = center
+
+### helpicon #278 rect x=1404 y=864 w=16 h=16
+  fontSize = 16px
+  lineHeight = 24px
+  fontWeight = 400
+  fontFamily = Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  color = rgb(255, 255, 255)
+  display = flex
+  flexDirection = row
+  position = static
+  overflow = visible
+  opacity = 1
+  textAlign = center
+

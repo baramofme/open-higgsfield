@@ -1,0 +1,572 @@
+KINDS: {'rect': 241, 'style': 94, 'MISS': 1} TOTAL: 336 CHECKED: 139
+
+### assets (1)
+  [style] #179 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+
+### band (1)
+  [rect] #128 y: HF=236 OHF=231 (Δ=-5)
+
+### bandGhost (1)
+  [rect] #129 y: HF=236 OHF=231 (Δ=-5)
+
+### bandSolid (1)
+  [rect] #146 y: HF=236 OHF=231 (Δ=-5)
+
+### cambadge (4)
+  [rect] #206 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #206 w: HF=16 OHF=20 (Δ=4)
+  [rect] #206 h: HF=16 OHF=20 (Δ=4)
+  [style] #206 fontWeight: HF=500 OHF=400
+
+### cambox (4)
+  [rect] #204 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #204 w: HF=16 OHF=20 (Δ=4)
+  [rect] #204 h: HF=16 OHF=20 (Δ=4)
+  [style] #204 fontWeight: HF=500 OHF=400
+
+### camera (3)
+  [rect] #201 w: HF=77 OHF=81 (Δ=4)
+  [style] #201 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #201 fontWeight: HF=500 OHF=400
+
+### camglow (2)
+  [rect] #210 x: HF=507 OHF=509 (Δ=2)
+  [style] #210 fontWeight: HF=500 OHF=400
+
+### camicon (4)
+  [rect] #202 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #202 w: HF=16 OHF=20 (Δ=4)
+  [rect] #202 h: HF=16 OHF=20 (Δ=4)
+  [style] #202 fontWeight: HF=500 OHF=400
+
+### camiconinner (4)
+  [rect] #203 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #203 w: HF=16 OHF=20 (Δ=4)
+  [rect] #203 h: HF=16 OHF=20 (Δ=4)
+  [style] #203 fontWeight: HF=500 OHF=400
+
+### camin2 (3)
+  [rect] #208 x: HF=507 OHF=509 (Δ=2)
+  [style] #208 backgroundColor: HF=rgb(0, 0, 0) OHF 없음
+  [style] #208 fontWeight: HF=500 OHF=400
+
+### caminset (2)
+  [style] #207 backgroundColor: HF=rgb(15, 17, 19) OHF 없음
+  [style] #207 fontWeight: HF=500 OHF=400
+
+### camlabel (1)
+  [rect] #213 x: HF=527 OHF=531 (Δ=4)
+
+### camphoto (2)
+  [rect] #209 x: HF=507 OHF=509 (Δ=2)
+  [style] #209 fontWeight: HF=500 OHF=400
+
+### camring (5)
+  [rect] #212 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #212 w: HF=16 OHF=20 (Δ=4)
+  [rect] #212 h: HF=16 OHF=20 (Δ=4)
+  [style] #212 fontWeight: HF=500 OHF=400
+  [style] #212 boxShadow: HF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.04) 0px 2px 4px 0px inset OHF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.04) 0px 2px 4px 0px inset
+
+### camscale (4)
+  [rect] #205 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #205 w: HF=16 OHF=20 (Δ=4)
+  [rect] #205 h: HF=16 OHF=20 (Δ=4)
+  [style] #205 fontWeight: HF=500 OHF=400
+
+### camsheen (3)
+  [rect] #211 x: HF=507 OHF=509 (Δ=2)
+  [style] #211 fontWeight: HF=500 OHF=400
+  [style] #211 boxShadow: HF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.12) 0px 1px 2px 0px inset OHF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.999994 0.0000455678 0.0000200868 / 0.12) 0px 1px 2px 0px inset
+
+### charbadgegrid (2)
+  [rect] #260 w: HF=14 OHF=16 (Δ=2)
+  [rect] #260 h: HF=14 OHF=16 (Δ=2)
+
+### charbadgeinner (2)
+  [rect] #261 w: HF=14 OHF=16 (Δ=2)
+  [rect] #261 h: HF=14 OHF=16 (Δ=2)
+
+### chevronGhost (1)
+  [style] #196 textAlign: HF=center OHF=start
+
+### chevronRight (1)
+  [style] #250 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+
+### col (2)
+  [rect] #172 y: HF=776 OHF=784 (Δ=8)
+  [rect] #172 h: HF=92 OHF=84 (Δ=-8)
+
+### costnum (3)
+  [rect] #273 x: HF=1076 OHF=1078 (Δ=2)
+  [style] #273 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #273 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### ct (2)
+  [rect] #215 x: HF=878 OHF=898 (Δ=20)
+  [rect] #215 w: HF=150 OHF=157 (Δ=7)
+
+### ctbtn (4)
+  [rect] #217 x: HF=878 OHF=898 (Δ=20)
+  [rect] #217 w: HF=150 OHF=157 (Δ=7)
+  [style] #217 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #217 fontWeight: HF=600 OHF=400
+
+### ctgroup (2)
+  [rect] #214 x: HF=878 OHF=898 (Δ=20)
+  [rect] #214 w: HF=150 OHF=157 (Δ=7)
+
+### cticon (5)
+  [rect] #218 x: HF=889 OHF=909 (Δ=20)
+  [rect] #218 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #218 w: HF=16 OHF=20 (Δ=4)
+  [rect] #218 h: HF=16 OHF=20 (Δ=4)
+  [style] #218 fontWeight: HF=600 OHF=400
+
+### cticoninner (5)
+  [rect] #219 x: HF=889 OHF=909 (Δ=20)
+  [rect] #219 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #219 w: HF=16 OHF=20 (Δ=4)
+  [rect] #219 h: HF=16 OHF=20 (Δ=4)
+  [style] #219 fontWeight: HF=600 OHF=400
+
+### ctinner (2)
+  [rect] #216 x: HF=878 OHF=898 (Δ=20)
+  [rect] #216 w: HF=150 OHF=157 (Δ=7)
+
+### ctlabel (1)
+  [rect] #225 x: HF=911 OHF=935 (Δ=24)
+
+### ctnew (7)
+  [rect] #226 x: HF=986 OHF=1010 (Δ=24)
+  [rect] #226 w: HF=30 OHF=34 (Δ=4)
+  [rect] #226 h: HF=18 OHF=20 (Δ=2)
+  [style] #226 backgroundColor: HF=rgba(209, 254, 23, 0.24) OHF=oklab(0.932092 -0.117415 0.188958 / 0.1)
+  [style] #226 fontSize: HF=10px OHF=12px
+  [style] #226 lineHeight: HF=14px OHF=16px
+  [style] #226 letterSpacing: HF=0% OHF 없음
+
+### dock (3)
+  [rect] #169 y: HF=760 OHF=768 (Δ=8)
+  [rect] #169 h: HF=124 OHF=116 (Δ=-8)
+  [style] #169 borderRadius: HF=20px OHF 없음
+
+### editor (3)
+  [rect] #175 y: HF=780 OHF=794 (Δ=14)
+  [style] #175 letterSpacing: HF=0% OHF=0.1px
+  [style] #175 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### editorp (1)
+  [MISS] #176 OHF 요소 없음
+
+### elements (6)
+  [rect] #237 x: HF=715 OHF=731 (Δ=16)
+  [rect] #237 w: HF=57 OHF=61 (Δ=4)
+  [style] #237 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #237 fontSize: HF=14px OHF=16px
+  [style] #237 fontWeight: HF=500 OHF=400
+  [style] #237 lineHeight: HF=20px OHF=24px
+
+### fieldset (2)
+  [rect] #171 y: HF=764 OHF=772 (Δ=8)
+  [rect] #171 h: HF=116 OHF=108 (Δ=-8)
+
+### form (3)
+  [rect] #170 y: HF=760 OHF=768 (Δ=8)
+  [rect] #170 h: HF=124 OHF=116 (Δ=-8)
+  [style] #170 boxShadow: HF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 0px 32px 24px 0px OHF=rgba(0, 0, 0, 0.15) 0px 32px 24px 0px
+
+### gencontent (7)
+  [rect] #267 x: HF=1062 OHF=1060 (Δ=-2)
+  [rect] #267 w: HF=44 OHF=48 (Δ=4)
+  [style] #267 fontSize: HF=12px OHF=16px
+  [style] #267 fontWeight: HF=700 OHF=400
+  [style] #267 lineHeight: HF=18px OHF=24px
+  [style] #267 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #267 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### gencost (4)
+  [rect] #270 x: HF=1062 OHF=1060 (Δ=-2)
+  [rect] #270 w: HF=44 OHF=48 (Δ=4)
+  [style] #270 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #270 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### generate (5)
+  [style] #264 fontSize: HF=12px OHF=16px
+  [style] #264 fontWeight: HF=700 OHF=400
+  [style] #264 lineHeight: HF=18px OHF=24px
+  [style] #264 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #264 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### genglow (5)
+  [style] #266 fontSize: HF=12px OHF=16px
+  [style] #266 fontWeight: HF=700 OHF=400
+  [style] #266 lineHeight: HF=18px OHF=24px
+  [style] #266 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #266 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### genhairline (5)
+  [style] #265 fontSize: HF=12px OHF=16px
+  [style] #265 fontWeight: HF=700 OHF=400
+  [style] #265 lineHeight: HF=18px OHF=24px
+  [style] #265 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #265 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### genlabel (5)
+  [style] #268 fontSize: HF=12px OHF=16px
+  [style] #268 fontWeight: HF=700 OHF=400
+  [style] #268 lineHeight: HF=18px OHF=24px
+  [style] #268 letterSpacing: HF 없음(필터) OHF=0%
+  [style] #268 fontFamily: HF="Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### ghost.card1 (4)
+  [rect] #132 x: HF=448 OHF=433 (Δ=-15)
+  [rect] #132 y: HF=224 OHF=213 (Δ=-11)
+  [rect] #132 w: HF=167 OHF=192 (Δ=25)
+  [rect] #132 h: HF=167 OHF=192 (Δ=25)
+
+### ghost.card1img (4)
+  [rect] #133 x: HF=452 OHF=443 (Δ=-9)
+  [rect] #133 y: HF=229 OHF=223 (Δ=-6)
+  [rect] #133 w: HF=158 OHF=171 (Δ=13)
+  [rect] #133 h: HF=158 OHF=171 (Δ=13)
+
+### ghost.card1rot (4)
+  [rect] #131 x: HF=448 OHF=433 (Δ=-15)
+  [rect] #131 y: HF=224 OHF=213 (Δ=-11)
+  [rect] #131 w: HF=167 OHF=192 (Δ=25)
+  [rect] #131 h: HF=167 OHF=192 (Δ=25)
+
+### ghost.card2 (4)
+  [rect] #136 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #136 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #136 w: HF=154 OHF=185 (Δ=31)
+  [rect] #136 h: HF=154 OHF=185 (Δ=31)
+
+### ghost.card2img (4)
+  [rect] #137 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #137 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #137 w: HF=154 OHF=185 (Δ=31)
+  [rect] #137 h: HF=154 OHF=185 (Δ=31)
+
+### ghost.card2rot (4)
+  [rect] #135 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #135 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #135 w: HF=154 OHF=185 (Δ=31)
+  [rect] #135 h: HF=154 OHF=185 (Δ=31)
+
+### ghost.card3 (5)
+  [rect] #140 x: HF=711 OHF=695 (Δ=-16)
+  [rect] #140 y: HF=236 OHF=215 (Δ=-21)
+  [rect] #140 w: HF=144 OHF=176 (Δ=32)
+  [rect] #140 h: HF=144 OHF=176 (Δ=32)
+  [style] #140 borderRadius: HF=3.35544e+07px OHF 없음
+
+### ghost.card3img (4)
+  [rect] #141 x: HF=715 OHF=705 (Δ=-10)
+  [rect] #141 y: HF=240 OHF=224 (Δ=-16)
+  [rect] #141 w: HF=136 OHF=157 (Δ=21)
+  [rect] #141 h: HF=136 OHF=157 (Δ=21)
+
+### ghost.card3rot (4)
+  [rect] #139 x: HF=711 OHF=695 (Δ=-16)
+  [rect] #139 y: HF=236 OHF=215 (Δ=-21)
+  [rect] #139 w: HF=144 OHF=176 (Δ=32)
+  [rect] #139 h: HF=144 OHF=176 (Δ=32)
+
+### ghost.card4 (4)
+  [rect] #144 x: HF=832 OHF=810 (Δ=-22)
+  [rect] #144 y: HF=231 OHF=200 (Δ=-31)
+  [rect] #144 w: HF=154 OHF=195 (Δ=41)
+  [rect] #144 h: HF=154 OHF=195 (Δ=41)
+
+### ghost.card4img (4)
+  [rect] #145 x: HF=836 OHF=820 (Δ=-16)
+  [rect] #145 y: HF=235 OHF=211 (Δ=-24)
+  [rect] #145 w: HF=145 OHF=174 (Δ=29)
+  [rect] #145 h: HF=145 OHF=174 (Δ=29)
+
+### ghost.card4rot (4)
+  [rect] #143 x: HF=832 OHF=810 (Δ=-22)
+  [rect] #143 y: HF=231 OHF=200 (Δ=-31)
+  [rect] #143 w: HF=154 OHF=195 (Δ=41)
+  [rect] #143 h: HF=154 OHF=195 (Δ=41)
+
+### ghost.slot1 (1)
+  [rect] #130 y: HF=236 OHF=231 (Δ=-5)
+
+### ghost.slot2 (1)
+  [rect] #134 y: HF=236 OHF=231 (Δ=-5)
+
+### ghost.slot3 (1)
+  [rect] #138 y: HF=236 OHF=231 (Δ=-5)
+
+### ghost.slot4 (1)
+  [rect] #142 y: HF=236 OHF=231 (Δ=-5)
+
+### headline (3)
+  [rect] #165 x: HF=472 OHF=510 (Δ=38)
+  [rect] #165 y: HF=402 OHF=397 (Δ=-5)
+  [rect] #165 w: HF=496 OHF=421 (Δ=-75)
+
+### headline1 (3)
+  [rect] #166 x: HF=472 OHF=510 (Δ=38)
+  [rect] #166 y: HF=402 OHF=397 (Δ=-5)
+  [rect] #166 w: HF=496 OHF=421 (Δ=-75)
+
+### headline2 (3)
+  [rect] #167 x: HF=472 OHF=510 (Δ=38)
+  [rect] #167 y: HF=438 OHF=433 (Δ=-5)
+  [rect] #167 w: HF=496 OHF=421 (Δ=-75)
+
+### helpglow (2)
+  [rect] #285 x: HF=1054 OHF=1309 (Δ=255)
+  [rect] #285 y: HF=514 OHF=769 (Δ=255)
+
+### hero (2)
+  [rect] #115 y: HF=86 OHF=76 (Δ=-10)
+  [rect] #115 h: HF=570 OHF=580 (Δ=10)
+
+### herodesc (1)
+  [rect] #168 y: HF=482 OHF=477 (Δ=-5)
+
+### herotext (1)
+  [rect] #163 y: HF=402 OHF=397 (Δ=-5)
+
+### herotextHead (1)
+  [rect] #164 y: HF=402 OHF=397 (Δ=-5)
+
+### modelbtn (3)
+  [style] #186 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #186 fontWeight: HF=500 OHF=400
+  [style] #186 gap: HF 없음(필터) OHF=4px
+
+### modelicon (3)
+  [rect] #189 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #189 w: HF=16 OHF=20 (Δ=4)
+  [rect] #189 h: HF=16 OHF=20 (Δ=4)
+
+### modelinner (2)
+  [rect] #187 w: HF=116 OHF=108 (Δ=-8)
+  [style] #187 fontWeight: HF=500 OHF=400
+
+### modellabel (1)
+  [style] #185 gap: HF=4px OHF 없음
+
+### modellead (1)
+  [rect] #188 w: HF=116 OHF=120 (Δ=4)
+
+### modelname (1)
+  [rect] #192 x: HF=369 OHF=373 (Δ=4)
+
+### noticeactions (1)
+  [rect] #123 y: HF=96 OHF=86 (Δ=-10)
+
+### noticebar (2)
+  [rect] #116 y: HF=86 OHF=76 (Δ=-10)
+  [style] #116 borderRadius: HF=9999px OHF 없음
+
+### noticebook (2)
+  [rect] #118 y: HF=105 OHF=95 (Δ=-10)
+  [style] #118 display: HF=flex OHF=block
+
+### noticeclose (4)
+  [rect] #125 y: HF=96 OHF=86 (Δ=-10)
+  [style] #125 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #125 borderRadius: HF=9999px OHF 없음
+  [style] #125 lineHeight: HF 없음(필터) OHF=24px
+
+### noticecta (4)
+  [rect] #124 y: HF=96 OHF=86 (Δ=-10)
+  [style] #124 borderRadius: HF=9999px OHF 없음
+  [style] #124 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+  [style] #124 gap: HF=6px OHF 없음
+
+### noticeicon (4)
+  [rect] #117 y: HF=96 OHF=86 (Δ=-10)
+  [style] #117 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #117 borderRadius: HF=9999px OHF 없음
+  [style] #117 boxShadow: HF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset, rgba(0, 0, 0, 0.15) 0px 4px 20px -8px OHF=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0.999994 0.0000125218 0.0000052874 / 0.05) 0px 2px 3px 0px inset, rgba(0, 0, 0, 0.15) 0px 4px 20px -8px
+
+### noticeline1 (2)
+  [rect] #121 y: HF=96 OHF=86 (Δ=-10)
+  [style] #121 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### noticeline2 (2)
+  [rect] #122 y: HF=118 OHF=108 (Δ=-10)
+  [style] #122 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### noticetext (1)
+  [rect] #120 y: HF=96 OHF=86 (Δ=-10)
+
+### placeholder (4)
+  [rect] #177 y: HF=780 OHF=794 (Δ=14)
+  [rect] #177 w: HF=179 OHF=181 (Δ=2)
+  [style] #177 letterSpacing: HF=0% OHF=0.1px
+  [style] #177 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### prompt (3)
+  [rect] #174 y: HF=780 OHF=794 (Δ=14)
+  [rect] #174 h: HF=40 OHF=20 (Δ=-20)
+  [style] #174 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### promptrow (2)
+  [rect] #173 y: HF=776 OHF=784 (Δ=8)
+  [rect] #173 h: HF=48 OHF=40 (Δ=-8)
+
+### qualicon (4)
+  [rect] #233 x: HF=663 OHF=674 (Δ=11)
+  [rect] #233 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #233 w: HF=16 OHF=20 (Δ=4)
+  [rect] #233 h: HF=16 OHF=20 (Δ=4)
+
+### quality (3)
+  [rect] #232 x: HF=651 OHF=661 (Δ=10)
+  [rect] #232 w: HF=60 OHF=66 (Δ=6)
+  [style] #232 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+
+### quallabel (2)
+  [rect] #236 x: HF=683 OHF=698 (Δ=15)
+  [style] #236 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### ratio (3)
+  [rect] #227 x: HF=575 OHF=579 (Δ=4)
+  [rect] #227 w: HF=72 OHF=78 (Δ=6)
+  [style] #227 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+
+### ratioicon (4)
+  [rect] #228 x: HF=587 OHF=592 (Δ=5)
+  [rect] #228 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #228 w: HF=16 OHF=20 (Δ=4)
+  [rect] #228 h: HF=16 OHF=20 (Δ=4)
+
+### ratiolabel (2)
+  [rect] #231 x: HF=607 OHF=616 (Δ=9)
+  [style] #231 fontFamily: HF=Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif OHF=Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+### scroller (2)
+  [rect] #114 y: HF=86 OHF=76 (Δ=-10)
+  [rect] #114 h: HF=814 OHF=824 (Δ=10)
+
+### solid.card1 (4)
+  [rect] #149 x: HF=448 OHF=433 (Δ=-15)
+  [rect] #149 y: HF=224 OHF=213 (Δ=-11)
+  [rect] #149 w: HF=167 OHF=192 (Δ=25)
+  [rect] #149 h: HF=167 OHF=192 (Δ=25)
+
+### solid.card1img (4)
+  [rect] #150 x: HF=452 OHF=443 (Δ=-9)
+  [rect] #150 y: HF=229 OHF=223 (Δ=-6)
+  [rect] #150 w: HF=158 OHF=171 (Δ=13)
+  [rect] #150 h: HF=158 OHF=171 (Δ=13)
+
+### solid.card1rot (4)
+  [rect] #148 x: HF=448 OHF=433 (Δ=-15)
+  [rect] #148 y: HF=224 OHF=213 (Δ=-11)
+  [rect] #148 w: HF=167 OHF=192 (Δ=25)
+  [rect] #148 h: HF=167 OHF=192 (Δ=25)
+
+### solid.card2 (4)
+  [rect] #153 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #153 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #153 w: HF=154 OHF=185 (Δ=31)
+  [rect] #153 h: HF=154 OHF=185 (Δ=31)
+
+### solid.card2img (4)
+  [rect] #154 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #154 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #154 w: HF=154 OHF=185 (Δ=31)
+  [rect] #154 h: HF=154 OHF=185 (Δ=31)
+
+### solid.card2rot (4)
+  [rect] #152 x: HF=580 OHF=568 (Δ=-12)
+  [rect] #152 y: HF=231 OHF=205 (Δ=-26)
+  [rect] #152 w: HF=154 OHF=185 (Δ=31)
+  [rect] #152 h: HF=154 OHF=185 (Δ=31)
+
+### solid.card3 (5)
+  [rect] #157 x: HF=711 OHF=695 (Δ=-16)
+  [rect] #157 y: HF=236 OHF=215 (Δ=-21)
+  [rect] #157 w: HF=144 OHF=176 (Δ=32)
+  [rect] #157 h: HF=144 OHF=176 (Δ=32)
+  [style] #157 borderRadius: HF=3.35544e+07px OHF 없음
+
+### solid.card3img (4)
+  [rect] #158 x: HF=715 OHF=705 (Δ=-10)
+  [rect] #158 y: HF=240 OHF=224 (Δ=-16)
+  [rect] #158 w: HF=136 OHF=157 (Δ=21)
+  [rect] #158 h: HF=136 OHF=157 (Δ=21)
+
+### solid.card3rot (4)
+  [rect] #156 x: HF=711 OHF=695 (Δ=-16)
+  [rect] #156 y: HF=236 OHF=215 (Δ=-21)
+  [rect] #156 w: HF=144 OHF=176 (Δ=32)
+  [rect] #156 h: HF=144 OHF=176 (Δ=32)
+
+### solid.card4 (4)
+  [rect] #161 x: HF=832 OHF=810 (Δ=-22)
+  [rect] #161 y: HF=231 OHF=200 (Δ=-31)
+  [rect] #161 w: HF=154 OHF=195 (Δ=41)
+  [rect] #161 h: HF=154 OHF=195 (Δ=41)
+
+### solid.card4img (4)
+  [rect] #162 x: HF=836 OHF=820 (Δ=-16)
+  [rect] #162 y: HF=235 OHF=211 (Δ=-24)
+  [rect] #162 w: HF=145 OHF=174 (Δ=29)
+  [rect] #162 h: HF=145 OHF=174 (Δ=29)
+
+### solid.card4rot (4)
+  [rect] #160 x: HF=832 OHF=810 (Δ=-22)
+  [rect] #160 y: HF=231 OHF=200 (Δ=-31)
+  [rect] #160 w: HF=154 OHF=195 (Δ=41)
+  [rect] #160 h: HF=154 OHF=195 (Δ=41)
+
+### solid.slot1 (1)
+  [rect] #147 y: HF=236 OHF=231 (Δ=-5)
+
+### solid.slot2 (1)
+  [rect] #151 y: HF=236 OHF=231 (Δ=-5)
+
+### solid.slot3 (1)
+  [rect] #155 y: HF=236 OHF=231 (Δ=-5)
+
+### solid.slot4 (1)
+  [rect] #159 y: HF=236 OHF=231 (Δ=-5)
+
+### stage (2)
+  [rect] #113 y: HF=86 OHF=76 (Δ=-10)
+  [rect] #113 h: HF=814 OHF=824 (Δ=10)
+
+### stepminus (4)
+  [rect] #242 x: HF=789 OHF=809 (Δ=20)
+  [rect] #242 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #242 w: HF=16 OHF=20 (Δ=4)
+  [rect] #242 h: HF=16 OHF=20 (Δ=4)
+
+### stepnum (2)
+  [rect] #245 x: HF=809 OHF=833 (Δ=24)
+  [rect] #245 w: HF=32 OHF=24 (Δ=-8)
+
+### stepper (3)
+  [rect] #241 x: HF=776 OHF=796 (Δ=20)
+  [style] #241 backgroundColor: HF=rgba(255, 255, 255, 0.05) OHF=oklab(0.999994 0.0000125218 0.0000052874 / 0.05)
+  [style] #241 gap: HF=normal 4px OHF=4px
+
+### stepperouter (1)
+  [rect] #240 x: HF=776 OHF=796 (Δ=20)
+
+### stepplus (4)
+  [rect] #247 x: HF=845 OHF=861 (Δ=16)
+  [rect] #247 y: HF=844 OHF=842 (Δ=-2)
+  [rect] #247 w: HF=16 OHF=20 (Δ=4)
+  [rect] #247 h: HF=16 OHF=20 (Δ=4)
+
+### steptotal (1)
+  [rect] #246 x: HF=821 OHF=841 (Δ=20)
+
+### track (1)
+  [rect] #199 w: HF=534 OHF=561 (Δ=27)
+
+### trackInner (1)
+  [rect] #200 w: HF=534 OHF=561 (Δ=27)
+
