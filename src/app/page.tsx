@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { OpenHiggsfieldApp } from "@/openhiggsfield/openhiggsfield-app";
 
+import "@/openhiggsfield/tokens.css";
 import "@/openhiggsfield/openhiggsfield.css";
 import "@/openhiggsfield/reference-film.css";
 
