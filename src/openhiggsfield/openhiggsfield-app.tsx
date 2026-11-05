@@ -58,6 +58,7 @@ import { Viewer } from "./viewer";
    it adopts as its left column. */
 import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
+import { VideoSurface } from "./video-surface";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the project detail surface plus the view-state store that raises
@@ -1487,7 +1488,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
               HF's feed controls (tabs, sort) live inside the right column header
               (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
-          {(surface === "video" || surface === "audio") ? (
+          {surface === "video" ? (
+            /* HF /ko/ai/video?model=minimax_h3 정적 화면 이식(t_bb8f3edb):
+               플레이트·생성 폼·피드 컬럼을 GT 306 요소 실측 그대로 미러링했다. */
+            <VideoSurface />
+          ) : surface === "audio" ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
