@@ -20857,7 +20857,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-size: 12px;                       /* text-q-label-xs-regular */
   font-weight: 400;
   line-height: 18px;
-  color: var(--drill-card-date);         /* text-q-text-secondary rgb(151,151,151) */
+  color: var(--drill-tertiary);          /* HF text-q-text-secondary measured rgb(130,130,130) = --tx3 (the card-date token #979797 was mis-applied to the rail meta) */
 }
 .ohf-drill-tile-meta-line {
   overflow: hidden;
