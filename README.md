@@ -26,6 +26,19 @@ Next.js 16 App Router on Vercel · React 19 · plain CSS · Zustand · pnpm
 
 ---
 
+## 개발자를 위한: 디자인 시스템
+
+스튜디오의 색·그림자·여백·정체성은 `src/openhiggsfield/openhiggsfield.css`에 `.ohf` 스코프로
+들어있는 **CSS 커스텀 프로퍼티 토큰 + 클래스 택소노미**다. 적용·기여는 아래 문서로 한다.
+
+- **가이드**: [`docs/design-system/`](./docs/design-system/) — 토큰 3계층, 컴포넌트 선택,
+  변형 규칙(BEM vs `data-*`), 기여 워크플로우. 원칙: 색·여백·그림자는 `var()`로만(하드코딩 금지),
+  라임 액센트는 선택·주 동작·라이브니스에 예약.
+- **시각 레퍼런스(Storybook 10)**: `pnpm storybook`(http://localhost:6006) /
+  `pnpm build-storybook` → `storybook-static/`.
+
+---
+
 ## Features
 
 ### Generate
