@@ -19700,14 +19700,14 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   border-radius: 8px;
   background: color-mix(in srgb, var(--bg) 72%, transparent);
   border: 1px solid var(--line);
-  color: var(--muted);
+  color: var(--tx2);
 }
 .ohf-viewer-media-bottom-btn svg {
   width: 22px;
   height: 22px;
 }
 .ohf-viewer-media-bottom-btn:hover:not([aria-disabled="true"]) {
-  color: var(--text);
+  color: var(--tx);
   border-color: var(--accent);
 }
 .ohf-viewer-media-bottom-btn[aria-disabled="true"] {
@@ -19756,7 +19756,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--muted);
+  color: var(--tx2);
   font-size: 13px;
 }
 .ohf-viewer-video-edit-card {
@@ -19770,10 +19770,10 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 }
 .ohf-viewer-video-edit-card-title {
   font-weight: 600;
-  color: var(--text);
+  color: var(--tx);
 }
 .ohf-viewer-video-edit-card-note {
-  color: var(--muted);
+  color: var(--tx2);
   font-size: 13px;
 }
 
@@ -19940,40 +19940,40 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-vedit-stage {
   position: relative; flex: 1 1 0; min-height: 0; display: flex;
   align-items: center; justify-content: center; overflow: hidden;
-  border: 1px solid var(--line); border-radius: 10px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; background: var(--s1);
 }
 .ohf-vedit-video { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .ohf-vedit-caption-overlay {
   position: absolute; left: 50%; bottom: 10%; transform: translateX(-50%);
   max-width: 72%; padding: 5px 14px; border-radius: 6px;
   background: var(--plate); color: var(--plate-ink); pointer-events: none;
-  font: 600 clamp(.95rem,.8rem + .7vmin,1.15rem)/1.25 var(--sans); text-align: center;
+  font: 600 clamp(.95rem,.8rem + .7vmin,1.15rem)/1.25 var(--font-ui); text-align: center;
 }
 /* Transport: play / pause, the clock and mute. */
 .ohf-vedit-transport { flex: none; display: flex; align-items: center; gap: 9px; }
 .ohf-vedit-play, .ohf-vedit-mute {
   flex: none; display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--line); border-radius: 8px; background: transparent;
-  color: var(--ink-2); transition: color .18s var(--ease), border-color .18s var(--ease);
+  color: var(--tx2); transition: color .18s var(--ease), border-color .18s var(--ease);
 }
 .ohf-vedit-play { width: 36px; height: 36px; }
 .ohf-vedit-mute { width: 30px; height: 30px; }
 .ohf-vedit-play > svg { width: 18px; height: 18px; transform: translate(-1px, 1px); }
 .ohf-vedit-mute > svg { width: 16px; height: 16px; }
-.ohf-vedit-play:hover, .ohf-vedit-mute:hover { border-color: var(--line-2); color: var(--ink); }
+.ohf-vedit-play:hover, .ohf-vedit-mute:hover { border-color: var(--line-2); color: var(--tx); }
 .ohf-vedit-play:active, .ohf-vedit-mute:active { transform: translateY(1px); }
 .ohf-vedit-play[aria-pressed="true"], .ohf-vedit-mute[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
-.ohf-vedit-clock { font: 600 13px/1 var(--mono); color: var(--ink); letter-spacing: -.01em; }
-.ohf-vedit-clock-total { color: var(--ink-3); }
+.ohf-vedit-clock { font: 600 13px/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--tx); letter-spacing: -.01em; }
+.ohf-vedit-clock-total { color: var(--tx3); }
 .ohf-vedit-transport-fill { flex: 1 1 0; min-width: 0; }
 .ohf-vedit-transport-lane-label {
-  font: 600 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute);
+  font: 600 .62rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--tx-off);
 }
 /* The timeline: a video lane with ticks, a caption lane under it, a playhead and
    the two trim handles you drag to cut the span. */
 .ohf-vedit-timeline {
   position: relative; flex: none; height: 70px; overflow: visible;
-  border: 1px solid var(--line); border-radius: 9px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 9px; background: var(--s1);
   touch-action: none; cursor: ew-resize; outline: none;
 }
 .ohf-vedit-timeline:focus-visible { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-14); }
@@ -19990,7 +19990,7 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   background: rgba(255,255,255,.05); border: 1px solid var(--line-2);
 }
 .ohf-vedit-caption-block-text {
-  display: block; padding: 0 6px; font: 600 10px/12px var(--mono); color: var(--ink-2);
+  display: block; padding: 0 6px; font: 600 10px/12px "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--tx2);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .ohf-vedit-playhead { position: absolute; top: 3px; bottom: 3px; width: 2px; transform: translateX(-1px); pointer-events: none; }
@@ -20003,9 +20003,9 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-vedit-handle {
   position: absolute; top: 50%; transform: translate(-50%, -50%);
   width: 11px; height: 30px; min-height: 0; border-radius: 4px; pointer-events: auto;
-  background: var(--panel-3); border: 1px solid var(--line-2); cursor: ew-resize;
+  background: var(--s3); border: 1px solid var(--line-2); cursor: ew-resize;
 }
-.ohf-vedit-handle:hover { background: var(--panel-2); }
+.ohf-vedit-handle:hover { background: var(--s2); }
 .ohf-vedit-in .ohf-vedit-handle { border-left: 2px solid var(--accent); }
 .ohf-vedit-out .ohf-vedit-handle { border-right: 2px solid var(--accent); }
 /* The clip tools, docked under the timeline where HF seats them. The cut and
@@ -20013,65 +20013,65 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
 .ohf-vedit-cliptools { flex: none; display: flex; flex-wrap: wrap; gap: 7px; padding: 2px 0 6px; }
 .ohf-vedit-cliptool {
   display: inline-flex; align-items: center; gap: 7px; min-height: 30px; padding: 5px 9px;
-  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--tx2);
   cursor: pointer; transition: color .18s var(--ease), border-color .18s var(--ease);
 }
 .ohf-vedit-cliptool-icon { display: inline-flex; flex: none; }
 .ohf-vedit-cliptool-icon > svg { width: 18px; height: 18px; }
-.ohf-vedit-cliptool-label { font: 600 .68rem/1 var(--mono); letter-spacing: .01em; white-space: nowrap; }
-.ohf-vedit-cliptool:hover { border-color: var(--line-2); color: var(--ink); }
+.ohf-vedit-cliptool-label { font: 600 .68rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .01em; white-space: nowrap; }
+.ohf-vedit-cliptool:hover { border-color: var(--line-2); color: var(--tx); }
 .ohf-vedit-cliptool:active { transform: translateY(1px); }
 .ohf-vedit-cliptool[aria-disabled="true"] { opacity: .5; cursor: default; }
-.ohf-vedit-cliptool[aria-disabled="true"]:hover { border-color: var(--line); color: var(--ink-2); }
+.ohf-vedit-cliptool[aria-disabled="true"]:hover { border-color: var(--line); color: var(--tx2); }
 /* The rail's residual panel: the caption track and the clip inspector, sharing
    the rail's edit container with the image workspace's own cards. */
 .ohf-vedit-caption-panel { display: flex; flex-direction: column; min-height: 0; }
 .ohf-vedit-caption-head { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 2px; }
-.ohf-vedit-caption-head-icon { display: inline-flex; flex: none; color: var(--ink-2); }
+.ohf-vedit-caption-head-icon { display: inline-flex; flex: none; color: var(--tx2); }
 .ohf-vedit-caption-head-icon > svg { width: 18px; height: 18px; }
-.ohf-vedit-caption-head-title { flex: 1 1 auto; font: 600 .82rem/1 var(--sans); color: var(--ink); }
+.ohf-vedit-caption-head-title { flex: 1 1 auto; font: 600 .82rem/1 var(--font-ui); color: var(--tx); }
 .ohf-vedit-caption-add {
   flex: none; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--tx2);
   cursor: pointer; transition: color .18s var(--ease), border-color .18s var(--ease);
 }
 .ohf-vedit-caption-add > svg { width: 16px; height: 16px; }
 .ohf-vedit-caption-add:hover { border-color: var(--accent); color: var(--accent); }
 .ohf-vedit-caption-list { display: flex; flex-direction: column; gap: 6px; }
-.ohf-vedit-caption-empty { font: 600 .72rem/1 var(--mono); color: var(--ink-mute); padding: 6px 0; }
+.ohf-vedit-caption-empty { font: 600 .72rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--tx-off); padding: 6px 0; }
 .ohf-vedit-caption-row { display: flex; align-items: center; gap: 8px; }
-.ohf-vedit-caption-index { flex: none; width: 26px; font: 600 .66rem/1 var(--mono); color: var(--ink-3); }
+.ohf-vedit-caption-index { flex: none; width: 26px; font: 600 .66rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--tx3); }
 .ohf-vedit-caption-input {
   flex: 1 1 0; min-width: 0; height: 32px; padding: 0 10px; border: 1px solid var(--line);
-  border-radius: 8px; background: transparent; color: var(--ink); outline: none;
-  font: 500 .82rem/1 var(--sans);
+  border-radius: 8px; background: transparent; color: var(--tx); outline: none;
+  font: 500 .82rem/1 var(--font-ui);
 }
 .ohf-vedit-caption-input:hover { border-color: var(--line-2); }
 .ohf-vedit-caption-input:focus { border-color: var(--accent); }
-.ohf-vedit-caption-input::placeholder { color: var(--ink-mute); }
-.ohf-vedit-caption-span { flex: none; font: 600 .6rem/1 var(--mono); color: var(--ink-mute); }
+.ohf-vedit-caption-input::placeholder { color: var(--tx-off); }
+.ohf-vedit-caption-span { flex: none; font: 600 .6rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--tx-off); }
 .ohf-vedit-caption-del {
   flex: none; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
-  border: 0; border-radius: 7px; background: transparent; color: var(--ink-3); cursor: pointer;
+  border: 0; border-radius: 7px; background: transparent; color: var(--tx3); cursor: pointer;
 }
 .ohf-vedit-caption-del > svg { width: 14px; height: 14px; }
-.ohf-vedit-caption-del:hover { color: var(--ink); background: rgba(255,255,255,.04); }
+.ohf-vedit-caption-del:hover { color: var(--tx); background: rgba(255,255,255,.04); }
 /* The clip-property inspector mirrors the image tools card's row idiom. */
 .ohf-vedit-inspector { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 2px; }
 .ohf-vedit-inspector-head {
   display: flex; align-items: center; gap: 8px; min-height: 34px; padding: 0 2px;
-  font: 600 .74rem/1 var(--mono); letter-spacing: .03em; color: var(--ink-3);
+  font: 600 .74rem/1 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .03em; color: var(--tx3);
 }
-.ohf-vedit-inspector-head > svg { width: 16px; height: 16px; color: var(--ink-3); }
+.ohf-vedit-inspector-head > svg { width: 16px; height: 16px; color: var(--tx3); }
 .ohf-vedit-inspector-row {
   display: flex; align-items: center; gap: 9px; min-height: 34px; padding: 0 8px;
   border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: default;
 }
 .ohf-vedit-inspector-row[aria-disabled="true"] { opacity: .55; }
-.ohf-vedit-inspector-row-icon { display: inline-flex; flex: none; color: var(--ink-2); }
+.ohf-vedit-inspector-row-icon { display: inline-flex; flex: none; color: var(--tx2); }
 .ohf-vedit-inspector-row-icon > svg { width: 18px; height: 18px; }
-.ohf-vedit-inspector-row-label { flex: 1 1 auto; min-width: 0; font: 600 .8rem/1 var(--sans); color: var(--ink-2); }
-.ohf-vedit-inspector-row-caret { display: inline-flex; flex: none; color: var(--ink-mute); }
+.ohf-vedit-inspector-row-label { flex: 1 1 auto; min-width: 0; font: 600 .8rem/1 var(--font-ui); color: var(--tx2); }
+.ohf-vedit-inspector-row-caret { display: inline-flex; flex: none; color: var(--tx-off); }
 .ohf-vedit-inspector-row-caret > svg { width: 14px; height: 14px; transform: rotate(-90deg); }
 
 /* t_b8a39dd7 — HF's column structure for video/audio create pages:
