@@ -99,7 +99,7 @@ for nid in NIDS:
     otxt = re.sub(r"\s+", " ", ohf.get("txt") or "").strip()
     if gtxt != otxt:
         issues.append((nid, "text", f"{gtxt[:50]!r} vs {otxt[:50]!r}"))
-    gst, ost = gt.get("sty") or {}, ohf.get("styles") or {}
+    gst, ost = gt.get("sty") or {}, ohf.get("sty") or {}  # OHF harvest emits styles under `sty` too
     for k in sorted(set(gst) | set(ost)):
         gv, ov = gst.get(k, ""), ost.get(k, "")
         if gv == ov:

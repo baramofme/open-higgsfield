@@ -78,40 +78,50 @@ async def main():
                 await asyncio.sleep(0.2)
             for attempt in range(40):
                 raw = await ev(sid, HARVEST_JS)
-                if raw and isinstance(raw, str):
+                d = None
+                if isinstance(raw, dict):          # returnByValue deserializes the IIFE object
+                    d = raw
+                elif isinstance(raw, str):          # tolerate a stringified variant too
                     try:
                         d = json.loads(raw)
-                        vc = d.get("visibleCount", 0)
-                        ready = await ev(sid, "!!document.querySelector('[data-ohf-video=\"102\"]')")
-                        plate = await ev(sid, "!!document.querySelector('[data-ohf-video=\"103\"]')")
-                        feed = await ev(sid, "!!document.querySelector('[data-ohf-video=\"221\"]')")
-                        print(f"attempt {attempt}: visible={vc}, elementCount={d.get('elementCount')}, grid={ready}, plate={plate}, feed={feed}")
-                        if vc > 50 and ready and plate and feed:
-                            elements = d.get("elements", [])
-                            href = await ev(sid, "document.location.href")
-                            title = await ev(sid, "document.title")
-                            scroll_w = await ev(sid, "document.documentElement.scrollWidth")
-                            scroll_h = await ev(sid, "document.documentElement.scrollHeight")
-                            ss = await send("Page.captureScreenshot", {"format": "png"}, session=sid)
-                            ss_path = OUT_DIR / "ohf_video_surface_ss.png"
-                            ss_path.write_bytes(base64.b64decode(ss["data"]))
-                            print(f"Screenshot: {ss_path} ({len(base64.b64decode(ss['data']))} bytes)")
-                            await send("Target.closeTarget", {"targetId": tid})
-                            result = {
-                                "url_requested": TARGET_URL, "final_href": href, "title": title,
-                                "viewport": {"width": WIDTH, "height": HEIGHT},
-                                "page_scroll": {"scrollWidth": scroll_w, "scrollHeight": scroll_h},
-                                "visible_count_at_harvest": vc,
-                                "element_count": len(elements),
-                                "elements": elements,
-                            }
-                            out_path = OUT_DIR / "ohf_video_surface_harvest.json"
-                            with open(out_path, "w", encoding="utf-8") as f:
-                                json.dump(result, f, ensure_ascii=False, indent=2)
-                            print(f"Wrote {out_path} — {len(elements)} elements")
-                            return
                     except json.JSONDecodeError:
                         print(f"JSON parse err: {repr(raw[:200])}")
+                if d is not None:
+                    count = d.get("count", 0)      # harvest JS emits `count`, not visibleCount
+                    ready = await ev(sid, "!!document.querySelector('[data-ohf-video=\"102\"]')")
+                    plate = await ev(sid, "!!document.querySelector('[data-ohf-video=\"103\"]')")
+                    feed = await ev(sid, "!!document.querySelector('[data-ohf-video=\"221\"]')")
+                    print(f"attempt {attempt}: count={count}, grid={ready}, plate={plate}, feed={feed}")
+                    if count > 50 and ready and plate and feed:
+                        elements = d.get("elements", [])
+                        href = await ev(sid, "document.location.href")
+                        title = await ev(sid, "document.title")
+                        scroll_w = await ev(sid, "document.documentElement.scrollWidth")
+                        scroll_h = await ev(sid, "document.documentElement.scrollHeight")
+                        result = {
+                            "url_requested": TARGET_URL, "final_href": href, "title": title,
+                            "viewport": {"width": WIDTH, "height": HEIGHT},
+                            "page_scroll": {"scrollWidth": scroll_w, "scrollHeight": scroll_h},
+                            "element_count": len(elements),
+                            "elements": elements,
+                        }
+                        out_path = OUT_DIR / "ohf_video_surface_harvest.json"
+                        with open(out_path, "w", encoding="utf-8") as f:
+                            json.dump(result, f, ensure_ascii=False, indent=2)
+                        print(f"Wrote {out_path} — {len(elements)} elements")
+                        # screenshot AFTER JSON is on disk (skill lesson); best-effort, retry x3, non-fatal
+                        ss_path = OUT_DIR / "ohf_video_surface_ss.png"
+                        for s_attempt in range(3):
+                            try:
+                                ss = await send("Page.captureScreenshot", {"format": "png"}, session=sid)
+                                ss_path.write_bytes(base64.b64decode(ss["data"]))
+                                print(f"Screenshot: {ss_path} ({len(base64.b64decode(ss['data']))} bytes)")
+                                break
+                            except Exception as ex:
+                                print(f"screenshot attempt {s_attempt} failed: {ex}")
+                                await asyncio.sleep(2)
+                        await send("Target.closeTarget", {"targetId": tid})
+                        return
                 await asyncio.sleep(1.5)
             print("No video surface after 40 attempts", file=sys.stderr)
             await send("Target.closeTarget", {"targetId": tid})

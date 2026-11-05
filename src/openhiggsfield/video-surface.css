@@ -50,6 +50,7 @@
   --ctl-vid-px58p1: 58.1px;
   --ctl-vid-c255-255-255-ap06: rgba(255, 255, 255, 0.06);
   --ctl-vid-px16: 16px;
+  --ctl-vid-px24: 24px;
   --ctl-vid-backdropfilter-blur-4-5px: blur(4.5px);
   --ctl-vid-display-inline: inline;
   --ctl-vid-px11p7: 11.7px;
@@ -384,6 +385,15 @@
 }
 
 .ohf-vid-n113 {
+  border-top-width: var(--ctl-vid-px0);
+  border-right-width: var(--ctl-vid-px0);
+  border-bottom-width: var(--ctl-vid-px0);
+  border-left-width: var(--ctl-vid-px0);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+
   top: auto;
   right: auto;
   bottom: auto;
@@ -417,6 +427,9 @@
 }
 
 .ohf-vid-n115 {
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+
   width: var(--ctl-vid-p100);
   height: var(--ctl-vid-p100);
   top: auto;
@@ -2084,6 +2097,15 @@
 }
 
 .ohf-vid-n198 {
+  border-top-width: var(--ctl-vid-px0);
+  border-right-width: var(--ctl-vid-px0);
+  border-bottom-width: var(--ctl-vid-px0);
+  border-left-width: var(--ctl-vid-px0);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+
   margin-top: var(--ohf-spacing-md);
   display: grid;
   grid-template-columns: var(--ctl-vid-gridtemplatecolumns-repeat-2-minmax-0-1fr);
@@ -2380,7 +2402,10 @@
   white-space: nowrap;
   justify-content: center;
   align-items: center;
-  font-weight: var(--ohf-font-weight-medium);
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+  font-weight: var(--ohf-font-weight-semibold);
+  width: var(--ctl-vid-p100);
   height: var(--ctl-vid-px48);
   display: var(--ctl-vid-display-inline-grid);
   position: relative;
@@ -3355,6 +3380,9 @@
 }
 
 .ohf-vid-n270 {
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+
   width: var(--ctl-vid-p100);
   height: var(--ctl-vid-p100);
   top: auto;
@@ -3436,6 +3464,9 @@
 }
 
 .ohf-vid-n275 {
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+
   width: var(--ctl-vid-p100);
   height: var(--ctl-vid-p100);
   top: auto;
@@ -3780,6 +3811,9 @@
 }
 
 .ohf-vid-n292 {
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+
   top: auto;
   right: auto;
   bottom: auto;
