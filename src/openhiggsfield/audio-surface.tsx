@@ -20,17 +20,17 @@ import "./audio-surface.css";
 
 /* ---- HF 원문 SVG(전부 원문 그대로) ---- */
 
-function IconWave({ className }: { className?: string }) {
+function IconWave({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className={className} xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" data-ohf-audio={hook} className={className} xmlns="http://www.w3.org/2000/svg">
       <path d="M2.5 6.5v3M5.75 4.5v7M9 2.75v10.5M12.25 5v6M15 6.75v2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function IconMusic({ className }: { className?: string }) {
+function IconMusic({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M19.1835 3.83539C19.3432 3.78977 19.5022 3.90968 19.5022 4.07577V13.15C18.8575 12.7352 18.0658 12.5001 17.2522 12.5001C15.315 12.5001 13.5022 13.833 13.5022 15.7501C13.5022 17.6673 15.315 19.0001 17.2522 19.0001C19.1894 19.0001 21.0022 17.6673 21.0022 15.7501V4.07577C21.0022 2.91315 19.8894 2.07374 18.7715 2.39308L10.2693 4.82177C9.51801 5.03639 9 5.72309 9 6.50446V16.15C8.35535 15.7352 7.56365 15.5001 6.75 15.5001C4.81278 15.5001 3 16.833 3 18.7501C3 20.6673 4.81278 22.0001 6.75 22.0001C8.68722 22.0001 10.5 20.6673 10.5 18.7501V6.50446C10.5 6.39284 10.574 6.29474 10.6813 6.26408L19.1835 3.83539Z"
         fill="currentColor"
@@ -39,9 +39,9 @@ function IconMusic({ className }: { className?: string }) {
   );
 }
 
-function IconImage({ className }: { className?: string }) {
+function IconImage({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M14.25 6.75C13.0074 6.75 12 7.75736 12 9C12 10.2426 13.0074 11.25 14.25 11.25C15.4926 11.25 16.5 10.2426 16.5 9C16.5 7.75736 15.4926 6.75 14.25 6.75Z" fill="currentColor" />
       <path
         fillRule="evenodd"
@@ -53,82 +53,82 @@ function IconImage({ className }: { className?: string }) {
   );
 }
 
-function IconInfo({ className }: { className?: string }) {
+function IconInfo({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" data-ohf-audio={hook} className={className} xmlns="http://www.w3.org/2000/svg">
       <path d="M10.75 11H12L12 16.25M21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M12 7.375C11.6548 7.375 11.375 7.65482 11.375 8C11.375 8.34518 11.6548 8.625 12 8.625C12.3452 8.625 12.625 8.34518 12.625 8C12.625 7.65482 12.3452 7.375 12 7.375Z" fill="currentColor" stroke="currentColor" strokeWidth="0.25" />
     </svg>
   );
 }
 
-function IconFolder({ className }: { className?: string }) {
+function IconFolder({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.75 4.75V18.25C2.75 18.8023 3.19772 19.25 3.75 19.25H20.25C20.8023 19.25 21.25 18.8023 21.25 18.25V7.75C21.25 7.19772 20.8023 6.75 20.25 6.75H12.5352C12.2008 6.75 11.8886 6.5829 11.7031 6.3047L10.2969 4.1953C10.1114 3.9171 9.79917 3.75 9.46482 3.75H3.75C3.19772 3.75 2.75 4.19772 2.75 4.75Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function IconBook({ className }: { className?: string }) {
+function IconBook({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 7.75C12 6.09315 13.3431 4.75 15 4.75H21.25C21.8023 4.75 22.25 5.19772 22.25 5.75V18.25C22.25 18.8023 21.8023 19.25 21.25 19.25H15.277C14.5966 19.25 13.9296 19.4142 13.3508 19.7719C12.772 20.1296 12.3043 20.6414 12 21.25M12 7.75C12 6.09315 10.6569 4.75 9 4.75H2.75C2.19772 4.75 1.75 5.19772 1.75 5.75V18.25C1.75 18.8023 2.19772 19.25 2.75 19.25H8.723C9.40341 19.25 10.0704 19.4142 10.6492 19.7719C11.228 20.1296 11.6957 20.6414 12 21.25M12 7.75V21.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function IconFilterLines({ className }: { className?: string }) {
+function IconFilterLines({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.75 4.75H21.25M8.75 19.25H15.25M5.75 12H18.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function IconBrand({ className }: { className?: string }) {
+function IconBrand({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" className={className}>
-      <path d="m3.154 12.154-2.62.655V1.2l2.62.655v10.3Zm12.668.679-2.626.656V.519l2.627.65v11.664Zm-8.509-.325-2.622.656v-6.84l2.622.655v5.53ZM9.025 5.31l2.627-.656v6.84l-2.627-.656V5.31Z" fill="currentColor" />
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" data-ohf-audio={hook} className={className}>
+      <path data-ohf-audio="brandpath" d="m3.154 12.154-2.62.655V1.2l2.62.655v10.3Zm12.668.679-2.626.656V.519l2.627.65v11.664Zm-8.509-.325-2.622.656v-6.84l2.622.655v5.53ZM9.025 5.31l2.627-.656v6.84l-2.627-.656V5.31Z" fill="currentColor" />
     </svg>
   );
 }
 
-function IconChevronDown({ className }: { className?: string }) {
+function IconChevronDown({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M3.46967 8.46967C3.76256 8.17678 4.23744 8.17678 4.53033 8.46967L12 15.9393L19.4697 8.46967C19.7626 8.17678 20.2374 8.17678 20.5303 8.46967C20.8232 8.76256 20.8232 9.23744 20.5303 9.53033L12.5303 17.5303C12.3897 17.671 12.1989 17.75 12 17.75C11.8011 17.75 11.6103 17.671 11.4697 17.5303L3.46967 9.53033C3.17678 9.23744 3.17678 8.76256 3.46967 8.46967Z" fill="currentColor" />
     </svg>
   );
 }
 
-function IconMinus({ className }: { className?: string }) {
+function IconMinus({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M6.75 12H17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function IconPlus({ className }: { className?: string }) {
+function IconPlus({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg className={className} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} data-ohf-audio={hook} aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 6.75V12M12 12V17.25M12 12H6.75M12 12H17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-function IconSliders({ className }: { className?: string }) {
+function IconSliders({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-ohf-audio={hook} className={className}>
       <path stroke="currentColor" strokeLinecap="square" strokeWidth="1.5" d="M11.5 7.25H3.75m1.75 9.5H3.75m16.5-9.5H18.5m1.75 9.5H12.5M9 20a3.25 3.25 0 1 0 0-6.5A3.25 3.25 0 1 0 9 20Zm6-9.5A3.25 3.25 0 1 0 15 4a3.25 3.25 0 1 0 0 6.5Z" />
     </svg>
   );
 }
 
-function IconHelp({ className }: { className?: string }) {
+function IconHelp({ className, hook }: { className?: string; hook?: string }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-ohf-audio={hook} className={className}>
       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15.75c0-4.25 4.25-3.317 4.25-6.976 0-4.987-7.385-5.446-8.388-.774" />
       <path fill="currentColor" d="M12 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
     </svg>
@@ -155,7 +155,7 @@ const STR = {
     "예: 영국식 억양의 젊은 여성 목소리, 부드럽고 큰 소리. 신나서 킥킥거리는 느낌",
   counter: "0/500",
   advanced: "고급 설정",
-  hfModel: "Eleven Multilingual v2",
+  hfModel: "Seed Audio 1.0",
   generate: "생성하기",
   record: "기록",
   guide: "이용 방법",
@@ -168,7 +168,7 @@ const STR = {
   card2Sub: "스크립트를 입력하고, 어떻게 들릴지 설명한 다음, 만들어 보세요",
   video1Label: "음성 프리셋 캐러셀",
   video2Label: "스크립트 프롬프트가 있는 텍스트 음성 변환 양식",
-  videoFallback: "사용 중인 브라우저가 영상을 지원하지 않아요",
+  videoFallback: "사용 중인 브라우저가 영상을 지원하지 않아요.",
   helpLabel: "도움이 필요하세요?",
   resizeLabel: "오디오 패널 크기 조절",
   resizeTitle:
@@ -269,13 +269,13 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                         </svg>
                         <div className="ohf-audio-circles" data-ohf-audio="circles">
                           <span className="ohf-audio-circle" data-ohf-audio="circle0" aria-hidden="true">
-                            <IconWave className="ohf-audio-circle-ico a" />
+                            <IconWave hook="circle0svg" className="ohf-audio-circle-ico a" />
                           </span>
                           <span className="ohf-audio-circle" data-ohf-audio="circle1" aria-hidden="true">
-                            <IconMusic className="ohf-audio-circle-ico" />
+                            <IconMusic hook="circle1svg" className="ohf-audio-circle-ico" />
                           </span>
                           <span className="ohf-audio-circle" data-ohf-audio="circle2" aria-hidden="true">
-                            <IconImage className="ohf-audio-circle-ico c" />
+                            <IconImage hook="circle2svg" className="ohf-audio-circle-ico c" />
                           </span>
                         </div>
                         <div className="ohf-audio-labelcol" data-ohf-audio="labelcol">
@@ -298,19 +298,22 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                         <span className="ohf-audio-script-label" data-ohf-audio="scriptlabel">
                           {STR.script}
                         </span>
-                        <span className="ohf-audio-script-icon" data-ohf-audio="scripticon">
-                          <IconInfo className="ohf-audio-script-icon-svg" />
+                        <span className="ohf-audio-script-icon" data-ohf-audio="scripticon" data-state="closed">
+                          <IconInfo hook="scripticonsvg" className="ohf-audio-script-icon-svg" />
                         </span>
                       </div>
                       <div className="ohf-audio-script-body" data-ohf-audio="scriptbody">
                         <div className="ohf-audio-script-rel" data-ohf-audio="scriptrel">
-                          <textarea
+                          <div
                             className="ohf-audio-script-field"
                             data-ohf-audio="field"
                             role="textbox"
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
-                          />
+                            contentEditable
+                            suppressContentEditableWarning
+                            onInput={(e) => setPrompt((e.currentTarget as HTMLElement).textContent || "")}
+                          >
+                            {prompt}
+                          </div>
                           {prompt.length === 0 && (
                             <div className="ohf-audio-script-overlay" data-ohf-audio="overlay" aria-hidden="true">
                               <div className="ohf-audio-script-overlay-inner" data-ohf-audio="overlayinner">
@@ -344,10 +347,10 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             <span className="ohf-audio-model-trunc" data-ohf-audio="modeltrunc">
                               {pickedModel ?? STR.hfModel}
                             </span>
-                            <IconBrand className="ohf-audio-brand" />
+                            <IconBrand hook="brand" className="ohf-audio-brand" />
                           </span>
                         </span>
-                        <IconChevronDown className="ohf-audio-chev" />
+                        <IconChevronDown hook="modelchev" className="ohf-audio-chev" />
                       </button>
                       {modelOpen && (
                         <div
@@ -391,7 +394,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                           disabled
                           aria-label="배치 크기 줄이기"
                         >
-                          <IconMinus className="ohf-audio-step-ico" />
+                          <IconMinus hook="minsvg" className="ohf-audio-step-ico" />
                         </button>
                         <span className="ohf-audio-step-val" data-ohf-audio="stepval">
                           {STR.batchValue}
@@ -404,7 +407,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                           data-off="HF원부재(OH에 다중 배치 오디오 엔진 없음)"
                           aria-label="배치 크기 늘리기"
                         >
-                          <IconPlus className="ohf-audio-step-ico" />
+                          <IconPlus hook="plussvg" className="ohf-audio-step-ico" />
                         </button>
                       </div>
                     </div>
@@ -440,11 +443,11 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                       aria-disabled="true"
                       data-off="동착 후속"
                     >
-                      <IconSliders className="ohf-audio-adv-icon" />
+                      <IconSliders hook="advicon" className="ohf-audio-adv-icon" />
                       <span className="ohf-audio-adv-label" data-ohf-audio="advlabel">
                         {STR.advanced}
                       </span>
-                      <IconChevronDown className="ohf-audio-chev" />
+                      <IconChevronDown hook="advchev" className="ohf-audio-chev" />
                     </button>
                   </div>
 
@@ -479,6 +482,10 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                 role="separator"
                 tabIndex={0}
                 aria-label={STR.resizeLabel}
+                aria-orientation="vertical"
+                aria-valuemin={342}
+                aria-valuemax={640}
+                aria-valuenow={394}
                 data-off="동착 후속(정적 화면 이식; 드래그·키는 미구현)"
               >
                 <div className="ohf-audio-resize-line" data-ohf-audio="resizeline" />
@@ -491,7 +498,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                 <div className="ohf-audio-feedrow" data-ohf-audio="feedrow">
                   <div className="ohf-audio-rc-left" data-ohf-audio="rcleft">
                     {/* HF의 단 래퍼(무클래스 div) — OHF도 동일하게 한 래퍼. */}
-                    <div data-ohf-audio="rcw1">
+                    <div data-ohf-audio="rcw1" data-orientation="horizontal">
                       <div
                         className="ohf-audio-tabgroup"
                         data-ohf-audio="tabgroup"
@@ -514,7 +521,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             aria-disabled="true"
                             data-off="동착 후속(기록 탭 = OH 오디오 히스토리 착지)"
                           >
-                            <IconFolder className="ohf-audio-rtab-ico" />
+                            <IconFolder hook="rtab1icon" className="ohf-audio-rtab-ico" />
                             <span className="ohf-audio-rtab-label" data-ohf-audio="rtab1label">
                               {STR.record}
                             </span>
@@ -524,6 +531,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             type="button"
                             role="tab"
                             aria-selected="false"
+                            data-state="inactive"
                             className="ohf-audio-rtab"
                             data-ohf-audio="rtab2"
                             tabIndex={-1}
@@ -532,7 +540,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             aria-disabled="true"
                             data-off="동착 후속(이용 방법 착지)"
                           >
-                            <IconBook className="ohf-audio-rtab-ico" />
+                            <IconBook hook="rtab2icon" className="ohf-audio-rtab-ico" />
                             <span className="ohf-audio-rtab-label" data-ohf-audio="rtab2label">
                               {STR.guide}
                             </span>
@@ -551,7 +559,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                         aria-disabled="true"
                         data-off="동착 후속(필터 착지)"
                       >
-                        <IconFilterLines className="ohf-audio-filter-ico" />
+                        <IconFilterLines hook="filtericon" className="ohf-audio-filter-ico" />
                         <span className="ohf-audio-filter-label" data-ohf-audio="filterlabel">
                           {STR.filter}
                         </span>
@@ -651,7 +659,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                       data-off="동착 후속"
                     >
                       <span className="ohf-audio-help-glyph" data-ohf-audio="helpglyph" aria-hidden="true">
-                        <IconHelp className="ohf-audio-help-ico" />
+                        <IconHelp hook="helpsvg" className="ohf-audio-help-ico" />
                       </span>
                     </button>
                   </div>

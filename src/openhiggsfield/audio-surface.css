@@ -10,27 +10,29 @@
 
 /* ---------- 그리드 골격 ---------- */
 
-.ohf-audio-main {                 /* HF: div.size-full.min-h-0.pt-3 */
+.ohf-audio-main {                 /* HF: div.size-full.min-h-0.pt-3 (display block) */
   flex: 1;
   min-height: 0;
+  margin-top: 2px;                /* HF header 44px vs OHF topbar 42px — 정적 rect 정합 */
   padding-top: 12px;              /* pt-3 */
-  display: flex;
-  flex-direction: column;
+  display: block;                 /* HF ptwrap computed display:block */
+  font-size: 16px;                /* HF 페이지 루트 16px(OH .ohf base 14px) — 계승 캐스케이드 */
+  line-height: 24px;              /* HF lh 1.5(OH 1.45 → 20.3px) */
+  letter-spacing: 0;              /* HF tracking-normal(OH normal) */
 }
 .ohf-audio-container {            /* HF: div.relative.size-full.container (x0 w1440 → px 16) */
   position: relative;
-  flex: 1;
+  height: 100%;
   min-height: 0;
   padding: 0 16px;
-  display: flex;
-  flex-direction: column;
+  display: block;                 /* HF container computed display:block */
 }
-.ohf-audio-grid {                 /* HF: grid grid-cols-[max-content_minmax(0,1fr)] gap-4 */
+.ohf-audio-grid {                 /* HF: grid grid-cols-[max-content_minmax(0,1fr)] (gap 실측 normal=0) */
+  width: 100%;
+  height: 100%;
   min-height: 0;
-  flex: 1;
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
-  gap: 16px;
 }
 
 /* ---------- 좌측 패널(aside) ---------- */
@@ -43,9 +45,11 @@
   flex-direction: column;
   padding-bottom: 16px;           /* pb-4 */
 }
-.ohf-audio-plate {                /* HF: flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-white/5 bg */
+.ohf-audio-plate {                /* HF: flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-white/5 bg; 실측 w394 align-self flex-start */
   display: flex;
   flex-direction: column;
+  width: 394px;                   /* HF 실측 aside/plate 394px(max-content 골격이 HF wider 패널로 수렴) */
+  align-self: flex-start;         /* HF plateCS flex-start */
   max-height: 100%;
   min-height: 0;
   overflow: hidden;
