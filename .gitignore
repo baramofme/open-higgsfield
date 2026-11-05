@@ -10,5 +10,10 @@ dist
 .vercel
 tsconfig.tsbuildinfo
 
+# Playwright integration-test output
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
 .env*
 .idea

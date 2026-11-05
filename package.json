@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "node --experimental-strip-types --import ./tests/prompt-optimize/boot.mjs --test tests/prompt-optimize/*.test.ts",
+    "test:integration": "playwright test --config=tests/integration/playwright.config.ts",
+    "test:integration:changed": "node --experimental-strip-types ./tests/integration/run-changed.mts",
     "brand": "node scripts/build-brand-assets.mjs"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@playwright/test": "1.60.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",

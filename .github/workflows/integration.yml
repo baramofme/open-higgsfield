@@ -1,0 +1,50 @@
+name: integration
+
+# Runs the UI+BE integration suite on every pull request, but only the subset of
+# menus the change actually touches. The selection lives in
+# tests/integration/run-changed.mts + change-detect.mts; a backend or shell change
+# widens it to all three, a single-surface UI change narrows it to that menu.
+
+on:
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # full history so the merge-base diff below resolves
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run the relevant integration scenarios
+        # Diffed against the PR's base commit; run-changed.mts picks the specs.
+        run: pnpm test:integration:changed -- --base "${{ github.event.pull_request.base.sha }}"
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 5
