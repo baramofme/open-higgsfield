@@ -79,6 +79,7 @@ const EMPTY_CANCELING_IDS: ReadonlySet<string> = new Set<string>();
    (concurrent-hunk-commit adjacency rule): the nested video/audio create shell
    that replaces the general view's standalone generation dock. */
 import { GeneralCreateTabs } from "./general-create-tabs";
+import { AudioSurface } from "./audio-surface";
 
 /* t_9ddf99e1 — the reference-scoped showcase. Anchored past the create-shell
    import so these lines form their own hunk, clear of the top cluster siblings
@@ -1487,7 +1488,16 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
               HF's feed controls (tabs, sort) live inside the right column header
               (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
-          {(surface === "video" || surface === "audio") ? (
+          {surface === "audio" ? (
+            /* t_dbb7f8b9 — HF /ko/audio 정적 화면 이식(음 서피스 전용 레이아웃).
+               동착(업로드·배치·고급·우측 탭·필터·도움·리사이즈 드래그)은 후속. */
+            <AudioSurface
+              model={model}
+              onModel={setModel}
+              onGenerate={runGenerate}
+              error={error}
+            />
+          ) : (surface === "video") ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
