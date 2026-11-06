@@ -45,6 +45,8 @@ import {
 import { Gallery, type TileMenuActions } from "./gallery";
 import { AssetSidebar, type AssetScope, type SidebarCounts } from "./asset-sidebar";
 import { FeedHeader, type FeedPanel } from "./feed-header";
+/* t_2afe2cd0 — HF public 프로필의 정적 미러(이식 1단계). */
+import { ProfileScreen } from "./profile-screen";
 import { FeedGuide, FeedShowcase } from "./feed-showcase";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
 import { loadComments } from "./comments";
@@ -253,7 +255,7 @@ function describeError(caught: unknown): string {
   return `Generation failed — ${message}. Try again; if it repeats, check the key in the sidebar.`;
 }
 
-export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: string }) {
+export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: { fontClassName?: string; profileHandle?: string | null }) {
   const surface = useActive((state) => state.surface);
   const modelId = useActive((state) => state.model);
   const setModel = useActive((state) => state.setModel);
