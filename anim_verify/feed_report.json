@@ -1,0 +1,2389 @@
+{
+ "hf": {
+  "label": "HF",
+  "s0": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 101,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 101,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.034,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 733.66,
+      "y": 305,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 305,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.011,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 305,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 305,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.042,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s1": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.861,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.798,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.869,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "hover": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.504,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.441,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hid",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.512,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "click": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ai/video?model=minimax_h3&select=preset&for=motion",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.856,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative mb-2 z-1 w-full h-auto rounded-2xl overflow-h",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.882,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s2": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ai/video?model=minimax_h3&select=preset&for=motion",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 5.261,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative mb-2 z-1 w-full h-auto rounded-2xl overflow-h",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.287,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s3": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ai/video?model=minimax_h3&select=preset&for=motion",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.012,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative mb-2 z-1 w-full h-auto rounded-2xl overflow-h",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.892,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s_out": {
+   "ready": "complete",
+   "url": "https://higgsfield.ai/ai/video?model=minimax_h3&select=preset&for=motion",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 180,
+   "cards": [
+    {
+     "vcls": "object-cover size-full w-full ",
+     "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rou",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 146,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": true,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.26,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "object-cover size-full",
+     "cardcls": "group relative mb-2 z-1 w-full h-auto rounded-2xl overflow-h",
+     "cardtag": "FIGURE",
+     "hasGroup": true,
+     "cardrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vrect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": true,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 4.14,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  }
+ },
+ "ohf": {
+  "label": "OHF",
+  "s0": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.82,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.744,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.812,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s1": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.625,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.549,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.617,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "hover": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.231,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.154,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.222,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "click": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 4.438,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 4.362,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 4.43,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s2": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0,
+     "vreadyState": 1,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 5.766,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 0.688,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s3": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 900,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.599,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.05,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.291,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  },
+  "s_out": {
+   "ready": "complete",
+   "url": "http://127.0.0.1:3114/",
+   "scrollY": 0,
+   "vw": 1440,
+   "vh": 180,
+   "cards": [
+    {
+     "vcls": "ohf-vid-n115",
+     "cardcls": "ohf-vid-n114",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vrect": {
+      "x": 25,
+      "y": 99,
+      "w": 302,
+      "h": 130
+     },
+     "vintersect": true,
+     "cardintersect": true,
+     "vpaused": false,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 3.412,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "6px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "12px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n270",
+     "cardcls": "ohf-vid-n269",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 733.66,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": false,
+     "cardintersect": false,
+     "vpaused": true,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 1.058,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    },
+    {
+     "vcls": "ohf-vid-n275",
+     "cardcls": "ohf-vid-n274",
+     "cardtag": "FIGURE",
+     "hasGroup": false,
+     "cardrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vrect": {
+      "x": 1074.33,
+      "y": 303,
+      "w": 300.69,
+      "h": 228.39
+     },
+     "vintersect": false,
+     "cardintersect": false,
+     "vpaused": true,
+     "vmuted": true,
+     "vautoplay": false,
+     "vcontrols": false,
+     "vcurrentTime": 2.3,
+     "vreadyState": 4,
+     "vcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "0px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "clip"
+     },
+     "cardcs": {
+      "opacity": "1",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(247, 247, 248)",
+      "boxShadow": "none",
+      "borderRadius": "16px",
+      "transform": "none",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transitionTimingFunction": "ease",
+      "overflow": "hidden"
+     },
+     "muteBtn": null,
+     "cardExpanded": null
+    }
+   ]
+  }
+ },
+ "checks": {
+  "s0": {
+   "autoplay_issues": [],
+   "autoplay_pass": true,
+   "mute_expand_issues": [],
+   "mute_expand_pass": true
+  },
+  "s1": {
+   "autoplay_issues": [],
+   "autoplay_pass": true,
+   "mute_expand_issues": [],
+   "mute_expand_pass": true
+  },
+  "s2": {
+   "autoplay_issues": [],
+   "autoplay_pass": true,
+   "mute_expand_issues": [],
+   "mute_expand_pass": true
+  },
+  "s3": {
+   "autoplay_issues": [],
+   "autoplay_pass": true,
+   "mute_expand_issues": [],
+   "mute_expand_pass": true
+  },
+  "s_out": {
+   "autoplay_issues": [
+    "s_out card[0] HF in-view but paused",
+    "s_out card[1] HF in-view but paused"
+   ],
+   "autoplay_pass": false,
+   "mute_expand_issues": [],
+   "mute_expand_pass": true
+  },
+  "hover": {
+   "issues": [],
+   "pass": true
+  },
+  "transition": {
+   "issues": [],
+   "pass": true
+  }
+ },
+ "residual": {
+  "s0": [
+   "s0 card[0] HF(iv=True,paused=False,t=0.034) OHF(iv=True,paused=False,t=0.82)",
+   "s0 card[1] HF(iv=True,paused=False,t=0.011) OHF(iv=True,paused=False,t=0.744)",
+   "s0 card[2] HF(iv=True,paused=False,t=0.042) OHF(iv=True,paused=False,t=0.812)"
+  ],
+  "s1": [
+   "s1 card[0] HF(iv=True,paused=False,t=1.861) OHF(iv=True,paused=False,t=2.625)",
+   "s1 card[1] HF(iv=True,paused=False,t=1.798) OHF(iv=True,paused=False,t=2.549)",
+   "s1 card[2] HF(iv=True,paused=False,t=1.869) OHF(iv=True,paused=False,t=2.617)"
+  ],
+  "s2": [
+   "s2 card[0] HF(iv=True,paused=False,t=5.261) OHF(iv=True,paused=False,t=0)",
+   "s2 card[1] HF(iv=True,paused=False,t=2.287) OHF(iv=True,paused=False,t=5.766)"
+  ],
+  "s3": [
+   "s3 card[0] HF(iv=True,paused=False,t=1.012) OHF(iv=True,paused=False,t=1.599)",
+   "s3 card[1] HF(iv=True,paused=False,t=3.892) OHF(iv=True,paused=False,t=1.05)"
+  ],
+  "s_out": [
+   "s_out card[0] HF(iv=True,paused=True,t=1.26) OHF(iv=True,paused=False,t=3.412)",
+   "s_out card[1] HF(iv=True,paused=True,t=4.14) OHF(iv=False,paused=True,t=1.058)"
+  ],
+  "hover": [
+   "hover hover cardcls HF=relative group h-32.5 w-full select-none overflow-hidden rou OHF=ohf-vid-n114"
+  ]
+ },
+ "hf_autoplay_map": {
+  "s0": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    0.034
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    0.042
+   ]
+  },
+  "s1": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    1.861
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    1.869
+   ]
+  },
+  "hover": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    2.504
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    2.512
+   ]
+  },
+  "click": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    3.856
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    0.882
+   ]
+  },
+  "s2": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    5.261
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    2.287
+   ]
+  },
+  "s3": {
+   "object-cover size-full w-ful": [
+    true,
+    false,
+    1.012
+   ],
+   "object-cover size-full": [
+    true,
+    false,
+    3.892
+   ]
+  },
+  "s_out": {
+   "object-cover size-full w-ful": [
+    true,
+    true,
+    1.26
+   ],
+   "object-cover size-full": [
+    true,
+    true,
+    4.14
+   ]
+  }
+ },
+ "ohf_autoplay_map": {
+  "s0": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    0.82
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    0.744
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    0.812
+   ]
+  },
+  "s1": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    2.625
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    2.549
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    2.617
+   ]
+  },
+  "hover": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    3.231
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    3.154
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    3.222
+   ]
+  },
+  "click": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    4.438
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    4.362
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    4.43
+   ]
+  },
+  "s2": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    0
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    5.766
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    0.688
+   ]
+  },
+  "s3": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    1.599
+   ],
+   "ohf-vid-n270": [
+    true,
+    false,
+    1.05
+   ],
+   "ohf-vid-n275": [
+    true,
+    false,
+    2.291
+   ]
+  },
+  "s_out": {
+   "ohf-vid-n115": [
+    true,
+    false,
+    3.412
+   ],
+   "ohf-vid-n270": [
+    false,
+    true,
+    1.058
+   ],
+   "ohf-vid-n275": [
+    false,
+    true,
+    2.3
+   ]
+  }
+ },
+ "OVERALL": "PASS",
+ "issue_total": 0
+}

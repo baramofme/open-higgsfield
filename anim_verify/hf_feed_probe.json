@@ -1,0 +1,452 @@
+{
+ "ready": "complete",
+ "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+ "vidCount": 3,
+ "vids": [
+  {
+   "cls": "object-cover size-full w-full h-full rounded-md object-contain",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "playsInline": true,
+   "preload": "none",
+   "paused": true,
+   "currentTime": 0,
+   "readyState": 0,
+   "src": "https://cdn.higgsfield.ai/minimax_hailuo_motion/d0028591-db56-4d8e-9fc0-d77efc18d018.mp4",
+   "parentCls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "6px",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "transform": "none",
+    "overflow": "clip"
+   },
+   "rect": {
+    "x": 25,
+    "y": 101,
+    "w": 302,
+    "h": 130
+   }
+  },
+  {
+   "cls": "object-cover size-full",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "playsInline": true,
+   "preload": "none",
+   "paused": true,
+   "currentTime": 0,
+   "readyState": 0,
+   "src": "https://static.higgsfield.ai/feed/step-2.mp4",
+   "parentCls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "0px",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "transform": "none",
+    "overflow": "clip"
+   },
+   "rect": {
+    "x": 733.66,
+    "y": 305,
+    "w": 300.67,
+    "h": 228.39
+   }
+  },
+  {
+   "cls": "object-cover size-full",
+   "autoplay": false,
+   "loop": true,
+   "muted": true,
+   "playsInline": true,
+   "preload": "none",
+   "paused": true,
+   "currentTime": 0,
+   "readyState": 0,
+   "src": "https://static.higgsfield.ai/feed/step-3.mp4",
+   "parentCls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "0px",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "transform": "none",
+    "overflow": "clip"
+   },
+   "rect": {
+    "x": 1074.33,
+    "y": 305,
+    "w": 300.66,
+    "h": 228.38
+   }
+  }
+ ],
+ "expandableCount": 13,
+ "expandable": [
+  {
+   "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+   "tag": "A",
+   "expanded": "false",
+   "label": null,
+   "cs": {
+    "color": "rgba(255, 255, 255, 0.3)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 115.92,
+    "y": 4,
+    "w": 54.95,
+    "h": 28
+   }
+  },
+  {
+   "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+   "tag": "A",
+   "expanded": "false",
+   "label": null,
+   "cs": {
+    "color": "rgb(209, 254, 23)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 170.88,
+    "y": 4,
+    "w": 54.95,
+    "h": 28
+   }
+  },
+  {
+   "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+   "tag": "A",
+   "expanded": "false",
+   "label": null,
+   "cs": {
+    "color": "rgba(255, 255, 255, 0.3)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 225.83,
+    "y": 4,
+    "w": 54.95,
+    "h": 28
+   }
+  },
+  {
+   "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+   "tag": "A",
+   "expanded": "false",
+   "label": null,
+   "cs": {
+    "color": "rgba(255, 255, 255, 0.3)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 280.78,
+    "y": 4,
+    "w": 48.33,
+    "h": 28
+   }
+  },
+  {
+   "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+   "tag": "A",
+   "expanded": "false",
+   "label": null,
+   "cs": {
+    "color": "rgba(255, 255, 255, 0.3)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 2052.25,
+    "y": 4,
+    "w": 67.92,
+    "h": 28
+   }
+  },
+  {
+   "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "언어 변경",
+   "cs": {
+    "color": "rgba(255, 255, 255, 0.3)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "8px",
+    "transitionProperty": "filter, color, background-color, box-shadow, height, width, padding",
+    "transitionDuration": "0.15s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s",
+    "transitionTimingFunction": "ease, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 1042.63,
+    "y": 6,
+    "w": 24,
+    "h": 24
+   }
+  },
+  {
+   "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "길이",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(255, 255, 255, 0.05)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "12px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.15s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 25,
+    "y": 693,
+    "w": 147,
+    "h": 54
+   }
+  },
+  {
+   "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "비율",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(255, 255, 255, 0.05)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "12px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.15s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 180,
+    "y": 693,
+    "w": 147,
+    "h": 54
+   }
+  },
+  {
+   "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "품질",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(255, 255, 255, 0.05)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "12px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.15s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 25,
+    "y": 755,
+    "w": 302,
+    "h": 54
+   }
+  },
+  {
+   "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "필터",
+   "cs": {
+    "color": "rgb(137, 138, 139)",
+    "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "10px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 1255.47,
+    "y": 53,
+    "w": 71.77,
+    "h": 36
+   }
+  },
+  {
+   "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "보기",
+   "cs": {
+    "color": "rgb(137, 138, 139)",
+    "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "10px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 1335.23,
+    "y": 53,
+    "w": 71.77,
+    "h": 36
+   }
+  },
+  {
+   "cls": "relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "도움이 필요하세요?",
+   "cs": {
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "0px",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 1379,
+    "y": 827,
+    "w": 32,
+    "h": 32
+   }
+  },
+  {
+   "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+   "tag": "BUTTON",
+   "expanded": "false",
+   "label": "언어 변경",
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "0px",
+    "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+    "transitionDuration": "0.2s",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transform": "none",
+    "overflow": "visible"
+   },
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  }
+ ],
+ "hoverGateCount": 0,
+ "hoverGate": [],
+ "feedAttrs": [
+  {
+   "tag": "HEADER",
+   "cls": "relative text-caption-l area-[header-promotion] z-3 grid grid-rows-[0fr]",
+   "attrs": {
+    "data-feed": null,
+    "data-feed-card": null,
+    "data-tile": null,
+    "data-video-card": null,
+    "data-autoplay": null,
+    "data-expanded": "false",
+    "data-muted": null,
+    "data-mute": null,
+    "aria-expanded": null
+   },
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 0
+   },
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "boxShadow": "none",
+    "borderRadius": "0px",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "transform": "none",
+    "overflow": "visible"
+   }
+  }
+ ]
+}
