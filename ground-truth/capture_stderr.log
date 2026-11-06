@@ -1,0 +1,9 @@
+browser_ws: ws://[::1]:9222/devtools/browser/3b95f43d-9f07-4c72-b854-2bde5237e1a6 | Browser: Chrome/153.0.8010.52
+liveness 1+1 == 2
+final_href: https://higgsfield.ai/ko/me/settings | title: 계정 설정 • Higgsfield
+redirected_to_sign_in: False | session_cookie: True | cookie_len: 3462
+node_count stable=785 after 3 polls
+harvested 254 visible nodes, truncated=False
+WROTE /home/baramofme/open-higgsfield/.worktrees/t_0ff3f618/ground-truth/ko-me-settings/screenshot.png 91980 bytes
+WROTE /home/baramofme/open-higgsfield/.worktrees/t_0ff3f618/ground-truth/ko-me-settings/styles.json elements: 254
+closeTarget failed (non-fatal): RuntimeError('CDP reply timeout for Target.closeTarget')
