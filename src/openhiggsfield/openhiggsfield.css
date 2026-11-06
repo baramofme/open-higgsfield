@@ -65,6 +65,29 @@
   --bg3: var(--s2);
   --bg4: var(--s3);
 
+  /* Legacy token aliases — rules written before the token set settled still
+     reference these names; map them onto the canonical values so every rule
+     that touches them resolves without silent invalid fallback. */
+  --edge: var(--line);       /* hairline border → --line (white/5) */
+  --edge-strong: var(--line-2); /* stronger border → --line-2 (white/10) */
+  --muted: var(--tx2);       /* secondary text → --tx2 (#898a8b) */
+  --muted-ink: var(--tx3);   /* tertiary text on dark surfaces → --tx3 (#828282) */
+  --ink: var(--tx);          /* primary text → --tx (#f7f7f8) */
+  --ink-2: var(--tx2);       /* secondary ink → --tx2 */
+  --ink-3: var(--tx3);       /* tertiary ink → --tx3 */
+  --ink-mute: var(--tx4);    /* dimmed/muted ink → --tx4 */
+  --text: var(--tx);         /* primary text → --tx */
+  --tx1: var(--tx);          /* primary text alias → --tx */
+  --font: var(--font-ui);    /* font stack alias → --font-ui */
+  --amber: #c9a227;          /* HF amber/warning accent (warm gold) */
+  --s0: #161719;             /* surface-0: deeper than --s1 (#1c1e20) */
+  --panel: var(--s2);        /* panel surface → --s2 */
+  --panel-2: var(--s3);      /* panel-2 → --s3 */
+  --panel-3: var(--s4);      /* panel-3 → --s4 */
+  --bg2: var(--s2);          /* bg-2 → --s2 */
+  --bg3: var(--s3);          /* bg-3 → --s3 */
+  --bg4: var(--s4);          /* bg-4 → --s4 */
+
   font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1.45;
@@ -5517,6 +5540,29 @@ a.ohf-btn-solid {
   --bg2: var(--s1);
   --bg3: var(--s2);
   --bg4: var(--s3);
+
+  /* Legacy token aliases — rules written before the token set settled still
+     reference these names; map them onto the canonical values so every rule
+     that touches them resolves without silent invalid fallback. */
+  --edge: var(--line);       /* hairline border → --line (white/5) */
+  --edge-strong: var(--line-2); /* stronger border → --line-2 (white/10) */
+  --muted: var(--tx2);       /* secondary text → --tx2 (#898a8b) */
+  --muted-ink: var(--tx3);   /* tertiary text on dark surfaces → --tx3 (#828282) */
+  --ink: var(--tx);          /* primary text → --tx (#f7f7f8) */
+  --ink-2: var(--tx2);       /* secondary ink → --tx2 */
+  --ink-3: var(--tx3);       /* tertiary ink → --tx3 */
+  --ink-mute: var(--tx4);    /* dimmed/muted ink → --tx4 */
+  --text: var(--tx);         /* primary text → --tx */
+  --tx1: var(--tx);          /* primary text alias → --tx */
+  --font: var(--font-ui);    /* font stack alias → --font-ui */
+  --amber: #c9a227;          /* HF amber/warning accent (warm gold) */
+  --s0: #161719;             /* surface-0: deeper than --s1 (#1c1e20) */
+  --panel: var(--s2);        /* panel surface → --s2 */
+  --panel-2: var(--s3);      /* panel-2 → --s3 */
+  --panel-3: var(--s4);      /* panel-3 → --s4 */
+  --bg2: var(--s2);          /* bg-2 → --s2 */
+  --bg3: var(--s3);          /* bg-3 → --s3 */
+  --bg4: var(--s4);          /* bg-4 → --s4 */
 
   font-family: var(--font-ui);
   font-size: 14px;
