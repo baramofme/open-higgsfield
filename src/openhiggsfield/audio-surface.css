@@ -63,6 +63,7 @@
   display: flex;
   gap: 20px;                      /* gap-5 */
   border-bottom: 1px solid rgba(217, 217, 217, 0.04);   /* border-separator-card 실측 */
+  border-color: rgba(217, 217, 217, 0.04);              /* HF border-color 4면 동값(separator-card — 0폭 면도 색 동값) */
   padding: 12px 8px 0;            /* px-2 pt-3 */
 }
 .ohf-audio-tab {                  /* HF: flex h-9 shrink-0 items-start whitespace-nowrap border-b-2 14/500 lh20 */
@@ -267,7 +268,7 @@
   padding: 0;
 }
 .ohf-audio-script-overlay {       /* HF: aria-hidden 래퍼(사이즈 0) */
-  color: rgb(137, 138, 139);
+  color: rgb(247, 247, 248);      /* HF live 실측 — t_dbb7f8b9의 137,138,139은 HF 리터럴 아님 */
 }
 .ohf-audio-script-overlay-inner { /* HF: absolute top-0 left-0 whitespace-pre-line text-xs leading-4.5 */
   position: absolute;
@@ -527,9 +528,8 @@
   width: 12px;                    /* w-3 */
   touch-action: none;
   user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;                 /* HF resize computed display:block(jc/ai normal) */
+  border-radius: 4px;             /* HF 실측 radius 4px */
 }
 .ohf-audio-resize-line {          /* HF: pointer-events-none absolute inset-y-4 left-1/2 w-px -translate-x-1/2
                                      bg linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.2) 18%, rgba(255,255,255,0.2) 82%, transparent 100%)
@@ -649,6 +649,10 @@
   align-items: center;
   gap: 12px;
 }
+.ohf-audio-rc-3 {                 /* HF rcw3: relative shrink-0 */
+  position: relative;             /* HF computed relative — OHF static 이었다(정정) */
+  flex-shrink: 0;
+}
 .ohf-audio-filter {               /* HF: flex h-8 items-center gap-1.5 rounded-[10px] border px-2.5 border-white/5 bg-page-primary text-font-secondary hover:white */
   display: flex;
   align-items: center;
@@ -667,7 +671,7 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;
-  white-space: nowrap;
+  white-space: normal;            /* HF computed ws normal — nowrap 아님(실측) */
 }
 .ohf-audio-feedscrollwrap {       /* HF: absolute inset-y-0 left-6 right-0 overflow-hidden pt-14.5 */
   position: absolute;
