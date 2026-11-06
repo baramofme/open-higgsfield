@@ -1,0 +1,274 @@
+{
+ "verdict": "PASS",
+ "total_gate_issues": 0,
+ "gate_results": {
+  "s0": {
+   "gate_issues": 0,
+   "gate_list": [],
+   "residuals": [
+    "s0: kidRect.w HF=0 OHF=302 Δ=302",
+    "s0: kidRect.h HF=0 OHF=104 Δ=104"
+   ]
+  },
+  "s1": {
+   "gate_issues": 0,
+   "gate_list": [],
+   "residuals": []
+  },
+  "s2": {
+   "gate_issues": 0,
+   "gate_list": [],
+   "residuals": [
+    "s2: kidRect.w HF=0 OHF=302 Δ=302",
+    "s2: kidRect.h HF=0 OHF=104 Δ=104"
+   ]
+  },
+  "s3": {
+   "gate_issues": 0,
+   "gate_list": [],
+   "residuals": []
+  }
+ },
+ "content_residuals": [
+  "s0: kidRect.w HF=0 OHF=302 Δ=302",
+  "s0: kidRect.h HF=0 OHF=104 Δ=104",
+  "s2: kidRect.w HF=0 OHF=302 Δ=302",
+  "s2: kidRect.h HF=0 OHF=104 Δ=104"
+ ],
+ "hf_states": {
+  "s0": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "false",
+    "프레임": "true"
+   },
+   "isUploader": false,
+   "isDropzone": true,
+   "kidRect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "phText": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "edPh": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "uploaderText": null,
+   "uploaderTitle": null,
+   "uploaderSub": null,
+   "startFrameVisible": true,
+   "endFrameVisible": null,
+   "dataOffCount": 0,
+   "contentRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 336
+   }
+  },
+  "s1": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "isUploader": true,
+   "isDropzone": false,
+   "kidRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 168
+   },
+   "phText": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "edPh": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "uploaderText": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "uploaderTitle": "레퍼런스 추가하기",
+   "uploaderSub": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "startFrameVisible": null,
+   "endFrameVisible": null,
+   "dataOffCount": 0,
+   "contentRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 336
+   }
+  },
+  "s2": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "false",
+    "프레임": "true"
+   },
+   "isUploader": false,
+   "isDropzone": true,
+   "kidRect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "phText": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "edPh": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "uploaderText": null,
+   "uploaderTitle": null,
+   "uploaderSub": null,
+   "startFrameVisible": true,
+   "endFrameVisible": null,
+   "dataOffCount": 0,
+   "contentRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 336
+   }
+  },
+  "s3": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "isUploader": true,
+   "isDropzone": false,
+   "kidRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 168
+   },
+   "phText": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "edPh": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "uploaderText": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "uploaderTitle": "레퍼런스 추가하기",
+   "uploaderSub": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "startFrameVisible": null,
+   "endFrameVisible": null,
+   "dataOffCount": 0,
+   "contentRect": {
+    "x": 25,
+    "y": 332,
+    "w": 302,
+    "h": 336
+   }
+  }
+ },
+ "ohf_states": {
+  "s0": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "false",
+    "프레임": "true"
+   },
+   "isUploader": false,
+   "isDropzone": true,
+   "kidRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 104
+   },
+   "phText": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "edPh": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "uploaderText": null,
+   "uploaderTitle": null,
+   "uploaderSub": null,
+   "startFrameVisible": true,
+   "endFrameVisible": null,
+   "dataOffCount": 40,
+   "contentRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 272
+   }
+  },
+  "s1": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "isUploader": true,
+   "isDropzone": false,
+   "kidRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 168
+   },
+   "phText": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "edPh": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "uploaderText": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "uploaderTitle": "레퍼런스 추가하기",
+   "uploaderSub": "이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "startFrameVisible": null,
+   "endFrameVisible": null,
+   "dataOffCount": 39,
+   "contentRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 336
+   }
+  },
+  "s2": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "false",
+    "프레임": "true"
+   },
+   "isUploader": false,
+   "isDropzone": true,
+   "kidRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 104
+   },
+   "phText": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "edPh": "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "uploaderText": null,
+   "uploaderTitle": null,
+   "uploaderSub": null,
+   "startFrameVisible": true,
+   "endFrameVisible": null,
+   "dataOffCount": 40,
+   "contentRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 272
+   }
+  },
+  "s3": {
+   "ready": "complete",
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "isUploader": true,
+   "isDropzone": false,
+   "kidRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 168
+   },
+   "phText": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "edPh": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+   "uploaderText": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "uploaderTitle": "레퍼런스 추가하기",
+   "uploaderSub": "이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+   "startFrameVisible": null,
+   "endFrameVisible": null,
+   "dataOffCount": 39,
+   "contentRect": {
+    "x": 25,
+    "y": 277,
+    "w": 302,
+    "h": 336
+   }
+  }
+ }
+}

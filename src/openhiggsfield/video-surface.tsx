@@ -122,6 +122,13 @@ export function VideoSurface() {
     (next === "128" ? seg128 : seg134).current?.focus();
   };
 
+  /* 프롬프트 placeholder — 세그 탭 상태에 따라 HF 와 동일하게 전환됨 (t_bea84dee 요소 3):
+     프레임: "시작 프레임과 끝 프레임은 Image 1, Image 2로…"
+     레퍼런스: "입력 항목은 Image 1, Video 1, Audio 1로…" */
+  const promptPlaceholder = segSel === "134"
+    ? "영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요."
+    : "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요";
+
   /* HF 포착 상태: 프롬프트 비어있음 → placeholder 가 보였다(실측 #184 가시). */
   useEffect(() => {
     setPlaceholderShown(text.trim() === "");
@@ -218,6 +225,7 @@ export function VideoSurface() {
                 </div>
               </div>
               <div className="ohf-vid-n141" data-ohf-video="141">
+                {segSel === "134" ? (
                 <div className="ohf-vid-n142" data-ohf-video="142">
                   <div className="ohf-vid-n143" data-ohf-video="143">
                     <div className="ohf-vid-n144" data-ohf-video="144">
@@ -290,6 +298,23 @@ export function VideoSurface() {
                     </div>
                   </div>
                 </div>
+                ) : (
+                <div className="ohf-vid-ref-uploader" aria-disabled="true" data-off="레퍼런스 업로더(실첨부 착지 후속)">
+                  <div className="ohf-vid-ref-inner">
+                    <span className="ohf-vid-ref-dashed" aria-hidden="true" />
+                    <button className="ohf-vid-ref-btn" type="button" aria-label="레퍼런스 추가하기" tabIndex={-1} />
+                    <span className="ohf-vid-ref-icons">
+                      <span className="ohf-vid-ref-icon" />
+                      <span className="ohf-vid-ref-icon ohf-vid-ref-icon-overlap" />
+                      <span className="ohf-vid-ref-icon ohf-vid-ref-icon-overlap" />
+                    </span>
+                    <span className="ohf-vid-ref-text">
+                      <span className="ohf-vid-ref-title">레퍼런스 추가하기</span>
+                      <span className="ohf-vid-ref-sub">이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지</span>
+                    </span>
+                  </div>
+                </div>
+                )}
                 <div className="ohf-vid-n180" data-ohf-video="180" data-prompt-field="true">
                   <div className="ohf-vid-n181" data-ohf-video="181">
                     <p className="ohf-vid-n182" data-ohf-video="182">
@@ -304,7 +329,7 @@ export function VideoSurface() {
                       suppressContentEditableWarning
                       role="textbox"
                       spellCheck
-                      aria-placeholder="영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요."
+                      aria-placeholder={promptPlaceholder}
                       data-lexical-editor="true"
                       style={{ userSelect: "text", whiteSpace: "pre-wrap", wordBreak: "break-word" }}
                       onInput={syncFromEditor}
@@ -313,7 +338,7 @@ export function VideoSurface() {
                     </div>
                     {placeholderShown ? (
                       <div className="ohf-vid-n184" data-ohf-video="184" data-prompt-placeholder="true">
-                        영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.
+                        {promptPlaceholder}
                       </div>
                     ) : null}
                   </div>

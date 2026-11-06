@@ -1,0 +1,388 @@
+{
+ "frame": {
+  "ready": "complete",
+  "sel": {
+   "레퍼런스": "true",
+   "프레임": "false"
+  },
+  "content": {
+   "tag": "DIV",
+   "cls": "relative mt-2 flex flex-col gap-2",
+   "attrs": {
+    "class": "relative mt-2 flex flex-col gap-2"
+   },
+   "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요요소",
+   "kids": [
+    {
+     "tag": "DIV",
+     "cls": "relative flex flex-col items-center justify-center gap-3 self-stretch rounded-xl bg-white-5 p-1 transition-colors hover:",
+     "attrs": {
+      "class": "relative flex flex-col items-center justify-center gap-3 sel"
+     },
+     "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+     "kids": [
+      {
+       "tag": "DIV",
+       "cls": "relative flex h-37 flex-col items-center justify-center gap-3 self-stretch rounded-lg p-4 md:h-40",
+       "attrs": {
+        "class": "relative flex h-37 flex-col items-center justify-center gap-"
+       },
+       "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+       "kids": [
+        {
+         "tag": "SPAN",
+         "cls": "pointer-events-none absolute inset-0 rounded-lg",
+         "attrs": {
+          "aria-hidden": "true",
+          "class": "pointer-events-none absolute inset-0 rounded-lg",
+          "style": "background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "BUTTON",
+         "cls": "absolute inset-0 z-10 rounded-[inherit] outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-",
+         "attrs": {
+          "type": "button",
+          "aria-label": "레퍼런스 추가하기",
+          "class": "absolute inset-0 z-10 rounded-[inherit] outline-none focus-v"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "SPAN",
+         "cls": "isolate flex items-center",
+         "attrs": {
+          "class": "isolate flex items-center"
+         },
+         "txt": "",
+         "kids": [
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate",
+           "txt": ""
+          },
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate -ml-2",
+           "txt": ""
+          },
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate -ml-2",
+           "txt": ""
+          }
+         ]
+        },
+        {
+         "tag": "SPAN",
+         "cls": "pointer-events-none flex w-full flex-col items-center gap-1.5 text-center",
+         "attrs": {
+          "class": "pointer-events-none flex w-full flex-col items-center gap-1."
+         },
+         "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+         "kids": [
+          {
+           "tag": "SPAN",
+           "cls": "text-center text-q-label-sm-semi-bold text-q-text-primary",
+           "txt": "레퍼런스 추가하기"
+          },
+          {
+           "tag": "SPAN",
+           "cls": "text-q-label-xs-regular text-q-text-secondary",
+           "txt": "이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "DIV",
+     "cls": "w-full flex flex-col min-h-40 max-h-64",
+     "attrs": {
+      "data-prompt-field": "true",
+      "class": "w-full flex flex-col min-h-40 max-h-64"
+     },
+     "txt": "프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요요소",
+     "kids": [
+      {
+       "tag": "DIV",
+       "cls": "relative w-full flex-1 grid grid-rows-1 overflow-y-auto border border-separator-card bg-neutral-surface-subtle md:bg-sur",
+       "attrs": {
+        "class": "relative w-full flex-1 grid grid-rows-1 overflow-y-auto bord"
+       },
+       "txt": "프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+       "kids": [
+        {
+         "tag": "P",
+         "cls": "absolute top-3 left-3 text-sm font-medium text-font-secondary text-q-label-sm-medium! text-q-text-primary!",
+         "attrs": {
+          "class": "absolute top-3 left-3 text-sm font-medium text-font-secondar"
+         },
+         "txt": "프롬프트",
+         "kids": []
+        },
+        {
+         "tag": "DIV",
+         "cls": "text-sm focus:outline-none size-full cursor-text h-auto! min-h-full self-start p-3 pt-9",
+         "attrs": {
+          "aria-label": "프롬프트",
+          "class": "text-sm focus:outline-none size-full cursor-text h-auto! min",
+          "contenteditable": "true",
+          "role": "textbox",
+          "spellcheck": "true",
+          "aria-placeholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 ",
+          "data-lexical-editor": "true",
+          "style": "user-select: text; white-space: pre-wrap; word-break: break-"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "DIV",
+         "cls": "",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "txt": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+         "kids": [
+          {
+           "tag": "DIV",
+           "cls": "select-none cursor-text text-sm pointer-events-none absolute top-0 left-0 text-font-secondary top-9 ",
+           "txt": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 "
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "DIV",
+       "cls": "p-3 pt-2 rounded-t-none rounded-b-xl flex flex-wrap gap-1 bg-neutral-surface-subtle md:bg-surface-primary bg-white-5! md",
+       "attrs": {
+        "class": "p-3 pt-2 rounded-t-none rounded-b-xl flex flex-wrap gap-1 bg"
+       },
+       "txt": "요소",
+       "kids": [
+        {
+         "tag": "BUTTON",
+         "cls": "whitespace-nowrap cursor-pointer select-none flex justify-center items-center gap-1.5 px-1.5 py-1 w-fit rounded-lg bg-wh",
+         "attrs": {
+          "type": "button",
+          "class": "whitespace-nowrap cursor-pointer select-none flex justify-ce"
+         },
+         "txt": "요소",
+         "kids": [
+          {
+           "tag": "svg",
+           "cls": "[object SVGAnimatedString]",
+           "txt": ""
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "placeholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+  "edPlaceholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요"
+ },
+ "reference": {
+  "ready": "complete",
+  "sel": {
+   "레퍼런스": "true",
+   "프레임": "false"
+  },
+  "content": {
+   "tag": "DIV",
+   "cls": "relative mt-2 flex flex-col gap-2",
+   "attrs": {
+    "class": "relative mt-2 flex flex-col gap-2"
+   },
+   "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요요소",
+   "kids": [
+    {
+     "tag": "DIV",
+     "cls": "relative flex flex-col items-center justify-center gap-3 self-stretch rounded-xl bg-white-5 p-1 transition-colors hover:",
+     "attrs": {
+      "class": "relative flex flex-col items-center justify-center gap-3 sel"
+     },
+     "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+     "kids": [
+      {
+       "tag": "DIV",
+       "cls": "relative flex h-37 flex-col items-center justify-center gap-3 self-stretch rounded-lg p-4 md:h-40",
+       "attrs": {
+        "class": "relative flex h-37 flex-col items-center justify-center gap-"
+       },
+       "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+       "kids": [
+        {
+         "tag": "SPAN",
+         "cls": "pointer-events-none absolute inset-0 rounded-lg",
+         "attrs": {
+          "aria-hidden": "true",
+          "class": "pointer-events-none absolute inset-0 rounded-lg",
+          "style": "background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "BUTTON",
+         "cls": "absolute inset-0 z-10 rounded-[inherit] outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-",
+         "attrs": {
+          "type": "button",
+          "aria-label": "레퍼런스 추가하기",
+          "class": "absolute inset-0 z-10 rounded-[inherit] outline-none focus-v"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "SPAN",
+         "cls": "isolate flex items-center",
+         "attrs": {
+          "class": "isolate flex items-center"
+         },
+         "txt": "",
+         "kids": [
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate",
+           "txt": ""
+          },
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate -ml-2",
+           "txt": ""
+          },
+          {
+           "tag": "SPAN",
+           "cls": "relative flex size-9 shrink-0 items-center justify-center isolate -ml-2",
+           "txt": ""
+          }
+         ]
+        },
+        {
+         "tag": "SPAN",
+         "cls": "pointer-events-none flex w-full flex-col items-center gap-1.5 text-center",
+         "attrs": {
+          "class": "pointer-events-none flex w-full flex-col items-center gap-1."
+         },
+         "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지",
+         "kids": [
+          {
+           "tag": "SPAN",
+           "cls": "text-center text-q-label-sm-semi-bold text-q-text-primary",
+           "txt": "레퍼런스 추가하기"
+          },
+          {
+           "tag": "SPAN",
+           "cls": "text-q-label-xs-regular text-q-text-secondary",
+           "txt": "이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "DIV",
+     "cls": "w-full flex flex-col min-h-40 max-h-64",
+     "attrs": {
+      "data-prompt-field": "true",
+      "class": "w-full flex flex-col min-h-40 max-h-64"
+     },
+     "txt": "프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요요소",
+     "kids": [
+      {
+       "tag": "DIV",
+       "cls": "relative w-full flex-1 grid grid-rows-1 overflow-y-auto border border-separator-card bg-neutral-surface-subtle md:bg-sur",
+       "attrs": {
+        "class": "relative w-full flex-1 grid grid-rows-1 overflow-y-auto bord"
+       },
+       "txt": "프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+       "kids": [
+        {
+         "tag": "P",
+         "cls": "absolute top-3 left-3 text-sm font-medium text-font-secondary text-q-label-sm-medium! text-q-text-primary!",
+         "attrs": {
+          "class": "absolute top-3 left-3 text-sm font-medium text-font-secondar"
+         },
+         "txt": "프롬프트",
+         "kids": []
+        },
+        {
+         "tag": "DIV",
+         "cls": "text-sm focus:outline-none size-full cursor-text h-auto! min-h-full self-start p-3 pt-9",
+         "attrs": {
+          "aria-label": "프롬프트",
+          "class": "text-sm focus:outline-none size-full cursor-text h-auto! min",
+          "contenteditable": "true",
+          "role": "textbox",
+          "spellcheck": "true",
+          "aria-placeholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 ",
+          "data-lexical-editor": "true",
+          "style": "user-select: text; white-space: pre-wrap; word-break: break-"
+         },
+         "txt": "",
+         "kids": []
+        },
+        {
+         "tag": "DIV",
+         "cls": "",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "txt": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+         "kids": [
+          {
+           "tag": "DIV",
+           "cls": "select-none cursor-text text-sm pointer-events-none absolute top-0 left-0 text-font-secondary top-9 ",
+           "txt": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 "
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "DIV",
+       "cls": "p-3 pt-2 rounded-t-none rounded-b-xl flex flex-wrap gap-1 bg-neutral-surface-subtle md:bg-surface-primary bg-white-5! md",
+       "attrs": {
+        "class": "p-3 pt-2 rounded-t-none rounded-b-xl flex flex-wrap gap-1 bg"
+       },
+       "txt": "요소",
+       "kids": [
+        {
+         "tag": "BUTTON",
+         "cls": "whitespace-nowrap cursor-pointer select-none flex justify-center items-center gap-1.5 px-1.5 py-1 w-fit rounded-lg bg-wh",
+         "attrs": {
+          "type": "button",
+          "class": "whitespace-nowrap cursor-pointer select-none flex justify-ce"
+         },
+         "txt": "요소",
+         "kids": [
+          {
+           "tag": "svg",
+           "cls": "[object SVGAnimatedString]",
+           "txt": ""
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "placeholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요",
+  "edPlaceholder": "동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수 있어요"
+ }
+}

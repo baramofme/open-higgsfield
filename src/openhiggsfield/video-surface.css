@@ -82,6 +82,7 @@
   --ctl-vid-borderbottomleftradius-3-35544e-07px: 3.35544e+07px;
   --ctl-vid-borderbottomrightradius-3-35544e-07px: 3.35544e+07px;
   --ctl-vid-c197-197-197-ap3: rgba(197, 197, 197, 0.3);
+  --ctl-vid-c130-130-130: rgb(130, 130, 130);
   --ctl-vid-backdropfilter-blur-4px: blur(4px);
   --ctl-vid-px13p9: 13.9px;
   --ctl-vid-px67p9: 67.9px;
@@ -1766,6 +1767,104 @@
   pointer-events: none;
   user-select: none;
   width: var(--ctl-vid-px67p9);
+}
+
+/* ---- 레퍼런스 업로더 카드 (t_bea84dee 요소 3) ----
+   ground-truth: HF live CDP 레퍼런스 모드 실측
+   (anim_verify/hf_uploader_styles.json: rect, computed 전수). */
+.ohf-vid-ref-uploader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ohf-spacing-xl);
+  align-self: stretch;
+  border-radius: var(--ohf-radius-xl);
+  padding: var(--ohf-spacing-xs);
+  background-color: var(--ctl-vid-c255-255-255-ap05);
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ohf-vid-ref-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ohf-spacing-xl);
+  align-self: stretch;
+  border-radius: var(--ohf-radius-md);
+  padding: var(--ohf-spacing-3xl);
+  height: var(--ctl-vid-px160);
+}
+
+.ohf-vid-ref-dashed {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ohf-radius-md);
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='0.5' y='0.5' width='293' height='159' rx='8' ry='8' fill='none' stroke='%23212226' stroke-dasharray='6%2C 6'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.ohf-vid-ref-btn {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ctl-vid-n10);
+  border-radius: inherit;
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.ohf-vid-ref-icons {
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.ohf-vid-ref-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  isolation: isolate;
+  width: var(--ctl-vid-px36);
+  height: var(--ctl-vid-px36);
+  border-radius: 50%;
+  background-color: rgb(28, 30, 32);
+  box-shadow: inset 0 0 0 var(--ctl-vid-px1) var(--ctl-vid-c197-197-197-ap3);
+}
+
+.ohf-vid-ref-icon-overlap {
+  margin-left: var(--ctl-vid-pxn1);
+}
+
+.ohf-vid-ref-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ohf-spacing-sm);
+  width: var(--ctl-vid-p100);
+  text-align: center;
+  pointer-events: none;
+}
+
+.ohf-vid-ref-title {
+  color: var(--ctl-vid-c255-255-255);
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-semibold);
+  line-height: var(--ctl-vid-px16);
+}
+
+.ohf-vid-ref-sub {
+  color: var(--ctl-vid-c130-130-130);
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-normal);
+  line-height: var(--ctl-vid-px16);
 }
 
 .ohf-vid-n180 {
