@@ -1,0 +1,7969 @@
+{
+ "issues": [
+  [
+   102,
+   "rect",
+   "h: 788 vs 762.4"
+  ],
+  [
+   102,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   102,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   102,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   102,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   102,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   102,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   102,
+   "style",
+   "transformOrigin: 720px 394px vs 720px 381.195px"
+  ],
+  [
+   103,
+   "rect",
+   "h: 772 vs 702"
+  ],
+  [
+   103,
+   "color",
+   "rgb(19, 21, 23) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   103,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   103,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   103,
+   "style",
+   "transformOrigin: 160px 386px vs 160px 351px"
+  ],
+  [
+   104,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   104,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   104,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   104,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   104,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   104,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   105,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   105,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   105,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   105,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   105,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   105,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   106,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   106,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   106,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   107,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   107,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   107,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   108,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   108,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   108,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   109,
+   "rect",
+   "h: 722 vs 652"
+  ],
+  [
+   109,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   109,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   109,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   109,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   109,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   109,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   109,
+   "style",
+   "transformOrigin: 159px 361px vs 159px 326px"
+  ],
+  [
+   110,
+   "rect",
+   "h: 722 vs 652"
+  ],
+  [
+   110,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   110,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   110,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   110,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   110,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   110,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   110,
+   "style",
+   "transformOrigin: 159px 361px vs 159px 326px"
+  ],
+  [
+   111,
+   "rect",
+   "h: 722 vs 652"
+  ],
+  [
+   111,
+   "color",
+   "rgb(19, 21, 23) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   111,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   111,
+   "style",
+   "borderBottomLeftRadius: 0px vs 16px"
+  ],
+  [
+   111,
+   "style",
+   "borderBottomRightRadius: 0px vs 16px"
+  ],
+  [
+   111,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   111,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   111,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   111,
+   "style",
+   "borderRadius: 0px vs 0px 0px 16px 16px"
+  ],
+  [
+   111,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   111,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   111,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   111,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   111,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   111,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   111,
+   "style",
+   "transformOrigin: 159px 361px vs 159px 326px"
+  ],
+  [
+   112,
+   "rect",
+   "h: 662 vs 592"
+  ],
+  [
+   112,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   112,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   112,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   112,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   112,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   112,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   112,
+   "style",
+   "transformOrigin: 159px 331px vs 159px 296px"
+  ],
+  [
+   113,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   113,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   113,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   113,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   113,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   113,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   114,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   114,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   114,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   114,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   114,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   114,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   115,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   115,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   115,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   115,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   115,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   116,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   116,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   116,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   116,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   116,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   116,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   117,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   117,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   117,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   117,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   117,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   117,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   118,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   118,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   118,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   118,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   118,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   118,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   119,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   119,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   119,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   119,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   120,
+   "color-serialization",
+   "oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)"
+  ],
+  [
+   120,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   120,
+   "color-serialization",
+   "oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)"
+  ],
+  [
+   120,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   120,
+   "color-serialization",
+   "oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)"
+  ],
+  [
+   120,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   120,
+   "color-serialization",
+   "oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)"
+  ],
+  [
+   120,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   120,
+   "color-serialization",
+   "oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)"
+  ],
+  [
+   120,
+   "style",
+   "outline: oklab(0.999994 0.0000455677 0.0000200868 / 0.8) none 3px vs lab(99.9988 0.0152886 0.00777245 / 0.8) none 3px"
+  ],
+  [
+   121,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   121,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   121,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   121,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   121,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   121,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   122,
+   "rect",
+   "w: 58.1 vs 40.1"
+  ],
+  [
+   122,
+   "style",
+   "alignContent: center vs normal"
+  ],
+  [
+   122,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   122,
+   "color",
+   "rgba(27, 27, 27, 0.3) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   122,
+   "style",
+   "transformOrigin: 29.0469px 12px vs 20.0469px 12px"
+  ],
+  [
+   123,
+   "rect",
+   "y: 156 vs 173"
+  ],
+  [
+   123,
+   "rect",
+   "w: 14 vs 16"
+  ],
+  [
+   123,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   123,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   123,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   123,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   123,
+   "style",
+   "transformOrigin: 7px 8px vs 8px 8px"
+  ],
+  [
+   123,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   124,
+   "rect",
+   "y: 158.2 vs 174.3"
+  ],
+  [
+   124,
+   "rect",
+   "w: 11.7 vs 13.4"
+  ],
+  [
+   124,
+   "rect",
+   "h: 11.7 vs 13.4"
+  ],
+  [
+   124,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   124,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   124,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   124,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   125,
+   "rect",
+   "h: 508 vs 438"
+  ],
+  [
+   125,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   125,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   125,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   125,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   125,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   125,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   125,
+   "style",
+   "transformOrigin: 151px 254px vs 151px 219px"
+  ],
+  [
+   126,
+   "rect",
+   "h: 40 vs 32"
+  ],
+  [
+   126,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   126,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   126,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   126,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   126,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   126,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   126,
+   "style",
+   "transformOrigin: 151px 20px vs 151px 16px"
+  ],
+  [
+   127,
+   "rect",
+   "h: 40 vs 32"
+  ],
+  [
+   127,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   127,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   127,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   127,
+   "style",
+   "transformOrigin: 151px 20px vs 151px 16px"
+  ],
+  [
+   128,
+   "rect",
+   "h: 32 vs 24"
+  ],
+  [
+   128,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   128,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   128,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   128,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   128,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   128,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   128,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   128,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   128,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   128,
+   "style",
+   "transformOrigin: 72.5px 16px vs 72.5px 12px"
+  ],
+  [
+   129,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   129,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   129,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   129,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   129,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   129,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   129,
+   "style",
+   "transformOrigin: 32.0859px 8px vs 32.0938px 8px"
+  ],
+  [
+   130,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   130,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   130,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   130,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   130,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   130,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   131,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   131,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   131,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   131,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   131,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   131,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   131,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   132,
+   "rect",
+   "y: 298.5 vs 294.5"
+  ],
+  [
+   132,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   132,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   132,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   132,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   132,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   133,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   133,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   133,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   133,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   133,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   133,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   133,
+   "style",
+   "transformOrigin: 22.0859px 8px vs 22.0938px 8px"
+  ],
+  [
+   134,
+   "rect",
+   "h: 32 vs 24"
+  ],
+  [
+   134,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   134,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   134,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   134,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   134,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   134,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   134,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   134,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   134,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   134,
+   "style",
+   "transformOrigin: 72.5px 16px vs 72.5px 12px"
+  ],
+  [
+   135,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   135,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   135,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   135,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   135,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   135,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   135,
+   "style",
+   "transformOrigin: 26.5625px 8px vs 26.5469px 8px"
+  ],
+  [
+   136,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   136,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   136,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   136,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   136,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   136,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   137,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   137,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   137,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   137,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   137,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   137,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   137,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   138,
+   "rect",
+   "y: 298.5 vs 294.5"
+  ],
+  [
+   138,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   138,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   138,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   138,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   138,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   139,
+   "rect",
+   "y: 296 vs 292"
+  ],
+  [
+   139,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   139,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   139,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   139,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   139,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   139,
+   "style",
+   "transformOrigin: 16.5625px 8px vs 16.5469px 8px"
+  ],
+  [
+   140,
+   "style",
+   "backgroundImage: linear-gradient(148.916deg, rgba(255, 255, 255, 0.04) 22.606%, rgba(255, 255, 255, 0.06) 51.256%, rgba(255, 255, 255, 0.02) 79.906%), linear-gradient(90deg, rgb vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)"
+  ],
+  [
+   140,
+   "style",
+   "backgroundPosition: 0% 0%, 0% 0% vs 0% 0%"
+  ],
+  [
+   140,
+   "style",
+   "backgroundRepeat: repeat, repeat vs repeat"
+  ],
+  [
+   140,
+   "style",
+   "backgroundSize: auto, auto vs auto"
+  ],
+  [
+   140,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   140,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   141,
+   "rect",
+   "y: 332 vs 324"
+  ],
+  [
+   141,
+   "rect",
+   "h: 336 vs 272"
+  ],
+  [
+   141,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   141,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   141,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   141,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   141,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   141,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   141,
+   "style",
+   "transformOrigin: 151px 168px vs 151px 136px"
+  ],
+  [
+   142,
+   "rect",
+   "y: 332 vs 324"
+  ],
+  [
+   142,
+   "rect",
+   "h: 168 vs 104"
+  ],
+  [
+   142,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   142,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   142,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   142,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   142,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   142,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   142,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   142,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   142,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   142,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   142,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   142,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   142,
+   "style",
+   "transformOrigin: 151px 84px vs 151px 52px"
+  ],
+  [
+   143,
+   "rect",
+   "y: 336 vs 328"
+  ],
+  [
+   143,
+   "rect",
+   "h: 160 vs 96"
+  ],
+  [
+   143,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   143,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   143,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   143,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   143,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   143,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   143,
+   "style",
+   "transformOrigin: 147px 80px vs 147px 48px"
+  ],
+  [
+   144,
+   "rect",
+   "y: 336 vs 328"
+  ],
+  [
+   144,
+   "rect",
+   "h: 160 vs 96"
+  ],
+  [
+   144,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   144,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   144,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   144,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   144,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   144,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   144,
+   "style",
+   "transformOrigin: 72.5px 80px vs 72.5px 48px"
+  ],
+  [
+   145,
+   "rect",
+   "y: 336 vs 328"
+  ],
+  [
+   145,
+   "rect",
+   "h: 160 vs 96"
+  ],
+  [
+   145,
+   "style",
+   "backgroundImage: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='0.5' y='0.5' width='calc(100%25 - 1px)' height='ca vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)"
+  ],
+  [
+   145,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   145,
+   "style",
+   "borderBottomStyle: dashed vs none"
+  ],
+  [
+   145,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   145,
+   "style",
+   "borderLeftStyle: dashed vs none"
+  ],
+  [
+   145,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   145,
+   "style",
+   "borderRightStyle: dashed vs none"
+  ],
+  [
+   145,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   145,
+   "style",
+   "borderTopStyle: dashed vs none"
+  ],
+  [
+   145,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   145,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   145,
+   "style",
+   "transformOrigin: 72.5px 80px vs 72.5px 48px"
+  ],
+  [
+   146,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   146,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   146,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   146,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   146,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   146,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   146,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   146,
+   "style",
+   "paddingBottom: 4px vs 2px"
+  ],
+  [
+   146,
+   "style",
+   "paddingLeft: 6px vs 8px"
+  ],
+  [
+   146,
+   "style",
+   "paddingRight: 6px vs 8px"
+  ],
+  [
+   146,
+   "style",
+   "transformOrigin: 26.2344px 10px vs 26.2422px 10px"
+  ],
+  [
+   146,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   147,
+   "rect",
+   "x: 119.5 vs 121.5"
+  ],
+  [
+   147,
+   "rect",
+   "y: 346 vs 339"
+  ],
+  [
+   147,
+   "rect",
+   "w: 40.5 vs 36.5"
+  ],
+  [
+   147,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   147,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   147,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   147,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   147,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   147,
+   "style",
+   "transformOrigin: 20.2344px 7px vs 18.2422px 7px"
+  ],
+  [
+   148,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   148,
+   "rect",
+   "h: 144 vs 80"
+  ],
+  [
+   148,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   148,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   148,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   148,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   148,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   148,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   149,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   149,
+   "rect",
+   "h: 144 vs 80"
+  ],
+  [
+   149,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   149,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   149,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   149,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   149,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   149,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   149,
+   "style",
+   "transformOrigin: 64.5px 72px vs 64.5px 40px"
+  ],
+  [
+   150,
+   "rect",
+   "y: 415.5 vs 407.5"
+  ],
+  [
+   150,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   150,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   150,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   150,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   150,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   150,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   151,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   151,
+   "rect",
+   "h: 64 vs 80"
+  ],
+  [
+   151,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   151,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   151,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   151,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   151,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   151,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   151,
+   "style",
+   "transformOrigin: 64.5px 32px vs 64.5px 40px"
+  ],
+  [
+   152,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   152,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   152,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   152,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   152,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   152,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   152,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   153,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   153,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   153,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   153,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   153,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   153,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   153,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   154,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   154,
+   "color",
+   "rgb(28, 30, 32) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   154,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   154,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   154,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   154,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   154,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   154,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   155,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   155,
+   "color-serialization",
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.04) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   155,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   155,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   155,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   156,
+   "rect",
+   "y: 394 vs 346"
+  ],
+  [
+   156,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   156,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   156,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   156,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   156,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   156,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   157,
+   "rect",
+   "y: 394 vs 346"
+  ],
+  [
+   157,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   157,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   157,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   157,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   157,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   157,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   157,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   158,
+   "rect",
+   "x: 94.8 vs 97.8"
+  ],
+  [
+   158,
+   "rect",
+   "y: 396.7 vs 348.7"
+  ],
+  [
+   158,
+   "rect",
+   "w: 13.9 vs 10.9"
+  ],
+  [
+   158,
+   "rect",
+   "h: 11 vs 9.6"
+  ],
+  [
+   158,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   158,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   158,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   158,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   158,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   158,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   159,
+   "rect",
+   "x: 94.8 vs 97.8"
+  ],
+  [
+   159,
+   "rect",
+   "y: 396.7 vs 348.7"
+  ],
+  [
+   159,
+   "rect",
+   "w: 13.9 vs 10.9"
+  ],
+  [
+   159,
+   "rect",
+   "h: 11 vs 9.6"
+  ],
+  [
+   159,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   159,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   159,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   159,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   159,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   159,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   160,
+   "rect",
+   "y: 432 vs 384"
+  ],
+  [
+   160,
+   "rect",
+   "h: 16 vs 32"
+  ],
+  [
+   160,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   160,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   160,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   160,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   160,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   160,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   160,
+   "style",
+   "transformOrigin: 48.5px 8px vs 48.5px 16px"
+  ],
+  [
+   161,
+   "rect",
+   "y: 432 vs 384"
+  ],
+  [
+   161,
+   "rect",
+   "h: 16 vs 32"
+  ],
+  [
+   161,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   161,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   161,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   161,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   161,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   161,
+   "style",
+   "transformOrigin: 33.9688px 8px vs 33.9453px 16px"
+  ],
+  [
+   162,
+   "rect",
+   "y: 336 vs 328"
+  ],
+  [
+   162,
+   "rect",
+   "h: 160 vs 96"
+  ],
+  [
+   162,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   162,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   162,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   162,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   162,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   162,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   162,
+   "style",
+   "transformOrigin: 72.5px 80px vs 72.5px 48px"
+  ],
+  [
+   163,
+   "rect",
+   "y: 336 vs 328"
+  ],
+  [
+   163,
+   "rect",
+   "h: 160 vs 96"
+  ],
+  [
+   163,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   163,
+   "style",
+   "borderBottomStyle: dashed vs none"
+  ],
+  [
+   163,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   163,
+   "style",
+   "borderLeftStyle: dashed vs none"
+  ],
+  [
+   163,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   163,
+   "style",
+   "borderRightStyle: dashed vs none"
+  ],
+  [
+   163,
+   "color",
+   "rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)"
+  ],
+  [
+   163,
+   "style",
+   "borderTopStyle: dashed vs none"
+  ],
+  [
+   163,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   163,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   163,
+   "style",
+   "transformOrigin: 72.5px 80px vs 72.5px 48px"
+  ],
+  [
+   164,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   164,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   164,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   164,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   164,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   164,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   164,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   164,
+   "style",
+   "paddingBottom: 4px vs 2px"
+  ],
+  [
+   164,
+   "style",
+   "paddingLeft: 6px vs 8px"
+  ],
+  [
+   164,
+   "style",
+   "paddingRight: 6px vs 8px"
+  ],
+  [
+   164,
+   "style",
+   "transformOrigin: 26.2344px 10px vs 26.2422px 10px"
+  ],
+  [
+   164,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   165,
+   "rect",
+   "x: 268.5 vs 270.5"
+  ],
+  [
+   165,
+   "rect",
+   "y: 346 vs 339"
+  ],
+  [
+   165,
+   "rect",
+   "w: 40.5 vs 36.5"
+  ],
+  [
+   165,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   165,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   165,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   165,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   165,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   165,
+   "style",
+   "transformOrigin: 20.2344px 7px vs 18.2422px 7px"
+  ],
+  [
+   166,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   166,
+   "rect",
+   "h: 144 vs 80"
+  ],
+  [
+   166,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   166,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   166,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   166,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   166,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   166,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   167,
+   "rect",
+   "y: 344 vs 336"
+  ],
+  [
+   167,
+   "rect",
+   "h: 144 vs 80"
+  ],
+  [
+   167,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   167,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   167,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   167,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   167,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   167,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   167,
+   "style",
+   "transformOrigin: 64.5px 72px vs 64.5px 40px"
+  ],
+  [
+   168,
+   "rect",
+   "y: 415.5 vs 407.5"
+  ],
+  [
+   168,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   168,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   168,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   168,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   168,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   168,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   169,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   169,
+   "rect",
+   "h: 64 vs 80"
+  ],
+  [
+   169,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   169,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   169,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   169,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   169,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   169,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   169,
+   "style",
+   "transformOrigin: 64.5px 32px vs 64.5px 40px"
+  ],
+  [
+   170,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   170,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   170,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   170,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   170,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   170,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   170,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   171,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   171,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   171,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   171,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   171,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   171,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   171,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   172,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   172,
+   "color",
+   "rgb(28, 30, 32) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   172,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   172,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   172,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   172,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   172,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   172,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   173,
+   "rect",
+   "y: 384 vs 336"
+  ],
+  [
+   173,
+   "color-serialization",
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.04) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   173,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   173,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   173,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   174,
+   "rect",
+   "y: 394 vs 346"
+  ],
+  [
+   174,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   174,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   174,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   174,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   174,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   174,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   175,
+   "rect",
+   "y: 394 vs 346"
+  ],
+  [
+   175,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   175,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   175,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   175,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   175,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   175,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   175,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   176,
+   "rect",
+   "x: 243.8 vs 246.8"
+  ],
+  [
+   176,
+   "rect",
+   "y: 396.7 vs 348.7"
+  ],
+  [
+   176,
+   "rect",
+   "w: 13.9 vs 10.9"
+  ],
+  [
+   176,
+   "rect",
+   "h: 11 vs 9.6"
+  ],
+  [
+   176,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   176,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   176,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   176,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   176,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   176,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   177,
+   "rect",
+   "x: 243.8 vs 246.8"
+  ],
+  [
+   177,
+   "rect",
+   "y: 396.7 vs 348.7"
+  ],
+  [
+   177,
+   "rect",
+   "w: 13.9 vs 10.9"
+  ],
+  [
+   177,
+   "rect",
+   "h: 11 vs 9.6"
+  ],
+  [
+   177,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   177,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   177,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   177,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   177,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   177,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   178,
+   "rect",
+   "y: 432 vs 384"
+  ],
+  [
+   178,
+   "rect",
+   "h: 16 vs 32"
+  ],
+  [
+   178,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   178,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   178,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   178,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   178,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   178,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   178,
+   "style",
+   "transformOrigin: 48.5px 8px vs 48.5px 16px"
+  ],
+  [
+   179,
+   "rect",
+   "y: 432 vs 384"
+  ],
+  [
+   179,
+   "rect",
+   "h: 16 vs 32"
+  ],
+  [
+   179,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   179,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   179,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   179,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   179,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   179,
+   "style",
+   "transformOrigin: 33.9688px 8px vs 33.9453px 16px"
+  ],
+  [
+   180,
+   "rect",
+   "y: 508 vs 436"
+  ],
+  [
+   180,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   180,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   180,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   180,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   180,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   180,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   181,
+   "rect",
+   "y: 508 vs 436"
+  ],
+  [
+   181,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   181,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   181,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   181,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   181,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   181,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   181,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   181,
+   "color",
+   "rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)"
+  ],
+  [
+   181,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   181,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   181,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   182,
+   "rect",
+   "y: 520 vs 448"
+  ],
+  [
+   182,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   182,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   182,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   182,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   182,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   182,
+   "style",
+   "transformOrigin: 25.7656px 8px vs 25.75px 8px"
+  ],
+  [
+   183,
+   "rect",
+   "y: 508 vs 436"
+  ],
+  [
+   183,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   183,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   183,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   183,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   184,
+   "rect",
+   "y: 544 vs 436"
+  ],
+  [
+   184,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   184,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   184,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   184,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   184,
+   "style",
+   "top: 36px vs 0px"
+  ],
+  [
+   185,
+   "rect",
+   "y: 676 vs 604"
+  ],
+  [
+   185,
+   "rect",
+   "h: 54 vs 48"
+  ],
+  [
+   185,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   185,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   185,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   185,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   185,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   185,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   185,
+   "style",
+   "transformOrigin: 151px 27px vs 151px 24px"
+  ],
+  [
+   186,
+   "rect",
+   "y: 676 vs 604"
+  ],
+  [
+   186,
+   "rect",
+   "h: 54 vs 48"
+  ],
+  [
+   186,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   186,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   186,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   186,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   186,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   186,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   186,
+   "style",
+   "transformOrigin: 151px 27px vs 151px 24px"
+  ],
+  [
+   187,
+   "rect",
+   "y: 676 vs 604"
+  ],
+  [
+   187,
+   "rect",
+   "h: 54 vs 48"
+  ],
+  [
+   187,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   187,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   187,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   187,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   187,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   187,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   187,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   187,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   187,
+   "style",
+   "paddingBottom: 8px vs 6px"
+  ],
+  [
+   187,
+   "style",
+   "paddingTop: 8px vs 6px"
+  ],
+  [
+   187,
+   "style",
+   "transformOrigin: 151px 27px vs 151px 24px"
+  ],
+  [
+   188,
+   "rect",
+   "y: 685 vs 610"
+  ],
+  [
+   188,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   188,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   188,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   188,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   188,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   188,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   189,
+   "rect",
+   "y: 685 vs 610"
+  ],
+  [
+   189,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   189,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   189,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   189,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   189,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   190,
+   "rect",
+   "y: 701 vs 626"
+  ],
+  [
+   190,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   190,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   190,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   190,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   190,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   190,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   191,
+   "rect",
+   "y: 701 vs 626"
+  ],
+  [
+   191,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   191,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   191,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   191,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   191,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   191,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   192,
+   "rect",
+   "y: 701 vs 626"
+  ],
+  [
+   192,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   192,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   192,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   192,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   193,
+   "rect",
+   "y: 703 vs 628"
+  ],
+  [
+   193,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   193,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   193,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   193,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   193,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   193,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   194,
+   "rect",
+   "y: 703 vs 628"
+  ],
+  [
+   194,
+   "rect",
+   "w: 16 vs 20"
+  ],
+  [
+   194,
+   "rect",
+   "h: 16 vs 20"
+  ],
+  [
+   194,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   194,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   194,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   194,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   194,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   194,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   194,
+   "style",
+   "transformOrigin: 8px 8px vs 10px 10px"
+  ],
+  [
+   194,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   195,
+   "rect",
+   "x: 120.7 vs 134.3"
+  ],
+  [
+   195,
+   "rect",
+   "y: 704.3 vs 629.7"
+  ],
+  [
+   195,
+   "rect",
+   "w: 16 vs 6.4"
+  ],
+  [
+   195,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   195,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   195,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   195,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   195,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   195,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   196,
+   "rect",
+   "y: 695 vs 620"
+  ],
+  [
+   196,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   196,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   196,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   196,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   196,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   196,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   196,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   197,
+   "rect",
+   "x: 305.3 vs 301.9"
+  ],
+  [
+   197,
+   "rect",
+   "y: 697.9 vs 626.3"
+  ],
+  [
+   197,
+   "rect",
+   "w: 5.6 vs 10.1"
+  ],
+  [
+   197,
+   "rect",
+   "h: 10.1 vs 5.6"
+  ],
+  [
+   197,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   197,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   197,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   197,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   197,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   197,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   198,
+   "rect",
+   "y: 738 vs 660"
+  ],
+  [
+   198,
+   "rect",
+   "h: 54 vs 62"
+  ],
+  [
+   198,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   198,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   198,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   198,
+   "color",
+   "rgb(247, 247, 248) vs rgb(107, 107, 107)"
+  ],
+  [
+   198,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   198,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   198,
+   "style",
+   "transformOrigin: 151px 27px vs 151px 31px"
+  ],
+  [
+   199,
+   "rect",
+   "y: 738 vs 660"
+  ],
+  [
+   199,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   199,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   199,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   199,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   199,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   199,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   199,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   199,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   200,
+   "rect",
+   "y: 745 vs 667"
+  ],
+  [
+   200,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   200,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   200,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   200,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   200,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   200,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   201,
+   "rect",
+   "y: 745 vs 667"
+  ],
+  [
+   201,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   201,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   201,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   201,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   201,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   202,
+   "rect",
+   "y: 765 vs 687"
+  ],
+  [
+   202,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   202,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   202,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   202,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   202,
+   "style",
+   "transformOrigin: 8px 10px vs 7.99219px 10px"
+  ],
+  [
+   203,
+   "rect",
+   "y: 757 vs 679"
+  ],
+  [
+   203,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   203,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   203,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   203,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   203,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   203,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   203,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   204,
+   "rect",
+   "x: 150.3 vs 146.9"
+  ],
+  [
+   204,
+   "rect",
+   "y: 759.9 vs 685.3"
+  ],
+  [
+   204,
+   "rect",
+   "w: 5.6 vs 10.1"
+  ],
+  [
+   204,
+   "rect",
+   "h: 10.1 vs 5.6"
+  ],
+  [
+   204,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   204,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   204,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   204,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   204,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   204,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   205,
+   "rect",
+   "y: 738 vs 668"
+  ],
+  [
+   205,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   205,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   205,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   205,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   205,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   205,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   205,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   205,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   205,
+   "style",
+   "marginTop: 0px vs 8px"
+  ],
+  [
+   206,
+   "rect",
+   "y: 745 vs 675"
+  ],
+  [
+   206,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   206,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   206,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   206,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   206,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   206,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   207,
+   "rect",
+   "y: 745 vs 675"
+  ],
+  [
+   207,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   207,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   207,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   207,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   207,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   208,
+   "rect",
+   "y: 765 vs 695"
+  ],
+  [
+   208,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   208,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   208,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   208,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   209,
+   "rect",
+   "y: 757 vs 687"
+  ],
+  [
+   209,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   209,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   209,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   209,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   209,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   209,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   209,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   210,
+   "rect",
+   "x: 305.3 vs 301.9"
+  ],
+  [
+   210,
+   "rect",
+   "y: 759.9 vs 693.3"
+  ],
+  [
+   210,
+   "rect",
+   "w: 5.6 vs 10.1"
+  ],
+  [
+   210,
+   "rect",
+   "h: 10.1 vs 5.6"
+  ],
+  [
+   210,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   210,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   210,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   210,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   210,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   210,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   211,
+   "rect",
+   "y: 800 vs 730"
+  ],
+  [
+   211,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   211,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   211,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   211,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   211,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   211,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   212,
+   "rect",
+   "y: 800 vs 730"
+  ],
+  [
+   212,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   212,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   212,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   212,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   212,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   212,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   213,
+   "rect",
+   "y: 800 vs 730"
+  ],
+  [
+   213,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   213,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   213,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   213,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   213,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   213,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   214,
+   "rect",
+   "y: 800 vs 730"
+  ],
+  [
+   214,
+   "style",
+   "alignContent: center vs normal"
+  ],
+  [
+   214,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   214,
+   "color",
+   "rgb(209, 254, 23) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   214,
+   "style",
+   "backgroundImage: radial-gradient(in oklab, rgb(239, 254, 23) 40%, rgb(209, 254, 23) 100%) vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)"
+  ],
+  [
+   214,
+   "color",
+   "rgb(209, 254, 23) vs rgb(20, 21, 26)"
+  ],
+  [
+   214,
+   "color",
+   "rgb(209, 254, 23) vs rgb(20, 21, 26)"
+  ],
+  [
+   214,
+   "color",
+   "rgb(209, 254, 23) vs rgb(20, 21, 26)"
+  ],
+  [
+   214,
+   "color",
+   "rgb(209, 254, 23) vs rgb(20, 21, 26)"
+  ],
+  [
+   214,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   214,
+   "style",
+   "outline: rgba(209, 254, 23, 0.5) none 3px vs rgb(20, 21, 26) none 3px"
+  ],
+  [
+   215,
+   "rect",
+   "x: 176.5 vs 143"
+  ],
+  [
+   215,
+   "rect",
+   "y: 811 vs 762"
+  ],
+  [
+   215,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   215,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   215,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   215,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   215,
+   "style",
+   "transformOrigin: 32.9297px 12px vs 32.9453px 12px"
+  ],
+  [
+   216,
+   "rect",
+   "x: 176.5 vs 143"
+  ],
+  [
+   216,
+   "rect",
+   "y: 813 vs 764"
+  ],
+  [
+   216,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   216,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   216,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   216,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   216,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   217,
+   "rect",
+   "x: 179 vs 146.8"
+  ],
+  [
+   217,
+   "rect",
+   "y: 815.8 vs 766.8"
+  ],
+  [
+   217,
+   "rect",
+   "w: 16.3 vs 15"
+  ],
+  [
+   217,
+   "rect",
+   "h: 16.2 vs 15"
+  ],
+  [
+   217,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   217,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   217,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   217,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   218,
+   "rect",
+   "x: 200.5 vs 167"
+  ],
+  [
+   218,
+   "rect",
+   "y: 811 vs 762"
+  ],
+  [
+   218,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   218,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   218,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   218,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   218,
+   "style",
+   "transformOrigin: 10.2656px 12px vs 10.25px 12px"
+  ],
+  [
+   219,
+   "rect",
+   "x: 199.9 vs 165"
+  ],
+  [
+   219,
+   "rect",
+   "y: 816.9 vs 774"
+  ],
+  [
+   219,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   219,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   219,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   219,
+   "style",
+   "transformOrigin: 12.2656px 0.5px vs 10.8438px 6.54688px"
+  ],
+  [
+   220,
+   "rect",
+   "x: 225 vs 191.5"
+  ],
+  [
+   220,
+   "rect",
+   "y: 811 vs 762"
+  ],
+  [
+   220,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   220,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   220,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   220,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   220,
+   "style",
+   "transformOrigin: 8.66406px 12px vs 8.64844px 12px"
+  ],
+  [
+   221,
+   "rect",
+   "h: 780 vs 754.4"
+  ],
+  [
+   221,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   221,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   221,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   221,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   221,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   221,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   221,
+   "style",
+   "transformOrigin: 540px 390px vs 540px 377.195px"
+  ],
+  [
+   222,
+   "rect",
+   "h: 780 vs 754.4"
+  ],
+  [
+   222,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   222,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   222,
+   "style",
+   "transformOrigin: 540px 390px vs 540px 377.195px"
+  ],
+  [
+   223,
+   "rect",
+   "h: 778 vs 752.4"
+  ],
+  [
+   223,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   223,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   223,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   223,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   223,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   223,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   223,
+   "style",
+   "transformOrigin: 539px 389px vs 539px 376.195px"
+  ],
+  [
+   224,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   224,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   224,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   224,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   224,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   224,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   225,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   225,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   225,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   225,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   225,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   225,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   226,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   226,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   226,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   226,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   226,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   226,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   227,
+   "rect",
+   "h: 32 vs 33.3"
+  ],
+  [
+   227,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   227,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   227,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   227,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   227,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   227,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   227,
+   "style",
+   "transformOrigin: 72.7344px 16px vs 72.7422px 16.6484px"
+  ],
+  [
+   228,
+   "color",
+   "rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)"
+  ],
+  [
+   228,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   228,
+   "color",
+   "rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)"
+  ],
+  [
+   228,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   228,
+   "color",
+   "rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)"
+  ],
+  [
+   228,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   228,
+   "color",
+   "rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)"
+  ],
+  [
+   228,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   228,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   228,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   228,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   228,
+   "style",
+   "transformOrigin: 72.7344px 16px vs 72.7422px 16px"
+  ],
+  [
+   229,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   229,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   229,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   229,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   229,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   229,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   229,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)"
+  ],
+  [
+   229,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   229,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   230,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   230,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   230,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   230,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   230,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   230,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   230,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   230,
+   "style",
+   "transformOrigin: 21.0469px 8px vs 21.0469px 12px"
+  ],
+  [
+   231,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   231,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   231,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   231,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   231,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   231,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   231,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   231,
+   "style",
+   "transformOrigin: 8px 8px vs 8px 12px"
+  ],
+  [
+   232,
+   "rect",
+   "x: 369 vs 365"
+  ],
+  [
+   232,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   232,
+   "rect",
+   "w: 16 vs 24"
+  ],
+  [
+   232,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   232,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   232,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   232,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   232,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   232,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   232,
+   "style",
+   "transformOrigin: 8px 8px vs 12px 12px"
+  ],
+  [
+   232,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   233,
+   "rect",
+   "x: 370.8 vs 367.8"
+  ],
+  [
+   233,
+   "rect",
+   "y: 110.5 vs 107.1"
+  ],
+  [
+   233,
+   "rect",
+   "w: 12.3 vs 18.5"
+  ],
+  [
+   233,
+   "rect",
+   "h: 10.3 vs 15.5"
+  ],
+  [
+   233,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   233,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   233,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   233,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   233,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   234,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   234,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   234,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   234,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   234,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   235,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   235,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   235,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   235,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   235,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   235,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   235,
+   "color",
+   "rgba(0, 0, 0, 0) vs rgb(255, 255, 255)"
+  ],
+  [
+   235,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   235,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   235,
+   "style",
+   "transformOrigin: 41.6875px 16px vs 41.6953px 16px"
+  ],
+  [
+   236,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   236,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   236,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   236,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   236,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   236,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   236,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   236,
+   "style",
+   "transformOrigin: 33.6875px 8px vs 33.6953px 12px"
+  ],
+  [
+   237,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   237,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   237,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   237,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   237,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   237,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   237,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   237,
+   "style",
+   "transformOrigin: 8px 8px vs 8px 12px"
+  ],
+  [
+   238,
+   "rect",
+   "x: 431.1 vs 427.1"
+  ],
+  [
+   238,
+   "rect",
+   "y: 108 vs 103.3"
+  ],
+  [
+   238,
+   "rect",
+   "w: 16 vs 24"
+  ],
+  [
+   238,
+   "rect",
+   "h: 16 vs 24"
+  ],
+  [
+   238,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   238,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   238,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   238,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   238,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   238,
+   "style",
+   "transformOrigin: 8px 8px vs 12px 12px"
+  ],
+  [
+   238,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   239,
+   "rect",
+   "x: 432.3 vs 428.8"
+  ],
+  [
+   239,
+   "rect",
+   "y: 111.2 vs 108.1"
+  ],
+  [
+   239,
+   "rect",
+   "w: 13.7 vs 20.5"
+  ],
+  [
+   239,
+   "rect",
+   "h: 11 vs 16.5"
+  ],
+  [
+   239,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   239,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   239,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   239,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   239,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   240,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   240,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   240,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   240,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   240,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   240,
+   "style",
+   "transformOrigin: 23.6875px 8px vs 23.6953px 8px"
+  ],
+  [
+   241,
+   "style",
+   "backgroundImage: linear-gradient(148.916deg, rgba(255, 255, 255, 0.04) 22.606%, rgba(255, 255, 255, 0.06) 51.256%, rgba(255, 255, 255, 0.02) 79.906%), linear-gradient(90deg, rgb vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)"
+  ],
+  [
+   241,
+   "style",
+   "backgroundPosition: 0% 0%, 0% 0% vs 0% 0%"
+  ],
+  [
+   241,
+   "style",
+   "backgroundRepeat: repeat, repeat vs repeat"
+  ],
+  [
+   241,
+   "style",
+   "backgroundSize: auto, auto vs auto"
+  ],
+  [
+   241,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   241,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   241,
+   "style",
+   "right: 0px vs -0.468857px"
+  ],
+  [
+   242,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   242,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   242,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   242,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   242,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   242,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   242,
+   "style",
+   "transformOrigin: 75.7656px 18px vs 75.75px 18px"
+  ],
+  [
+   243,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   243,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   243,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   243,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   243,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   243,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   243,
+   "style",
+   "transformOrigin: 35.8828px 18px vs 35.8984px 18px"
+  ],
+  [
+   244,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   244,
+   "color-serialization",
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.02) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   244,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   244,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   244,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   244,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   244,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   244,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   244,
+   "style",
+   "transformOrigin: 35.8828px 18px vs 35.8984px 18px"
+  ],
+  [
+   245,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   245,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   245,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   245,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   245,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   245,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   245,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   246,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   246,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   246,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   246,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   246,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   246,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   247,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   247,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   247,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   247,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   247,
+   "style",
+   "transformOrigin: 12.8828px 10px vs 12.8984px 10px"
+  ],
+  [
+   248,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   248,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   248,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   248,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   248,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   248,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   248,
+   "style",
+   "transformOrigin: 35.8828px 18px vs 35.8984px 18px"
+  ],
+  [
+   249,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   249,
+   "color-serialization",
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.02) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   249,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   249,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   249,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   249,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   249,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   249,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   249,
+   "style",
+   "transformOrigin: 35.8828px 18px vs 35.8984px 18px"
+  ],
+  [
+   250,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   250,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   250,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   250,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   250,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   250,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   250,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   251,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   251,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   251,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   251,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   251,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   251,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   252,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   252,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   252,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   252,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   252,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   252,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   253,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   253,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   253,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   253,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   253,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   253,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   254,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   254,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   254,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   254,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   254,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   254,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   255,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   255,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   255,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   255,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   255,
+   "style",
+   "transformOrigin: 12.8828px 10px vs 12.8984px 10px"
+  ],
+  [
+   256,
+   "rect",
+   "h: 722 vs 696.4"
+  ],
+  [
+   256,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   256,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   256,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   256,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   256,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   256,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   256,
+   "style",
+   "transformOrigin: 523px 361px vs 523px 348.195px"
+  ],
+  [
+   257,
+   "rect",
+   "h: 646 vs 620.4"
+  ],
+  [
+   257,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   257,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   257,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   257,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   257,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   257,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   257,
+   "style",
+   "transformOrigin: 523px 323px vs 523px 310.195px"
+  ],
+  [
+   258,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   258,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   258,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   258,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   258,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   258,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   258,
+   "style",
+   "transformOrigin: 523px 310.188px vs 523px 310.195px"
+  ],
+  [
+   259,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   259,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   259,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   259,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   259,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   259,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   260,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   260,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   260,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   260,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   261,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   261,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   261,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   261,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   262,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   262,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   262,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   262,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   262,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   262,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   262,
+   "style",
+   "transformOrigin: 491px 160.188px vs 491px 160.195px"
+  ],
+  [
+   263,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   263,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   263,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   263,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   263,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   263,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   263,
+   "style",
+   "transformOrigin: 150.328px 160.188px vs 150.344px 160.195px"
+  ],
+  [
+   264,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   264,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   264,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   264,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   264,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   264,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   264,
+   "style",
+   "transformOrigin: 150.328px 114.188px vs 150.344px 114.195px"
+  ],
+  [
+   265,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   265,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   265,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   265,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   265,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   265,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   265,
+   "style",
+   "transformOrigin: 150.328px 114.188px vs 150.344px 114.195px"
+  ],
+  [
+   265,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   266,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   266,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   266,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   266,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   266,
+   "style",
+   "transformOrigin: 150.328px 14px vs 150.344px 14px"
+  ],
+  [
+   267,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   267,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   267,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   267,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   267,
+   "style",
+   "transformOrigin: 150.328px 20px vs 150.344px 20px"
+  ],
+  [
+   268,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   268,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   268,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   268,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   268,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   268,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   268,
+   "style",
+   "transformOrigin: 150.336px 160.188px vs 150.344px 160.195px"
+  ],
+  [
+   269,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   269,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   269,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   269,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   269,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   269,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   269,
+   "style",
+   "transformOrigin: 150.336px 114.195px vs 150.344px 114.195px"
+  ],
+  [
+   270,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   270,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   270,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   270,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   270,
+   "style",
+   "transformOrigin: 150.336px 114.195px vs 150.344px 114.195px"
+  ],
+  [
+   270,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   271,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   271,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   271,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   271,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   271,
+   "style",
+   "transformOrigin: 150.336px 14px vs 150.344px 14px"
+  ],
+  [
+   272,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   272,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   272,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   272,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   272,
+   "style",
+   "transformOrigin: 150.336px 10px vs 150.344px 10px"
+  ],
+  [
+   273,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   273,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   273,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   273,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   273,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   273,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   273,
+   "style",
+   "transformOrigin: 150.328px 160.188px vs 150.344px 160.195px"
+  ],
+  [
+   274,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   274,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   274,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   274,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   274,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   274,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   274,
+   "style",
+   "transformOrigin: 150.328px 114.188px vs 150.344px 114.195px"
+  ],
+  [
+   275,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   275,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   275,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   275,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   275,
+   "style",
+   "transformOrigin: 150.328px 114.188px vs 150.344px 114.195px"
+  ],
+  [
+   275,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   276,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   276,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   276,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   276,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   276,
+   "style",
+   "transformOrigin: 150.328px 14px vs 150.344px 14px"
+  ],
+  [
+   277,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   277,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   277,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   277,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   277,
+   "style",
+   "transformOrigin: 150.328px 20px vs 150.344px 20px"
+  ],
+  [
+   278,
+   "rect",
+   "y: 802 vs 776.4"
+  ],
+  [
+   278,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   278,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   278,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   278,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   278,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   278,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   279,
+   "rect",
+   "y: 802 vs 776.4"
+  ],
+  [
+   279,
+   "color-serialization",
+   "oklab(0.999994 0.0000455678 0.0000200868 / 0.02) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   279,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)"
+  ],
+  [
+   279,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   279,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)"
+  ],
+  [
+   279,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   279,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)"
+  ],
+  [
+   279,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   279,
+   "color",
+   "rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)"
+  ],
+  [
+   279,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   279,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   279,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   279,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   279,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   280,
+   "rect",
+   "y: 791 vs 771.4"
+  ],
+  [
+   280,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   280,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   280,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   280,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   280,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   280,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   280,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   280,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   280,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   280,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   280,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   280,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   281,
+   "rect",
+   "y: 791 vs 771.4"
+  ],
+  [
+   281,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   281,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   281,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   281,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   281,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   281,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   281,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   281,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   281,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   281,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   281,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   281,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   282,
+   "rect",
+   "x: 670.4 vs 682"
+  ],
+  [
+   282,
+   "rect",
+   "y: 809.6 vs 795.4"
+  ],
+  [
+   282,
+   "rect",
+   "w: 90 vs 68"
+  ],
+  [
+   282,
+   "rect",
+   "h: 132.7 vs 122"
+  ],
+  [
+   282,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   282,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   282,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   282,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   283,
+   "rect",
+   "x: 671.6 vs 683"
+  ],
+  [
+   283,
+   "rect",
+   "y: 810.8 vs 796.4"
+  ],
+  [
+   283,
+   "rect",
+   "w: 87.7 vs 66"
+  ],
+  [
+   283,
+   "rect",
+   "h: 130.4 vs 120"
+  ],
+  [
+   283,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   283,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   283,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   283,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   283,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   283,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   283,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   283,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   283,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   283,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   283,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   283,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   283,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   284,
+   "rect",
+   "x: 671.6 vs 683"
+  ],
+  [
+   284,
+   "rect",
+   "y: 810.8 vs 796.4"
+  ],
+  [
+   284,
+   "color-serialization",
+   "oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   284,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   284,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   284,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   284,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   284,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   284,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   284,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   284,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   284,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   284,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   284,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   284,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   284,
+   "style",
+   "transformOrigin: 33px 60px vs 43.8438px 65.1953px"
+  ],
+  [
+   285,
+   "rect",
+   "y: 791 vs 771.4"
+  ],
+  [
+   285,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   285,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   285,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   285,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   286,
+   "rect",
+   "y: 792 vs 772.4"
+  ],
+  [
+   286,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   286,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   286,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   286,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   286,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   286,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   286,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   286,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   286,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   286,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   286,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   286,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   286,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   287,
+   "rect",
+   "y: 792 vs 772.4"
+  ],
+  [
+   287,
+   "color-serialization",
+   "oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   287,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   287,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   287,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   287,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   287,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   287,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   287,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   287,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   287,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   287,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   287,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   287,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   288,
+   "rect",
+   "x: 776.8 vs 786"
+  ],
+  [
+   288,
+   "rect",
+   "y: 802.6 vs 787.4"
+  ],
+  [
+   288,
+   "rect",
+   "w: 85.3 vs 68"
+  ],
+  [
+   288,
+   "rect",
+   "h: 130.7 vs 122"
+  ],
+  [
+   288,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   288,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   288,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   288,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   289,
+   "rect",
+   "x: 777.9 vs 787"
+  ],
+  [
+   289,
+   "rect",
+   "y: 803.8 vs 788.4"
+  ],
+  [
+   289,
+   "rect",
+   "w: 83 vs 66"
+  ],
+  [
+   289,
+   "rect",
+   "h: 128.4 vs 120"
+  ],
+  [
+   289,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   289,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   289,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   289,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   289,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   289,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   289,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   289,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   289,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   289,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   289,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   289,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   289,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   290,
+   "rect",
+   "x: 777.9 vs 787"
+  ],
+  [
+   290,
+   "rect",
+   "y: 803.8 vs 788.4"
+  ],
+  [
+   290,
+   "color-serialization",
+   "oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)"
+  ],
+  [
+   290,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   290,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   290,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   290,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   290,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   290,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   290,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   290,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   290,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   290,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   290,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   290,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   290,
+   "style",
+   "transformOrigin: 33px 60px vs 41.5px 64.1953px"
+  ],
+  [
+   291,
+   "rect",
+   "y: 814 vs 788.4"
+  ],
+  [
+   291,
+   "rect",
+   "w: 213.2 vs 212"
+  ],
+  [
+   291,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   291,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   291,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   291,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   291,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   291,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   291,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   291,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   291,
+   "color",
+   "rgb(247, 247, 248) vs rgb(158, 158, 255)"
+  ],
+  [
+   291,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   291,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   291,
+   "style",
+   "outline: rgb(247, 247, 248) none 3px vs rgb(158, 158, 255) none 3px"
+  ],
+  [
+   291,
+   "style",
+   "transformOrigin: 106.594px 21px vs 106.016px 21px"
+  ],
+  [
+   292,
+   "rect",
+   "y: 814 vs 788.4"
+  ],
+  [
+   292,
+   "rect",
+   "w: 201.2 vs 200"
+  ],
+  [
+   292,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   292,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   292,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   292,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   292,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   292,
+   "style",
+   "transformOrigin: 100.594px 12px vs 100.016px 12px"
+  ],
+  [
+   293,
+   "rect",
+   "y: 840 vs 814.4"
+  ],
+  [
+   293,
+   "rect",
+   "w: 201.2 vs 200"
+  ],
+  [
+   293,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   293,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   293,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   293,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   293,
+   "style",
+   "fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs \"Space Grotesk\", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Col"
+  ],
+  [
+   293,
+   "style",
+   "transformOrigin: 100.594px 8px vs 100.016px 8px"
+  ],
+  [
+   294,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   294,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   294,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   294,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   294,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   294,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   296,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   296,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   296,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   296,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   296,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   296,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   297,
+   "style",
+   "appearance: button vs auto"
+  ],
+  [
+   297,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   297,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   297,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   297,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   297,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   297,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   298,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   298,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   298,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   298,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   298,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   298,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   299,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   299,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   299,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   299,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   299,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   299,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   299,
+   "style",
+   "verticalAlign: middle vs baseline"
+  ],
+  [
+   300,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   300,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   300,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   300,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   300,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   300,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   301,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   301,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   301,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   301,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   301,
+   "style",
+   "fontSize: 16px vs 13.3333px"
+  ],
+  [
+   301,
+   "style",
+   "lineHeight: 24px vs normal"
+  ],
+  [
+   302,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   302,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   302,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   302,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   302,
+   "shadow",
+   "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg vs rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px"
+  ],
+  [
+   302,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   302,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   303,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   303,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   303,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   303,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   303,
+   "style",
+   "filter: drop-shadow(rgb(209, 254, 23) 0px 0px 2px) drop-shadow(rgba(209, 254, 23, 0.7) 0px 0px 8px) vs blur(0px)"
+  ],
+  [
+   303,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   303,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   304,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   304,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   304,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   304,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   304,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   304,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   305,
+   "rect",
+   "x: 1045.1 vs 1395"
+  ],
+  [
+   305,
+   "rect",
+   "y: 490.1 vs 840"
+  ],
+  [
+   305,
+   "rect",
+   "w: 699.8 vs 512"
+  ],
+  [
+   305,
+   "rect",
+   "h: 699.8 vs 512"
+  ],
+  [
+   305,
+   "style",
+   "backgroundImage: conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 200deg, rgba(209, 254, 23, 0.2) 280deg, rgb(209, 254, 23) 345deg, rgb(255, 255, 255) 355deg, rgba(0, 0, 0 vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)"
+  ],
+  [
+   305,
+   "style",
+   "borderBottomStyle: solid vs none"
+  ],
+  [
+   305,
+   "style",
+   "borderLeftStyle: solid vs none"
+  ],
+  [
+   305,
+   "style",
+   "borderRightStyle: solid vs none"
+  ],
+  [
+   305,
+   "style",
+   "borderTopStyle: solid vs none"
+  ],
+  [
+   305,
+   "style",
+   "fontSize: 16px vs 14px"
+  ],
+  [
+   305,
+   "style",
+   "lineHeight: 24px vs 20.3px"
+  ],
+  [
+   305,
+   "style",
+   "transform: matrix(0.864847, 0.502035, -0.502035, 0.864847, 0, 0) vs matrix(1, 0, 0, 1, 0, 0)"
+  ]
+ ]
+}

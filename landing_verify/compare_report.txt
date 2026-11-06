@@ -1,0 +1,360 @@
+--- #283 <IMG> object-cover rect 671.6,810.8 87.7x130.4
+    [rect] x: 671.6 vs 683
+    [rect] y: 810.8 vs 796.4
+    [rect] w: 87.7 vs 66
+    [rect] h: 130.4 vs 120
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+--- #289 <IMG> object-cover rect 777.9,803.8 83x128.4
+    [rect] x: 777.9 vs 787
+    [rect] y: 803.8 vs 788.4
+    [rect] w: 83 vs 66
+    [rect] h: 128.4 vs 120
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+--- #111 <FORM> generate-form generate-form--asset relative z-10 hidden max-h-[calc(10 rect 17,138 318x722
+    [rect] h: 722 vs 652
+    [color] rgb(19, 21, 23) vs rgba(0, 0, 0, 0)
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderBottomLeftRadius: 0px vs 16px
+    [style] borderBottomRightRadius: 0px vs 16px
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: solid vs none
+--- #284 <SPAN> pointer-events-none absolute inset-0 z-10 bg-black/60 transition-opaci rect 671.6,810.8 87.7x130.4
+    [rect] x: 671.6 vs 683
+    [rect] y: 810.8 vs 796.4
+    [color-serialization] oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+--- #290 <SPAN> pointer-events-none absolute inset-0 z-10 bg-black/60 transition-opaci rect 777.9,803.8 83x128.4
+    [rect] x: 777.9 vs 787
+    [rect] y: 803.8 vs 788.4
+    [color-serialization] oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+--- #142 <DIV> p-1 border-separator-card rounded-[20px] relative border shadow-[0px_0 rect 25,332 302x168
+    [rect] y: 332 vs 324
+    [rect] h: 168 vs 104
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+--- #291 <SPAN> flex min-w-0 flex-col gap-q-050 pr-q-300 rect 909.4,814 213.2x42
+    [rect] y: 814 vs 788.4
+    [rect] w: 213.2 vs 212
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+--- #145 <DIV> p-2 size-full relative md:bg-surface-primary rounded-2xl border border rect 29,336 145x160
+    [rect] y: 336 vs 328
+    [rect] h: 160 vs 96
+    [style] backgroundImage: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect x='0.5' y='0.5' width='calc(100%25 - 1px)' height='ca vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+    [style] borderBottomStyle: dashed vs none
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: dashed vs none
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+--- #279 <A> mt-auto group/academy-invitation relative flex h-16.5 w-full items-cen rect 345,802 1078x66
+    [rect] y: 802 vs 776.4
+    [color-serialization] oklab(0.999994 0.0000455678 0.0000200868 / 0.02) vs rgba(0, 0, 0, 0)
+    [color] rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(255, 255, 255, 0.05) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+--- #286 <IMG> object-cover rect 730.4,792 86x154
+    [rect] y: 792 vs 772.4
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+--- #287 <SPAN> pointer-events-none absolute inset-0 z-10 bg-black/60 transition-opaci rect 730.4,792 86x154
+    [rect] y: 792 vs 772.4
+    [color-serialization] oklab(0 0 0 / 0.6) vs rgba(0, 0, 0, 0)
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+--- #163 <DIV> p-2 size-full relative md:bg-surface-primary rounded-2xl border border rect 178,336 145x160
+    [rect] y: 336 vs 328
+    [rect] h: 160 vs 96
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+    [style] borderBottomStyle: dashed vs none
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: dashed vs none
+    [color] rgba(255, 255, 255, 0.08) vs rgb(247, 247, 248)
+    [style] borderRightStyle: dashed vs none
+--- #187 <BUTTON> rounded-md transition w-full flex-1 grid grid-cols-[1fr_auto] items-ce rect 25,676 302x54
+    [rect] y: 676 vs 604
+    [rect] h: 54 vs 48
+    [style] appearance: button vs auto
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #280 <DIV> relative h-19 w-63 shrink-0 -translate-y-1.5 rect 645.4,791 252x76
+    [rect] y: 791 vs 771.4
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+--- #281 <DIV> absolute inset-x-0 bottom-0 h-19 overflow-hidden transition-[height] d rect 645.4,791 252x76
+    [rect] y: 791 vs 771.4
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+    [style] borderRightStyle: solid vs none
+    [color] rgb(247, 247, 248) vs rgb(158, 158, 255)
+--- #146 <SPAN> inline-flex max-w-full items-center gap-1 rounded-q-150 px-2 py-0.5 al rect 113.5,344 52.5x20
+    [rect] y: 344 vs 336
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Col
+    [style] paddingBottom: 4px vs 2px
+--- #164 <SPAN> inline-flex max-w-full items-center gap-1 rounded-q-150 px-2 py-0.5 al rect 262.5,344 52.5x20
+    [rect] y: 344 vs 336
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Col
+    [style] paddingBottom: 4px vs 2px
+--- #181 <DIV> relative w-full flex-1 grid grid-rows-1 overflow-y-auto border border- rect 25,508 302x160
+    [rect] y: 508 vs 436
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(217, 217, 217, 0.04) vs rgb(247, 247, 248)
+    [style] borderRightStyle: solid vs none
+--- #228 <DIV> q-tabs-list h-auto! overflow-visible! rounded-none! border-0! bg-trans rect 361,100 145.5x32
+    [color] rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)
+    [style] borderRightStyle: solid vs none
+    [color] rgba(255, 255, 255, 0.1) vs rgb(247, 247, 248)
+    [style] borderTopStyle: solid vs none
+--- #305 <SPAN> absolute top-1/2 left-1/2 size-128 -translate-1/2 rect 1045.1,490.1 699.8x699.8
+    [rect] x: 1045.1 vs 1395
+    [rect] y: 490.1 vs 840
+    [rect] w: 699.8 vs 512
+    [rect] h: 699.8 vs 512
+    [style] backgroundImage: conic-gradient(rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 200deg, rgba(209, 254, 23, 0.2) 280deg, rgb(209, 254, 23) 345deg, rgb(255, 255, 255) 355deg, rgba(0, 0, 0 vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+--- #128 <BUTTON> q-tabs-tab rect 29,288 145x32
+    [rect] h: 32 vs 24
+    [color] rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)
+    [style] borderRightStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgba(255, 255, 255, 0.5)
+--- #134 <BUTTON> q-tabs-tab rect 178,288 145x32
+    [rect] h: 32 vs 24
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderRightStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+--- #194 <svg>  rect 120.7,703 16x16
+    [rect] y: 703 vs 628
+    [rect] w: 16 vs 20
+    [rect] h: 16 vs 20
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontSize: 16px vs 13.3333px
+--- #214 <BUTTON> gap-2 transition-transform duration-200 active:scale-97 border max-w-f rect 25,800 302x48
+    [rect] y: 800 vs 730
+    [style] alignContent: center vs normal
+    [style] appearance: button vs auto
+    [color] rgb(209, 254, 23) vs rgba(0, 0, 0, 0)
+    [style] backgroundImage: radial-gradient(in oklab, rgb(239, 254, 23) 40%, rgb(209, 254, 23) 100%) vs linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%)
+    [color] rgb(209, 254, 23) vs rgb(20, 21, 26)
+    [color] rgb(209, 254, 23) vs rgb(20, 21, 26)
+    [color] rgb(209, 254, 23) vs rgb(20, 21, 26)
+--- #232 <svg>  rect 369,108 16x16
+    [rect] x: 369 vs 365
+    [rect] y: 108 vs 103.3
+    [rect] w: 16 vs 24
+    [rect] h: 16 vs 24
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #238 <svg>  rect 431.1,108 16x16
+    [rect] x: 431.1 vs 427.1
+    [rect] y: 108 vs 103.3
+    [rect] w: 16 vs 24
+    [rect] h: 16 vs 24
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #120 <P> text-xs text-white/80 rect 37,246 284x18
+    [color-serialization] oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)
+    [style] borderBottomStyle: solid vs none
+    [color-serialization] oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)
+    [style] borderLeftStyle: solid vs none
+    [color-serialization] oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)
+    [style] borderRightStyle: solid vs none
+    [color-serialization] oklab(0.999994 0.0000455677 0.0000200868 / 0.8) vs lab(99.9988 0.0152886 0.00777245 / 0.8)
+    [style] borderTopStyle: solid vs none
+--- #158 <g>  rect 94.8,396.7 13.9x11
+    [rect] x: 94.8 vs 97.8
+    [rect] y: 396.7 vs 348.7
+    [rect] w: 13.9 vs 10.9
+    [rect] h: 11 vs 9.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #159 <path>  rect 94.8,396.7 13.9x11
+    [rect] x: 94.8 vs 97.8
+    [rect] y: 396.7 vs 348.7
+    [rect] w: 13.9 vs 10.9
+    [rect] h: 11 vs 9.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #176 <g>  rect 243.8,396.7 13.9x11
+    [rect] x: 243.8 vs 246.8
+    [rect] y: 396.7 vs 348.7
+    [rect] w: 13.9 vs 10.9
+    [rect] h: 11 vs 9.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #177 <path>  rect 243.8,396.7 13.9x11
+    [rect] x: 243.8 vs 246.8
+    [rect] y: 396.7 vs 348.7
+    [rect] w: 13.9 vs 10.9
+    [rect] h: 11 vs 9.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #197 <path>  rect 305.3,697.9 5.6x10.1
+    [rect] x: 305.3 vs 301.9
+    [rect] y: 697.9 vs 626.3
+    [rect] w: 5.6 vs 10.1
+    [rect] h: 10.1 vs 5.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #204 <path>  rect 150.3,759.9 5.6x10.1
+    [rect] x: 150.3 vs 146.9
+    [rect] y: 759.9 vs 685.3
+    [rect] w: 5.6 vs 10.1
+    [rect] h: 10.1 vs 5.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #205 <BUTTON> flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-wh rect 180,738 147x54
+    [rect] y: 738 vs 668
+    [style] appearance: button vs auto
+    [color] rgba(255, 255, 255, 0.05) vs rgba(0, 0, 0, 0)
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontSize: 16px vs 13.3333px
+--- #210 <path>  rect 305.3,759.9 5.6x10.1
+    [rect] x: 305.3 vs 301.9
+    [rect] y: 759.9 vs 693.3
+    [rect] w: 5.6 vs 10.1
+    [rect] h: 10.1 vs 5.6
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+--- #235 <BUTTON> q-tabs-tab rect 423.1,100 83.4x32
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderBottomStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderLeftStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderRightStyle: solid vs none
+    [color] rgba(0, 0, 0, 0) vs rgb(255, 255, 255)
+    [style] borderTopStyle: solid vs none
+--- #141 <DIV> relative mt-2 flex flex-col gap-2 rect 25,332 302x336
+    [rect] y: 332 vs 324
+    [rect] h: 336 vs 272
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontSize: 16px vs 14px
+    [style] lineHeight: 24px vs 20.3px
+--- #143 <DIV> relative grid grid-cols-2 gap-1 select-none size-full rect 29,336 294x160
+    [rect] y: 336 vs 328
+    [rect] h: 160 vs 96
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontSize: 16px vs 14px
+    [style] lineHeight: 24px vs 20.3px
+--- #144 <DIV> relative group  rect 29,336 145x160
+    [rect] y: 336 vs 328
+    [rect] h: 160 vs 96
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontSize: 16px vs 14px
+    [style] lineHeight: 24px vs 20.3px
+--- #147 <SPAN> truncate rect 119.5,346 40.5x14
+    [rect] x: 119.5 vs 121.5
+    [rect] y: 346 vs 339
+    [rect] w: 40.5 vs 36.5
+    [style] borderBottomStyle: solid vs none
+    [style] borderLeftStyle: solid vs none
+    [style] borderRightStyle: solid vs none
+    [style] borderTopStyle: solid vs none
+    [style] fontFamily: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif vs "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Col

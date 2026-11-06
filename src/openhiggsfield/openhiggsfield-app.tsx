@@ -59,6 +59,7 @@ import { Viewer } from "./viewer";
 import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
 import { ImageSurface } from "./image-surface";
+import { VideoSurface } from "./video-surface";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the project detail surface plus the view-state store that raises
@@ -1491,7 +1492,11 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
           {surface === "image" ? (
             /* HF /ko/ai/image 정적 화면 이식(t_f3de705e): 히어로+폼 전용, 갤러리 없음(HF 실측 그대로). */
             <ImageSurface model={model} />
-          ) : (surface === "video" || surface === "audio") ? (
+          ) : surface === "video" ? (
+            /* HF /ko/ai/video?model=minimax_h3 정적 화면 이식(t_bb8f3edb):
+               플레이트·생성 폼·피드 컬럼을 GT 306 요소 실측 그대로 미러링했다. */
+            <VideoSurface />
+          ) : surface === "audio" ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
