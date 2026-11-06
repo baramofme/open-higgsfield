@@ -59,6 +59,9 @@ export function VideoSurface() {
   const setText = useVideoPrompt((s) => s.setText);
   const [placeholderShown, setPlaceholderShown] = useState(text.trim() === "");
   const editorRef = useRef<HTMLDivElement>(null);
+  /* 에디터에서 마지막으로 동기화된 값(t_159e30db uncontrolled 전환). 이 값과
+     store text 가 같으면 = 타이핑으로 변한 값 → 에디터 DOM 재서작성 생략. */
+  const lastEditorTextRef = useRef<string | null>(null);
   const rootRef = useAutoPlayOnView();
 
   /* ---- 세그먼트 탭(레퍼런스↔프레임) 실배선 — t_e0c64917 요소 1 ----
@@ -240,10 +243,27 @@ export function VideoSurface() {
   }, [text]);
 
   /* 에디터는 일반 contenteditable(Lexical 원문은 미이식 — 정직 marking).
+     t_159e30db uncontrolled 전환: 에디터 내부 DOM 은 브라우저가 소유한다
+     (JSX children 제거 → React reconciler 가 contenteditable 자식을 diff 하지
+     않아 브라우저 직접-변경과 removeChild 경주하지 않는다 → 크래시 원천 차단).
      입력 → useVideoPrompt(실배선; 이 화면에서 유일하게 실제로動く 타이핑 길). */
   const syncFromEditor = () => {
-    setText(editorRef.current?.innerText ?? "");
+    const val = editorRef.current?.innerText ?? "";
+    lastEditorTextRef.current = val; /* 이 값은 에디터에서 직접 나온 것 → 재서작성 생략 */
+    setText(val);
   };
+
+  /* 외부 setText(prompt-optimize·record 로드 등 비타이핑 경로)만 에디터 DOM 에
+     명령형으로 반영. 타이핑으로 변한 값(lastEditorTextRef 와 동일)은 건너뛴다
+     → React 가 브라우저 소유 contenteditable 을 건드리지 않아 removeChild 0. */
+  useEffect(() => {
+    const el = editorRef.current;
+    if (!el) return;
+    if (text !== lastEditorTextRef.current) {
+      lastEditorTextRef.current = text;
+      el.innerText = text;
+    }
+  }, [text]);
 
   return (
     <>
@@ -439,9 +459,7 @@ export function VideoSurface() {
                       data-lexical-editor="true"
                       style={{ userSelect: "text", whiteSpace: "pre-wrap", wordBreak: "break-word" }}
                       onInput={syncFromEditor}
-                    >
-                      {text === "" ? <p><br /></p> : <p>{text}</p>}
-                    </div>
+                    />
                     {placeholderShown ? (
                       <div className="ohf-vid-n184" data-ohf-video="184" data-prompt-placeholder="true">
                         {promptPlaceholder}
