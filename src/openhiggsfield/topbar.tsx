@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { type GalleryView } from "./data";
 import { AssetsIcon, CloseIcon, KeyIcon, SearchIcon } from "./icons";
+import { NAV_ROUTES, type NavLink } from "./routes";
 import type { StudioMode } from "./studio-mode";
 import { LOCAL_USER } from "./local-user";
 
@@ -18,7 +20,6 @@ import { LOCAL_USER } from "./local-user";
    other label is HF's page that this app does not carry, so it sits honest inert
    (`aria-disabled="true"` + `data-off=""`) exactly as the rest of the mirror does.
    `신규` rides the three pills HF wears it on: Shorts · Mangaka · Academy. */
-type NavLink = "image" | "video" | "audio" | "cinema";
 type NavEntry = {
   id: string;
   label: string;
@@ -78,23 +79,19 @@ function BrandGlyph() {
 
 export function Topbar({
   view,
-  onView,
   busy,
   keyConfigured,
   onKeys,
   mode,
-  onToggle,
   query,
   onQuery,
   onAssets,
 }: {
   view: GalleryView;
-  onView: (next: GalleryView) => void;
   busy: boolean;
   keyConfigured: boolean;
   onKeys: () => void;
   mode: StudioMode;
-  onToggle: () => void;
   query: string;
   onQuery: (value: string) => void;
   onAssets: () => void;
@@ -132,20 +129,15 @@ export function Topbar({
               if (entry.link === "cinema")
                 return (
                   <li key={entry.id}>
-                    <button
-                      type="button"
+                    <Link
+                      href={NAV_ROUTES.cinema}
                       className="ohf-nav-item"
-                      aria-pressed={mode === "cinema"}
-                      onClick={onToggle}
-                      aria-label={
-                        mode === "cinema"
-                          ? "Cinema Studio — return to general mode"
-                          : "Cinema Studio — enter the cinematic surface"
-                      }
-                      title={mode === "cinema" ? "Return to general mode" : "Enter the cinematic surface"}
+                      aria-current={mode === "cinema" ? "page" : undefined}
+                      aria-label="Cinema Studio — open the cinematic surface"
+                      title="Open the cinematic surface"
                     >
                       {entry.label}
-                    </button>
+                    </Link>
                   </li>
                 );
               /* 이미지·비디오·오디오 are the three scopes this studio answers; the
@@ -154,16 +146,29 @@ export function Topbar({
               const live =
                 entry.link === "image" || entry.link === "video" || entry.link === "audio";
               const active = live && view === entry.link;
+              if (live)
+                return (
+                  <li key={entry.id}>
+                    <Link
+                      href={NAV_ROUTES[entry.link as NavLink]}
+                      className="ohf-nav-item"
+                      data-active={active || undefined}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {entry.label}
+                      {entry.badge ? (
+                        <span className="ohf-nav-badge">{entry.badge}</span>
+                      ) : null}
+                    </Link>
+                  </li>
+                );
               return (
                 <li key={entry.id}>
                   <button
                     type="button"
                     className="ohf-nav-item"
-                    data-active={active || undefined}
-                    aria-current={active ? "page" : undefined}
-                    aria-disabled={live ? undefined : "true"}
-                    data-off={live ? undefined : ""}
-                    onClick={live ? () => onView(entry.link as GalleryView) : undefined}
+                    aria-disabled="true"
+                    data-off=""
                   >
                     {entry.label}
                     {entry.badge ? (

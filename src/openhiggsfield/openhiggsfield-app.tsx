@@ -315,7 +315,6 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
      straight off disk and fed to the decoder, no server round-trip. */
   const csvInputRef = useRef<HTMLInputElement>(null);
   const mode = useStudio((state) => state.mode);
-  const setMode = useStudio((state) => state.setMode);
   const cinemaMode = useStudio((state) => state.cinemaMode);
   const activeProjectId = useProjects((state) => state.activeProjectId);
   const projectsList = useProjects((state) => state.projects);
@@ -1457,7 +1456,6 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
         <main className="ohf-main">
           <Topbar
             view={view}
-            onView={switchView}
             busy={busy}
             keyConfigured={keyConfigured}
             onKeys={openKeys}
@@ -1465,20 +1463,6 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
             onQuery={setQuery}
             onAssets={openAssets}
             mode={mode}
-            /* One switch (user ruling): plain goes straight to the cinematic
-               screen, which opens on its image tab; any cinema state returns to
-               plain. The pult rail inside the screen is a separate question and
-               is deliberately not connected to this button. */
-            onToggle={() => {
-              if (mode === "general") {
-                setMode("cinema");
-                setCinemaMode("image");
-                alignDockToMode("image");
-              } else {
-                setMode("general");
-                setCinemaMode("image");
-              }
-            }}
           />
 
 
