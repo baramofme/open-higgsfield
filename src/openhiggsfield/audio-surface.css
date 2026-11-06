@@ -271,6 +271,7 @@
   color: rgb(247, 247, 248);      /* HF live 실측 — t_dbb7f8b9의 137,138,139은 HF 리터럴 아님 */
 }
 .ohf-audio-script-overlay-inner { /* HF: absolute top-0 left-0 whitespace-pre-line text-xs leading-4.5 */
+  color: rgb(137, 138, 139);       /* HF live 하베스트 실측 리터럴(#898a8b 회색 힌트). wrapper 247 상속을 inner에서 오버라이드 — 리뷰어 라운드2 재요구. borderX currentColor 동시 폐합 */
   position: absolute;
   top: 0;
   left: 0;
