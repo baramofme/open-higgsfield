@@ -13,6 +13,7 @@ import { LOCAL_USER } from "./local-user";
 import { EditShowcase, EditToolsCard } from "./edit-showcase";
 import { ExpandCropEditor } from "./expand-crop";
 import { VideoEditor, VideoEditRail, SEED_CAPTIONS, type CaptionSeg } from "./video-edit";
+import { arrowNavShouldSkip } from "./arrow-nav-guard";
 import { SHOWCASE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 /* t_114a2802 — the image reference's centre-click "use as next". The plate is
    raised from the viewer's own image branch and the role it writes goes straight
