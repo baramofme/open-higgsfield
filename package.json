@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test": "node --experimental-strip-types --import ./tests/prompt-optimize/boot.mjs --test tests/prompt-optimize/*.test.ts",
-    "brand": "node scripts/build-brand-assets.mjs"
+    "brand": "node scripts/build-brand-assets.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@tanstack/react-virtual": "^3.14.10",
@@ -20,9 +22,11 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@storybook/react-vite": "^10.0.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "storybook": "^10.0.0",
     "typescript": "^5.9.2"
   }
 }
