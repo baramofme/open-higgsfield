@@ -1,0 +1,1229 @@
+/* =============================================================================
+   image-surface.css — HF /ko/ai/image?model=soul-cinematic 정적 화면 이식 (t_f3de705e)
+
+   ground-truth: HF live CDP(:9222) 1440×900 의 286개 가시 요소 실측
+   (t_38d43cc9 의 hf_image_surface_ground_truth.json; rect + computed styles).
+   이 파일의 모든 값은 그 실측에서 나온 것 — 반올림·추측 없음.
+   HF 가 clamp()/vh 로 만든 크기는 같은 viewport(1440×900)에서 같은 값으로
+   수렴하도록 동일한 clamp 정의를 이식했다.
+
+   토큰 3계층 규칙:
+   · --o-*(primitive)는 이 파일에서 직접 참조하지 않는다(설계 금지).
+   · --ohf-*(semantic)는 실측값과 토큰값이 완전히 일치하는 곳만 쓴다
+     (예: aside 배경 rgb(35,38,42)=#23262A=--ohf-color-surface-2).
+   · 실측과 다른 값은 --tile-img-* 성분 국유(tier-3) 토큰으로 선언해 참조한다.
+     하드코딩은 토큰 선언 블록 안의 실측 리터럴에만 존재한다.
+   ============================================================================= */
+
+/* ---- 성분 국유 토큰 선언: 전부 HF computed 실측값 ---------------------------- */
+.ohf-img-root {
+  /* 서수(surf) — 실측과 다른 값 */
+  --tile-img-white: #ffffff;                        /* rgb(255,255,255) */
+  --tile-img-ink-26: #1a1a1a;                       /* rgb(26,26,26) 배너 CTA 글자 */
+  --tile-img-form-bg: #1c1e21;                      /* rgb(28,30,33) 폼 배경 */
+  --tile-img-fieldset-bg: #27292c;                  /* rgb(39,41,44) 필드셋 배경 */
+  --tile-img-white-60: rgba(255, 255, 255, 0.6);    /* 실측 캐스케이드 글자색 */
+
+  /* 반투명 서수 — HF computed 직렬화 원문(문자열 정합) */
+  --tile-img-white-05: rgba(255, 255, 255, 0.05);
+  --tile-img-white-10: rgba(255, 255, 255, 0.1);
+  --tile-img-white-30: oklab(0.999994 0.0000455678 0.0000200868 / 0.3);
+  --tile-img-white-24: oklab(0.999994 0.0000455678 0.0000200868 / 0.24);
+  --tile-img-white-12: rgba(255, 255, 255, 0.12);
+  --tile-img-white-04: oklab(0.999994 0.0000455678 0.0000200868 / 0.04);
+  --tile-img-lime-10: oklab(0.932092 -0.117415 0.188958 / 0.1);
+  --tile-img-lime-20: oklab(0.932092 -0.117415 0.188958 / 0.2);  /* #282 원문 소수형 */
+  --tile-img-lime-24: rgba(209, 254, 23, 0.24);                  /* #226 NEW 배지 원문 */
+  --tile-img-black-04: rgba(0, 0, 0, 0.04);                      /* #212 링 원문 */
+  --tile-img-tertiary-plain: rgb(130, 130, 130);    /* placeholder 실측(토큰과 동값이나 문자열 정합용) */
+  --tile-img-surface-tertiary: rgb(15, 17, 19);     /* #207 inset 배경 */
+  --tile-img-surface-tertiary-2: rgb(15, 15, 16);   /* #206 배지 배경 */
+  --tile-img-black-plain: rgb(0, 0, 0);             /* #208 in2 배경 */
+
+  /* 발광 */
+  --tile-img-lime-glow: #cdff00;                    /* rgb(205,255,0) 실측 */
+  --tile-img-help-bg: rgba(39, 41, 44, 0.9);        /* #27292C/90 실측 */
+  --tile-img-gray-34-16: rgba(34, 34, 34, 0.16);    /* 캐릭터 피겨 그라디언트 */
+  --tile-img-gray-136-16: rgba(136, 136, 136, 0.16);
+  --tile-img-gray-34-20: rgba(34, 34, 34, 0.2);     /* #257 오버레이(0.2 실측) */
+  --tile-img-gray-136-20: rgba(136, 136, 136, 0.2);
+  --tile-img-gray-217-04: rgba(217, 217, 217, 0.04);/* 버튼 hairline/border 실측 */
+  --tile-img-white-45: rgba(255, 255, 255, 0.45);   /* 생성하기 text-shadow 실측 */
+
+  /* 서체 */
+  --tile-img-font-grotesk: "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --tile-img-font-ui2: Inter, ui-sans-serif, system-ui, sans-serif, system-ui, sans-serif;   /* #121/#174/#124 등 컴포넌트 실측 스택 */
+
+  /* 자간 실측 */
+  --tile-img-track-head: -0.56px;                   /* 히어로 헤드라인 computed */
+  --tile-img-track-010: 0.1px;                      /* 배너 강줄/프롬프트 computed */
+  --tile-img-track-zero: 0%;                        /* 버튼/라벨 computed '0%' */
+
+  /* 행간 실측 */
+  --tile-img-lh-20: 20px;
+  --tile-img-lh-16: 16px;
+  --tile-img-lh-18: 18px;
+  --tile-img-lh-24: 24px;
+  --tile-img-lh-17: 17px;
+  --tile-img-lh-14: 14px;                           /* #226 NEW 배지 */
+
+  /* 모서리 실측(토큰과 다른 값만) */
+  --tile-img-r-7: 7px;                              /* inset-px 층 radius 실측 */
+  --tile-img-r-5: 5px;                              /* inset-1 층 radius 실측 */
+  --tile-img-radius-infinite: calc(infinity * 1px);
+  --tile-img-radius-9999: 9999px; /* HF notice 계열 borderRadius 원문 = literal 9999px */ /* #140 computed 3.35544e+07 */
+
+  /* 치수 실측(토큰과 다른 값만) */
+  --tile-img-root-gap: 10px;                        /* #100 gap-2.5 실측 */
+  --tile-img-minw-40: 40px;                         /* #124 min-w-10 실측 */
+  --tile-img-sparkle-12: 12px;                      /* #271 크기 실측 */
+  --tile-img-cam-32: 32px;                          /* #205/#206/#212 실측 박스 */
+  --tile-img-inset-px: 1px;                         /* #207 inset-px 실측 */
+  --tile-img-minh-40: 40px;                         /* #173/#174 min-h-10 실측 */
+  --tile-img-icon-38: 38px;                         /* #117/#124/#125 size-9.5 실측 */
+  --tile-img-h-32: 32px;                            /* h-8 실측 */
+  --tile-img-badge-22: 22px;                        /* #259 실측 */
+
+  /* 그림자 실측(Tailwind 합성 직렬화 원문) */
+  --tile-img-shadow-card:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0.3px 0.3px -0.15px,
+    rgba(0, 0, 0, 0.03) 0px 0.9px 0.9px -0.45px;
+  --tile-img-shadow-icon:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    var(--tile-img-white-05) 0px 2px 3px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px 4px 20px -8px;
+  --tile-img-shadow-badge:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.08) 0px -4px 8px 0px;
+  --tile-img-shadow-in2:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.08) 0px 2.6px 2.6px 0px;
+  --tile-img-shadow-sheen:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    var(--tile-img-white-12) 0px 1px 2px 0px inset;
+  --tile-img-shadow-ring:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    var(--tile-img-black-04) 0px 2px 4px 0px inset;
+  --tile-img-shadow-cta: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;   /* shadow-sm 실측 */
+  --tile-img-shadow-form:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.15) 0px 32px 24px 0px;                     /* #170 합성 원문 */
+  --tile-img-shadow-help-ring:
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    var(--tile-img-lime-20) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  /* 생성하기 버튼 실측 computed(내림차순 5 외곽 + 내림차순 inset 3) */
+  --tile-img-shadow-generate:
+    rgba(0, 0, 0, 0.15) 10px 34px 24px 0px,
+    rgba(0, 0, 0, 0.01) 8px 21px 6px 0px,
+    rgba(0, 0, 0, 0.25) 3px 7px 5px 0px,
+    rgba(0, 0, 0, 0.43) 1px 3px 4px 0px,
+    rgba(0, 0, 0, 0.49) 0px 1px 2px 0px,
+    rgb(130, 155, 25) 0px -3px 0px 0px inset,
+    rgb(130, 155, 25) 0px -2px 0px 0px inset,
+    rgb(209, 254, 23) 0px 1px 0px 0px inset;
+
+  /* 치수 곡선(HF clamp 원문 — 같은 viewport 에서 같은 값으로 수렴) */
+  --tile-img-dock-reserved: 244px;                  /* 폼 예약 실측(814-570) */
+  --tile-img-hero-gap: clamp(16px, 3vh, 40px);      /* 1440×900 → 27px */
+  --tile-img-band-gap: clamp(12px, 2.5vh, 32px);    /* 1440×900 → 22.5px */
+  --tile-img-card-gap: clamp(16px, min(2vw, 3vh), 32px);  /* 1440×900 → 27px */
+  --tile-img-slot-pull: clamp(16px, min(1.5vw, 2vh), 36px); /* 1440×900 → 18px */
+  --tile-img-card-size: clamp(64px, min(12vw, 16vh), 172px); /* 1440×900 → 144px */
+  --tile-img-head-size: clamp(20px, min(3vw, 4.5vh), 36px);  /* 1440×900 → 36px */
+  --tile-img-academy-max: calc(100vw - 2rem);
+
+  /* 정합 치수 — HF ground-truth rect/transform 원문 */
+  --tile-img-slot-144: 144px;                       /* #130/#134/#138/#142 실측 144×144 */
+  --tile-img-slot-pull-px: -18px;                   /* margin-right: -18px 실측 */
+  --tile-img-chev-28: 28px;                         /* #250 실측 28×28 */
+  --tile-img-chev-16: 16px;                         /* #196 실측 16×16 */
+  --tile-img-stepnum-32: 32px;                      /* #245 실측 w-8 */
+  --tile-img-help-32: 32px;                         /* #274/#275 실측 32×32 */
+  --tile-img-help-glow-512: 512px;                  /* #285 size-128(32rem) 실측 */
+  --tile-img-model-min: 158px;                      /* #186 실측 폭 */
+  --tile-img-stepper-w98: 98px;                     /* #241 실측 폭 */
+  --tile-img-ct-maxw: 100px;                        /* #225 max-w-25 실측 */
+  --tile-img-gen-w-min: 120px;                      /* #264 min-w 실측 */
+  /* rotator — HF 원문은 rotate 클래스뿐(-rotate-10 / rotate-4 / rotate-180 -scale-y-100 / -rotate-4) */
+  --tile-img-rot-a: -10deg;
+  --tile-img-rot-b: 4deg;
+  --tile-img-rot-c: 180deg;
+  --tile-img-rot-d: -4deg;
+
+  /* 우정렬 고지 행의 우측 개입 */
+  --tile-img-help-off: -40px;
+}
+
+/* ---- 루트: HF main#main 의 폰트 캐스케이드를 통째로 재현 --------------------- */
+.ohf-img-root {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tile-img-root-gap);                    /* #100 gap 10px 실측 */
+  /* OHF topbar 42px + gap 2px → HF main 시작 y44 정합(실측 header=42 확인) */
+  margin-top: 2px;
+  font-family: var(--ohf-font-family-ui);
+  font-size: var(--ohf-font-size-lead);             /* 16px */
+  line-height: var(--tile-img-lh-24);               /* 24px */
+  color: var(--ohf-color-text-primary);
+}
+/* HF preflight: 폼 컨트롤은 루트 폰트를 그대로 상속( UA 13.3333px/16px 방지 ).
+   :where() 로 특수도 0 → 개별 클래스 폰트 선언이 이기도록(칩/버튼 분화 정합). */
+.ohf-img-root :where(button, input, select, textarea) {
+  font: inherit;
+}
+
+/* ---- #101: 상단 안내 행(HF flex-row 우정렬 h-32) ---------------------------- */
+.ohf-img-topline {
+  flex: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+}
+
+/* ---- #101: 고지 행(우측 정렬, h-8) — HF 실측이 빈 행 ------------------------ */
+.ohf-img-notice {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  height: var(--tile-img-h-32);                     /* h-8 실측 */
+  flex: none;
+}
+
+/* ---- #113: 스테이지(나머지 높이) --------------------------------------------- */
+.ohf-img-stage {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: block;
+}
+
+/* ---- #114: 스크롤러(절대, 전체, no-scrollbar, overscroll-none) --------------- */
+.ohf-img-scroller {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+}
+.ohf-img-scroller::-webkit-scrollbar { display: none; }
+
+/* ---- #115: 히어로 존 — HF 높이 = 스크롤 높이 - 폼 예약 244px ----------------- */
+.ohf-img-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100% - var(--tile-img-dock-reserved));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tile-img-hero-gap);
+  padding-inline: var(--ohf-spacing-3xl);           /* 16px */
+}
+
+/* ---- #116: 아카데미 배너(절대, 상단 중앙, z-10, pill) ------------------------ */
+.ohf-img-noticebar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: var(--ohf-z-docked);                     /* 10 */
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-xl);                       /* #116 gap 12px 실측 */
+  width: max-content;
+  max-width: var(--tile-img-academy-max);
+  border-radius: var(--tile-img-radius-9999);         /* rounded-full 9999px 실측 */
+  background-color: var(--ohf-color-surface-2);     /* rgb(35,38,42)=#23262A 동값 */
+  padding: var(--ohf-spacing-lg);                   /* 10px */
+  pointer-events: auto;
+}
+
+/* ---- #117: 배너 아이콘 원(38×38, ring/그림자 실측) --------------------------- */
+.ohf-img-notice-icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-icon-38);
+  height: var(--tile-img-icon-38);
+  border-radius: var(--tile-img-radius-9999);         /* #117 9999px 실측 */
+  border: 1px solid var(--tile-img-white-10);
+  background-color: var(--tile-img-white-05);       /* #117 rgba 원문 */
+  color: var(--tile-img-white);                     /* #117 computed 원문 */
+  box-shadow: var(--tile-img-shadow-icon);
+}
+.ohf-img-notice-icon > svg {
+  display: flex;                                    /* #118 computed display 원문 */
+  width: var(--ohf-spacing-4xl);                    /* 20px(#118 실측) */
+  height: var(--ohf-spacing-4xl);
+  color: var(--tile-img-white);
+}
+
+/* ---- #120: 배너 텍스트(2줄, truncate) ---------------------------------------- */
+.ohf-img-notice-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ohf-spacing-2xs);                      /* 2px */
+  min-width: 0;
+  flex: 1;
+  padding-right: var(--ohf-spacing-xl);             /* 12px */
+}
+.ohf-img-notice-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ohf-img-notice-line--strong {
+  font-family: var(--tile-img-font-ui2);            /* #121 computed 원문 */
+  font-size: var(--ohf-font-size-body);             /* 14px */
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-20);
+  color: var(--tile-img-white);
+  letter-spacing: var(--tile-img-track-010);
+}
+.ohf-img-notice-line--muted {
+  font-family: var(--tile-img-font-ui2);            /* #122 computed 원문 */
+  font-size: var(--ohf-font-size-small);            /* 12px */
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-16);
+  color: var(--tile-img-tertiary-plain);            /* rgb(130,130,130) 원문 */
+}
+
+/* ---- #123: 배너 액션(우측, gap-1) ------------------------------------------- */
+.ohf-img-notice-actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-xs);                       /* 4px */
+}
+.ohf-img-notice-cta {
+  display: grid;                                    /* #124 computed display 원문 */
+  place-items: center;
+  gap: var(--ohf-spacing-sm);                       /* #124 gap 6px 실측 */
+  height: var(--tile-img-icon-38);                  /* h-9.5! 실측 */
+  min-width: var(--tile-img-minw-40);               /* #124 min-width 40px 원문 */
+  padding: var(--ohf-spacing-md) var(--ohf-spacing-xl);     /* 8px 12px HF 원문 */
+  border-radius: var(--tile-img-radius-9999);         /* rounded-full 9999px */
+  background-color: var(--tile-img-white);
+  color: var(--tile-img-ink-26);                    /* rgb(26,26,26) */
+  font-family: var(--tile-img-font-ui2);            /* #124 computed 원문 */
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-semibold);
+  line-height: var(--tile-img-lh-16);
+  text-align: center;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--tile-img-shadow-cta);
+}
+.ohf-img-notice-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-icon-38);
+  height: var(--tile-img-icon-38);
+  padding: var(--ohf-spacing-md);                   /* 8px p-2 */
+  border: 0;
+  border-radius: var(--tile-img-radius-9999);         /* rounded-full 9999px 실측 */
+  background-color: var(--tile-img-white-05);
+  color: var(--tile-img-tertiary-plain);            /* #125 rgb(130,130,130) 원문 */
+  cursor: pointer;
+  line-height: normal; /* HF #125 = UA normal(수확 필터에서 양측 동일 제외) */
+}
+.ohf-img-notice-close > svg {
+  display: flex;                                    /* #126 computed display 원문 */
+  width: var(--ohf-spacing-5xl);                    /* 24px(#126 실측) */
+  height: var(--ohf-spacing-5xl);
+}
+
+/* ---- #128: 카드 밴드(col, align-center, gap 22.5px) -------------------------
+   HF 구조: [선명 밴드(flow)] → gap → [히어로 텍스트]; 흐릿 밴드는 절대겹침.
+   밴드 h = 144 + 22.5 + 104 = 270.5, hero 570 안에서 justify-center → y236. */
+.ohf-img-band {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tile-img-band-gap);
+  width: 100%;
+  flex: none;           /* #128 pad 0 16 실측 */
+}
+
+/* ---- #129: 흐릿(블러) 밴드(절대, 밴드 좌상단 중앙, blur 32px, opacity .4) ----- */
+.ohf-img-band--ghost {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  z-index: var(--ohf-z-base);
+  filter: blur(32px);
+  opacity: 0.4;
+  width: max-content;
+}
+
+/* ---- #146: 선명한 밴드(flow, isolate — 슬롯 마이너스 마진으로 겹침) ----------- */
+.ohf-img-band--solid {
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  width: max-content;
+}
+
+/* ---- 카드 슬롯(144×144, 우마진 -18px 겹침Pull, z 4/3/2/1) --------------------- */
+.ohf-img-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--tile-img-slot-144);
+  height: var(--tile-img-slot-144);
+  margin-right: var(--tile-img-slot-pull-px);
+}
+.ohf-img-slot:last-child { margin-right: 0; }
+.ohf-img-slot--a { z-index: var(--ohf-z-elevation); }   /* 4 */
+.ohf-img-slot--b { z-index: var(--ohf-z-floating); }    /* 3 */
+.ohf-img-slot--c { z-index: var(--ohf-z-overlay); }     /* 2 */
+.ohf-img-slot--d { z-index: var(--ohf-z-content); }     /* 1 */
+
+/* ---- 회오리 래퍼 — HF 원문: flex-none + rotate(-scale-y) 만 ------------------ */
+.ohf-img-rotator { flex: none; }
+.ohf-img-slot--a .ohf-img-rotator { rotate: var(--tile-img-rot-a); }
+.ohf-img-slot--b .ohf-img-rotator { rotate: var(--tile-img-rot-b); }
+.ohf-img-slot--c .ohf-img-rotator { rotate: var(--tile-img-rot-c); scale: 1 -1; }
+.ohf-img-slot--d .ohf-img-rotator { rotate: var(--tile-img-rot-d); }
+
+/* ---- 카드 프레임(144 border-box, border 4px white/30 — img 는 padding box 136) */
+.ohf-img-card {
+  position: relative;
+  overflow: hidden;
+  width: var(--tile-img-card-size);                 /* #132 144 실측(border-box) */
+  height: var(--tile-img-card-size);
+  border-radius: var(--ohf-radius-xl);              /* 12px */
+  border: var(--ohf-spacing-xs) solid var(--tile-img-white-30); /* HF 보더 4px → img 136px */   /* 4px white/30 */
+  box-shadow: var(--tile-img-shadow-card);
+}
+.ohf-img-card--flat { border-width: 0; }            /* 2번째 카드 테두리 없음(#136 img 144) */
+.ohf-img-card--round { border-radius: var(--tile-img-radius-infinite); } /* #140 3.35544e+07 */
+
+.ohf-img-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;                                      /* padding box 채움(#133 136/#154 144) */
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- #163: 히어로 텍스트(밴드 안 두 번째 자식) ------------------------------- */
+.ohf-img-herotext {
+  display: flex;
+  flex-direction: column;
+  /* HF #163 alignItems = center(실측) — 래퍼 폭 496.047은 desc max-content가 결정 */
+  align-items: center;
+  text-align: center;
+  flex: none;
+}
+.ohf-img-herotext-head {
+  display: flex;
+  flex-direction: column;
+  /* HF #164 alignItems 없음 = stretch — 안의 headline(496.047)을 채운다 */
+  align-items: normal;
+  gap: var(--ohf-spacing-md);                       /* 8px gap-2 실측 */
+}
+.ohf-img-headline {
+  font-family: var(--tile-img-font-grotesk);
+  font-weight: var(--ohf-font-weight-bold);
+  font-size: var(--tile-img-head-size);
+  line-height: 1;
+  letter-spacing: var(--tile-img-track-head);
+  text-transform: uppercase;
+  text-align: center;
+}
+.ohf-img-headline-line { color: var(--tile-img-white); }
+.ohf-img-headline-line--lime { color: var(--ohf-color-accent); }  /* rgb(209,254,23) 동값 */
+.ohf-img-hero-desc {
+  font-size: var(--ohf-font-size-lead);             /* 16px */
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-24);
+  color: var(--ohf-color-text-secondary);           /* rgb(137,138,139)=#898A8B 동값 */
+}
+
+/* ---- #169: 좌정 독(fixed bottom-4) ------------------------------------------- */
+.ohf-img-dock {
+  position: fixed;
+  bottom: var(--ohf-spacing-3xl);                   /* 16px bottom-4 → 실측 y760 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--ohf-z-modal);                      /* 50 */
+  width: min(880px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  border-radius: var(--ohf-radius-4xl); /* HF #169 dock br=20px(form과 동률) */
+}
+
+/* ---- #170: 폼 --------------------------------------------------------------- */
+.ohf-img-form {
+  width: 100%;
+  border-radius: var(--ohf-radius-4xl);             /* 20px */
+  background-color: var(--tile-img-form-bg);        /* rgb(28,30,33) */
+  padding: var(--ohf-spacing-xs);                   /* p-1 = 4px */
+  box-shadow: var(--tile-img-shadow-form);          /* #170 4-zero 합성 원문 */
+}
+
+/* ---- #171: 필드셋 ------------------------------------------------------------ */
+.ohf-img-fieldset {
+  position: relative;
+  z-index: var(--ohf-z-overlay);                    /* 2 */
+  display: flex;
+  gap: var(--ohf-spacing-xl);                       /* 12px */
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-self: stretch;
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  border-radius: var(--ohf-radius-3xl);             /* 16px */
+  background-color: var(--tile-img-fieldset-bg);    /* rgb(39,41,44) */
+  padding: var(--ohf-spacing-xl);                   /* 12px */
+}
+
+/* ---- #172: 좌 컬럼(space-y-3 = 행 1 하단 12px) -------------------------------- */
+.ohf-img-col { flex: 1; min-height: 0; min-width: 0; }
+
+/* ---- #173: 프롬프트 행 ------------------------------------------------------- */
+.ohf-img-prompt-row {
+  display: flex;
+  gap: var(--ohf-spacing-xl);
+  align-items: center;
+  align-self: stretch;
+  padding: var(--ohf-spacing-xs);                   /* p-1 */
+  min-height: var(--tile-img-minh-40);              /* min-h-10 실측 */
+  margin-bottom: var(--ohf-spacing-xl);             /* space-y-3 → 12px */
+}
+
+/* ---- #174: 프롬프트 박스 ------------------------------------------------------ */
+.ohf-img-prompt {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--tile-img-minh-40);              /* #174 min-height 40 원문 */
+  font-family: var(--tile-img-font-ui2);            /* #174 computed 원문 */
+  font-size: var(--ohf-font-size-body);             /* 14px 실측 */
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-20);
+  letter-spacing: var(--tile-img-track-010);
+  color: var(--tile-img-white);
+  cursor: text;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ohf-img-prompt::-webkit-scrollbar { display: none; }
+
+/* ---- #175: 에디터(contenteditable — Lexical 원문 대신 정직 div) --------------- */
+.ohf-img-editor {
+  width: 100%;
+  min-height: var(--tile-img-lh-20);                /* 20px 실측 */
+  outline: none;
+  font-family: var(--tile-img-font-ui2);            /* #175 computed 원문 */
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-20);
+  letter-spacing: var(--tile-img-track-zero);       /* #175 '0%' 원문 */
+  color: var(--tile-img-white);
+  cursor: text;
+}
+.ohf-img-editor p {
+  font-family: var(--tile-img-font-ui2);            /* #176 computed 원문 */
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-20);
+  letter-spacing: var(--tile-img-track-zero);       /* #176 '0%' 원문 */
+  margin: 0;
+}
+
+/* ---- #177: placeholder(절대, 포인터 관통) ------------------------------------- */
+.ohf-img-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--tile-img-font-ui2);            /* #177 computed 원문 */
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-20);
+  letter-spacing: var(--tile-img-track-zero);       /* #177 '0%' 원문 */
+  color: var(--tile-img-tertiary-plain);
+  pointer-events: none;
+  user-select: none;
+  cursor: text;
+  white-space: nowrap;
+}
+
+/* ---- #178: 설정 컨트롤 행 ---------------------------------------------------- */
+.ohf-img-controls {
+  display: flex;
+  gap: var(--ohf-spacing-xs);                       /* 4px */
+  align-items: center;
+  height: var(--tile-img-h-32);
+  min-width: 0;
+}
+
+/* ---- #179/#180: 어셋 픽커(32×32) -------------------------------------------- */
+.ohf-img-assets {
+  display: flex;
+  align-items: center;
+  height: var(--tile-img-h-32);
+  width: var(--tile-img-h-32);
+  flex: none;
+  overflow: hidden;
+  border-radius: var(--ohf-radius-md);              /* 8px 실측 */
+  background-color: var(--tile-img-white-05);       /* #179 rgba 원문 */
+}
+.ohf-img-assets-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-h-32);
+  height: var(--tile-img-h-32);
+  flex: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--tile-img-white);
+  cursor: pointer;
+}
+.ohf-img-assets-btn > svg { width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #181 16px */
+
+/* ---- #183-#194: 모델 트리거 --------------------------------------------------- */
+.ohf-img-modelwrap {
+  position: relative;
+  flex: none;
+  width: var(--tile-img-model-w, 158px);            /* #183 158.016 실측 */
+  height: var(--tile-img-h-32);
+}
+.ohf-img-model-fieldset {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.ohf-img-model-label {
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-xs);                       /* #185 gap-1 = 4px 원문 */
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.ohf-img-model-btn {
+  width: 100%;
+  height: 100%;
+  min-width: var(--tile-img-model-min);             /* #186 실측 158px */
+  display: flex;
+  align-items: center;
+  justify-content: center;                          /* #186 computed center */
+  padding: var(--ohf-spacing-xl);                   /* #186 padding 12px 원문 */
+  border: 1px solid transparent;
+  border-radius: var(--ohf-radius-md);
+  background-color: var(--tile-img-white-05);       /* #186 rgba 원문 */
+  color: var(--tile-img-white-60);                  /* #186 원문 */
+  font-size: var(--ohf-font-size-lead);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-24);
+  cursor: pointer;
+}
+.ohf-img-model-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;                          /* #187 원문 */
+  min-width: 0;
+}
+.ohf-img-model-lead {
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-md);                       /* 8px gap-2 실측 */
+  color: var(--tile-img-white);
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-20);
+}
+.ohf-img-model-icon {
+  position: relative;
+  width: var(--ohf-spacing-3xl);                    /* #189 16px */
+  height: var(--ohf-spacing-3xl);
+  flex: none;
+}
+.ohf-img-model-icon > svg {
+  width: var(--ohf-spacing-3xl);                    /* #190 16px */
+  height: var(--ohf-spacing-3xl);
+  color: var(--ohf-color-accent);
+}
+.ohf-img-model-name {
+  padding-inline: var(--ohf-spacing-xs);            /* px-1 */
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-20);
+  white-space: nowrap;
+  color: var(--tile-img-white);
+}
+.ohf-img-model-chev {
+  width: var(--ohf-spacing-3xl);                    /* #193 16px */
+  height: var(--ohf-spacing-3xl);
+  flex: none;
+}
+
+/* ---- #195: 설정 스크롤 영역 --------------------------------------------------- */
+.ohf-img-setwrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: var(--tile-img-h-32);
+}
+.ohf-img-chevron-ghost {
+  position: absolute;
+  left: var(--tile-img-chev-ghost-x, 6px);          /* #196: setwrap x494 → 아이콘 x500 */
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--tile-img-chev-16);                   /* #196 실측 16×16 */
+  height: var(--tile-img-chev-16);
+  display: block;
+  overflow: hidden;
+  text-align: center;                               /* #196 computed 원문 */
+  color: var(--tile-img-white);                     /* #196 computed 원문 */
+  opacity: 1;                                       /* #196 opacity 1 */
+  pointer-events: none;
+}
+.ohf-img-chevron-ghost > svg { width: var(--tile-img-chev-16); height: var(--tile-img-chev-16); }
+
+/* ---- #198: 트랙 스크롤러(hide-scrollbar, x-auto, y-hidden) -------------------- */
+.ohf-img-trackscroll {
+  width: 100%;
+  height: var(--tile-img-h-32);
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: none;
+  scrollbar-width: none;
+}
+.ohf-img-trackscroll::-webkit-scrollbar { display: none; }
+
+/* ---- #199/#200: 트랙 + 내부 래퍼(min-w-max, gap 4px 실측) --------------------- */
+.ohf-img-track {
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-xs);                       /* #199 gap 4px */
+  min-width: max-content;                           /* #199 원문 */
+  height: var(--tile-img-h-32);
+}
+.ohf-img-track-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--ohf-spacing-xs);                       /* 4px gap-1 실측 */
+  height: var(--tile-img-h-32);
+}
+
+/* ---- 칩 공통(실측 오버라이드 결과: radius 8, border 1px 투명, bg .05) --------- */
+.ohf-img-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tile-img-h-32);
+  gap: var(--ohf-spacing-sm);                       /* #201/#217 gap 6px 원문 */
+  padding: var(--ohf-spacing-md) var(--ohf-spacing-lg);   /* 8px 10px 실측 */
+  border: 1px solid transparent;
+  border-radius: var(--ohf-radius-md);
+  background-color: var(--tile-img-white-05);       /* #201 rgba 원문 */
+  color: var(--ohf-color-text-primary);             /* rgb(247,247,248)=#F7F7F8 동값 */
+  font-family: var(--ohf-font-family-ui);
+  font-size: var(--ohf-font-size-lead);
+  font-weight: var(--ohf-font-weight-regular);
+  line-height: var(--tile-img-lh-24);
+  cursor: pointer;
+  flex: none;
+}
+.ohf-img-chip--toggle {
+  padding: var(--ohf-spacing-xl);                   /* #237 padding 12px 원문 */
+  gap: var(--ohf-spacing-xs);
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-20);
+}
+.ohf-img-chip--cam { font-weight: var(--ohf-font-weight-medium); }       /* #201 500 */
+.ohf-img-chip--ct  { font-weight: var(--ohf-font-weight-semibold); }     /* #217 600 */
+.ohf-img-chip--ratio {
+  gap: var(--ohf-spacing-xs);                       /* #227/#232 gap 4px 원문 */
+  padding: var(--ohf-spacing-sm) var(--ohf-spacing-xl);    /* 6px 12px 실측 */
+  min-width: var(--tile-img-h-32);                  /* #227 min-w-8 원문 */
+  color: var(--tile-img-white);                     /* #227/#232 text-white 원문 */
+  border-width: 0; /* HF #227/#232 = 무보더(HF도 그 외 칩은 borderWidth:1px 실재) */
+}
+.ohf-img-chip-label {
+  font-size: var(--ohf-font-size-small);            /* 12px */
+  font-weight: var(--ohf-font-weight-semibold);     /* #213/#225 600 원문 */
+  line-height: var(--tile-img-lh-18);
+  color: inherit;
+  white-space: nowrap;
+}
+.ohf-img-chip--cam .ohf-img-chip-label,
+.ohf-img-chip--ct .ohf-img-chip-label { letter-spacing: var(--tile-img-track-zero); }  /* #213/#225 0% */
+.ohf-img-chip-label--small {
+  font-family: var(--tile-img-font-ui2);            /* #231/#236 computed 원문 */
+  font-size: var(--ohf-font-size-body);             /* text-q-label-sm 실측 14px */
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-16);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- #201-#213: 카메라 버튼 + 배지 층(scale .5 합성 원문) ---------------------
+   HF: box(16) > scale-layer(32, scale:.5, origin top-left) > badge(32)
+       > inset(30) > in2(24) > photo(24)/glow(24)/sheen(24) ; ring(32, abs).
+   rect 은 전체 0.5배(16/15/12/12/12/12/16) — computed 폭은 원문 32/30/24. */
+.ohf-img-cam-icon {
+  display: grid;
+  place-items: center;
+  width: var(--ohf-spacing-3xl);                    /* #202 16px */
+  height: var(--ohf-spacing-3xl);
+  flex: none;
+}
+.ohf-img-cam-icon-inner { display: grid; width: 100%; height: 100%; place-items: center; }
+.ohf-img-cam-box { position: relative; display: block; width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #204 16 */
+.ohf-img-cam-scale {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--tile-img-cam-32);                    /* #205 computed 32 */
+  height: var(--tile-img-cam-32);
+  transform-origin: top left;                       /* #205 원문 */
+  scale: 0.5;                                       /* rect 16 정합 */
+}
+.ohf-img-cam-badge {
+  position: relative;
+  display: block;
+  flex: none;
+  width: var(--tile-img-cam-32);                    /* #206 computed 32 */
+  height: var(--tile-img-cam-32);
+  border-radius: var(--ohf-radius-md);              /* #206 8px */
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.05) 15%,
+    rgba(255, 255, 255, 0.03) 65%,
+    rgba(255, 255, 255, 0.14)
+  ), none;                                          /* #206 backgroundImage 원문 */
+  background-color: var(--tile-img-surface-tertiary-2);  /* #206 rgb(15,15,16) */
+  box-shadow: var(--tile-img-shadow-badge);
+}
+.ohf-img-cam-inset {
+  position: absolute;
+  inset: var(--tile-img-inset-px);                  /* #207 inset-px → 30 */
+  border-radius: var(--tile-img-r-7);
+  background-color: var(--tile-img-surface-tertiary);     /* #207 rgb(15,17,19) */
+  pointer-events: none;
+}
+.ohf-img-cam-in2 {
+  position: absolute;
+  inset: var(--ohf-spacing-xs);                     /* #208 inset-1 → 24 */
+  border-radius: var(--tile-img-r-5);
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--tile-img-black-plain);    /* #208 rgb(0,0,0) */
+  box-shadow: var(--tile-img-shadow-in2);
+}
+.ohf-img-cam-photo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ohf-img-cam-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tile-img-r-5);
+  pointer-events: none;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, var(--tile-img-white-24) 100%); /* #210 원문 */
+}
+.ohf-img-cam-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tile-img-r-5);
+  z-index: var(--tile-img-z-20-ctl, 20);            /* #211 z-20 실측 */
+  pointer-events: none;
+  box-shadow: var(--tile-img-shadow-sheen);         /* #211 rgba(255,255,255,0.12) inset 원문 */
+}
+.ohf-img-cam-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ohf-radius-md);              /* #212 rounded-lg 8px */
+  pointer-events: none;
+  box-shadow: var(--tile-img-shadow-ring);          /* #212 rgba(0,0,0,0.04) inset 원문 */
+}
+
+/* ---- #214-#226: 컬러 트랜스퍼(md:order-last 로 시각상 마지막) ----------------- */
+.ohf-img-ct-group { order: var(--tile-img-order-last, 9999); }
+.ohf-img-ct-icon {
+  display: grid;
+  place-items: center;
+  width: var(--ohf-spacing-3xl);                    /* #218 16px */
+  height: var(--ohf-spacing-3xl);
+  flex: none;
+}
+.ohf-img-ct-icon-inner { display: grid; width: 100%; height: 100%; place-items: center; }
+.ohf-img-ct-icon-inner > svg {
+  width: var(--ohf-spacing-3xl);                    /* #220 16px */
+  height: var(--ohf-spacing-3xl);
+  color: var(--ohf-color-text-secondary);           /* #220 rgb(137,138,139) 원문 */
+}
+.ohf-img-ct-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: var(--tile-img-ct-maxw);               /* #225 max-w-25 원문 */
+}
+.ohf-img-badge-new {
+  flex: none;
+  border-radius: var(--ohf-radius-sm);              /* #226 6px */
+  background-color: var(--tile-img-lime-24);        /* #226 rgba(209,254,23,0.24) 원문 */
+  padding: var(--ohf-spacing-2xs) var(--ohf-spacing-sm);   /* 2px 6px 실측 */
+  color: var(--ohf-color-accent);                   /* rgb(209,254,23) 동값 */
+  font-size: var(--ohf-font-size-caption);          /* #226 10px 원문 */
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-14);               /* #226 14px 원문 */
+  letter-spacing: var(--tile-img-track-zero);       /* #226 '0%' 원문 */
+}
+
+/* ---- #227-#236: 비윌/화질 칩의 아이콘 ----------------------------------------- */
+.ohf-img-ratio-icon { display: flex; justify-content: center; align-items: center; width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); flex: none; } /* #228 16 */
+.ohf-img-ratio-icon > svg { width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #229 16 */
+.ohf-img-qual-icon { display: flex; justify-content: center; align-items: center; width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); flex: none; } /* #233 16 */
+.ohf-img-qual-icon > svg { width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #234 16 */
+.ohf-img-wand { width: var(--ohf-spacing-2xl); height: var(--ohf-spacing-2xl); flex: none; }  /* #238 14px */
+
+/* ---- #240-#249: 스테퍼 -------------------------------------------------------- */
+.ohf-img-stepper {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.ohf-img-stepper-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-stepper-w98);               /* #241 실측 98px */
+  height: var(--tile-img-h-32);
+  column-gap: var(--ohf-spacing-xs);                /* #241 'normal 4px' 원문 */
+  padding: var(--ohf-spacing-lg) var(--ohf-spacing-xl);     /* 10px 12px 실측 */
+  border: 1px solid transparent;
+  border-radius: var(--ohf-radius-md);
+  background-color: var(--tile-img-white-05);
+  color: var(--ohf-color-text-primary);             /* #241 rgb(247,247,248) 원문 */
+  font-weight: var(--ohf-font-weight-medium);       /* #241 500 */
+}
+.ohf-img-step-btn {
+  display: block;
+  width: var(--ohf-spacing-3xl);                    /* #242/#247 16px */
+  height: var(--ohf-spacing-3xl);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ohf-color-text-secondary);           /* rgb(137,138,139) 동값 */
+  cursor: pointer;
+}
+.ohf-img-step-btn > svg { width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #243/#248 16 */
+.ohf-img-step-btn[disabled] { opacity: 0.4; cursor: not-allowed; }   /* #242 실측 */
+.ohf-img-step-num {
+  display: inline-block;
+  width: var(--tile-img-stepnum-32);                /* #245 실측 32px */
+  text-align: center;
+  font-size: var(--ohf-font-size-body);
+  font-weight: var(--ohf-font-weight-semibold);     /* #245 600 원문 */
+  line-height: var(--tile-img-lh-20);
+  color: var(--tile-img-white);
+}
+.ohf-img-step-total { color: var(--tile-img-white-60); }   /* #246 원문 */
+
+/* ---- #250: 오른쪽 스크롤 개입(절대 우측) -------------------------------------- */
+.ohf-img-chevron-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-chev-28);                   /* #250 실측 28×28 */
+  height: var(--tile-img-chev-28);
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ohf-radius-md);
+  background-color: var(--tile-img-white-05);
+  color: var(--tile-img-white);
+  z-index: var(--tile-img-z-10-ctl, 10);
+  cursor: pointer;
+}
+.ohf-img-chevron-right > svg { width: var(--ohf-spacing-3xl); height: var(--ohf-spacing-3xl); } /* #251 16 */
+
+/* ---- #253: 우측 aside(z-20, self-end) ---------------------------------------- */
+.ohf-img-aside {
+  position: relative;
+  z-index: var(--tile-img-z-20-ctl, 20);
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: var(--tile-img-aside-h, 80px);
+  gap: var(--ohf-spacing-sm);                       /* #253 gap 6px 원문 */
+}
+
+/* ---- 캐릭터 토글(80×80) ------------------------------------------------------ */
+.ohf-img-charwrap { display: block; }
+.ohf-img-charbox {
+  position: relative;
+  flex: none;
+  width: var(--tile-img-char-size, 80px);
+  height: var(--tile-img-char-size, 80px);
+}
+.ohf-img-charfig {
+  position: relative;
+  margin: 0;
+  flex: none;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--ohf-radius-xl);              /* 12px */
+  background-image: linear-gradient(var(--tile-img-gray-34-16) 0%, var(--tile-img-gray-136-16) 100%); /* #256 원문 */
+  cursor: pointer;
+}
+.ohf-img-charwash {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ohf-z-content);                    /* #257 z-1 */
+  border-radius: var(--ohf-radius-xl);
+  background-image: linear-gradient(var(--tile-img-gray-34-20) 0%, var(--tile-img-gray-136-20) 100%); /* #257 원문 */
+}
+.ohf-img-charlabel {
+  position: absolute;
+  bottom: var(--ohf-spacing-sm);                    /* 6px bottom-1.5 실측 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--tile-img-font-grotesk);
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-bold);
+  line-height: var(--tile-img-lh-16);
+  color: var(--ohf-color-text-primary);
+  white-space: nowrap;
+}
+.ohf-img-charbadge {
+  position: absolute;
+  top: var(--ohf-spacing-sm);                       /* 6px */
+  left: var(--ohf-spacing-sm);
+  z-index: var(--tile-img-z-2-ctl, 2);              /* #259 z-2 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tile-img-badge-22);                  /* 실측 22×22 */
+  height: var(--tile-img-badge-22);
+  padding: var(--ohf-spacing-xs);                   /* 4px */
+  border-radius: var(--ohf-radius-sm);              /* 6px */
+  background-color: var(--tile-img-white-04);       /* #259 oklab 소수 원문 */
+}
+.ohf-img-charbadge-grid { display: grid; place-items: center; width: var(--ohf-spacing-2xl); height: var(--ohf-spacing-2xl); } /* #260 14 */
+.ohf-img-charbadge-grid > span { display: grid; place-items: center; }
+.ohf-img-charbadge-grid svg { width: var(--ohf-spacing-2xl); height: var(--ohf-spacing-2xl); } /* #262 14×14 */
+
+/* ---- 생성하기 버튼(120×80 lime) ----------------------------------------------- */
+.ohf-img-generate {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  width: var(--tile-img-gen-w, 120px);
+  min-width: var(--tile-img-gen-w-min);             /* #264 min-width 120px 원문 */
+  height: var(--tile-img-aside-h, 80px);
+  flex: none;
+  border: 0;
+  border-radius: var(--ohf-radius-xl);              /* 12px */
+  background-color: var(--ohf-color-accent);        /* rgb(209,254,23) 동값 */
+  color: var(--ohf-color-accent-ink);               /* rgb(19,21,23)=#131517 동값 */
+  padding: var(--tile-img-gen-pad-t, 14px) var(--ohf-spacing-xl) var(--tile-img-gen-pad-b, 16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--tile-img-font-grotesk);
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-bold);
+  line-height: var(--tile-img-lh-18);
+  text-transform: uppercase;
+  cursor: pointer;
+  text-shadow: var(--tile-img-white-45) 0 0 var(--tile-img-blur-8, 8px);
+  box-shadow: var(--tile-img-shadow-generate);      /* #264 원문 그대로 */
+}
+.ohf-img-gen-hairline {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ohf-radius-2xl);             /* #265 14px */
+  border-bottom: var(--ohf-spacing-12-ctl, 3px) solid var(--tile-img-gray-217-04);
+  overflow: hidden;
+  pointer-events: none;
+}
+.ohf-img-gen-glow {
+  position: absolute;
+  left: var(--tile-img-glow-x, 39px);               /* #266 left-[39px] */
+  top: var(--tile-img-glow-y, 36px);                /* #266 top-9 = 36px */
+  width: var(--tile-img-glow-w, 76px);
+  height: var(--tile-img-glow-h, 136px);            /* #266 h-34 = 136px */
+  border-radius: var(--ohf-radius-circle);          /* #266 50% */
+  background-color: var(--tile-img-lime-glow);      /* rgb(205,255,0) */
+  rotate: var(--tile-img-glow-rot, 102.79deg);
+  transform: skewX(var(--tile-img-glow-skew, 0.89deg));   /* #266 matrix 원문과 동치 */
+  mix-blend-mode: plus-lighter;
+  pointer-events: none;
+}
+.ohf-img-gen-content {
+  position: relative;
+  z-index: var(--tile-img-z-10-ctl, 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;                                     /* #267 min-w-0 원문 */
+}
+.ohf-img-gen-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ohf-spacing-xs);                       /* #268 4px */
+}
+.ohf-img-gen-text {
+  overflow: hidden;
+  font-family: var(--tile-img-font-grotesk);
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-bold);
+  line-height: var(--tile-img-lh-18);
+  letter-spacing: var(--tile-img-track-zero);       /* #269 '0%' 원문 */
+  text-transform: uppercase;
+  color: var(--ohf-color-accent-ink);
+}
+.ohf-img-gen-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ohf-spacing-2xs);                      /* #270 2px 원문 */
+  height: var(--tile-img-lh-16);                    /* #270 h-4 원문 */
+  font-size: var(--ohf-font-size-small);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--tile-img-lh-16);
+  color: var(--ohf-color-accent-ink);
+}
+.ohf-img-gen-sparkle { width: var(--tile-img-sparkle-12); height: var(--tile-img-sparkle-12); flex: none; } /* #271 12×12 */
+
+/* ---- 도우미 런처(우하단 32×32 — HF #274/#275 실측) --------------------------- */
+.ohf-img-helpzone {
+  position: absolute;
+  right: var(--ohf-spacing-xl);                     /* 12px right-3 실측 */
+  bottom: var(--ohf-spacing-xl);                    /* 12px bottom-3 → 실측 y856 */
+  z-index: var(--tile-img-z-20-ctl, 20);            /* #274 z-20 실측 */
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;                             /* #274 원문 */
+  width: var(--tile-img-help-32);                   /* #274 실측 32×32 */
+  height: var(--tile-img-help-32);
+}
+.ohf-img-help {
+  position: relative;
+  overflow: hidden;
+  width: var(--tile-img-help-32);                   /* #275 실측 32×32 */
+  height: var(--tile-img-help-32);
+  border-radius: var(--ohf-radius-3xl);             /* #275 16px */
+  background-color: var(--tile-img-help-bg);
+  backdrop-filter: blur(var(--tile-img-help-blur, 40px));   /* backdrop-blur-2xl */
+  pointer-events: auto;                             /* #275 원문 */
+}
+.ohf-img-help-tab { position: absolute; inset: 0; }         /* #276 inset-0 32×32 */
+.ohf-img-help-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tile-img-h-32);
+  min-width: var(--tile-img-h-32);                  /* #277 min-w-8 원문 */
+  padding-inline: var(--ohf-spacing-md);            /* 8px px-2 */
+  border: 0;
+  background: transparent;
+  color: var(--tile-img-white);
+  cursor: pointer;
+}
+.ohf-img-help-trigger > span { display: flex; width: var(--tile-img-chev-16); height: var(--tile-img-chev-16); }   /* #278 16×16 */
+.ohf-img-help-trigger > span > svg { width: var(--tile-img-chev-16); height: var(--tile-img-chev-16); }
+.ohf-img-help-glowwrap {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;                             /* #283 원문(z 없음 — HF와 정합) */
+}
+.ohf-img-help-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: var(--tile-img-shadow-help-ring);     /* #282 원문 직렬화 */
+}
+.ohf-img-help-glowpad {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--ohf-radius-3xl);             /* #284 16px */
+  padding: var(--tile-img-glowpad-1-5, 1.5px);      /* p-[1.5px] 실측 */
+}
+.ohf-img-help-glow {
+  position: absolute;
+  top: calc(50% - (var(--tile-img-help-glow-512) / 2));   /* HF -translate-y-1/2 등가 환산 */
+  left: calc(50% - (var(--tile-img-help-glow-512) / 2));   /* HF -translate-x-1/2 등가 환산 */
+  width: var(--tile-img-help-glow-512);             /* #285 size-128(32rem) */
+  height: var(--tile-img-help-glow-512);
+  transform: matrix(-0.601571, -0.79882, 0.79882, -0.601571, 0, 0);  /* #285 포즈 원문 */
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0) 0deg,
+    rgba(0, 0, 0, 0) 200deg,
+    rgba(209, 254, 23, 0.2) 280deg,
+    rgb(209, 254, 23) 345deg,
+    rgb(255, 255, 255) 355deg,
+    rgba(0, 0, 0, 0) 360deg
+  );                                                 /* #285 backgroundImage 원문 */
+  opacity: 1;
+  pointer-events: none;
+}

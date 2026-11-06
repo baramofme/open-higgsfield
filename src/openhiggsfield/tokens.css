@@ -1,0 +1,374 @@
+/* OHF Design Tokens — 3-tier architecture.
+   Tier 1: Primitive (--o-*)       raw, never referenced directly in components
+   Tier 2: Semantic (--ohf-*)      aliases to primitives, consumed by components
+   Tier 3: Component (--ctl-*)     scoped to a single component block
+
+   Naming: kebab-case. Tier prefix distinguishes layer.
+   --o-  = primitive (immutable raw values)
+   --ohf- = semantic (the public API components consume)
+   --ctl- / --tile- etc = component-local
+
+   Backward compatibility: the legacy short names (--bg, --s1, --tx, etc) are
+   kept as aliases on .ohf so existing rules continue to resolve. New code
+   should prefer the --ohf-* names.
+*/
+
+/* ===== TIER 1: PRIMITIVES ===== */
+:root {
+  /* Color primitives */
+  --o-color-black: #000000;
+  --o-color-white: #ffffff;
+  --o-color-lime: #d1fe17;
+  --o-color-lime-light: #d9fe3e;
+  --o-color-red: #fa0019;
+  --o-color-red-mid: #e72930;
+  --o-color-red-line: #db3f3e;
+  --o-color-favorite: #e0483d;
+  --o-color-neutral-97: #f7f7f8;
+  --o-color-neutral-136: #898a8b;
+  --o-color-neutral-130: #828282;
+  --o-color-neutral-98: #626262;
+  --o-color-neutral-72: #484e56;
+  --o-color-gray-19: #131416;
+  --o-color-gray-28: #1c1e20;
+  --o-color-gray-35: #23262a;
+  --o-color-gray-42: #2a2d32;
+  --o-color-gray-43: #2b2e33;
+  --o-color-off-white-5: #ffffff0d;
+  --o-color-off-white-10: #ffffff1a;
+  --o-color-lime-alpha-05: #d1fe170d;
+  --o-color-lime-alpha-10: #d1fe171a;
+  --o-color-lime-alpha-30: #d1fe174d;
+  --o-color-black-70: #000000b3;
+  --o-color-white-90: #ffffffe6;
+  --o-color-ink-dark: #131517;
+
+  /* Dimension primitives */
+  --o-size-2: 2px;
+  --o-size-3: 3px;
+  --o-size-4: 4px;
+  --o-size-5: 5px;
+  --o-size-6: 6px;
+  --o-size-7: 7px;
+  --o-size-8: 8px;
+  --o-size-9: 9px;
+  --o-size-10: 10px;
+  --o-size-11: 11px;
+  --o-size-12: 12px;
+  --o-size-13: 13px;
+  --o-size-14: 14px;
+  --o-size-15: 15px;
+  --o-size-16: 16px;
+  --o-size-18: 18px;
+  --o-size-20: 20px;
+  --o-size-24: 24px;
+  --o-size-28: 28px;
+  --o-size-32: 32px;
+  --o-size-40: 40px;
+  --o-size-46: 46px;
+  --o-size-56: 56px;
+
+  /* Font-size primitives */
+  --o-font-8-5: 8.5px;
+  --o-font-9: 9px;
+  --o-font-9-5: 9.5px;
+  --o-font-10: 10px;
+  --o-font-10-5: 10.5px;
+  --o-font-11: 11px;
+  --o-font-11-5: 11.5px;
+  --o-font-12: 12px;
+  --o-font-12-5: 12.5px;
+  --o-font-13: 13px;
+  --o-font-13-5: 13.5px;
+  --o-font-14: 14px;
+  --o-font-15: 15px;
+  --o-font-16: 16px;
+  --o-font-17: 17px;
+  --o-font-18: 18px;
+  --o-font-20: 20px;
+  --o-font-32: 32px;
+
+  /* Font-weight primitives */
+  --o-weight-400: 400;
+  --o-weight-500: 500;
+  --o-weight-550: 550;
+  --o-weight-600: 600;
+  --o-weight-620: 620;
+  --o-weight-700: 700;
+
+  /* Line-height primitives */
+  --o-leading-tight: 1.25;
+  --o-leading-snug: 1.38;
+  --o-leading-normal: 1.45;
+  --o-leading-relaxed: 1.5;
+  --o-leading-loose: 1.6;
+
+  /* Letter-spacing primitives */
+  --o-track-tightest: -0.024em;
+  --o-track-tight: -0.006em;
+  --o-track-tighter: -0.005em;
+  --o-track-normal: 0;
+  --o-track-wide: 0.005em;
+  --o-track-wider: 0.02em;
+  --o-track-tracking: 0.1em;
+  --o-track-tracked: 0.16em;
+
+  /* Radius primitives */
+  --o-radius-0: 0;
+  --o-radius-2: 2px;
+  --o-radius-4: 4px;
+  --o-radius-6: 6px;
+  --o-radius-7: 7px;
+  --o-radius-8: 8px;
+  --o-radius-9: 9px;
+  --o-radius-10: 10px;
+  --o-radius-12: 12px;
+  --o-radius-14: 14px;
+  --o-radius-15: 15px;
+  --o-radius-16: 16px;
+  --o-radius-20: 20px;
+  --o-radius-24: 24px;
+  --o-radius-pill: 999px;
+  --o-radius-circle: 50%;
+
+  /* Shadow primitives */
+  --o-shadow-sm: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+  --o-shadow-raised: inset 0 0.125rem calc(0.125rem + 1px) 0 rgba(255, 255, 255, 0.05),
+    0 0.25rem 1.5rem calc(-1 * 0.5rem) rgba(0, 0, 0, 0.15);
+  --o-shadow-modal: inset 0 0.125rem calc(0.125rem + 1px) 0 rgba(255, 255, 255, 0.05),
+    0 0.25rem 0.25rem -0.5px rgba(0, 0, 0, 0.15);
+  --o-shadow-sheen: inset 0 0.125rem calc(0.125rem + 1px) 0 rgba(255, 255, 255, 0.05);
+
+  /* Duration primitives */
+  --o-ms-100: 0.1s;
+  --o-ms-120: 0.12s;
+  --o-ms-130: 0.13s;
+  --o-ms-150: 0.15s;
+  --o-ms-160: 0.16s;
+  --o-ms-180: 0.18s;
+  --o-ms-200: 0.2s;
+  --o-ms-220: 0.22s;
+  --o-ms-240: 0.24s;
+  --o-ms-260: 0.26s;
+  --o-ms-320: 0.32s;
+  --o-ms-420: 0.42s;
+  --o-ms-440: 0.44s;
+
+  /* Easing primitives */
+  --o-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --o-ease-decelerate: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-index primitives */
+  --o-z-0: 0;
+  --o-z-1: 1;
+  --o-z-2: 2;
+  --o-z-3: 3;
+  --o-z-4: 4;
+  --o-z-10: 10;
+  --o-z-30: 30;
+  --o-z-40: 40;
+  --o-z-50: 50;
+  --o-z-60: 60;
+  --o-z-70: 70;
+  --o-z-1000: 1000;
+}
+
+/* ===== TIER 2: SEMANTIC ===== */
+.ohf {
+  /* Color semantics */
+  --ohf-color-background: var(--o-color-gray-19);
+  --ohf-color-surface-1: var(--o-color-gray-28);
+  --ohf-color-surface-2: var(--o-color-gray-35);
+  --ohf-color-surface-3: var(--o-color-gray-42);
+  --ohf-color-surface-4: var(--o-color-gray-43);
+  --ohf-color-rail: var(--o-color-gray-19);
+  --ohf-color-border-subtle: var(--o-color-off-white-5);
+  --ohf-color-border-default: var(--o-color-off-white-10);
+  --ohf-color-text-primary: var(--o-color-neutral-97);
+  --ohf-color-text-secondary: var(--o-color-neutral-136);
+  --ohf-color-text-tertiary: var(--o-color-neutral-130);
+  --ohf-color-text-quaternary: var(--o-color-neutral-98);
+  --ohf-color-text-disabled: var(--o-color-neutral-72);
+  --ohf-color-accent: var(--o-color-lime);
+  --ohf-color-accent-strong: var(--o-color-lime);
+  --ohf-color-accent-ink: var(--o-color-ink-dark);
+  --ohf-color-accent-alpha-8: var(--o-color-lime-alpha-05);
+  --ohf-color-accent-alpha-14: var(--o-color-lime-alpha-10);
+  --ohf-color-accent-alpha-32: var(--o-color-lime-alpha-30);
+  --ohf-color-plate: var(--o-color-black-70);
+  --ohf-color-plate-ink: var(--o-color-white-90);
+  --ohf-color-danger: var(--o-color-red);
+  --ohf-color-danger-bg: #e7293033;
+  --ohf-color-danger-line: #db3f3e24;
+  --ohf-color-favorite: var(--o-color-favorite);
+
+  /* Typography semantics */
+  --ohf-font-family-ui: Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --ohf-font-size-caption: var(--o-font-10);
+  --ohf-font-size-tag: var(--o-font-10-5);
+  --ohf-font-size-label: var(--o-font-11);
+  --ohf-font-size-micro: var(--o-font-11-5);
+  --ohf-font-size-small: var(--o-font-12);
+  --ohf-font-size-control: var(--o-font-12-5);
+  --ohf-font-size-default: var(--o-font-13);
+  --ohf-font-size-body: var(--o-font-14);
+  --ohf-font-size-emphasis: var(--o-font-15);
+  --ohf-font-size-lead: var(--o-font-16);
+  --ohf-font-size-section: var(--o-font-17);
+  --ohf-font-size-title: var(--o-font-18);
+  --ohf-font-size-display: var(--o-font-20);
+  --ohf-font-size-hero: var(--o-font-32);
+  --ohf-font-weight-regular: var(--o-weight-400);
+  --ohf-font-weight-medium: var(--o-weight-500);
+  --ohf-font-weight-medium-plus: var(--o-weight-550);
+  --ohf-font-weight-semibold: var(--o-weight-600);
+  --ohf-font-weight-display: var(--o-weight-620);
+  --ohf-font-weight-bold: var(--o-weight-700);
+  --ohf-line-height-tight: var(--o-leading-tight);
+  --ohf-line-height-snug: var(--o-leading-snug);
+  --ohf-line-height-normal: var(--o-leading-normal);
+  --ohf-line-height-relaxed: var(--o-leading-relaxed);
+  --ohf-line-height-loose: var(--o-leading-loose);
+  --ohf-letter-spacing-tightest: var(--o-track-tightest);
+  --ohf-letter-spacing-tight: var(--o-track-tight);
+  --ohf-letter-spacing-tighter: var(--o-track-tighter);
+  --ohf-letter-spacing-wide: var(--o-track-wide);
+  --ohf-letter-spacing-wider: var(--o-track-wider);
+  --ohf-letter-spacing-tracking: var(--o-track-tracking);
+  --ohf-letter-spacing-tracked: var(--o-track-tracked);
+
+  /* Spacing semantics */
+  --ohf-spacing-2xs: var(--o-size-2);
+  --ohf-spacing-xs: var(--o-size-4);
+  --ohf-spacing-sm: var(--o-size-6);
+  --ohf-spacing-md: var(--o-size-8);
+  --ohf-spacing-lg: var(--o-size-10);
+  --ohf-spacing-xl: var(--o-size-12);
+  --ohf-spacing-2xl: var(--o-size-14);
+  --ohf-spacing-3xl: var(--o-size-16);
+  --ohf-spacing-4xl: var(--o-size-20);
+  --ohf-spacing-5xl: var(--o-size-24);
+
+  /* Radius semantics */
+  --ohf-radius-xs: var(--o-radius-4);
+  --ohf-radius-sm: var(--o-radius-6);
+  --ohf-radius-md: var(--o-radius-8);
+  --ohf-radius-lg: var(--o-radius-10);
+  --ohf-radius-xl: var(--o-radius-12);
+  --ohf-radius-2xl: var(--o-radius-14);
+  --ohf-radius-3xl: var(--o-radius-16);
+  --ohf-radius-4xl: var(--o-radius-20);
+  --ohf-radius-5xl: var(--o-radius-24);
+  --ohf-radius-pill: var(--o-radius-pill);
+  --ohf-radius-circle: var(--o-radius-circle);
+
+  /* Shadow semantics */
+  --ohf-shadow-1: var(--o-shadow-sm);
+  --ohf-shadow-2: var(--o-shadow-raised);
+  --ohf-shadow-3: var(--o-shadow-modal);
+  --ohf-shadow-sheen: var(--o-shadow-sheen);
+
+  /* Motion semantics */
+  --ohf-duration-fast: var(--o-ms-100);
+  --ohf-duration-quick: var(--o-ms-150);
+  --ohf-duration-normal: var(--o-ms-200);
+  --ohf-duration-slow: var(--o-ms-320);
+  --ohf-duration-slower: var(--o-ms-440);
+  --ohf-ease-standard: var(--o-ease-standard);
+  --ohf-ease-decelerate: var(--o-ease-decelerate);
+
+  /* Z-index semantics */
+  --ohf-z-base: var(--o-z-0);
+  --ohf-z-content: var(--o-z-1);
+  --ohf-z-overlay: var(--o-z-2);
+  --ohf-z-floating: var(--o-z-3);
+  --ohf-z-elevation: var(--o-z-4);
+  --ohf-z-docked: var(--o-z-10);
+  --ohf-z-shell: var(--o-z-30);
+  --ohf-z-tip: var(--o-z-40);
+  --ohf-z-modal: var(--o-z-50);
+  --ohf-z-modal-above: var(--o-z-60);
+  --ohf-z-toast: var(--o-z-70);
+  --ohf-z-system: var(--o-z-1000);
+
+  /* ===== BACKWARD-COMPATIBILITY ALIASES ===== */
+  /* The legacy short names remain so existing rules resolve unchanged.
+     New code should use --ohf-* names instead. */
+  --bg: var(--ohf-color-background);
+  --rail: var(--ohf-color-rail);
+  --s1: var(--ohf-color-surface-1);
+  --s2: var(--ohf-color-surface-2);
+  --s3: var(--ohf-color-surface-3);
+  --s4: var(--ohf-color-surface-4);
+  --line: var(--ohf-color-border-subtle);
+  --line-2: var(--ohf-color-border-default);
+  --tx: var(--ohf-color-text-primary);
+  --tx2: var(--ohf-color-text-secondary);
+  --tx3: var(--ohf-color-text-tertiary);
+  --tx4: var(--ohf-color-text-quaternary);
+  --tx-off: var(--ohf-color-text-disabled);
+  --accent: var(--ohf-color-accent);
+  --accent-strong: var(--ohf-color-accent-strong);
+  --accent-ink: var(--ohf-color-accent-ink);
+  --accent-08: var(--ohf-color-accent-alpha-8);
+  --accent-14: var(--ohf-color-accent-alpha-14);
+  --accent-32: var(--ohf-color-accent-alpha-32);
+  --plate: var(--ohf-color-plate);
+  --plate-ink: var(--ohf-color-plate-ink);
+  --shadow-1: var(--ohf-shadow-1);
+  --shadow-2: var(--ohf-shadow-2);
+  --shadow-3: var(--ohf-shadow-3);
+  --glint: var(--ohf-shadow-sheen);
+  --ease: var(--ohf-ease-standard);
+  --ease-slide: var(--ohf-ease-decelerate);
+  --font-ui: var(--ohf-font-family-ui);
+  --danger: var(--ohf-color-danger);
+  --danger-bg: var(--ohf-color-danger-bg);
+  --danger-line: var(--ohf-color-danger-line);
+}
+
+/* ===== TIER 3: COMPONENT SCOPED ===== */
+/* These are declared inside their owning component blocks.
+   Listed here for documentation; actual declarations live in openhiggsfield.css */
+
+/* .ohf-composer {
+  --ctl-r: var(--ohf-radius-lg);    // 10px — every composer control shares one radius
+}
+
+.ohf-tab {
+  --tab-h: 36px;
+  --tab-r: var(--ohf-radius-lg);
+}
+
+.ohf-tile {
+  --tile-r: var(--ohf-radius-2xl);  // 14px
+  --tile-ar: 4 / 3;
+}
+
+.ohf-bar {
+  --bar-h: 46px;
+  --bar-r: 15px;
+}
+
+.ohf-composer {
+  --composer-r: var(--ohf-radius-5xl);  // 24px
+  --composer-max-w: 50rem;
+}
+
+.ohf-popover {
+  --pop-r: var(--ohf-radius-3xl);       // 16px
+}
+
+.ohf-selbar {
+  --selbar-r: var(--ohf-radius-4xl);    // 20px
+}
+
+.ohf-tile-act {
+  --act-size: 32px;
+  --act-r: var(--ohf-radius-md);        // 8px
+}
+
+.ohf-tile-badge {
+  --badge-r: var(--ohf-radius-xs);      // 7px (mapped to 7px raw)
+}
+*/

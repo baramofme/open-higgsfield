@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 
 .env*
 .idea
+
+# Storybook 정적 빌드 산출물(생성물, 비추적)
+storybook-static/
