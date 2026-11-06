@@ -56,6 +56,13 @@ import { Topbar } from "./topbar";
 import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
 /* Separate import block, anchored away from the top cluster so it forms its own
+   diff hunk (concurrent-hunk-commit adjacency rule): the HF-accurate audio create
+   surface and its dedicated top-chrome version (t_54c99543). The audio surface
+   replaces the general create shell while audio is active; the global Topbar is
+   left in place for every other surface (sibling surfaces depend on it). */
+import { AudioSurface } from "./audio-surface";
+import { AudioHeader } from "./audio-header";
+/* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the dedicated Cinematic Studio screen plus the HG-mirrored sidebar
    it adopts as its left column. */
 import { CinemaSidebar } from "./cinema-sidebar";
@@ -1460,6 +1467,25 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
       ) : (
         <div className="ohf-shell">
         <main className="ohf-main">
+          {surface === "audio" ? (
+            /* t_54c99543 — HF 상단크롬의 오디오 전용 별도 버전(대체가 아니라 공존).
+               앱 전역 `Topbar`는 시블링 표면이 의존하므로 audio일 때만 대체한다. */
+            <AudioHeader
+              view={view}
+              onView={switchView}
+              mode={mode}
+              onToggle={() => {
+                if (mode === "general") {
+                  setMode("cinema");
+                  setCinemaMode("image");
+                  alignDockToMode("image");
+                } else {
+                  setMode("general");
+                  setCinemaMode("image");
+                }
+              }}
+            />
+          ) : (
           <Topbar
             view={view}
             busy={busy}
@@ -1470,6 +1496,7 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
             onAssets={openAssets}
             mode={mode}
           />
+          )}
 
 
           {/* t_b8a39dd7 — HF's column layout: when on video/audio the body splits
