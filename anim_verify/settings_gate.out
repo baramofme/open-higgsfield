@@ -1,0 +1,20 @@
+OVERALL: PASS — tier_A(판정잔존)=0 tier_B(disclosed)=71 total=71 mech_ok=True
+ buckets: {'a11y_divergence': 1, 'outside_close_synthetic': 2, 'radix_popper_mechanism': 1, 'font_metric_residual': 36, 'radix_dialog_origin_structural': 1, 'fill_detection_threshold': 3, 'inline_precision': 14, 'inline_position_mechanism': 8, 'dial_visual_residual': 5}
+   q_open_hf: 1
+   q_open_ohf: 1
+   q_reclick_hf: 0
+   q_reclick_ohf: 0
+   q_esc_hf: 0
+   q_esc_ohf: 0
+   q_outside_hf: 1
+   q_outside_ohf: 0
+   d_reclick_hf: 0
+   d_reclick_ohf: 0
+   d_esc_hf: 0
+   d_esc_ohf: 0
+   d_out_hf: 0
+   d_out_ohf: 0
+   d_val_click_hf: 8
+   d_val_click_ohf: 8
+   d_val_end_hf: 15
+   d_val_end_ohf: 15

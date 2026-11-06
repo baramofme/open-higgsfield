@@ -13,6 +13,7 @@
    ============================================================================= */
 
 /* ---- 성분 국유 토큰(--ctl-vid-*): 전부 HF computed 실측 리터럴 ---- */
+:root,
 .ohf-vid-root {
   --ctl-vid-gridtemplatecolumns-repeat-1-minmax-0-1fr: repeat(1, minmax(0, 1fr));
   --ctl-vid-px1920: 1920px;
@@ -162,6 +163,48 @@
   --ctl-vid-px512: 512px;
   --ctl-vid-pxn496: -496px;
   --ctl-vid-gridtemplatecolumns-20rem-1fr: 20rem 1fr;
+
+  /* ---- 30.6 element-4 settings tokens — HF live 실측 literals (probe2/3/probe4) ---- */
+  --ctl-vid-c35-38-42-ap75: rgba(35, 38, 42, 0.75);
+  --ctl-vid-c255-255-255-ap2: rgba(255, 255, 255, 0.2);
+  --ctl-vid-c255-255-255-ap3: rgba(255, 255, 255, 0.3);
+  --ctl-vid-bgring: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
+  --ctl-vid-px262: 262px;
+  --ctl-vid-px116: 116px;
+  --ctl-vid-px112: 112px;
+  --ctl-vid-px62: 62px;
+  --ctl-vid-px242: 242px;
+  --ctl-vid-px4: 4px;
+  --ctl-vid-px12: 12px;
+  --ctl-vid-px23: 23px;
+  --ctl-vid-px120: 120px;
+  --ctl-vid-px2p11: 2.11px;
+  --ctl-vid-px23p14: 23.14px;
+  --ctl-vid-z1002: 1002;
+  --ctl-vid-dur15: 0.15s;
+  --ctl-vid-dur18: 0.18s;
+  --ctl-vid-tf-material: cubic-bezier(0.4, 0, 0.2, 1);
+  --ctl-vid-tf-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ctl-vid-tf-inout0: cubic-bezier(0, 0, 0.2, 1);
+  --ctl-vid-trprops-colors: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  --ctl-vid-trprops-lhb: left, height, background-color;
+  --ctl-vid-trprops-bsc: background-color, box-shadow, color;
+  /* ---- 30.6b 요소 4 보충 literals(probe3/5/6 라이브 실측) ---- */
+  --ctl-vid-px10: 10px;
+  --ctl-vid-px32: 32px;
+  --ctl-vid-px6: 6px;
+  --ctl-vid-px108: 108px;
+  --ctl-vid-px104: 104px;
+  --ctl-vid-ls0p1: 0.1px;
+  --ctl-vid-px116p82: 116.82px;
+  --ctl-vid-px234p7: 234.703px;
+  --ctl-vid-blur40: blur(40px);
+  --ctl-vid-ring-lime: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(209, 254, 23) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --ctl-vid-trprops-opacity: opacity;
+  --ctl-vid-transparent: rgba(0, 0, 0, 0);
+  --ctl-vid-bgring-focus5: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
+  /* ---- 30.6b end ---- */
+  /* ---- 30.6 end ---- */
 }
 
 /* ---- 실측 규칙 ---- */
@@ -4190,4 +4233,352 @@
   transition-property: background, background-color, border-color, border-radius, box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* =============================================================================
+   요소 4(t_594cd9af) — 설정 컨트롤 동속성 실배선 규칙.
+   근거: HF live CDP(:9222) 실측 — probe3(길이 dialog 타이포/링), probe5(품질 메뉴/포커스 링),
+   probe6(품질 메뉴 구조·항목, popper 좌표). 토큰은 3계층 재사용(--ohf-, --o-, --ctl-vid-),
+   신규 literals 는 30.6b 블록에 실측값 그대로 등록. 라이브 실측만 판정(fabrication 금지).
+   ============================================================================= */
+
+/* ---- 포털 래퍼(radix popper 미러): HF dur wrap = fixed, qual wrap = absolute(probe5/6 실측).
+       래퍼에 오리지널 앱의 스코프 클래스(ohf)를 함께 실어 포털 서브트리가 --ohf-* semantic
+       토큰과 `.ohf *` border-box 를 상속받게 한다(포털은 body 예속이라 기본 스코프 밖 —
+       앱 선례 camera-dialog 의 border-box 복구와 동일한 목적, 토큰 재설계 아님). ---- */
+.ohf-vid-dur-wrap {
+  position: fixed;
+  top: var(--ctl-vid-px0);
+  left: var(--ctl-vid-px0);
+  z-index: var(--ctl-vid-z1002);
+  background-color: var(--ctl-vid-transparent);   /* .ohf 의 background: var(--bg) 중화(HF 래퍼 bg 투명 실측) */
+}
+
+.ohf-vid-qual-wrap {
+  position: absolute;
+  top: var(--ctl-vid-px0);
+  left: var(--ctl-vid-px0);
+  z-index: var(--ctl-vid-z1002);
+  background-color: var(--ctl-vid-transparent);   /* .ohf 의 background: var(--bg) 중화(HF 래퍼 bg 투명 실측) */
+}
+
+/* ---- 길이 다이얼 dialog(HF 실측 262×116, pad2, bg c35-38-42/.75, radius12, ring, blur40) ---- */
+.ohf-vid-dur-dialog {
+  width: var(--ctl-vid-px262);
+  height: var(--ctl-vid-px116);
+  padding: var(--ctl-vid-px2);
+  display: block;
+  background-color: var(--ctl-vid-c35-38-42-ap75);
+  border-radius: var(--ohf-radius-xl);
+  box-shadow: var(--ctl-vid-bgring);
+  backdrop-filter: var(--ctl-vid-blur40);
+  color: var(--ohf-color-text-primary);
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+  font-weight: var(--o-weight-400);
+}
+
+.ohf-vid-dur-inner {
+  width: var(--ctl-vid-p100);      /* 258 = 262 - pad2×2(실측 inner 258×112) */
+  height: var(--ctl-vid-px112);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ctl-vid-px2);         /* headwrap(48) + gap2 + slider(62) = 112 실측 */
+}
+
+.ohf-vid-dur-headwrap {
+  width: var(--ctl-vid-p100);      /* 258 */
+  height: var(--ctl-vid-px48);
+  padding: var(--ohf-spacing-md);  /* inner head 242×42 실측(10,8 ↔ pad8) */
+  display: flex;
+}
+
+.ohf-vid-dur-head {
+  width: var(--ctl-vid-p100);      /* 242 */
+  display: flex;
+  flex-direction: column;
+  gap: var(--ctl-vid-px2);         /* label(8..24) + 2 + value(26..50) 실측 */
+}
+
+.ohf-vid-dur-label {
+  font-size: var(--ohf-font-size-small);   /* 12px */
+  line-height: var(--ctl-vid-px16);
+  font-weight: var(--ohf-font-weight-medium);
+  color: var(--ohf-color-text-tertiary);   /* rgb(130,130,130) 실측 */
+}
+
+.ohf-vid-dur-value {
+  font-size: var(--ohf-font-size-lead);    /* 16px */
+  line-height: var(--ctl-vid-px24);
+  font-weight: var(--ohf-font-weight-semibold);
+  color: var(--ctl-vid-c255-255-255);
+}
+
+/* ---- slider(HF 실측 258×62, pad8 gap8, radius6, grab; 포커스 링 probe5/3) ---- */
+.ohf-vid-dur-slider {
+  width: var(--ctl-vid-p100);      /* 258 */
+  height: var(--ctl-vid-px62);
+  padding: var(--ohf-spacing-md);
+  gap: var(--ohf-spacing-md);      /* track 60..84 → scale 92..106 → pad8 gap8 실측 */
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--o-radius-6);
+  cursor: grab;
+  color: var(--ohf-color-text-primary);
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+  font-weight: var(--o-weight-400);
+}
+
+.ohf-vid-dur-slider:focus-visible {
+  box-shadow: var(--ctl-vid-ring-lime);   /* probe6 dur_kb_focus boxShadow 5-슬롯 문자열 그대로 */
+}
+
+.ohf-vid-dur-track {
+  position: relative;
+  width: var(--ctl-vid-p100);      /* 242 */
+  height: var(--ctl-vid-px24);
+  background-color: var(--ctl-vid-c255-255-255-ap05);
+  border-radius: var(--o-radius-4);
+  cursor: grab;
+}
+
+.ohf-vid-dur-fill {
+  position: absolute;
+  left: var(--ctl-vid-px0);        /* fill 는 track 좌끝 정렬(실측 rel 0) */
+  top: var(--ctl-vid-px0);
+  height: var(--ctl-vid-px24);
+  background-color: var(--ctl-vid-c255-255-255-ap2);
+  border-radius: var(--o-radius-4);
+  transition-property: var(--ctl-vid-trprops-colors);
+  transition-duration: var(--ctl-vid-dur15);
+  transition-timing-function: var(--ctl-vid-tf-material);
+}
+
+.ohf-vid-dur-tick {
+  position: absolute;
+  top: var(--ctl-vid-px10);        /* (24-4)/2 실측 y70-60=10 */
+  width: var(--ctl-vid-px4);
+  height: var(--ctl-vid-px4);
+  background-color: var(--ctl-vid-c255-255-255-ap2);
+  border-radius: var(--o-radius-4);
+}
+
+.o-vid-dur-tick-mid { left: var(--ctl-vid-px116p82); }   /* 10s 중심 도달 시 소진(TSX 가중판정) */
+.o-vid-dur-tick-end { left: var(--ctl-vid-px234p7); }
+
+.ohf-vid-dur-thumb {
+  position: absolute;
+  top: var(--o-size-6);            /* (24-12)/2 실측 y66-60=6 */
+  width: var(--ctl-vid-px2);
+  height: var(--ctl-vid-px12);
+  background-color: var(--ohf-color-accent);   /* rgb(209,254,23)=#d1fe17 실측 */
+  border-radius: var(--o-radius-4);
+  transition-property: var(--ctl-vid-trprops-lhb);
+  transition-duration: var(--ctl-vid-dur15);
+  transition-timing-function: var(--ctl-vid-tf-inout0);
+}
+
+.ohf-vid-dur-scale {
+  width: var(--ctl-vid-p100);      /* 242 */
+  height: var(--ctl-vid-px14);
+  display: flex;
+  justify-content: space-between;  /* 5(좌)·10(중)·15(우) 실측 x 10/123.31/241.41 justify-between 정합 */
+  color: var(--ctl-vid-c255-255-255-ap3);
+}
+
+.ohf-vid-dur-scale > span {
+  font-size: var(--o-font-10);
+  line-height: var(--ctl-vid-px14);
+  font-weight: var(--ohf-font-weight-medium);
+}
+
+/* ---- 품질(해상도) 메뉴(HF 실측 160×86: pad8 gap2 radius12 bg c35/.75 ring blur40) ---- */
+.ohf-vid-qual-menu {
+  width: var(--ctl-vid-px160);
+  min-width: var(--ctl-vid-px160);   /* HF 라이브 w-40!/min-w-40!/max-w-40!(160 3중 고박) 실측 */
+  max-width: var(--ctl-vid-px160);
+  padding: var(--ohf-spacing-md);
+  gap: var(--ctl-vid-px2);         /* head(32) + gap2 + item(36) + pad16 = 86 실측 */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ctl-vid-c35-38-42-ap75);
+  border-radius: var(--ohf-radius-xl);
+  box-shadow: var(--ctl-vid-bgring);
+  backdrop-filter: var(--ctl-vid-blur40);
+  color: var(--ohf-color-text-primary);
+  transition-property: var(--ctl-vid-trprops-opacity);
+  transition-duration: var(--ctl-vid-dur18);
+  transition-timing-function: var(--ctl-vid-tf-out);
+}
+
+/* 앱 전역 `.ohf :focus-visible`(radius 6px) 은 포털 판지에까지 미친다. HF 라이브의 dialog/menu 는
+   포커스 상태에서 radius 12 를 유지(probe6 실측)하므로 이 두 판지에서 12 를 우선시킨다
+   (셀렉터 중력 0-2-0 > 0-1-1 — 토큰 재설계 아님, 기존 스코프 규칙의 국지 반전). */
+.ohf-vid-dur-dialog:focus-visible,
+.ohf-vid-qual-menu:focus-visible {
+  border-radius: var(--ohf-radius-xl);
+}
+
+.ohf-vid-qual-head {
+  width: var(--ctl-vid-p100);      /* 144 */
+  height: var(--ctl-vid-px32);     /* 16lh + pad8×2 실측 */
+  padding: var(--ohf-spacing-md);
+  display: flex;
+  align-items: center;
+  font-size: var(--ohf-font-size-small);
+  line-height: var(--ctl-vid-px16);
+  font-weight: var(--ohf-font-weight-medium);
+  color: var(--ctl-vid-c255-255-255-ap5);   /* header 라벨 white/.5 실측 */
+}
+
+/* 항목(HF 라이브 q-menu-item 실측): flex, align center, gap 6(gap-1.5!), pad 6/0/6/6
+   (py-1.5! pl-1.5! ·우측 pad 없음), justify normal(우측 8px 잔여 남김 — space-between 아님),
+   radius 8, fs14 lh20 fw500 white, letter-spacing .1px(spans 전수 실측), checked → bg white/.05. */
+.ohf-vid-qual-item {
+  width: var(--ctl-vid-p100);      /* 144 */
+  height: var(--ctl-vid-px36);
+  padding: var(--ctl-vid-px6) var(--ctl-vid-px0) var(--ctl-vid-px6) var(--ctl-vid-px6);
+  display: flex;
+  align-items: center;
+  gap: var(--ctl-vid-px6);
+  border-radius: var(--ohf-radius-md);       /* 8px 실측 */
+  color: var(--ctl-vid-c255-255-255);
+  font-size: var(--ohf-font-size-body);      /* 14px 실측 */
+  line-height: var(--ctl-vid-px20);          /* 20px 실측 */
+  font-weight: var(--ohf-font-weight-medium);
+  letter-spacing: var(--ctl-vid-ls0p1);      /* 0.1px 실측(spans) — 타이틀 18.45px 재현의 근거 */
+  cursor: pointer;
+  transition-property: var(--ctl-vid-trprops-bsc);
+  transition-duration: var(--ctl-vid-dur15);
+  transition-timing-function: ease;
+}
+
+.ohf-vid-qual-item[aria-checked="true"] {
+  background-color: var(--ctl-vid-c255-255-255-ap05);   /* checked-bg white/.05 실측 */
+}
+
+/* 라벨 3중 구조(HF 실측 rect): label 108×16(px-0.5 → 좌우 2), title-row 104×16, title 18.45×16(lh16) */
+.ohf-vid-qual-item-label {
+  width: var(--ctl-vid-px108);
+  height: var(--ctl-vid-px16);
+  padding: var(--ctl-vid-px0) var(--ctl-vid-px2);
+  display: flex;
+  align-items: center;
+  color: var(--ctl-vid-c255-255-255);
+  line-height: var(--ctl-vid-px20);
+}
+
+.ohf-vid-qual-item-title-row {
+  width: var(--ctl-vid-px104);
+  height: var(--ctl-vid-px16);
+  display: flex;
+  align-items: center;
+}
+
+.ohf-vid-qual-item-title {
+  line-height: var(--ctl-vid-px16);   /* leading-4 실측 */
+}
+
+/* 후행 슬롯 16×16, svg 는 어트리뷰트 24×24(HF 그대로) + CSS 로 16 으로 실렌더(path 9.33×7.33 실측) */
+.ohf-vid-qual-item-trailing {
+  width: var(--ctl-vid-px16);
+  height: var(--ctl-vid-px16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ctl-vid-c255-255-255);
+}
+
+.ohf-vid-qual-item-trailing > svg {
+  width: var(--ctl-vid-px16);
+  height: var(--ctl-vid-px16);
+}
+
+/* ---- 품질 트리거 레이아웃 정합(HF live probe6): row1 col2 — 행2 가정의 하margin 제거 ---- */
+.ohf-vid-n205 {
+  margin-top: var(--ctl-vid-px0);
+}
+
+/* =============================================================================
+   요소 4(t_594cd9af) 동속성 정합 오버라이드 블록 — 게이트 라이브 실측 근거.
+   같은 셀렉터 중력에서 후행 우선으로 기존 규칙의 해당 속성만 국지 정합(기존 규칙 미변경·
+   토큰 3계층 재사용, 재설계 아님). 모든 값은 HF live CDP(:9222) 실측 판지 computed 그대로.
+   ============================================================================= */
+
+/* ---- 설정 트리거 버튼 동속성(HF base cs 실측): bg white/.05 · fs16 · lh24 · 색상transition ---- */
+.ohf-vid-n199,
+.ohf-vid-n205 {
+  background-color: var(--ctl-vid-c255-255-255-ap05);
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+  transition-property: var(--ctl-vid-trprops-colors);
+  transition-duration: var(--ctl-vid-dur15);
+  transition-timing-function: var(--ctl-vid-tf-material);
+}
+
+/* ---- 품질 메뉴 판지(kid0): HF fs16/lh24/overflow hidden auto 실측 ---- */
+.ohf-vid-qual-menu {
+  font-size: var(--ohf-font-size-lead);
+  line-height: var(--ctl-vid-px24);
+  overflow: hidden auto;
+}
+
+/* ---- 메뉴 헤더(kid1): HF gap 8px 실측 ---- */
+.ohf-vid-qual-head {
+  gap: var(--ohf-spacing-md);
+}
+
+/* ---- 메뉴 항목(kid2): HF pad-right 8 + position relative 실측 ---- */
+.ohf-vid-qual-item {
+  padding-right: var(--ohf-spacing-md);
+  position: relative;
+}
+
+/* ---- 항목 라벨(kid3): HF flex-direction column · align-items normal · gap 2px 실측 ---- */
+.ohf-vid-qual-item-label {
+  flex-direction: column;
+  align-items: normal;
+  gap: var(--ctl-vid-px2);
+}
+
+/* ---- 타이틀 행(kid4): HF gap 6px 실측 ---- */
+.ohf-vid-qual-item-title-row {
+  gap: var(--ctl-vid-px6);
+}
+
+/* ---- 타이틀(kid5): HF overflow hidden 실측 ---- */
+.ohf-vid-qual-item-title {
+  overflow: hidden;
+}
+
+/* ---- 후행 슬롯(kid6): HF gap 8px · justify-content normal 실측 ---- */
+.ohf-vid-qual-item-trailing {
+  gap: var(--ohf-spacing-md);
+  justify-content: normal;
+}
+
+/* ---- 길이 dialog 포커스 링(kid0): HF radix 가 추가하는 4개 투명 슬롯 + white/.05(5슬롯 literal) ---- */
+.ohf-vid-dur-dialog {
+  box-shadow: var(--ctl-vid-bgring-focus5);
+}
+
+/* ---- 길이 headwrap(kid2): HF gap 6 · pad 6/8/0 · align-items flex-end 실측 ---- */
+.ohf-vid-dur-headwrap {
+  gap: var(--ctl-vid-px6);
+  padding: var(--ctl-vid-px6) var(--ohf-spacing-md) var(--ctl-vid-px0);
+  align-items: flex-end;
+}
+
+/* ---- 길이 스케일 용기(kid12): HF fs10/fw500/lh14 실측(용기 자체가 10px, span 은 이미 10px) ---- */
+.ohf-vid-dur-scale {
+  font-size: var(--o-font-10);
+  font-weight: var(--ohf-font-weight-medium);
+  line-height: var(--ctl-vid-px14);
+}
+
+/* ---- 길이 popper 래퍼 min-width: HF radix popper 는 min-width:max-content (probe5 실측) ---- */
+.ohf-vid-dur-wrap {
+  min-width: max-content;
 }

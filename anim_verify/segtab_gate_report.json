@@ -1,0 +1,956 @@
+{
+ "snaps": {
+  "HF": {
+   "mainN": 212,
+   "tabCount": 2,
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "sel": "true",
+     "ti": "0",
+     "rect": {
+      "x": 29,
+      "y": 244,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "pointer",
+      "fontSize": "12px",
+      "lineHeight": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "color": "rgb(255, 255, 255)",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "flex",
+      "position": "relative",
+      "padding": "4px 8px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "cls": "q-tabs-tab"
+    },
+    {
+     "txt": "프레임",
+     "sel": "false",
+     "ti": "-1",
+     "rect": {
+      "x": 178,
+      "y": 244,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "pointer",
+      "fontSize": "12px",
+      "lineHeight": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "flex",
+      "position": "relative",
+      "padding": "4px 8px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "cls": "q-tabs-tab"
+    }
+   ],
+   "ind": {
+    "attrs": {
+     "orient": "horizontal",
+     "act": "none",
+     "role": "presentation"
+    },
+    "rect": {
+     "x": 29,
+     "y": 244,
+     "w": 145,
+     "h": 32
+    },
+    "cs": {
+     "width": "145px",
+     "height": "32px",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "fontSize": "16px",
+     "lineHeight": "24px",
+     "fontWeight": "400",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "color": "rgb(247, 247, 248)",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute",
+     "padding": "0px",
+     "gap": "normal",
+     "flexDirection": "row"
+    },
+    "inline": {
+     "--active-tab-left": "3px",
+     "--active-tab-right": "152px",
+     "--active-tab-top": "3px",
+     "--active-tab-bottom": "3px",
+     "--active-tab-width": "145px",
+     "--active-tab-height": "32px"
+    },
+    "cls": "q-tabs-indicator"
+   },
+   "selBefore": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      },
+      "cls": "q-tabs-tab"
+     },
+     {
+      "txt": "프레임",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 149,
+       "y": 0,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      },
+      "cls": "q-tabs-tab"
+     }
+    ],
+    "ind": {
+     "attrs": {
+      "orient": "horizontal",
+      "act": "none",
+      "role": "presentation"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "16px",
+      "lineHeight": "24px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "3px",
+      "--active-tab-right": "152px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     },
+     "cls": "q-tabs-indicator"
+    }
+   },
+   "selAfterRef": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 0,
+       "y": 44,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     },
+     {
+      "txt": "프레임",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 149,
+       "y": 44,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     }
+    ],
+    "ind": {
+     "attrs": {
+      "orient": "horizontal",
+      "act": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 44,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "16px",
+      "lineHeight": "24px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "3px",
+      "--active-tab-right": "152px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     }
+    }
+   },
+   "clickTargetTxt": "레퍼런스",
+   "selAfterFrame": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 0,
+       "y": 44,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     },
+     {
+      "txt": "프레임",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 149,
+       "y": 44,
+       "w": 145,
+       "h": 32
+      },
+      "cs": {
+       "width": "145px",
+       "height": "32px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     }
+    ],
+    "ind": {
+     "rect": {
+      "x": 149,
+      "y": 44,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "16px",
+      "lineHeight": "24px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "152px",
+      "--active-tab-right": "3px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     }
+    }
+   },
+   "tag": "HF"
+  },
+  "OHF": {
+   "mainN": 294,
+   "tabCount": 2,
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "sel": "false",
+     "ti": "-1",
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     },
+     "cs": {
+      "width": "145px",
+      "height": "24px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "pointer",
+      "fontSize": "12px",
+      "lineHeight": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "color": "rgba(255, 255, 255, 0.5)",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "flex",
+      "position": "relative",
+      "padding": "4px 8px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "cls": "ohf-vid-n128"
+    },
+    {
+     "txt": "프레임",
+     "sel": "true",
+     "ti": "0",
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     },
+     "cs": {
+      "width": "145px",
+      "height": "24px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "pointer",
+      "fontSize": "12px",
+      "lineHeight": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "color": "rgb(255, 255, 255)",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "flex",
+      "position": "relative",
+      "padding": "4px 8px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "cls": "ohf-vid-n134"
+    }
+   ],
+   "ind": {
+    "attrs": {
+     "orient": "horizontal",
+     "act": "none",
+     "role": "presentation"
+    },
+    "rect": {
+     "x": 178,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    },
+    "cs": {
+     "width": "145px",
+     "height": "32px",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "fontSize": "14px",
+     "lineHeight": "20.3px",
+     "fontWeight": "400",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "color": "rgb(247, 247, 248)",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute",
+     "padding": "0px",
+     "gap": "normal",
+     "flexDirection": "row"
+    },
+    "inline": {
+     "--active-tab-left": "152px",
+     "--active-tab-right": "3px",
+     "--active-tab-top": "3px",
+     "--active-tab-bottom": "3px",
+     "--active-tab-width": "145px",
+     "--active-tab-height": "32px"
+    },
+    "cls": "ohf-vid-n140"
+   },
+   "selBefore": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      },
+      "cls": "ohf-vid-n128"
+     },
+     {
+      "txt": "프레임",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 149,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      },
+      "cls": "ohf-vid-n134"
+     }
+    ],
+    "ind": {
+     "attrs": {
+      "orient": "horizontal",
+      "act": "none",
+      "role": "presentation"
+     },
+     "rect": {
+      "x": 149,
+      "y": 0,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "14px",
+      "lineHeight": "20.3px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "152px",
+      "--active-tab-right": "3px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     },
+     "cls": "ohf-vid-n140"
+    }
+   },
+   "selAfterRef": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     },
+     {
+      "txt": "프레임",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 149,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     }
+    ],
+    "ind": {
+     "attrs": {
+      "orient": "horizontal",
+      "act": "left"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "14px",
+      "lineHeight": "20.3px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "3px",
+      "--active-tab-right": "152px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     }
+    }
+   },
+   "clickTargetTxt": "레퍼런스",
+   "selAfterFrame": {
+    "tabs": [
+     {
+      "txt": "레퍼런스",
+      "sel": "false",
+      "ti": "-1",
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgba(255, 255, 255, 0.5)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     },
+     {
+      "txt": "프레임",
+      "sel": "true",
+      "ti": "0",
+      "rect": {
+       "x": 149,
+       "y": 0,
+       "w": 145,
+       "h": 24
+      },
+      "cs": {
+       "width": "145px",
+       "height": "24px",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "fontSize": "12px",
+       "lineHeight": "16px",
+       "fontWeight": "500",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "color": "rgb(255, 255, 255)",
+       "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+       "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+       "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+       "display": "flex",
+       "position": "relative",
+       "padding": "4px 8px",
+       "gap": "normal",
+       "flexDirection": "row"
+      }
+     }
+    ],
+    "ind": {
+     "rect": {
+      "x": 149,
+      "y": 0,
+      "w": 145,
+      "h": 32
+     },
+     "cs": {
+      "width": "145px",
+      "height": "32px",
+      "opacity": "1",
+      "transform": "none",
+      "cursor": "auto",
+      "fontSize": "14px",
+      "lineHeight": "20.3px",
+      "fontWeight": "400",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+      "color": "rgb(247, 247, 248)",
+      "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "display": "block",
+      "position": "absolute",
+      "padding": "0px",
+      "gap": "normal",
+      "flexDirection": "row"
+     },
+     "inline": {
+      "--active-tab-left": "152px",
+      "--active-tab-right": "3px",
+      "--active-tab-top": "3px",
+      "--active-tab-bottom": "3px",
+      "--active-tab-width": "145px",
+      "--active-tab-height": "32px"
+     }
+    }
+   },
+   "tag": "OHF"
+  }
+ },
+ "mismatches": [
+  "selBefore.tab.aria-selected: 'true' != 'false'",
+  "selBefore.tab.tabindex: '0' != '-1'",
+  "selBefore.tab[레퍼런스].h: 32 != 24",
+  "selBefore.tab[레퍼런스].cs.height: '32px' != '24px'",
+  "selBefore.tab[레퍼런스].cs.color: 'rgb(255, 255, 255)' != 'rgba(255, 255, 255, 0.5)'",
+  "selBefore.tab[레퍼런스].cs.transitionDuration: '0s, 0.2s, 0.2s, 0.2s, 0.2s' != '0.2s'",
+  "selBefore.tab.aria-selected: 'false' != 'true'",
+  "selBefore.tab.tabindex: '-1' != '0'",
+  "selBefore.tab[프레임].h: 32 != 24",
+  "selBefore.tab[프레임].cs.height: '32px' != '24px'",
+  "selBefore.tab[프레임].cs.color: 'rgba(255, 255, 255, 0.5)' != 'rgb(255, 255, 255)'",
+  "selBefore.tab[프레임].cs.transitionDuration: '0.2s' != '0s, 0.2s, 0.2s, 0.2s, 0.2s'",
+  "selBefore.ind.x: 0 != 149",
+  "selBefore.ind.cs.fontSize: '16px' != '14px'",
+  "selBefore.ind.cs.lineHeight: '24px' != '20.3px'",
+  "selBefore.ind.inline.--active-tab-left: '3px' != '152px'",
+  "selBefore.ind.inline.--active-tab-right: '152px' != '3px'",
+  "selAfterRef.tab[레퍼런스].h: 32 != 24",
+  "selAfterRef.tab[레퍼런스].y: 44 != 0",
+  "selAfterRef.tab[레퍼런스].cs.height: '32px' != '24px'",
+  "selAfterRef.tab[프레임].h: 32 != 24",
+  "selAfterRef.tab[프레임].y: 44 != 0",
+  "selAfterRef.tab[프레임].cs.height: '32px' != '24px'",
+  "selAfterRef.ind.y: 44 != 0",
+  "selAfterRef.ind.cs.fontSize: '16px' != '14px'",
+  "selAfterRef.ind.cs.lineHeight: '24px' != '20.3px'",
+  "selAfterFrame.tab[레퍼런스].h: 32 != 24",
+  "selAfterFrame.tab[레퍼런스].y: 44 != 0",
+  "selAfterFrame.tab[레퍼런스].cs.height: '32px' != '24px'",
+  "selAfterFrame.tab[프레임].h: 32 != 24",
+  "selAfterFrame.tab[프레임].y: 44 != 0",
+  "selAfterFrame.tab[프레임].cs.height: '32px' != '24px'",
+  "selAfterFrame.ind.y: 44 != 0",
+  "selAfterFrame.ind.cs.fontSize: '16px' != '14px'",
+  "selAfterFrame.ind.cs.lineHeight: '24px' != '20.3px'",
+  "HF: 레퍼런스 클릭 후 선택 미이동",
+  "HF: 프레임 복귀 실패",
+  "OHF: 프레임 복귀 실패"
+ ]
+}

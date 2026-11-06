@@ -20,6 +20,7 @@
    ============================================================================= */
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useVideoPrompt } from "@/generation/stores/prompt";
 import "./video-surface.css";
 
@@ -122,6 +123,110 @@ export function VideoSurface() {
     (next === "128" ? seg128 : seg134).current?.focus();
   };
 
+  /* ---- 30.6 요소 4(t_594cd9af): 길이 다이얼 + 품질(해상도) 메뉴 — HF live 실측 기계(probe3/5/6) ----
+     길이: 다이얼 5~15초. 실측 매핑: thumb left = 2.11 + (v-5)·23.14 px, fill = thumb left + 6 px,
+     클릭 value = round(5 + (x - track.x - 3.11) / 23.14), 키보드 ±1·Home=min·End=max·valuetext "N초"(HF 실측).
+     품질: 메뉴 실측 리스트 1항 ["2K"](probe6 라이브 펼침 실측 — 임의 리스트 금지 결정 준수;
+     1080p/720p·disabled 3종 등은 게스트 세션 부재 → 인증 게이트 후속). header "품질"(12/16/500 white/.5),
+     항목 144×36 radius8 pad 6/8/6/6 fs14 lh20 fw500, checked → bg white/.05 + 16px 체크 아이콘.
+     열림/닫힘: 재클릭 토글·Escape·바깥 pointerdown — HF 실측 관찰(품질 reclick→closed, item click→closed).
+     비율(ratio) 트리거: HF live 현재 부재(probe6 실측, 길이|품질 단일 행) → 이식하지 않음.
+     (run389에서 확보했던 비율 GT는 이후 라이브에서 부재 확인 — 라이브 실측 우선 결정에 따라 미배선.) */
+  const DUR_MIN = 5;
+  const DUR_MAX = 15;
+  const QUAL_OPTIONS = ["2K"] as const;
+  const [durOpen, setDurOpen] = useState(false);
+  const [durVal, setDurVal] = useState(5); // HF 실측 초기 5s
+  const [qualOpen, setQualOpen] = useState(false);
+  const [qualVal, setQualVal] = useState<(typeof QUAL_OPTIONS)[number]>("2K"); // HF 실측 초기 2K(checked)
+  const durTrigger = useRef<HTMLButtonElement | null>(null);
+  const durPanel = useRef<HTMLDivElement | null>(null);
+  const durSlider = useRef<HTMLDivElement | null>(null);
+  const durTrack = useRef<HTMLDivElement | null>(null);
+  const qualTrigger = useRef<HTMLButtonElement | null>(null);
+  const qualMenu = useRef<HTMLDivElement | null>(null);
+  const [durPos, setDurPos] = useState({ l: 0, t: 0 });
+  const [qualPos, setQualPos] = useState({ l: 0, t: 0 });
+
+  /* popper 좌표 공식(HF live 실측 복원 — 게이트 2차 라이브 실측에서 재확정):
+     dur wrap(fixed):  left = anchor.right + 8, top = anchor.bottom - 116 (= popperH 정렬 end)
+       — HF translate(180,676) ↔ 트리거 bottom 792(dialogH 116) 실측.
+     qual wrap(absolute): left = anchor.right + 8 + scrollX, top = anchor.bottom - 86 + scrollY
+       — HF translate(335,706) ↔ 트리거 bottom 792(menuH 86) 실측.
+     (구 probe5/6 의 +45/+16 오프셋은 쿠폰 팝업 이전 레이아웃에서 나온 것 — 현행 라이브가 end 정렬로 반증.) */
+  const durThumbLeft = (v: number) => 2.11 + (v - DUR_MIN) * 23.14;
+  const durFillWidth = (v: number) => durThumbLeft(v) + 6;
+  /* HF live 게이트 실측으로 확정한 틱 소진 규칙: thumb가 틱 중심에 도달하면 그 틱을 소진.
+     (HF: 10s 에서 thumb가 미드틱 116.82 도달 시 숨김 관찰; 15s 게이트 실측에서 ticks HF 0 —
+     thumb가 두 틱을 모두 지나 두 틱 모두 소진. OHF 의 구 '범위 겹침' 규칙은 15s에서 미드틱을
+     유지해 OHF 1 로 어긋났다 → 라이브 실측 우선 결정에 따라 '도달 시 소진'으로 정정.)
+     엔드 틱(234.703)은 최대치(v>=DUR_MAX)에서 소진 — HF 라이브가 15s 엔드틱을 숨김(실측). */
+  const durTickShown = (v: number, tickLeft: number, isEndTick: boolean) => {
+    if (isEndTick && v >= DUR_MAX) return false;   // HF 실측: 최대(15s)에서 엔드 틱 소진
+    return durThumbLeft(v) < tickLeft;             // thumb가 틱 중심 도달 시 소진
+  };
+  const durClamp = (v: number) => Math.min(DUR_MAX, Math.max(DUR_MIN, v));
+
+  const durRecomputePos = () => {
+    const t = durTrigger.current;
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    setDurPos({ l: Math.round(r.right) + 8, t: Math.round(r.bottom) - 116 });
+  };
+  const qualRecomputePos = () => {
+    const t = qualTrigger.current;
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    setQualPos({ l: Math.round(r.right) + 8 + window.scrollX, t: Math.round(r.bottom) - 86 + window.scrollY });
+  };
+
+  useLayoutEffect(() => {
+    if (durOpen) durRecomputePos();
+    if (qualOpen) qualRecomputePos();
+  }, [durOpen, qualOpen]);
+
+  useEffect(() => {
+    if (!durOpen && !qualOpen) return;
+    const onResize = () => { durRecomputePos(); qualRecomputePos(); };
+    const onScroll = () => { durRecomputePos(); qualRecomputePos(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setDurOpen(false); setQualOpen(false); }
+    };
+    const onDown = (e: PointerEvent) => {
+      const tgt = e.target as Node;
+      if (durOpen && !(durTrigger.current?.contains(tgt) || durPanel.current?.contains(tgt))) setDurOpen(false);
+      if (qualOpen && !(qualTrigger.current?.contains(tgt) || qualMenu.current?.contains(tgt))) setQualOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("pointerdown", onDown, true);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("pointerdown", onDown, true);
+    };
+  }, [durOpen, qualOpen]);
+
+  useEffect(() => {
+    if (durOpen) durPanel.current?.focus({ preventScroll: true });
+    if (qualOpen) qualMenu.current?.focus({ preventScroll: true });
+  }, [durOpen, qualOpen]);
+
+  const durSliderClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const track = durTrack.current;
+    if (!track) return;
+    const tr = track.getBoundingClientRect();
+    setDurVal(durClamp(Math.round(DUR_MIN + (e.clientX - tr.x - 3.11) / 23.14)));
+  };
+  const durSliderKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") { e.preventDefault(); setDurVal(durClamp(durVal + 1)); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowDown") { e.preventDefault(); setDurVal(durClamp(durVal - 1)); }
+    else if (e.key === "Home") { e.preventDefault(); setDurVal(DUR_MIN); }
+    else if (e.key === "End") { e.preventDefault(); setDurVal(DUR_MAX); }
+  };
+
   /* 프롬프트 placeholder — 세그 탭 상태에 따라 HF 와 동일하게 전환됨 (t_bea84dee 요소 3):
      프레임: "시작 프레임과 끝 프레임은 Image 1, Image 2로…"
      레퍼런스: "입력 항목은 Image 1, Video 1, Audio 1로…" */
@@ -141,6 +246,7 @@ export function VideoSurface() {
   };
 
   return (
+    <>
     <section className="ohf-vid-root" data-ohf-video="root" aria-label="비디오 만들기" lang="ko" ref={rootRef}>
 <div className="ohf-vid-n102" data-ohf-video="102">
   <div className="ohf-vid-n103" data-ohf-video="103" data-prompt-card="true">
@@ -371,26 +477,30 @@ export function VideoSurface() {
                 </div>
               </div>
               <fieldset className="ohf-vid-n198" data-ohf-video="198">
-                <button className="ohf-vid-n199" data-ohf-video="199" type="button" data-form-kit-setting-button="" translate="no" aria-label="길이" aria-haspopup="dialog" aria-expanded="false" data-state="closed" aria-disabled="true" data-off="길이 다이얼(설정 패널 착지 후속)">
+                <button className="ohf-vid-n199" data-ohf-video="199" type="button" data-form-kit-setting-button="" translate="no" aria-label="길이" aria-haspopup="dialog" aria-expanded={durOpen} data-state={durOpen ? "open" : "closed"} ref={durTrigger} onClick={() => setDurOpen((v) => !v)}>
                   <span className="ohf-vid-n200" data-ohf-video="200">
                     <span className="ohf-vid-n201" data-ohf-video="201">
                       길이
                     </span>
                     <span className="ohf-vid-n202" data-ohf-video="202">
-                      5s
+                      {durVal}s
                     </span>
                   </span>
                   <svg className="ohf-vid-n203" data-ohf-video="203" width="20" height="20" viewBox="0 0 20 20">
                     <path className="ohf-vid-n204" data-ohf-video="204" fillRule="evenodd" clipRule="evenodd" d="M3.81344 7.97848C4.0087 7.78322 4.32528 7.78322 4.52055 7.97848L10.0003 13.4583L15.4801 7.97848C15.6754 7.78322 15.9919 7.78322 16.1872 7.97848C16.3825 8.17374 16.3825 8.49032 16.1872 8.68558L10.3539 14.5189L10.0003 14.8725L9.64677 14.5189L3.81344 8.68558C3.61818 8.49032 3.61818 8.17374 3.81344 7.97" fill="currentColor" />
                   </svg>
                 </button>
-                <button className="ohf-vid-n205" data-ohf-video="205" type="button" data-form-kit-setting-button="" aria-label="품질" tabIndex={0} aria-haspopup="menu" aria-expanded="false" aria-disabled="true" data-off="품질 다이얼(설정 패널 착지 후속)">
+                {/* 품질(해상도) 트리거 — HF live 실측(probe6): 게스트 세션에서 메뉴 실재(147×54, aria-haspopup=menu,
+                     tabindex 0, aria-expanded 토글, 데이터-state 없음). 항목 리스트 라이브 펼침 실측 1항 ["2K"].
+                     1080p/720p·disabled 3종 전환은 게스트 부재(인증 게이트) → 후속 카드. run389 의 honest-inert 마커는
+                     라이브 실측에서 반증되어 제거(실배선). 비율 트리거는 HF live 현행 부재(probe6) → 미이식. */}
+                <button className="ohf-vid-n205" data-ohf-video="205" type="button" data-form-kit-setting-button="" aria-label="품질" tabIndex={0} aria-haspopup="menu" aria-expanded={qualOpen} ref={qualTrigger} onClick={() => setQualOpen((v) => !v)}>
                   <span className="ohf-vid-n206" data-ohf-video="206">
                     <span className="ohf-vid-n207" data-ohf-video="207">
                       품질
                     </span>
                     <span className="ohf-vid-n208" data-ohf-video="208">
-                      2K
+                      {qualVal}
                     </span>
                   </span>
                   <svg className="ohf-vid-n209" data-ohf-video="209" width="20" height="20" viewBox="0 0 20 20">
@@ -594,5 +704,63 @@ export function VideoSurface() {
   </div>
 </div>
     </section>
+    {/* ---- 요소 4 포털(HF 구조 미러): radix popper 포털 ↔ OHF createPortal(body) + wrap z1002.
+           HF 실측: dur wrap = fixed/left0/top0/translate(l,t)/min-width:max-content/z1002(probe5),
+           qual wrap = absolute/left0/top0/translate(l,t)/z1002(probe6). 좌표는 매 open 시 트리거 rect 에서
+           재계산(카드 결정: 상호작용 직전 좌표 재계산·원점 상대 정규화). ---- */}
+    {durOpen ? createPortal(
+      <div className="ohf-vid-dur-wrap ohf" style={{ transform: `translate(${durPos.l}px, ${durPos.t}px)` }}>
+        <div className="ohf-vid-dur-dialog" role="dialog" tabIndex={-1} data-state="open" data-side="right" data-align="end" ref={durPanel}>
+          <div className="ohf-vid-dur-inner">
+            <div className="ohf-vid-dur-headwrap">
+              <div className="ohf-vid-dur-head">
+                <span className="ohf-vid-dur-label">총 길이</span>
+                <span className="ohf-vid-dur-value">{durVal}s</span>
+              </div>
+            </div>
+            <div className="ohf-vid-dur-slider" role="slider" tabIndex={0} aria-orientation="horizontal"
+                 aria-valuemin={DUR_MIN} aria-valuemax={DUR_MAX} aria-valuenow={durVal} aria-valuetext={`${durVal}초`}
+                 ref={durSlider} onClick={durSliderClick} onKeyDown={durSliderKey}>
+              <div className="ohf-vid-dur-track" ref={durTrack}>
+                <span className="ohf-vid-dur-fill" style={{ width: `${durFillWidth(durVal)}px` }} />
+                {durTickShown(durVal, 116.82, false) ? <span className="ohf-vid-dur-tick o-vid-dur-tick-mid" /> : null}
+                {durTickShown(durVal, 234.703, true) ? <span className="ohf-vid-dur-tick o-vid-dur-tick-end" /> : null}
+                <span className="ohf-vid-dur-thumb" style={{ left: `${durThumbLeft(durVal)}px` }} />
+              </div>
+              <div className="ohf-vid-dur-scale"><span>5</span><span>10</span><span>15</span></div>
+            </div>
+          </div>
+        </div>
+      </div>,
+      document.body
+    ) : null}
+    {qualOpen ? createPortal(
+      <div className="ohf-vid-qual-wrap ohf" style={{ transform: `translate(${qualPos.l}px, ${qualPos.t}px)` }}>
+        <div className="ohf-vid-qual-menu" role="menu" tabIndex={-1} data-open="" data-side="right" data-align="end" aria-orientation="vertical" ref={qualMenu}>
+          <div className="ohf-vid-qual-head">품질</div>
+          {QUAL_OPTIONS.map((v) => (
+            <div key={v} className="ohf-vid-qual-item" role="menuitemcheckbox" tabIndex={0}
+                 aria-checked={v === qualVal ? "true" : "false"}
+                 data-checked={v === qualVal ? "" : undefined}
+                 onClick={() => { setQualVal(v); setQualOpen(false); }}>
+              <span className="ohf-vid-qual-item-label">
+                <span className="ohf-vid-qual-item-title-row">
+                  <span className="ohf-vid-qual-item-title">{v}</span>
+                </span>
+              </span>
+              <span className="ohf-vid-qual-item-trailing" aria-hidden="true">
+                {v === qualVal ? (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 13.875 9.2 18 19 7" />
+                  </svg>
+                ) : null}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>,
+      document.body
+    ) : null}
+    </>
   );
 }

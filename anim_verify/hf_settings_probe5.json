@@ -1,0 +1,219 @@
+{
+ "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+ "qual_triggers": {
+  "qual": [
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "fontSize": "16px",
+     "lineHeight": "24px",
+     "fontWeight": "400",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "textAlign": "center",
+     "justifyContent": "space-between",
+     "alignItems": "center",
+     "flexDirection": "row",
+     "padding": "8px 12px",
+     "gap": "8px",
+     "display": "flex",
+     "position": "static",
+     "zIndex": "auto",
+     "backdropFilter": "none"
+    },
+    "rect": {
+     "x": 180,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   }
+  ]
+ },
+ "qual_after_click": [
+  {
+   "role": "menu",
+   "txt": "품질2K",
+   "n": 8,
+   "items": [
+    {
+     "txt": "2K",
+     "attrs": {
+      "aria-checked": "true",
+      "aria-disabled": null,
+      "role": "menuitemcheckbox",
+      "tabindex": "-1"
+     }
+    }
+   ]
+  }
+ ],
+ "qual_trig_after": {
+  "qual": [
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "true",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "fontSize": "16px",
+     "lineHeight": "24px",
+     "fontWeight": "400",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "textAlign": "center",
+     "justifyContent": "space-between",
+     "alignItems": "center",
+     "flexDirection": "row",
+     "padding": "8px 12px",
+     "gap": "8px",
+     "display": "flex",
+     "position": "static",
+     "zIndex": "auto",
+     "backdropFilter": "none"
+    },
+    "rect": {
+     "x": 180,
+     "y": 717.58,
+     "w": 147,
+     "h": 54
+    }
+   }
+  ]
+ },
+ "dur_open_wrap": {
+  "wrap": {
+   "tag": "DIV",
+   "pos": "fixed",
+   "z": "1002",
+   "inline": "position: fixed; left: 0px; top: 0px; transform: translate(180px, 676px); min-width: max-content; --radix-popper-transform-origin: 0px 100%; z-index: 1002; --radix-popper-available-width: 1248px; --radix-popper-available-height: 876px; --radix-popper-anchor-width: 147px; --radix-popper-anchor-height: 54px;",
+   "rect": {
+    "x": 180,
+    "y": 676,
+    "w": 262,
+    "h": 116
+   }
+  },
+  "drect": {
+   "x": 180,
+   "y": 676,
+   "w": 262,
+   "h": 116
+  }
+ },
+ "dur_after_sliderclick": {
+  "slider": {
+   "attrs": {
+    "tabindex": "0",
+    "role": "slider",
+    "aria-orientation": "horizontal",
+    "aria-valuenow": "10",
+    "aria-valuemin": "5",
+    "aria-valuemax": "15",
+    "aria-valuetext": "10초"
+   },
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "fontSize": "16px",
+    "lineHeight": "24px",
+    "fontWeight": "400",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "6px",
+    "boxShadow": "none",
+    "opacity": "1",
+    "transform": "none",
+    "cursor": "grab",
+    "textAlign": "start",
+    "justifyContent": "normal",
+    "alignItems": "normal",
+    "flexDirection": "column",
+    "padding": "8px",
+    "gap": "8px",
+    "display": "flex",
+    "position": "static",
+    "zIndex": "auto",
+    "backdropFilter": "none"
+   },
+   "rect": {
+    "x": 182,
+    "y": 728,
+    "w": 258,
+    "h": 62
+   },
+   "inline": "",
+   "focus": true
+  }
+ },
+ "dur_kb_focus": {
+  "slider": {
+   "attrs": {
+    "tabindex": "0",
+    "role": "slider",
+    "aria-orientation": "horizontal",
+    "aria-valuenow": "11",
+    "aria-valuemin": "5",
+    "aria-valuemax": "15",
+    "aria-valuetext": "11초"
+   },
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "fontSize": "16px",
+    "lineHeight": "24px",
+    "fontWeight": "400",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "borderRadius": "6px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(209, 254, 23) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+    "opacity": "1",
+    "transform": "none",
+    "cursor": "grab",
+    "textAlign": "start",
+    "justifyContent": "normal",
+    "alignItems": "normal",
+    "flexDirection": "column",
+    "padding": "8px",
+    "gap": "8px",
+    "display": "flex",
+    "position": "static",
+    "zIndex": "auto",
+    "backdropFilter": "none"
+   },
+   "rect": {
+    "x": 182,
+    "y": 728,
+    "w": 258,
+    "h": 62
+   },
+   "inline": "",
+   "focus": true
+  }
+ },
+ "final_sweep": {
+  "고급": false,
+  "프롬프트 확장": false,
+  "번역": false,
+  "네거티브": false,
+  "시드": false,
+  "1080p": false,
+  "720p": false,
+  "해상도": false
+ }
+}
