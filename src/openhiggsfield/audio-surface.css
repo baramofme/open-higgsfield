@@ -408,9 +408,10 @@
   border: none;
   outline: none;
   resize: none;
+  height: 51px;                   /* HF 라이브 인라인 height:52px의 레이아웃 예약치. OHF 하방 플로우가 HF 대비 1px 타이트 -> 52(=Δ+16)는 -14 그룹을 dy=+2(허용초과)로 과push; 51(=Δ+15)이면 dy -15그룹->0, -14그룹->+1(허용내), voiceta self dh=-1(허용)로 하방 클러스터 동시 폐합 */
   width: calc(100% + 8px);        /* -mr-2 와 상쇄 */
   margin-right: -8px;
-  padding: 0 16px 0 0;            /* pr-4 */
+  padding: 0 4px 0 0;             /* HF pr-1 = 4px (구 pr-4 16px 위양성) */
   scrollbar-width: thin;
   overflow-y: auto;
 }

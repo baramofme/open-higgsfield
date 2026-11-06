@@ -587,7 +587,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             <h3 className="ohf-audio-card-h3" data-ohf-audio="card0h3">
                               {STR.card1Title}
                             </h3>
-                            <p className="ohf-audio-card-p" data-ohf-audio="card0p">
+                            <p className="ohf-audio-card-p" data-ohf-audio="card0p" style={{ maxWidth: "266px" }}>
                               {STR.card1Sub}
                             </p>
                           </div>
@@ -615,7 +615,7 @@ export function AudioSurface({ model, onModel, onGenerate, error }: AudioSurface
                             <h3 className="ohf-audio-card-h3" data-ohf-audio="card1h3">
                               {STR.card2Title}
                             </h3>
-                            <p className="ohf-audio-card-p" data-ohf-audio="card1p">
+                            <p className="ohf-audio-card-p" data-ohf-audio="card1p" style={{ maxWidth: "328px" }}>
                               {STR.card2Sub}
                             </p>
                           </div>
