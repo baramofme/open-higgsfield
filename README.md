@@ -81,6 +81,20 @@ Next.js 16 App Router on Vercel · React 19 · plain CSS · Zustand · pnpm
 
 ---
 
+## Design System
+
+Storybook 10으로 구축한 OHF 스코프 디자인 시스템. **ds.mezeet.com**에서 서빙 중.
+
+- 토큰/CSS 스와치: `design-system.stories.tsx`
+- 원시 컨트롤(5종): `component-primitives.stories.tsx`
+- 아이콘 통합 시트(93종): `component-icons.stories.tsx`
+- 기능 컨트롤(18종): `component-features-controls.stories.tsx`
+- 기능 서피스·오버레이(14종): `component-features-dialogs.stories.tsx`
+
+**컴포넌트 카탈로그**: [`src/openhiggsfield/DESIGN_SYSTEM.md`](src/openhiggsfield/DESIGN_SYSTEM.md)
+
+---
+
 ## Architecture
 
 Each generate is one object: `{ model, prompt, media, settings }`.
@@ -125,6 +139,8 @@ OPEN_HIGGSFIELD_READ_WRITE_TOKEN=     # Vercel Blob read-write token
 | `pnpm build` | Production build |
 | `pnpm start` | Serve the production build |
 | `pnpm brand` | Rebuild the icons and OG card in `public/` |
+| `pnpm storybook` | Storybook dev server on port 6006 |
+| `pnpm build-storybook` | Static Storybook build → `storybook-static/` |
 
 ---
 
@@ -139,6 +155,13 @@ src/
   openhiggsfield/
                 the studio surface: composer, gallery, viewer, model picker,
                 settings, asset picker, selection bar — and openhiggsfield.css
+                design-system.stories.tsx        토큰/CSS 스와치
+                component-primitives.stories.tsx 원시 컨트롤 5종
+                component-icons.stories.tsx      아이콘 93종 통합 시트
+                component-features-controls.stories.tsx 기능 컨트롤 18종
+                component-features-dialogs.stories.tsx  서피스·오버레이 14종
+                DESIGN_SYSTEM.md                 컴포넌트 카탈로그
+.storybook/     Storybook 10 설정 (main.ts, preview.ts)
 ```
 
 ---
