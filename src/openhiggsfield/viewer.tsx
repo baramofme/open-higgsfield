@@ -514,6 +514,16 @@ export function Viewer({
       }}
       onKeyDown={(event) => {
         if (event.target instanceof HTMLVideoElement) return;
+        /* The walk answers to the showcase's own ground, not to controls that
+           need the arrows for their own job: the timeline slider seeks on the
+           arrows, and a text field moves its caret with them. Without this
+           guard an arrow on the slider walked the playlist out from under the
+           visitor and unmounted the 편집 tab they were working in. */
+        if (event.target instanceof HTMLElement) {
+          const tag = event.target.tagName.toLowerCase();
+          if (tag === "input" || tag === "textarea") return;
+          if (event.target.closest('[role="slider"]')) return;
+        }
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
         const step = event.key === "ArrowLeft" ? onPrev : onNext;
         if (!step || closing) return;
