@@ -841,7 +841,7 @@
   background-size: auto;
   background-position: var(--ctl-vid-backgroundposition-0-0);
   background-repeat: repeat;
-  color: var(--ctl-vid-c255-255-255);
+  color: var(--ctl-vid-c255-255-255-ap5);
   font-size: var(--ohf-font-size-small);
   font-weight: var(--ohf-font-weight-medium);
   line-height: var(--ctl-vid-px16);
@@ -4061,4 +4061,34 @@
 .ohf-vid-n111 {
   display: flex;
 }
+}
+
+/* =============================================================================
+   동작 배선 — t_e0c64917 요소 1: 세그먼트 탭(레퍼런스↔프레임) 전환 동속성.
+   근거: HF live CDP 동시 실측(anim_verify/segtab_report.json, 1440×900).
+   - 탭: transition-property background-color, border-color, box-shadow, color,
+     opacity / 0.2s / cubic-bezier(0, 0, 0.2, 1) — HF computed 원문.
+     선택 탭(data-active)은 durations 가 "0s, 0.2s, 0.2s, 0.2s, 0.2s"
+     (background-color 0s — HF 프레임 선택 시 실측된 값 그대로).
+   - 색상: 선택 rgb(255,255,255) / 비선택 rgba(255,255,255,0.5) — 어느 탭이든
+     선택 여부에만跟随(HF s1 에서 레퍼런스 선택·프레임 비선택 양쪽 실측).
+   - indicator: 배경·테두리·radius·shadow 만 0.2s cubic-bezier(0,0,.2,1) 로
+     transition. 위치(left/top)는 transition 목록에 없다 — HF 는 위치 순간 이동.
+   ============================================================================= */
+.ohf-vid-n128,
+.ohf-vid-n134 {
+  transition-property: background-color, border-color, box-shadow, color, opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ohf-vid-n126 [data-active] {
+  color: var(--ctl-vid-c255-255-255);
+  transition-duration: 0s, 0.2s, 0.2s, 0.2s, 0.2s;
+}
+
+.ohf-vid-n140 {
+  transition-property: background, background-color, border-color, border-radius, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }

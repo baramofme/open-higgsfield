@@ -11,13 +11,15 @@
    정직 marking 원칙:
    - aria-disabled + data-off="<사유>" → 정적으로 이식된 HF 요소(동작 착지 후속).
    - 실배선한 길: ① 프롬프트 에디터(타입 → useVideoPrompt), ② 영상 재생(교차
-     관찰로 HF 와 같은 자동재생/일시정지), ③ 폼 제출 차단(의도된 정지).
+     관찰로 HF 와 같은 자동재생/일시정지), ③ 폼 제출 차단(의도된 정지),
+     ④ 세그먼트 탭(레퍼런스↔프레임) 전환·화살표 로빙·indicator 실측 동속성
+     (t_e0c64917 요소 1 — HF live 실측 ground-truth: anim_verify/segtab_report.json).
 
    생성물: landing_verify/gen_surface.py 가 ground-truth JSON 에서 이 파일의
    본문을, gen_css.py 가 computed 에서 video-surface.css 를 산출한다.
    ============================================================================= */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useVideoPrompt } from "@/generation/stores/prompt";
 import "./video-surface.css";
 
@@ -57,6 +59,68 @@ export function VideoSurface() {
   const [placeholderShown, setPlaceholderShown] = useState(text.trim() === "");
   const editorRef = useRef<HTMLDivElement>(null);
   const rootRef = useAutoPlayOnView();
+
+  /* ---- 세그먼트 탭(레퍼런스↔프레임) 실배선 — t_e0c64917 요소 1 ----
+     HF live 실측(anim_verify/segtab_report.json hf_behavior)으로 확정한 기계:
+       · 클릭 = 선택 이동(수동 활성화). 이미 선택된 탭의 재클릭/Enter 는 no-op(s4 실측).
+       · 화살표/Home/End = 포커스 로빙만(선택은 그대로 — s2/s3 실측).
+       · Enter/Space = 포커스된 탭 활성화.
+       · tabindex 는 포커스를跟随(roving), aria-selected·data-active·
+         data-composite-item-active 는 선택을跟随(HF s1/s2 의 교차 실측).
+       · data-activation-direction = 선택 이동 방향(left/right), 초기값 none
+         (HF 원문 attrs. 리스트·루트·indicator 세 노드 모두 동일 값).
+       · indicator CSS var 는 HF 산출식으로 재계산:
+         left = offsetLeft - 1, right = 리스트폭 - (offsetLeft+탭폭) - 1,
+         top/bottom = 3px, width = 탭폭. height = 32px 는 HF 탭 실측치
+         (OHF 탭 24px 는 QA disclosed_geometry_residual 'content-driven' 기확정 잔차). */
+  const SEG_TABS = ["128", "134"] as const;
+  type SegTab = (typeof SEG_TABS)[number];
+  const [segSel, setSegSel] = useState<SegTab>("134");    // HF 기본 선택=프레임(실측)
+  const [segFocus, setSegFocus] = useState<SegTab>("134");
+  const [segDir, setSegDir] = useState<"none" | "left" | "right">("none");
+  const seg128 = useRef<HTMLButtonElement | null>(null);
+  const seg134 = useRef<HTMLButtonElement | null>(null);
+  const segList = useRef<HTMLDivElement | null>(null);
+  const segInd = useRef<HTMLSpanElement | null>(null);
+  const segActivate = (next: SegTab) => {
+    if (next === segSel) return;
+    setSegDir(SEG_TABS.indexOf(next) < SEG_TABS.indexOf(segSel) ? "left" : "right");
+    setSegSel(next);
+    setSegFocus(next);
+  };
+  useLayoutEffect(() => {
+    const list = segList.current;
+    const ind = segInd.current;
+    const btn = segSel === "128" ? seg128.current : seg134.current;
+    if (!list || !ind || !btn) return;
+    const lr = list.getBoundingClientRect();
+    const tr = btn.getBoundingClientRect();
+    const left = Math.round(tr.left - lr.left) - 1;
+    const right = Math.round(lr.right - tr.right) - 1;
+    ind.style.setProperty("--active-tab-left", `${left}px`);
+    ind.style.setProperty("--active-tab-right", `${right}px`);
+    ind.style.setProperty("--active-tab-top", "3px");
+    ind.style.setProperty("--active-tab-bottom", "3px");
+    ind.style.setProperty("--active-tab-width", `${Math.round(tr.width)}px`);
+    ind.style.setProperty("--active-tab-height", "32px");
+  }, [segSel]);
+  const segKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      segActivate(segFocus);
+      return;
+    }
+    const i = SEG_TABS.indexOf(segFocus);
+    let next: SegTab | null = null;
+    if (e.key === "ArrowRight") next = SEG_TABS[(i + 1) % SEG_TABS.length];
+    else if (e.key === "ArrowLeft") next = SEG_TABS[(i - 1 + SEG_TABS.length) % SEG_TABS.length];
+    else if (e.key === "Home") next = SEG_TABS[0];
+    else if (e.key === "End") next = SEG_TABS[SEG_TABS.length - 1];
+    if (!next) return;
+    e.preventDefault();
+    setSegFocus(next);
+    (next === "128" ? seg128 : seg134).current?.focus();
+  };
 
   /* HF 포착 상태: 프롬프트 비어있음 → placeholder 가 보였다(실측 #184 가시). */
   useEffect(() => {
@@ -124,9 +188,9 @@ export function VideoSurface() {
               </figure>
             </fieldset>
             <div className="ohf-vid-n125" data-ohf-video="125">
-              <div className="ohf-vid-n126" data-ohf-video="126" data-orientation="horizontal" style={{ "--q-tint": "var(--hf-color-brand-primary)", "--q-tint-fg": "var(--hf-color-text-inverse)" }}>
-                <div className="ohf-vid-n127" data-ohf-video="127" data-orientation="horizontal" role="tablist">
-                  <button className="ohf-vid-n128" data-ohf-video="128" type="button" data-orientation="horizontal" aria-disabled="false" tabIndex={-1} role="tab" aria-selected="false" aria-disabled="true" data-off="세그먼트 탭 레퍼런스(탭 전환 착지 후속)">
+              <div className="ohf-vid-n126" data-ohf-video="126" data-orientation="horizontal" data-activation-direction={segDir} style={{ "--q-tint": "var(--hf-color-brand-primary)", "--q-tint-fg": "var(--hf-color-text-inverse)" }}>
+                <div className="ohf-vid-n127" data-ohf-video="127" data-orientation="horizontal" data-activation-direction={segDir} role="tablist" ref={segList} onKeyDown={segKey}>
+                  <button className="ohf-vid-n128" data-ohf-video="128" type="button" data-orientation="horizontal" aria-disabled="false" ref={seg128} tabIndex={segFocus === "128" ? 0 : -1} role="tab" aria-selected={segSel === "128" ? "true" : "false"} onClick={() => segActivate("128")} onFocus={() => setSegFocus("128")} {...(segSel === "128" ? { "data-active": "", "data-composite-item-active": "" } : {})}>
                     <span className="ohf-vid-n129" data-ohf-video="129">
                       <span className="ohf-vid-n130" data-ohf-video="130">
                         <svg className="ohf-vid-n131" data-ohf-video="131" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +202,7 @@ export function VideoSurface() {
                       </span>
                     </span>
                   </button>
-                  <button className="ohf-vid-n134" data-ohf-video="134" type="button" data-active="" data-orientation="horizontal" aria-disabled="false" tabIndex={0} role="tab" aria-selected="true" aria-disabled="true" data-off="세그먼트 탭 프레임(탭 전환 착지 후속)">
+                  <button className="ohf-vid-n134" data-ohf-video="134" type="button" data-orientation="horizontal" aria-disabled="false" ref={seg134} tabIndex={segFocus === "134" ? 0 : -1} role="tab" aria-selected={segSel === "134" ? "true" : "false"} onClick={() => segActivate("134")} onFocus={() => setSegFocus("134")} {...(segSel === "134" ? { "data-active": "", "data-composite-item-active": "" } : {})}>
                     <span className="ohf-vid-n135" data-ohf-video="135">
                       <span className="ohf-vid-n136" data-ohf-video="136">
                         <svg className="ohf-vid-n137" data-ohf-video="137" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,7 +214,7 @@ export function VideoSurface() {
                       </span>
                     </span>
                   </button>
-                  <span className="ohf-vid-n140" data-ohf-video="140" data-orientation="horizontal" role="presentation" style={{ "--active-tab-left": "152px", "--active-tab-right": "3px", "--active-tab-top": "3px", "--active-tab-bottom": "3px", "--active-tab-width": "145px", "--active-tab-height": "32px" }} />
+                  <span className="ohf-vid-n140" data-ohf-video="140" data-orientation="horizontal" data-activation-direction={segDir} role="presentation" ref={segInd} style={{ "--active-tab-left": "152px", "--active-tab-right": "3px", "--active-tab-top": "3px", "--active-tab-bottom": "3px", "--active-tab-width": "145px", "--active-tab-height": "32px" }} />
                 </div>
               </div>
               <div className="ohf-vid-n141" data-ohf-video="141">

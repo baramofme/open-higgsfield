@@ -1,0 +1,42 @@
+OVERALL: FAIL issues: 99
+  ISSUE: s0 tab[레퍼런스].aria-disabled HF='false' OHF='true'
+  ISSUE: s0 tab[레퍼런스].relrect HF={'x': 4, 'y': 4, 'w': 145, 'h': 32} OHF={'x': 4, 'y': 4, 'w': 145, 'h': 24}
+  ISSUE: s0 tab[프레임].data-composite-item-active HF='' OHF=None
+  ISSUE: s0 tab[프레임].aria-disabled HF='false' OHF='true'
+  ISSUE: s0 tab[프레임].relrect HF={'x': 153, 'y': 4, 'w': 145, 'h': 32} OHF={'x': 153, 'y': 4, 'w': 145, 'h': 24}
+  ISSUE: s0 list.dir HF='none' OHF=None
+  ISSUE: s0 root.dir HF='none' OHF=None
+  ISSUE: s0 ind.dir HF='none' OHF=None
+  ISSUE: s0 ind.transitionProperty HF='background, background-color, border-color, border-radius, box-shadow' OHF='all'
+  ISSUE: s0 ind.transitionDuration HF='0.2s' OHF='0s'
+  ISSUE: s0 ind.transitionTimingFunction HF='cubic-bezier(0, 0, 0.2, 1)' OHF='ease'
+  ISSUE: s0 focus HF='가입 후 프리미엄 요금제 추가 할인을' OHF='OpenHiggsfield AI — '
+  ISSUE: s1 tab[레퍼런스].aria-selected HF='true' OHF='false'
+  ISSUE: s1 tab[레퍼런스].tabindex HF='0' OHF='-1'
+  ISSUE: s1 tab[레퍼런스].data-active HF='' OHF=None
+  ISSUE: s1 tab[레퍼런스].data-composite-item-active HF='' OHF=None
+  ISSUE: s1 tab[레퍼런스].aria-disabled HF='false' OHF='true'
+  ISSUE: s1 tab[레퍼런스].color HF=rgb(255, 255, 255) OHF=rgba(255, 255, 255, 0.5)
+  ISSUE: s1 tab[레퍼런스].relrect HF={'x': 4, 'y': 4, 'w': 145, 'h': 32} OHF={'x': 4, 'y': 4, 'w': 145, 'h': 24}
+  ISSUE: s1 tab[프레임].aria-selected HF='false' OHF='true'
+  ISSUE: s1 tab[프레임].tabindex HF='-1' OHF='0'
+  ISSUE: s1 tab[프레임].data-active HF=None OHF=''
+  ISSUE: s1 tab[프레임].aria-disabled HF='false' OHF='true'
+  ISSUE: s1 tab[프레임].color HF=rgba(255, 255, 255, 0.5) OHF=rgb(255, 255, 255)
+  ISSUE: s1 tab[프레임].relrect HF={'x': 153, 'y': 4, 'w': 145, 'h': 32} OHF={'x': 153, 'y': 4, 'w': 145, 'h': 24}
+  ISSUE: s1 list.dir HF='left' OHF=None
+  ISSUE: s1 root.dir HF='left' OHF=None
+  ISSUE: s1 ind.dir HF='left' OHF=None
+  ISSUE: s1 ind --active-tab-left HF=3.0 OHF=152.0
+  ISSUE: s1 ind --active-tab-right HF=152.0 OHF=3.0
+  ISSUE: s1 ind.relrect.x HF=4 OHF=153
+  ISSUE: s1 ind.transitionProperty HF='background, background-color, border-color, border-radius, box-shadow' OHF='all'
+  ISSUE: s1 ind.transitionDuration HF='0.2s' OHF='0s'
+  ISSUE: s1 ind.transitionTimingFunction HF='cubic-bezier(0, 0, 0.2, 1)' OHF='ease'
+  ISSUE: s2 tab[레퍼런스].aria-selected HF='true' OHF='false'
+  ISSUE: s2 tab[레퍼런스].data-active HF='' OHF=None
+  ISSUE: s2 tab[레퍼런스].data-composite-item-active HF='' OHF=None
+  ISSUE: s2 tab[레퍼런스].aria-disabled HF='false' OHF='true'
+  ISSUE: s2 tab[레퍼런스].color HF=rgb(255, 255, 255) OHF=rgba(255, 255, 255, 0.5)
+  ISSUE: s2 tab[레퍼런스].relrect HF={'x': 4, 'y': 4, 'w': 145, 'h': 32} OHF={'x': 4, 'y': 4, 'w': 145, 'h': 24}
+HF BEHAVIOR: {"s0": {"sel": {"레퍼런스": "false", "프레임": "true"}, "focus": "가입 후 프리미엄 요금제 추가 할인을", "tabindex": {"레퍼런스": "-1", "프레임": "0"}}, "s1": {"sel": {"레퍼런스": "true", "프레임": "false"}, "focus": "레퍼런스", "tabindex": {"레퍼런스": "0", "프레임": "-1"}}, "s2": {"sel": {"레퍼런스": "true", "프레임": "false"}, "focus": "프레임", "tabindex": {"레퍼런스": "-1", "프레임": "0"}}, "s3": {"sel": {"레퍼런스": "true", "프레임": "false"}, "focus": "레퍼런스", "tabindex": {"레퍼런스": "0", "프레임": "-1"}}, "s4": {"sel": {"레퍼런스": "true", "프레임": "false"}, "focus": "레퍼런스", "tabindex": {"레퍼런스": "0", "프레임": "-1"}}}
