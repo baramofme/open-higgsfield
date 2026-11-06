@@ -28,6 +28,20 @@
   /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
   --plate: #000000b3;
   --plate-ink: #ffffffe6;
+  /* audio-surface.css(t_dbb7f8b9 이식)가 참조하는 장명 토큰 별칭 — 제 base의
+     축약 토큰에 HF 실측 정렬로 매핑. 오디오 표면의 OH-원부재 크롬(모델 팝오버·
+     에러)에만 쓰이며 HF GT 기하/도색 행은 이미 HF 리터럴이라 무영향. */
+  --ohf-color-surface-2: var(--s2);
+  --ohf-color-surface-3: var(--s3);
+  --ohf-color-border-subtle: var(--line);
+  --ohf-color-text-primary: var(--tx);
+  --ohf-color-danger: var(--danger);
+  --ohf-shadow-2: var(--shadow-2);
+  --ohf-font-family-ui: Inter, ui-sans-serif, system-ui, sans-serif;
+  --ohf-duration-fast: 120ms;
+  --ohf-duration-normal: 220ms;
+  --ohf-ease-standard: var(--ease);
+  --o-radius-6: 6px;
   --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
   --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
   --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
@@ -35,7 +49,7 @@
   --ease: cubic-bezier(0.2, 0, 0, 1);
   /* Deeper exponential ease-out — the scope indicator's travel. */
   --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-ui: Inter, ui-sans-serif, system-ui, sans-serif;
   --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
   --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
   --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
@@ -5456,6 +5470,20 @@ a.ohf-btn-solid {
   /* Smoked plate = HF's canonical 70% black backdrop; ink = HF reverted-90. */
   --plate: #000000b3;
   --plate-ink: #ffffffe6;
+  /* audio-surface.css(t_dbb7f8b9 이식)가 참조하는 장명 토큰 별칭 — 제 base의
+     축약 토큰에 HF 실측 정렬로 매핑. 오디오 표면의 OH-원부재 크롬(모델 팝오버·
+     에러)에만 쓰이며 HF GT 기하/도색 행은 이미 HF 리터럴이라 무영향. */
+  --ohf-color-surface-2: var(--s2);
+  --ohf-color-surface-3: var(--s3);
+  --ohf-color-border-subtle: var(--line);
+  --ohf-color-text-primary: var(--tx);
+  --ohf-color-danger: var(--danger);
+  --ohf-shadow-2: var(--shadow-2);
+  --ohf-font-family-ui: Inter, ui-sans-serif, system-ui, sans-serif;
+  --ohf-duration-fast: 120ms;
+  --ohf-duration-normal: 220ms;
+  --ohf-ease-standard: var(--ease);
+  --o-radius-6: 6px;
   --shadow-1: 0 0.25rem 0.25rem 0 #0000001a; /* HF --hf-shadow-raised-sm */
   --shadow-2: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 1.5rem calc(-1 * 0.5rem) #00000026; /* HF --hf-shadow-raised */
   --shadow-3: inset 0 0.125rem calc(0.125rem + 1px) 0 #ffffff0d, 0 0.25rem 0.25rem -0.5px #00000026; /* HF --hf-shadow-modal */
@@ -5463,7 +5491,7 @@ a.ohf-btn-solid {
   --ease: cubic-bezier(0.2, 0, 0, 1);
   /* Deeper exponential ease-out — the scope indicator's travel. */
   --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-ui: Inter, ui-sans-serif, system-ui, sans-serif;
   --danger: #fa0019;        /* HF --color-q-text-danger / hf-text-danger */
   --danger-bg: #e7293033;   /* HF --color-surface-error-alpha-1 */
   --danger-line: #db3f3e24; /* HF --color-surface-error-alpha-14 */
@@ -17346,6 +17374,18 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-weight: 300 700;
   font-display: swap;
   src: url("/fonts/space-grotesk-latin-300-700.woff2") format("woff2");
+}
+/* t_54c99543 — HF self-hosts this exact file (assets.higgsfield.ai/tanstack/fonts/
+   inter/inter-latin-100-900.woff2, byte-for-byte public/fonts/inter-latin-100-900.woff2,
+   ETag 65850a37…). Declaring 'Inter' by name makes the computed font-family read
+   exactly the string HF reports, and next/font/local below serves the same metrics —
+   the Google-served variant has wider advance widths (operator ruling: 도색 폰트 = 복제 대상). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-100-900.woff2") format("woff2");
 }
 .ohf-cinema-screen {
   /* HF's tokens, measured: surface-primary is rgb(28,30,32), the secondary

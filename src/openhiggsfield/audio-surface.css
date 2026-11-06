@@ -1,0 +1,945 @@
+/* =============================================================================
+ * audio-surface.css — HF /ko/audio 정적 화면 이식 (t_dbb7f8b9)
+ *
+ * 소스 ground-truth: HF live CDP(:9222) 1440×900 수확(hf_tree_rich.json),
+ * 2026-11-05. 모든 값은 HF computed에서 실측한 것. 토큰 3계층(--o-/--ohf-)을
+ * 쓰되, HF 실측과 다른 토큰은 HF 실측 리터럴로 오버라이드(선례: t_2adadf77의
+ * .ohf-feed-* HF값 오버라이드 — 동화면 수용 기준이 computed 문자열/수치 동값).
+ * 하이라이트 주석에 근거를 남긴다.
+ * ============================================================================= */
+
+/* ---------- 그리드 골격 ---------- */
+
+.ohf-audio-main {                 /* HF: div.size-full.min-h-0.pt-3 (display block) */
+  flex: 1;
+  min-height: 0;
+  padding-top: 12px;              /* pt-3 */
+  display: block;                 /* HF ptwrap computed display:block */
+  font-size: 16px;                /* HF 페이지 루트 16px(OH .ohf base 14px) — 계승 캐스케이드 */
+  line-height: 24px;              /* HF lh 1.5(OH 1.45 → 20.3px) */
+  letter-spacing: 0;              /* HF tracking-normal(OH normal) */
+}
+.ohf-audio-container {            /* HF: div.relative.size-full.container (x0 w1440 → px 16) */
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  padding: 0 16px;
+  display: block;                 /* HF container computed display:block */
+}
+.ohf-audio-grid {                 /* HF: grid grid-cols-[max-content_minmax(0,1fr)] (gap 실측 normal=0) */
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+}
+
+/* ---------- 좌측 패널(aside) ---------- */
+
+.ohf-audio-aside {                /* HF: relative flex h-full min-h-0 min-w-0 shrink-0 flex-col pb-4 */
+  position: relative;
+  min-width: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;           /* pb-4 */
+}
+.ohf-audio-plate {                /* HF: flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-white/5 bg; 실측 w394 align-self flex-start */
+  display: flex;
+  flex-direction: column;
+  width: 394px;                   /* HF 실측 aside/plate 394px(max-content 골격이 HF wider 패널로 수렴) */
+  align-self: flex-start;         /* HF plateCS flex-start */
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 24px;            /* rounded-3xl */
+  border: 1px solid rgba(255, 255, 255, 0.05);   /* HF white/5 (oklab serial화 — compare에서 색 정규화) */
+  background-color: rgb(28, 30, 33);             /* HF computed plate (실측 — t_dbb7f8b9의 24,25,28은 HF 리터럴 아님) */
+}
+.ohf-audio-tabstrip {             /* HF: mx-3 flex min-w-0 shrink-0 gap-5 border-b border-separator-card px-2 pt-3 */
+  margin-inline: 12px;            /* mx-3 */
+  min-width: 0;
+  flex-shrink: 0;
+  display: flex;
+  gap: 20px;                      /* gap-5 */
+  border-bottom: 1px solid rgba(217, 217, 217, 0.04);   /* border-separator-card 실측 */
+  padding: 12px 8px 0;            /* px-2 pt-3 */
+}
+.ohf-audio-tab {                  /* HF: flex h-9 shrink-0 items-start whitespace-nowrap border-b-2 14/500 lh20 */
+  display: flex;
+  height: 36px;                   /* h-9 */
+  flex-shrink: 0;
+  align-items: flex-start;
+  white-space: nowrap;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  font-family: var(--ohf-font-family-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  cursor: default;
+}
+.ohf-audio-tab[data-active] {     /* 활성 탭(텍스트 음성 변환) */
+  border-bottom-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+.ohf-audio-form {                 /* HF: hide-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-none px-3 pt-3 */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  scrollbar-width: none;          /* hide-scrollbar */
+  padding: 12px 12px 0;           /* px-3 pt-3 */
+}
+.ohf-audio-form::-webkit-scrollbar { display: none; }
+.ohf-audio-stack {                /* HF: flex flex-col gap-3 */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---------- 미디어 업로드 카드 ---------- */
+
+.ohf-audio-upload {               /* HF: group relative flex w-full shrink-0 cursor-pointer flex-col items-center gap-3 rounded-2xl border-white/5 px-4 pt-6 pb-5 min-h-40 justify-center */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  flex-shrink: 0;
+  min-height: 160px;              /* min-h-40 (10rem) */
+  cursor: pointer;
+  border-radius: 16px;            /* rounded-2xl */
+  border: 0 solid rgba(255, 255, 255, 0.05);  /* HF 실측 border-width 0 — 실선은 SVG dashed가 렌더 */
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 24px 16px 20px;        /* pt-6 px-4 pb-5 */
+}
+.ohf-audio-upload[disabled] { cursor: default; }
+/* HF의 카드 래퍼(relative shrink-0 — 배지의 containing block) */
+.ohf-audio-upload-wrap {
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+}
+.ohf-audio-upload-dash {          /* HF svg.overlay — dashed border 오버레이(rect로 그리기) */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.ohf-audio-circles {              /* HF: flex items-center? (실측 items-start) */
+  display: flex;
+  align-items: flex-start;
+}
+.ohf-audio-circle {               /* HF span.size-10: flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-secondary(35,38,42) text-white shadow(...) -mr-2 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: calc(infinity * 1px);   /* rounded-full(HF serial화 3.35544e+07px와 동값) */
+  background-color: rgb(35, 38, 42);
+  color: rgb(255, 255, 255);
+  margin-right: -8px;             /* -mr-2 */
+  box-shadow:
+    0 5.059px 5.654px 0 rgba(0, 0, 0, 0.1),
+    0 20.533px 10.266px 0 rgba(0, 0, 0, 0.09),
+    0 46.422px 13.986px 0 rgba(0, 0, 0, 0.05),
+    0 82.429px 16.516px 0 rgba(0, 0, 0, 0.01),
+    inset 0 -0.298px 5.356px 0 rgba(185, 185, 185, 0.35);
+}
+.ohf-audio-circle:last-child { margin-right: 0; }
+.ohf-audio-circle svg { width: 16px; height: 16px; flex-shrink: 0; }
+.ohf-audio-circle .ohf-audio-icon24 { width: 16px; height: 16px; }
+.ohf-audio-labelcol {             /* HF: flex w-full flex-col items-center gap-1 text-center */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  text-align: center;
+}
+.ohf-audio-upload-label {         /* HF: text-sm-medium text-font-primary → 16/500 white lh24 */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+}
+.ohf-audio-upload-hint {          /* HF: w-full truncate text-sm-medium text-font-secondary → 14/500 (137,138,139) lh20 */
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(137, 138, 139);
+}
+.ohf-audio-badge {                /* HF: pointer-events-none absolute rounded-xl bg-neutral-primary-reverted-5 px-2 py-1 text-xxs-medium text-font-secondary right-1.5 top-1.5 */
+  position: absolute;
+  top: 6px;                       /* top-1.5 */
+  right: 6px;                     /* right-1.5 */
+  pointer-events: none;
+  border-radius: 12px;            /* rounded-xl */
+  background-color: rgba(255, 255, 255, 0.05);   /* neutral-primary-reverted-5 */
+  padding: 4px 8px;               /* py-1 px-2 */
+  font-size: 10px;                /* text-xxs-medium */
+  font-weight: 500;
+  line-height: 14px;
+  color: rgb(137, 138, 139);
+}
+
+/* ---------- 스크립트 섹션 ---------- */
+
+.ohf-audio-script {               /* HF section: relative flex h-40 w-full shrink-0 flex-col gap-1 rounded-xl border border-white/5 bg-white/5 p-3 transition-colors focus-within:border-white/10 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 160px;                  /* h-40 (10rem) */
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  transition: border-color var(--ohf-duration-normal) var(--ohf-ease-standard);
+}
+.ohf-audio-script:focus-within { border-color: rgba(255, 255, 255, 0.1); }
+.ohf-audio-script-head {          /* HF: flex justify-between items-center gap-2 → 실측 justify-between */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.ohf-audio-script-label {         /* HF: text-sm-medium text-font-secondary */
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(137, 138, 139);
+}
+.ohf-audio-script-icon {          /* HF: flex size-4.5 shrink-0 items-center justify-center text-font-secondary transition-colors hover:text-font-primary */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;                    /* size-4.5 */
+  height: 18px;
+  flex-shrink: 0;
+  color: rgb(137, 138, 139);
+  transition: color var(--ohf-duration-fast) var(--ohf-ease-standard);
+}
+.ohf-audio-script-icon:hover { color: rgb(255, 255, 255); }
+.ohf-audio-script-icon svg { width: 16px; height: 16px; }
+.ohf-audio-script-body {          /* HF: min-h-0 flex-1 */
+  min-height: 0;
+  flex: 1;
+}
+.ohf-audio-script-rel {           /* HF: relative flex-1 h-full */
+  position: relative;
+  flex: 1;
+  height: 100%;
+}
+.ohf-audio-script-field {         /* HF field: text-xs leading-4.5 white overflow-y-auto minimal-scrollbar scrollbar-gutter-stable whitespace-pre-wrap cursor-text outline-none focus:border-none */
+  font-size: 12px;                /* text-xs */
+  line-height: 18px;              /* leading-4.5 */
+  color: rgb(255, 255, 255);
+  font-family: var(--ohf-font-family-ui);
+  white-space: pre-wrap;
+  overflow-y: auto;
+  scrollbar-width: thin;          /* minimal-scrollbar */
+  scrollbar-gutter: stable;
+  cursor: text;
+  outline: none;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.ohf-audio-script-overlay {       /* HF: aria-hidden 래퍼(사이즈 0) */
+  color: rgb(137, 138, 139);
+}
+.ohf-audio-script-overlay-inner { /* HF: absolute top-0 left-0 whitespace-pre-line text-xs leading-4.5 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: pre-line;
+  font-size: 12px;
+  line-height: 18px;
+  pointer-events: none;
+}
+
+/* ---------- 모델 버튼 ---------- */
+
+.ohf-audio-modelbtn {             /* HF: flex h-14 w-full shrink-0 items-center justify-between gap-2 rounded-xl bg-white/5 px-3 py-2 transition hover:bg-white/8 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 56px;                   /* h-14 */
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;              /* py-2 px-3 */
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color var(--ohf-duration-normal) var(--ohf-ease-standard);
+}
+.ohf-audio-modelbtn:hover { background-color: rgba(255, 255, 255, 0.08); }
+.ohf-audio-model-col {            /* HF: flex min-w-0 flex-col items-start gap-1 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+.ohf-audio-model-label {          /* HF: text-xs-medium text-qc-text-secondary → 12/500 rgb(130,130,130) lh18 */
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: rgb(130, 130, 130);
+}
+.ohf-audio-model-val {            /* HF: flex min-w-0 items-center gap-1 text-sm-medium text-font-primary */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+}
+.ohf-audio-model-trunc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ohf-audio-brand {                /* HF svg.text-primary size-3.5 → 14×14, fill currentColor, color lime */
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: rgb(209, 254, 23);       /* HF --color-primary 실측 */
+}
+.ohf-audio-chev {                 /* HF: size-4 shrink-0 -rotate-90 text-font-primary opacity-60 */
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transform: rotate(-90deg);
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+}
+
+/* ---------- 배치 크기 줄 ---------- */
+
+.ohf-audio-batch {                /* HF: flex h-12 w-full shrink-0 items-center justify-between gap-2 rounded-xl bg-white/5 px-3 py-2 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 48px;                   /* h-12 */
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+}
+.ohf-audio-batch-label { font-size: 14px; font-weight: 500; line-height: 20px; color: rgb(255, 255, 255); }
+.ohf-audio-stepper {              /* HF: flex items-center gap-0.5 */
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.ohf-audio-step-btn {             /* HF button: size-6 r-md bg-font-primary(white) white icon → disabled opacity 40% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;                    /* size-6 */
+  height: 24px;
+  border-radius: var(--o-radius-6);      /* HF r-md = 6px → 오 radius 6 동값 재사용 */
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.ohf-audio-step-btn svg { width: 16px; height: 16px; color: rgb(255, 255, 255); }
+.ohf-audio-step-btn:disabled { opacity: 0.4; cursor: default; }
+.ohf-audio-step-btn[aria-disabled="true"] { opacity: 0.4; cursor: default; pointer-events: none; }
+.ohf-audio-step-val {             /* HF span: px-1.5 text-sm-semibold leading-5 tabular-nums */
+  padding: 0 6px;                 /* px-1.5 */
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+  color: rgb(255, 255, 255);
+}
+
+/* ---------- 음성 상세 정보 섹션 ---------- */
+
+.ohf-audio-voice {                /* HF section: relative flex w-full shrink-0 flex-col gap-1 rounded-xl border white/5 bg white/5 p-3 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+}
+.ohf-audio-voice-label { font-size: 14px; font-weight: 500; line-height: 20px; color: rgb(137, 138, 139); }
+.ohf-audio-voice-ta {             /* HF textarea: minimal-scrollbar -mr-2 w-[calc(100%+8px)] pr-4 bg-transparent text-xs leading-4.5 white placeholder secondary outline-none focus:border-none */
+  font-family: var(--ohf-font-family-ui);
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  width: calc(100% + 8px);        /* -mr-2 와 상쇄 */
+  margin-right: -8px;
+  padding: 0 16px 0 0;            /* pr-4 */
+  scrollbar-width: thin;
+  overflow-y: auto;
+}
+.ohf-audio-voice-ta::placeholder { color: rgb(137, 138, 139); }
+.ohf-audio-voice-ta[readonly] { cursor: default; }
+.ohf-audio-counter {              /* HF: mt-0.5 self-end text-xxs-medium tabular-nums text-font-primary/40 */
+  margin-top: 2px;                /* mt-0.5 */
+  align-self: flex-end;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- 고급 설정 버튼 ---------- */
+
+.ohf-audio-adv {                  /* HF: flex w-full shrink-0 items-center gap-2 rounded-xl p-1.5 */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  padding: 6px;                   /* p-1.5 */
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.ohf-audio-adv-icon { width: 16px; height: 16px; flex-shrink: 0; color: rgb(255, 255, 255); }
+.ohf-audio-adv-label {            /* HF: flex-1 truncate text-sm-medium text-left text-font-primary */
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+}
+.ohf-audio-adv .ohf-audio-chev { transition: transform var(--ohf-duration-normal) var(--ohf-ease-standard); }
+
+/* ---------- 푸터 CTA ---------- */
+
+.ohf-audio-foot {                 /* HF: sticky bottom-0 z-20 -mx-3 shrink-0 bg-linear-to-b from-bg2/0 to-bg2 (transparent 0% → rgb(28,30,33) 100%) px-3 pt-14 pb-4 */
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  margin-inline: -12px;           /* -mx-3 */
+  flex-shrink: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(28, 30, 33) 100%);
+  padding: 56px 12px 16px;        /* pt-14 px-3 pb-4 */
+}
+.ohf-audio-foot-line {            /* HF: absolute inset-x-0 top-0 h-0 */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+}
+.ohf-audio-cta {                  /* HF: relative flex h-14 w-full min-w-12 items-center justify-center overflow-hidden rounded-xl px-5 pb-5 pt-4 bg-gradient lime shadow ... transition hover:brightness-105 active:95 disabled:none+brightness-60 */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;                   /* h-14 */
+  width: 100%;
+  min-width: 48px;                /* min-w-12 */
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 16px 20px 20px;        /* pt-4 px-5 pb-5 */
+  border: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 20, 0) 0%, rgb(255, 255, 20) 100%),
+    linear-gradient(90deg, rgb(209, 254, 23) 0%, rgb(209, 254, 23) 100%);
+  box-shadow:
+    0 32px 24px 0 rgba(0, 0, 0, 0.15),
+    0 6px 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: filter var(--ohf-duration-normal) var(--ohf-ease-standard);
+}
+.ohf-audio-cta:hover:not(:disabled) { filter: brightness(1.05); }
+.ohf-audio-cta:active:not(:disabled) { filter: brightness(0.95); }
+.ohf-audio-cta:disabled { pointer-events: none; filter: brightness(0.6); cursor: default; }
+.ohf-audio-cta-shadow {           /* HF span: pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0px_-3px_0px_0px_#829B19] */
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 -3px 0 0 rgb(130, 155, 25);   /* #829B19 */
+}
+.ohf-audio-cta-text {             /* HF span: flex items-center px-1.5 text-lg font-semibold leading-6 tracking-[-0.4px] text-neutral-subtle(27,27,27) */
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;                 /* px-1.5 */
+  font-size: 18px;                /* text-lg */
+  font-weight: 600;               /* font-semibold */
+  line-height: 24px;              /* leading-6 */
+  letter-spacing: -0.4px;
+  color: rgb(27, 27, 27);
+}
+
+/* ---------- 리사이즈 핸들 (HF 원리; 정직 관측 가능·비기능) ---------- */
+
+.ohf-audio-resize {               /* HF: group/resize pointer-events-auto absolute inset-y-0 z-100 w-3 touch-none select-none -right-1.5 (w12 at x404) */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -6px;                    /* -right-1.5 */
+  z-index: 100;
+  width: 12px;                    /* w-3 */
+  touch-action: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ohf-audio-resize-line {          /* HF: pointer-events-none absolute inset-y-4 left-1/2 w-px -translate-x-1/2
+                                     bg linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.2) 18%, rgba(255,255,255,0.2) 82%, transparent 100%)
+                                     opacity-0 transition-opacity duration-150 group-hover/resize:opacity-100 */
+  position: absolute;
+  top: 16px;                      /* inset-y-4 */
+  bottom: 16px;
+  left: 50%;
+  width: 1px;                     /* w-px */
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--ohf-duration-fast) var(--ohf-ease-standard);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 0.2) 18%,
+    rgba(255, 255, 255, 0.2) 82%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.ohf-audio-resize:hover .ohf-audio-resize-line { opacity: 1; }
+.ohf-audio-resize-grip {          /* HF button.size-full: appearance-none border-0 bg-transparent p-0 cursor-ew-resize w3×844 */
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: ew-resize;
+}
+
+/* ---------- 우측 컬럼 ---------- */
+
+.ohf-audio-feedcol {              /* HF: relative size-full */
+  position: relative;
+  min-width: 0;
+}
+.ohf-audio-feedhead {             /* HF: absolute z-1 top-0 left-6 right-0 pb-3 */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 24px;                     /* left-6 */
+  right: 0;
+  padding-bottom: 12px;           /* pb-3 */
+}
+.ohf-audio-feedrow {              /* HF: relative flex justify-between w-full items-center */
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.ohf-audio-rc-left {              /* HF: w-max flex flex-row items-center gap-2 (167) */
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.ohf-audio-tabgroup {             /* HF: flex h-10! items-center gap-1! rounded-xl! border border-white/5 bg-page-primary p-0.5! (159×40) */
+  display: flex;
+  align-items: center;
+  height: 40px;                   /* h-10 */
+  gap: 4px;                       /* gap-1 */
+  border-radius: 12px;            /* rounded-xl */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgb(19, 21, 23);   /* bg-page-primary 실측 */
+  padding: 2px;                   /* p-0.5 */
+  outline: none;
+}
+.ohf-audio-rtab {                 /* HF tab button: relative grid place-items-center h-8! min-w-0! gap-0! rounded-lg! px-2! py-1! text-xs-medium + border 2px transparent */
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 32px;                   /* h-8 */
+  min-width: 0;
+  gap: 0;
+  border-radius: 8px;             /* rounded-lg */
+  padding: 4px 8px;               /* py-1 px-2 */
+  border: 2px solid transparent;
+  background: none;
+  font-family: var(--ohf-font-family-ui);
+  font-size: 12px;                /* text-xs-medium */
+  font-weight: 600;
+  line-height: 18px;
+  color: rgb(137, 138, 139);
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+.ohf-audio-rtab[data-state="active"] { color: rgb(255, 255, 255); }
+.ohf-audio-rtab > svg { width: 16px; height: 16px; }
+.ohf-audio-rtab-label {           /* HF span: px-1 */
+  padding: 0 4px;
+  white-space: nowrap;
+}
+.ohf-audio-rtab-indicator {       /* HF indicator span: absolute rounded-lg inset-0 -z-1 border white/5 bg 2 gradients backdrop-blur-md shadow(2px2px .12 + inset 2px3px .05) */
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-image:
+    linear-gradient(149.85deg, rgba(255, 255, 255, 0.04) 22.6%, rgba(255, 255, 255, 0.06) 51.26%, rgba(255, 255, 255, 0.02) 79.9%),
+    linear-gradient(90deg, rgba(35, 38, 42, 0.75) 0%, rgba(35, 38, 42, 0.75) 100%);
+  backdrop-filter: blur(12px);    /* backdrop-blur-md */
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.12),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+.ohf-audio-rc-right {             /* HF: w-max flex flex-row items-center gap-3 (66×32) */
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+.ohf-audio-filter {               /* HF: flex h-8 items-center gap-1.5 rounded-[10px] border px-2.5 border-white/5 bg-page-primary text-font-secondary hover:white */
+  display: flex;
+  align-items: center;
+  gap: 6px;                       /* gap-1.5 */
+  height: 32px;                   /* h-8 */
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgb(19, 21, 23);
+  padding: 0 10px;                /* px-2.5 */
+  color: rgb(137, 138, 139);
+  font-family: var(--ohf-font-family-ui);
+  cursor: default;
+}
+.ohf-audio-filter > svg { width: 16px; height: 16px; }
+.ohf-audio-filter-label {         /* HF text-xs-medium → 12/500 lh18 (우측피드 탭과 달리 필터는 500) */
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.ohf-audio-feedscrollwrap {       /* HF: absolute inset-y-0 left-6 right-0 overflow-hidden pt-14.5 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  right: 0;
+  overflow: hidden;
+  padding-top: 58px;              /* pt-14.5 */
+}
+.ohf-audio-feedscroll {           /* HF: size-full overflow-y-auto overscroll-none pb-4 */
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  padding-bottom: 16px;
+}
+
+/* ---------- 히어로 판 ---------- */
+
+.ohf-audio-hero {                 /* HF: @container w-full overflow-hidden rounded-xl border white/5 bg-page-primary */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgb(19, 21, 23);
+}
+.ohf-audio-hero-inner {           /* HF: flex flex-col items-center gap-2? → 실측 구조: flex-col; px-8 pb-8 pt-10.5 min-h-160 */
+  display: flex;
+  flex-direction: column;
+  min-height: 640px;              /* min-h-160 (40rem) — HF 실측 644(보더 포함) */
+  padding: 42px 32px 32px;        /* pt-10.5 px-8 pb-8 */
+}
+.ohf-audio-hero-text {            /* HF: flex flex-col items-center gap-2 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ohf-audio-hero-h2 {              /* HF: text-center font-grotesk 40/700 uppercase leading-12(48) tracking-[-1.6px] white ss04 */
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss04";
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;              /* leading-12 */
+  letter-spacing: -1.6px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  margin: 0;
+}
+.ohf-audio-hero-p {               /* HF: text-center 18/500 leading-7(28) text-font-secondary(130,130,130 실측) */
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(137, 138, 139);      /* HF hero p 실측 — t_dbb7f8b9의 130,130,130은 HF 리터럴 아님(실측 137,138,139) */
+  margin: 0;
+}
+.ohf-audio-cards {                /* HF: mt-9.5 flex w-full flex-col gap-5 @[640px]:flex-row → 1440에서 flex-row */
+  margin-top: 38px;               /* mt-9.5 */
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+.ohf-audio-card {                 /* HF: flex min-w-0 flex-1 flex-col items-center justify-center gap-6 overflow-hidden rounded-3xl border separator-card(217/.04) bg(24,25,28) p 20 16 16 16 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(217, 217, 217, 0.04);
+  background-color: rgb(24, 25, 28);
+  padding: 20px 16px 16px;
+}
+.ohf-audio-card-text {            /* HF: flex w-full flex-col gap-2 px-2 */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 0 8px;                 /* px-2 */
+}
+.ohf-audio-card-h3 {              /* HF: 24px/500 leading-7(28) tracking-[-0.4px] white */
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  color: rgb(255, 255, 255);
+  margin: 0;
+}
+.ohf-audio-card-p {               /* HF: 16px/500 leading-6(24) #828282 */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: rgb(130, 130, 130);
+  margin: 0;
+}
+.ohf-audio-card-media {           /* HF: relative overflow-hidden h-75(300) w-full rounded-xl */
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+}
+.ohf-audio-card-media-inner {     /* HF: size-full */
+  width: 100%;
+  height: 100%;
+}
+.ohf-audio-card-preload {         /* HF preload 레이어(과도기 상태; 정적 화면에서 투명) — 구조 미러 */
+  width: 100%;
+  height: 100%;
+}
+.ohf-audio-card-video {           /* HF: object-cover size-full aspect-16/9 (clip/clip) */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: clip;
+  display: block;
+}
+
+/* ---------- 도움말 런처 ---------- */
+
+.ohf-audio-help {                 /* HF: pointer-events-none flex absolute right-3 bottom-3 z-20 */
+  position: absolute;
+  right: 12px;                    /* right-3 */
+  bottom: 12px;                   /* bottom-3 */
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+}
+.ohf-audio-help-box {             /* HF: pointer-events-auto relative overflow-hidden rounded-q-400(16) bg #27292C/90 backdrop-blur-2xl(40px) w32 h32 inline */
+  position: relative;
+  pointer-events: auto;
+  overflow: hidden;
+  border-radius: 16px;            /* rounded-q-400 */
+  background-color: rgba(39, 41, 44, 0.9);   /* #27292C/90 */
+  backdrop-filter: blur(40px);    /* backdrop-blur-2xl */
+  width: 32px;                    /* inline 스타일 실측 */
+  height: 32px;
+}
+.ohf-audio-help-btnwrap {         /* HF: absolute right-0 bottom-0 w-max */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: max-content;
+}
+.ohf-audio-help-btn {             /* HF: relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;                   /* h-8 */
+  min-width: 32px;                /* min-w-8 */
+  padding: 0 8px;                 /* px-2 */
+  border: none;
+  background: none;
+  color: rgb(255, 255, 255);      /* text-q-icon-primary 실측 */
+  outline: none;
+  cursor: default;
+  font: inherit;
+}
+.ohf-audio-help-glyph {           /* HF span.flex */
+  display: flex;
+}
+.ohf-audio-help-glyph svg { width: 16px; height: 16px; flex-shrink: 0; }
+.ohf-audio-help-ring {            /* HF span: pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-q-brand-primary/20 ring-inset */
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(209, 254, 23, 0.2);   /* ring 표현 */
+}
+.ohf-audio-help-glow {            /* HF span: pointer-events-none absolute inset-0 drop-shadow(lime 2)+drop-shadow(lime/.7 8) opacity .032 */
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: drop-shadow(rgb(209, 254, 23) 0 0 2) drop-shadow(rgba(209, 254, 23, 0.7) 0 0 8px);
+  opacity: 0.032;
+}
+.ohf-audio-help-glow-inner {      /* HF: absolute inset-0 overflow-hidden rounded-q-400 p-1.5 + mask */
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 1.5px;
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.ohf-audio-help-glow-spin {       /* HF span.size-128 absolute top-1/2 left-1/2 -translate-1/2 conic-gradient + rotation 애니메이션(후속 t_e0c64917) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 512px;                   /* size-128 (32rem) */
+  height: 512px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 200deg,
+    rgba(209, 254, 23, 0.2) 280deg,
+    rgb(209, 254, 23) 345deg,
+    rgb(255, 255, 255) 355deg,
+    transparent 360deg
+  );
+}
+
+/* ---------- 상단 진행바 ---------- */
+
+.ohf-audio-progress {             /* HF: pointer-events-none fixed inset-x-0 top-0 z-9999 h-0.5 (2px) */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  height: 2px;                    /* h-0.5 */
+  pointer-events: none;
+}
+.ohf-audio-progress-fill {        /* HF: h-full bg-primary shadow 0 0 8px lime — 정적 화면에서 0%/0 */
+  height: 100%;
+  width: 0%;
+  opacity: 0;
+  background-color: rgb(209, 254, 23);
+  box-shadow: 0 0 8px rgb(209, 254, 23);
+}
+
+/* ---------- OH 기계: 모델 리스트(동작 착지) ---------- */
+
+.ohf-audio-model-pop {            /* OH 자체 기계 — HF 원부재(정적 화면 기본 닫힘). 토큰 페인트. */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--ohf-color-border-subtle);
+  background-color: var(--ohf-color-surface-2);
+  box-shadow: var(--ohf-shadow-2);
+  max-height: 280px;
+  overflow-y: auto;
+}
+.ohf-audio-model-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: var(--ohf-color-text-primary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+.ohf-audio-model-item:hover { background-color: var(--ohf-color-surface-3); }
+.ohf-audio-model-item[data-selected] { background-color: var(--ohf-color-surface-3); }
+
+/* ---------- 에러 노티스(OH 원부재·정직) ---------- */
+
+.ohf-audio-error {                /* OH 원부재(HE의 이 화면엔 에러 영역 없음) — 에러일 때만 렌더 */
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--ohf-color-danger);
+  text-align: center;
+}

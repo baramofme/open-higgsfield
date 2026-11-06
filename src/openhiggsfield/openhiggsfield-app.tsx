@@ -54,6 +54,13 @@ import { Topbar } from "./topbar";
 import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
 /* Separate import block, anchored away from the top cluster so it forms its own
+   diff hunk (concurrent-hunk-commit adjacency rule): the HF-accurate audio create
+   surface and its dedicated top-chrome version (t_54c99543). The audio surface
+   replaces the general create shell while audio is active; the global Topbar is
+   left in place for every other surface (sibling surfaces depend on it). */
+import { AudioSurface } from "./audio-surface";
+import { AudioHeader } from "./audio-header";
+/* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the dedicated Cinematic Studio screen plus the HG-mirrored sidebar
    it adopts as its left column. */
 import { CinemaSidebar } from "./cinema-sidebar";
@@ -1455,6 +1462,25 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       ) : (
         <div className="ohf-shell">
         <main className="ohf-main">
+          {surface === "audio" ? (
+            /* t_54c99543 — HF 상단크롬의 오디오 전용 별도 버전(대체가 아니라 공존).
+               앱 전역 `Topbar`는 시블링 표면이 의존하므로 audio일 때만 대체한다. */
+            <AudioHeader
+              view={view}
+              onView={switchView}
+              mode={mode}
+              onToggle={() => {
+                if (mode === "general") {
+                  setMode("cinema");
+                  setCinemaMode("image");
+                  alignDockToMode("image");
+                } else {
+                  setMode("general");
+                  setCinemaMode("image");
+                }
+              }}
+            />
+          ) : (
           <Topbar
             view={view}
             onView={switchView}
@@ -1480,6 +1506,7 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               }
             }}
           />
+          )}
 
 
           {/* t_b8a39dd7 — HF's column layout: when on video/audio the body splits
@@ -1487,7 +1514,16 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
               HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
               HF's feed controls (tabs, sort) live inside the right column header
               (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
-          {(surface === "video" || surface === "audio") ? (
+          {surface === "audio" ? (
+            /* t_54c99543 — HF /ko/audio 정적 화면 이식(음 서피스 전용 레이아웃).
+               동착(업로드·배치·고급·우측 탭·필터·도움·리사이즈 드래그)은 후속. */
+            <AudioSurface
+              model={model}
+              onModel={setModel}
+              onGenerate={runGenerate}
+              error={error}
+            />
+          ) : (surface === "video") ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
