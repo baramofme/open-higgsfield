@@ -1,0 +1,441 @@
+{
+ "hf_auth_check": {
+  "href": "https://higgsfield.ai/ko/@higgsfield.studio/projects/cully-hill-boys",
+  "title": "Cully Hill Boys | Higgsfield 커뮤니티",
+  "hasSession": false,
+  "cookieLen": 917,
+  "bodyLen": 44033,
+  "signIn": false,
+  "drillish": false,
+  "folderLeaf": true
+ },
+ "hf_proj": {
+  "href": "https://higgsfield.ai/ko/@higgsfield.studio/projects/cully-hill-boys",
+  "title": "Cully Hill Boys | Higgsfield 커뮤니티",
+  "cookieLen": 917,
+  "hasSession": false,
+  "bodyLen": 44033,
+  "viewport": {
+   "iw": 1440,
+   "ih": 900
+  },
+  "folderWidth": "220px",
+  "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+  "folderRect": {
+   "x": 17,
+   "y": 819,
+   "w": 220,
+   "h": 714
+  },
+  "folderTitleColor": "rgb(130, 130, 130)",
+  "folderTitleFs": "14px",
+  "folderTitleFw": "500",
+  "folderTitleLh": "16px",
+  "rowHeight": "36px",
+  "rowRadius": "12px",
+  "rowGap": "8px",
+  "rowFs": "14px",
+  "rowFw": "500",
+  "rowLh": "16px",
+  "rowFg": "rgb(255, 255, 255)",
+  "rowBg": "rgba(255, 255, 255, 0.1)",
+  "rowRect": {
+   "x": 25,
+   "y": 863,
+   "w": 203,
+   "h": 36
+  },
+  "countColor": "rgb(130, 130, 130)",
+  "countFontSize": "12px",
+  "countFw": "500",
+  "countLh": "16px",
+  "countRect": {
+   "x": 182,
+   "y": 869,
+   "w": 40,
+   "h": 24
+  },
+  "listGap": "8px",
+  "crumbListGap": "4px",
+  "crumbRect": {
+   "x": 16,
+   "y": 62,
+   "w": 1393,
+   "h": 20
+  },
+  "crumbNavColor": "rgb(247, 247, 248)",
+  "crumbText": "커뮤니티/Cully Hill Boys",
+  "linkColor": "rgb(137, 138, 139)",
+  "crumbLinkFs": "14px",
+  "crumbLinkFw": "400",
+  "crumbLinkLh": "20px",
+  "railWidth": "383.062px",
+  "tileGap": "12px",
+  "tileAlignItems": "flex-start",
+  "tileRect": {
+   "x": 1026,
+   "y": 100,
+   "w": 383,
+   "h": 119
+  },
+  "tileCount": 20,
+  "thumbRadius": "12px",
+  "thumbAspect": "16 / 9",
+  "thumbRect": {
+   "x": 1026,
+   "y": 100,
+   "w": 211,
+   "h": 119
+  },
+  "thumbW": "210.672px",
+  "tileTitleColor": "rgb(255, 255, 255)",
+  "tileTitleFs": "14px",
+  "tileTitleFw": "500",
+  "tileTitleLh": "20px",
+  "tileMetaColor": "rgb(130, 130, 130)",
+  "tileMetaFs": "12px",
+  "trashRowFound": 0
+ },
+ "hf_proj_after_folders": {
+  "href": "https://higgsfield.ai/ko/@higgsfield.studio/projects/cully-hill-boys",
+  "title": "Cully Hill Boys | Higgsfield 커뮤니티",
+  "cookieLen": 917,
+  "hasSession": false,
+  "bodyLen": 44033,
+  "viewport": {
+   "iw": 1440,
+   "ih": 900
+  },
+  "folderWidth": "220px",
+  "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+  "folderRect": {
+   "x": 17,
+   "y": 819,
+   "w": 220,
+   "h": 714
+  },
+  "folderTitleColor": "rgb(130, 130, 130)",
+  "folderTitleFs": "14px",
+  "folderTitleFw": "500",
+  "folderTitleLh": "16px",
+  "rowHeight": "36px",
+  "rowRadius": "12px",
+  "rowGap": "8px",
+  "rowFs": "14px",
+  "rowFw": "500",
+  "rowLh": "16px",
+  "rowFg": "rgb(255, 255, 255)",
+  "rowBg": "rgba(255, 255, 255, 0.1)",
+  "rowRect": {
+   "x": 25,
+   "y": 863,
+   "w": 203,
+   "h": 36
+  },
+  "countColor": "rgb(130, 130, 130)",
+  "countFontSize": "12px",
+  "countFw": "500",
+  "countLh": "16px",
+  "countRect": {
+   "x": 182,
+   "y": 869,
+   "w": 40,
+   "h": 24
+  },
+  "listGap": "8px",
+  "crumbListGap": "4px",
+  "crumbRect": {
+   "x": 16,
+   "y": 62,
+   "w": 1393,
+   "h": 20
+  },
+  "crumbNavColor": "rgb(247, 247, 248)",
+  "crumbText": "커뮤니티/Cully Hill Boys",
+  "linkColor": "rgb(137, 138, 139)",
+  "crumbLinkFs": "14px",
+  "crumbLinkFw": "400",
+  "crumbLinkLh": "20px",
+  "railWidth": "383.062px",
+  "tileGap": "12px",
+  "tileAlignItems": "flex-start",
+  "tileRect": {
+   "x": 1026,
+   "y": 100,
+   "w": 383,
+   "h": 119
+  },
+  "tileCount": 20,
+  "thumbRadius": "12px",
+  "thumbAspect": "16 / 9",
+  "thumbRect": {
+   "x": 1026,
+   "y": 100,
+   "w": 211,
+   "h": 119
+  },
+  "thumbW": "210.672px",
+  "tileTitleColor": "rgb(255, 255, 255)",
+  "tileTitleFs": "14px",
+  "tileTitleFw": "500",
+  "tileTitleLh": "20px",
+  "tileMetaColor": "rgb(130, 130, 130)",
+  "tileMetaFs": "12px",
+  "trashRowFound": 0
+ },
+ "hf_comm": {
+  "href": "https://higgsfield.ai/ko/community/projects",
+  "title": "Higgsfield",
+  "viewport": {
+   "iw": 1440,
+   "ih": 900
+  },
+  "cardCount": 32,
+  "cardRect": {
+   "x": 32,
+   "y": 422,
+   "w": 329,
+   "h": 186
+  },
+  "cardRadius": "10px",
+  "cardAspect": "auto",
+  "cardBg": "rgb(28, 30, 33)",
+  "coverRect": {
+   "x": 32,
+   "y": 422,
+   "w": 329,
+   "h": 186
+  },
+  "coverRadius": "10px",
+  "coverAspect": "1.76471 / 1",
+  "gridColGap": "20px",
+  "gridRowGap": "0px",
+  "gridCols": "329px 329px 329px 329px",
+  "gridRect": {
+   "x": 32,
+   "y": 422,
+   "w": 1376,
+   "h": 1631
+  }
+ },
+ "ohf": {
+  "assets": {
+   "present": true,
+   "view": "assets",
+   "crumbNav": true,
+   "crumbRect": {
+    "x": 263,
+    "y": 16,
+    "w": 1153,
+    "h": 20
+   },
+   "folderRect": {
+    "x": 263,
+    "y": 52,
+    "w": 220,
+    "h": 695
+   },
+   "folderWidth": "220px",
+   "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+   "rowRect": {
+    "x": 271,
+    "y": 96,
+    "w": 203,
+    "h": 36
+   },
+   "rowHeight": "36px",
+   "rowRadius": "12px",
+   "rowGap": "8px",
+   "countRect": {
+    "x": 444,
+    "y": 102,
+    "w": 24,
+    "h": 24
+   },
+   "countColor": "rgb(130, 130, 130)",
+   "countFontSize": "12px",
+   "railRect": {
+    "x": 1033,
+    "y": 52,
+    "w": 383,
+    "h": 695
+   },
+   "railWidth": "383px",
+   "tileRect": {
+    "x": 1033,
+    "y": 84,
+    "w": 375,
+    "h": 119
+   },
+   "tileGap": "12px",
+   "thumbRect": {
+    "x": 1033,
+    "y": 84,
+    "w": 211,
+    "h": 119
+   },
+   "thumbRadius": "12px",
+   "thumbAspect": "16 / 9",
+   "cardRect": {
+    "x": 503,
+    "y": 56,
+    "w": 502,
+    "h": 284
+   },
+   "cardRadius": "10px",
+   "cardBg": "rgb(28, 30, 32)",
+   "cardAspect": "329 / 186",
+   "gridGap": "20px",
+   "linkColor": "rgb(137, 138, 139)",
+   "folderTitleColor": "rgb(130, 130, 130)",
+   "tileTitleColor": "rgb(247, 247, 248)",
+   "cardNameColor": "rgb(204, 204, 204)",
+   "rows": 5,
+   "tiles": 6,
+   "cards": 6,
+   "expander": true,
+   "text": "커뮤니티/드릴다운 테스트폴더모든 에셋6비디오3이미지2오디오1폴더 추가휴지통0불꽃놀이 클로즈업Veo 3.1 · 20762 d ago잔잔한 앰비언스오디오 · 20762 d ago사막의 적층Flux 2 · 20762 d ago도시 야경 스틸Flux 2 · 20762 d ago안개 낀 숲의 이동Sora 2 · 20762 d ago해변의 golden hour 롱테이크Veo 3.1 · 20762 d ago전체 프로젝트 보기불꽃놀이 클로즈업Veo 3.120762 d ago잔잔한 앰비언스오디오20762 d ago사막의 적층Flux 220762 d ago도시 야경 스틸Flux 220762 d ago안개 낀 숲의 이동Sora 220762 d ago해변의 golden hour 롱테이크Veo 3.120762 d ago",
+   "listGap": "2px",
+   "crumbListGap": "4px",
+   "crumbNavColor": "rgb(247, 247, 248)",
+   "rowFs": "14px",
+   "rowFw": "500",
+   "rowLh": "16px",
+   "rowFg": "rgb(247, 247, 248)",
+   "rowBg": "rgba(255, 255, 255, 0.1)",
+   "folderTitleFs": "14px",
+   "folderTitleFw": "500",
+   "folderTitleLh": "16px",
+   "countFw": "500",
+   "countLh": "16px",
+   "tileMetaColor": "rgb(151, 151, 151)",
+   "tileTitleFs": "14px",
+   "tileTitleFw": "500",
+   "tileTitleLh": "20px"
+  },
+  "folders": {
+   "present": true,
+   "view": "folders",
+   "crumbNav": true,
+   "crumbRect": {
+    "x": 263,
+    "y": 16,
+    "w": 1153,
+    "h": 20
+   },
+   "folderRect": {
+    "x": 263,
+    "y": 52,
+    "w": 220,
+    "h": 695
+   },
+   "folderWidth": "220px",
+   "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+   "rowRect": {
+    "x": 271,
+    "y": 96,
+    "w": 203,
+    "h": 36
+   },
+   "rowHeight": "36px",
+   "rowRadius": "12px",
+   "rowGap": "8px",
+   "countRect": {
+    "x": 444,
+    "y": 102,
+    "w": 24,
+    "h": 24
+   },
+   "countColor": "rgb(130, 130, 130)",
+   "countFontSize": "12px",
+   "cardRect": {
+    "x": 503,
+    "y": 56,
+    "w": 291,
+    "h": 165
+   },
+   "cardRadius": "10px",
+   "cardBg": "rgb(28, 30, 32)",
+   "cardAspect": "329 / 186",
+   "gridGap": "20px",
+   "linkColor": "rgb(137, 138, 139)",
+   "folderTitleColor": "rgb(130, 130, 130)",
+   "cardNameColor": "rgb(204, 204, 204)",
+   "rows": 5,
+   "tiles": 0,
+   "cards": 3,
+   "expander": true,
+   "text": "프로젝트/드릴다운 테스트 / 비디오폴더모든 에셋6비디오3불꽃놀이 클로즈업안개 낀 숲의 이동해변의 golden hour 롱테이크이미지2사막의 적층도시 야경 스틸오디오1잔잔한 앰비언스폴더 추가휴지통0불꽃놀이 클로즈업Veo 3.1 · 20762 d ago안개 낀 숲의 이동Sora 2 · 20762 d ago해변의 golden hour 롱테이크Veo 3.1 · 20762 d ago",
+   "listGap": "2px",
+   "crumbListGap": "4px",
+   "crumbNavColor": "rgb(247, 247, 248)",
+   "rowFs": "14px",
+   "rowFw": "500",
+   "rowLh": "16px",
+   "rowFg": "rgb(247, 247, 248)",
+   "rowBg": "rgba(0, 0, 0, 0)",
+   "folderTitleFs": "14px",
+   "folderTitleFw": "500",
+   "folderTitleLh": "16px",
+   "countFw": "500",
+   "countLh": "16px"
+  },
+  "trash": {
+   "present": true,
+   "view": "trash",
+   "crumbNav": true,
+   "crumbRect": {
+    "x": 263,
+    "y": 16,
+    "w": 1153,
+    "h": 20
+   },
+   "folderRect": {
+    "x": 263,
+    "y": 52,
+    "w": 220,
+    "h": 695
+   },
+   "folderWidth": "220px",
+   "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+   "rowRect": {
+    "x": 271,
+    "y": 96,
+    "w": 203,
+    "h": 36
+   },
+   "rowHeight": "36px",
+   "rowRadius": "12px",
+   "rowGap": "8px",
+   "countRect": {
+    "x": 444,
+    "y": 102,
+    "w": 24,
+    "h": 24
+   },
+   "countColor": "rgb(130, 130, 130)",
+   "countFontSize": "12px",
+   "linkColor": "rgb(137, 138, 139)",
+   "folderTitleColor": "rgb(130, 130, 130)",
+   "rows": 5,
+   "tiles": 0,
+   "cards": 0,
+   "expander": true,
+   "emptyTitle": "휴지통이 비어 있어요",
+   "text": "프로젝트/드릴다운 테스트 / 휴지통폴더모든 에셋6비디오3이미지2오디오1폴더 추가휴지통0휴지통이 비어 있어요삭제한 에셋이 여기 모여요. 다시 복구하거나 완전히 지울 수 있어요.모두 복구",
+   "listGap": "2px",
+   "crumbListGap": "4px",
+   "crumbNavColor": "rgb(247, 247, 248)",
+   "rowFs": "14px",
+   "rowFw": "500",
+   "rowLh": "16px",
+   "rowFg": "rgb(247, 247, 248)",
+   "rowBg": "rgba(0, 0, 0, 0)",
+   "folderTitleFs": "14px",
+   "folderTitleFw": "500",
+   "folderTitleLh": "16px",
+   "countFw": "500",
+   "countLh": "16px"
+  }
+ }
+}

@@ -793,8 +793,15 @@ export function CinemaSidebar() {
 
           <div className="ohf-cinebar-pspacer" aria-hidden="true" />
 
-          {/* ── 휴지통: HF는 hosted 휴지통으로 데려간다. 로컬에는 그 문이 없다. ── */}
-          <button type="button" className="ohf-cinebar-prow" data-off aria-label="휴지통" title="화면 미러 — hosted 휴지통 미구현">
+          {/* ── 휴지통: 화면 이동은 실재다. 로컬에 복구·삭제 backend는 없으므로
+              그 화면 안의 액션만 정직하게 막혀 있다(t_2eae8ad5). ── */}
+          <button
+            type="button"
+            className="ohf-cinebar-prow"
+            aria-current={panel === "trash" ? "page" : undefined}
+            onClick={() => setPanel("trash")}
+            aria-label="휴지통"
+          >
             <span className="ohf-cinebar-prow-chip"><TrashIcon size={16} /></span>
             <span className="ohf-cinebar-prow-label">휴지통</span>
             <span className="ohf-cinebar-prow-count">0</span>

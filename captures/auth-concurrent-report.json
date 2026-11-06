@@ -1,0 +1,271 @@
+{
+ "meta": {
+  "method": "concurrent CDP [::1]:9222 (3 tabs: OHF dev :3016 + HF auth project-3 + HF community; re-verified rail+breadcrumb on public cully in the same auth session), equalized 1440x900",
+  "hf_auth_check": {
+   "href": "https://higgsfield.ai/ko/generate/@exploringdonut1792/project-3",
+   "title": "Cinema Studio 4.0 · 모든 디테일을 직접 연출 | Higgsfield",
+   "hasSession": true,
+   "cookieLen": 3510,
+   "bodyLen": 272,
+   "signIn": false,
+   "drillish": false,
+   "folderLeaf": true
+  },
+  "tally": {
+   "PASS": 21,
+   "PASS-eqv": 5,
+   "DOC-DIFF": 5,
+   "NV": 0,
+   "FAIL": 0
+  },
+  "fail_count": 0,
+  "fail_names": [],
+  "resolutions": [
+   {
+    "element": "card.nameColor",
+    "found": "OHF rgb(204,204,204)=#cccccc (unsourced — 0x204 in every capture: auth-drilldown.json, community cards, measured-styles.md) vs HF live rgb(255,255,255) (q-text-primary white)",
+    "fix": "--drill-card-name -> var(--tx) (rgb 247,247,248)",
+    "verification": "post-fix concurrent re-measure: OHF :3016 card-name = rgb(247,247,248) vs HF live rgb(255,255,255) -> Δ8 token-reuse PASS-eqv (same rule as the locked tile-title equivalence)"
+   }
+  ]
+ },
+ "elements": [
+  {
+   "item": "folder.width",
+   "verdict": "PASS",
+   "ohf": "220px",
+   "hf": "220px",
+   "note": "220px both (auth title colour also matches)"
+  },
+  {
+   "item": "folder.borderRight",
+   "verdict": "PASS",
+   "ohf": "1px rgba(255, 255, 255, 0.05)",
+   "hf": "1px rgba(255, 255, 255, 0.05)",
+   "note": "1px white/0.05 = --line"
+  },
+  {
+   "item": "folder.titleColor[AUTH]",
+   "verdict": "PASS",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)",
+   "note": "auth project-3 (the card target) + public both rgb(130,130,130) == OHF --tx3"
+  },
+  {
+   "item": "row.height",
+   "verdict": "PASS",
+   "ohf": "36px",
+   "hf": "36px",
+   "note": "36px both"
+  },
+  {
+   "item": "row.radius",
+   "verdict": "PASS",
+   "ohf": "12px",
+   "hf": "12px",
+   "note": "12px both"
+  },
+  {
+   "item": "row.gap",
+   "verdict": "PASS",
+   "ohf": "8px",
+   "hf": "8px",
+   "note": "8px both"
+  },
+  {
+   "item": "row.fg",
+   "verdict": "PASS-eqv",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(255, 255, 255)",
+   "note": "HF white vs OHF --tx 247 — token reuse (locked)"
+  },
+  {
+   "item": "rowFs",
+   "verdict": "PASS",
+   "ohf": "14px",
+   "hf": "14px",
+   "note": ""
+  },
+  {
+   "item": "rowFw",
+   "verdict": "PASS",
+   "ohf": "500",
+   "hf": "500",
+   "note": ""
+  },
+  {
+   "item": "rowLh",
+   "verdict": "PASS",
+   "ohf": "16px",
+   "hf": "16px",
+   "note": ""
+  },
+  {
+   "item": "folder.listGap",
+   "verdict": "DOC-DIFF",
+   "ohf": "2px",
+   "hf": "8px",
+   "note": "OHF folder-list gap 2px vs HF row list 8px — content/layout; identical in the prior 69b74ed run, not a regression"
+  },
+  {
+   "item": "count.color",
+   "verdict": "PASS",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)",
+   "note": "130 both (count text)"
+  },
+  {
+   "item": "crumb.listGap",
+   "verdict": "PASS",
+   "ohf": "4px",
+   "hf": "4px",
+   "note": "4px both"
+  },
+  {
+   "item": "crumb.linkColor",
+   "verdict": "PASS",
+   "ohf": "rgb(137, 138, 139)",
+   "hf": "rgb(137, 138, 139)",
+   "note": "137,138,139 = #898a8b == --tx2"
+  },
+  {
+   "item": "crumb.navColor",
+   "verdict": "PASS-eqv",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(247, 247, 248)",
+   "note": "HF white vs OHF --tx — token reuse"
+  },
+  {
+   "item": "crumb.rect",
+   "verdict": "DOC-DIFF",
+   "ohf": {
+    "x": 263,
+    "y": 16,
+    "w": 1153,
+    "h": 20
+   },
+   "hf": {
+    "x": 16,
+    "y": 62,
+    "w": 1393,
+    "h": 20
+   },
+   "note": "OHF breadcrumb sits after the 263px topbar (content-width 1153) vs HF full-width nav (x16 w1393) — layout placement; same in prior run"
+  },
+  {
+   "item": "rail.width",
+   "verdict": "PASS",
+   "ohf": "383px",
+   "hf": "383.062px",
+   "note": "383 vs 383.06 sub-pixel"
+  },
+  {
+   "item": "thumbRadius",
+   "verdict": "PASS",
+   "ohf": "12px",
+   "hf": "12px",
+   "note": "12px both"
+  },
+  {
+   "item": "tileGap",
+   "verdict": "PASS",
+   "ohf": "12px",
+   "hf": "12px",
+   "note": "12px both"
+  },
+  {
+   "item": "thumbAspect",
+   "verdict": "PASS",
+   "ohf": "16 / 9",
+   "hf": "16 / 9",
+   "note": "16/9 both"
+  },
+  {
+   "item": "tile.titleColor",
+   "verdict": "PASS-eqv",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(255, 255, 255)",
+   "note": "HF white vs OHF --tx — token reuse (locked)"
+  },
+  {
+   "item": "tile.metaColor",
+   "verdict": "PASS",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)",
+   "note": "130 both — 69b74ed fix re-confirmed, no regression"
+  },
+  {
+   "item": "card.size",
+   "verdict": "DOC-DIFF",
+   "ohf": {
+    "x": 503,
+    "y": 56,
+    "w": 502,
+    "h": 284
+   },
+   "hf": {
+    "x": 32,
+    "y": 422,
+    "w": 329,
+    "h": 186
+   },
+   "note": "aspect ratio preserved (1.7676≈1.7688); absolute width 502 vs HF fixed 329 = OHF responsive auto-fill — width-only, prior DOC-DIFF"
+  },
+  {
+   "item": "card.radius",
+   "verdict": "PASS",
+   "ohf": "10px",
+   "hf": "10px",
+   "note": "10px both"
+  },
+  {
+   "item": "card.bg",
+   "verdict": "PASS-eqv",
+   "ohf": "rgb(28, 30, 32)",
+   "hf": "rgb(28, 30, 33)",
+   "note": "HF 28,30,33 vs OHF --s1 28,30,32 (1 blue rounding, imperceptible)"
+  },
+  {
+   "item": "grid.gap",
+   "verdict": "PASS",
+   "ohf": "20px",
+   "hf": "20px",
+   "note": "20px both"
+  },
+  {
+   "item": "grid.colWidth",
+   "verdict": "DOC-DIFF",
+   "ohf": null,
+   "hf": "329px 329px 329px 329px",
+   "note": "OHF responsive auto-fill(min329→1440=502) vs HF fixed 4×329 — width-only; internals matched (prior DOC-DIFF)"
+  },
+  {
+   "item": "card.nameColor",
+   "verdict": "PASS-eqv",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(255, 255, 255)",
+   "note": "HF card name = q-text-primary white rgb(255,255,255) (live auth+community); OHF --tx rgb(247,247,248) — token reuse mirroring locked tile-title rule. Old rgb(204,204,204) was UNSOURCED (0x204 in every capture)."
+  },
+  {
+   "item": "trash.presence[AUTH]",
+   "verdict": "PASS",
+   "ohf": "trash view + nav present",
+   "hf": "휴지통 rows found=3 on auth project-3",
+   "note": "auth confirms trash exists (3 rows); OHF renders its own empty-state view"
+  },
+  {
+   "item": "trash.view",
+   "verdict": "DOC-DIFF",
+   "ohf": "OHF empty-state '휴지통이 비어 있어요' (honest-inert)",
+   "hf": "HF trash VIEW redirects to /ko/ai/video even authed (no HF empty-state to diff)",
+   "note": "no counterpart to measure; OHF empty-state is the honest inert state"
+  },
+  {
+   "item": "thumb.size",
+   "verdict": "PASS",
+   "ohf": 211,
+   "hf": "210.672px",
+   "note": "≈211 both"
+  }
+ ]
+}

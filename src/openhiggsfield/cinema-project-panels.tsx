@@ -13,6 +13,7 @@ import {
 } from "./element-csv";
 import type { RunRecord } from "./history";
 import { DirectorPanel, ProjectChat } from "./project-screen";
+import { ProjectDrillDownView, FoldersView, TrashView } from "./project-drill-down";
 import {
   CubeIcon,
   FeedFilterIcon,
@@ -82,60 +83,6 @@ function ProjectHeader({ label }: { label: string }) {
   );
 }
 
-/* The project's own work, filed under it. HF shows the project's runs as a
-   masonry feed; when nothing was generated yet it shows the empty state —
-   "아직 아무것도 없어요" over "장면을 설명하고 “생성하기”를 눌러 시작해 보세요"
-   (both lines measured from the live page). */
-function ProjectFeed({ projectId, history, label }: { projectId: string; history: RunRecord[]; label: string }) {
-  const mine = history
-    .filter((record) => (record.projectId ?? "default") === projectId)
-    .slice()
-    .sort((a, b) => b.createdAt - a.createdAt);
-
-  if (mine.length === 0) {
-    return (
-      <div className="ohf-cproj-empty">
-        <p className="ohf-cproj-empty-title">아직 아무것도 없어요</p>
-        <p className="ohf-cproj-empty-sub">
-          장면을 설명하고 “생성하기”를 눌러 시작해 보세요
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="ohf-cproj-feed" aria-label={`${label}의 결과`}>
-      {mine.map((record) => (
-        <div key={record.id} className="ohf-cproj-tile" style={{ aspectRatio: record.ratio }}>
-          {record.status === "completed" && record.urls[0] ? (
-            record.kind === "image" ? (
-              <img className="ohf-cproj-tile-media" src={record.urls[0]} alt={record.prompt} loading="lazy" />
-            ) : record.kind === "video" ? (
-              <video
-                className="ohf-cproj-tile-media"
-                src={record.urls[0]}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            ) : (
-              <div className="ohf-cproj-tile-art" style={{ background: record.art }}>
-                <span className="ohf-cproj-tile-badge">{record.badge ?? "audio"}</span>
-              </div>
-            )
-          ) : (
-            <div className="ohf-cproj-tile-art" style={{ background: record.art }}>
-              <span className="ohf-cproj-tile-badge">
-                {record.status === "failed" ? "실패" : "진행 중"}
-              </span>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 /* 브리프 — HF의 프로젝트 브리프 창은 AI 디렉터 대화창이다(?brief=1). 로컬에서는
    실제 AI 디렉터 패널이 그대로 그 자리를 채우고, HF에서 실측한 시작 프롬프트
@@ -415,15 +362,27 @@ export function CinemaProjectSurface({ history }: { history: RunRecord[] }) {
 
   return (
     <section className="ohf-cproj" aria-label={`${label} 프로젝트`}>
-      <ProjectHeader label={label} />
-      <div className="ohf-cproj-body">
-        {panel === "assets" && <ProjectFeed projectId={projectId} history={history} label={label} />}
-        {panel === "brief" && <ProjectBrief onOpenSettings={openSettings} />}
-        {panel === "settings" && <ProjectSettings projectId={projectId} />}
-        {panel === "elements" && <ProjectElements projectId={projectId} />}
-        {panel === "chat" && <ProjectChatPanel />}
-        {panel === "director" && <ProjectDirectorPanel onOpenSettings={openSettings} />}
-      </div>
+      {panel === "assets" ? (
+        /* The project drill-down screen — breadcrumb + folder panel + assets +
+           recommendation rail. Carries its own header, so the cluster strip is
+           left out here, exactly as HF's drill-down page has no cluster. */
+        <ProjectDrillDownView projectId={projectId} history={history} />
+      ) : panel === "folders" ? (
+        <FoldersView projectId={projectId} history={history} />
+      ) : panel === "trash" ? (
+        <TrashView projectId={projectId} history={history} />
+      ) : (
+        <>
+          <ProjectHeader label={label} />
+          <div className="ohf-cproj-body">
+            {panel === "brief" && <ProjectBrief onOpenSettings={openSettings} />}
+            {panel === "settings" && <ProjectSettings projectId={projectId} />}
+            {panel === "elements" && <ProjectElements projectId={projectId} />}
+            {panel === "chat" && <ProjectChatPanel />}
+            {panel === "director" && <ProjectDirectorPanel onOpenSettings={openSettings} />}
+          </div>
+        </>
+      )}
     </section>
   );
 }

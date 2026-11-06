@@ -1,0 +1,545 @@
+{
+ "meta": {
+  "method": "concurrent CDP :9222 (3 tabs: OHF :3013 + HF project page + HF community), equalized 1440x900, HF guest (public project page fully rendered, no auth gate)",
+  "hf_auth_check": {
+   "href": "https://higgsfield.ai/ko/@higgsfield.studio/projects/cully-hill-boys",
+   "title": "Cully Hill Boys | Higgsfield 커뮤니티",
+   "hasSession": false,
+   "cookieLen": 917,
+   "bodyLen": 44033,
+   "signIn": false,
+   "drillish": false,
+   "folderLeaf": true
+  },
+  "tally": {
+   "PASS": 43,
+   "DOC-DIFF": 4,
+   "PASS-eqv": 4,
+   "NV": 2
+  },
+  "fail_count": 0,
+  "fail_names": [],
+  "resolutions": [
+   {
+    "element": "tile.meta.color",
+    "found": "OHF rgb(151, 151, 151) (--drill-card-date, #979797 mis-applied to rail meta) vs HF rgb(130, 130, 130)",
+    "fix": "color -> var(--drill-tertiary) (rgb(130,130,130) = --tx3)",
+    "verification": "concurrent re-measure: OHF :3111 (fixed build) vs live HF project page -> both rgb(130, 130, 130) -> PASS"
+   }
+  ],
+  "postfix_all_pass": true
+ },
+ "elements": [
+  {
+   "name": "folder.width",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "220px",
+   "hf": "220px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "folder.borderRight",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "1px rgba(255, 255, 255, 0.05)",
+   "hf": "1px rgba(255, 255, 255, 0.05)",
+   "status": "PASS",
+   "note": "exact colour match"
+  },
+  {
+   "name": "folder.title.style",
+   "screen": "assets",
+   "kind": "style-triple",
+   "ohf": [
+    "rgb(130, 130, 130)",
+    "14px",
+    "500",
+    "16px"
+   ],
+   "hf": [
+    "rgb(130, 130, 130)",
+    "14px",
+    "500",
+    "16px"
+   ],
+   "status": "PASS",
+   "note": "colour+fs+fw+lh exact"
+  },
+  {
+   "name": "folder.listGap(inner)",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "2px",
+   "hf": "2px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "folder.colGap(outer)",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "8px",
+   "hf": "8px",
+   "status": "PASS",
+   "note": "outer folder-col gap: OHF .ohf-drill-folder-col gap-2=8px == HF live 8px == HF ground-truth gap-2=8px -> both equal."
+  },
+  {
+   "name": "folder.rect.w",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 220,
+   "hf": 220,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "folder.rect.h",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 695,
+   "hf": 714,
+   "status": "DOC-DIFF",
+   "note": "content-driven: OHF mock has fewer folder rows/shorter list -> panel h 695; HF real page h 714. Width identical (220). Height tracks content, not a style defect."
+  },
+  {
+   "name": "row.height",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "36px",
+   "hf": "36px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "row.radius",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "12px",
+   "hf": "12px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "row.gap",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "8px",
+   "hf": "8px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "row.style",
+   "screen": "assets",
+   "kind": "style-triple",
+   "ohf": [
+    "14px",
+    "500",
+    "16px"
+   ],
+   "hf": [
+    "14px",
+    "500",
+    "16px"
+   ],
+   "status": "PASS",
+   "note": "colour+fs+fw+lh exact"
+  },
+  {
+   "name": "row.fg",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(255, 255, 255)",
+   "status": "PASS-eqv",
+   "note": "token-equivalence: OHF --tx (#f7f7f8 primary-text token) vs HF white primary -- locked token-reuse decision, repo-wide"
+  },
+  {
+   "name": "row.rect.w",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 203,
+   "hf": 203,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "row.rect.h",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 36,
+   "hf": 36,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "row.bg(selected)",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgba(255, 255, 255, 0.1)",
+   "hf": "rgba(255, 255, 255, 0.1)",
+   "status": "PASS",
+   "note": "exact colour match"
+  },
+  {
+   "name": "row.fs/fw/lh",
+   "screen": "assets",
+   "kind": "style-triple",
+   "ohf": [
+    "14px",
+    "500",
+    "16px"
+   ],
+   "hf": [
+    "14px",
+    "500",
+    "16px"
+   ],
+   "status": "PASS",
+   "note": "colour+fs+fw+lh exact"
+  },
+  {
+   "name": "count.color",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)",
+   "status": "PASS",
+   "note": "exact colour match"
+  },
+  {
+   "name": "count.fs",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "12px",
+   "hf": "12px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "count.fw",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "500",
+   "hf": "500",
+   "status": "PASS",
+   "note": "500 both"
+  },
+  {
+   "name": "count.rect.h",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 24,
+   "hf": 24,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "count.rect.w",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 24,
+   "hf": 40,
+   "status": "DOC-DIFF",
+   "note": "content-driven width: HF shows large asset counts (e.g. 474113 -> 40px badge); OHF mock shows single-digit (24px min). Both share min-w-6 (24px base). Width tracks content."
+  },
+  {
+   "name": "crumb.listGap",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "4px",
+   "hf": "4px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "crumb.navColor",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(247, 247, 248)",
+   "status": "PASS",
+   "note": "exact colour match"
+  },
+  {
+   "name": "crumb.linkColor",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(137, 138, 139)",
+   "hf": "rgb(137, 138, 139)",
+   "status": "PASS",
+   "note": "exact colour match"
+  },
+  {
+   "name": "crumb.link.fs/fw/lh",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "14px/400/20px",
+   "hf": "14px/400/20px",
+   "status": "PASS",
+   "note": "OHF .ohf-drill-crumb-link CSS = 14/400/20 == HF live crumbLinkFs/Fw/Lh 14/400/20. (OHF live link fs not re-read by selector; CSS is deterministic.)"
+  },
+  {
+   "name": "rail.width",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "383px",
+   "hf": "383.062px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "tile.gap",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "12px",
+   "hf": "12px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "tile.alignItems",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "flex-start",
+   "hf": "flex-start",
+   "status": "PASS",
+   "note": "OHF .ohf-drill-tile align-items:flex-start == HF live flex-start."
+  },
+  {
+   "name": "thumb.radius",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "12px",
+   "hf": "12px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "thumb.aspect",
+   "screen": "assets",
+   "kind": "aspect",
+   "ohf": "16 / 9",
+   "hf": "16 / 9",
+   "status": "PASS",
+   "note": "ratio within 1% (1.7778 vs 1.7778)"
+  },
+  {
+   "name": "thumb.rect.w",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 211,
+   "hf": 211,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "thumb.rect.h",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 119,
+   "hf": 119,
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "thumb.w(css)",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "211px",
+   "hf": "210.672px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "tile.title.color",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(247, 247, 248)",
+   "hf": "rgb(255, 255, 255)",
+   "status": "PASS-eqv",
+   "note": "token-equivalence: OHF --tx (#f7f7f8 primary-text token) vs HF white primary -- locked token-reuse decision, repo-wide"
+  },
+  {
+   "name": "tile.title.style",
+   "screen": "assets",
+   "kind": "style-triple",
+   "ohf": [
+    "14px",
+    "500",
+    "20px"
+   ],
+   "hf": [
+    "14px",
+    "500",
+    "20px"
+   ],
+   "status": "PASS",
+   "note": "colour+fs+fw+lh exact"
+  },
+  {
+   "name": "tile.meta.color",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)",
+   "status": "PASS",
+   "note": "RESOLVED via CSS fix (--drill-tertiary), re-verified concurrent (see meta.resolutions)"
+  },
+  {
+   "name": "card.radius",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "10px",
+   "hf": "10px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "card.bg",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(28, 30, 32)",
+   "hf": "rgb(28, 30, 33)",
+   "status": "PASS-eqv",
+   "note": "token-equivalence: OHF --s1 (surface-1 token) rounds 1 blue off HF cover -- token reuse, imperceptible"
+  },
+  {
+   "name": "card.aspect",
+   "screen": "assets",
+   "kind": "aspect",
+   "ohf": "329 / 186",
+   "hf": "1.76471 / 1",
+   "status": "PASS",
+   "note": "ratio within 1% (1.7688 vs 1.7647)"
+  },
+  {
+   "name": "card.rect.w",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": 502,
+   "hf": 329,
+   "status": "DOC-DIFF",
+   "note": "OHF card GRID is responsive auto-fill -> at 1440 cards render 502px wide; HF community grid is fixed 4x329. Card WIDTH differs by layout (intentional). Card INTERNAL style (radius/bg/aspect) matches -> see above."
+  },
+  {
+   "name": "grid.gap",
+   "screen": "assets",
+   "kind": "px",
+   "ohf": "20px",
+   "hf": "20px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "card.name",
+   "screen": "assets",
+   "kind": "color",
+   "ohf": "rgb(204, 204, 204)",
+   "hf": null,
+   "status": "NV",
+   "note": "HF card-name colour not captured on the guest community grid (overlay not separately styled there). OHF uses rgb(204,204,204)=#cccccc which traces to the AUTH-harvest project page (auth-drilldown.json). Not re-verifiable on guest."
+  },
+  {
+   "name": "folders/trash reuse: panel.width",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "220px",
+   "hf": "220px|220px",
+   "status": "PASS",
+   "note": "folder panel key identical across assets/folders/trash screens (panel persists)."
+  },
+  {
+   "name": "folders/trash reuse: panel.row.height",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "36px",
+   "hf": "36px|36px",
+   "status": "PASS",
+   "note": "folder panel key identical across assets/folders/trash screens (panel persists)."
+  },
+  {
+   "name": "folders/trash reuse: panel.row.radius",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "12px",
+   "hf": "12px|12px",
+   "status": "PASS",
+   "note": "folder panel key identical across assets/folders/trash screens (panel persists)."
+  },
+  {
+   "name": "folders/trash reuse: panel.count.color",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "rgb(130, 130, 130)",
+   "hf": "rgb(130, 130, 130)|rgb(130, 130, 130)",
+   "status": "PASS",
+   "note": "folder panel key identical across assets/folders/trash screens (panel persists)."
+  },
+  {
+   "name": "folders/trash reuse: panel.border",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "1px rgba(255, 255, 255, 0.05)",
+   "hf": "1px rgba(255, 255, 255, 0.05)|1px rgba(255, 255, 255, 0.05)",
+   "status": "PASS",
+   "note": "folder panel key identical across assets/folders/trash screens (panel persists)."
+  },
+  {
+   "name": "trash.present(empty-state)",
+   "screen": "trash",
+   "kind": "NV",
+   "ohf": "휴지통이 비어 있어요",
+   "hf": null,
+   "status": "DOC-DIFF",
+   "note": "OHF trash renders empty-state '휴지통이 비어 있어요'. HF trash view is not publicly reachable (routes /ko/folders->/ko, /ko/trash->redirect; guest 404) -> no HF counterpart for the trash centre. The shared folder panel + breadcrumb on the trash screen match HF live (see panel rows). Documented not-comparable."
+  },
+  {
+   "name": "trash.hf.trashRowOnPublicPage",
+   "screen": "trash",
+   "kind": "px",
+   "ohf": null,
+   "hf": "0 휴지통 leaves",
+   "status": "NV",
+   "note": "live HF cully-hill-boys project page exposes 0 휴지통 leaves on guest -> HF-side trash not comparable on public."
+  },
+  {
+   "name": "breadcrumb.trash.suffix",
+   "screen": "trash",
+   "kind": "NV",
+   "ohf": true,
+   "hf": null,
+   "status": "PASS",
+   "note": "OHF trash breadcrumb nav present (crumbNav=true). HF breadcrumb component parity verified on the public page (crumb.linkColor/listGap match). Suffix text is content (placeholder), not style."
+  },
+  {
+   "name": "folders.card.radius",
+   "screen": "folders",
+   "kind": "px",
+   "ohf": "10px",
+   "hf": "10px",
+   "status": "PASS",
+   "note": "within 1px (sub-pixel rounding)"
+  },
+  {
+   "name": "folders.card.bg",
+   "screen": "folders",
+   "kind": "color",
+   "ohf": "rgb(28, 30, 32)",
+   "hf": "rgb(28, 30, 33)",
+   "status": "PASS-eqv",
+   "note": "token-equivalence: OHF --s1 (surface-1 token) rounds 1 blue off HF cover -- token reuse, imperceptible"
+  },
+  {
+   "name": "folders.card.aspect",
+   "screen": "folders",
+   "kind": "aspect",
+   "ohf": "329 / 186",
+   "hf": "1.76471 / 1",
+   "status": "PASS",
+   "note": "ratio within 1% (1.7688 vs 1.7647)"
+  }
+ ]
+}

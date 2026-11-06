@@ -1,0 +1,177 @@
+{
+ "assets": {
+  "present": true,
+  "view": "assets",
+  "crumbNav": true,
+  "crumbRect": {
+   "x": 263,
+   "y": 16,
+   "w": 1153,
+   "h": 20
+  },
+  "folderRect": {
+   "x": 263,
+   "y": 52,
+   "w": 220,
+   "h": 695
+  },
+  "folderWidth": "220px",
+  "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+  "rowRect": {
+   "x": 271,
+   "y": 96,
+   "w": 203,
+   "h": 36
+  },
+  "rowHeight": "36px",
+  "rowRadius": "12px",
+  "rowGap": "8px",
+  "countRect": {
+   "x": 444,
+   "y": 102,
+   "w": 24,
+   "h": 24
+  },
+  "countColor": "rgb(130, 130, 130)",
+  "countFontSize": "12px",
+  "railRect": {
+   "x": 1033,
+   "y": 52,
+   "w": 383,
+   "h": 695
+  },
+  "railWidth": "383px",
+  "tileRect": {
+   "x": 1033,
+   "y": 84,
+   "w": 375,
+   "h": 119
+  },
+  "tileGap": "12px",
+  "thumbRect": {
+   "x": 1033,
+   "y": 84,
+   "w": 211,
+   "h": 119
+  },
+  "thumbRadius": "12px",
+  "thumbAspect": "16 / 9",
+  "cardRect": {
+   "x": 503,
+   "y": 56,
+   "w": 502,
+   "h": 284
+  },
+  "cardRadius": "10px",
+  "cardBg": "rgb(28, 30, 32)",
+  "cardAspect": "329 / 186",
+  "gridGap": "20px",
+  "linkColor": "rgb(137, 138, 139)",
+  "folderTitleColor": "rgb(130, 130, 130)",
+  "tileTitleColor": "rgb(247, 247, 248)",
+  "cardNameColor": "rgb(204, 204, 204)",
+  "rows": 5,
+  "tiles": 6,
+  "cards": 6,
+  "expander": true,
+  "text": "커뮤니티/드릴다운 테스트폴더모든 에셋6비디오3이미지2오디오1폴더 추가휴지통0불꽃놀이 클로즈업Veo 3.1 · 20762 d ago잔잔한 앰비언스오디오 · 20762 d ago사막의 적층Flux 2 · 20762 d ago도시 야경 스틸Flux 2 · 20762 d ago안개 낀 숲의 이동Sora 2 · 20762 d ago해변의 golden hour 롱테이크Veo 3.1 · 20762 d ago전체 프로젝트 보기불꽃놀이 클로즈업Veo 3.120762 d ago잔잔한 앰비언스오디오20762 d ago사막의 적층Flux 220762 d ago도시 야경 스틸Flux 220762 d ago안개 낀 숲의 이동Sora 220762 d ago해변의 golden hour 롱테이크Veo 3.120762 d ago"
+ },
+ "trash": {
+  "present": true,
+  "view": "trash",
+  "crumbNav": true,
+  "crumbRect": {
+   "x": 263,
+   "y": 16,
+   "w": 1153,
+   "h": 20
+  },
+  "folderRect": {
+   "x": 263,
+   "y": 52,
+   "w": 220,
+   "h": 695
+  },
+  "folderWidth": "220px",
+  "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+  "rowRect": {
+   "x": 271,
+   "y": 96,
+   "w": 203,
+   "h": 36
+  },
+  "rowHeight": "36px",
+  "rowRadius": "12px",
+  "rowGap": "8px",
+  "countRect": {
+   "x": 444,
+   "y": 102,
+   "w": 24,
+   "h": 24
+  },
+  "countColor": "rgb(130, 130, 130)",
+  "countFontSize": "12px",
+  "linkColor": "rgb(137, 138, 139)",
+  "folderTitleColor": "rgb(130, 130, 130)",
+  "rows": 5,
+  "tiles": 0,
+  "cards": 0,
+  "expander": true,
+  "emptyTitle": "휴지통이 비어 있어요",
+  "text": "프로젝트/드릴다운 테스트 / 휴지통폴더모든 에셋6비디오3이미지2오디오1폴더 추가휴지통0휴지통이 비어 있어요삭제한 에셋이 여기 모여요. 다시 복구하거나 완전히 지울 수 있어요.모두 복구"
+ },
+ "folders": {
+  "present": true,
+  "view": "folders",
+  "crumbNav": true,
+  "crumbRect": {
+   "x": 263,
+   "y": 16,
+   "w": 1153,
+   "h": 20
+  },
+  "folderRect": {
+   "x": 263,
+   "y": 52,
+   "w": 220,
+   "h": 695
+  },
+  "folderWidth": "220px",
+  "folderBorderRight": "1px rgba(255, 255, 255, 0.05)",
+  "rowRect": {
+   "x": 271,
+   "y": 96,
+   "w": 203,
+   "h": 36
+  },
+  "rowHeight": "36px",
+  "rowRadius": "12px",
+  "rowGap": "8px",
+  "countRect": {
+   "x": 444,
+   "y": 102,
+   "w": 24,
+   "h": 24
+  },
+  "countColor": "rgb(130, 130, 130)",
+  "countFontSize": "12px",
+  "cardRect": {
+   "x": 503,
+   "y": 56,
+   "w": 291,
+   "h": 165
+  },
+  "cardRadius": "10px",
+  "cardBg": "rgb(28, 30, 32)",
+  "cardAspect": "329 / 186",
+  "gridGap": "20px",
+  "linkColor": "rgb(137, 138, 139)",
+  "folderTitleColor": "rgb(130, 130, 130)",
+  "cardNameColor": "rgb(204, 204, 204)",
+  "rows": 5,
+  "tiles": 0,
+  "cards": 3,
+  "expander": true,
+  "text": "프로젝트/드릴다운 테스트 / 비디오폴더모든 에셋6비디오3불꽃놀이 클로즈업안개 낀 숲의 이동해변의 golden hour 롱테이크이미지2사막의 적층도시 야경 스틸오디오1잔잔한 앰비언스폴더 추가휴지통0불꽃놀이 클로즈업Veo 3.1 · 20762 d ago안개 낀 숲의 이동Sora 2 · 20762 d ago해변의 golden hour 롱테이크Veo 3.1 · 20762 d ago"
+ }
+}
