@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026-11-07 — 디자인 시스템 페이지 스토리 등록 (t_2b604ef2 → t_16154220)
+
+### 추가
+
+**페이지 서브트리 (`Pages/`, DS 원자 컴포넌트와 분리된 최상위 폴더)**
+- `ProjectScreen` 페이지 스토리 5종 (`project-screen.stories.tsx`):
+  `Default` (모달 open/close + 채팅 전송 + 디렉터 MSW 왕복) · `Loading` (설정 판
+  `모델 조회` 지연 → `조회 중…` → 목업 모델 3종 등장) · `ErrorState` (`조회 실패 (502)`
+  alert + `/v1/models` 재-조회 실재 재호출) · `ChatSendPending` (디렉터 전송 `전송 중…`
+  + 입력 잠금) · `DirectorSendError` (인라인 `호출 실패 (502)` role=alert). `layout: fullscreen`.
+
+**페이지 스토리 인프라 (`story-mocks/`)**
+- mock state provider (`mock-state.tsx`) — zustand singletons(`useProjects`·`useDirector`)를
+  데코레이터에서 동기 시드 + 언마운트 스냅샷 복원(스토리 간 격리).
+- MSW (`handlers.ts`·`browser.ts`) — `https://mock.director.local` 정확 오리진 매칭,
+  canned/실패(502)/지연 핸들러. `preview.ts`에 `mswLoader` + `staticDirs:[../public]` 배선.
+
+### 교정
+- React 19 controlled input에 instrumented `userEvent.type` 미전파 → native value setter
+  + `input` 이벤트 패턴으로 교체. click 전 `waitFor(enabled)`로 commit 대기.
+
 ## 2026-11-06 — 디자인 시스템 컴포넌트 등록 (t_1cd84599 → t_3cdc61ce)
 
 ### 추가
