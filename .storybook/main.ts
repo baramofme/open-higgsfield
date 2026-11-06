@@ -9,6 +9,11 @@ import type { StorybookConfig } from "@storybook/react-vite";
 // addon-essentials / addon-backgrounds.
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx)"],
+  // Storybook's vite root is `.storybook`, not the repo root, so its default
+  // publicDir misses `public/`. Map it explicitly: MSW's `mockServiceWorker.js`
+  // (and the studio's public assets) live there — served in `storybook dev`,
+  // copied into `storybook-static` for the static build.
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/react-vite",
     options: {},

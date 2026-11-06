@@ -1,6 +1,12 @@
 allowBuilds:
   esbuild: true
   lightningcss: true
+  # canvas + msw ship optional native/post-install build scripts the Storybook
+  # tsc/build gates don't need (the mockServiceWorker.js template is already
+  # committed under public/). Deny them via the pnpm v12 `allowBuilds` map so
+  # `pnpm install` exits 0 instead of fatal `ERR_PNPM_IGNORED_BUILDS`.
+  canvas: false
+  msw: false
 onlyBuiltDependencies:
   - esbuild
   - sharp
