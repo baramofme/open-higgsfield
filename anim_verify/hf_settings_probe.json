@@ -1,0 +1,3276 @@
+{
+ "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+ "p0_inventory": {
+  "ready": "complete",
+  "mainN": 225,
+  "editor": true,
+  "triggers": [
+   {
+    "txt": "",
+    "tag": "BUTTON",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "Higgsfield 검색"
+    },
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "transitionProperty": "filter, color, background-color, box-shadow, height, width, padding",
+     "transitionDuration": "0.15s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s",
+     "transitionTimingFunction": "ease, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 1049.09,
+     "y": 6,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "txt": "",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "none",
+     "transitionProperty": "filter, color, background-color, box-shadow, height, width, padding",
+     "transitionDuration": "0.15s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s",
+     "transitionTimingFunction": "ease, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 1085.09,
+     "y": 6,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "txt": "모델MiniMax H3",
+    "tag": "BUTTON",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "grid"
+    },
+    "rect": {
+     "x": 25,
+     "y": 631,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "tag": "BUTTON",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 25,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 180,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 25,
+     "y": 755,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "도움이 필요하세요?"
+    },
+    "cs": {
+     "color": "rgb(255, 255, 255)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 1379,
+     "y": 827,
+     "w": 32,
+     "h": 32
+    }
+   },
+   {
+    "txt": "한국어",
+    "tag": "BUTTON",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "transform": "none",
+     "display": "flex"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "toggles": [],
+  "kw": {
+   "고급": {
+    "present": false,
+    "count": 0
+   },
+   "프롬프트 확장": {
+    "present": false,
+    "count": 0
+   },
+   "번역": {
+    "present": false,
+    "count": 0
+   },
+   "네거티브": {
+    "present": false,
+    "count": 0
+   },
+   "시드": {
+    "present": false,
+    "count": 0
+   },
+   "1080p": {
+    "present": false,
+    "count": 0
+   },
+   "720p": {
+    "present": false,
+    "count": 0
+   },
+   "2K": {
+    "present": true,
+    "count": 1
+   },
+   "4K": {
+    "present": false,
+    "count": 0
+   },
+   "해상도": {
+    "present": false,
+    "count": 0
+   },
+   "길이": {
+    "present": true,
+    "count": 1
+   },
+   "품질": {
+    "present": true,
+    "count": 2
+   },
+   "비율": {
+    "present": false,
+    "count": 0
+   },
+   "모델": {
+    "present": true,
+    "count": 1
+   }
+  }
+ },
+ "p1_model_open": {
+  "pops": [
+   {
+    "role": "dialog",
+    "attrs": {
+     "data-state": "open",
+     "tabindex": "-1",
+     "role": "dialog"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "oklab(0.233738 -0.00181763 -0.00452867 / 0.95)",
+     "borderRadius": "16px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+     "opacity": "1",
+     "transform": "matrix(1, 0, 0, 1, 0, 0)",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 335,
+     "y": 165,
+     "w": 402,
+     "h": 570
+    },
+    "n": 606,
+    "opts": [
+     {
+      "txt": "Seedance 2.5상단1080p4s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 242,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Seedance 2.5 Draft480p4s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 298,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Higgsfield Genjutsu1080p4s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 354,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Higgsfield Genjutsu Lite1080p4s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 410,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Higgsfield Intone신규1080p4s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 466,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Kling 4.01080p3s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 522,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Kling 4.0 Flash신규720p3s-20s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 578,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Gemini Omni Flash 1.2신규4K3s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 634,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Wan 3.0 Prime1080p2s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 690,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Seedance 2.5 Edit상단480p-720p비디오 편집오디오",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 746,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Gemini Omni Flash 1.2 Edit신규4K비디오 편집",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 802,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Seedance 2.04K4s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 858,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Seedance 2.0 Fast720p4s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 914,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Seedance 2.0 Mini720p4s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 970,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "MiniMax H32K5s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1026,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "MiniMax H3 Max768p5s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1082,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "MiniMax H3 Highspeed신규768p4s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1138,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "MiniMax H3 Lite신규768p4s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1194,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "FLUX.3 Video4K5s-20s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1250,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Kling 3.04K3s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1306,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Kling 3.0 Motion Control1080p3s-30s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1362,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Grok Imagine 1.5 Lite1080p1s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1418,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Grok Imagine 1.5720p1s-15s",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1474,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Minimax Hailuo높은 역동성, VFX 지원, 가장 빠르고 합리적인 가격",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1564,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "FLUX.3 Video동기화된 오디오와 함께 텍스트, 이미지, 영상 생성",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1620,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Kling고급 영상 컨트롤로 완성하는 완벽한 모션",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1676,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Google Veo사운드 컨트롤이 가능한 정밀 영상",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1732,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Gemini Omni FlashGoogle의 멀티 이미지 영상 생성",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1788,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Higgsfield고급 카메라 제어와 이펙트 프리셋",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1844,
+       "w": 376,
+       "h": 52
+      }
+     },
+     {
+      "txt": "Wan사운드와 함께 카메라를 제어하는 영상, 더 자유로운 표현",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 348,
+       "y": 1900,
+       "w": 376,
+       "h": 52
+      }
+     }
+    ]
+   }
+  ],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "",
+  "dialogN": 1
+ },
+ "p3a_reopen": {
+  "pops": [],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.08)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "모델MiniMax H3",
+  "dialogN": 0
+ },
+ "p3b_after_esc": {
+  "pops": [],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.08)",
+     "borderRadius": "12px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(209, 254, 23) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "모델MiniMax H3",
+  "dialogN": 0
+ },
+ "p4_dur_open": {
+  "pops": [
+   {
+    "role": null,
+    "attrs": {
+     "data-state": "open",
+     "aria-expanded": "true",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    },
+    "n": 5,
+    "opts": []
+   },
+   {
+    "role": "dialog",
+    "attrs": {
+     "data-state": "open",
+     "tabindex": "-1",
+     "role": "dialog"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(35, 38, 42, 0.75)",
+     "borderRadius": "12px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px",
+     "opacity": "1",
+     "transform": "none",
+     "display": "block",
+     "position": "static",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 676,
+     "w": 262,
+     "h": 116
+    },
+    "n": 15,
+    "opts": []
+   }
+  ],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "open",
+     "aria-expanded": "true",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "51015",
+  "dialogN": 1
+ },
+ "p6_qual_open": {
+  "pops": [
+   {
+    "role": null,
+    "attrs": {
+     "data-state": "open"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "oklab(0 0 0 / 0.8)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "block",
+     "position": "fixed",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 1440,
+     "h": 900
+    },
+    "n": 0,
+    "opts": []
+   },
+   {
+    "role": "dialog",
+    "attrs": {
+     "data-state": "open",
+     "tabindex": "-1",
+     "role": "dialog"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgb(19, 21, 23)",
+     "borderRadius": "24px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.2) 0px 0px 32px 0px inset",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "relative",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 160,
+     "y": 62,
+     "w": 1120,
+     "h": 776
+    },
+    "n": 110,
+    "opts": [
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {
+       "aria-label": "닫기"
+      },
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+       "borderRadius": "16px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "absolute",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 1227,
+       "y": 83,
+       "w": 32,
+       "h": 32
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 193,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 317.75,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 442.5,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 567.25,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "Seedance 4K",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 193,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Nano Banana Pro",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 317.75,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Higgsfield Soul",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 442.5,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Cinematic App",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 567.25,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Google로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 285,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "Apple로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 359,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "Microsoft로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 433,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "계속",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(255, 255, 255, 0.1)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "0.5",
+       "transform": "none",
+       "display": "inline-grid",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, box-shadow",
+       "transitionDuration": "0.15s"
+      },
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 0,
+       "h": 0
+      }
+     },
+     {
+      "txt": "계속",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(115, 116, 117)",
+       "backgroundColor": "rgb(41, 43, 44)",
+       "borderRadius": "10px",
+       "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(209, 254, 23, 0.48) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+       "opacity": "1",
+       "transform": "matrix(1, 0, 0, 1, 0, 0)",
+       "display": "grid",
+       "position": "static",
+       "transitionProperty": "filter, color, background, border-color",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 639,
+       "w": 383,
+       "h": 40
+      }
+     },
+     {
+      "txt": "Scale 및 Enterprise",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(137, 138, 139)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "inline-block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 840.98,
+       "y": 721,
+       "w": 126.09,
+       "h": 16
+      }
+     }
+    ]
+   }
+  ],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "",
+  "dialogN": 1
+ },
+ "p7_qual_select": {
+  "pops": [
+   {
+    "role": null,
+    "attrs": {
+     "data-state": "open"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "oklab(0 0 0 / 0.8)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "block",
+     "position": "fixed",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 1440,
+     "h": 900
+    },
+    "n": 0,
+    "opts": []
+   },
+   {
+    "role": "dialog",
+    "attrs": {
+     "data-state": "open",
+     "tabindex": "-1",
+     "role": "dialog"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgb(19, 21, 23)",
+     "borderRadius": "24px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.2) 0px 0px 32px 0px inset",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "relative",
+     "transitionProperty": "all",
+     "transitionDuration": "0s"
+    },
+    "rect": {
+     "x": 160,
+     "y": 62,
+     "w": 1120,
+     "h": 776
+    },
+    "n": 110,
+    "opts": [
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {
+       "aria-label": "닫기"
+      },
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.05)",
+       "borderRadius": "16px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "absolute",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 1227,
+       "y": 83,
+       "w": 32,
+       "h": 32
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 193,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 317.75,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 442.5,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(247, 247, 248)",
+       "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+       "borderRadius": "3.35544e+07px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 567.25,
+       "y": 775,
+       "w": 120.75,
+       "h": 4
+      }
+     },
+     {
+      "txt": "Seedance 4K",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 193,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Nano Banana Pro",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 317.75,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Higgsfield Soul",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 442.5,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Cinematic App",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "block",
+       "position": "static",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 567.25,
+       "y": 787,
+       "w": 120.75,
+       "h": 18
+      }
+     },
+     {
+      "txt": "Google로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 285,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "Apple로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 359,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "Microsoft로 계속하기",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "flex",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 433,
+       "w": 383,
+       "h": 62
+      }
+     },
+     {
+      "txt": "계속",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(255, 255, 255, 0.1)",
+       "borderRadius": "12px",
+       "boxShadow": "none",
+       "opacity": "0.5",
+       "transform": "none",
+       "display": "inline-grid",
+       "position": "relative",
+       "transitionProperty": "color, background-color, border-color, box-shadow",
+       "transitionDuration": "0.15s"
+      },
+      "rect": {
+       "x": 0,
+       "y": 0,
+       "w": 0,
+       "h": 0
+      }
+     },
+     {
+      "txt": "계속",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(115, 116, 117)",
+       "backgroundColor": "rgb(41, 43, 44)",
+       "borderRadius": "10px",
+       "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(209, 254, 23, 0.48) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+       "opacity": "1",
+       "transform": "matrix(1, 0, 0, 1, 0, 0)",
+       "display": "grid",
+       "position": "static",
+       "transitionProperty": "filter, color, background, border-color",
+       "transitionDuration": "0.2s"
+      },
+      "rect": {
+       "x": 808,
+       "y": 639,
+       "w": 383,
+       "h": 40
+      }
+     },
+     {
+      "txt": "Scale 및 Enterprise",
+      "role": null,
+      "attrs": {},
+      "cs": {
+       "color": "rgb(137, 138, 139)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "0px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "display": "inline-block",
+       "position": "static",
+       "transitionProperty": "all",
+       "transitionDuration": "0s"
+      },
+      "rect": {
+       "x": 840.98,
+       "y": 721,
+       "w": 126.09,
+       "h": 16
+      }
+     }
+    ]
+   }
+  ],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "Seedance 4K",
+  "dialogN": 1
+ },
+ "p8_qual_esc": {
+  "pops": [],
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "grid",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "display": "flex",
+     "position": "static",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ],
+  "focusText": "가입 후 프리미엄 요금제 추가 할인을",
+  "dialogN": 0
+ }
+}

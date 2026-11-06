@@ -1,0 +1,31 @@
+OVERALL: FAIL issues: 58
+  ISSUE: s0 tab[프레임].data-composite-item-active HF='' OHF=None
+  ISSUE: s0 list.dir HF='none' OHF=None
+  ISSUE: s0 root.dir HF='none' OHF=None
+  ISSUE: s0 ind.dir HF='none' OHF=None
+  ISSUE: s0 ind.rect.y HF=243 OHF=241
+  ISSUE: s0 ind.transitionProperty HF='background, background-color, border-color, border-radius, box-shadow' OHF='all'
+  ISSUE: s0 ind.transitionDuration HF='0.2s' OHF='0s'
+  ISSUE: s0 ind.transitionTimingFunction HF='cubic-bezier(0, 0, 0.2, 1)' OHF='ease'
+  ISSUE: s0 content kid rect.y HF=291 OHF=281
+  ISSUE: s0 content kid rect.h HF=160 OHF=96
+  ISSUE: s0 content kid rect.y HF=291 OHF=281
+  ISSUE: s0 content kid rect.h HF=160 OHF=96
+  ISSUE: s0 content kid rect.y HF=291 OHF=281
+  ISSUE: s0 content kid rect.h HF=160 OHF=96
+  ISSUE: s1 tab[프레임].data-composite-item-active HF='' OHF=None
+  ISSUE: s1 list.dir HF='none' OHF=None
+  ISSUE: s1 root.dir HF='none' OHF=None
+  ISSUE: s1 ind.dir HF='none' OHF=None
+  ISSUE: s1 ind.rect.y HF=288 OHF=241
+  ISSUE: s1 ind.transitionProperty HF='background, background-color, border-color, border-radius, box-shadow' OHF='all'
+  ISSUE: s1 ind.transitionDuration HF='0.2s' OHF='0s'
+  ISSUE: s1 ind.transitionTimingFunction HF='cubic-bezier(0, 0, 0.2, 1)' OHF='ease'
+  ISSUE: s1 content kid rect.y HF=336 OHF=281
+  ISSUE: s1 content kid rect.h HF=160 OHF=96
+  ISSUE: s1 content kid rect.y HF=336 OHF=281
+  ISSUE: s1 content kid rect.h HF=160 OHF=96
+  ISSUE: s1 content kid rect.y HF=336 OHF=281
+  ISSUE: s1 content kid rect.h HF=160 OHF=96
+  ISSUE: s2 tab[프레임].data-composite-item-active HF='' OHF=None
+  ISSUE: s2 list.dir HF='none' OHF=None

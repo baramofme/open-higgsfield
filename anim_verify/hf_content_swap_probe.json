@@ -1,0 +1,71 @@
+{
+ "before": {
+  "ready": "complete",
+  "sel": {
+   "레퍼런스": "false",
+   "프레임": "true"
+  },
+  "content": {
+   "tag": "DIV",
+   "cls": "relative mt-2 flex flex-col gap-2",
+   "attrs": {
+    "class": "relative mt-2 flex flex-col gap-2"
+   },
+   "txt": "선택 사항시작 프레임선택 사항종료 프레임프롬프트영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요.",
+   "kids": [
+    {
+     "tag": "DIV",
+     "cls": "contents",
+     "attrs": {
+      "class": "contents",
+      "style": "--form-kit-dashed-border: url(\"data:image/svg+xml,%3Csvg xml"
+     },
+     "txt": "선택 사항시작 프레임선택 사항종료 프레임"
+    },
+    {
+     "tag": "DIV",
+     "cls": "w-full flex flex-col min-h-40 max-h-64",
+     "attrs": {
+      "data-prompt-field": "true",
+      "class": "w-full flex flex-col min-h-40 max-h-64"
+     },
+     "txt": "프롬프트영상을 설명해 주세요. 시작 프레임과 끝 프레임은 Image 1, Image 2로 지칭해 주세요."
+    }
+   ]
+  }
+ },
+ "after": {
+  "ready": "complete",
+  "sel": {
+   "레퍼런스": "true",
+   "프레임": "false"
+  },
+  "content": {
+   "tag": "DIV",
+   "cls": "relative mt-2 flex flex-col gap-2",
+   "attrs": {
+    "class": "relative mt-2 flex flex-col gap-2"
+   },
+   "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요. @를 사용해 요소를 추가할 수",
+   "kids": [
+    {
+     "tag": "DIV",
+     "cls": "relative flex flex-col items-center justify-center gap-3 self-stretch rounded-xl bg-white-5 p-1 transition-colors hover:",
+     "attrs": {
+      "class": "relative flex flex-col items-center justify-center gap-3 sel"
+     },
+     "txt": "레퍼런스 추가하기이미지와 요소 최대 9개, 동영상 3개, 오디오 파일 3개까지"
+    },
+    {
+     "tag": "DIV",
+     "cls": "w-full flex flex-col min-h-40 max-h-64",
+     "attrs": {
+      "data-prompt-field": "true",
+      "class": "w-full flex flex-col min-h-40 max-h-64"
+     },
+     "txt": "프롬프트동영상을 설명해 주세요. 입력 항목은 Image 1, Video 1, Audio 1로 지칭해 주세요."
+    }
+   ]
+  }
+ }
+}

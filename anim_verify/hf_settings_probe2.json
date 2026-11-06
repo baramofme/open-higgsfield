@@ -1,0 +1,2924 @@
+{
+ "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+ "p0": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 631,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 755,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "m_open": {
+  "dlg": null
+ },
+ "m_open_triggers": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "m_after_card": null,
+ "open_after_card": 0,
+ "d_open": {
+  "d": {
+   "attrs": {
+    "data-state": "open",
+    "tabindex": "-1",
+    "role": "dialog"
+   },
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(35, 38, 42, 0.75)",
+    "borderRadius": "12px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px",
+    "opacity": "1",
+    "transform": "none",
+    "cursor": "auto",
+    "pointerEvents": "auto",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "display": "block",
+    "position": "static"
+   },
+   "rect": {
+    "x": 180,
+    "y": 676,
+    "w": 262,
+    "h": 116
+   }
+  },
+  "kids": [
+   {
+    "tag": "DIV",
+    "txt": "총 길이5s51015",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 678,
+     "w": 258,
+     "h": 112
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "총 길이5s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 678,
+     "w": 258,
+     "h": 48
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "총 길이5s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 684,
+     "w": 242,
+     "h": 42
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "총 길이",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(130, 130, 130)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 684,
+     "w": 242,
+     "h": 16
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "5s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(255, 255, 255)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 702,
+     "w": 242,
+     "h": 24
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "51015",
+    "attrs": {
+     "tabindex": "0",
+     "role": "slider"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "6px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 728,
+     "w": 258,
+     "h": 62
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "relative"
+    },
+    "rect": {
+     "x": 190,
+     "y": 736,
+     "w": 242,
+     "h": 24
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.2)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 190,
+     "y": 736,
+     "w": 8.11,
+     "h": 24
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.2)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 306.81,
+     "y": 746,
+     "w": 4,
+     "h": 4
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.2)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 424.7,
+     "y": 746,
+     "w": 4,
+     "h": 4
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgb(209, 254, 23)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "left, height, background-color",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 192.11,
+     "y": 742,
+     "w": 2,
+     "h": 12
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "51015",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 768,
+     "w": 242,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "5",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 768,
+     "w": 6.23,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "10",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 303.31,
+     "y": 768,
+     "w": 11.02,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "15",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 421.41,
+     "y": 768,
+     "w": 10.59,
+     "h": 14
+    }
+   }
+  ],
+  "inputs": [
+   {
+    "tag": "DIV",
+    "type": null,
+    "attrs": {
+     "tabindex": "0",
+     "role": "slider"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "6px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 728,
+     "w": 258,
+     "h": 62
+    }
+   }
+  ]
+ },
+ "d_open_triggers": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이5s",
+    "attrs": {
+     "data-state": "open",
+     "aria-expanded": "true",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "d_after_pick": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이10s",
+    "attrs": {
+     "data-state": "open",
+     "aria-expanded": "true",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "d_after_pick_panel": {
+  "d": {
+   "attrs": {
+    "data-state": "open",
+    "tabindex": "-1",
+    "role": "dialog"
+   },
+   "cs": {
+    "color": "rgb(247, 247, 248)",
+    "backgroundColor": "rgba(35, 38, 42, 0.75)",
+    "borderRadius": "12px",
+    "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px",
+    "opacity": "1",
+    "transform": "none",
+    "cursor": "auto",
+    "pointerEvents": "auto",
+    "transitionProperty": "all",
+    "transitionDuration": "0s",
+    "transitionTimingFunction": "ease",
+    "display": "block",
+    "position": "static"
+   },
+   "rect": {
+    "x": 180,
+    "y": 676,
+    "w": 262,
+    "h": 116
+   }
+  },
+  "kids": [
+   {
+    "tag": "DIV",
+    "txt": "총 길이10s51015",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 678,
+     "w": 258,
+     "h": 112
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "총 길이10s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 678,
+     "w": 258,
+     "h": 48
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "총 길이10s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 684,
+     "w": 242,
+     "h": 42
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "총 길이",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(130, 130, 130)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 684,
+     "w": 242,
+     "h": 16
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "10s",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(255, 255, 255)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 702,
+     "w": 242,
+     "h": 24
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "51015",
+    "attrs": {
+     "tabindex": "0",
+     "role": "slider"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "6px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 728,
+     "w": 258,
+     "h": 62
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "relative"
+    },
+    "rect": {
+     "x": 190,
+     "y": 736,
+     "w": 242,
+     "h": 24
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.2)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 190,
+     "y": 736,
+     "w": 123.81,
+     "h": 24
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.2)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 424.7,
+     "y": 746,
+     "w": 4,
+     "h": 4
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "",
+    "attrs": {},
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgb(209, 254, 23)",
+     "borderRadius": "4px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "left, height, background-color",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 307.81,
+     "y": 742,
+     "w": 2,
+     "h": 12
+    }
+   },
+   {
+    "tag": "DIV",
+    "txt": "51015",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 768,
+     "w": 242,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "5",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 190,
+     "y": 768,
+     "w": 6.23,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "10",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 303.31,
+     "y": 768,
+     "w": 11.02,
+     "h": 14
+    }
+   },
+   {
+    "tag": "SPAN",
+    "txt": "15",
+    "attrs": {},
+    "cs": {
+     "color": "rgba(255, 255, 255, 0.3)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "static"
+    },
+    "rect": {
+     "x": 421.41,
+     "y": 768,
+     "w": 10.59,
+     "h": 14
+    }
+   }
+  ],
+  "inputs": [
+   {
+    "tag": "DIV",
+    "type": null,
+    "attrs": {
+     "tabindex": "0",
+     "role": "slider"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "6px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "grab",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 182,
+     "y": 728,
+     "w": 258,
+     "h": 62
+    }
+   }
+  ]
+ },
+ "d_after_esc": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이10s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(209, 254, 23) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "r_open": {
+  "pops": [
+   {
+    "role": "presentation",
+    "attrs": {
+     "role": "presentation"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "matrix(1, 0, 0, 1, 335, 478)",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "display": "block",
+     "position": "absolute"
+    },
+    "rect": {
+     "x": 335,
+     "y": 478,
+     "w": 160,
+     "h": 314
+    },
+    "items": [
+     {
+      "tag": "DIV",
+      "txt": "자동",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "true",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(255, 255, 255, 0.05)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 520,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "21:9",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 558,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "16:9",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 596,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "4:3",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 634,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "1:1",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 672,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "3:4",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 710,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "9:16",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 748,
+       "w": 144,
+       "h": 36
+      }
+     }
+    ]
+   },
+   {
+    "role": "menu",
+    "attrs": {
+     "tabindex": "-1",
+     "role": "menu"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(35, 38, 42, 0.75)",
+     "borderRadius": "12px",
+     "boxShadow": "rgba(255, 255, 255, 0.05) 0px 0px 0px 1px",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "auto",
+     "pointerEvents": "auto",
+     "transitionProperty": "opacity",
+     "transitionDuration": "0.18s",
+     "transitionTimingFunction": "cubic-bezier(0.16, 1, 0.3, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 335,
+     "y": 478,
+     "w": 160,
+     "h": 314
+    },
+    "items": [
+     {
+      "tag": "DIV",
+      "txt": "자동",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "true",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(255, 255, 255, 0.05)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 520,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "21:9",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 558,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "16:9",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 596,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "4:3",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 634,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "1:1",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 672,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "3:4",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 710,
+       "w": 144,
+       "h": 36
+      }
+     },
+     {
+      "tag": "DIV",
+      "txt": "9:16",
+      "attrs": {
+       "tabindex": "-1",
+       "aria-checked": "false",
+       "role": "menuitemcheckbox"
+      },
+      "cs": {
+       "color": "rgb(255, 255, 255)",
+       "backgroundColor": "rgba(0, 0, 0, 0)",
+       "borderRadius": "8px",
+       "boxShadow": "none",
+       "opacity": "1",
+       "transform": "none",
+       "cursor": "pointer",
+       "pointerEvents": "auto",
+       "transitionProperty": "background-color, box-shadow, color",
+       "transitionDuration": "0.15s",
+       "transitionTimingFunction": "ease",
+       "display": "flex",
+       "position": "relative"
+      },
+      "rect": {
+       "x": 343,
+       "y": 748,
+       "w": 144,
+       "h": 36
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "r_open_triggers": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이10s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비자동",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "r_after_pick": {
+  "triggers": [
+   {
+    "txt": "모델MiniMax H3",
+    "attrs": {
+     "data-state": "closed",
+     "aria-label": "모델",
+     "data-model-select-trigger": "true"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "grid",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 676,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "길이10s",
+    "attrs": {
+     "data-state": "closed",
+     "aria-expanded": "false",
+     "aria-haspopup": "dialog",
+     "aria-label": "길이",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "종횡비21:9",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "비율",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "txt": "품질2K",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "품질",
+     "data-form-kit-setting-button": ""
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.15s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "txt": "필터",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "필터"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "보기",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "보기"
+    },
+    "cs": {
+     "color": "rgb(137, 138, 139)",
+     "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.02)",
+     "borderRadius": "10px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "txt": "한국어",
+    "attrs": {
+     "aria-expanded": "false",
+     "aria-haspopup": "menu",
+     "tabindex": "0",
+     "aria-label": "언어 변경"
+    },
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "opacity": "1",
+     "transform": "none",
+     "cursor": "pointer",
+     "pointerEvents": "auto",
+     "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+     "display": "flex",
+     "position": "static"
+    },
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "r_after_pick_menu": {
+  "pops": []
+ },
+ "final_sweep": {
+  "고급": {
+   "present": false
+  },
+  "프롬프트 확장": {
+   "present": false
+  },
+  "번역": {
+   "present": false
+  },
+  "네거티브": {
+   "present": false
+  },
+  "시드": {
+   "present": false
+  },
+  "1080p": {
+   "present": false
+  },
+  "720p": {
+   "present": false
+  },
+  "해상도": {
+   "present": false
+  },
+  "advanced": {
+   "present": false
+  },
+  "prompt extend": {
+   "present": false
+  }
+ }
+}

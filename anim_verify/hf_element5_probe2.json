@@ -1,0 +1,204 @@
+{
+ "base": {
+  "mainN": 204,
+  "pfield": {
+   "rect": {
+    "x": 25,
+    "y": 508,
+    "w": 302,
+    "h": 160
+   },
+   "attrs": {
+    "data-prompt-field": "true"
+   }
+  },
+  "pbox": {
+   "rect": {
+    "x": 25,
+    "y": 508,
+    "w": 302,
+    "h": 160
+   },
+   "txt": "",
+   "attrs": {
+    "role": "textbox",
+    "contenteditable": "true",
+    "aria-label": "프롬프트"
+   }
+  },
+  "gen": {
+   "rect": {
+    "x": 25,
+    "y": 800,
+    "w": 302,
+    "h": 48
+   },
+   "attrs": {
+    "disabled": null,
+    "aria-disabled": null,
+    "aria-busy": "false",
+    "type": "submit",
+    "data-off": null
+   },
+   "cs": {
+    "backgroundColor": "rgb(209, 254, 23)",
+    "opacity": "1",
+    "cursor": "pointer"
+   }
+  },
+  "sf": {
+   "rect": {
+    "x": 37,
+    "y": 344,
+    "w": 129,
+    "h": 144
+   },
+   "attrs": {
+    "aria-disabled": null,
+    "data-disabled": null,
+    "data-state": null,
+    "data-off": null,
+    "tabindex": null
+   }
+  },
+  "ef": {
+   "rect": {
+    "x": 186,
+    "y": 344,
+    "w": 129,
+    "h": 144
+   },
+   "attrs": {
+    "aria-disabled": null,
+    "data-disabled": null,
+    "data-state": null,
+    "data-off": null,
+    "tabindex": null
+   }
+  },
+  "ref": null
+ },
+ "focus_scan": {
+  "active": "BUTTON:",
+  "changedCount": 0,
+  "changed": []
+ },
+ "gen_empty": {
+  "promptEmptyTxt": "",
+  "genWhenEmpty": {
+   "disabled": false,
+   "ariaDisabled": null,
+   "csOpacity": "1",
+   "csCursor": "pointer",
+   "csBg": "rgb(209, 254, 23)"
+  }
+ },
+ "gen_after_type": {
+  "promptTxt": "",
+  "genAfterType": {
+   "disabled": false,
+   "ariaDisabled": null,
+   "csOpacity": "1",
+   "csCursor": "pointer"
+  }
+ },
+ "sf_rest": {
+  "tag": "sf",
+  "elRect": {
+   "x": 37,
+   "y": 344,
+   "w": 129,
+   "h": 144
+  },
+  "boxRect": {
+   "x": 83.5,
+   "y": 384,
+   "w": 36,
+   "h": 36
+  },
+  "boxCs": {
+   "borderColor": "rgba(197, 197, 197, 0.3)",
+   "borderStyle": "solid",
+   "borderRadius": "3.35544e+07px",
+   "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+   "opacity": "1",
+   "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 128.9px 36px 0px, rgba(0, 0, 0, 0.01) 0px 82.4px 33px 0px, rgba(0, 0, 0, 0.05) 0px 46.4px 28px 0px, rgba(0, 0, 0, 0.09) 0px 20.5px 20.5px 0px, rgba(0, 0, 0, 0.1) 0px 5px 11.3px 0px, rgba(185, 185, 185, 0.35) 0px -0.3px 5.36px 0px inset"
+  },
+  "elAttrs": {
+   "aria-disabled": null,
+   "data-disabled": null,
+   "data-state": null,
+   "tabindex": null
+  }
+ },
+ "sf_hover": {
+  "phase": "hover",
+  "boxCs": {
+   "borderColor": "rgba(197, 197, 197, 0.3)",
+   "borderStyle": "solid",
+   "borderRadius": "3.35544e+07px",
+   "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+   "opacity": "1",
+   "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 128.9px 36px 0px, rgba(0, 0, 0, 0.01) 0px 82.4px 33px 0px, rgba(0, 0, 0, 0.05) 0px 46.4px 28px 0px, rgba(0, 0, 0, 0.09) 0px 20.5px 20.5px 0px, rgba(0, 0, 0, 0.1) 0px 5px 11.3px 0px, rgba(185, 185, 185, 0.35) 0px -0.3px 5.36px 0px inset"
+  },
+  "elState": null
+ },
+ "sf_dragover": {
+  "phase": "dragover",
+  "boxCs": {
+   "borderColor": "rgba(197, 197, 197, 0.3)",
+   "borderStyle": "solid",
+   "borderRadius": "3.35544e+07px",
+   "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+   "opacity": "1",
+   "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 128.9px 36px 0px, rgba(0, 0, 0, 0.01) 0px 82.4px 33px 0px, rgba(0, 0, 0, 0.05) 0px 46.4px 28px 0px, rgba(0, 0, 0, 0.09) 0px 20.5px 20.5px 0px, rgba(0, 0, 0, 0.1) 0px 5px 11.3px 0px, rgba(185, 185, 185, 0.35) 0px -0.3px 5.36px 0px inset"
+  },
+  "elState": null
+ },
+ "ef_rest": {
+  "tag": "ef",
+  "elRect": {
+   "x": 186,
+   "y": 344,
+   "w": 129,
+   "h": 144
+  },
+  "boxRect": {
+   "x": 232.5,
+   "y": 384,
+   "w": 36,
+   "h": 36
+  },
+  "boxCs": {
+   "borderColor": "rgba(197, 197, 197, 0.3)",
+   "borderStyle": "solid",
+   "borderRadius": "3.35544e+07px",
+   "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+   "opacity": "1",
+   "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 128.9px 36px 0px, rgba(0, 0, 0, 0.01) 0px 82.4px 33px 0px, rgba(0, 0, 0, 0.05) 0px 46.4px 28px 0px, rgba(0, 0, 0, 0.09) 0px 20.5px 20.5px 0px, rgba(0, 0, 0, 0.1) 0px 5px 11.3px 0px, rgba(185, 185, 185, 0.35) 0px -0.3px 5.36px 0px inset"
+  },
+  "elAttrs": {
+   "aria-disabled": null,
+   "data-disabled": null,
+   "data-state": null,
+   "tabindex": null
+  }
+ },
+ "ef_hover": {
+  "phase": "hover",
+  "boxCs": {
+   "borderColor": "rgba(197, 197, 197, 0.3)",
+   "borderStyle": "solid",
+   "borderRadius": "3.35544e+07px",
+   "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.04)",
+   "opacity": "1",
+   "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 128.9px 36px 0px, rgba(0, 0, 0, 0.01) 0px 82.4px 33px 0px, rgba(0, 0, 0, 0.05) 0px 46.4px 28px 0px, rgba(0, 0, 0, 0.09) 0px 20.5px 20.5px 0px, rgba(0, 0, 0, 0.1) 0px 5px 11.3px 0px, rgba(185, 185, 185, 0.35) 0px -0.3px 5.36px 0px inset"
+  },
+  "elState": null
+ },
+ "ref_base": {
+  "phase": "base",
+  "err": "no-ref",
+  "note": "HF live 게스트 세션에 레퍼런스 추가 느무금 미창건무 — 현행 프레임 모드(시작/종룬 드롭조만 시각)"
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "url": "https://higgsfield.ai/ko/ai/video?model=minimax_h3",
+ "before_restore": {
+  "fsRect": {
+   "x": 25,
+   "y": 146,
+   "w": 302,
+   "h": 130
+  },
+  "kids": [
+   {
+    "tag": "FIGURE",
+    "txt": "사용 중인 브라우저가 영상을 지원하지 않아요.Gener",
+    "label": null,
+    "popup": null,
+    "state": null,
+    "rect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "bg": "rgba(0, 0, 0, 0)"
+   }
+  ],
+  "store": {
+   "mode": "keyframes",
+   "duration": 5,
+   "resolution": "2K",
+   "aspectRatio": "auto",
+   "medias": [],
+   "stashedElementIds": []
+  }
+ },
+ "after_restore": {
+  "fsRect": {
+   "x": 25,
+   "y": 146,
+   "w": 302,
+   "h": 130
+  },
+  "kids": [
+   {
+    "tag": "FIGURE",
+    "txt": "사용 중인 브라우저가 영상을 지원하지 않아요.Gener",
+    "label": null,
+    "popup": null,
+    "state": null,
+    "rect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "bg": "rgba(0, 0, 0, 0)"
+   }
+  ],
+  "store": {
+   "mode": "keyframes",
+   "duration": 5,
+   "resolution": "2K",
+   "aspectRatio": "auto",
+   "medias": [],
+   "stashedElementIds": []
+  }
+ },
+ "menu_open": null,
+ "no_ratio_trigger": true,
+ "after_auto_restore": {
+  "fsRect": {
+   "x": 25,
+   "y": 146,
+   "w": 302,
+   "h": 130
+  },
+  "kids": [
+   {
+    "tag": "FIGURE",
+    "txt": "사용 중인 브라우저가 영상을 지원하지 않아요.Gener",
+    "label": null,
+    "popup": null,
+    "state": null,
+    "rect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "bg": "rgba(0, 0, 0, 0)"
+   }
+  ],
+  "store": {
+   "mode": "keyframes",
+   "duration": 5,
+   "resolution": "2K",
+   "aspectRatio": "auto",
+   "medias": [],
+   "stashedElementIds": []
+  }
+ }
+}

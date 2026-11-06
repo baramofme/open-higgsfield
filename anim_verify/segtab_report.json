@@ -1,0 +1,2238 @@
+{
+ "hf": {
+  "label": "HF",
+  "s0": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 243,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 243,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 239,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 152px; --active-tab-right: 3px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 243,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 287,
+     "w": 302,
+     "h": 336
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     }
+    ]
+   },
+   "focusText": "가입 후 프리미엄 요금제 추가 할인을"
+  },
+  "pre": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 243,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 243,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 239,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 152px; --active-tab-right: 3px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 243,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 287,
+     "w": 302,
+     "h": 336
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 291,
+       "w": 145,
+       "h": 160
+      }
+     }
+    ]
+   },
+   "focusText": "가입 후 프리미엄 요금제 추가 할인을"
+  },
+  "hover": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(255, 255, 255, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 287.92,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 287.92,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 283.92,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 152px; --active-tab-right: 3px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 287.92,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 331.92,
+     "w": 302,
+     "h": 336
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 335.92,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 335.92,
+       "w": 145,
+       "h": 160
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 335.92,
+       "w": 145,
+       "h": 160
+      }
+     }
+    ]
+   },
+   "focusText": "가입 후 프리미엄 요금제 추가 할인을"
+  },
+  "s1": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 284,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 288,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 332,
+     "w": 302,
+     "h": 336
+    },
+    "kids": []
+   },
+   "focusText": "레퍼런스"
+  },
+  "s2": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "-1",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "0",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(209, 254, 23, 0.2) 0px 0px 0px 2px",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 284,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 288,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 332,
+     "w": 302,
+     "h": 336
+    },
+    "kids": []
+   },
+   "focusText": "프레임"
+  },
+  "s3": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(209, 254, 23, 0.2) 0px 0px 0px 2px",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 284,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 288,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 332,
+     "w": 302,
+     "h": 336
+    },
+    "kids": []
+   },
+   "focusText": "레퍼런스"
+  },
+  "s4": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "rgba(209, 254, 23, 0.2) 0px 0px 0px 2px",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 288,
+      "w": 145,
+      "h": 32
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "q-tabs-list q-tabs-list-fill",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(255, 255, 255, 0.05)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 284,
+     "w": 302,
+     "h": 40
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint: var(--hf-color-brand-primary); --q-tint-fg: var(--hf-color-text-inverse);",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "q-tabs-indicator",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 288,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 332,
+     "w": 302,
+     "h": 336
+    },
+    "kids": []
+   },
+   "focusText": "레퍼런스"
+  }
+ },
+ "ohf": {
+  "label": "OHF",
+  "s0": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left:152px;--active-tab-right:3px;--active-tab-top:3px;--active-tab-bottom:3px;--active-tab-width:145px;--active-tab-height:32px",
+    "cls": "ohf-vid-n140",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "OpenHiggsfield AI — "
+  },
+  "pre": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left:152px;--active-tab-right:3px;--active-tab-top:3px;--active-tab-bottom:3px;--active-tab-width:145px;--active-tab-height:32px",
+    "cls": "ohf-vid-n140",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "OpenHiggsfield AI — "
+  },
+  "hover": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "none",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "none",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left:152px;--active-tab-right:3px;--active-tab-top:3px;--active-tab-bottom:3px;--active-tab-width:145px;--active-tab-height:32px",
+    "cls": "ohf-vid-n140",
+    "dir": "none",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 178,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "OpenHiggsfield AI — "
+  },
+  "s1": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "ohf-vid-n140",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "레퍼런스"
+  },
+  "s2": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "-1",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "0",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "6px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "ohf-vid-n140",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "프레임"
+  },
+  "s3": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "6px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "ohf-vid-n140",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "레퍼런스"
+  },
+  "s4": {
+   "ready": "complete",
+   "tabs": [
+    {
+     "txt": "레퍼런스",
+     "attrs": {
+      "aria-selected": "true",
+      "tabindex": "0",
+      "data-active": "",
+      "data-composite-item-active": "",
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "6px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0s, 0.2s, 0.2s, 0.2s, 0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 29,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    },
+    {
+     "txt": "프레임",
+     "attrs": {
+      "aria-selected": "false",
+      "tabindex": "-1",
+      "data-active": null,
+      "data-composite-item-active": null,
+      "aria-disabled": "false",
+      "data-orientation": "horizontal"
+     },
+     "cs": {
+      "color": "rgba(255, 255, 255, 0.5)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderRadius": "8px",
+      "boxShadow": "none",
+      "transitionProperty": "background-color, border-color, box-shadow, color, opacity",
+      "transitionDuration": "0.2s",
+      "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 178,
+      "y": 241,
+      "w": 145,
+      "h": 24
+     }
+    }
+   ],
+   "list": {
+    "orientation": "horizontal",
+    "dir": "left",
+    "id": "",
+    "cls": "ohf-vid-n127",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "12px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 25,
+     "y": 237,
+     "w": 302,
+     "h": 32
+    }
+   },
+   "root": {
+    "dir": "left",
+    "tint": "--q-tint:var(--hf-color-brand-primary);--q-tint-fg:var(--hf-color-text-inverse)",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "0px",
+     "boxShadow": "none",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transitionTimingFunction": "ease",
+     "transform": "none"
+    }
+   },
+   "ind": {
+    "style": "--active-tab-left: 3px; --active-tab-right: 152px; --active-tab-top: 3px; --active-tab-bottom: 3px; --active-tab-width: 145px; --active-tab-height: 32px;",
+    "cls": "ohf-vid-n140",
+    "dir": "left",
+    "cs": {
+     "color": "rgb(247, 247, 248)",
+     "backgroundColor": "rgba(0, 0, 0, 0)",
+     "borderRadius": "8px",
+     "boxShadow": "rgba(0, 0, 0, 0.12) 0px 2px 2px 0px, rgba(255, 255, 255, 0.05) 0px 2px 3px 0px inset",
+     "transitionProperty": "background, background-color, border-color, border-radius, box-shadow",
+     "transitionDuration": "0.2s",
+     "transitionTimingFunction": "cubic-bezier(0, 0, 0.2, 1)",
+     "transform": "none"
+    },
+    "rect": {
+     "x": 29,
+     "y": 241,
+     "w": 145,
+     "h": 32
+    }
+   },
+   "content": {
+    "rect": {
+     "x": 25,
+     "y": 277,
+     "w": 302,
+     "h": 272
+    },
+    "kids": [
+     {
+      "txt": "선택 사항시작 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 29,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": null,
+      "disabled": "true",
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     },
+     {
+      "txt": "선택 사항종료 프레임",
+      "state": "empty",
+      "disabled": null,
+      "rect": {
+       "x": 178,
+       "y": 281,
+       "w": 145,
+       "h": 96
+      }
+     }
+    ]
+   },
+   "focusText": "레퍼런스"
+  }
+ },
+ "checks": {
+  "s0": {
+   "issues": [],
+   "pass": true
+  },
+  "s1": {
+   "issues": [],
+   "pass": true
+  },
+  "s2": {
+   "issues": [],
+   "pass": true
+  },
+  "s3": {
+   "issues": [],
+   "pass": true
+  },
+  "s4": {
+   "issues": [],
+   "pass": true
+  }
+ },
+ "content_residual": {
+  "s0": [
+   "s0 content kid h HF=160 OHF=96",
+   "s0 content kid h HF=160 OHF=96",
+   "s0 content kid h HF=160 OHF=96"
+  ],
+  "s1": [
+   "s1 content kids count HF=0 OHF=3"
+  ],
+  "s2": [
+   "s2 content kids count HF=0 OHF=3"
+  ],
+  "s3": [
+   "s3 content kids count HF=0 OHF=3"
+  ],
+  "s4": [
+   "s4 content kids count HF=0 OHF=3"
+  ]
+ },
+ "hover_info": {
+  "hf_tab": [
+   {
+    "txt": "레퍼런스",
+    "bg": "rgba(255, 255, 255, 0)",
+    "color": "rgba(255, 255, 255, 0.5)"
+   },
+   {
+    "txt": "프레임",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)"
+   }
+  ],
+  "ohf_tab": [
+   {
+    "txt": "레퍼런스",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgba(255, 255, 255, 0.5)"
+   },
+   {
+    "txt": "프레임",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(255, 255, 255)"
+   }
+  ]
+ },
+ "hf_behavior": {
+  "s0": {
+   "sel": {
+    "레퍼런스": "false",
+    "프레임": "true"
+   },
+   "focus": "가입 후 프리미엄 요금제 추가 할인을",
+   "tabindex": {
+    "레퍼런스": "-1",
+    "프레임": "0"
+   }
+  },
+  "s1": {
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "focus": "레퍼런스",
+   "tabindex": {
+    "레퍼런스": "0",
+    "프레임": "-1"
+   }
+  },
+  "s2": {
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "focus": "프레임",
+   "tabindex": {
+    "레퍼런스": "-1",
+    "프레임": "0"
+   }
+  },
+  "s3": {
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "focus": "레퍼런스",
+   "tabindex": {
+    "레퍼런스": "0",
+    "프레임": "-1"
+   }
+  },
+  "s4": {
+   "sel": {
+    "레퍼런스": "true",
+    "프레임": "false"
+   },
+   "focus": "레퍼런스",
+   "tabindex": {
+    "레퍼런스": "0",
+    "프레임": "-1"
+   }
+  }
+ },
+ "OVERALL": "PASS",
+ "issue_total": 0
+}
