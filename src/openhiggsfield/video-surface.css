@@ -4582,3 +4582,41 @@
 .ohf-vid-dur-wrap {
   min-width: max-content;
 }
+
+/* ---- 요소 5(t_bd2deeba) prompt 에디터 포커스 링: HF 라이브 ground-truth 와 매칭 ----
+   HF live(prompt focus scan 실측): 프롬프트 포커스 시 form 내 어떤 요소도 computed
+   borderColor/outline/boxShadow 변화 0건 — 즉 HF 는 prompt 에디터에 커스텀 포커스 링을
+   주지 않는다(포커스 전후 outline 'rgb(247,247,248) none 3px' 불변·boxShadow none).
+   OHF 앱 전역 `.ohf :focus-visible`(openhiggsfield.css:102, accent-32 lime) 가 n183 에디터에
+   lime 링을 걸어 HF 와 divergence(게이트 focus scan OHF changedCount=1 vs HF 0 → tier_A).
+   고특이도(0-3-0 > 앱전역 0-2-0)로 캐스케이드 순서에 무관하게 포커스 시 HF 실측값으로 고정
+   (링 없음 — outline-style none·기저 color/width 는 HF prompt 실측 'rgb(247,247,248) 3px' 유지).
+   토큰 재설계 아님 — 기존 스코프 규칙의 국지 반전. */
+.ohf .ohf-vid-n183:focus-visible {
+  outline-color: rgb(247, 247, 248);
+  outline-width: 3px;
+  outline-style: none;
+}
+.ohf .ohf-vid-n183:focus {
+  outline-color: rgb(247, 247, 248);
+  outline-width: 3px;
+  outline-style: none;
+  box-shadow: none;
+}
+
+/* ---- 요소 5(t_bd2deeba) 생성하기(generate) 버튼 fill: HF 라이브 ground-truth 와 매칭 ----
+   HF live(:9222, 생성하기 submit 실측) 전 상태(enabled/hover/release 동일):
+     background-color rgb(209,254,23) solid lime +
+     background-image radial-gradient(in oklab, rgb(239,254,23) 40%, rgb(209,254,23) 100%) +
+     box-shadow 4개 transparent slot + rgba(0,0,0,0.43) 0px -3px 0px 0px inset(하단 3D edge).
+   OHF n214 기저는 background-color 없음(transparent)+--ctl-vid-bgimg(dark scrim)+다른 shadow →
+   ghost 버튼(=HF lime 과 fill divergence, 게이트 gen.*.cs.backgroundColor tier_A).
+   t_885ea9ce 페인팅 패스가 n214 배경 fill 을 남긴 것으로 추정(이 요소 페인팅 baseline 과 접점).
+   HF live 실측값만 재현(fabrication 없음): lime 기저는 기존 --ohf-color-accent(=#d1fe17=rgb(209,254,23))
+   토큰 재사용, radial/shadow 는 HF 라이브 실측 리터럴. 나중 캐스케이드(기존 규칙 미변경·국지 override).
+   hotspot: n214 는 t_885ea9ce 페인팅 요소 → 오케스트레이터가 이 파일/요소 분해 필요. */
+.ohf .ohf-vid-n214 {
+  background-color: var(--ohf-color-accent);                                                                                          /* HF live rgb(209,254,23) */
+  background-image: radial-gradient(in oklab, rgb(239, 254, 23) 40%, rgb(209, 254, 23) 100%);                                       /* HF live 실측 */
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.43) 0px -3px 0px 0px inset; /* HF live 실측 */
+}
