@@ -16388,6 +16388,236 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   max-width: 28rem;
 }
 
+/* ── Generate-library shell (HF /ko/generate surfaces, CDP 1440×900) ─────────
+   Transplants the static shell of HF's generate library (tab strip, breadcrumb
+   bar, toolbar cluster, empty state showcase). Populated state requires auth —
+   see card needs_input. Only the shell is ported here; no fabrication.
+
+   Measurements (CDP ground truth, 2026-11-05):
+     Top bar: grid h-11 (44px) grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-2 (8px) px-1 (4px)
+       x=248 y=9 w=1179 h=44
+     Breadcrumb/title: 14px/500 lh=20px — link segments rgb(130,130,130),
+       current segment rgb(255,255,255). Position x=252 y=21
+     Tab row: tabs at x=252 y=57 h=40 gap=4px. Tab pill: h-8 (32px) r-full
+       pad 4px 8px 12px/500. Active: color white. Inactive: color rgba(255,255,255,0.5)
+     Tab strip bg: transparent. Active bg: rgba(255,255,255,0.05) per tabClasses.
+     Ghost toolbar: 14px/500 color rgb(130,130,130) r-8 pad 6px 12px
+     Solid (CSV): 14px/500 color rgb(26,26,26) bg white r-8 pad 6px 12px
+     Content scroll: flex-col overflow-y-auto at x=252 y=110
+     Empty showcase: 3 tiles grid-cols-3 gap-2 (HF gap-0.5=2px)
+     Hint cards: 14px/600 title + 12px/400 rgba(255,255,255,0.4) sub */
+
+.ohf-cine-gen-shell {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar — HF's 3-column grid row (44px tall) */
+.ohf-cine-gen-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+.ohf-cine-gen-bar-left {
+  min-width: 0;
+}
+.ohf-cine-gen-bar-mid {
+  /* spacer column (auto-width), typically empty */
+}
+.ohf-cine-gen-bar-right {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+/* Title — single segment, white, 14px/500 */
+.ohf-cine-gen-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--tx);
+}
+
+/* Breadcrumb — HF's link/current/separator pattern */
+.ohf-cine-gen-crumb {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.ohf-cine-gen-crumb-link {
+  color: var(--tx3);
+}
+.ohf-cine-gen-crumb-current {
+  color: var(--tx);
+}
+.ohf-cine-gen-crumb-sep {
+  color: var(--tx3);
+  margin: 0 4px;
+}
+
+/* Tab row — tablist left, tools right */
+.ohf-cine-gen-tabrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+/* Tab strip container — inline-flex, 4px gap between pills */
+.ohf-cine-gen-tabstrip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 40px;
+}
+
+/* Each tab pill */
+.ohf-cine-gen-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: default;
+}
+.ohf-cine-gen-tab[data-active] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Toolbar cluster */
+.ohf-cine-gen-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* Ghost button (필터/보기/정렬 기준): 14px/500 --tx3 r-8 pad 6px 12px */
+.ohf-cine-gen-ghost {
+  height: 32px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tx3);
+  cursor: default;
+}
+
+/* Solid button (CSV 내보내기): 14px/500 white bg dark text r-8 pad 6px 12px */
+.ohf-cine-gen-solid {
+  height: 32px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: default;
+}
+
+/* Content scroll area — HF's scroller at x=252 y=110 */
+.ohf-cine-gen-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 20px 16px;
+}
+
+/* Empty state wrapper — HF flex-col centered with 32px gap between text and showcase */
+.ohf-cine-gen-empty-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px 16px;
+  text-align: center;
+}
+/* HF generate surfaces empty text (bigger/whiter than generic tile empty):
+   elements title 16px/600 white, favorites title 18px/600 #f7f7f8,
+   sub text 14px/400 rgb(130,130,130). Scope overrides only within the generate shell. */
+.ohf-cine-gen-empty-wrap .ohf-cine-tile-empty-title {
+  font-size: 16px;
+  color: var(--tx);
+}
+.ohf-cine-gen-empty-wrap .ohf-cine-tile-empty-sub {
+  font-size: 14px;
+  color: var(--tx3);
+}
+/* Favorites variant: HF uses 18px title */
+.ohf-cine-gen-empty-wrap[data-variant="favorites"] .ohf-cine-tile-empty-title {
+  font-size: 18px;
+  line-height: 24px;
+  color: #f7f7f8;
+}
+
+/* Elements empty showcase — 3 placeholder tile frames
+   HF: grid-cols-3 gap-2, 212px columns, dark placeholder bg */
+.ohf-cine-gen-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 640px;
+  width: 100%;
+}
+.ohf-cine-gen-showcase-tile {
+  display: block;
+  aspect-ratio: 252 / 212;
+  border-radius: 16px;
+  background: var(--s1);
+}
+
+/* Favorites instruction cards — 2 hint cards below empty text
+   HF: 14px/600 white title + 12px/400 rgba(255,255,255,0.4) sub, gap 16px */
+.ohf-cine-gen-hint-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 480px;
+  width: 100%;
+}
+.ohf-cine-gen-hint-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+.ohf-cine-gen-hint-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tx);
+}
+.ohf-cine-gen-hint-sub {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 /* ── Cinema-style bounded generation screen (t_2f8b602f) ────────────────────
    t_ce2cf50b restored the create shell's left nav rail but the shell still
    painted nothing — the feed showed straight through it, so generation read

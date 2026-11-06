@@ -1,0 +1,155 @@
+{
+  "shell": {
+    "rect": {
+      "x": 239,
+      "y": 0,
+      "w": 1201,
+      "h": 676
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20.3px",
+      "display": "flex",
+      "gap": "normal",
+      "flexDirection": "column"
+    }
+  },
+  "bar": {
+    "rect": {
+      "x": 239,
+      "y": 0,
+      "w": 1201,
+      "h": 44
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px 4px",
+      "lineHeight": "20.3px",
+      "display": "grid",
+      "gap": "8px",
+      "flexDirection": "row"
+    }
+  },
+  "title": {
+    "rect": {
+      "x": 243,
+      "y": 13,
+      "w": 42,
+      "h": 17
+    },
+    "text": "내 생성",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20px",
+      "display": "inline",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "crumb": {
+    "rect": null,
+    "text": "",
+    "style": null
+  },
+  "tabrow": {
+    "rect": null,
+    "style": null
+  },
+  "tabstrip": {
+    "rect": null,
+    "style": null
+  },
+  "tabbuttons": [],
+  "ghost": [],
+  "solid": [],
+  "scroll": {
+    "rect": {
+      "x": 239,
+      "y": 44,
+      "w": 1201,
+      "h": 632
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "4px 20px 16px",
+      "lineHeight": "20.3px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "emptyWrap": {
+    "rect": null,
+    "style": null
+  },
+  "emptyTitle": {
+    "rect": {
+      "x": 778,
+      "y": 108,
+      "w": 123,
+      "h": 20
+    },
+    "text": "아직 아무것도 없어요",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "color": "rgb(130, 130, 130)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20.3px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "emptySub": {
+    "rect": {
+      "x": 664,
+      "y": 136,
+      "w": 350,
+      "h": 19
+    },
+    "text": "아래 컴포저에서 장면을 설명하고 \"생성하기\"를 눌러 시작해 보세요.",
+    "style": {
+      "fontSize": "12.5px",
+      "fontWeight": "400",
+      "color": "rgb(98, 98, 98)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "18.75px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "showcase": {
+    "rect": null,
+    "style": null
+  },
+  "showcaseTiles": [],
+  "hintCards": [],
+  "grid": {
+    "rect": null,
+    "style": null
+  }
+}

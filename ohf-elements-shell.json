@@ -1,0 +1,430 @@
+{
+  "shell": {
+    "rect": {
+      "x": 239,
+      "y": 0,
+      "w": 1201,
+      "h": 676
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20.3px",
+      "display": "flex",
+      "gap": "normal",
+      "flexDirection": "column"
+    }
+  },
+  "bar": {
+    "rect": {
+      "x": 239,
+      "y": 0,
+      "w": 1201,
+      "h": 44
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px 4px",
+      "lineHeight": "20.3px",
+      "display": "grid",
+      "gap": "8px",
+      "flexDirection": "row"
+    }
+  },
+  "title": {
+    "rect": null,
+    "text": "",
+    "style": null
+  },
+  "crumb": {
+    "rect": {
+      "x": 243,
+      "y": 12,
+      "w": 81,
+      "h": 20
+    },
+    "text": "내 요소/전체",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20px",
+      "display": "inline-flex",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "tabrow": {
+    "rect": {
+      "x": 239,
+      "y": 44,
+      "w": 1201,
+      "h": 40
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px 4px",
+      "lineHeight": "20.3px",
+      "display": "flex",
+      "gap": "8px",
+      "flexDirection": "row"
+    }
+  },
+  "tabstrip": {
+    "rect": {
+      "x": 243,
+      "y": 44,
+      "w": 175,
+      "h": 40
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20.3px",
+      "display": "flex",
+      "gap": "4px",
+      "flexDirection": "row"
+    }
+  },
+  "tabbuttons": [
+    {
+      "text": "전체",
+      "rect": {
+        "x": 243,
+        "y": 48,
+        "w": 38,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgb(255, 255, 255)",
+        "bg": "rgba(255, 255, 255, 0.05)",
+        "borderRadius": "9999px",
+        "padding": "4px 8px",
+        "lineHeight": "normal",
+        "display": "flex",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "text": "캐릭터",
+      "rect": {
+        "x": 285,
+        "y": 48,
+        "w": 49,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "9999px",
+        "padding": "4px 8px",
+        "lineHeight": "normal",
+        "display": "flex",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "text": "장소",
+      "rect": {
+        "x": 338,
+        "y": 48,
+        "w": 38,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "9999px",
+        "padding": "4px 8px",
+        "lineHeight": "normal",
+        "display": "flex",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "text": "소품",
+      "rect": {
+        "x": 380,
+        "y": 48,
+        "w": 38,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "12px",
+        "fontWeight": "500",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "9999px",
+        "padding": "4px 8px",
+        "lineHeight": "normal",
+        "display": "flex",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    }
+  ],
+  "ghost": [
+    {
+      "text": "필터",
+      "rect": {
+        "x": 1328,
+        "y": 48,
+        "w": 50,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "rgb(130, 130, 130)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "8px",
+        "padding": "6px 12px",
+        "lineHeight": "normal",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "text": "보기",
+      "rect": {
+        "x": 1386,
+        "y": 48,
+        "w": 50,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "rgb(130, 130, 130)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "borderRadius": "8px",
+        "padding": "6px 12px",
+        "lineHeight": "normal",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    }
+  ],
+  "solid": [
+    {
+      "text": "CSV 내보내기",
+      "rect": {
+        "x": 1328,
+        "y": 6,
+        "w": 109,
+        "h": 32
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "rgb(26, 26, 26)",
+        "bg": "rgb(255, 255, 255)",
+        "borderRadius": "8px",
+        "padding": "6px 12px",
+        "lineHeight": "normal",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    }
+  ],
+  "scroll": {
+    "rect": {
+      "x": 239,
+      "y": 84,
+      "w": 1201,
+      "h": 592
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "4px 20px 16px",
+      "lineHeight": "20.3px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "emptyWrap": {
+    "rect": {
+      "x": 259,
+      "y": 88,
+      "w": 1161,
+      "h": 463
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "40px 16px",
+      "lineHeight": "20.3px",
+      "display": "flex",
+      "gap": "32px",
+      "flexDirection": "column"
+    }
+  },
+  "emptyTitle": {
+    "rect": {
+      "x": 777,
+      "y": 188,
+      "w": 126,
+      "h": 23
+    },
+    "text": "아직 요소가 없어요",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "23.2px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "emptySub": {
+    "rect": {
+      "x": 665,
+      "y": 219,
+      "w": 350,
+      "h": 21
+    },
+    "text": "요소를 생성해서 모든 프로젝트에서 일관되게 사용해 보세요.",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(137, 138, 139)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "21px",
+      "display": "block",
+      "gap": "normal",
+      "flexDirection": "row"
+    }
+  },
+  "showcase": {
+    "rect": {
+      "x": 520,
+      "y": 332,
+      "w": 640,
+      "h": 178
+    },
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "color": "rgb(247, 247, 248)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "lineHeight": "20.3px",
+      "display": "grid",
+      "gap": "2px",
+      "flexDirection": "row"
+    }
+  },
+  "showcaseTiles": [
+    {
+      "rect": {
+        "x": 520,
+        "y": 332,
+        "w": 212,
+        "h": 178
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(247, 247, 248)",
+        "bg": "rgb(28, 30, 32)",
+        "borderRadius": "16px",
+        "padding": "0px",
+        "lineHeight": "20.3px",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "rect": {
+        "x": 734,
+        "y": 332,
+        "w": 212,
+        "h": 178
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(247, 247, 248)",
+        "bg": "rgb(28, 30, 32)",
+        "borderRadius": "16px",
+        "padding": "0px",
+        "lineHeight": "20.3px",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    },
+    {
+      "rect": {
+        "x": 948,
+        "y": 332,
+        "w": 212,
+        "h": 178
+      },
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(247, 247, 248)",
+        "bg": "rgb(28, 30, 32)",
+        "borderRadius": "16px",
+        "padding": "0px",
+        "lineHeight": "20.3px",
+        "display": "block",
+        "gap": "normal",
+        "flexDirection": "row"
+      }
+    }
+  ],
+  "hintCards": [],
+  "grid": {
+    "rect": null,
+    "style": null
+  }
+}
