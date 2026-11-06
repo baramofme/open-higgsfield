@@ -59,6 +59,7 @@ import { Viewer } from "./viewer";
 import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
 import { VideoSurface } from "./video-surface";
+import { VideoHeader } from "./video-header";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the project detail surface plus the view-state store that raises
@@ -1456,31 +1457,54 @@ export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: stri
       ) : (
         <div className="ohf-shell">
         <main className="ohf-main">
-          <Topbar
-            view={view}
-            onView={switchView}
-            busy={busy}
-            keyConfigured={keyConfigured}
-            onKeys={openKeys}
-            query={query}
-            onQuery={setQuery}
-            onAssets={openAssets}
-            mode={mode}
-            /* One switch (user ruling): plain goes straight to the cinematic
-               screen, which opens on its image tab; any cinema state returns to
-               plain. The pult rail inside the screen is a separate question and
-               is deliberately not connected to this button. */
-            onToggle={() => {
-              if (mode === "general") {
-                setMode("cinema");
-                setCinemaMode("image");
-                alignDockToMode("image");
-              } else {
-                setMode("general");
-                setCinemaMode("image");
-              }
-            }}
-          />
+          {/* t_885ea9ce — HF 상단크롬의 이 서피스 전용 별도 버전(operator 지시:
+              "유사한 컴포넌트는 대체가 아니라 별도의 버전으로; 기존 것은 그대로").
+              surface==='video' 일 때만 HF-정확 크롬(lime promotion strip + header-visual)
+              이 전역 `Topbar`를 대체해 렌더를 HF와 동일하게 만든다. `Topbar` 컴포넌트는
+              미수정 — 시블링 이미지·설정·사용량 표면은 계속 전역 Topbar 를 쓴다. */}
+          {surface === "video" ? (
+            <VideoHeader
+              view={view}
+              onView={switchView}
+              mode={mode}
+              onToggle={() => {
+                if (mode === "general") {
+                  setMode("cinema");
+                  setCinemaMode("image");
+                  alignDockToMode("image");
+                } else {
+                  setMode("general");
+                  setCinemaMode("image");
+                }
+              }}
+            />
+          ) : (
+            <Topbar
+              view={view}
+              onView={switchView}
+              busy={busy}
+              keyConfigured={keyConfigured}
+              onKeys={openKeys}
+              query={query}
+              onQuery={setQuery}
+              onAssets={openAssets}
+              mode={mode}
+              /* One switch (user ruling): plain goes straight to the cinematic
+                 screen, which opens on its image tab; any cinema state returns to
+                 plain. The pult rail inside the screen is a separate question and
+                 is deliberately not connected to this button. */
+              onToggle={() => {
+                if (mode === "general") {
+                  setMode("cinema");
+                  setCinemaMode("image");
+                  alignDockToMode("image");
+                } else {
+                  setMode("general");
+                  setCinemaMode("image");
+                }
+              }}
+            />
+          )}
 
 
           {/* t_b8a39dd7 — HF's column layout: when on video/audio the body splits
