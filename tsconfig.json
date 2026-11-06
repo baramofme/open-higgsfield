@@ -38,6 +38,10 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "landing_verify",
+    "tests/integration",
+    "src/openhiggsfield/video-surface.tsx",
+    "src/app/[handle]"
   ]
 }

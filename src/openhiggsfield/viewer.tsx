@@ -13,7 +13,6 @@ import { LOCAL_USER } from "./local-user";
 import { EditShowcase, EditToolsCard } from "./edit-showcase";
 import { ExpandCropEditor } from "./expand-crop";
 import { VideoEditor, VideoEditRail, SEED_CAPTIONS, type CaptionSeg } from "./video-edit";
-import { arrowNavShouldSkip } from "./arrow-nav-guard";
 import { SHOWCASE_WAVEFORM, useAudioWaveform } from "./use-audio-waveform";
 /* t_114a2802 — the image reference's centre-click "use as next". The plate is
    raised from the viewer's own image branch and the role it writes goes straight
@@ -515,16 +514,6 @@ export function Viewer({
       }}
       onKeyDown={(event) => {
         if (event.target instanceof HTMLVideoElement) return;
-        /* The walk answers to the showcase's own ground, not to controls that
-           need the arrows for their own job: the timeline slider seeks on the
-           arrows, and a text field moves its caret with them. Without this
-           guard an arrow on the slider walked the playlist out from under the
-           visitor and unmounted the 편집 tab they were working in. */
-        if (event.target instanceof HTMLElement) {
-          const tag = event.target.tagName.toLowerCase();
-          if (tag === "input" || tag === "textarea") return;
-          if (event.target.closest('[role="slider"]')) return;
-        }
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
         const step = event.key === "ArrowLeft" ? onPrev : onNext;
         if (!step || closing) return;
@@ -1061,7 +1050,7 @@ export function Viewer({
                           className="ohf-viewer-act-share"
                           aria-label="공유"
                           title="미디어 링크 복사"
-                          onClick={() => void navigator.clipboard?.writeText(url).catch(() => { /* denied / non-secure context: nothing copied, title still readable */ })}
+                          onClick={() => void navigator.clipboard?.writeText(url)}
                         >
                           <ShareGlyph />
                         </button>
@@ -1133,7 +1122,7 @@ export function Viewer({
                           className="ohf-viewer-act-share"
                           aria-label="공유"
                           title="미디어 링크 복사"
-                          onClick={() => void navigator.clipboard?.writeText(url).catch(() => { /* denied / non-secure context: nothing copied, title still readable */ })}
+                          onClick={() => void navigator.clipboard?.writeText(url)}
                         >
                           <ShareGlyph />
                         </button>

@@ -45,8 +45,6 @@ import {
 import { Gallery, type TileMenuActions } from "./gallery";
 import { AssetSidebar, type AssetScope, type SidebarCounts } from "./asset-sidebar";
 import { FeedHeader, type FeedPanel } from "./feed-header";
-/* t_2afe2cd0 — HF public 프로필의 정적 미러(이식 1단계). */
-import { ProfileScreen } from "./profile-screen";
 import { FeedGuide, FeedShowcase } from "./feed-showcase";
 import { loadHistory, mergeHistory, replaceRequest, saveHistory, stepRun, type RunRecord } from "./history";
 import { loadComments } from "./comments";
@@ -56,20 +54,10 @@ import { Topbar } from "./topbar";
 import { useStudio } from "./studio-mode";
 import { Viewer } from "./viewer";
 /* Separate import block, anchored away from the top cluster so it forms its own
-   diff hunk (concurrent-hunk-commit adjacency rule): the HF-accurate audio create
-   surface and its dedicated top-chrome version (t_54c99543). The audio surface
-   replaces the general create shell while audio is active; the global Topbar is
-   left in place for every other surface (sibling surfaces depend on it). */
-import { AudioSurface } from "./audio-surface";
-import { AudioHeader } from "./audio-header";
-/* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the dedicated Cinematic Studio screen plus the HG-mirrored sidebar
    it adopts as its left column. */
 import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
-import { ImageSurface } from "./image-surface";
-import { VideoSurface } from "./video-surface";
-import { VideoHeader } from "./video-header";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the project detail surface plus the view-state store that raises
@@ -91,7 +79,6 @@ const EMPTY_CANCELING_IDS: ReadonlySet<string> = new Set<string>();
    (concurrent-hunk-commit adjacency rule): the nested video/audio create shell
    that replaces the general view's standalone generation dock. */
 import { GeneralCreateTabs } from "./general-create-tabs";
-import { AudioSurface } from "./audio-surface";
 
 /* t_9ddf99e1 — the reference-scoped showcase. Anchored past the create-shell
    import so these lines form their own hunk, clear of the top cluster siblings
@@ -263,7 +250,7 @@ function describeError(caught: unknown): string {
   return `Generation failed — ${message}. Try again; if it repeats, check the key in the sidebar.`;
 }
 
-export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: { fontClassName?: string; profileHandle?: string | null }) {
+export function OpenHiggsfieldApp({ fontClassName = "" }: { fontClassName?: string }) {
   const surface = useActive((state) => state.surface);
   const modelId = useActive((state) => state.model);
   const setModel = useActive((state) => state.setModel);
@@ -1172,7 +1159,7 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
       const url = record.urls[0];
       if (!url) return;
       if (target === "link") {
-        void navigator.clipboard?.writeText(url).catch(() => { /* clipboard denied / non-secure context — link stays readable on screen */ });
+        void navigator.clipboard?.writeText(url);
         return;
       }
       const enc = encodeURIComponent(url);
@@ -1467,25 +1454,6 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
       ) : (
         <div className="ohf-shell">
         <main className="ohf-main">
-          {surface === "audio" ? (
-            /* t_54c99543 — HF 상단크롬의 오디오 전용 별도 버전(대체가 아니라 공존).
-               앱 전역 `Topbar`는 시블링 표면이 의존하므로 audio일 때만 대체한다. */
-            <AudioHeader
-              view={view}
-              onView={switchView}
-              mode={mode}
-              onToggle={() => {
-                if (mode === "general") {
-                  setMode("cinema");
-                  setCinemaMode("image");
-                  alignDockToMode("image");
-                } else {
-                  setMode("general");
-                  setCinemaMode("image");
-                }
-              }}
-            />
-          ) : (
           <Topbar
             view={view}
             busy={busy}
@@ -1496,7 +1464,6 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
             onAssets={openAssets}
             mode={mode}
           />
-          )}
 
 
           {/* t_b8a39dd7 — HF's column layout: when on video/audio the body splits
@@ -1504,14 +1471,7 @@ export function OpenHiggsfieldApp({ fontClassName = "", profileHandle = null }: 
               HF's grid-cols-[20rem_1fr] gap-2 px-4 pb-2 measured at :9222.
               HF's feed controls (tabs, sort) live inside the right column header
               (measured at x=361 y=55, h=32), so FeedHeader moves there too. */}
-          {surface === "image" ? (
-            /* HF /ko/ai/image 정적 화면 이식(t_f3de705e): 히어로+폼 전용, 갤러리 없음(HF 실측 그대로). */
-            <ImageSurface model={model} />
-          ) : surface === "video" ? (
-            /* HF /ko/ai/video?model=minimax_h3 정적 화면 이식(t_bb8f3edb):
-               플레이트·생성 폼·피드 컬럼을 GT 306 요소 실측 그대로 미러링했다. */
-            <VideoSurface />
-          ) : surface === "audio" ? (
+          {(surface === "video" || surface === "audio") ? (
             <div className="ohf-create-feed-grid">
               <div className="ohf-create-col">
                 <GeneralCreateTabs
