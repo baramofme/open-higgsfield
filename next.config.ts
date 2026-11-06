@@ -39,6 +39,21 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "16mb",
     },
   },
+
+  /* Mirror-friendly short paths. A visitor reaches for the one-word form the
+     nav labels use ("비디오" → /ko/video); without an alias that hand-typed URL
+     404s and reads as a dead page even though the studio is fine at the
+     canonical spec path. These 307s send the short form to the spec target so
+     both journeys land on real content. The menu still links to the canonical
+     paths (routes.ts / NAV_ROUTES), so the spec stays authoritative — this is
+     purely additive for URLs that would otherwise 404. /ko/audio is already
+     canonical, so it needs no alias. */
+  redirects: async () => [
+    { source: "/ko/image", destination: "/ko/ai/image?model=gpt_image_2", permanent: false },
+    { source: "/ko/video", destination: "/ko/ai/video?model=genjutsu", permanent: false },
+    { source: "/ko/cinema", destination: "/ko/generate", permanent: false },
+    { source: "/ko/cinema-studio", destination: "/ko/generate", permanent: false },
+  ],
 };
 
 export default nextConfig;
