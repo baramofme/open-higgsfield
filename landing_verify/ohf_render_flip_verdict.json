@@ -1,0 +1,18 @@
+{
+  "task": "t_9f4571a7",
+  "tree": "open-higgsfield/t_9f4571a7-hf-surface-image-video-ohf @ HEAD ee72eb7 (image 8a6c512 + video 3e141fd integrated onto c72615c base)",
+  "method": "live CDP headless chrome :9351 -> OHF dev :3100, Emulation 1440x900 dpr1. surface는 zustand persist 기본값으로 결정(클릭 아님); image 전환은 localStorage[openhiggsfield.active.v2] 재수화+reload로 결정적 조작.",
+  "fabrication": "none — every value below is a live DOM measure from Runtime.evaluate",
+  "probes": {
+    "V0_default_video": {"readyState": "complete", "videoRoot": true, "vidCount": 205, "imgRoot": false, "imgCount": 0},
+    "I0_image_flip": {"readyState": "complete", "videoRoot": false, "vidCount": 0, "imgRoot": true, "imgCount": 157,
+      "heroText": "어디서 시작할지 모르겠나요?아카데미로 이동해 여성을 시작해 보세요지금 배우기지금 제작을 시작해 보세요Higgsfield Soul Cinema장면"},
+    "V1_back_to_video": {"readyState": "complete", "videoRoot": true, "vidCount": 205, "imgRoot": false, "imgCount": 0}
+  },
+  "verdict": {
+    "V0": "VIDEO", "I0": "IMAGE", "V1": "VIDEO",
+    "video_exclusive_when_image": true,
+    "image_exclusive_when_video": true,
+    "conclusion": "combined dispatch (image->ImageSurface, video->VideoSurface, audio->create-feed-grid, else->studio) renders exactly ONE surface at a time; BOTH transplanted surfaces render their full anchor set on the integrated base tree"
+  }
+}
