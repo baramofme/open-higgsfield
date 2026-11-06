@@ -1,0 +1,1505 @@
+{
+ "initial": {
+  "ready": "complete",
+  "cards": [
+   {
+    "vcls": "object-cover size-full w-full h-full rounded-md object-contain",
+    "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 25,
+     "y": 101,
+     "w": 302,
+     "h": 130
+    },
+    "vrect": {
+     "x": 25,
+     "y": 101,
+     "w": 302,
+     "h": 130
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "border max-w-full inline-grid grid-flow-col text-ellipsis overflow-hidden whitespace-nowrap justify-center items-center content-center font-medium transition [&>svg]:h-full focus-visible:ring-2 [.button--pill]:rounded-full h-6 gap-1 text-caption-m not-[.button--pill]:rounded-lg not-[.button--fixed]:px-2 [.button--fixed]:w-6 [&>svg]:size-3.5 ring-transparent bg-neutral-12 border-primary-5 disabled:bg-neutral-13 disabled:text-neutral-7 hover:not-disabled:not-active:bg-neutral-13 focus-visible:not-disabled:not-active:bg-neutral-13 interactive-tap bg-madi-black! text-white hover:bg-primary! hover:text-black border-white-6 hidden!",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+      "transitionDuration": "0.2s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 733.66,
+     "y": 305,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vrect": {
+     "x": 733.66,
+     "y": 305,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 733.66,
+      "y": 305,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "ariaLabel": "프리셋 선택하기"
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 1074.33,
+     "y": 305,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vrect": {
+     "x": 1074.33,
+     "y": 305,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 1074.33,
+      "y": 305,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "ariaLabel": "영상 받기"
+    },
+    "muteBtn": null
+   }
+  ],
+  "allMuteCount": 0,
+  "allMute": [],
+  "exps": [
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 115.92,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 170.88,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 225.83,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 280.78,
+     "y": 4,
+     "w": 48.33,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 2052.25,
+     "y": 4,
+     "w": 67.92,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 1042.63,
+     "y": 6,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "길이",
+    "rect": {
+     "x": 25,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "비율",
+    "rect": {
+     "x": 180,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "품질",
+    "rect": {
+     "x": 25,
+     "y": 755,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "필터",
+    "rect": {
+     "x": 1255.47,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "보기",
+    "rect": {
+     "x": 1335.23,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "도움이 필요하세요?",
+    "rect": {
+     "x": 1379,
+     "y": 827,
+     "w": 32,
+     "h": 32
+    }
+   },
+   {
+    "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "hover": {
+  "ready": "complete",
+  "cards": [
+   {
+    "vcls": "object-cover size-full w-full h-full rounded-md object-contain",
+    "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 25,
+     "y": 101,
+     "w": 302,
+     "h": 130
+    },
+    "vrect": {
+     "x": 25,
+     "y": 101,
+     "w": 302,
+     "h": 130
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "border max-w-full inline-grid grid-flow-col text-ellipsis overflow-hidden whitespace-nowrap justify-center items-center content-center font-medium transition [&>svg]:h-full focus-visible:ring-2 [.button--pill]:rounded-full h-6 gap-1 text-caption-m not-[.button--pill]:rounded-lg not-[.button--fixed]:px-2 [.button--fixed]:w-6 [&>svg]:size-3.5 ring-transparent bg-neutral-12 border-primary-5 disabled:bg-neutral-13 disabled:text-neutral-7 hover:not-disabled:not-active:bg-neutral-13 focus-visible:not-disabled:not-active:bg-neutral-13 interactive-tap bg-madi-black! text-white hover:bg-primary! hover:text-black border-white-6 hidden!",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+      "transitionDuration": "0.2s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 733.66,
+     "y": 305,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vrect": {
+     "x": 733.66,
+     "y": 305,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 733.66,
+      "y": 305,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "ariaLabel": "프리셋 선택하기"
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 1074.33,
+     "y": 305,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vrect": {
+     "x": 1074.33,
+     "y": 305,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vpaused": true,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0,
+    "vreadyState": 0,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 1074.33,
+      "y": 305,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "ariaLabel": "영상 받기"
+    },
+    "muteBtn": null
+   }
+  ],
+  "allMuteCount": 0,
+  "allMute": [],
+  "exps": [
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 115.92,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 170.88,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 225.83,
+     "y": 4,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 280.78,
+     "y": 4,
+     "w": 48.33,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 2052.25,
+     "y": 4,
+     "w": 67.92,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 1042.63,
+     "y": 6,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "길이",
+    "rect": {
+     "x": 25,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "비율",
+    "rect": {
+     "x": 180,
+     "y": 693,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "품질",
+    "rect": {
+     "x": 25,
+     "y": 755,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "필터",
+    "rect": {
+     "x": 1255.47,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "보기",
+    "rect": {
+     "x": 1335.23,
+     "y": 53,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "도움이 필요하세요?",
+    "rect": {
+     "x": 1379,
+     "y": 827,
+     "w": 32,
+     "h": 32
+    }
+   },
+   {
+    "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "scroll_up": {
+  "ready": "complete",
+  "cards": [
+   {
+    "vcls": "object-cover size-full w-full h-full rounded-md object-contain",
+    "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0.975,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "border max-w-full inline-grid grid-flow-col text-ellipsis overflow-hidden whitespace-nowrap justify-center items-center content-center font-medium transition [&>svg]:h-full focus-visible:ring-2 [.button--pill]:rounded-full h-6 gap-1 text-caption-m not-[.button--pill]:rounded-lg not-[.button--fixed]:px-2 [.button--fixed]:w-6 [&>svg]:size-3.5 ring-transparent bg-neutral-12 border-primary-5 disabled:bg-neutral-13 disabled:text-neutral-7 hover:not-disabled:not-active:bg-neutral-13 focus-visible:not-disabled:not-active:bg-neutral-13 interactive-tap bg-madi-black! text-white hover:bg-primary! hover:text-black border-white-6 hidden!",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+      "transitionDuration": "0.2s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 733.66,
+     "y": 350,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vrect": {
+     "x": 733.66,
+     "y": 350,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0.906,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "ariaLabel": "프리셋 선택하기"
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 1074.33,
+     "y": 350,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vrect": {
+     "x": 1074.33,
+     "y": 350,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0.964,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "ariaLabel": "영상 받기"
+    },
+    "muteBtn": null
+   }
+  ],
+  "allMuteCount": 0,
+  "allMute": [],
+  "exps": [
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 115.92,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 170.88,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 225.83,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 280.78,
+     "y": 49,
+     "w": 48.33,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 2052.25,
+     "y": 49,
+     "w": 67.92,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 1042.63,
+     "y": 51,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "길이",
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "비율",
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "품질",
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "필터",
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "보기",
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "도움이 필요하세요?",
+    "rect": {
+     "x": 1379,
+     "y": 824,
+     "w": 32,
+     "h": 32
+    }
+   },
+   {
+    "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "scroll_down": {
+  "ready": "complete",
+  "cards": [
+   {
+    "vcls": "object-cover size-full w-full h-full rounded-md object-contain",
+    "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 2.026,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "border max-w-full inline-grid grid-flow-col text-ellipsis overflow-hidden whitespace-nowrap justify-center items-center content-center font-medium transition [&>svg]:h-full focus-visible:ring-2 [.button--pill]:rounded-full h-6 gap-1 text-caption-m not-[.button--pill]:rounded-lg not-[.button--fixed]:px-2 [.button--fixed]:w-6 [&>svg]:size-3.5 ring-transparent bg-neutral-12 border-primary-5 disabled:bg-neutral-13 disabled:text-neutral-7 hover:not-disabled:not-active:bg-neutral-13 focus-visible:not-disabled:not-active:bg-neutral-13 interactive-tap bg-madi-black! text-white hover:bg-primary! hover:text-black border-white-6 hidden!",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+      "transitionDuration": "0.2s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 733.66,
+     "y": 350,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vrect": {
+     "x": 733.66,
+     "y": 350,
+     "w": 300.67,
+     "h": 228.39
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 1.957,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 733.66,
+      "y": 350,
+      "w": 300.67,
+      "h": 228.39
+     },
+     "ariaLabel": "프리셋 선택하기"
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative relative w-full mb-4 rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 1074.33,
+     "y": 350,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vrect": {
+     "x": 1074.33,
+     "y": 350,
+     "w": 300.66,
+     "h": 228.38
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 2.015,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "object-cover size-full",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 1074.33,
+      "y": 350,
+      "w": 300.66,
+      "h": 228.38
+     },
+     "ariaLabel": "영상 받기"
+    },
+    "muteBtn": null
+   }
+  ],
+  "allMuteCount": 0,
+  "allMute": [],
+  "exps": [
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 115.92,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 170.88,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 225.83,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 280.78,
+     "y": 49,
+     "w": 48.33,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 2052.25,
+     "y": 49,
+     "w": 67.92,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 1042.63,
+     "y": 51,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "길이",
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "비율",
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "품질",
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "필터",
+    "rect": {
+     "x": 1255.47,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "flex h-9 items-center justify-center gap-1.5 rounded-[0.625rem] bg-white/2 px-3 py-1 text-icon-secondary transition-colors hover:bg-surface-secondary cursor-pointer q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "보기",
+    "rect": {
+     "x": 1335.23,
+     "y": 98,
+     "w": 71.77,
+     "h": 36
+    }
+   },
+   {
+    "cls": "relative flex h-8 min-w-8 items-center justify-center px-2 text-q-icon-primary outline-none",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "도움이 필요하세요?",
+    "rect": {
+     "x": 1379,
+     "y": 824,
+     "w": 32,
+     "h": 32
+    }
+   },
+   {
+    "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ },
+ "click": {
+  "ready": "complete",
+  "cards": [
+   {
+    "vcls": "object-cover size-full w-full h-full rounded-md object-contain",
+    "cardcls": "relative group h-32.5 w-full select-none overflow-hidden rounded-xl",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vrect": {
+     "x": 25,
+     "y": 146,
+     "w": 302,
+     "h": 130
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 3.35,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "border max-w-full inline-grid grid-flow-col text-ellipsis overflow-hidden whitespace-nowrap justify-center items-center content-center font-medium transition [&>svg]:h-full focus-visible:ring-2 [.button--pill]:rounded-full h-6 gap-1 text-caption-m not-[.button--pill]:rounded-lg not-[.button--fixed]:px-2 [.button--fixed]:w-6 [&>svg]:size-3.5 ring-transparent bg-neutral-12 border-primary-5 disabled:bg-neutral-13 disabled:text-neutral-7 hover:not-disabled:not-active:bg-neutral-13 focus-visible:not-disabled:not-active:bg-neutral-13 interactive-tap bg-madi-black! text-white hover:bg-primary! hover:text-black border-white-6 hidden!",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter",
+      "transitionDuration": "0.2s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   },
+   {
+    "vcls": "object-cover size-full",
+    "cardcls": "group relative mb-2 z-1 w-full h-auto rounded-2xl overflow-hidden",
+    "cardtag": "FIGURE",
+    "cardrect": {
+     "x": 368,
+     "y": 162,
+     "w": 200,
+     "h": 266.66
+    },
+    "vrect": {
+     "x": 368,
+     "y": 162,
+     "w": 200,
+     "h": 266.66
+    },
+    "vpaused": false,
+    "vmuted": true,
+    "vautoplay": false,
+    "vcurrentTime": 0.367,
+    "vreadyState": 4,
+    "vcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "cardcs": {
+     "opacity": "1",
+     "transitionProperty": "all",
+     "transitionDuration": "0s",
+     "transform": "none"
+    },
+    "overlay": {
+     "cls": "absolute inset-0 z-10 font-bold rounded-2xl text-start  w-full h-full pb-2 flex justify-start items-end uppercase px-2 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.7)_80%)]  ring-inset ring-primary-60 ring-0",
+     "cs": {
+      "opacity": "1",
+      "transitionProperty": "all",
+      "transitionDuration": "0s",
+      "transform": "none"
+     },
+     "rect": {
+      "x": 368,
+      "y": 162,
+      "w": 200,
+      "h": 266.66
+     },
+     "ariaLabel": null
+    },
+    "muteBtn": null
+   }
+  ],
+  "allMuteCount": 0,
+  "allMute": [],
+  "exps": [
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 115.92,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover active",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 170.88,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 225.83,
+     "y": 49,
+     "w": 54.95,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 280.78,
+     "y": 49,
+     "w": 48.33,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-item *:shrink-0 inline-flex items-center gap-1 border-0 bg-transparent rounded-lg cursor-pointer select-none whitespace-nowrap no-underline text-qc-body-sm-medium transition-colors hover:bg-qc-overlay-hover data-[state=open]:bg-qc-overlay-hover",
+    "tag": "A",
+    "exp": "false",
+    "label": null,
+    "rect": {
+     "x": 2052.25,
+     "y": 49,
+     "w": 67.92,
+     "h": 28
+    }
+   },
+   {
+    "cls": "hfnav-language hfnav-desktop-only q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 1042.63,
+     "y": 51,
+     "w": 24,
+     "h": 24
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "길이",
+    "rect": {
+     "x": 25,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "비율",
+    "rect": {
+     "x": 180,
+     "y": 738,
+     "w": 147,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex h-13.5 w-full items-center justify-between gap-2 rounded-xl bg-white-5 px-3 py-2 transition-colors duration-150 hover:bg-white-8 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-q-border-focus disabled:cursor-not-allowed disabled:opacity-50 mt-2 mt-0! col-span-2 q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "품질",
+    "rect": {
+     "x": 25,
+     "y": 800,
+     "w": 302,
+     "h": 54
+    }
+   },
+   {
+    "cls": "flex items-center gap-2 whitespace-nowrap text-caption-l font-normal text-text-primary transition-colors hover:text-text-secondary focus:outline-none focus-visible:ring-2 ring-primary q-dropdown-trigger",
+    "tag": "BUTTON",
+    "exp": "false",
+    "label": "언어 변경",
+    "rect": {
+     "x": 0,
+     "y": 0,
+     "w": 0,
+     "h": 0
+    }
+   }
+  ]
+ }
+}
