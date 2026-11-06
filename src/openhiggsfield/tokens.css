@@ -203,7 +203,7 @@
   --ohf-color-favorite: var(--o-color-favorite);
 
   /* Typography semantics */
-  --ohf-font-family-ui: var(--font-ohf-inter), ui-sans-serif, system-ui, sans-serif;
+  --ohf-font-family-ui: Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --ohf-font-size-caption: var(--o-font-10);
   --ohf-font-size-tag: var(--o-font-10-5);
   --ohf-font-size-label: var(--o-font-11);
