@@ -921,14 +921,6 @@
   color: var(--tx2);
   padding-bottom: 4px;
 }
-/* Both controls in the failure panel ride above the stretched .ohf-tile-open
-   (z-index 1) that turns the whole card into the detail affordance. Without the
-   lift the overlay would steal their presses; a static button sits in the card's
-   stacking context at z-index 0, below it. */
-.ohf-fail .ohf-btn-solid {
-  position: relative;
-  z-index: 2;
-}
 .ohf-grain {
   position: absolute;
   inset: 0;
@@ -6396,14 +6388,6 @@ a.ohf-btn-solid {
   line-height: 1.5;
   color: var(--tx2);
   padding-bottom: 4px;
-}
-/* Both controls in the failure panel ride above the stretched .ohf-tile-open
-   (z-index 1) that turns the whole card into the detail affordance. Without the
-   lift the overlay would steal their presses; a static button sits in the card's
-   stacking context at z-index 0, below it. */
-.ohf-fail .ohf-btn-solid {
-  position: relative;
-  z-index: 2;
 }
 .ohf-grain {
   position: absolute;

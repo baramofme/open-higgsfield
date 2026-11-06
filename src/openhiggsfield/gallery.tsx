@@ -279,7 +279,6 @@ const Tile = memo(function Tile({
   );
 
   if (item.status === "failed") {
-    const failedName = shortPrompt(item.prompt);
     return (
       <div
         className="ohf-tile ohf-tile--failed"
@@ -299,13 +298,9 @@ const Tile = memo(function Tile({
             {item.cancelled ? "Cancelled by user" : `${item.modelLabel} didn’t deliver`}
           </span>
           <span className="ohf-fail-why">{item.error}</span>
-          {/* The detail view is now an explicit control stacked above Retry, not
-              only the stretched overlay under the card. While the grid is picking
-              it toggles the selection like the card body does; otherwise it opens
-              the failure record the app stored when this run died. Both it and
-              Retry ride above that overlay on their own z-index (see the CSS
-              `.ohf-fail .ohf-btn-solid` lift), so a press on either never reaches
-              the overlay. */}
+          {/* The detail view is an explicit control stacked above Retry. While the
+              grid is picking it toggles the selection like the picker does; otherwise
+              it opens the failure record the app stored when this run died. */}
           <button
             type="button"
             className="ohf-btn-solid ohf-fail-detail"
@@ -326,30 +321,7 @@ const Tile = memo(function Tile({
             Retry this run
           </button>
         </div>
-        {/* A stretched click that opens the failure record the app stored when this
-            run died. Retry rides above the overlay on its own z-index, so a press
-            on Retry never reaches the overlay; while the grid is picking, the body
-            extends the selection instead — the same bargain a finished tile makes. */}
-        <button
-          type="button"
-          className="ohf-tile-open ohf-fail-open"
-          onClick={(event) =>
-            selecting ? onPick(item.id, index, event.shiftKey) : onShowFailure(item.id)
-          }
-          aria-label={
-            selecting
-              ? `${picked ? "Deselect" : "Select"} run — ${failedName}`
-              : `실패 상세 보기 — ${item.modelLabel}: ${item.prompt}`
-          }
-        />
         {picker}
-        {/* A resting hint that the card opens a detail view, rising only on hover
-            and never stealing clicks meant for the overlay beneath it. */}
-        {!selecting && (
-          <span className="ohf-fail-hint" aria-hidden>
-            상세 보기
-          </span>
-        )}
       </div>
     );
   }
