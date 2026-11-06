@@ -81,6 +81,7 @@ const EMPTY_CANCELING_IDS: ReadonlySet<string> = new Set<string>();
    (concurrent-hunk-commit adjacency rule): the nested video/audio create shell
    that replaces the general view's standalone generation dock. */
 import { GeneralCreateTabs } from "./general-create-tabs";
+import { AudioSurface } from "./audio-surface";
 
 /* t_9ddf99e1 — the reference-scoped showcase. Anchored past the create-shell
    import so these lines form their own hunk, clear of the top cluster siblings
