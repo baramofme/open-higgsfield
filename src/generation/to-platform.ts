@@ -320,7 +320,14 @@ function mapKrea2Cfwui(plane: GenerationPlane): Mapped {
       task_type:
         plane.inpaint && initImage ? "inpaint" : initImage ? "img2img" : "txt2img",
       model: "Krea-2-Turbo",
-      prompt: plane.prompt.text,
+      /* Krea 2's recipe declares no video/audio roles — a `@동영상N` / `@오디오N`
+         handle can bind nothing here, yet the encoder keeps it as real tokens
+         that steer the output with no referent (t_a763a3fe). Removal is opt-in:
+         OFF, this line is the plane's own string, byte for byte. */
+      prompt: stripDeadMediaRefTokens(
+        plane.prompt.text,
+        getModel(plane.model).stripDeadMediaRefs,
+      ),
       ...(plane.inpaint && initImage ? {} : { width, height }),
       batch_size: Number.isFinite(batch) && batch > 0 ? batch : 1,
       async_execution: true,
@@ -497,6 +504,29 @@ function rewriteImageTokens(prompt: string, tray: TrayItem[] | undefined, slotOf
   });
 }
 
+/* The two handle words that mean nothing on a slot-absent lane. The alias sets
+   mirror media_ref_prompt.py verbatim (`_VIDEO_TOKEN_ALIASES`) so the strip and
+   the resolver never disagree about what a video handle is; audio carries the
+   analogous English aliases defensively, the Korean `@오디오N` being what the
+   dock emits. Only the handle is removed — the scaffold around it ("texture
+   like", "rhythm of") is a separate question the axis-4 finding left unmeasured,
+   so the default guard touches the token and nothing else (t_a763a3fe §scaffold
+   note). */
+const DEAD_VIDEO_TOKEN_RE = /@(?:동영상|video|Video|vid)\s*\d+/gi;
+const DEAD_AUDIO_TOKEN_RE = /@(?:오디오|audio|Audio|aud)\s*\d+/gi;
+
+/* Strip the dead video/audio handles from a prompt that is about to reach an
+   encoder on a lane with no slot for them (Krea 2 imagegen, LTX). The guard is
+   opt-in per model: OFF returns the caller's string untouched — a stored prompt
+   keeps its exact bytes and its exact render, which is the whole point of
+   shipping this behind a flag (the same strip on the same seed churns the
+   output ~26/90 — t_a763a3fe). ON removes the handles and leaves the scaffold,
+   particles, and every other token alone. */
+function stripDeadMediaRefTokens(prompt: string, enabled: boolean | undefined): string {
+  if (!enabled) return prompt;
+  return prompt.replace(DEAD_VIDEO_TOKEN_RE, "").replace(DEAD_AUDIO_TOKEN_RE, "");
+}
+
 /* The H3 ref2va coordinate with item identity: slot k is the k-th image of the
    assembled list — the start frame pinned first, then references in tray order,
    truncated at the backend's nine-slot cap. Items past the cap and end-role items
@@ -602,7 +632,11 @@ function mapVideoCfwui(plane: GenerationPlane): Mapped {
     path: "VideoGen_LTX_2_5_run",
     body: {
       task_type: start && end ? "flf2va" : start ? "i2va" : "t2va",
-      prompt: ltxPrompt,
+      /* LTX keeps no video/audio slots at all — the same dead handles Krea 2
+         carries, stripped under the same opt-in flag once the image rewrite has
+         done its work (the rewrite may remove image handles; it never touches
+         these two kinds, so the strip reads their final text). */
+      prompt: stripDeadMediaRefTokens(ltxPrompt, model.stripDeadMediaRefs),
       resolution: tier,
       aspect_ratio: LTX_ASPECT[aspect] ?? "16:9 (Widescreen)",
       duration,
