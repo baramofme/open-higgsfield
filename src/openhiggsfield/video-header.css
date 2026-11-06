@@ -1,0 +1,473 @@
+/* =============================================================================
+   video-header.css — HF 상단크롬의 이 서피스 전용 별도 버전(t_885ea9ce)
+
+   토큰 3계층(operator ruling, video-surface.css 와 동일 규율):
+   · --o-*(primitive)는 이 파일에서 직접 참조하지 않는다.
+   · --ohf-*(semantic)는 실측값과 직렬화까지 동값인 곳만 쓴다.
+   · 그 외는 --ctl-vh-*(성분 국유) 토큰으로 선언해 참조한다.
+     하드코딩은 아래 토큰 선언 블록 안의 실측 리터럴에만 존재한다.
+   값의 출처는 HF live CDP 1440×900 의 GT 실측(nid 2..100) — 추측 없음.
+   ============================================================================= */
+
+/* ---- 성분 국유 토큰(--ctl-vh-*): 전부 HF computed 실측 리터럴 ----
+   두 크롬 루트(.vh-promotion + .vh-header)에 함께 선언한다 — fragment 의
+   두 자식은 형제이므로 한쪽에만 걸면 다른 쪽은 custom property 를 상속 못 받는다. */
+.vh-promotion,
+.vh-header {
+  /* 색상 — GT 실측 */
+  --ctl-vh-lime: rgb(209, 254, 23);
+  --ctl-vh-ink: rgb(19, 21, 23);
+  --ctl-vh-white: rgb(255, 255, 255);
+  --ctl-vh-ink-26: rgb(26, 26, 26);
+  --ctl-vh-text-247: rgb(247, 247, 248);
+  --ctl-vh-white-30: rgba(255, 255, 255, 0.3);
+  --ctl-vh-white-20: rgba(255, 255, 255, 0.2);
+  --ctl-vh-lime-50: rgba(209, 254, 23, 0.5);
+  --ctl-vh-badge-bg: rgb(35, 38, 42);
+  --ctl-vh-badge-fg: rgb(137, 138, 139);
+  --ctl-vh-login-bg: rgba(209, 254, 23, 0.15);
+  --ctl-vh-transparent: rgba(0, 0, 0, 0);
+  /* 치수 — GT 실측 */
+  --ctl-vh-px0: 0px;
+  --ctl-vh-px1: 1px;
+  --ctl-vh-px4: 4px;
+  --ctl-vh-px6: 6px;
+  --ctl-vh-px8: 8px;
+  --ctl-vh-px10: 10px;
+  --ctl-vh-px12: 12px;
+  --ctl-vh-px16: 16px;
+  --ctl-vh-px20: 20px;
+  --ctl-vh-px24: 24px;
+  --ctl-vh-px28: 28px;
+  --ctl-vh-px36: 36px;
+  --ctl-vh-px44: 44px;
+  --ctl-vh-px45: 45px;
+  --ctl-vh-px48: 48px;
+  --ctl-vh-px100: 100%;
+  --ctl-vh-px50pct: 50%;
+  /* 타이포 — GT 실측 */
+  --ctl-vh-fs14: 14px;
+  --ctl-vh-fs16: 16px;
+  --ctl-vh-fs12: 12px;
+  --ctl-vh-fs10: 10px;
+  --ctl-vh-lh12: 12px;
+  --ctl-vh-lh16: 16px;
+  --ctl-vh-lh20: 20px;
+  --ctl-vh-lh24: 24px;
+  --ctl-vh-fww: 700;
+  --ctl-vh-fwn: 400;
+  --ctl-vh-fw5: 500;
+  --ctl-vh-fw6: 600;
+  /* HF 가 이 서피스에 선언한 font 스택( GT body fontFamily 원문 ) — 도색 폰트 정합. */
+  --ctl-vh-font-ui: Inter, ui-sans-serif, system-ui, sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --ctl-vh-gap1: 1px;
+  --ctl-vh-gap4: 4px;
+  --ctl-vh-gap6: 6px;
+  --ctl-vh-gap8: 8px;
+  --ctl-vh-gap12: 12px;
+  --ctl-vh-ls01: 0.1px;
+  --ctl-vh-px14: 14px;
+  /* 라운드 — GT 실측 */
+  --ctl-vh-r6: 6px;
+  --ctl-vh-r8: 8px;
+  --ctl-vh-r10: 10px;
+  /* 레이아웃 키 */
+  --ctl-vh-pos-relative: relative;
+  --ctl-vh-pos-absolute: absolute;
+  --ctl-vh-display-grid: grid;
+  --ctl-vh-display-flex: flex;
+  --ctl-vh-display-block: block;
+  --ctl-vh-display-inlineflex: inline-flex;
+  --ctl-vh-overflow-hidden: hidden;
+  --ctl-vh-overflow-visible: visible;
+  --ctl-vh-overflow-auto-hidden: auto hidden;
+  --ctl-vh-align-center: center;
+  --ctl-vh-justify-center: center;
+}
+
+/* ============================ ① header-promotion ============================ */
+.vh-promotion {
+  position: var(--ctl-vh-pos-relative);
+  flex: none;
+  display: var(--ctl-vh-display-grid);
+  grid-template-rows: var(--ctl-vh-px45);
+  height: var(--ctl-vh-px45);
+  z-index: 3;
+  font-family: var(--ctl-vh-font-ui);
+  background-color: var(--ctl-vh-lime);
+  color: var(--ctl-vh-ink);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fwn);
+  line-height: var(--ctl-vh-lh20);
+  border-bottom: var(--ctl-vh-px1) solid var(--ctl-vh-white-20);
+  box-shadow: 0 0 var(--ctl-vh-px12) 0 var(--ctl-vh-lime-50);
+}
+.vh-promo-clip {
+  display: var(--ctl-vh-display-block);
+  min-height: var(--ctl-vh-px0);
+  height: var(--ctl-vh-px44);
+  overflow: var(--ctl-vh-overflow-hidden);
+}
+.vh-promo-container {
+  position: var(--ctl-vh-pos-relative);
+  display: var(--ctl-vh-display-grid);
+  grid-template-columns: var(--ctl-vh-px100);
+  align-items: var(--ctl-vh-align-center);
+  min-height: var(--ctl-vh-px44);
+  height: var(--ctl-vh-px44);
+  padding-inline: var(--ctl-vh-px0);
+  z-index: 50;
+}
+.vh-promo-row {
+  position: var(--ctl-vh-pos-relative);
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  justify-content: var(--ctl-vh-justify-center);
+  gap: var(--ctl-vh-gap12);
+  width: var(--ctl-vh-px100);
+  min-width: var(--ctl-vh-px0);
+  height: var(--ctl-vh-px44);
+  padding-block: var(--ctl-vh-px6);
+  padding-inline: var(--ctl-vh-px44);
+  border: var(--ctl-vh-px0);
+  background-color: var(--ctl-vh-transparent);
+  color: var(--ctl-vh-ink);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fwn);
+  line-height: var(--ctl-vh-lh20);
+  cursor: default;
+}
+.vh-promo-label {
+  display: var(--ctl-vh-display-inlineflex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap8);
+  min-width: var(--ctl-vh-px0);
+  color: var(--ctl-vh-ink);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw6);
+  line-height: var(--ctl-vh-lh20);
+}
+.vh-promo-icon {
+  display: var(--ctl-vh-display-block);
+  flex: none;
+  width: var(--ctl-vh-px16);
+  height: var(--ctl-vh-px16);
+}
+.vh-promo-text {
+  min-width: var(--ctl-vh-px0);
+  overflow: var(--ctl-vh-overflow-hidden);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ctl-vh-ink);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw6);
+  line-height: var(--ctl-vh-lh20);
+}
+.vh-promo-cta {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  flex: none;
+  height: var(--ctl-vh-px24);
+  padding-inline: var(--ctl-vh-px10);
+  border-radius: var(--ctl-vh-r6);
+  background-color: var(--ctl-vh-white);
+  color: var(--ctl-vh-ink);
+  font-size: var(--ctl-vh-fs12);
+  font-weight: var(--ctl-vh-fw6);
+  line-height: var(--ctl-vh-lh16);
+}
+.vh-promo-close {
+  position: var(--ctl-vh-pos-absolute);
+  right: var(--ctl-vh-px8);
+  top: var(--ctl-vh-px50pct);
+  transform: translateY(calc(-1 * var(--ctl-vh-px28) / 2));
+  display: var(--ctl-vh-display-grid);
+  place-items: var(--ctl-vh-align-center);
+  width: var(--ctl-vh-px28);
+  height: var(--ctl-vh-px28);
+  border-radius: var(--ctl-vh-r8);
+  background-color: var(--ctl-vh-transparent);
+  color: var(--ctl-vh-ink);
+  z-index: 10;
+  cursor: default;
+}
+.vh-promo-close-icon {
+  display: var(--ctl-vh-display-block);
+  width: var(--ctl-vh-px20);
+  height: var(--ctl-vh-px20);
+}
+
+/* ============================ ② header-visual ============================ */
+.vh-header {
+  position: var(--ctl-vh-pos-relative);
+  flex: none;
+  display: var(--ctl-vh-display-block);
+  height: var(--ctl-vh-px44);
+  padding-bottom: var(--ctl-vh-px8);
+  z-index: 50;
+  font-family: var(--ctl-vh-font-ui);
+  color: var(--ctl-vh-text-247);
+  font-size: var(--ctl-vh-fs16);
+  font-weight: var(--ctl-vh-fwn);
+  line-height: var(--ctl-vh-lh24);
+}
+.vh-header-visual {
+  position: var(--ctl-vh-pos-absolute);
+  top: var(--ctl-vh-px0);
+  display: var(--ctl-vh-display-block);
+  height: var(--ctl-vh-px36);
+  width: var(--ctl-vh-px100);
+}
+.vh-header-container {
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap12);
+  height: var(--ctl-vh-px100);
+  padding-inline: var(--ctl-vh-px16);
+  color: var(--ctl-vh-text-247);
+}
+.vh-logo-link {
+  display: var(--ctl-vh-display-inlineflex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap8);
+  flex: none;
+  color: var(--ctl-vh-text-247);
+  text-decoration: none;
+}
+.vh-logo {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  justify-content: var(--ctl-vh-justify-center);
+  position: var(--ctl-vh-pos-relative);
+  flex: none;
+  width: var(--ctl-vh-px20);
+  height: var(--ctl-vh-px20);
+  border-radius: var(--ctl-vh-r6);
+}
+.vh-logo-fill {
+  position: var(--ctl-vh-pos-absolute);
+  inset: var(--ctl-vh-px0);
+  display: var(--ctl-vh-display-block);
+  width: var(--ctl-vh-px20);
+  height: var(--ctl-vh-px20);
+  border-radius: var(--ctl-vh-r6);
+  background-color: var(--ctl-vh-white);
+}
+.vh-logo-glyph {
+  display: var(--ctl-vh-display-block);
+  position: var(--ctl-vh-pos-relative);
+  width: var(--ctl-vh-px20);
+  height: var(--ctl-vh-px20);
+  color: var(--ctl-vh-ink-26);
+}
+
+/* ---- nav — 전역 .ohf-nav-* 와 같은 HF-기하, 다만 이 서피스 전용 클래스 ---- */
+.vh-nav {
+  position: var(--ctl-vh-pos-relative);
+  min-width: var(--ctl-vh-px0);
+  flex: 1 1 auto;
+  overflow-x: var(--ctl-vh-overflow-auto-hidden);
+  scrollbar-width: none;
+  color: var(--ctl-vh-text-247);
+}
+.vh-nav-scroll,
+.vh-nav-inner {
+  position: var(--ctl-vh-pos-relative);
+  display: var(--ctl-vh-display-block);
+}
+.vh-nav-list {
+  position: var(--ctl-vh-pos-relative);
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-px0);
+  margin: var(--ctl-vh-px0);
+  padding: var(--ctl-vh-px0);
+  list-style: none;
+}
+.vh-nav-li {
+  display: list-item;
+}
+.vh-nav-item {
+  display: var(--ctl-vh-display-inlineflex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap4);
+  height: var(--ctl-vh-px28);
+  padding-block: var(--ctl-vh-px4);
+  padding-inline: var(--ctl-vh-px8);
+  border: var(--ctl-vh-px0);
+  background-color: var(--ctl-vh-transparent);
+  border-radius: var(--ctl-vh-r8);
+  font-family: var(--ctl-vh-font-ui);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw5);
+  line-height: var(--ctl-vh-lh20);
+  letter-spacing: var(--ctl-vh-ls01);
+  /* HF 는 유휴 pill 을 white/30 으로 도색( GT nid 27 측정 ). */
+  color: var(--ctl-vh-white-30);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.vh-nav-item[aria-disabled="true"] {
+  color: var(--ctl-vh-white-30);
+  cursor: default;
+}
+/* HF 는 현재 페이지 pill 을 라벨 색만으로 표시: 비디오 pill 라벨이 lime. */
+.vh-nav-item[data-active="true"],
+.vh-nav-item[aria-pressed="true"] {
+  background-color: var(--ctl-vh-transparent);
+  color: var(--ctl-vh-lime);
+}
+.vh-nav-sep {
+  width: var(--ctl-vh-px1);
+  height: var(--ctl-vh-px12);
+  flex: none;
+  margin-inline: var(--ctl-vh-px6);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.vh-nav-badge {
+  display: var(--ctl-vh-display-inlineflex);
+  align-items: var(--ctl-vh-align-center);
+  flex: none;
+  height: var(--ctl-vh-px16);
+  padding-block: var(--ctl-vh-px2);
+  padding-inline: var(--ctl-vh-px6);
+  border-radius: var(--ctl-vh-r6);
+  background-color: var(--ctl-vh-badge-bg);
+  color: var(--ctl-vh-badge-fg);
+  font-size: var(--ctl-vh-fs10);
+  font-weight: var(--ctl-vh-fw5);
+  line-height: var(--ctl-vh-lh12);
+}
+
+/* ---- 우측 클러스터 — HF 게스트 actions(GT 80..100), honest inert ---- */
+.vh-actions {
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap8);
+  flex: none;
+  color: var(--ctl-vh-text-247);
+}
+.vh-actions-primary {
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap12);
+}
+.vh-actions-secondary {
+  display: var(--ctl-vh-display-flex);
+  flex-direction: row;
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap4);
+}
+.vh-act {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap6);
+  height: var(--ctl-vh-px24);
+  border-radius: var(--ctl-vh-r10);
+  background-color: var(--ctl-vh-transparent);
+  border: var(--ctl-vh-px0);
+  color: var(--ctl-vh-white-30);
+  font-family: var(--ctl-vh-font-ui);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw5);
+  line-height: var(--ctl-vh-lh20);
+  letter-spacing: var(--ctl-vh-ls01);
+  cursor: default;
+}
+.vh-act--icon {
+  width: var(--ctl-vh-px24);
+  padding: var(--ctl-vh-px0);
+  justify-content: var(--ctl-vh-justify-center);
+}
+.vh-act-icon {
+  display: var(--ctl-vh-display-block);
+  flex: none;
+  width: var(--ctl-vh-px16);
+  height: var(--ctl-vh-px16);
+}
+.vh-lang-wrap {
+  position: var(--ctl-vh-pos-relative);
+  display: var(--ctl-vh-display-flex);
+  flex: none;
+}
+.vh-lang {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  justify-content: var(--ctl-vh-justify-center);
+  width: var(--ctl-vh-px24);
+  height: var(--ctl-vh-px24);
+  border-radius: var(--ctl-vh-r8);
+  background-color: var(--ctl-vh-transparent);
+  border: var(--ctl-vh-px0);
+  color: var(--ctl-vh-white-30);
+  cursor: default;
+}
+.vh-ent,
+.vh-price {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap6);
+  height: var(--ctl-vh-px24);
+  padding-inline: var(--ctl-vh-px0);
+  border: var(--ctl-vh-px0);
+  border-radius: var(--ctl-vh-r10);
+  background-color: var(--ctl-vh-transparent);
+  font-family: var(--ctl-vh-font-ui);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw5);
+  line-height: var(--ctl-vh-lh20);
+  letter-spacing: var(--ctl-vh-ls01);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: default;
+}
+.vh-ent {
+  color: var(--ctl-vh-white-30);
+}
+.vh-price {
+  color: var(--ctl-vh-lime);
+}
+.vh-ent-icon,
+.vh-price-icon {
+  display: var(--ctl-vh-display-block);
+  flex: none;
+  width: var(--ctl-vh-px14);
+  height: var(--ctl-vh-px14);
+}
+.vh-price-off {
+  display: var(--ctl-vh-display-inlineflex);
+  align-items: var(--ctl-vh-align-center);
+  gap: var(--ctl-vh-gap4);
+  color: var(--ctl-vh-lime);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw5);
+  line-height: var(--ctl-vh-lh20);
+}
+.vh-auth {
+  display: var(--ctl-vh-display-flex);
+  align-items: var(--ctl-vh-align-center);
+  justify-content: var(--ctl-vh-justify-center);
+  height: var(--ctl-vh-px24);
+  padding-inline: var(--ctl-vh-px10);
+  border: var(--ctl-vh-px0);
+  border-radius: var(--ctl-vh-r8);
+  font-family: var(--ctl-vh-font-ui);
+  font-size: var(--ctl-vh-fs14);
+  font-weight: var(--ctl-vh-fw6);
+  line-height: var(--ctl-vh-lh20);
+  white-space: nowrap;
+  cursor: default;
+}
+.vh-auth--login {
+  background-color: var(--ctl-vh-login-bg);
+  color: var(--ctl-vh-lime);
+}
+.vh-auth--signup {
+  background-color: var(--ctl-vh-lime);
+  color: var(--ctl-vh-ink-26);
+}

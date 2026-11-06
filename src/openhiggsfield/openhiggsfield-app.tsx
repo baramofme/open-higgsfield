@@ -62,6 +62,7 @@ import { CinemaSidebar } from "./cinema-sidebar";
 import { CinemaStudioScreen } from "./cinema-studio-screen";
 import { ImageSurface } from "./image-surface";
 import { VideoSurface } from "./video-surface";
+import { VideoHeader } from "./video-header";
 
 /* Separate import block, anchored away from the top cluster so it forms its own
    diff hunk: the project detail surface plus the view-state store that raises

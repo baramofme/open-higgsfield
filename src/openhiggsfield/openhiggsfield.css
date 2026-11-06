@@ -17341,6 +17341,13 @@ button[data-ohf-switch="on"] .ohf-switch-thumb {
   font-display: swap;
   src: url("/fonts/space-grotesk-latin-300-700.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-100-900.woff2") format("woff2");
+}
 .ohf-cinema-screen {
   /* HF's tokens, measured: surface-primary is rgb(28,30,32), the secondary
      text is rgb(137,138,139), the brand lime is rgb(209,254,23) and the ink
